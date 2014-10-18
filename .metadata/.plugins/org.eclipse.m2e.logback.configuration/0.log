@@ -1,0 +1,586 @@
+2014-10-17 22:43:32,246 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-resources-plugin/2.6/maven-resources-plugin-2.6.jar
+2014-10-17 22:43:32,432 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-resources-plugin/2.6/maven-resources-plugin-2.6.jar
+2014-10-17 22:43:32,624 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-compiler-plugin/2.5.1/maven-compiler-plugin-2.5.1.jar
+2014-10-17 22:43:32,785 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-compiler-plugin/2.5.1/maven-compiler-plugin-2.5.1.jar
+2014-10-17 22:43:32,901 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-surefire-plugin/2.12.4/maven-surefire-plugin-2.12.4.jar
+2014-10-17 22:43:33,066 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-surefire-plugin/2.12.4/maven-surefire-plugin-2.12.4.jar
+2014-10-17 22:43:33,165 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-jar-plugin/2.4/maven-jar-plugin-2.4.jar
+2014-10-17 22:43:33,306 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-jar-plugin/2.4/maven-jar-plugin-2.4.jar
+2014-10-17 22:43:33,443 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-compiler-plugin/2.5.1/maven-compiler-plugin-2.5.1.pom
+2014-10-17 22:43:33,531 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-compiler-plugin/2.5.1/maven-compiler-plugin-2.5.1.pom
+2014-10-17 22:43:33,618 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-api/2.0.9/maven-plugin-api-2.0.9.pom
+2014-10-17 22:43:33,703 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-api/2.0.9/maven-plugin-api-2.0.9.pom
+2014-10-17 22:43:33,750 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/apache/maven/maven/2.0.9/maven-2.0.9.pom
+2014-10-17 22:43:33,843 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/apache/maven/maven/2.0.9/maven-2.0.9.pom
+2014-10-17 22:43:33,908 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/8/maven-parent-8.pom
+2014-10-17 22:43:34,012 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/8/maven-parent-8.pom
+2014-10-17 22:43:34,101 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/apache/maven/maven-artifact/2.0.9/maven-artifact-2.0.9.pom
+2014-10-17 22:43:34,199 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/apache/maven/maven-artifact/2.0.9/maven-artifact-2.0.9.pom
+2014-10-17 22:43:34,279 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/1.5.1/plexus-utils-1.5.1.pom
+2014-10-17 22:43:34,379 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/1.5.1/plexus-utils-1.5.1.pom
+2014-10-17 22:43:34,451 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/1.0.11/plexus-1.0.11.pom
+2014-10-17 22:43:34,538 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/1.0.11/plexus-1.0.11.pom
+2014-10-17 22:43:34,586 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/apache/maven/maven-core/2.0.9/maven-core-2.0.9.pom
+2014-10-17 22:43:34,670 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/apache/maven/maven-core/2.0.9/maven-core-2.0.9.pom
+2014-10-17 22:43:34,724 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/apache/maven/maven-settings/2.0.9/maven-settings-2.0.9.pom
+2014-10-17 22:43:34,810 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/apache/maven/maven-settings/2.0.9/maven-settings-2.0.9.pom
+2014-10-17 22:43:34,859 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/apache/maven/maven-model/2.0.9/maven-model-2.0.9.pom
+2014-10-17 22:43:34,944 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/apache/maven/maven-model/2.0.9/maven-model-2.0.9.pom
+2014-10-17 22:43:34,992 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-parameter-documenter/2.0.9/maven-plugin-parameter-documenter-2.0.9.pom
+2014-10-17 22:43:35,089 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-parameter-documenter/2.0.9/maven-plugin-parameter-documenter-2.0.9.pom
+2014-10-17 22:43:35,165 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/apache/maven/maven-profile/2.0.9/maven-profile-2.0.9.pom
+2014-10-17 22:43:35,256 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/apache/maven/maven-profile/2.0.9/maven-profile-2.0.9.pom
+2014-10-17 22:43:35,360 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/apache/maven/maven-repository-metadata/2.0.9/maven-repository-metadata-2.0.9.pom
+2014-10-17 22:43:35,461 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/apache/maven/maven-repository-metadata/2.0.9/maven-repository-metadata-2.0.9.pom
+2014-10-17 22:43:35,531 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/apache/maven/maven-error-diagnostics/2.0.9/maven-error-diagnostics-2.0.9.pom
+2014-10-17 22:43:35,630 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/apache/maven/maven-error-diagnostics/2.0.9/maven-error-diagnostics-2.0.9.pom
+2014-10-17 22:43:35,709 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/apache/maven/maven-project/2.0.9/maven-project-2.0.9.pom
+2014-10-17 22:43:35,802 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/apache/maven/maven-project/2.0.9/maven-project-2.0.9.pom
+2014-10-17 22:43:35,849 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/apache/maven/maven-artifact-manager/2.0.9/maven-artifact-manager-2.0.9.pom
+2014-10-17 22:43:35,956 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/apache/maven/maven-artifact-manager/2.0.9/maven-artifact-manager-2.0.9.pom
+2014-10-17 22:43:36,035 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-registry/2.0.9/maven-plugin-registry-2.0.9.pom
+2014-10-17 22:43:36,131 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-registry/2.0.9/maven-plugin-registry-2.0.9.pom
+2014-10-17 22:43:36,205 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-descriptor/2.0.9/maven-plugin-descriptor-2.0.9.pom
+2014-10-17 22:43:36,551 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-descriptor/2.0.9/maven-plugin-descriptor-2.0.9.pom
+2014-10-17 22:43:36,611 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/apache/maven/maven-monitor/2.0.9/maven-monitor-2.0.9.pom
+2014-10-17 22:43:36,707 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/apache/maven/maven-monitor/2.0.9/maven-monitor-2.0.9.pom
+2014-10-17 22:43:36,779 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/apache/maven/maven-toolchain/1.0/maven-toolchain-1.0.pom
+2014-10-17 22:43:36,872 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/apache/maven/maven-toolchain/1.0/maven-toolchain-1.0.pom
+2014-10-17 22:43:36,943 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/apache/maven/maven/2.0.6/maven-2.0.6.pom
+2014-10-17 22:43:37,335 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/apache/maven/maven/2.0.6/maven-2.0.6.pom
+2014-10-17 22:43:37,405 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/5/maven-parent-5.pom
+2014-10-17 22:43:37,552 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/5/maven-parent-5.pom
+2014-10-17 22:43:37,628 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/apache/apache/3/apache-3.pom
+2014-10-17 22:43:37,986 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/apache/apache/3/apache-3.pom
+2014-10-17 22:43:38,054 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/apache/maven/maven-core/2.0.6/maven-core-2.0.6.pom
+2014-10-17 22:43:38,149 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/apache/maven/maven-core/2.0.6/maven-core-2.0.6.pom
+2014-10-17 22:43:38,215 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/apache/maven/maven-settings/2.0.6/maven-settings-2.0.6.pom
+2014-10-17 22:43:38,317 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/apache/maven/maven-settings/2.0.6/maven-settings-2.0.6.pom
+2014-10-17 22:43:38,390 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/apache/maven/maven-model/2.0.6/maven-model-2.0.6.pom
+2014-10-17 22:43:38,491 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/apache/maven/maven-model/2.0.6/maven-model-2.0.6.pom
+2014-10-17 22:43:38,565 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/1.4.1/plexus-utils-1.4.1.pom
+2014-10-17 22:43:38,913 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/1.4.1/plexus-utils-1.4.1.pom
+2014-10-17 22:43:38,993 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/junit/junit/3.8.1/junit-3.8.1.pom
+2014-10-17 22:43:39,087 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/junit/junit/3.8.1/junit-3.8.1.pom
+2014-10-17 22:43:39,148 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/1.0.4/plexus-utils-1.0.4.pom
+2014-10-17 22:43:39,283 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/1.0.4/plexus-utils-1.0.4.pom
+2014-10-17 22:43:39,345 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-parameter-documenter/2.0.6/maven-plugin-parameter-documenter-2.0.6.pom
+2014-10-17 22:43:39,448 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-parameter-documenter/2.0.6/maven-plugin-parameter-documenter-2.0.6.pom
+2014-10-17 22:43:39,522 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/apache/maven/reporting/maven-reporting-api/2.0.6/maven-reporting-api-2.0.6.pom
+2014-10-17 22:43:39,607 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/apache/maven/reporting/maven-reporting-api/2.0.6/maven-reporting-api-2.0.6.pom
+2014-10-17 22:43:39,653 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/apache/maven/reporting/maven-reporting/2.0.6/maven-reporting-2.0.6.pom
+2014-10-17 22:43:39,745 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/apache/maven/reporting/maven-reporting/2.0.6/maven-reporting-2.0.6.pom
+2014-10-17 22:43:39,818 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-sink-api/1.0-alpha-7/doxia-sink-api-1.0-alpha-7.pom
+2014-10-17 22:43:40,162 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-sink-api/1.0-alpha-7/doxia-sink-api-1.0-alpha-7.pom
+2014-10-17 22:43:40,231 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia/1.0-alpha-7/doxia-1.0-alpha-7.pom
+2014-10-17 22:43:40,325 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia/1.0-alpha-7/doxia-1.0-alpha-7.pom
+2014-10-17 22:43:40,387 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/apache/maven/maven-profile/2.0.6/maven-profile-2.0.6.pom
+2014-10-17 22:43:40,487 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/apache/maven/maven-profile/2.0.6/maven-profile-2.0.6.pom
+2014-10-17 22:43:40,558 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/apache/maven/maven-artifact/2.0.6/maven-artifact-2.0.6.pom
+2014-10-17 22:43:40,659 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/apache/maven/maven-artifact/2.0.6/maven-artifact-2.0.6.pom
+2014-10-17 22:43:40,729 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/apache/maven/maven-repository-metadata/2.0.6/maven-repository-metadata-2.0.6.pom
+2014-10-17 22:43:40,828 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/apache/maven/maven-repository-metadata/2.0.6/maven-repository-metadata-2.0.6.pom
+2014-10-17 22:43:40,899 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/apache/maven/maven-error-diagnostics/2.0.6/maven-error-diagnostics-2.0.6.pom
+2014-10-17 22:43:40,995 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/apache/maven/maven-error-diagnostics/2.0.6/maven-error-diagnostics-2.0.6.pom
+2014-10-17 22:43:41,072 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/apache/maven/maven-project/2.0.6/maven-project-2.0.6.pom
+2014-10-17 22:43:41,181 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/apache/maven/maven-project/2.0.6/maven-project-2.0.6.pom
+2014-10-17 22:43:41,255 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/apache/maven/maven-artifact-manager/2.0.6/maven-artifact-manager-2.0.6.pom
+2014-10-17 22:43:41,358 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/apache/maven/maven-artifact-manager/2.0.6/maven-artifact-manager-2.0.6.pom
+2014-10-17 22:43:41,434 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-registry/2.0.6/maven-plugin-registry-2.0.6.pom
+2014-10-17 22:43:41,535 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-registry/2.0.6/maven-plugin-registry-2.0.6.pom
+2014-10-17 22:43:41,613 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-api/2.0.6/maven-plugin-api-2.0.6.pom
+2014-10-17 22:43:41,713 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-api/2.0.6/maven-plugin-api-2.0.6.pom
+2014-10-17 22:43:41,788 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-descriptor/2.0.6/maven-plugin-descriptor-2.0.6.pom
+2014-10-17 22:43:41,888 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-descriptor/2.0.6/maven-plugin-descriptor-2.0.6.pom
+2014-10-17 22:43:41,962 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-interactivity-api/1.0-alpha-4/plexus-interactivity-api-1.0-alpha-4.pom
+2014-10-17 22:43:42,101 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-interactivity-api/1.0-alpha-4/plexus-interactivity-api-1.0-alpha-4.pom
+2014-10-17 22:43:42,169 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/apache/maven/maven-monitor/2.0.6/maven-monitor-2.0.6.pom
+2014-10-17 22:43:42,266 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/apache/maven/maven-monitor/2.0.6/maven-monitor-2.0.6.pom
+2014-10-17 22:43:42,342 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/3.0/plexus-utils-3.0.pom
+2014-10-17 22:43:42,434 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/3.0/plexus-utils-3.0.pom
+2014-10-17 22:43:42,495 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/sonatype/spice/spice-parent/16/spice-parent-16.pom
+2014-10-17 22:43:42,628 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/sonatype/spice/spice-parent/16/spice-parent-16.pom
+2014-10-17 22:43:42,678 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/sonatype/forge/forge-parent/5/forge-parent-5.pom
+2014-10-17 22:43:42,809 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/sonatype/forge/forge-parent/5/forge-parent-5.pom
+2014-10-17 22:43:42,872 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-compiler-api/1.9.1/plexus-compiler-api-1.9.1.pom
+2014-10-17 22:43:42,971 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-compiler-api/1.9.1/plexus-compiler-api-1.9.1.pom
+2014-10-17 22:43:43,037 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-compiler/1.9.1/plexus-compiler-1.9.1.pom
+2014-10-17 22:43:43,136 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-compiler/1.9.1/plexus-compiler-1.9.1.pom
+2014-10-17 22:43:43,209 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-components/1.1.20/plexus-components-1.1.20.pom
+2014-10-17 22:43:43,305 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-components/1.1.20/plexus-components-1.1.20.pom
+2014-10-17 22:43:43,364 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/3.1/plexus-3.1.pom
+2014-10-17 22:43:43,536 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/3.1/plexus-3.1.pom
+2014-10-17 22:43:43,607 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/sonatype/spice/spice-parent/17/spice-parent-17.pom
+2014-10-17 22:43:43,706 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/sonatype/spice/spice-parent/17/spice-parent-17.pom
+2014-10-17 22:43:43,773 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/sonatype/forge/forge-parent/10/forge-parent-10.pom
+2014-10-17 22:43:43,913 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/sonatype/forge/forge-parent/10/forge-parent-10.pom
+2014-10-17 22:43:43,993 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-compiler-manager/1.9.1/plexus-compiler-manager-1.9.1.pom
+2014-10-17 22:43:44,085 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-compiler-manager/1.9.1/plexus-compiler-manager-1.9.1.pom
+2014-10-17 22:43:44,146 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-compiler-javac/1.9.1/plexus-compiler-javac-1.9.1.pom
+2014-10-17 22:43:44,232 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-compiler-javac/1.9.1/plexus-compiler-javac-1.9.1.pom
+2014-10-17 22:43:44,280 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-compilers/1.9.1/plexus-compilers-1.9.1.pom
+2014-10-17 22:43:44,381 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-compilers/1.9.1/plexus-compilers-1.9.1.pom
+2014-10-17 22:43:44,482 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/3.0/plexus-utils-3.0.jar
+2014-10-17 22:43:45,069 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/3.0/plexus-utils-3.0.jar
+2014-10-17 22:43:45,115 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-compiler-api/1.9.1/plexus-compiler-api-1.9.1.jar
+2014-10-17 22:43:45,508 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-compiler-api/1.9.1/plexus-compiler-api-1.9.1.jar
+2014-10-17 22:43:45,554 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-compiler-manager/1.9.1/plexus-compiler-manager-1.9.1.jar
+2014-10-17 22:43:45,668 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-compiler-manager/1.9.1/plexus-compiler-manager-1.9.1.jar
+2014-10-17 22:43:45,715 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-compiler-javac/1.9.1/plexus-compiler-javac-1.9.1.jar
+2014-10-17 22:43:45,837 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-compiler-javac/1.9.1/plexus-compiler-javac-1.9.1.jar
+2014-10-17 22:43:45,880 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/junit/junit/3.8.1/junit-3.8.1.jar
+2014-10-17 22:43:46,257 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/junit/junit/3.8.1/junit-3.8.1.jar
+2014-10-17 22:43:46,525 [Worker-5] WARN  o.e.m.c.i.embedder.EclipseLogger - Failed to dispatch repository event to org.eclipse.m2e.core.internal.embedder.EclipseRepositoryListener: null
+2014-10-17 22:43:46,732 [Worker-5] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.UndefinedParameter.app:QuizZing:1.0-SNAPSHOT @ C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\pom.xml.
+2014-10-17 22:43:46,778 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/io/dropwizard/dropwizard-core/0.7.0/dropwizard-core-0.7.0.pom
+2014-10-17 22:43:46,871 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/io/dropwizard/dropwizard-core/0.7.0/dropwizard-core-0.7.0.pom
+2014-10-17 22:43:46,948 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/io/dropwizard/dropwizard-parent/0.7.0/dropwizard-parent-0.7.0.pom
+2014-10-17 22:43:47,042 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/io/dropwizard/dropwizard-parent/0.7.0/dropwizard-parent-0.7.0.pom
+2014-10-17 22:43:47,106 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/io/dropwizard/dropwizard-util/0.7.0/dropwizard-util-0.7.0.pom
+2014-10-17 22:43:47,194 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/io/dropwizard/dropwizard-util/0.7.0/dropwizard-util-0.7.0.pom
+2014-10-17 22:43:47,262 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-annotations/2.3.0/jackson-annotations-2.3.0.pom
+2014-10-17 22:43:47,354 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-annotations/2.3.0/jackson-annotations-2.3.0.pom
+2014-10-17 22:43:47,428 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/fasterxml/oss-parent/11/oss-parent-11.pom
+2014-10-17 22:43:47,574 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/fasterxml/oss-parent/11/oss-parent-11.pom
+2014-10-17 22:43:47,662 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/google/guava/guava/16.0.1/guava-16.0.1.pom
+2014-10-17 22:43:47,761 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/google/guava/guava/16.0.1/guava-16.0.1.pom
+2014-10-17 22:43:47,875 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/google/guava/guava-parent/16.0.1/guava-parent-16.0.1.pom
+2014-10-17 22:43:48,266 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/google/guava/guava-parent/16.0.1/guava-parent-16.0.1.pom
+2014-10-17 22:43:48,341 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/sonatype/oss/oss-parent/7/oss-parent-7.pom
+2014-10-17 22:43:48,436 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/sonatype/oss/oss-parent/7/oss-parent-7.pom
+2014-10-17 22:43:48,504 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/google/code/findbugs/jsr305/2.0.3/jsr305-2.0.3.pom
+2014-10-17 22:43:48,598 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/google/code/findbugs/jsr305/2.0.3/jsr305-2.0.3.pom
+2014-10-17 22:43:48,661 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/joda-time/joda-time/2.3/joda-time-2.3.pom
+2014-10-17 22:43:49,150 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/joda-time/joda-time/2.3/joda-time-2.3.pom
+2014-10-17 22:43:49,218 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/io/dropwizard/dropwizard-jackson/0.7.0/dropwizard-jackson-0.7.0.pom
+2014-10-17 22:43:49,324 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/io/dropwizard/dropwizard-jackson/0.7.0/dropwizard-jackson-0.7.0.pom
+2014-10-17 22:43:49,398 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-core/2.3.2/jackson-core-2.3.2.pom
+2014-10-17 22:43:49,535 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-core/2.3.2/jackson-core-2.3.2.pom
+2014-10-17 22:43:49,605 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/fasterxml/oss-parent/12/oss-parent-12.pom
+2014-10-17 22:43:49,859 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/fasterxml/oss-parent/12/oss-parent-12.pom
+2014-10-17 22:43:49,909 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-databind/2.3.2/jackson-databind-2.3.2.pom
+2014-10-17 22:43:50,005 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-databind/2.3.2/jackson-databind-2.3.2.pom
+2014-10-17 22:43:50,082 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/fasterxml/jackson/datatype/jackson-datatype-guava/2.3.2/jackson-datatype-guava-2.3.2.pom
+2014-10-17 22:43:50,187 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/fasterxml/jackson/datatype/jackson-datatype-guava/2.3.2/jackson-datatype-guava-2.3.2.pom
+2014-10-17 22:43:50,263 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/fasterxml/jackson/module/jackson-module-afterburner/2.3.2/jackson-module-afterburner-2.3.2.pom
+2014-10-17 22:43:50,356 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/fasterxml/jackson/module/jackson-module-afterburner/2.3.2/jackson-module-afterburner-2.3.2.pom
+2014-10-17 22:43:50,421 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/fasterxml/jackson/datatype/jackson-datatype-joda/2.3.2/jackson-datatype-joda-2.3.2.pom
+2014-10-17 22:43:50,518 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/fasterxml/jackson/datatype/jackson-datatype-joda/2.3.2/jackson-datatype-joda-2.3.2.pom
+2014-10-17 22:43:50,594 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/ch/qos/logback/logback-classic/1.1.1/logback-classic-1.1.1.pom
+2014-10-17 22:43:50,724 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/ch/qos/logback/logback-classic/1.1.1/logback-classic-1.1.1.pom
+2014-10-17 22:43:50,772 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/ch/qos/logback/logback-parent/1.1.1/logback-parent-1.1.1.pom
+2014-10-17 22:43:50,951 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/ch/qos/logback/logback-parent/1.1.1/logback-parent-1.1.1.pom
+2014-10-17 22:43:51,032 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/ch/qos/logback/logback-core/1.1.1/logback-core-1.1.1.pom
+2014-10-17 22:43:51,125 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/ch/qos/logback/logback-core/1.1.1/logback-core-1.1.1.pom
+2014-10-17 22:43:51,173 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/slf4j/slf4j-api/1.7.6/slf4j-api-1.7.6.pom
+2014-10-17 22:43:51,266 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/slf4j/slf4j-api/1.7.6/slf4j-api-1.7.6.pom
+2014-10-17 22:43:51,334 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/slf4j/slf4j-parent/1.7.6/slf4j-parent-1.7.6.pom
+2014-10-17 22:43:51,473 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/slf4j/slf4j-parent/1.7.6/slf4j-parent-1.7.6.pom
+2014-10-17 22:43:51,552 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/io/dropwizard/dropwizard-validation/0.7.0/dropwizard-validation-0.7.0.pom
+2014-10-17 22:43:51,644 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/io/dropwizard/dropwizard-validation/0.7.0/dropwizard-validation-0.7.0.pom
+2014-10-17 22:43:51,710 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/hibernate/hibernate-validator/5.0.2.Final/hibernate-validator-5.0.2.Final.pom
+2014-10-17 22:43:51,850 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/hibernate/hibernate-validator/5.0.2.Final/hibernate-validator-5.0.2.Final.pom
+2014-10-17 22:43:51,919 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/hibernate/hibernate-validator-parent/5.0.2.Final/hibernate-validator-parent-5.0.2.Final.pom
+2014-10-17 22:43:52,094 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/hibernate/hibernate-validator-parent/5.0.2.Final/hibernate-validator-parent-5.0.2.Final.pom
+2014-10-17 22:43:52,159 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/jboss/arquillian/arquillian-bom/1.0.2.Final/arquillian-bom-1.0.2.Final.pom
+2014-10-17 22:43:52,292 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/jboss/arquillian/arquillian-bom/1.0.2.Final/arquillian-bom-1.0.2.Final.pom
+2014-10-17 22:43:52,348 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/jboss/shrinkwrap/shrinkwrap-bom/1.0.1/shrinkwrap-bom-1.0.1.pom
+2014-10-17 22:43:52,446 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/jboss/shrinkwrap/shrinkwrap-bom/1.0.1/shrinkwrap-bom-1.0.1.pom
+2014-10-17 22:43:52,517 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/jboss/shrinkwrap/resolver/shrinkwrap-resolver-bom/1.0.0-beta-7/shrinkwrap-resolver-bom-1.0.0-beta-7.pom
+2014-10-17 22:43:52,617 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/jboss/shrinkwrap/resolver/shrinkwrap-resolver-bom/1.0.0-beta-7/shrinkwrap-resolver-bom-1.0.0-beta-7.pom
+2014-10-17 22:43:52,692 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/jboss/shrinkwrap/descriptors/shrinkwrap-descriptors-bom/2.0.0-alpha-3/shrinkwrap-descriptors-bom-2.0.0-alpha-3.pom
+2014-10-17 22:43:52,803 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/jboss/shrinkwrap/descriptors/shrinkwrap-descriptors-bom/2.0.0-alpha-3/shrinkwrap-descriptors-bom-2.0.0-alpha-3.pom
+2014-10-17 22:43:52,878 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/javax/validation/validation-api/1.1.0.Final/validation-api-1.1.0.Final.pom
+2014-10-17 22:43:52,976 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/javax/validation/validation-api/1.1.0.Final/validation-api-1.1.0.Final.pom
+2014-10-17 22:43:53,053 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/jboss/logging/jboss-logging/3.1.1.GA/jboss-logging-3.1.1.GA.pom
+2014-10-17 22:43:53,146 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/jboss/logging/jboss-logging/3.1.1.GA/jboss-logging-3.1.1.GA.pom
+2014-10-17 22:43:53,223 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/jboss/jboss-parent/7/jboss-parent-7.pom
+2014-10-17 22:43:53,393 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/jboss/jboss-parent/7/jboss-parent-7.pom
+2014-10-17 22:43:53,458 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/fasterxml/classmate/1.0.0/classmate-1.0.0.pom
+2014-10-17 22:43:53,554 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/fasterxml/classmate/1.0.0/classmate-1.0.0.pom
+2014-10-17 22:43:53,669 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/glassfish/web/javax.el/2.2.6/javax.el-2.2.6.pom
+2014-10-17 22:43:53,772 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/glassfish/web/javax.el/2.2.6/javax.el-2.2.6.pom
+2014-10-17 22:43:53,843 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/net/java/jvnet-parent/3/jvnet-parent-3.pom
+2014-10-17 22:43:53,941 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/net/java/jvnet-parent/3/jvnet-parent-3.pom
+2014-10-17 22:43:54,015 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/javax/el/javax.el-api/2.2.5/javax.el-api-2.2.5.pom
+2014-10-17 22:43:54,155 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/javax/el/javax.el-api/2.2.5/javax.el-api-2.2.5.pom
+2014-10-17 22:43:54,225 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/net/java/jvnet-parent/1/jvnet-parent-1.pom
+2014-10-17 22:43:54,322 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/net/java/jvnet-parent/1/jvnet-parent-1.pom
+2014-10-17 22:43:54,399 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/io/dropwizard/dropwizard-configuration/0.7.0/dropwizard-configuration-0.7.0.pom
+2014-10-17 22:43:54,509 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/io/dropwizard/dropwizard-configuration/0.7.0/dropwizard-configuration-0.7.0.pom
+2014-10-17 22:43:54,584 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/fasterxml/jackson/dataformat/jackson-dataformat-yaml/2.3.2/jackson-dataformat-yaml-2.3.2.pom
+2014-10-17 22:43:54,679 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/fasterxml/jackson/dataformat/jackson-dataformat-yaml/2.3.2/jackson-dataformat-yaml-2.3.2.pom
+2014-10-17 22:43:54,747 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/commons-lang/commons-lang/2.6/commons-lang-2.6.pom
+2014-10-17 22:43:54,925 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/commons-lang/commons-lang/2.6/commons-lang-2.6.pom
+2014-10-17 22:43:55,000 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/apache/commons/commons-parent/17/commons-parent-17.pom
+2014-10-17 22:43:55,220 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/apache/commons/commons-parent/17/commons-parent-17.pom
+2014-10-17 22:43:55,299 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/apache/apache/7/apache-7.pom
+2014-10-17 22:43:55,679 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/apache/apache/7/apache-7.pom
+2014-10-17 22:43:55,754 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/io/dropwizard/dropwizard-logging/0.7.0/dropwizard-logging-0.7.0.pom
+2014-10-17 22:43:55,848 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/io/dropwizard/dropwizard-logging/0.7.0/dropwizard-logging-0.7.0.pom
+2014-10-17 22:43:55,907 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/codahale/metrics/metrics-logback/3.0.1/metrics-logback-3.0.1.pom
+2014-10-17 22:43:55,993 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/codahale/metrics/metrics-logback/3.0.1/metrics-logback-3.0.1.pom
+2014-10-17 22:43:56,041 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/codahale/metrics/metrics-parent/3.0.1/metrics-parent-3.0.1.pom
+2014-10-17 22:43:56,258 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/codahale/metrics/metrics-parent/3.0.1/metrics-parent-3.0.1.pom
+2014-10-17 22:43:56,328 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/codahale/metrics/metrics-core/3.0.1/metrics-core-3.0.1.pom
+2014-10-17 22:43:56,424 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/codahale/metrics/metrics-core/3.0.1/metrics-core-3.0.1.pom
+2014-10-17 22:43:56,499 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/slf4j/jul-to-slf4j/1.7.6/jul-to-slf4j-1.7.6.pom
+2014-10-17 22:43:56,588 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/slf4j/jul-to-slf4j/1.7.6/jul-to-slf4j-1.7.6.pom
+2014-10-17 22:43:56,636 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/slf4j/log4j-over-slf4j/1.7.6/log4j-over-slf4j-1.7.6.pom
+2014-10-17 22:43:56,979 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/slf4j/log4j-over-slf4j/1.7.6/log4j-over-slf4j-1.7.6.pom
+2014-10-17 22:43:57,044 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-util/9.0.7.v20131107/jetty-util-9.0.7.v20131107.pom
+2014-10-17 22:43:57,137 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-util/9.0.7.v20131107/jetty-util-9.0.7.v20131107.pom
+2014-10-17 22:43:57,190 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-project/9.0.7.v20131107/jetty-project-9.0.7.v20131107.pom
+2014-10-17 22:43:57,434 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-project/9.0.7.v20131107/jetty-project-9.0.7.v20131107.pom
+2014-10-17 22:43:57,487 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-parent/20/jetty-parent-20.pom
+2014-10-17 22:43:57,650 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-parent/20/jetty-parent-20.pom
+2014-10-17 22:43:57,701 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/io/dropwizard/dropwizard-metrics/0.7.0/dropwizard-metrics-0.7.0.pom
+2014-10-17 22:43:57,791 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/io/dropwizard/dropwizard-metrics/0.7.0/dropwizard-metrics-0.7.0.pom
+2014-10-17 22:43:57,841 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/io/dropwizard/dropwizard-lifecycle/0.7.0/dropwizard-lifecycle-0.7.0.pom
+2014-10-17 22:43:57,927 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/io/dropwizard/dropwizard-lifecycle/0.7.0/dropwizard-lifecycle-0.7.0.pom
+2014-10-17 22:43:57,975 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-server/9.0.7.v20131107/jetty-server-9.0.7.v20131107.pom
+2014-10-17 22:43:58,060 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-server/9.0.7.v20131107/jetty-server-9.0.7.v20131107.pom
+2014-10-17 22:43:58,110 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/eclipse/jetty/orbit/javax.servlet/3.0.0.v201112011016/javax.servlet-3.0.0.v201112011016.pom
+2014-10-17 22:43:58,195 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/eclipse/jetty/orbit/javax.servlet/3.0.0.v201112011016/javax.servlet-3.0.0.v201112011016.pom
+2014-10-17 22:43:58,243 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/eclipse/jetty/orbit/jetty-orbit/1/jetty-orbit-1.pom
+2014-10-17 22:43:58,328 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/eclipse/jetty/orbit/jetty-orbit/1/jetty-orbit-1.pom
+2014-10-17 22:43:58,377 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-parent/18/jetty-parent-18.pom
+2014-10-17 22:43:58,543 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-parent/18/jetty-parent-18.pom
+2014-10-17 22:43:58,614 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-http/9.0.7.v20131107/jetty-http-9.0.7.v20131107.pom
+2014-10-17 22:43:58,705 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-http/9.0.7.v20131107/jetty-http-9.0.7.v20131107.pom
+2014-10-17 22:43:58,764 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-io/9.0.7.v20131107/jetty-io-9.0.7.v20131107.pom
+2014-10-17 22:43:58,858 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-io/9.0.7.v20131107/jetty-io-9.0.7.v20131107.pom
+2014-10-17 22:43:58,938 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/io/dropwizard/dropwizard-jersey/0.7.0/dropwizard-jersey-0.7.0.pom
+2014-10-17 22:43:59,027 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/io/dropwizard/dropwizard-jersey/0.7.0/dropwizard-jersey-0.7.0.pom
+2014-10-17 22:43:59,077 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/sun/jersey/jersey-core/1.18.1/jersey-core-1.18.1.pom
+2014-10-17 22:43:59,214 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/sun/jersey/jersey-core/1.18.1/jersey-core-1.18.1.pom
+2014-10-17 22:43:59,293 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/sun/jersey/jersey-project/1.18.1/jersey-project-1.18.1.pom
+2014-10-17 22:43:59,469 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/sun/jersey/jersey-project/1.18.1/jersey-project-1.18.1.pom
+2014-10-17 22:43:59,540 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/net/java/jvnet-parent/4/jvnet-parent-4.pom
+2014-10-17 22:43:59,638 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/net/java/jvnet-parent/4/jvnet-parent-4.pom
+2014-10-17 22:43:59,712 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/sun/jersey/jersey-server/1.18.1/jersey-server-1.18.1.pom
+2014-10-17 22:43:59,836 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/sun/jersey/jersey-server/1.18.1/jersey-server-1.18.1.pom
+2014-10-17 22:43:59,885 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/sun/jersey/jersey-servlet/1.18.1/jersey-servlet-1.18.1.pom
+2014-10-17 22:44:00,022 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/sun/jersey/jersey-servlet/1.18.1/jersey-servlet-1.18.1.pom
+2014-10-17 22:44:00,101 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/codahale/metrics/metrics-jersey/3.0.1/metrics-jersey-3.0.1.pom
+2014-10-17 22:44:00,192 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/codahale/metrics/metrics-jersey/3.0.1/metrics-jersey-3.0.1.pom
+2014-10-17 22:44:00,270 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/codahale/metrics/metrics-annotation/3.0.1/metrics-annotation-3.0.1.pom
+2014-10-17 22:44:00,359 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/codahale/metrics/metrics-annotation/3.0.1/metrics-annotation-3.0.1.pom
+2014-10-17 22:44:00,415 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/fasterxml/jackson/jaxrs/jackson-jaxrs-json-provider/2.3.2/jackson-jaxrs-json-provider-2.3.2.pom
+2014-10-17 22:44:00,505 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/fasterxml/jackson/jaxrs/jackson-jaxrs-json-provider/2.3.2/jackson-jaxrs-json-provider-2.3.2.pom
+2014-10-17 22:44:00,560 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/fasterxml/jackson/jaxrs/jackson-jaxrs-providers/2.3.2/jackson-jaxrs-providers-2.3.2.pom
+2014-10-17 22:44:00,653 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/fasterxml/jackson/jaxrs/jackson-jaxrs-providers/2.3.2/jackson-jaxrs-providers-2.3.2.pom
+2014-10-17 22:44:00,730 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/fasterxml/jackson/jaxrs/jackson-jaxrs-base/2.3.2/jackson-jaxrs-base-2.3.2.pom
+2014-10-17 22:44:00,828 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/fasterxml/jackson/jaxrs/jackson-jaxrs-base/2.3.2/jackson-jaxrs-base-2.3.2.pom
+2014-10-17 22:44:00,907 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/fasterxml/jackson/module/jackson-module-jaxb-annotations/2.3.2/jackson-module-jaxb-annotations-2.3.2.pom
+2014-10-17 22:44:01,000 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/fasterxml/jackson/module/jackson-module-jaxb-annotations/2.3.2/jackson-module-jaxb-annotations-2.3.2.pom
+2014-10-17 22:44:01,065 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/io/dropwizard/dropwizard-servlets/0.7.0/dropwizard-servlets-0.7.0.pom
+2014-10-17 22:44:01,161 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/io/dropwizard/dropwizard-servlets/0.7.0/dropwizard-servlets-0.7.0.pom
+2014-10-17 22:44:01,218 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/io/dropwizard/dropwizard-jetty/0.7.0/dropwizard-jetty-0.7.0.pom
+2014-10-17 22:44:01,316 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/io/dropwizard/dropwizard-jetty/0.7.0/dropwizard-jetty-0.7.0.pom
+2014-10-17 22:44:01,391 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/codahale/metrics/metrics-jetty9/3.0.1/metrics-jetty9-3.0.1.pom
+2014-10-17 22:44:01,489 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/codahale/metrics/metrics-jetty9/3.0.1/metrics-jetty9-3.0.1.pom
+2014-10-17 22:44:01,564 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-servlet/9.0.7.v20131107/jetty-servlet-9.0.7.v20131107.pom
+2014-10-17 22:44:01,658 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-servlet/9.0.7.v20131107/jetty-servlet-9.0.7.v20131107.pom
+2014-10-17 22:44:01,724 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-security/9.0.7.v20131107/jetty-security-9.0.7.v20131107.pom
+2014-10-17 22:44:01,818 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-security/9.0.7.v20131107/jetty-security-9.0.7.v20131107.pom
+2014-10-17 22:44:01,884 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-servlets/9.0.7.v20131107/jetty-servlets-9.0.7.v20131107.pom
+2014-10-17 22:44:01,979 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-servlets/9.0.7.v20131107/jetty-servlets-9.0.7.v20131107.pom
+2014-10-17 22:44:02,057 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-continuation/9.0.7.v20131107/jetty-continuation-9.0.7.v20131107.pom
+2014-10-17 22:44:02,155 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-continuation/9.0.7.v20131107/jetty-continuation-9.0.7.v20131107.pom
+2014-10-17 22:44:02,232 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/codahale/metrics/metrics-jvm/3.0.1/metrics-jvm-3.0.1.pom
+2014-10-17 22:44:02,325 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/codahale/metrics/metrics-jvm/3.0.1/metrics-jvm-3.0.1.pom
+2014-10-17 22:44:02,399 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/codahale/metrics/metrics-servlets/3.0.1/metrics-servlets-3.0.1.pom
+2014-10-17 22:44:02,496 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/codahale/metrics/metrics-servlets/3.0.1/metrics-servlets-3.0.1.pom
+2014-10-17 22:44:02,571 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/codahale/metrics/metrics-healthchecks/3.0.1/metrics-healthchecks-3.0.1.pom
+2014-10-17 22:44:02,671 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/codahale/metrics/metrics-healthchecks/3.0.1/metrics-healthchecks-3.0.1.pom
+2014-10-17 22:44:02,748 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/codahale/metrics/metrics-json/3.0.1/metrics-json-3.0.1.pom
+2014-10-17 22:44:02,841 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/codahale/metrics/metrics-json/3.0.1/metrics-json-3.0.1.pom
+2014-10-17 22:44:02,903 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/net/sourceforge/argparse4j/argparse4j/0.4.3/argparse4j-0.4.3.pom
+2014-10-17 22:44:03,009 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/net/sourceforge/argparse4j/argparse4j/0.4.3/argparse4j-0.4.3.pom
+2014-10-17 22:44:03,079 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/eclipse/jetty/toolchain/setuid/jetty-setuid-java/1.0.2/jetty-setuid-java-1.0.2.pom
+2014-10-17 22:44:03,174 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/eclipse/jetty/toolchain/setuid/jetty-setuid-java/1.0.2/jetty-setuid-java-1.0.2.pom
+2014-10-17 22:44:03,242 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/eclipse/jetty/toolchain/setuid/jetty-setuid-parent/1.0.2/jetty-setuid-parent-1.0.2.pom
+2014-10-17 22:44:03,349 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/eclipse/jetty/toolchain/setuid/jetty-setuid-parent/1.0.2/jetty-setuid-parent-1.0.2.pom
+2014-10-17 22:44:03,416 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/eclipse/jetty/toolchain/jetty-toolchain/1.4/jetty-toolchain-1.4.pom
+2014-10-17 22:44:03,510 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/eclipse/jetty/toolchain/jetty-toolchain/1.4/jetty-toolchain-1.4.pom
+2014-10-17 22:44:03,636 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/io/dropwizard/dropwizard-core/0.7.0/dropwizard-core-0.7.0.jar
+2014-10-17 22:44:03,898 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/io/dropwizard/dropwizard-core/0.7.0/dropwizard-core-0.7.0.jar
+2014-10-17 22:44:03,948 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/io/dropwizard/dropwizard-util/0.7.0/dropwizard-util-0.7.0.jar
+2014-10-17 22:44:04,107 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/io/dropwizard/dropwizard-util/0.7.0/dropwizard-util-0.7.0.jar
+2014-10-17 22:44:04,150 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-annotations/2.3.0/jackson-annotations-2.3.0.jar
+2014-10-17 22:44:04,437 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-annotations/2.3.0/jackson-annotations-2.3.0.jar
+2014-10-17 22:44:04,493 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/google/guava/guava/16.0.1/guava-16.0.1.jar
+2014-10-17 22:44:13,297 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/google/guava/guava/16.0.1/guava-16.0.1.jar
+2014-10-17 22:44:13,341 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/google/code/findbugs/jsr305/2.0.3/jsr305-2.0.3.jar
+2014-10-17 22:44:13,589 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/google/code/findbugs/jsr305/2.0.3/jsr305-2.0.3.jar
+2014-10-17 22:44:13,632 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/joda-time/joda-time/2.3/joda-time-2.3.jar
+2014-10-17 22:44:16,063 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/joda-time/joda-time/2.3/joda-time-2.3.jar
+2014-10-17 22:44:16,110 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/io/dropwizard/dropwizard-jackson/0.7.0/dropwizard-jackson-0.7.0.jar
+2014-10-17 22:44:16,277 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/io/dropwizard/dropwizard-jackson/0.7.0/dropwizard-jackson-0.7.0.jar
+2014-10-17 22:44:16,324 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-core/2.3.2/jackson-core-2.3.2.jar
+2014-10-17 22:44:17,100 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-core/2.3.2/jackson-core-2.3.2.jar
+2014-10-17 22:44:17,150 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-databind/2.3.2/jackson-databind-2.3.2.jar
+2014-10-17 22:44:21,452 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-databind/2.3.2/jackson-databind-2.3.2.jar
+2014-10-17 22:44:21,499 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/fasterxml/jackson/datatype/jackson-datatype-guava/2.3.2/jackson-datatype-guava-2.3.2.jar
+2014-10-17 22:44:21,882 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/fasterxml/jackson/datatype/jackson-datatype-guava/2.3.2/jackson-datatype-guava-2.3.2.jar
+2014-10-17 22:44:21,929 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/fasterxml/jackson/module/jackson-module-afterburner/2.3.2/jackson-module-afterburner-2.3.2.jar
+2014-10-17 22:44:22,547 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/fasterxml/jackson/module/jackson-module-afterburner/2.3.2/jackson-module-afterburner-2.3.2.jar
+2014-10-17 22:44:22,594 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/fasterxml/jackson/datatype/jackson-datatype-joda/2.3.2/jackson-datatype-joda-2.3.2.jar
+2014-10-17 22:44:22,871 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/fasterxml/jackson/datatype/jackson-datatype-joda/2.3.2/jackson-datatype-joda-2.3.2.jar
+2014-10-17 22:44:22,912 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/ch/qos/logback/logback-classic/1.1.1/logback-classic-1.1.1.jar
+2014-10-17 22:44:24,085 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/ch/qos/logback/logback-classic/1.1.1/logback-classic-1.1.1.jar
+2014-10-17 22:44:24,133 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/io/dropwizard/dropwizard-validation/0.7.0/dropwizard-validation-0.7.0.jar
+2014-10-17 22:44:24,386 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/io/dropwizard/dropwizard-validation/0.7.0/dropwizard-validation-0.7.0.jar
+2014-10-17 22:44:24,431 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/hibernate/hibernate-validator/5.0.2.Final/hibernate-validator-5.0.2.Final.jar
+2014-10-17 22:44:26,455 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/hibernate/hibernate-validator/5.0.2.Final/hibernate-validator-5.0.2.Final.jar
+2014-10-17 22:44:26,497 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/javax/validation/validation-api/1.1.0.Final/validation-api-1.1.0.Final.jar
+2014-10-17 22:44:26,705 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/javax/validation/validation-api/1.1.0.Final/validation-api-1.1.0.Final.jar
+2014-10-17 22:44:26,752 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/jboss/logging/jboss-logging/3.1.1.GA/jboss-logging-3.1.1.GA.jar
+2014-10-17 22:44:26,968 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/jboss/logging/jboss-logging/3.1.1.GA/jboss-logging-3.1.1.GA.jar
+2014-10-17 22:44:27,010 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/fasterxml/classmate/1.0.0/classmate-1.0.0.jar
+2014-10-17 22:44:27,457 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/fasterxml/classmate/1.0.0/classmate-1.0.0.jar
+2014-10-17 22:44:27,499 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/glassfish/web/javax.el/2.2.6/javax.el-2.2.6.jar
+2014-10-17 22:44:27,954 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/glassfish/web/javax.el/2.2.6/javax.el-2.2.6.jar
+2014-10-17 22:44:28,001 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/javax/el/javax.el-api/2.2.5/javax.el-api-2.2.5.jar
+2014-10-17 22:44:28,198 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/javax/el/javax.el-api/2.2.5/javax.el-api-2.2.5.jar
+2014-10-17 22:44:28,240 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/io/dropwizard/dropwizard-configuration/0.7.0/dropwizard-configuration-0.7.0.jar
+2014-10-17 22:44:28,350 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/io/dropwizard/dropwizard-configuration/0.7.0/dropwizard-configuration-0.7.0.jar
+2014-10-17 22:44:28,398 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/fasterxml/jackson/dataformat/jackson-dataformat-yaml/2.3.2/jackson-dataformat-yaml-2.3.2.jar
+2014-10-17 22:44:29,374 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/fasterxml/jackson/dataformat/jackson-dataformat-yaml/2.3.2/jackson-dataformat-yaml-2.3.2.jar
+2014-10-17 22:44:29,422 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/commons-lang/commons-lang/2.6/commons-lang-2.6.jar
+2014-10-17 22:44:30,400 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/commons-lang/commons-lang/2.6/commons-lang-2.6.jar
+2014-10-17 22:44:30,446 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/io/dropwizard/dropwizard-logging/0.7.0/dropwizard-logging-0.7.0.jar
+2014-10-17 22:44:30,632 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/io/dropwizard/dropwizard-logging/0.7.0/dropwizard-logging-0.7.0.jar
+2014-10-17 22:44:30,679 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/codahale/metrics/metrics-logback/3.0.1/metrics-logback-3.0.1.jar
+2014-10-17 22:44:30,795 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/codahale/metrics/metrics-logback/3.0.1/metrics-logback-3.0.1.jar
+2014-10-17 22:44:30,837 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/slf4j/slf4j-api/1.7.6/slf4j-api-1.7.6.jar
+2014-10-17 22:44:30,984 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/slf4j/slf4j-api/1.7.6/slf4j-api-1.7.6.jar
+2014-10-17 22:44:31,028 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/slf4j/jul-to-slf4j/1.7.6/jul-to-slf4j-1.7.6.jar
+2014-10-17 22:44:31,125 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/slf4j/jul-to-slf4j/1.7.6/jul-to-slf4j-1.7.6.jar
+2014-10-17 22:44:31,168 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/ch/qos/logback/logback-core/1.1.1/logback-core-1.1.1.jar
+2014-10-17 22:44:32,801 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/ch/qos/logback/logback-core/1.1.1/logback-core-1.1.1.jar
+2014-10-17 22:44:32,847 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/slf4j/log4j-over-slf4j/1.7.6/log4j-over-slf4j-1.7.6.jar
+2014-10-17 22:44:33,087 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/slf4j/log4j-over-slf4j/1.7.6/log4j-over-slf4j-1.7.6.jar
+2014-10-17 22:44:33,135 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-util/9.0.7.v20131107/jetty-util-9.0.7.v20131107.jar
+2014-10-17 22:44:34,267 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-util/9.0.7.v20131107/jetty-util-9.0.7.v20131107.jar
+2014-10-17 22:44:34,318 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/io/dropwizard/dropwizard-metrics/0.7.0/dropwizard-metrics-0.7.0.jar
+2014-10-17 22:44:34,449 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/io/dropwizard/dropwizard-metrics/0.7.0/dropwizard-metrics-0.7.0.jar
+2014-10-17 22:44:34,494 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/io/dropwizard/dropwizard-jersey/0.7.0/dropwizard-jersey-0.7.0.jar
+2014-10-17 22:44:34,740 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/io/dropwizard/dropwizard-jersey/0.7.0/dropwizard-jersey-0.7.0.jar
+2014-10-17 22:44:34,783 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/sun/jersey/jersey-core/1.18.1/jersey-core-1.18.1.jar
+2014-10-17 22:44:35,755 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/sun/jersey/jersey-core/1.18.1/jersey-core-1.18.1.jar
+2014-10-17 22:44:35,804 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/sun/jersey/jersey-server/1.18.1/jersey-server-1.18.1.jar
+2014-10-17 22:44:37,682 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/sun/jersey/jersey-server/1.18.1/jersey-server-1.18.1.jar
+2014-10-17 22:44:37,725 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/sun/jersey/jersey-servlet/1.18.1/jersey-servlet-1.18.1.jar
+2014-10-17 22:44:38,146 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/sun/jersey/jersey-servlet/1.18.1/jersey-servlet-1.18.1.jar
+2014-10-17 22:44:38,193 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/codahale/metrics/metrics-jersey/3.0.1/metrics-jersey-3.0.1.jar
+2014-10-17 22:44:38,321 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/codahale/metrics/metrics-jersey/3.0.1/metrics-jersey-3.0.1.jar
+2014-10-17 22:44:38,367 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/codahale/metrics/metrics-annotation/3.0.1/metrics-annotation-3.0.1.jar
+2014-10-17 22:44:38,490 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/codahale/metrics/metrics-annotation/3.0.1/metrics-annotation-3.0.1.jar
+2014-10-17 22:44:38,534 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/fasterxml/jackson/jaxrs/jackson-jaxrs-json-provider/2.3.2/jackson-jaxrs-json-provider-2.3.2.jar
+2014-10-17 22:44:38,685 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/fasterxml/jackson/jaxrs/jackson-jaxrs-json-provider/2.3.2/jackson-jaxrs-json-provider-2.3.2.jar
+2014-10-17 22:44:38,732 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/fasterxml/jackson/jaxrs/jackson-jaxrs-base/2.3.2/jackson-jaxrs-base-2.3.2.jar
+2014-10-17 22:44:38,937 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/fasterxml/jackson/jaxrs/jackson-jaxrs-base/2.3.2/jackson-jaxrs-base-2.3.2.jar
+2014-10-17 22:44:38,984 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/fasterxml/jackson/module/jackson-module-jaxb-annotations/2.3.2/jackson-module-jaxb-annotations-2.3.2.jar
+2014-10-17 22:44:39,178 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/fasterxml/jackson/module/jackson-module-jaxb-annotations/2.3.2/jackson-module-jaxb-annotations-2.3.2.jar
+2014-10-17 22:44:39,223 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/io/dropwizard/dropwizard-servlets/0.7.0/dropwizard-servlets-0.7.0.jar
+2014-10-17 22:44:39,388 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/io/dropwizard/dropwizard-servlets/0.7.0/dropwizard-servlets-0.7.0.jar
+2014-10-17 22:44:39,430 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/io/dropwizard/dropwizard-jetty/0.7.0/dropwizard-jetty-0.7.0.jar
+2014-10-17 22:44:39,654 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/io/dropwizard/dropwizard-jetty/0.7.0/dropwizard-jetty-0.7.0.jar
+2014-10-17 22:44:39,698 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/codahale/metrics/metrics-jetty9/3.0.1/metrics-jetty9-3.0.1.jar
+2014-10-17 22:44:39,878 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/codahale/metrics/metrics-jetty9/3.0.1/metrics-jetty9-3.0.1.jar
+2014-10-17 22:44:39,926 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-server/9.0.7.v20131107/jetty-server-9.0.7.v20131107.jar
+2014-10-17 22:44:40,886 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-server/9.0.7.v20131107/jetty-server-9.0.7.v20131107.jar
+2014-10-17 22:44:40,930 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-io/9.0.7.v20131107/jetty-io-9.0.7.v20131107.jar
+2014-10-17 22:44:41,222 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-io/9.0.7.v20131107/jetty-io-9.0.7.v20131107.jar
+2014-10-17 22:44:41,266 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-servlet/9.0.7.v20131107/jetty-servlet-9.0.7.v20131107.jar
+2014-10-17 22:44:41,607 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-servlet/9.0.7.v20131107/jetty-servlet-9.0.7.v20131107.jar
+2014-10-17 22:44:41,653 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-security/9.0.7.v20131107/jetty-security-9.0.7.v20131107.jar
+2014-10-17 22:44:41,977 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-security/9.0.7.v20131107/jetty-security-9.0.7.v20131107.jar
+2014-10-17 22:44:42,019 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-servlets/9.0.7.v20131107/jetty-servlets-9.0.7.v20131107.jar
+2014-10-17 22:44:42,338 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-servlets/9.0.7.v20131107/jetty-servlets-9.0.7.v20131107.jar
+2014-10-17 22:44:42,379 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-continuation/9.0.7.v20131107/jetty-continuation-9.0.7.v20131107.jar
+2014-10-17 22:44:42,487 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-continuation/9.0.7.v20131107/jetty-continuation-9.0.7.v20131107.jar
+2014-10-17 22:44:42,533 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-http/9.0.7.v20131107/jetty-http-9.0.7.v20131107.jar
+2014-10-17 22:44:42,859 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-http/9.0.7.v20131107/jetty-http-9.0.7.v20131107.jar
+2014-10-17 22:44:42,901 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/io/dropwizard/dropwizard-lifecycle/0.7.0/dropwizard-lifecycle-0.7.0.jar
+2014-10-17 22:44:42,999 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/io/dropwizard/dropwizard-lifecycle/0.7.0/dropwizard-lifecycle-0.7.0.jar
+2014-10-17 22:44:43,043 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/codahale/metrics/metrics-core/3.0.1/metrics-core-3.0.1.jar
+2014-10-17 22:44:43,340 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/codahale/metrics/metrics-core/3.0.1/metrics-core-3.0.1.jar
+2014-10-17 22:44:43,387 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/codahale/metrics/metrics-jvm/3.0.1/metrics-jvm-3.0.1.jar
+2014-10-17 22:44:43,587 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/codahale/metrics/metrics-jvm/3.0.1/metrics-jvm-3.0.1.jar
+2014-10-17 22:44:43,628 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/codahale/metrics/metrics-servlets/3.0.1/metrics-servlets-3.0.1.jar
+2014-10-17 22:44:43,750 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/codahale/metrics/metrics-servlets/3.0.1/metrics-servlets-3.0.1.jar
+2014-10-17 22:44:43,797 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/codahale/metrics/metrics-json/3.0.1/metrics-json-3.0.1.jar
+2014-10-17 22:44:43,940 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/codahale/metrics/metrics-json/3.0.1/metrics-json-3.0.1.jar
+2014-10-17 22:44:43,986 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/codahale/metrics/metrics-healthchecks/3.0.1/metrics-healthchecks-3.0.1.jar
+2014-10-17 22:44:44,112 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/codahale/metrics/metrics-healthchecks/3.0.1/metrics-healthchecks-3.0.1.jar
+2014-10-17 22:44:44,154 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/net/sourceforge/argparse4j/argparse4j/0.4.3/argparse4j-0.4.3.jar
+2014-10-17 22:44:44,434 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/net/sourceforge/argparse4j/argparse4j/0.4.3/argparse4j-0.4.3.jar
+2014-10-17 22:44:44,479 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/eclipse/jetty/orbit/javax.servlet/3.0.0.v201112011016/javax.servlet-3.0.0.v201112011016.jar
+2014-10-17 22:44:45,017 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/eclipse/jetty/orbit/javax.servlet/3.0.0.v201112011016/javax.servlet-3.0.0.v201112011016.jar
+2014-10-17 22:44:45,060 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/eclipse/jetty/toolchain/setuid/jetty-setuid-java/1.0.2/jetty-setuid-java-1.0.2.jar
+2014-10-17 22:44:45,189 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/eclipse/jetty/toolchain/setuid/jetty-setuid-java/1.0.2/jetty-setuid-java-1.0.2.jar
+2014-10-17 22:44:45,753 [Worker-5] WARN  o.e.m.c.i.embedder.EclipseLogger - Failed to dispatch repository event to org.eclipse.m2e.core.internal.embedder.EclipseRepositoryListener: null
+2014-10-17 22:44:46,788 [Worker-5] WARN  o.e.m.c.i.embedder.EclipseLogger - Failed to dispatch repository event to org.eclipse.m2e.core.internal.embedder.EclipseRepositoryListener: null
+2014-10-17 22:44:47,837 [Worker-5] WARN  o.e.m.c.i.embedder.EclipseLogger - Failed to dispatch repository event to org.eclipse.m2e.core.internal.embedder.EclipseRepositoryListener: null
+2014-10-17 22:44:48,110 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-resources-plugin/2.6/maven-resources-plugin-2.6.pom
+2014-10-17 22:44:48,198 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-resources-plugin/2.6/maven-resources-plugin-2.6.pom
+2014-10-17 22:44:48,292 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/2.0.5/plexus-utils-2.0.5.pom
+2014-10-17 22:44:48,386 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/2.0.5/plexus-utils-2.0.5.pom
+2014-10-17 22:44:48,455 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/2.0.6/plexus-2.0.6.pom
+2014-10-17 22:44:48,552 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/2.0.6/plexus-2.0.6.pom
+2014-10-17 22:44:48,624 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-filtering/1.1/maven-filtering-1.1.pom
+2014-10-17 22:44:48,722 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-filtering/1.1/maven-filtering-1.1.pom
+2014-10-17 22:44:48,794 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/1.5.15/plexus-utils-1.5.15.pom
+2014-10-17 22:44:48,892 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/1.5.15/plexus-utils-1.5.15.pom
+2014-10-17 22:44:48,965 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-interpolation/1.12/plexus-interpolation-1.12.pom
+2014-10-17 22:44:49,051 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-interpolation/1.12/plexus-interpolation-1.12.pom
+2014-10-17 22:44:49,103 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-components/1.1.14/plexus-components-1.1.14.pom
+2014-10-17 22:44:49,201 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-components/1.1.14/plexus-components-1.1.14.pom
+2014-10-17 22:44:49,271 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/sonatype/plexus/plexus-build-api/0.0.4/plexus-build-api-0.0.4.pom
+2014-10-17 22:44:49,368 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/sonatype/plexus/plexus-build-api/0.0.4/plexus-build-api-0.0.4.pom
+2014-10-17 22:44:49,435 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/sonatype/spice/spice-parent/10/spice-parent-10.pom
+2014-10-17 22:44:49,527 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/sonatype/spice/spice-parent/10/spice-parent-10.pom
+2014-10-17 22:44:49,577 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/sonatype/forge/forge-parent/3/forge-parent-3.pom
+2014-10-17 22:44:49,664 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/sonatype/forge/forge-parent/3/forge-parent-3.pom
+2014-10-17 22:44:49,717 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-interpolation/1.13/plexus-interpolation-1.13.pom
+2014-10-17 22:44:49,806 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-interpolation/1.13/plexus-interpolation-1.13.pom
+2014-10-17 22:44:49,863 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/apache/maven/reporting/maven-reporting-api/2.0.6/maven-reporting-api-2.0.6.jar
+2014-10-17 22:44:49,957 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/apache/maven/reporting/maven-reporting-api/2.0.6/maven-reporting-api-2.0.6.jar
+2014-10-17 22:44:49,996 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-sink-api/1.0-alpha-7/doxia-sink-api-1.0-alpha-7.jar
+2014-10-17 22:44:50,088 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-sink-api/1.0-alpha-7/doxia-sink-api-1.0-alpha-7.jar
+2014-10-17 22:44:50,129 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-interactivity-api/1.0-alpha-4/plexus-interactivity-api-1.0-alpha-4.jar
+2014-10-17 22:44:50,235 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-interactivity-api/1.0-alpha-4/plexus-interactivity-api-1.0-alpha-4.jar
+2014-10-17 22:44:50,276 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/2.0.5/plexus-utils-2.0.5.jar
+2014-10-17 22:44:50,728 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/2.0.5/plexus-utils-2.0.5.jar
+2014-10-17 22:44:50,768 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-filtering/1.1/maven-filtering-1.1.jar
+2014-10-17 22:44:50,972 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-filtering/1.1/maven-filtering-1.1.jar
+2014-10-17 22:44:51,012 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/sonatype/plexus/plexus-build-api/0.0.4/plexus-build-api-0.0.4.jar
+2014-10-17 22:44:51,145 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/sonatype/plexus/plexus-build-api/0.0.4/plexus-build-api-0.0.4.jar
+2014-10-17 22:44:51,187 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-interpolation/1.13/plexus-interpolation-1.13.jar
+2014-10-17 22:44:51,358 [Worker-5] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-interpolation/1.13/plexus-interpolation-1.13.jar
+2014-10-17 22:44:51,718 [Worker-5] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /QuizZing/src/main/java
+2014-10-17 22:44:51,719 [Worker-10] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.UndefinedParameter.app:QuizZing:1.0-SNAPSHOT @ C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\pom.xml.
+2014-10-17 22:44:51,721 [Worker-5] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /QuizZing/src/test/java
+2014-10-17 22:44:52,220 [Worker-5] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Imported and configured 1 project(s) in 80 sec
+2014-10-17 22:44:52,791 [Worker-6] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.UndefinedParameter.app:QuizZing:1.0-SNAPSHOT @ C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\pom.xml.
+2014-10-17 22:44:53,058 [Worker-6] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-10-17 22:44:53,062 [Worker-6] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\main\resources
+2014-10-17 22:44:53,065 [Worker-6] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-10-17 22:44:53,066 [Worker-6] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-10-17 22:44:54,461 [Worker-6] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-10-17 22:44:54,463 [Worker-6] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\main\resources
+2014-10-17 22:44:54,465 [Worker-6] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-10-17 22:44:54,468 [Worker-6] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-10-17 22:49:27,132 [Worker-2] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-10-17 22:49:27,138 [Worker-2] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\main\resources
+2014-10-17 22:49:27,142 [Worker-2] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-10-17 22:49:27,145 [Worker-2] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-10-17 22:59:02,310 [Worker-15] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-10-17 22:59:02,312 [Worker-15] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\main\resources
+2014-10-17 22:59:02,313 [Worker-15] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-10-17 22:59:02,315 [Worker-15] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-10-17 22:59:18,410 [Worker-15] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-10-17 22:59:18,421 [Worker-15] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\main\resources
+2014-10-17 22:59:18,424 [Worker-15] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-10-17 22:59:18,427 [Worker-15] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-10-17 23:03:13,555 [Worker-22] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-10-17 23:03:13,563 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\main\resources
+2014-10-17 23:03:13,565 [Worker-22] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-10-17 23:03:13,570 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-10-17 23:06:21,472 [Worker-21] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-10-17 23:06:21,478 [Worker-21] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\main\resources
+2014-10-17 23:06:21,482 [Worker-21] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-10-17 23:06:21,484 [Worker-21] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-10-17 23:07:03,746 [Worker-30] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-10-17 23:07:03,750 [Worker-30] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\main\resources
+2014-10-17 23:07:03,750 [Worker-30] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-10-17 23:07:03,753 [Worker-30] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-10-17 23:07:21,640 [Worker-35] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-10-17 23:07:21,645 [Worker-35] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\main\resources
+2014-10-17 23:07:21,648 [Worker-35] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-10-17 23:07:21,651 [Worker-35] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-10-17 23:11:11,888 [Worker-30] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-10-17 23:11:11,892 [Worker-30] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\main\resources
+2014-10-17 23:11:11,893 [Worker-30] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-10-17 23:11:11,896 [Worker-30] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-10-17 23:11:15,456 [Worker-30] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-10-17 23:11:15,467 [Worker-30] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\main\resources
+2014-10-17 23:11:15,477 [Worker-30] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-10-17 23:11:15,482 [Worker-30] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-10-17 23:12:48,532 [Worker-37] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-10-17 23:12:48,542 [Worker-37] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\main\resources
+2014-10-17 23:12:48,544 [Worker-37] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-10-17 23:12:48,549 [Worker-37] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-10-17 23:13:05,083 [Worker-30] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-10-17 23:13:05,087 [Worker-30] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\main\resources
+2014-10-17 23:13:05,089 [Worker-30] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-10-17 23:13:05,090 [Worker-30] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-10-17 23:16:25,251 [Worker-40] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-10-17 23:16:25,258 [Worker-40] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\main\resources
+2014-10-17 23:16:25,260 [Worker-40] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-10-17 23:16:25,264 [Worker-40] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-10-17 23:18:28,192 [Worker-43] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-10-17 23:18:28,200 [Worker-43] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\main\resources
+2014-10-17 23:18:28,203 [Worker-43] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-10-17 23:18:28,206 [Worker-43] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-10-17 23:19:08,994 [Worker-42] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-10-17 23:19:08,996 [Worker-42] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\main\resources
+2014-10-17 23:19:08,997 [Worker-42] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-10-17 23:19:08,999 [Worker-42] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-10-17 23:19:24,025 [Worker-46] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-10-17 23:19:24,035 [Worker-46] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\main\resources
+2014-10-17 23:19:24,042 [Worker-46] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-10-17 23:19:24,048 [Worker-46] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-10-17 23:19:33,199 [Worker-41] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-10-17 23:19:33,201 [Worker-41] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\main\resources
+2014-10-17 23:19:33,202 [Worker-41] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-10-17 23:19:33,203 [Worker-41] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-10-17 23:19:51,935 [Worker-44] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-10-17 23:19:51,947 [Worker-44] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\main\resources
+2014-10-17 23:19:51,956 [Worker-44] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-10-17 23:19:51,961 [Worker-44] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-10-17 23:20:01,739 [Worker-43] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-10-17 23:20:01,741 [Worker-43] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\main\resources
+2014-10-17 23:20:01,741 [Worker-43] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-10-17 23:20:01,743 [Worker-43] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-10-17 23:30:26,581 [Worker-51] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-10-17 23:30:26,585 [Worker-51] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\main\resources
+2014-10-17 23:30:26,588 [Worker-51] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-10-17 23:30:26,590 [Worker-51] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-10-17 23:33:32,354 [Worker-46] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-10-17 23:33:32,361 [Worker-46] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\main\resources
+2014-10-17 23:33:32,363 [Worker-46] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-10-17 23:33:32,369 [Worker-46] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-10-17 23:34:21,538 [Worker-52] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-10-17 23:34:21,542 [Worker-52] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\main\resources
+2014-10-17 23:34:21,544 [Worker-52] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-10-17 23:34:21,546 [Worker-52] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-10-17 23:36:34,157 [Worker-46] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-10-17 23:36:34,160 [Worker-46] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\main\resources
+2014-10-17 23:36:34,161 [Worker-46] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-10-17 23:36:34,164 [Worker-46] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-10-17 23:37:22,177 [Worker-53] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-10-17 23:37:22,182 [Worker-53] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\main\resources
+2014-10-17 23:37:22,185 [Worker-53] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-10-17 23:37:22,188 [Worker-53] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-10-17 23:49:22,035 [Worker-61] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-shade-plugin/1.6/maven-shade-plugin-1.6.jar
+2014-10-17 23:49:22,293 [Worker-61] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-shade-plugin/1.6/maven-shade-plugin-1.6.jar
+2014-10-17 23:49:22,399 [Worker-61] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.UndefinedParameter.app:QuizZing:1.0-SNAPSHOT @ C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\pom.xml.
+2014-10-17 23:49:22,676 [Worker-61] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-10-17 23:49:22,681 [Worker-61] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\main\resources
+2014-10-17 23:49:22,685 [Worker-61] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-10-17 23:49:22,690 [Worker-61] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-10-17 23:50:05,457 [main] INFO  o.e.m2e.actions.ExecutePomAction - Creating new launch configuration
+2014-10-17 23:50:13,821 [Worker-66] INFO  o.e.m.i.launch.MavenLaunchDelegate - C:\Users\Joe\Desktop\UndefinedParameter\QuizZing
+2014-10-17 23:50:13,823 [Worker-66] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn  -B 
+2014-10-17 23:51:46,889 [Worker-59] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.UndefinedParameter.app:QuizZing:1.0-SNAPSHOT @ C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\pom.xml.
+2014-10-17 23:51:47,132 [Worker-59] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-10-17 23:51:47,137 [Worker-59] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\main\resources
+2014-10-17 23:51:47,140 [Worker-59] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-10-17 23:51:47,145 [Worker-59] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-10-17 23:51:52,310 [main] INFO  o.e.m2e.actions.ExecutePomAction - Using existing launch configuration
+2014-10-17 23:52:00,299 [Worker-63] INFO  o.e.m.i.launch.MavenLaunchDelegate - C:\Users\Joe\Desktop\UndefinedParameter\QuizZing
+2014-10-17 23:52:00,301 [Worker-63] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn  -B 

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="io.dropwizard.Configuration"/>
+<fullyQualifiedTypeName name="io.dropwizard.Application"/>
+<fullyQualifiedTypeName name="javax.ws.rs.core.MediaType"/>
+<fullyQualifiedTypeName name="com.google.common.base.Optional"/>
+</qualifiedTypeNameHistroy>

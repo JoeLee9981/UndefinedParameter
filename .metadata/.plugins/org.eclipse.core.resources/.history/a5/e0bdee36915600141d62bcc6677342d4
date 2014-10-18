@@ -1,0 +1,33 @@
+package com.UndefinedParameter.app;
+
+import io.dropwizard.Application;
+import io.dropwizard.setup.Bootstrap;
+import io.dropwizard.setup.Environment;
+
+/**
+ * Hello world!
+ *
+ */
+public class QuizZingApplication extends Application<QuizZingConfiguration> {
+    public static void main( String[] args ) throws Exception {
+        new QuizZingApplication().run(args);
+    }
+    
+    @Override
+    public String getName() {
+    	return "hello-world";
+    }
+
+	@Override
+	public void initialize(Bootstrap<QuizZingConfiguration> bootstrap) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void run(QuizZingConfiguration configuration, Environment environment)
+			throws Exception {
+		// TODO Auto-generated method stub
+		
+	}
+}

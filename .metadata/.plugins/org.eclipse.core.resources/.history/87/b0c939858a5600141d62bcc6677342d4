@@ -1,0 +1,7 @@
+package com.UndefinedParameter.app;
+
+import io.dropwizard.Configuration;
+
+public class QuizZingConfiguration extends Configuration {
+	
+}
