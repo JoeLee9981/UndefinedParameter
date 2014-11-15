@@ -1,0 +1,5 @@
+package jdbi;
+
+public class NewsArticleDAO {
+
+}

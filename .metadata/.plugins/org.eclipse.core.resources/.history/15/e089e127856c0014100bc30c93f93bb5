@@ -1,0 +1,9 @@
+package com.UndefinedParameter.app.core;
+
+public class MainView {
+	private final NewsArticle news;
+	
+	public MainView(NewsArticle news) {
+		super("main.ftl")
+	}
+}

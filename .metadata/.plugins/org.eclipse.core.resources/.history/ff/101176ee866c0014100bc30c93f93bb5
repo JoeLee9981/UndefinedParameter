@@ -1,0 +1,6 @@
+package com.UndefinedParameter.app.resources;
+
+@Path("/home")
+public class HomeResource {
+
+}

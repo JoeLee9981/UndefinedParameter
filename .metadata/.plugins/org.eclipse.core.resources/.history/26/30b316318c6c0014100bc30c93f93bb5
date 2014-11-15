@@ -1,0 +1,33 @@
+package com.UndefinedParameter.app.core;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+public class NewsArticle {
+
+	long id;
+	String headline;
+	String body;
+	
+	public NewsArticle() {}
+	
+	public NewsArticle(long id, String headline, String body) {
+		this.id = id;
+		this.headline = headline;
+		this.body = body;
+	}
+
+	@JsonProperty
+	public long getId() {
+		return id;
+	}
+
+	@JsonProperty
+	public String getHeadline() {
+		return headline;
+	}
+
+	@JsonProperty
+	public String getBody() {
+		return body;
+	}
+}

@@ -584,3 +584,1046 @@
 2014-10-17 23:51:52,310 [main] INFO  o.e.m2e.actions.ExecutePomAction - Using existing launch configuration
 2014-10-17 23:52:00,299 [Worker-63] INFO  o.e.m.i.launch.MavenLaunchDelegate - C:\Users\Joe\Desktop\UndefinedParameter\QuizZing
 2014-10-17 23:52:00,301 [Worker-63] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn  -B 
+2014-11-14 19:09:46,874 [Worker-7] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-14 19:09:46,885 [Worker-7] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\main\resources
+2014-11-14 19:09:46,887 [Worker-7] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-14 19:09:46,889 [Worker-7] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-14 21:50:10,253 [Worker-22] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-14 21:50:10,263 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\main\resources
+2014-11-14 21:50:10,266 [Worker-22] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-14 21:50:10,272 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-14 21:50:57,598 [Worker-24] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-14 21:50:57,600 [Worker-24] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\main\resources
+2014-11-14 21:50:57,601 [Worker-24] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-14 21:50:57,603 [Worker-24] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-14 21:50:58,814 [Worker-20] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-14 21:50:58,817 [Worker-20] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\main\resources
+2014-11-14 21:50:58,818 [Worker-20] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-14 21:50:58,820 [Worker-20] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-14 21:51:08,106 [Worker-24] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-14 21:51:08,107 [Worker-24] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\main\resources
+2014-11-14 21:51:08,108 [Worker-24] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-14 21:51:08,110 [Worker-24] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-14 21:51:31,896 [Worker-20] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-14 21:51:31,900 [Worker-20] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\main\resources
+2014-11-14 21:51:31,904 [Worker-20] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-14 21:51:31,907 [Worker-20] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-14 21:57:25,199 [Worker-22] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.UndefinedParameter.app:QuizZing:1.0-SNAPSHOT @ C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\pom.xml.
+2014-11-14 21:57:25,689 [Worker-22] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/io/dropwizard/dropwizard-view/0.7.0/dropwizard-view-0.7.0.pom
+2014-11-14 21:57:25,701 [Worker-22] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for io.dropwizard:dropwizard-view:jar:0.7.0 is missing, no dependency information available
+2014-11-14 21:57:25,951 [Worker-22] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/io/dropwizard/dropwizard-view/0.7.0/dropwizard-view-0.7.0.jar
+2014-11-14 21:57:26,202 [Worker-22] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-14 21:57:26,205 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\main\resources
+2014-11-14 21:57:26,207 [Worker-22] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-14 21:57:26,208 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-14 21:57:51,826 [Worker-22] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Update started
+2014-11-14 21:57:51,869 [Worker-22] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.UndefinedParameter.app:QuizZing:1.0-SNAPSHOT @ C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\pom.xml.
+2014-11-14 21:57:52,008 [Worker-22] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for io.dropwizard:dropwizard-view:jar:0.7.0 is missing, no dependency information available
+2014-11-14 21:57:52,135 [Worker-22] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /QuizZing/src/main/java
+2014-11-14 21:57:52,137 [Worker-22] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /QuizZing/src/test/java
+2014-11-14 21:57:52,259 [Worker-22] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Update completed: 0 sec
+2014-11-14 21:57:52,512 [Worker-28] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for io.dropwizard:dropwizard-view:jar:0.7.0 is missing, no dependency information available
+2014-11-14 21:57:52,567 [Worker-28] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-14 21:57:52,571 [Worker-28] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\main\resources
+2014-11-14 21:57:52,572 [Worker-28] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-14 21:57:52,575 [Worker-28] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-14 21:59:31,632 [Worker-23] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.UndefinedParameter.app:QuizZing:1.0-SNAPSHOT @ C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\pom.xml.
+2014-11-14 21:59:31,846 [Worker-23] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/yammer/dropwizard/dropwizard-views/0.7.0/dropwizard-views-0.7.0.pom
+2014-11-14 21:59:31,849 [Worker-23] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for com.yammer.dropwizard:dropwizard-views:jar:0.7.0 is missing, no dependency information available
+2014-11-14 21:59:32,038 [Worker-23] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/yammer/dropwizard/dropwizard-views/0.7.0/dropwizard-views-0.7.0.jar
+2014-11-14 21:59:32,130 [Worker-23] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-14 21:59:32,135 [Worker-23] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\main\resources
+2014-11-14 21:59:32,137 [Worker-23] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-14 21:59:32,142 [Worker-23] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-14 21:59:46,546 [Worker-28] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for com.yammer.dropwizard:dropwizard-views:jar:0.7.0 is missing, no dependency information available
+2014-11-14 21:59:46,691 [Worker-28] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/io/dropwizard/dropwizard-core/0.7.0/dropwizard-core-0.7.0-sources.jar
+2014-11-14 21:59:46,984 [Worker-28] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/io/dropwizard/dropwizard-core/0.7.0/dropwizard-core-0.7.0-sources.jar
+2014-11-14 21:59:47,058 [Worker-28] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for io.dropwizard:dropwizard-core:0.7.0
+2014-11-14 21:59:47,117 [Worker-28] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/io/dropwizard/dropwizard-util/0.7.0/dropwizard-util-0.7.0-sources.jar
+2014-11-14 21:59:47,426 [Worker-28] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/io/dropwizard/dropwizard-util/0.7.0/dropwizard-util-0.7.0-sources.jar
+2014-11-14 21:59:47,516 [Worker-28] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for io.dropwizard:dropwizard-util:0.7.0
+2014-11-14 21:59:47,568 [Worker-28] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-annotations/2.3.0/jackson-annotations-2.3.0-sources.jar
+2014-11-14 21:59:47,784 [Worker-28] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-annotations/2.3.0/jackson-annotations-2.3.0-sources.jar
+2014-11-14 21:59:47,881 [Worker-28] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for com.fasterxml.jackson.core:jackson-annotations:2.3.0
+2014-11-14 21:59:47,934 [Worker-28] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/google/guava/guava/16.0.1/guava-16.0.1-sources.jar
+2014-11-14 21:59:48,740 [Worker-28] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/google/guava/guava/16.0.1/guava-16.0.1-sources.jar
+2014-11-14 21:59:48,853 [Worker-28] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for com.google.guava:guava:16.0.1
+2014-11-14 21:59:48,902 [Worker-28] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/google/code/findbugs/jsr305/2.0.3/jsr305-2.0.3-sources.jar
+2014-11-14 21:59:49,004 [Worker-28] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/google/code/findbugs/jsr305/2.0.3/jsr305-2.0.3-sources.jar
+2014-11-14 21:59:49,077 [Worker-28] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for com.google.code.findbugs:jsr305:2.0.3
+2014-11-14 21:59:49,128 [Worker-28] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/joda-time/joda-time/2.3/joda-time-2.3-sources.jar
+2014-11-14 21:59:49,431 [Worker-28] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/joda-time/joda-time/2.3/joda-time-2.3-sources.jar
+2014-11-14 21:59:49,506 [Worker-28] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for joda-time:joda-time:2.3
+2014-11-14 21:59:49,557 [Worker-28] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/io/dropwizard/dropwizard-jackson/0.7.0/dropwizard-jackson-0.7.0-sources.jar
+2014-11-14 21:59:49,752 [Worker-28] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/io/dropwizard/dropwizard-jackson/0.7.0/dropwizard-jackson-0.7.0-sources.jar
+2014-11-14 21:59:49,834 [Worker-28] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for io.dropwizard:dropwizard-jackson:0.7.0
+2014-11-14 21:59:49,882 [Worker-28] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-core/2.3.2/jackson-core-2.3.2-sources.jar
+2014-11-14 21:59:50,101 [Worker-28] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-core/2.3.2/jackson-core-2.3.2-sources.jar
+2014-11-14 21:59:50,187 [Worker-28] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for com.fasterxml.jackson.core:jackson-core:2.3.2
+2014-11-14 21:59:50,243 [Worker-28] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-databind/2.3.2/jackson-databind-2.3.2-sources.jar
+2014-11-14 21:59:50,541 [Worker-28] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-databind/2.3.2/jackson-databind-2.3.2-sources.jar
+2014-11-14 21:59:50,634 [Worker-28] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for com.fasterxml.jackson.core:jackson-databind:2.3.2
+2014-11-14 21:59:50,686 [Worker-28] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/fasterxml/jackson/datatype/jackson-datatype-guava/2.3.2/jackson-datatype-guava-2.3.2-sources.jar
+2014-11-14 21:59:51,031 [Worker-28] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/fasterxml/jackson/datatype/jackson-datatype-guava/2.3.2/jackson-datatype-guava-2.3.2-sources.jar
+2014-11-14 21:59:51,097 [Worker-28] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for com.fasterxml.jackson.datatype:jackson-datatype-guava:2.3.2
+2014-11-14 21:59:51,148 [Worker-28] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/fasterxml/jackson/module/jackson-module-afterburner/2.3.2/jackson-module-afterburner-2.3.2-sources.jar
+2014-11-14 21:59:51,506 [Worker-28] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/fasterxml/jackson/module/jackson-module-afterburner/2.3.2/jackson-module-afterburner-2.3.2-sources.jar
+2014-11-14 21:59:51,595 [Worker-28] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for com.fasterxml.jackson.module:jackson-module-afterburner:2.3.2
+2014-11-14 21:59:51,839 [Worker-28] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/fasterxml/jackson/datatype/jackson-datatype-joda/2.3.2/jackson-datatype-joda-2.3.2-sources.jar
+2014-11-14 21:59:52,142 [Worker-28] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/fasterxml/jackson/datatype/jackson-datatype-joda/2.3.2/jackson-datatype-joda-2.3.2-sources.jar
+2014-11-14 21:59:52,226 [Worker-28] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for com.fasterxml.jackson.datatype:jackson-datatype-joda:2.3.2
+2014-11-14 21:59:52,277 [Worker-28] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/ch/qos/logback/logback-classic/1.1.1/logback-classic-1.1.1-sources.jar
+2014-11-14 21:59:52,499 [Worker-28] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/ch/qos/logback/logback-classic/1.1.1/logback-classic-1.1.1-sources.jar
+2014-11-14 21:59:52,605 [Worker-28] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for ch.qos.logback:logback-classic:1.1.1
+2014-11-14 21:59:52,652 [Worker-28] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/io/dropwizard/dropwizard-validation/0.7.0/dropwizard-validation-0.7.0-sources.jar
+2014-11-14 21:59:52,860 [Worker-28] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/io/dropwizard/dropwizard-validation/0.7.0/dropwizard-validation-0.7.0-sources.jar
+2014-11-14 21:59:52,948 [Worker-28] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for io.dropwizard:dropwizard-validation:0.7.0
+2014-11-14 21:59:53,142 [Worker-28] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/hibernate/hibernate-validator/5.0.2.Final/hibernate-validator-5.0.2.Final-sources.jar
+2014-11-14 21:59:53,422 [Worker-28] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/hibernate/hibernate-validator/5.0.2.Final/hibernate-validator-5.0.2.Final-sources.jar
+2014-11-14 21:59:53,496 [Worker-28] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for org.hibernate:hibernate-validator:5.0.2.Final
+2014-11-14 21:59:53,545 [Worker-28] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/javax/validation/validation-api/1.1.0.Final/validation-api-1.1.0.Final-sources.jar
+2014-11-14 21:59:53,643 [Worker-28] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/javax/validation/validation-api/1.1.0.Final/validation-api-1.1.0.Final-sources.jar
+2014-11-14 21:59:53,690 [Worker-28] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for javax.validation:validation-api:1.1.0.Final
+2014-11-14 21:59:53,742 [Worker-28] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/jboss/logging/jboss-logging/3.1.1.GA/jboss-logging-3.1.1.GA-sources.jar
+2014-11-14 21:59:53,847 [Worker-28] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/jboss/logging/jboss-logging/3.1.1.GA/jboss-logging-3.1.1.GA-sources.jar
+2014-11-14 21:59:53,935 [Worker-28] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for org.jboss.logging:jboss-logging:3.1.1.GA
+2014-11-14 21:59:53,989 [Worker-28] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/fasterxml/classmate/1.0.0/classmate-1.0.0-sources.jar
+2014-11-14 21:59:54,168 [Worker-28] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/fasterxml/classmate/1.0.0/classmate-1.0.0-sources.jar
+2014-11-14 21:59:54,244 [Worker-28] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for com.fasterxml:classmate:1.0.0
+2014-11-14 21:59:54,294 [Worker-28] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/glassfish/web/javax.el/2.2.6/javax.el-2.2.6-sources.jar
+2014-11-14 21:59:54,534 [Worker-28] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/glassfish/web/javax.el/2.2.6/javax.el-2.2.6-sources.jar
+2014-11-14 21:59:54,633 [Worker-28] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for org.glassfish.web:javax.el:2.2.6
+2014-11-14 21:59:54,684 [Worker-28] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/javax/el/javax.el-api/2.2.5/javax.el-api-2.2.5-sources.jar
+2014-11-14 21:59:54,846 [Worker-28] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/javax/el/javax.el-api/2.2.5/javax.el-api-2.2.5-sources.jar
+2014-11-14 21:59:54,916 [Worker-28] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for javax.el:javax.el-api:2.2.5
+2014-11-14 21:59:55,089 [Worker-28] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/io/dropwizard/dropwizard-configuration/0.7.0/dropwizard-configuration-0.7.0-sources.jar
+2014-11-14 21:59:55,320 [Worker-28] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/io/dropwizard/dropwizard-configuration/0.7.0/dropwizard-configuration-0.7.0-sources.jar
+2014-11-14 21:59:55,403 [Worker-28] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for io.dropwizard:dropwizard-configuration:0.7.0
+2014-11-14 21:59:55,453 [Worker-28] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/fasterxml/jackson/dataformat/jackson-dataformat-yaml/2.3.2/jackson-dataformat-yaml-2.3.2-sources.jar
+2014-11-14 21:59:55,714 [Worker-28] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/fasterxml/jackson/dataformat/jackson-dataformat-yaml/2.3.2/jackson-dataformat-yaml-2.3.2-sources.jar
+2014-11-14 21:59:55,829 [Worker-28] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.3.2
+2014-11-14 21:59:55,880 [Worker-28] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/commons-lang/commons-lang/2.6/commons-lang-2.6-sources.jar
+2014-11-14 21:59:56,031 [Worker-28] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/commons-lang/commons-lang/2.6/commons-lang-2.6-sources.jar
+2014-11-14 21:59:56,083 [Worker-28] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for commons-lang:commons-lang:2.6
+2014-11-14 21:59:56,130 [Worker-28] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/io/dropwizard/dropwizard-logging/0.7.0/dropwizard-logging-0.7.0-sources.jar
+2014-11-14 21:59:56,351 [Worker-28] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/io/dropwizard/dropwizard-logging/0.7.0/dropwizard-logging-0.7.0-sources.jar
+2014-11-14 21:59:56,420 [Worker-28] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for io.dropwizard:dropwizard-logging:0.7.0
+2014-11-14 21:59:56,476 [Worker-28] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/codahale/metrics/metrics-logback/3.0.1/metrics-logback-3.0.1-sources.jar
+2014-11-14 21:59:56,654 [Worker-28] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/codahale/metrics/metrics-logback/3.0.1/metrics-logback-3.0.1-sources.jar
+2014-11-14 21:59:56,730 [Worker-28] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for com.codahale.metrics:metrics-logback:3.0.1
+2014-11-14 21:59:56,779 [Worker-28] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/slf4j/slf4j-api/1.7.6/slf4j-api-1.7.6-sources.jar
+2014-11-14 21:59:56,939 [Worker-28] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/slf4j/slf4j-api/1.7.6/slf4j-api-1.7.6-sources.jar
+2014-11-14 21:59:57,025 [Worker-28] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for org.slf4j:slf4j-api:1.7.6
+2014-11-14 21:59:57,076 [Worker-28] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/slf4j/jul-to-slf4j/1.7.6/jul-to-slf4j-1.7.6-sources.jar
+2014-11-14 21:59:57,260 [Worker-28] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/slf4j/jul-to-slf4j/1.7.6/jul-to-slf4j-1.7.6-sources.jar
+2014-11-14 21:59:57,336 [Worker-28] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for org.slf4j:jul-to-slf4j:1.7.6
+2014-11-14 21:59:57,385 [Worker-28] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/ch/qos/logback/logback-core/1.1.1/logback-core-1.1.1-sources.jar
+2014-11-14 21:59:57,568 [Worker-28] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/ch/qos/logback/logback-core/1.1.1/logback-core-1.1.1-sources.jar
+2014-11-14 21:59:57,654 [Worker-28] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for ch.qos.logback:logback-core:1.1.1
+2014-11-14 21:59:57,709 [Worker-28] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/slf4j/log4j-over-slf4j/1.7.6/log4j-over-slf4j-1.7.6-sources.jar
+2014-11-14 21:59:57,949 [Worker-28] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/slf4j/log4j-over-slf4j/1.7.6/log4j-over-slf4j-1.7.6-sources.jar
+2014-11-14 21:59:58,020 [Worker-28] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for org.slf4j:log4j-over-slf4j:1.7.6
+2014-11-14 21:59:58,072 [Worker-28] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-util/9.0.7.v20131107/jetty-util-9.0.7.v20131107-sources.jar
+2014-11-14 21:59:58,297 [Worker-28] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-util/9.0.7.v20131107/jetty-util-9.0.7.v20131107-sources.jar
+2014-11-14 21:59:58,378 [Worker-28] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for org.eclipse.jetty:jetty-util:9.0.7.v20131107
+2014-11-14 21:59:58,490 [Worker-28] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/io/dropwizard/dropwizard-metrics/0.7.0/dropwizard-metrics-0.7.0-sources.jar
+2014-11-14 21:59:58,692 [Worker-28] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/io/dropwizard/dropwizard-metrics/0.7.0/dropwizard-metrics-0.7.0-sources.jar
+2014-11-14 21:59:58,802 [Worker-28] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for io.dropwizard:dropwizard-metrics:0.7.0
+2014-11-14 21:59:58,913 [Worker-28] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/io/dropwizard/dropwizard-jersey/0.7.0/dropwizard-jersey-0.7.0-sources.jar
+2014-11-14 21:59:59,230 [Worker-28] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/io/dropwizard/dropwizard-jersey/0.7.0/dropwizard-jersey-0.7.0-sources.jar
+2014-11-14 21:59:59,305 [Worker-28] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for io.dropwizard:dropwizard-jersey:0.7.0
+2014-11-14 21:59:59,355 [Worker-28] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/sun/jersey/jersey-core/1.18.1/jersey-core-1.18.1-sources.jar
+2014-11-14 21:59:59,618 [Worker-28] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/sun/jersey/jersey-core/1.18.1/jersey-core-1.18.1-sources.jar
+2014-11-14 21:59:59,686 [Worker-28] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for com.sun.jersey:jersey-core:1.18.1
+2014-11-14 21:59:59,738 [Worker-28] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/sun/jersey/jersey-server/1.18.1/jersey-server-1.18.1-sources.jar
+2014-11-14 21:59:59,962 [Worker-28] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/sun/jersey/jersey-server/1.18.1/jersey-server-1.18.1-sources.jar
+2014-11-14 22:00:00,089 [Worker-28] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for com.sun.jersey:jersey-server:1.18.1
+2014-11-14 22:00:00,139 [Worker-28] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/sun/jersey/jersey-servlet/1.18.1/jersey-servlet-1.18.1-sources.jar
+2014-11-14 22:00:00,377 [Worker-28] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/sun/jersey/jersey-servlet/1.18.1/jersey-servlet-1.18.1-sources.jar
+2014-11-14 22:00:00,444 [Worker-28] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for com.sun.jersey:jersey-servlet:1.18.1
+2014-11-14 22:00:00,555 [Worker-28] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/codahale/metrics/metrics-jersey/3.0.1/metrics-jersey-3.0.1-sources.jar
+2014-11-14 22:00:00,595 [Worker-26] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Update started
+2014-11-14 22:00:00,635 [Worker-26] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.UndefinedParameter.app:QuizZing:1.0-SNAPSHOT @ C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\pom.xml.
+2014-11-14 22:00:00,772 [Worker-28] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/codahale/metrics/metrics-jersey/3.0.1/metrics-jersey-3.0.1-sources.jar
+2014-11-14 22:00:00,812 [Worker-28] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for com.codahale.metrics:metrics-jersey:3.0.1
+2014-11-14 22:00:00,837 [Worker-26] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for com.yammer.dropwizard:dropwizard-views:jar:0.7.0 is missing, no dependency information available
+2014-11-14 22:00:00,859 [Worker-28] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/codahale/metrics/metrics-annotation/3.0.1/metrics-annotation-3.0.1-sources.jar
+2014-11-14 22:00:01,083 [Worker-28] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/codahale/metrics/metrics-annotation/3.0.1/metrics-annotation-3.0.1-sources.jar
+2014-11-14 22:00:01,194 [Worker-28] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for com.codahale.metrics:metrics-annotation:3.0.1
+2014-11-14 22:00:01,249 [Worker-28] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/fasterxml/jackson/jaxrs/jackson-jaxrs-json-provider/2.3.2/jackson-jaxrs-json-provider-2.3.2-sources.jar
+2014-11-14 22:00:01,404 [Worker-28] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/fasterxml/jackson/jaxrs/jackson-jaxrs-json-provider/2.3.2/jackson-jaxrs-json-provider-2.3.2-sources.jar
+2014-11-14 22:00:01,495 [Worker-28] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for com.fasterxml.jackson.jaxrs:jackson-jaxrs-json-provider:2.3.2
+2014-11-14 22:00:01,606 [Worker-28] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/fasterxml/jackson/jaxrs/jackson-jaxrs-base/2.3.2/jackson-jaxrs-base-2.3.2-sources.jar
+2014-11-14 22:00:01,629 [Worker-26] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /QuizZing/src/main/java
+2014-11-14 22:00:01,629 [Worker-26] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /QuizZing/src/test/java
+2014-11-14 22:00:01,714 [Worker-26] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Update completed: 1 sec
+2014-11-14 22:00:01,813 [Worker-28] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/fasterxml/jackson/jaxrs/jackson-jaxrs-base/2.3.2/jackson-jaxrs-base-2.3.2-sources.jar
+2014-11-14 22:00:01,856 [Worker-28] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for com.fasterxml.jackson.jaxrs:jackson-jaxrs-base:2.3.2
+2014-11-14 22:00:01,904 [Worker-28] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/fasterxml/jackson/module/jackson-module-jaxb-annotations/2.3.2/jackson-module-jaxb-annotations-2.3.2-sources.jar
+2014-11-14 22:00:02,085 [Worker-28] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/fasterxml/jackson/module/jackson-module-jaxb-annotations/2.3.2/jackson-module-jaxb-annotations-2.3.2-sources.jar
+2014-11-14 22:00:02,178 [Worker-28] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for com.fasterxml.jackson.module:jackson-module-jaxb-annotations:2.3.2
+2014-11-14 22:00:02,225 [Worker-28] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/io/dropwizard/dropwizard-servlets/0.7.0/dropwizard-servlets-0.7.0-sources.jar
+2014-11-14 22:00:02,521 [Worker-28] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/io/dropwizard/dropwizard-servlets/0.7.0/dropwizard-servlets-0.7.0-sources.jar
+2014-11-14 22:00:02,558 [Worker-28] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for io.dropwizard:dropwizard-servlets:0.7.0
+2014-11-14 22:00:02,668 [Worker-28] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/io/dropwizard/dropwizard-jetty/0.7.0/dropwizard-jetty-0.7.0-sources.jar
+2014-11-14 22:00:03,008 [Worker-28] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/io/dropwizard/dropwizard-jetty/0.7.0/dropwizard-jetty-0.7.0-sources.jar
+2014-11-14 22:00:03,094 [Worker-28] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for io.dropwizard:dropwizard-jetty:0.7.0
+2014-11-14 22:00:03,134 [Worker-22] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for com.yammer.dropwizard:dropwizard-views:jar:0.7.0 is missing, no dependency information available
+2014-11-14 22:00:03,212 [Worker-28] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/codahale/metrics/metrics-jetty9/3.0.1/metrics-jetty9-3.0.1-sources.jar
+2014-11-14 22:00:03,416 [Worker-28] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/codahale/metrics/metrics-jetty9/3.0.1/metrics-jetty9-3.0.1-sources.jar
+2014-11-14 22:00:03,486 [Worker-28] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for com.codahale.metrics:metrics-jetty9:3.0.1
+2014-11-14 22:00:03,539 [Worker-28] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-server/9.0.7.v20131107/jetty-server-9.0.7.v20131107-sources.jar
+2014-11-14 22:00:03,736 [Worker-28] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-server/9.0.7.v20131107/jetty-server-9.0.7.v20131107-sources.jar
+2014-11-14 22:00:03,814 [Worker-28] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for org.eclipse.jetty:jetty-server:9.0.7.v20131107
+2014-11-14 22:00:03,879 [Worker-22] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-14 22:00:03,883 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\main\resources
+2014-11-14 22:00:03,883 [Worker-22] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-14 22:00:03,886 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-14 22:00:03,920 [Worker-28] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-io/9.0.7.v20131107/jetty-io-9.0.7.v20131107-sources.jar
+2014-11-14 22:00:04,083 [Worker-28] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-io/9.0.7.v20131107/jetty-io-9.0.7.v20131107-sources.jar
+2014-11-14 22:00:04,127 [Worker-28] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for org.eclipse.jetty:jetty-io:9.0.7.v20131107
+2014-11-14 22:00:04,175 [Worker-28] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-servlet/9.0.7.v20131107/jetty-servlet-9.0.7.v20131107-sources.jar
+2014-11-14 22:00:04,270 [Worker-28] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-servlet/9.0.7.v20131107/jetty-servlet-9.0.7.v20131107-sources.jar
+2014-11-14 22:00:04,314 [Worker-28] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for org.eclipse.jetty:jetty-servlet:9.0.7.v20131107
+2014-11-14 22:00:04,362 [Worker-28] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-security/9.0.7.v20131107/jetty-security-9.0.7.v20131107-sources.jar
+2014-11-14 22:00:04,580 [Worker-28] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-security/9.0.7.v20131107/jetty-security-9.0.7.v20131107-sources.jar
+2014-11-14 22:00:04,646 [Worker-28] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for org.eclipse.jetty:jetty-security:9.0.7.v20131107
+2014-11-14 22:00:04,699 [Worker-28] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-servlets/9.0.7.v20131107/jetty-servlets-9.0.7.v20131107-sources.jar
+2014-11-14 22:00:04,912 [Worker-28] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-servlets/9.0.7.v20131107/jetty-servlets-9.0.7.v20131107-sources.jar
+2014-11-14 22:00:04,984 [Worker-28] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for org.eclipse.jetty:jetty-servlets:9.0.7.v20131107
+2014-11-14 22:00:05,032 [Worker-28] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-continuation/9.0.7.v20131107/jetty-continuation-9.0.7.v20131107-sources.jar
+2014-11-14 22:00:05,266 [Worker-28] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-continuation/9.0.7.v20131107/jetty-continuation-9.0.7.v20131107-sources.jar
+2014-11-14 22:00:05,333 [Worker-28] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for org.eclipse.jetty:jetty-continuation:9.0.7.v20131107
+2014-11-14 22:00:05,380 [Worker-28] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-http/9.0.7.v20131107/jetty-http-9.0.7.v20131107-sources.jar
+2014-11-14 22:00:05,549 [Worker-28] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-http/9.0.7.v20131107/jetty-http-9.0.7.v20131107-sources.jar
+2014-11-14 22:00:05,617 [Worker-28] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for org.eclipse.jetty:jetty-http:9.0.7.v20131107
+2014-11-14 22:00:05,666 [Worker-28] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/io/dropwizard/dropwizard-lifecycle/0.7.0/dropwizard-lifecycle-0.7.0-sources.jar
+2014-11-14 22:00:05,998 [Worker-28] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/io/dropwizard/dropwizard-lifecycle/0.7.0/dropwizard-lifecycle-0.7.0-sources.jar
+2014-11-14 22:00:06,076 [Worker-28] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for io.dropwizard:dropwizard-lifecycle:0.7.0
+2014-11-14 22:00:06,131 [Worker-28] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/codahale/metrics/metrics-core/3.0.1/metrics-core-3.0.1-sources.jar
+2014-11-14 22:00:06,345 [Worker-28] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/codahale/metrics/metrics-core/3.0.1/metrics-core-3.0.1-sources.jar
+2014-11-14 22:00:06,420 [Worker-28] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for com.codahale.metrics:metrics-core:3.0.1
+2014-11-14 22:00:06,468 [Worker-28] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/codahale/metrics/metrics-jvm/3.0.1/metrics-jvm-3.0.1-sources.jar
+2014-11-14 22:00:06,741 [Worker-28] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/codahale/metrics/metrics-jvm/3.0.1/metrics-jvm-3.0.1-sources.jar
+2014-11-14 22:00:06,810 [Worker-28] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for com.codahale.metrics:metrics-jvm:3.0.1
+2014-11-14 22:00:06,858 [Worker-28] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/codahale/metrics/metrics-servlets/3.0.1/metrics-servlets-3.0.1-sources.jar
+2014-11-14 22:00:06,986 [Worker-28] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/codahale/metrics/metrics-servlets/3.0.1/metrics-servlets-3.0.1-sources.jar
+2014-11-14 22:00:07,071 [Worker-28] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for com.codahale.metrics:metrics-servlets:3.0.1
+2014-11-14 22:00:07,185 [Worker-28] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/codahale/metrics/metrics-json/3.0.1/metrics-json-3.0.1-sources.jar
+2014-11-14 22:00:07,373 [Worker-28] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/codahale/metrics/metrics-json/3.0.1/metrics-json-3.0.1-sources.jar
+2014-11-14 22:00:07,459 [Worker-28] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for com.codahale.metrics:metrics-json:3.0.1
+2014-11-14 22:00:07,515 [Worker-28] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/codahale/metrics/metrics-healthchecks/3.0.1/metrics-healthchecks-3.0.1-sources.jar
+2014-11-14 22:00:07,692 [Worker-28] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/codahale/metrics/metrics-healthchecks/3.0.1/metrics-healthchecks-3.0.1-sources.jar
+2014-11-14 22:00:07,773 [Worker-28] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for com.codahale.metrics:metrics-healthchecks:3.0.1
+2014-11-14 22:00:07,821 [Worker-28] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/net/sourceforge/argparse4j/argparse4j/0.4.3/argparse4j-0.4.3-sources.jar
+2014-11-14 22:00:08,000 [Worker-28] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/net/sourceforge/argparse4j/argparse4j/0.4.3/argparse4j-0.4.3-sources.jar
+2014-11-14 22:00:08,074 [Worker-28] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for net.sourceforge.argparse4j:argparse4j:0.4.3
+2014-11-14 22:00:08,124 [Worker-28] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/eclipse/jetty/orbit/javax.servlet/3.0.0.v201112011016/javax.servlet-3.0.0.v201112011016-sources.jar
+2014-11-14 22:00:08,278 [Worker-28] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/eclipse/jetty/orbit/javax.servlet/3.0.0.v201112011016/javax.servlet-3.0.0.v201112011016-sources.jar
+2014-11-14 22:00:08,360 [Worker-28] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for org.eclipse.jetty.orbit:javax.servlet:3.0.0.v201112011016
+2014-11-14 22:00:08,407 [Worker-28] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/eclipse/jetty/toolchain/setuid/jetty-setuid-java/1.0.2/jetty-setuid-java-1.0.2-sources.jar
+2014-11-14 22:00:08,574 [Worker-28] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/eclipse/jetty/toolchain/setuid/jetty-setuid-java/1.0.2/jetty-setuid-java-1.0.2-sources.jar
+2014-11-14 22:00:08,634 [Worker-28] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for org.eclipse.jetty.toolchain.setuid:jetty-setuid-java:1.0.2
+2014-11-14 22:00:08,799 [Worker-28] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/yammer/dropwizard/dropwizard-views/0.7.0/dropwizard-views-0.7.0-sources.jar
+2014-11-14 22:00:08,833 [Worker-28] ERROR o.e.m.j.internal.DownloadSourcesJob - Could not download sources for com.yammer.dropwizard:dropwizard-views:0.7.0
+org.eclipse.core.runtime.CoreException: Could not resolve artifact com.yammer.dropwizard:dropwizard-views:jar:sources:0.7.0
+	at org.eclipse.m2e.core.internal.embedder.MavenImpl$5.call(MavenImpl.java:769) ~[org.eclipse.m2e.core_1.5.0.20140606-0033.jar:na]
+	at org.eclipse.m2e.core.internal.embedder.MavenImpl$5.call(MavenImpl.java:1) ~[org.eclipse.m2e.core_1.5.0.20140606-0033.jar:na]
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.executeBare(MavenExecutionContext.java:166) [org.eclipse.m2e.core_1.5.0.20140606-0033.jar:na]
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:109) [org.eclipse.m2e.core_1.5.0.20140606-0033.jar:na]
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:96) [org.eclipse.m2e.core_1.5.0.20140606-0033.jar:na]
+	at org.eclipse.m2e.core.internal.embedder.MavenImpl.resolve(MavenImpl.java:736) [org.eclipse.m2e.core_1.5.0.20140606-0033.jar:na]
+	at org.eclipse.m2e.core.internal.embedder.MavenImpl.resolve(MavenImpl.java:713) [org.eclipse.m2e.core_1.5.0.20140606-0033.jar:na]
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.download(DownloadSourcesJob.java:244) [org.eclipse.m2e.jdt_1.5.0.20140606-0033.jar:na]
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.downloadAttachments(DownloadSourcesJob.java:223) [org.eclipse.m2e.jdt_1.5.0.20140606-0033.jar:na]
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.downloadMaven(DownloadSourcesJob.java:201) [org.eclipse.m2e.jdt_1.5.0.20140606-0033.jar:na]
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.run(DownloadSourcesJob.java:153) [org.eclipse.m2e.jdt_1.5.0.20140606-0033.jar:na]
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob$1.call(DownloadSourcesJob.java:136) [org.eclipse.m2e.jdt_1.5.0.20140606-0033.jar:na]
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob$1.call(DownloadSourcesJob.java:1) [org.eclipse.m2e.jdt_1.5.0.20140606-0033.jar:na]
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.executeBare(MavenExecutionContext.java:166) [org.eclipse.m2e.core_1.5.0.20140606-0033.jar:na]
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:142) [org.eclipse.m2e.core_1.5.0.20140606-0033.jar:na]
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:96) [org.eclipse.m2e.core_1.5.0.20140606-0033.jar:na]
+	at org.eclipse.m2e.core.internal.embedder.MavenImpl.execute(MavenImpl.java:1348) [org.eclipse.m2e.core_1.5.0.20140606-0033.jar:na]
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.run(DownloadSourcesJob.java:134) [org.eclipse.m2e.jdt_1.5.0.20140606-0033.jar:na]
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54) [org.eclipse.core.jobs_3.6.0.v20140424-0053.jar:na]
+2014-11-14 22:00:08,980 [Worker-28] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/junit/junit/3.8.1/junit-3.8.1-sources.jar
+2014-11-14 22:00:09,233 [Worker-28] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/junit/junit/3.8.1/junit-3.8.1-sources.jar
+2014-11-14 22:00:09,302 [Worker-28] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for junit:junit:3.8.1
+2014-11-14 22:00:09,514 [Worker-35] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-14 22:00:09,518 [Worker-35] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\main\resources
+2014-11-14 22:00:09,519 [Worker-35] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-14 22:00:09,522 [Worker-35] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-14 22:00:25,781 [main] INFO  o.e.m2e.actions.ExecutePomAction - Using existing launch configuration
+2014-11-14 22:00:28,219 [Worker-32] INFO  o.e.m.i.launch.MavenLaunchDelegate - C:\Users\Joe\Desktop\UndefinedParameter\QuizZing
+2014-11-14 22:00:28,220 [Worker-32] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn  -B 
+2014-11-14 22:01:42,767 [Worker-30] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.UndefinedParameter.app:QuizZing:1.0-SNAPSHOT @ C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\pom.xml.
+2014-11-14 22:01:42,995 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/yammer/dropwizard/dropwizard-views/0.6.2/dropwizard-views-0.6.2.pom
+2014-11-14 22:01:43,214 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/yammer/dropwizard/dropwizard-views/0.6.2/dropwizard-views-0.6.2.pom
+2014-11-14 22:01:43,273 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/yammer/dropwizard/dropwizard-parent/0.6.2/dropwizard-parent-0.6.2.pom
+2014-11-14 22:01:43,448 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/yammer/dropwizard/dropwizard-parent/0.6.2/dropwizard-parent-0.6.2.pom
+2014-11-14 22:01:43,523 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/yammer/dropwizard/dropwizard-core/0.6.2/dropwizard-core-0.6.2.pom
+2014-11-14 22:01:43,621 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/yammer/dropwizard/dropwizard-core/0.6.2/dropwizard-core-0.6.2.pom
+2014-11-14 22:01:43,675 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/sun/jersey/jersey-core/1.17.1/jersey-core-1.17.1.pom
+2014-11-14 22:01:43,793 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/sun/jersey/jersey-core/1.17.1/jersey-core-1.17.1.pom
+2014-11-14 22:01:43,860 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/sun/jersey/jersey-project/1.17.1/jersey-project-1.17.1.pom
+2014-11-14 22:01:44,011 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/sun/jersey/jersey-project/1.17.1/jersey-project-1.17.1.pom
+2014-11-14 22:01:44,084 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/sun/jersey/jersey-server/1.17.1/jersey-server-1.17.1.pom
+2014-11-14 22:01:44,261 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/sun/jersey/jersey-server/1.17.1/jersey-server-1.17.1.pom
+2014-11-14 22:01:44,324 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/asm/asm/3.1/asm-3.1.pom
+2014-11-14 22:01:44,435 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/asm/asm/3.1/asm-3.1.pom
+2014-11-14 22:01:44,507 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/asm/asm-parent/3.1/asm-parent-3.1.pom
+2014-11-14 22:01:44,622 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/asm/asm-parent/3.1/asm-parent-3.1.pom
+2014-11-14 22:01:44,696 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/sun/jersey/jersey-servlet/1.17.1/jersey-servlet-1.17.1.pom
+2014-11-14 22:01:44,804 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/sun/jersey/jersey-servlet/1.17.1/jersey-servlet-1.17.1.pom
+2014-11-14 22:01:44,876 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/yammer/metrics/metrics-core/2.2.0/metrics-core-2.2.0.pom
+2014-11-14 22:01:44,981 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/yammer/metrics/metrics-core/2.2.0/metrics-core-2.2.0.pom
+2014-11-14 22:01:45,061 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/yammer/metrics/metrics-parent/2.2.0/metrics-parent-2.2.0.pom
+2014-11-14 22:01:45,174 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/yammer/metrics/metrics-parent/2.2.0/metrics-parent-2.2.0.pom
+2014-11-14 22:01:45,241 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/slf4j/slf4j-api/1.7.2/slf4j-api-1.7.2.pom
+2014-11-14 22:01:45,336 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/slf4j/slf4j-api/1.7.2/slf4j-api-1.7.2.pom
+2014-11-14 22:01:45,387 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/slf4j/slf4j-parent/1.7.2/slf4j-parent-1.7.2.pom
+2014-11-14 22:01:45,492 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/slf4j/slf4j-parent/1.7.2/slf4j-parent-1.7.2.pom
+2014-11-14 22:01:45,567 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/yammer/metrics/metrics-servlet/2.2.0/metrics-servlet-2.2.0.pom
+2014-11-14 22:01:45,663 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/yammer/metrics/metrics-servlet/2.2.0/metrics-servlet-2.2.0.pom
+2014-11-14 22:01:45,713 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-databind/2.1.1/jackson-databind-2.1.1.pom
+2014-11-14 22:01:45,814 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-databind/2.1.1/jackson-databind-2.1.1.pom
+2014-11-14 22:01:45,886 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/fasterxml/oss-parent/4/oss-parent-4.pom
+2014-11-14 22:01:46,035 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/fasterxml/oss-parent/4/oss-parent-4.pom
+2014-11-14 22:01:46,107 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-annotations/2.1.1/jackson-annotations-2.1.1.pom
+2014-11-14 22:01:46,211 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-annotations/2.1.1/jackson-annotations-2.1.1.pom
+2014-11-14 22:01:46,273 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-core/2.1.1/jackson-core-2.1.1.pom
+2014-11-14 22:01:46,383 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-core/2.1.1/jackson-core-2.1.1.pom
+2014-11-14 22:01:46,458 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/yammer/metrics/metrics-jetty/2.2.0/metrics-jetty-2.2.0.pom
+2014-11-14 22:01:46,562 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/yammer/metrics/metrics-jetty/2.2.0/metrics-jetty-2.2.0.pom
+2014-11-14 22:01:46,634 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-server/8.1.8.v20121106/jetty-server-8.1.8.v20121106.pom
+2014-11-14 22:01:46,751 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-server/8.1.8.v20121106/jetty-server-8.1.8.v20121106.pom
+2014-11-14 22:01:46,811 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-project/8.1.8.v20121106/jetty-project-8.1.8.v20121106.pom
+2014-11-14 22:01:47,023 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-project/8.1.8.v20121106/jetty-project-8.1.8.v20121106.pom
+2014-11-14 22:01:47,102 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-continuation/8.1.8.v20121106/jetty-continuation-8.1.8.v20121106.pom
+2014-11-14 22:01:47,212 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-continuation/8.1.8.v20121106/jetty-continuation-8.1.8.v20121106.pom
+2014-11-14 22:01:47,287 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-http/8.1.8.v20121106/jetty-http-8.1.8.v20121106.pom
+2014-11-14 22:01:47,400 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-http/8.1.8.v20121106/jetty-http-8.1.8.v20121106.pom
+2014-11-14 22:01:47,475 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-io/8.1.8.v20121106/jetty-io-8.1.8.v20121106.pom
+2014-11-14 22:01:47,583 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-io/8.1.8.v20121106/jetty-io-8.1.8.v20121106.pom
+2014-11-14 22:01:47,645 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-util/8.1.8.v20121106/jetty-util-8.1.8.v20121106.pom
+2014-11-14 22:01:47,748 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-util/8.1.8.v20121106/jetty-util-8.1.8.v20121106.pom
+2014-11-14 22:01:47,816 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/yammer/metrics/metrics-logback/2.2.0/metrics-logback-2.2.0.pom
+2014-11-14 22:01:48,060 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/yammer/metrics/metrics-logback/2.2.0/metrics-logback-2.2.0.pom
+2014-11-14 22:01:48,132 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/ch/qos/logback/logback-core/1.0.7/logback-core-1.0.7.pom
+2014-11-14 22:01:48,228 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/ch/qos/logback/logback-core/1.0.7/logback-core-1.0.7.pom
+2014-11-14 22:01:48,277 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/ch/qos/logback/logback-parent/1.0.7/logback-parent-1.0.7.pom
+2014-11-14 22:01:48,379 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/ch/qos/logback/logback-parent/1.0.7/logback-parent-1.0.7.pom
+2014-11-14 22:01:48,451 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/ch/qos/logback/logback-classic/1.0.7/logback-classic-1.0.7.pom
+2014-11-14 22:01:48,547 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/ch/qos/logback/logback-classic/1.0.7/logback-classic-1.0.7.pom
+2014-11-14 22:01:48,601 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/slf4j/slf4j-api/1.6.6/slf4j-api-1.6.6.pom
+2014-11-14 22:01:48,701 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/slf4j/slf4j-api/1.6.6/slf4j-api-1.6.6.pom
+2014-11-14 22:01:48,755 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/slf4j/slf4j-parent/1.6.6/slf4j-parent-1.6.6.pom
+2014-11-14 22:01:48,860 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/slf4j/slf4j-parent/1.6.6/slf4j-parent-1.6.6.pom
+2014-11-14 22:01:48,930 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/yammer/metrics/metrics-jersey/2.2.0/metrics-jersey-2.2.0.pom
+2014-11-14 22:01:49,033 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/yammer/metrics/metrics-jersey/2.2.0/metrics-jersey-2.2.0.pom
+2014-11-14 22:01:49,095 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/yammer/metrics/metrics-annotation/2.2.0/metrics-annotation-2.2.0.pom
+2014-11-14 22:01:49,198 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/yammer/metrics/metrics-annotation/2.2.0/metrics-annotation-2.2.0.pom
+2014-11-14 22:01:49,272 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/sun/jersey/jersey-server/1.15/jersey-server-1.15.pom
+2014-11-14 22:01:49,385 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/sun/jersey/jersey-server/1.15/jersey-server-1.15.pom
+2014-11-14 22:01:49,455 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/sun/jersey/jersey-project/1.15/jersey-project-1.15.pom
+2014-11-14 22:01:49,636 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/sun/jersey/jersey-project/1.15/jersey-project-1.15.pom
+2014-11-14 22:01:49,709 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/sun/jersey/jersey-core/1.15/jersey-core-1.15.pom
+2014-11-14 22:01:49,875 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/sun/jersey/jersey-core/1.15/jersey-core-1.15.pom
+2014-11-14 22:01:49,947 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-databind/2.1.4/jackson-databind-2.1.4.pom
+2014-11-14 22:01:50,056 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-databind/2.1.4/jackson-databind-2.1.4.pom
+2014-11-14 22:01:50,127 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-annotations/2.1.4/jackson-annotations-2.1.4.pom
+2014-11-14 22:01:50,225 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-annotations/2.1.4/jackson-annotations-2.1.4.pom
+2014-11-14 22:01:50,276 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-core/2.1.4/jackson-core-2.1.4.pom
+2014-11-14 22:01:50,380 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-core/2.1.4/jackson-core-2.1.4.pom
+2014-11-14 22:01:50,448 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/fasterxml/jackson/jaxrs/jackson-jaxrs-json-provider/2.1.4/jackson-jaxrs-json-provider-2.1.4.pom
+2014-11-14 22:01:50,562 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/fasterxml/jackson/jaxrs/jackson-jaxrs-json-provider/2.1.4/jackson-jaxrs-json-provider-2.1.4.pom
+2014-11-14 22:01:50,636 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/fasterxml/jackson/module/jackson-module-jaxb-annotations/2.1.4/jackson-module-jaxb-annotations-2.1.4.pom
+2014-11-14 22:01:50,740 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/fasterxml/jackson/module/jackson-module-jaxb-annotations/2.1.4/jackson-module-jaxb-annotations-2.1.4.pom
+2014-11-14 22:01:50,802 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/fasterxml/jackson/dataformat/jackson-dataformat-yaml/2.1.4/jackson-dataformat-yaml-2.1.4.pom
+2014-11-14 22:01:50,907 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/fasterxml/jackson/dataformat/jackson-dataformat-yaml/2.1.4/jackson-dataformat-yaml-2.1.4.pom
+2014-11-14 22:01:50,981 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/fasterxml/jackson/datatype/jackson-datatype-guava/2.1.2/jackson-datatype-guava-2.1.2.pom
+2014-11-14 22:01:51,019 [main] INFO  o.e.m2e.actions.ExecutePomAction - Using existing launch configuration
+2014-11-14 22:01:51,151 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/fasterxml/jackson/datatype/jackson-datatype-guava/2.1.2/jackson-datatype-guava-2.1.2.pom
+2014-11-14 22:01:51,212 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-databind/2.1.2/jackson-databind-2.1.2.pom
+2014-11-14 22:01:51,305 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-databind/2.1.2/jackson-databind-2.1.2.pom
+2014-11-14 22:01:51,356 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-core/2.1.2/jackson-core-2.1.2.pom
+2014-11-14 22:01:51,449 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-core/2.1.2/jackson-core-2.1.2.pom
+2014-11-14 22:01:51,499 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/google/guava/guava/11.0.2/guava-11.0.2.pom
+2014-11-14 22:01:51,605 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/google/guava/guava/11.0.2/guava-11.0.2.pom
+2014-11-14 22:01:51,682 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/google/guava/guava-parent/11.0.2/guava-parent-11.0.2.pom
+2014-11-14 22:01:51,788 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/google/guava/guava-parent/11.0.2/guava-parent-11.0.2.pom
+2014-11-14 22:01:51,865 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/google/code/findbugs/jsr305/1.3.9/jsr305-1.3.9.pom
+2014-11-14 22:01:51,964 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/google/code/findbugs/jsr305/1.3.9/jsr305-1.3.9.pom
+2014-11-14 22:01:52,036 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/net/sourceforge/argparse4j/argparse4j/0.4.0/argparse4j-0.4.0.pom
+2014-11-14 22:01:52,146 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/net/sourceforge/argparse4j/argparse4j/0.4.0/argparse4j-0.4.0.pom
+2014-11-14 22:01:52,225 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/slf4j/slf4j-api/1.7.4/slf4j-api-1.7.4.pom
+2014-11-14 22:01:52,331 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/slf4j/slf4j-api/1.7.4/slf4j-api-1.7.4.pom
+2014-11-14 22:01:52,405 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/slf4j/slf4j-parent/1.7.4/slf4j-parent-1.7.4.pom
+2014-11-14 22:01:52,507 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/slf4j/slf4j-parent/1.7.4/slf4j-parent-1.7.4.pom
+2014-11-14 22:01:52,573 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/slf4j/jul-to-slf4j/1.7.4/jul-to-slf4j-1.7.4.pom
+2014-11-14 22:01:52,737 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/slf4j/jul-to-slf4j/1.7.4/jul-to-slf4j-1.7.4.pom
+2014-11-14 22:01:52,803 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/ch/qos/logback/logback-core/1.0.10/logback-core-1.0.10.pom
+2014-11-14 22:01:52,901 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/ch/qos/logback/logback-core/1.0.10/logback-core-1.0.10.pom
+2014-11-14 22:01:52,957 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/ch/qos/logback/logback-parent/1.0.10/logback-parent-1.0.10.pom
+2014-11-14 22:01:53,057 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/ch/qos/logback/logback-parent/1.0.10/logback-parent-1.0.10.pom
+2014-11-14 22:01:53,131 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/ch/qos/logback/logback-classic/1.0.10/logback-classic-1.0.10.pom
+2014-11-14 22:01:53,239 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/ch/qos/logback/logback-classic/1.0.10/logback-classic-1.0.10.pom
+2014-11-14 22:01:53,307 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/slf4j/log4j-over-slf4j/1.7.4/log4j-over-slf4j-1.7.4.pom
+2014-11-14 22:01:53,477 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/slf4j/log4j-over-slf4j/1.7.4/log4j-over-slf4j-1.7.4.pom
+2014-11-14 22:01:53,552 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-server/8.1.10.v20130312/jetty-server-8.1.10.v20130312.pom
+2014-11-14 22:01:53,718 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-server/8.1.10.v20130312/jetty-server-8.1.10.v20130312.pom
+2014-11-14 22:01:53,776 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-project/8.1.10.v20130312/jetty-project-8.1.10.v20130312.pom
+2014-11-14 22:01:53,994 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-project/8.1.10.v20130312/jetty-project-8.1.10.v20130312.pom
+2014-11-14 22:01:54,070 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-continuation/8.1.10.v20130312/jetty-continuation-8.1.10.v20130312.pom
+2014-11-14 22:01:54,232 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-continuation/8.1.10.v20130312/jetty-continuation-8.1.10.v20130312.pom
+2014-11-14 22:01:54,292 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-http/8.1.10.v20130312/jetty-http-8.1.10.v20130312.pom
+2014-11-14 22:01:54,393 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-http/8.1.10.v20130312/jetty-http-8.1.10.v20130312.pom
+2014-11-14 22:01:54,457 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-io/8.1.10.v20130312/jetty-io-8.1.10.v20130312.pom
+2014-11-14 22:01:54,556 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-io/8.1.10.v20130312/jetty-io-8.1.10.v20130312.pom
+2014-11-14 22:01:54,619 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-util/8.1.10.v20130312/jetty-util-8.1.10.v20130312.pom
+2014-11-14 22:01:54,720 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-util/8.1.10.v20130312/jetty-util-8.1.10.v20130312.pom
+2014-11-14 22:01:54,788 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-servlet/8.1.10.v20130312/jetty-servlet-8.1.10.v20130312.pom
+2014-11-14 22:01:54,890 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-servlet/8.1.10.v20130312/jetty-servlet-8.1.10.v20130312.pom
+2014-11-14 22:01:54,967 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-security/8.1.10.v20130312/jetty-security-8.1.10.v20130312.pom
+2014-11-14 22:01:55,074 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-security/8.1.10.v20130312/jetty-security-8.1.10.v20130312.pom
+2014-11-14 22:01:55,141 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/google/guava/guava/14.0.1/guava-14.0.1.pom
+2014-11-14 22:01:55,246 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/google/guava/guava/14.0.1/guava-14.0.1.pom
+2014-11-14 22:01:55,321 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/google/guava/guava-parent/14.0.1/guava-parent-14.0.1.pom
+2014-11-14 22:01:55,415 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/google/guava/guava-parent/14.0.1/guava-parent-14.0.1.pom
+2014-11-14 22:01:55,472 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/hibernate/hibernate-validator/4.3.1.Final/hibernate-validator-4.3.1.Final.pom
+2014-11-14 22:01:55,577 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/hibernate/hibernate-validator/4.3.1.Final/hibernate-validator-4.3.1.Final.pom
+2014-11-14 22:01:55,658 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/hibernate/hibernate-validator-parent/4.3.1.Final/hibernate-validator-parent-4.3.1.Final.pom
+2014-11-14 22:01:55,762 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/hibernate/hibernate-validator-parent/4.3.1.Final/hibernate-validator-parent-4.3.1.Final.pom
+2014-11-14 22:01:55,835 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/javax/validation/validation-api/1.0.0.GA/validation-api-1.0.0.GA.pom
+2014-11-14 22:01:55,935 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/javax/validation/validation-api/1.0.0.GA/validation-api-1.0.0.GA.pom
+2014-11-14 22:01:56,000 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/jboss/logging/jboss-logging/3.1.0.CR2/jboss-logging-3.1.0.CR2.pom
+2014-11-14 22:01:56,110 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/jboss/logging/jboss-logging/3.1.0.CR2/jboss-logging-3.1.0.CR2.pom
+2014-11-14 22:01:56,185 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/jboss/jboss-parent/6/jboss-parent-6.pom
+2014-11-14 22:01:56,292 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/jboss/jboss-parent/6/jboss-parent-6.pom
+2014-11-14 22:01:56,360 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/joda-time/joda-time/2.2/joda-time-2.2.pom
+2014-11-14 22:01:56,467 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/joda-time/joda-time/2.2/joda-time-2.2.pom
+2014-11-14 22:01:56,519 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/fasterxml/jackson/datatype/jackson-datatype-joda/2.1.2/jackson-datatype-joda-2.1.2.pom
+2014-11-14 22:01:56,678 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/fasterxml/jackson/datatype/jackson-datatype-joda/2.1.2/jackson-datatype-joda-2.1.2.pom
+2014-11-14 22:01:56,743 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/joda-time/joda-time/2.1/joda-time-2.1.pom
+2014-11-14 22:01:56,846 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/joda-time/joda-time/2.1/joda-time-2.1.pom
+2014-11-14 22:01:56,911 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/freemarker/freemarker/2.3.19/freemarker-2.3.19.pom
+2014-11-14 22:01:57,011 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/freemarker/freemarker/2.3.19/freemarker-2.3.19.pom
+2014-11-14 22:01:57,152 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/github/spullara/mustache/java/compiler/0.8.10/compiler-0.8.10.pom
+2014-11-14 22:01:57,256 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/github/spullara/mustache/java/compiler/0.8.10/compiler-0.8.10.pom
+2014-11-14 22:01:57,390 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/github/spullara/mustache/java/mustache.java/0.8.10/mustache.java-0.8.10.pom
+2014-11-14 22:01:57,497 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/github/spullara/mustache/java/mustache.java/0.8.10/mustache.java-0.8.10.pom
+2014-11-14 22:01:57,573 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/google/guava/guava/13.0.1/guava-13.0.1.pom
+2014-11-14 22:01:57,674 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/google/guava/guava/13.0.1/guava-13.0.1.pom
+2014-11-14 22:01:57,752 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/google/guava/guava-parent/13.0.1/guava-parent-13.0.1.pom
+2014-11-14 22:01:57,858 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/google/guava/guava-parent/13.0.1/guava-parent-13.0.1.pom
+2014-11-14 22:01:58,042 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/yammer/dropwizard/dropwizard-views/0.6.2/dropwizard-views-0.6.2.jar
+2014-11-14 22:01:58,189 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/yammer/dropwizard/dropwizard-views/0.6.2/dropwizard-views-0.6.2.jar
+2014-11-14 22:01:58,241 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/yammer/dropwizard/dropwizard-core/0.6.2/dropwizard-core-0.6.2.jar
+2014-11-14 22:01:58,626 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/yammer/dropwizard/dropwizard-core/0.6.2/dropwizard-core-0.6.2.jar
+2014-11-14 22:01:58,676 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/yammer/metrics/metrics-core/2.2.0/metrics-core-2.2.0.jar
+2014-11-14 22:01:58,823 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/yammer/metrics/metrics-core/2.2.0/metrics-core-2.2.0.jar
+2014-11-14 22:01:58,873 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/yammer/metrics/metrics-servlet/2.2.0/metrics-servlet-2.2.0.jar
+2014-11-14 22:01:59,011 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/yammer/metrics/metrics-servlet/2.2.0/metrics-servlet-2.2.0.jar
+2014-11-14 22:01:59,061 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/yammer/metrics/metrics-jetty/2.2.0/metrics-jetty-2.2.0.jar
+2014-11-14 22:01:59,218 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/yammer/metrics/metrics-jetty/2.2.0/metrics-jetty-2.2.0.jar
+2014-11-14 22:01:59,265 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/yammer/metrics/metrics-logback/2.2.0/metrics-logback-2.2.0.jar
+2014-11-14 22:01:59,369 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/yammer/metrics/metrics-logback/2.2.0/metrics-logback-2.2.0.jar
+2014-11-14 22:01:59,418 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/yammer/metrics/metrics-jersey/2.2.0/metrics-jersey-2.2.0.jar
+2014-11-14 22:01:59,626 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/yammer/metrics/metrics-jersey/2.2.0/metrics-jersey-2.2.0.jar
+2014-11-14 22:01:59,676 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/yammer/metrics/metrics-annotation/2.2.0/metrics-annotation-2.2.0.jar
+2014-11-14 22:01:59,790 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/yammer/metrics/metrics-annotation/2.2.0/metrics-annotation-2.2.0.jar
+2014-11-14 22:01:59,840 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/freemarker/freemarker/2.3.19/freemarker-2.3.19.jar
+2014-11-14 22:02:00,581 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/freemarker/freemarker/2.3.19/freemarker-2.3.19.jar
+2014-11-14 22:02:00,633 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/github/spullara/mustache/java/compiler/0.8.10/compiler-0.8.10.jar
+2014-11-14 22:02:00,851 [Worker-30] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/github/spullara/mustache/java/compiler/0.8.10/compiler-0.8.10.jar
+2014-11-14 22:02:01,457 [Worker-30] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-14 22:02:01,459 [Worker-30] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\main\resources
+2014-11-14 22:02:01,461 [Worker-30] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-14 22:02:01,463 [Worker-30] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-14 22:02:02,205 [Worker-40] INFO  o.e.m.i.launch.MavenLaunchDelegate - C:\Users\Joe\Desktop\UndefinedParameter\QuizZing
+2014-11-14 22:02:02,205 [Worker-40] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn  -B 
+2014-11-14 22:02:03,049 [Worker-26] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-14 22:02:03,053 [Worker-26] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\main\resources
+2014-11-14 22:02:03,057 [Worker-26] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-14 22:02:03,065 [Worker-26] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-14 22:06:28,658 [Worker-37] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-14 22:06:28,662 [Worker-37] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\main\resources
+2014-11-14 22:06:28,664 [Worker-37] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-14 22:06:28,667 [Worker-37] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-14 22:07:40,209 [Worker-37] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-14 22:07:40,211 [Worker-37] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\main\resources
+2014-11-14 22:07:40,214 [Worker-37] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-14 22:07:40,217 [Worker-37] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-14 22:13:16,290 [Worker-41] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-14 22:13:16,294 [Worker-41] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\main\resources
+2014-11-14 22:13:16,299 [Worker-41] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-14 22:13:16,303 [Worker-41] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-14 22:13:19,511 [Worker-37] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-14 22:13:19,514 [Worker-37] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\main\resources
+2014-11-14 22:13:19,519 [Worker-37] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-14 22:13:19,523 [Worker-37] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-14 22:14:13,567 [Worker-41] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-14 22:14:13,573 [Worker-41] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\main\resources
+2014-11-14 22:14:13,579 [Worker-41] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-14 22:14:13,589 [Worker-41] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-14 22:14:43,294 [Worker-41] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-14 22:14:43,301 [Worker-41] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\main\resources
+2014-11-14 22:14:43,306 [Worker-41] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-14 22:14:43,313 [Worker-41] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-14 22:15:33,086 [Worker-37] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-14 22:15:33,093 [Worker-37] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\main\resources
+2014-11-14 22:15:33,101 [Worker-37] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-14 22:15:33,107 [Worker-37] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-14 22:16:49,801 [Worker-37] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-14 22:16:49,803 [Worker-37] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\main\resources
+2014-11-14 22:16:49,805 [Worker-37] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-14 22:16:49,807 [Worker-37] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-14 22:18:15,632 [Worker-33] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-14 22:18:15,636 [Worker-33] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\main\resources
+2014-11-14 22:18:15,641 [Worker-33] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-14 22:18:15,646 [Worker-33] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-14 22:18:40,550 [Worker-42] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-14 22:18:40,551 [Worker-42] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\main\resources
+2014-11-14 22:18:40,553 [Worker-42] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-14 22:18:40,555 [Worker-42] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-14 22:19:11,207 [Worker-42] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-14 22:19:11,211 [Worker-42] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\main\resources
+2014-11-14 22:19:11,215 [Worker-42] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-14 22:19:11,221 [Worker-42] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-14 22:20:23,159 [Worker-33] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-14 22:20:23,163 [Worker-33] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\main\resources
+2014-11-14 22:20:23,167 [Worker-33] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-14 22:20:23,173 [Worker-33] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-14 22:27:46,308 [Worker-50] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-14 22:27:46,310 [Worker-50] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\main\resources
+2014-11-14 22:27:46,312 [Worker-50] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-14 22:27:46,314 [Worker-50] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-14 22:29:26,929 [Worker-37] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-14 22:29:26,932 [Worker-37] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\main\resources
+2014-11-14 22:29:26,936 [Worker-37] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-14 22:29:26,941 [Worker-37] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-14 22:30:20,615 [Worker-49] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-14 22:30:20,619 [Worker-49] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\main\resources
+2014-11-14 22:30:20,623 [Worker-49] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-14 22:30:20,627 [Worker-49] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-14 22:34:51,004 [Worker-48] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-14 22:34:51,011 [Worker-48] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\main\resources
+2014-11-14 22:34:51,016 [Worker-48] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-14 22:34:51,023 [Worker-48] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-14 22:46:58,642 [Worker-51] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/com/yammer/dropwizard/dropwizard-views/0.6.2/dropwizard-views-0.6.2-sources.jar
+2014-11-14 22:46:58,891 [Worker-51] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/com/yammer/dropwizard/dropwizard-views/0.6.2/dropwizard-views-0.6.2-sources.jar
+2014-11-14 22:46:58,992 [Worker-51] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for com.yammer.dropwizard:dropwizard-views:0.6.2
+2014-11-14 22:46:59,231 [Worker-59] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-14 22:46:59,234 [Worker-59] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\main\resources
+2014-11-14 22:46:59,237 [Worker-59] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-14 22:46:59,240 [Worker-59] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-14 22:49:18,968 [Worker-62] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-14 22:49:18,971 [Worker-62] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\main\resources
+2014-11-14 22:49:18,972 [Worker-62] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-14 22:49:18,975 [Worker-62] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-14 22:49:20,451 [Worker-58] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-14 22:49:20,457 [Worker-58] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\main\resources
+2014-11-14 22:49:20,461 [Worker-58] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-14 22:49:20,466 [Worker-58] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-14 22:49:44,304 [Worker-59] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.UndefinedParameter.app:QuizZing:1.0-SNAPSHOT @ C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\pom.xml.
+2014-11-14 22:49:44,690 [Worker-59] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/io/dropwizard/dropwizard-views/0.6.2/dropwizard-views-0.6.2.pom
+2014-11-14 22:49:44,698 [Worker-59] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for io.dropwizard:dropwizard-views:jar:0.6.2 is missing, no dependency information available
+2014-11-14 22:49:44,932 [Worker-59] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/io/dropwizard/dropwizard-views/0.6.2/dropwizard-views-0.6.2.jar
+2014-11-14 22:49:45,021 [Worker-59] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-14 22:49:45,024 [Worker-59] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\main\resources
+2014-11-14 22:49:45,024 [Worker-59] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-14 22:49:45,027 [Worker-59] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-14 22:49:48,465 [Worker-37] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.UndefinedParameter.app:QuizZing:1.0-SNAPSHOT @ C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\pom.xml.
+2014-11-14 22:49:48,657 [Worker-60] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/io/dropwizard/dropwizard-views/0.7.0/dropwizard-views-0.7.0.pom
+2014-11-14 22:49:48,816 [Worker-60] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/io/dropwizard/dropwizard-views/0.7.0/dropwizard-views-0.7.0.pom
+2014-11-14 22:49:48,900 [Worker-60] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/io/dropwizard/dropwizard-views/0.7.0/dropwizard-views-0.7.0.jar
+2014-11-14 22:49:49,064 [Worker-60] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/io/dropwizard/dropwizard-views/0.7.0/dropwizard-views-0.7.0.jar
+2014-11-14 22:49:49,207 [Worker-37] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-14 22:49:49,209 [Worker-37] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\main\resources
+2014-11-14 22:49:49,212 [Worker-37] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-14 22:49:49,213 [Worker-37] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-14 22:49:50,556 [Worker-57] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-14 22:49:50,558 [Worker-57] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\main\resources
+2014-11-14 22:49:50,560 [Worker-57] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-14 22:49:50,563 [Worker-57] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-14 22:49:58,126 [main] INFO  o.e.m2e.actions.ExecutePomAction - Using existing launch configuration
+2014-11-14 22:49:59,742 [Worker-59] INFO  o.e.m.i.launch.MavenLaunchDelegate - C:\Users\Joe\Desktop\UndefinedParameter\QuizZing
+2014-11-14 22:49:59,743 [Worker-59] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn  -B 
+2014-11-14 22:51:00,666 [Worker-37] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-14 22:51:00,669 [Worker-37] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\main\resources
+2014-11-14 22:51:00,672 [Worker-37] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-14 22:51:00,675 [Worker-37] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-14 22:51:37,551 [Worker-62] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-14 22:51:37,554 [Worker-62] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\main\resources
+2014-11-14 22:51:37,556 [Worker-62] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-14 22:51:37,561 [Worker-62] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-14 22:56:50,495 [Worker-67] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-14 22:56:50,502 [Worker-67] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\main\resources
+2014-11-14 22:56:50,505 [Worker-67] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-14 22:56:50,508 [Worker-67] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-14 23:00:54,620 [Worker-56] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-14 23:00:54,624 [Worker-56] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\main\resources
+2014-11-14 23:00:54,625 [Worker-56] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-14 23:00:54,632 [Worker-56] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-14 23:03:43,946 [Worker-69] INFO  o.e.m.i.launch.MavenLaunchDelegate - C:\Users\Joe\Desktop\UndefinedParameter\QuizZing
+2014-11-14 23:03:43,948 [Worker-69] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn  -B 
+2014-11-14 23:03:44,114 [Worker-67] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-14 23:03:44,118 [Worker-67] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\main\resources
+2014-11-14 23:03:44,119 [Worker-67] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-14 23:03:44,123 [Worker-67] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-14 23:09:18,289 [Worker-65] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.UndefinedParameter.app:QuizZing:1.0-SNAPSHOT @ C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\pom.xml.
+2014-11-14 23:09:18,551 [Worker-65] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/io/dropwizard/dropwizard-views-freemarker/0.7.0/dropwizard-views-freemarker-0.7.0.pom
+2014-11-14 23:09:18,834 [Worker-65] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/io/dropwizard/dropwizard-views-freemarker/0.7.0/dropwizard-views-freemarker-0.7.0.pom
+2014-11-14 23:09:18,903 [Worker-65] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/freemarker/freemarker/2.3.20/freemarker-2.3.20.pom
+2014-11-14 23:09:19,013 [Worker-65] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/freemarker/freemarker/2.3.20/freemarker-2.3.20.pom
+2014-11-14 23:09:19,139 [Worker-65] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/io/dropwizard/dropwizard-views-freemarker/0.7.0/dropwizard-views-freemarker-0.7.0.jar
+2014-11-14 23:09:19,312 [Worker-65] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/io/dropwizard/dropwizard-views-freemarker/0.7.0/dropwizard-views-freemarker-0.7.0.jar
+2014-11-14 23:09:19,366 [Worker-65] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/freemarker/freemarker/2.3.20/freemarker-2.3.20.jar
+2014-11-14 23:09:20,410 [Worker-65] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/freemarker/freemarker/2.3.20/freemarker-2.3.20.jar
+2014-11-14 23:09:20,621 [Worker-65] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-14 23:09:20,625 [Worker-65] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\main\resources
+2014-11-14 23:09:20,628 [Worker-65] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-14 23:09:20,629 [Worker-65] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-14 23:09:22,048 [Worker-72] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-14 23:09:22,051 [Worker-72] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\main\resources
+2014-11-14 23:09:22,053 [Worker-72] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-14 23:09:22,056 [Worker-72] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-14 23:09:27,488 [Worker-71] INFO  o.e.m.i.launch.MavenLaunchDelegate - C:\Users\Joe\Desktop\UndefinedParameter\QuizZing
+2014-11-14 23:09:27,490 [Worker-71] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn  -B 
+2014-11-14 23:37:22,393 [main] INFO  o.e.m2e.actions.ExecutePomAction - Using existing launch configuration
+2014-11-14 23:37:26,309 [Worker-0] INFO  o.e.m.i.launch.MavenLaunchDelegate - C:\Users\Joe\Desktop\UndefinedParameter\QuizZing
+2014-11-14 23:37:26,310 [Worker-0] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn  -B 
+2014-11-14 23:37:27,488 [Worker-7] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.UndefinedParameter.app:QuizZing:1.0-SNAPSHOT @ C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\pom.xml.
+2014-11-14 23:37:27,928 [Worker-7] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/xerial/sqlite-jdbc/3.8.7/sqlite-jdbc-3.8.7.pom
+2014-11-14 23:37:28,036 [Worker-7] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/xerial/sqlite-jdbc/3.8.7/sqlite-jdbc-3.8.7.pom
+2014-11-14 23:37:28,088 [Worker-7] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/sonatype/oss/oss-parent/9/oss-parent-9.pom
+2014-11-14 23:37:28,191 [Worker-7] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/sonatype/oss/oss-parent/9/oss-parent-9.pom
+2014-11-14 23:37:28,340 [Worker-7] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/org/xerial/sqlite-jdbc/3.8.7/sqlite-jdbc-3.8.7.jar
+2014-11-14 23:37:30,131 [Worker-7] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/org/xerial/sqlite-jdbc/3.8.7/sqlite-jdbc-3.8.7.jar
+2014-11-14 23:37:30,512 [Worker-7] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-14 23:37:30,514 [Worker-7] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\main\resources
+2014-11-14 23:37:30,517 [Worker-7] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-14 23:37:30,519 [Worker-7] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-14 23:37:32,124 [Worker-0] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-14 23:37:32,127 [Worker-0] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\main\resources
+2014-11-14 23:37:32,131 [Worker-0] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-14 23:37:32,136 [Worker-0] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-14 23:38:37,368 [Worker-1] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-14 23:38:37,370 [Worker-1] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\main\resources
+2014-11-14 23:38:37,373 [Worker-1] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-14 23:38:37,377 [Worker-1] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-14 23:41:23,424 [Worker-0] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-14 23:41:23,427 [Worker-0] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\main\resources
+2014-11-14 23:41:23,432 [Worker-0] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-14 23:41:23,438 [Worker-0] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-14 23:48:37,945 [Worker-2] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-14 23:48:37,947 [Worker-2] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\main\resources
+2014-11-14 23:48:37,949 [Worker-2] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-14 23:48:37,952 [Worker-2] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-15 00:03:35,948 [Worker-14] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 00:03:35,952 [Worker-14] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\main\resources
+2014-11-15 00:03:35,957 [Worker-14] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 00:03:35,962 [Worker-14] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-15 00:10:00,724 [Worker-14] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 00:10:00,726 [Worker-14] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\main\resources
+2014-11-15 00:10:00,728 [Worker-14] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 00:10:00,731 [Worker-14] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-15 00:11:16,640 [Worker-12] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 00:11:16,642 [Worker-12] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\main\resources
+2014-11-15 00:11:16,645 [Worker-12] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 00:11:16,650 [Worker-12] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-15 00:12:23,326 [Worker-13] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 00:12:23,333 [Worker-13] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\main\resources
+2014-11-15 00:12:23,342 [Worker-13] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 00:12:23,354 [Worker-13] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-15 00:12:39,538 [Worker-14] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 00:12:39,545 [Worker-14] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\main\resources
+2014-11-15 00:12:39,552 [Worker-14] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 00:12:39,565 [Worker-14] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-15 00:13:04,021 [Worker-20] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 00:13:04,023 [Worker-20] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\main\resources
+2014-11-15 00:13:04,025 [Worker-20] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 00:13:04,028 [Worker-20] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-15 00:14:38,488 [Worker-20] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 00:14:38,492 [Worker-20] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\main\resources
+2014-11-15 00:14:38,497 [Worker-20] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 00:14:38,505 [Worker-20] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-15 00:15:21,434 [Worker-14] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 00:15:21,442 [Worker-14] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\main\resources
+2014-11-15 00:15:21,450 [Worker-14] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 00:15:21,457 [Worker-14] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-15 00:15:32,970 [Worker-12] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 00:15:32,975 [Worker-12] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\main\resources
+2014-11-15 00:15:32,980 [Worker-12] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 00:15:32,987 [Worker-12] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-15 00:15:44,482 [Worker-14] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 00:15:44,488 [Worker-14] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\main\resources
+2014-11-15 00:15:44,493 [Worker-14] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 00:15:44,501 [Worker-14] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-15 00:16:06,005 [Worker-18] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 00:16:06,007 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\main\resources
+2014-11-15 00:16:06,011 [Worker-18] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 00:16:06,015 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-15 00:16:55,112 [Worker-14] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 00:16:55,115 [Worker-14] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\main\resources
+2014-11-15 00:16:55,118 [Worker-14] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 00:16:55,124 [Worker-14] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-15 00:17:08,555 [Worker-13] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 00:17:08,557 [Worker-13] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\main\resources
+2014-11-15 00:17:08,561 [Worker-13] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 00:17:08,565 [Worker-13] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-15 00:17:58,136 [Worker-15] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 00:17:58,144 [Worker-15] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\main\resources
+2014-11-15 00:17:58,154 [Worker-15] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 00:17:58,167 [Worker-15] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-15 00:18:45,868 [Worker-19] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 00:18:45,872 [Worker-19] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\main\resources
+2014-11-15 00:18:45,876 [Worker-19] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 00:18:45,884 [Worker-19] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-15 00:19:04,287 [Worker-19] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 00:19:04,292 [Worker-19] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\main\resources
+2014-11-15 00:19:04,299 [Worker-19] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 00:19:04,307 [Worker-19] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-15 00:19:12,069 [Worker-13] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 00:19:12,076 [Worker-13] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\main\resources
+2014-11-15 00:19:12,084 [Worker-13] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 00:19:12,091 [Worker-13] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-15 00:19:17,390 [Worker-18] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 00:19:17,396 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\main\resources
+2014-11-15 00:19:17,403 [Worker-18] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 00:19:17,412 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-15 00:19:33,871 [Worker-19] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 00:19:33,877 [Worker-19] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\main\resources
+2014-11-15 00:19:33,885 [Worker-19] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 00:19:33,895 [Worker-19] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-15 00:19:43,511 [Worker-19] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 00:19:43,517 [Worker-19] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\main\resources
+2014-11-15 00:19:43,525 [Worker-19] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 00:19:43,530 [Worker-19] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-15 00:19:50,732 [Worker-18] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 00:19:50,739 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\main\resources
+2014-11-15 00:19:50,747 [Worker-18] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 00:19:50,757 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-15 00:20:21,126 [Worker-18] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 00:20:21,130 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\main\resources
+2014-11-15 00:20:21,134 [Worker-18] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 00:20:21,141 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-15 00:26:15,899 [Worker-23] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 00:26:16,047 [Worker-23] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2014-11-15 00:26:16,060 [Worker-23] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 00:26:16,072 [Worker-23] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-15 00:26:21,906 [Worker-24] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 00:26:21,908 [Worker-24] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2014-11-15 00:26:21,910 [Worker-24] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 00:26:21,912 [Worker-24] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-15 00:26:39,405 [Worker-20] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 00:26:39,414 [Worker-20] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2014-11-15 00:26:39,429 [Worker-20] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 00:26:39,436 [Worker-20] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-15 00:29:19,059 [Worker-26] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 00:29:19,063 [Worker-26] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2014-11-15 00:29:19,068 [Worker-26] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 00:29:19,073 [Worker-26] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-15 00:29:38,621 [Worker-24] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.UndefinedParameter.app:QuizZing:1.0-SNAPSHOT @ C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\pom.xml.
+2014-11-15 00:29:38,952 [Worker-24] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/io/dropwizard/dropwizard-assets/0.7.0/dropwizard-assets-0.7.0.pom
+2014-11-15 00:29:39,062 [Worker-24] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/io/dropwizard/dropwizard-assets/0.7.0/dropwizard-assets-0.7.0.pom
+2014-11-15 00:29:39,142 [Worker-24] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo.maven.apache.org/maven2/io/dropwizard/dropwizard-assets/0.7.0/dropwizard-assets-0.7.0.jar
+2014-11-15 00:29:39,224 [Worker-24] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/io/dropwizard/dropwizard-assets/0.7.0/dropwizard-assets-0.7.0.jar
+2014-11-15 00:29:39,416 [Worker-24] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 00:29:39,419 [Worker-24] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2014-11-15 00:29:39,421 [Worker-24] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 00:29:39,424 [Worker-24] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-15 00:29:40,939 [Worker-26] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 00:29:40,943 [Worker-26] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2014-11-15 00:29:40,947 [Worker-26] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 00:29:40,951 [Worker-26] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-15 00:29:55,220 [Worker-19] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 00:29:55,224 [Worker-19] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2014-11-15 00:29:55,226 [Worker-19] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 00:29:55,228 [Worker-19] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-15 00:32:27,111 [Worker-30] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 00:32:27,122 [Worker-30] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2 resources
+2014-11-15 00:32:27,132 [Worker-30] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 00:32:27,142 [Worker-30] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-15 00:33:37,132 [Worker-32] INFO  o.e.m.i.launch.MavenLaunchDelegate - C:\Users\Joe\Desktop\UndefinedParameter\QuizZing
+2014-11-15 00:33:37,134 [Worker-32] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn  -B 
+2014-11-15 00:38:17,794 [Worker-34] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 00:38:17,798 [Worker-34] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2 resources
+2014-11-15 00:38:17,801 [Worker-34] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 00:38:17,804 [Worker-34] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-15 00:38:32,044 [Worker-35] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 00:38:32,051 [Worker-35] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2 resources
+2014-11-15 00:38:32,053 [Worker-35] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 00:38:32,064 [Worker-35] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-15 00:39:58,423 [Worker-31] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 00:39:58,430 [Worker-31] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2 resources
+2014-11-15 00:39:58,434 [Worker-31] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 00:39:58,440 [Worker-31] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-15 00:54:52,357 [Worker-35] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 00:54:52,359 [Worker-35] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2 resources
+2014-11-15 00:54:52,359 [Worker-35] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 00:54:52,362 [Worker-35] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-15 00:55:09,715 [Worker-48] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 00:55:09,719 [Worker-48] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2 resources
+2014-11-15 00:55:09,722 [Worker-48] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 00:55:09,726 [Worker-48] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-15 00:55:12,946 [Worker-36] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 00:55:12,951 [Worker-36] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2 resources
+2014-11-15 00:55:12,952 [Worker-36] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 00:55:12,958 [Worker-36] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-15 00:56:14,366 [Worker-36] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 00:56:14,369 [Worker-36] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2 resources
+2014-11-15 00:56:14,371 [Worker-36] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 00:56:14,374 [Worker-36] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-15 00:57:32,860 [Worker-36] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 00:57:32,868 [Worker-36] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2014-11-15 00:57:32,870 [Worker-36] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 00:57:32,885 [Worker-36] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-15 00:57:43,073 [Worker-36] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 00:57:43,083 [Worker-36] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2014-11-15 00:57:43,090 [Worker-36] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 00:57:43,099 [Worker-36] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-15 00:57:50,796 [Worker-50] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 00:57:50,804 [Worker-50] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2014-11-15 00:57:50,806 [Worker-50] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 00:57:50,819 [Worker-50] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-15 00:57:58,100 [Worker-49] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 00:57:58,111 [Worker-49] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2014-11-15 00:57:58,118 [Worker-49] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 00:57:58,128 [Worker-49] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-15 00:58:02,882 [Worker-36] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 00:58:02,889 [Worker-36] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2014-11-15 00:58:02,899 [Worker-36] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 00:58:02,911 [Worker-36] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-15 00:58:32,333 [Worker-50] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 00:58:32,347 [Worker-50] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2 resources
+2014-11-15 00:58:32,355 [Worker-50] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 00:58:32,366 [Worker-50] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-15 00:58:43,726 [Worker-42] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 00:58:43,731 [Worker-42] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2 resources
+2014-11-15 00:58:43,733 [Worker-42] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 00:58:43,740 [Worker-42] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-15 00:58:52,295 [Worker-52] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 00:58:52,300 [Worker-52] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2 resources
+2014-11-15 00:58:52,303 [Worker-52] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 00:58:52,306 [Worker-52] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-15 00:59:05,344 [Worker-50] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 00:59:05,348 [Worker-50] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2 resources
+2014-11-15 00:59:05,349 [Worker-50] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 00:59:05,355 [Worker-50] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-15 00:59:47,659 [Worker-52] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 00:59:47,670 [Worker-52] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2 resources
+2014-11-15 00:59:47,675 [Worker-52] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 00:59:47,682 [Worker-52] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-15 00:59:54,471 [Worker-50] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 00:59:54,476 [Worker-50] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2 resources
+2014-11-15 00:59:54,477 [Worker-50] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 00:59:54,482 [Worker-50] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-15 00:59:59,915 [Worker-50] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 00:59:59,919 [Worker-50] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2014-11-15 00:59:59,922 [Worker-50] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 00:59:59,925 [Worker-50] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-15 01:02:23,047 [Worker-48] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 01:02:23,054 [Worker-48] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2014-11-15 01:02:23,056 [Worker-48] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 01:02:23,066 [Worker-48] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-15 01:02:49,546 [Worker-49] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 01:02:49,558 [Worker-49] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2 resources
+2014-11-15 01:02:49,564 [Worker-49] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 01:02:49,574 [Worker-49] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-15 01:03:15,184 [Worker-48] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 01:03:15,186 [Worker-48] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2014-11-15 01:03:15,186 [Worker-48] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 01:03:15,189 [Worker-48] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-15 01:03:48,359 [Worker-48] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 01:03:48,363 [Worker-48] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2014-11-15 01:03:48,366 [Worker-48] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 01:03:48,368 [Worker-48] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-15 01:03:54,103 [Worker-48] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 01:03:54,110 [Worker-48] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2014-11-15 01:03:54,112 [Worker-48] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 01:03:54,124 [Worker-48] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-15 01:04:01,764 [Worker-54] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 01:04:01,767 [Worker-54] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2 resources
+2014-11-15 01:04:01,769 [Worker-54] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 01:04:01,772 [Worker-54] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-15 01:04:36,698 [Worker-48] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 01:04:36,701 [Worker-48] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2 resources
+2014-11-15 01:04:36,702 [Worker-48] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 01:04:36,706 [Worker-48] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-15 01:05:42,730 [Worker-42] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 01:05:42,736 [Worker-42] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2 resources
+2014-11-15 01:05:42,740 [Worker-42] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 01:05:42,745 [Worker-42] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-15 01:06:27,927 [Worker-54] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 01:06:27,935 [Worker-54] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2014-11-15 01:06:27,937 [Worker-54] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 01:06:27,949 [Worker-54] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-15 01:06:34,940 [Worker-48] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 01:06:34,953 [Worker-48] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2014-11-15 01:06:34,961 [Worker-48] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 01:06:34,973 [Worker-48] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-15 01:06:43,436 [Worker-42] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 01:06:43,443 [Worker-42] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2014-11-15 01:06:43,444 [Worker-42] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 01:06:43,456 [Worker-42] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-15 01:06:45,699 [Worker-51] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 01:06:45,705 [Worker-51] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2014-11-15 01:06:45,710 [Worker-51] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 01:06:45,716 [Worker-51] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-15 01:07:54,491 [Worker-55] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 01:07:54,499 [Worker-55] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2 resources
+2014-11-15 01:07:54,501 [Worker-55] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 01:07:54,509 [Worker-55] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-15 01:08:03,578 [Worker-42] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 01:08:03,593 [Worker-42] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2 resources
+2014-11-15 01:08:03,597 [Worker-42] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 01:08:03,603 [Worker-42] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-15 01:09:04,980 [Worker-51] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 01:09:04,987 [Worker-51] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2014-11-15 01:09:04,990 [Worker-51] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 01:09:05,002 [Worker-51] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-15 01:26:20,449 [Worker-61] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 01:26:20,456 [Worker-61] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2014-11-15 01:26:20,467 [Worker-61] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 01:26:20,479 [Worker-61] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-15 01:26:34,493 [Worker-62] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 01:26:34,498 [Worker-62] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2 resources
+2014-11-15 01:26:34,502 [Worker-62] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 01:26:34,510 [Worker-62] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-15 01:27:23,318 [Worker-59] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 01:27:23,331 [Worker-59] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2014-11-15 01:27:23,344 [Worker-59] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 01:27:23,356 [Worker-59] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-15 01:28:27,935 [Worker-61] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 01:28:27,939 [Worker-61] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2014-11-15 01:28:27,944 [Worker-61] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 01:28:27,952 [Worker-61] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-15 01:29:46,460 [Worker-66] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 01:29:46,473 [Worker-66] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2014-11-15 01:29:46,480 [Worker-66] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 01:29:46,492 [Worker-66] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-15 01:29:48,246 [Worker-64] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 01:29:48,253 [Worker-64] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2014-11-15 01:29:48,259 [Worker-64] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 01:29:48,269 [Worker-64] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-15 01:29:52,671 [Worker-62] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 01:29:52,680 [Worker-62] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2014-11-15 01:29:52,686 [Worker-62] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 01:29:52,692 [Worker-62] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-15 01:30:10,584 [Worker-62] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 01:30:10,591 [Worker-62] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2014-11-15 01:30:10,600 [Worker-62] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 01:30:10,614 [Worker-62] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-15 01:30:32,431 [Worker-70] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 01:30:32,438 [Worker-70] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2014-11-15 01:30:32,444 [Worker-70] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 01:30:32,450 [Worker-70] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-15 01:38:13,934 [Worker-71] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 01:38:13,942 [Worker-71] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2014-11-15 01:38:13,944 [Worker-71] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 01:38:13,952 [Worker-71] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-15 01:38:21,193 [Worker-71] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 01:38:21,196 [Worker-71] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2014-11-15 01:38:21,199 [Worker-71] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 01:38:21,201 [Worker-71] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-15 01:38:32,569 [Worker-74] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 01:38:32,571 [Worker-74] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2014-11-15 01:38:32,573 [Worker-74] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 01:38:32,576 [Worker-74] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-15 01:39:23,484 [Worker-72] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 01:39:23,497 [Worker-72] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2014-11-15 01:39:23,509 [Worker-72] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 01:39:23,519 [Worker-72] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-15 01:40:10,755 [Worker-73] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 01:40:10,762 [Worker-73] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2014-11-15 01:40:10,767 [Worker-73] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 01:40:10,780 [Worker-73] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-15 01:41:22,082 [Worker-73] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 01:41:22,093 [Worker-73] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2014-11-15 01:41:22,101 [Worker-73] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 01:41:22,110 [Worker-73] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-15 01:42:07,315 [Worker-71] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 01:42:07,322 [Worker-71] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2014-11-15 01:42:07,324 [Worker-71] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 01:42:07,336 [Worker-71] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-15 01:44:07,746 [Worker-74] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 01:44:07,758 [Worker-74] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2014-11-15 01:44:07,767 [Worker-74] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 01:44:07,775 [Worker-74] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-15 01:44:53,913 [Worker-74] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 01:44:53,921 [Worker-74] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2014-11-15 01:44:53,927 [Worker-74] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 01:44:53,945 [Worker-74] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-15 01:45:43,231 [Worker-71] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 01:45:43,241 [Worker-71] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2014-11-15 01:45:43,251 [Worker-71] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 01:45:43,258 [Worker-71] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-15 01:45:48,864 [Worker-75] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 01:45:48,871 [Worker-75] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2014-11-15 01:45:48,880 [Worker-75] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 01:45:48,893 [Worker-75] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-15 01:45:58,949 [Worker-77] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 01:45:58,960 [Worker-77] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2014-11-15 01:45:58,969 [Worker-77] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 01:45:58,978 [Worker-77] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-15 01:46:03,167 [Worker-75] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 01:46:03,173 [Worker-75] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2014-11-15 01:46:03,178 [Worker-75] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 01:46:03,188 [Worker-75] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-15 01:46:09,928 [Worker-72] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 01:46:09,940 [Worker-72] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2014-11-15 01:46:09,952 [Worker-72] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 01:46:09,968 [Worker-72] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-15 01:48:58,594 [Worker-81] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 01:48:58,601 [Worker-81] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 3 resources
+2014-11-15 01:48:58,602 [Worker-81] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 01:48:58,609 [Worker-81] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-15 01:50:03,653 [Worker-80] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 01:50:03,666 [Worker-80] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2014-11-15 01:50:03,677 [Worker-80] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 01:50:03,688 [Worker-80] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-15 01:50:37,256 [Worker-77] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 01:50:37,263 [Worker-77] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2014-11-15 01:50:37,268 [Worker-77] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 01:50:37,280 [Worker-77] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-15 01:50:52,494 [Worker-83] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 01:50:52,498 [Worker-83] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2014-11-15 01:50:52,501 [Worker-83] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 01:50:52,504 [Worker-83] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-15 01:51:05,948 [Worker-77] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 01:51:05,955 [Worker-77] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2014-11-15 01:51:05,960 [Worker-77] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 01:51:05,969 [Worker-77] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-15 01:51:30,048 [Worker-81] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 01:51:30,052 [Worker-81] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2014-11-15 01:51:30,055 [Worker-81] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 01:51:30,058 [Worker-81] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-15 01:52:05,229 [Worker-86] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 01:52:05,235 [Worker-86] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2014-11-15 01:52:05,239 [Worker-86] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 01:52:05,250 [Worker-86] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-15 01:52:12,215 [Worker-80] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 01:52:12,221 [Worker-80] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2014-11-15 01:52:12,226 [Worker-80] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 01:52:12,232 [Worker-80] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-15 01:52:30,483 [Worker-85] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 01:52:30,488 [Worker-85] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 4 resources
+2014-11-15 01:52:30,490 [Worker-85] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 01:52:30,497 [Worker-85] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-15 01:52:40,377 [Worker-85] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 01:52:40,382 [Worker-85] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 4 resources
+2014-11-15 01:52:40,385 [Worker-85] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 01:52:40,390 [Worker-85] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-15 01:52:54,335 [Worker-82] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 01:52:54,339 [Worker-82] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2014-11-15 01:52:54,342 [Worker-82] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 01:52:54,349 [Worker-82] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-15 01:53:43,082 [Worker-87] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 01:53:43,085 [Worker-87] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2014-11-15 01:53:43,087 [Worker-87] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 01:53:43,090 [Worker-87] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources
+2014-11-15 01:54:06,253 [Worker-82] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 01:54:06,257 [Worker-82] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 4 resources
+2014-11-15 01:54:06,258 [Worker-82] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-15 01:54:06,263 [Worker-82] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Joe\Desktop\UndefinedParameter\QuizZing\src\test\resources

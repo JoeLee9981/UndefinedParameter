@@ -1,0 +1,9 @@
+<head>
+	<link rel="stylesheet" type="text/css" href="home.css">
+</head>
+<html>
+	<body>
+		<h1>${news.headline?html}!</h1>
+		<p>${news.body?html}!</p>
+	</body>
+</html>

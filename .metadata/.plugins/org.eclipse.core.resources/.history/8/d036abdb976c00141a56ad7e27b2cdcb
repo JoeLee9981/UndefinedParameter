@@ -1,0 +1,17 @@
+package com.UndefinedParameter.app.core;
+
+import io.dropwizard.views.View;
+
+public class HomeView extends View{
+
+	private final NewsArticle[] newsList;
+	
+	public HomeView(NewsArticle[] newsList) {
+		super("../../../../home.ftl");
+		this.newsList = newsList;
+	}
+	
+	public NewsArticle getNews() {
+		return newsList[0];
+	}
+}

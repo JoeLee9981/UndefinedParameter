@@ -17,6 +17,26 @@
         <artifactId>dropwizard-core</artifactId>
         <version>${dropwizard.version}</version>
     </dependency>
+    <dependency>
+        <groupId>io.dropwizard</groupId>
+        <artifactId>dropwizard-views</artifactId>
+        <version>${dropwizard.version}</version>
+    </dependency>
+    <dependency>
+        <groupId>io.dropwizard</groupId>
+        <artifactId>dropwizard-views-freemarker</artifactId>
+        <version>${dropwizard.version}</version>
+    </dependency>
+    <dependency>
+        <groupId>io.dropwizard</groupId>
+        <artifactId>dropwizard-assets</artifactId>
+        <version>${dropwizard.version}</version>
+    </dependency>
+    <dependency>
+        <groupId>org.xerial</groupId>
+        <artifactId>sqlite-jdbc</artifactId>
+        <version>3.8.7</version>
+    </dependency>
 	<dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>

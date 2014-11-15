@@ -2,6 +2,12 @@
 <qualifiedTypeNameHistroy>
 <fullyQualifiedTypeName name="io.dropwizard.Configuration"/>
 <fullyQualifiedTypeName name="io.dropwizard.Application"/>
-<fullyQualifiedTypeName name="javax.ws.rs.core.MediaType"/>
 <fullyQualifiedTypeName name="com.google.common.base.Optional"/>
+<fullyQualifiedTypeName name="com.yammer.dropwizard.views.View"/>
+<fullyQualifiedTypeName name="javax.ws.rs.core.MediaType"/>
+<fullyQualifiedTypeName name="com.yammer.dropwizard.config.Environment"/>
+<fullyQualifiedTypeName name="com.yammer.dropwizard.lifecycle.Managed"/>
+<fullyQualifiedTypeName name="com.yammer.dropwizard.config.Bootstrap"/>
+<fullyQualifiedTypeName name="io.dropwizard.setup.Bootstrap"/>
+<fullyQualifiedTypeName name="io.dropwizard.views.ViewBundle"/>
 </qualifiedTypeNameHistroy>
