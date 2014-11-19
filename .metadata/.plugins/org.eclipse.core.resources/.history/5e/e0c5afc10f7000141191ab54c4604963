@@ -1,0 +1,13 @@
+server:
+  type: simple
+  applicationContextPath: /
+  adminContextPath: /admin
+  connector:
+    type: http
+    port: 8080
+
+http:
+	rootPath: "/*"
+
+template: Hello, %s!
+defaultName: UndefinedParameter
