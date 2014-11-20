@@ -10,6 +10,7 @@ import io.dropwizard.views.ViewBundle;
 import com.UndefinedParameter.app.health.TemplateHealthCheck;
 import com.UndefinedParameter.app.resources.HomeResource;
 import com.UndefinedParameter.app.resources.NewsArticleResource;
+import com.UndefinedParameter.app.resources.QuizResource;
 import com.UndefinedParameter.app.resources.QuizZingResource;
 
 
@@ -50,5 +51,6 @@ public class QuizZingApplication extends Application<QuizZingConfiguration> {
 		/***** REGISTER VIEWS ******/
 		environment.jersey().register(new HomeResource());
 		environment.jersey().register(new NewsArticleResource());
+		environment.jersey().register(new QuizResource());
 	}
 }

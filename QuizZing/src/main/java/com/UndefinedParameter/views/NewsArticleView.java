@@ -4,7 +4,7 @@ import io.dropwizard.views.View;
 
 import com.UndefinedParameter.app.core.NewsArticle;
 
-public class NewsArticleView extends View{
+public class NewsArticleView extends View {
 	
 private final NewsArticle article;
 	

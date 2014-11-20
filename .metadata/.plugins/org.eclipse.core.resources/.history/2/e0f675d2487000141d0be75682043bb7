@@ -1,0 +1,35 @@
+package com.UndefinedParameter.app.core;
+
+/*
+ * Class is responsible for managing of quizzes
+ * 	Contains methods for creating, editing, removing
+ * 	quizzes. Functions as a model layer over the database.
+ */
+public class QuizManager {
+	
+	/*
+	 * Generates a random quiz
+	 * 		TODO: Need parameters and possible overloaded methods
+	 * 			  to allow customization
+	 */
+	public Quiz generateRandomQuiz() {
+		//TODO: retreive quiz from database
+		Quiz quiz = new Quiz();
+		
+		//TODO: Implement
+		
+		return quiz;
+	}
+	
+	/*
+	 * TODO: Implement this
+	 */
+	public void deleteQuiz(int id) {
+		//remove quiz from database
+	}
+	
+	/*
+	 * TODO: Add methods used for quiz management
+	 */
+
+}

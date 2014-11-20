@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>QuizZing</title>
+		<#include "../includes/header.ftl">
+	</head>
+
+	<body>
+		<h1>QUIZ VIEW</h1>
+		<p>${quiz.description?html}<br/>
+		Created By: ${quiz.creatorId?html}<br/>
+		Difficulty: ${quiz.difficulty?html}<br/>
+		Rating: ${quiz.rating?html}<br/>
+		Time: ${quiz.time?html}</p>
+		<br/>
+		<br/>
+		<#assign quest = ${quiz.nextQuestion}>
+		<h3>Question 1:</h3><br/>
+		<h2>${quest.questionText}</h2>
+		<#include "../includes/footer.ftl">
+	</body>
+</html>

@@ -6,8 +6,9 @@
 	</head>
 
 	<body>
-		<h1>${news.headline?html}!</h1>
-		<p>${news.body?html}!</p>
+		<h1>${news.headline?html}</h1>
+		<p>${news.body?html}</p>
+		<a href="news/${news.id?html}">Click Here</a>
 		<#include "../includes/footer.ftl">
 	</body>
 </html>

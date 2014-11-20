@@ -7,9 +7,8 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import jdbi.NewsArticleDAO;
-
 import com.UndefinedParameter.app.core.NewsArticle;
+import com.UndefinedParameter.jdbi.NewsArticleDAO;
 import com.UndefinedParameter.views.HomeView;
 
 @Path("/home")
