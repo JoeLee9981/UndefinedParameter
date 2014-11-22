@@ -1,0 +1,47 @@
+#login-nav
+{
+	background: #ffffff;
+	position: fixed;
+	top: 0px;
+	border-bottom: 1px red solid;
+}
+
+#login-nav, #login-nav-buffer
+{
+	height:70px;
+}
+
+#login-nav-content
+{
+	width: 1100px;
+}
+
+#login-nav-content div
+{
+	display: inline;
+}
+
+#home-nav
+{
+	display: inline;
+	padding: 0;
+	margin: 0 0 0 20px;
+	line-height: 70px;
+}
+
+#home-nav li
+{
+	display: inline;
+	padding: 0;
+	margin: 0;
+}
+
+#home-nav li
+{
+    margin-right:20px;
+}
+
+#nav-login-table
+{
+	padding: 0 20px 0 20px;
+}

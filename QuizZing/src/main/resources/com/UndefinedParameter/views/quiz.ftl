@@ -2,10 +2,14 @@
 <html lang="en">
 	<head>
 		<title>QuizZing</title>
-		<#include "../includes/header.ftl">
+		<link rel="stylesheet" type="text/css" href="/css/main.css" />
+		<link rel="stylesheet" type="text/css" href="/css/navigation.css" />
+		<link rel="stylesheet" type="text/css" href="/css/footer.css" />		
+		<script src="/scripts/libraries/jquery.js"></script>
 	</head>
 
 	<body>
+		<#include "../includes/navigation/login_navigation_bar.ftl">
 		<h1>QUIZ VIEW</h1>
 		<p>${quiz.description?html}<br/>
 		Created By: ${quiz.creatorId?html}<br/>
@@ -24,6 +28,6 @@
 			</#list>
 		</#list>
 
-		<#include "../includes/footer.ftl">
+		<#include "../includes/footer/unauthenticated_user_home_footer.ftl">
 	</body>
 </html>

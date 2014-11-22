@@ -1,9 +1,0 @@
-package com.UndefinedParameter.app.core;
-
-/*
- * Wrapper class for the quiz object.
- */
-public class Quiz {
-
-	
-}

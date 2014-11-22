@@ -1,9 +1,0 @@
-package com.UndefinedParameter.app.core;
-
-public class HomeView {
-	private final NewsArticle news;
-	
-	public HomeView(NewsArticle news) {
-		super("main.ftl")
-	}
-}

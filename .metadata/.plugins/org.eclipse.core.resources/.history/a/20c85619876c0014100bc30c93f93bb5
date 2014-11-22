@@ -1,9 +1,0 @@
-package com.UndefinedParameter.app.resources;
-
-import javax.ws.rs.Path;
-
-@Path("/home")
-@Produces(MediaType.TEXT_HTML)
-public class HomeResource {
-
-}

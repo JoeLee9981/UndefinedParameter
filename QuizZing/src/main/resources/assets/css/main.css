@@ -1,0 +1,45 @@
+body
+{
+	margin: 0;
+	padding: 0;
+	background: #f3f3f3;
+}
+
+.full-width
+{
+	width: 100%;
+}
+
+.content-width
+{
+	width: 1000px;
+}
+
+.center
+{
+	margin: 0 auto;
+}
+
+.full-height
+{
+	height: 100%;
+}
+
+.go-right
+{
+	float: right;
+}
+
+form
+{
+	margin: 0px;
+	padding: 0px;
+	display: block;
+}
+
+.vertical-middle
+{
+	position: relative;
+	top: 50%;
+	transform: translateY(-50%);
+}
