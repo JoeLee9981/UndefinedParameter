@@ -3,9 +3,12 @@ package com.UndefinedParameter.app.resources;
 import java.util.ArrayList;
 
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+
+import org.eclipse.jetty.http.HttpTester.Response;
 
 import com.UndefinedParameter.app.core.NewsArticle;
 import com.UndefinedParameter.jdbi.NewsArticleDAO;
@@ -23,5 +26,4 @@ public class HomeResource {
 		ArrayList<NewsArticle> news = (ArrayList<NewsArticle>)NewsArticleDAO.selectAllNews();
 		return new HomeView(news.toArray(new NewsArticle[news.size()]));
 	}
-	
 }
