@@ -1,17 +1,15 @@
 package com.UndefinedParameter.app.resources;
 
-import java.util.Set;
-
+import javax.validation.Valid;
 import javax.ws.rs.Consumes;
-import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import org.eclipse.jetty.http.HttpTester.Response;
-
+import com.UndefinedParameter.app.core.Group;
+import com.UndefinedParameter.app.core.GroupManager;
 import com.UndefinedParameter.views.GroupsView;
 
 @Path("/group")
@@ -25,8 +23,12 @@ public class GroupsResource {
 	}
 	
 	@POST
-	public Response addGroup(@FormParam("id") Set<Integer> ids, 
-							 @FormParam("name") Set<String> names) {
-		return new Response();
+	public void addGroup(@Valid Group group) {
+		if(group.getId() == 0 || group.getName() == null) {
+			//TODO: Return a failure response
+		}
+			
+		GroupManager.addGroup(group);
+		//return new Response();
 	}
 }

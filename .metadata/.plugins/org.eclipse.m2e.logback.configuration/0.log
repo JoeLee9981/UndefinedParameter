@@ -155,3 +155,67 @@
 2014-11-22 18:09:23,017 [Worker-61] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 10 resources
 2014-11-22 18:09:23,024 [Worker-61] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
 2014-11-22 18:09:23,025 [Worker-61] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\god_laptop\Documents\UndefinedParameter\QuizZing\src\test\resources
+2014-11-22 18:12:23,884 [Worker-44] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-22 18:12:23,892 [Worker-44] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 10 resources
+2014-11-22 18:12:23,902 [Worker-44] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-22 18:12:23,903 [Worker-44] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\god_laptop\Documents\UndefinedParameter\QuizZing\src\test\resources
+2014-11-22 18:13:40,737 [Worker-65] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-22 18:13:40,745 [Worker-65] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 10 resources
+2014-11-22 18:13:40,751 [Worker-65] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-22 18:13:40,753 [Worker-65] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\god_laptop\Documents\UndefinedParameter\QuizZing\src\test\resources
+2014-11-22 18:13:58,076 [Worker-61] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-22 18:13:58,084 [Worker-61] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 10 resources
+2014-11-22 18:13:58,091 [Worker-61] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-22 18:13:58,092 [Worker-61] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\god_laptop\Documents\UndefinedParameter\QuizZing\src\test\resources
+2014-11-22 18:22:47,551 [Worker-66] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-22 18:22:47,558 [Worker-66] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 10 resources
+2014-11-22 18:22:47,564 [Worker-66] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-22 18:22:47,566 [Worker-66] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\god_laptop\Documents\UndefinedParameter\QuizZing\src\test\resources
+2014-11-24 11:42:16,846 [Worker-15] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-24 11:42:16,863 [Worker-15] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 10 resources
+2014-11-24 11:42:16,876 [Worker-15] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-24 11:42:16,877 [Worker-15] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\god_laptop\Documents\UndefinedParameter\QuizZing\src\test\resources
+2014-11-24 11:44:26,825 [Worker-44] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-24 11:44:26,834 [Worker-44] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 10 resources
+2014-11-24 11:44:26,844 [Worker-44] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-24 11:44:26,845 [Worker-44] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\god_laptop\Documents\UndefinedParameter\QuizZing\src\test\resources
+2014-11-24 11:45:19,321 [Worker-71] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-24 11:45:19,332 [Worker-71] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 10 resources
+2014-11-24 11:45:19,342 [Worker-71] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-24 11:45:19,344 [Worker-71] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\god_laptop\Documents\UndefinedParameter\QuizZing\src\test\resources
+2014-11-24 11:46:17,124 [Worker-61] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-24 11:46:17,133 [Worker-61] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 10 resources
+2014-11-24 11:46:17,143 [Worker-61] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-24 11:46:17,144 [Worker-61] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\god_laptop\Documents\UndefinedParameter\QuizZing\src\test\resources
+2014-11-24 11:47:50,419 [Worker-61] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-24 11:47:50,431 [Worker-61] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 10 resources
+2014-11-24 11:47:50,442 [Worker-61] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-24 11:47:50,444 [Worker-61] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\god_laptop\Documents\UndefinedParameter\QuizZing\src\test\resources
+2014-11-24 11:49:48,191 [Worker-15] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-24 11:49:48,193 [Worker-15] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2014-11-24 11:49:48,199 [Worker-15] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-24 11:49:48,200 [Worker-15] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\god_laptop\Documents\UndefinedParameter\QuizZing\src\test\resources
+2014-11-24 11:50:00,919 [Worker-61] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-24 11:50:00,927 [Worker-61] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 10 resources
+2014-11-24 11:50:00,933 [Worker-61] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-24 11:50:00,934 [Worker-61] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\god_laptop\Documents\UndefinedParameter\QuizZing\src\test\resources
+2014-11-24 11:50:31,003 [Worker-44] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-24 11:50:31,013 [Worker-44] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 10 resources
+2014-11-24 11:50:31,027 [Worker-44] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-24 11:50:31,028 [Worker-44] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\god_laptop\Documents\UndefinedParameter\QuizZing\src\test\resources
+2014-11-24 12:25:22,100 [Worker-86] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-24 12:25:22,111 [Worker-86] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 10 resources
+2014-11-24 12:25:22,119 [Worker-86] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-24 12:25:22,120 [Worker-86] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\god_laptop\Documents\UndefinedParameter\QuizZing\src\test\resources
+2014-11-24 12:25:27,893 [Worker-77] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-24 12:25:27,902 [Worker-77] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 10 resources
+2014-11-24 12:25:27,909 [Worker-77] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-24 12:25:27,910 [Worker-77] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\god_laptop\Documents\UndefinedParameter\QuizZing\src\test\resources
+2014-11-24 12:26:42,565 [Worker-84] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-24 12:26:42,574 [Worker-84] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 10 resources
+2014-11-24 12:26:42,581 [Worker-84] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-24 12:26:42,582 [Worker-84] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\god_laptop\Documents\UndefinedParameter\QuizZing\src\test\resources
+2014-11-24 12:29:37,025 [Worker-77] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-24 12:29:37,027 [Worker-77] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2014-11-24 12:29:37,035 [Worker-77] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2014-11-24 12:29:37,036 [Worker-77] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\god_laptop\Documents\UndefinedParameter\QuizZing\src\test\resources
