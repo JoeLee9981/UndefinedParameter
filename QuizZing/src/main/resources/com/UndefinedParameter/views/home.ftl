@@ -2,25 +2,64 @@
 <html lang="en">
 	<head>
 		<title>QuizZing</title>
-		<link rel="stylesheet" type="text/css" href="/css/main.css" />
-		<link rel="stylesheet" type="text/css" href="/css/navigation.css" />
-		<link rel="stylesheet" type="text/css" href="/css/footer.css" />		
-		<script src="/scripts/libraries/jquery.js"></script>
+		<link rel="stylesheet" type="text/css" href="../css/main.css" />
+		<link rel="stylesheet" type="text/css" href="../css/home.css" />
+		<script src="../scripts/jquery-2.1.1.min.js"></script>
 	</head>
-
 	<body>
-		<#include "../includes/navigation/login_navigation_bar.ftl">
+		<#include "../includes/navigation.ftl">
+
+		<div class="page-content">
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
 		
+		<br>
+		<br>
+		<br>
 		
-		<div class="content-width center">
-			Content is going to go here
-			
-			<a href=/service/orgs>Find Organization</a>
-			
-			<h1>${news.headline?html}!</h1>
-			<p>${news.body?html}!</p>
+		<br>
+		<br>
+		<br>
+		
+		<br>
+		<br>
+		<br>
+		
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
 		</div>
-		
-		<#include "../includes/footer/unauthenticated_user_home_footer.ftl">
 	</body>
 </html>

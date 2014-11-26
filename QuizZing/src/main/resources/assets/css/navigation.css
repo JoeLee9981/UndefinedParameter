@@ -1,47 +1,71 @@
-#login-nav
+#navigation-container
 {
-	background: #ffffff;
-	position: fixed;
-	top: 0px;
-	border-bottom: 1px red solid;
+	top: 0;
+	background: WHITE;
+	width: 100%;
+	min-width: 1050px;
+	box-shadow:  0 0 3px black;
+	margin-bottom: 3px;
 }
 
-#login-nav, #login-nav-buffer
+#navigation-buffer, #navigation-contents
 {
-	height:70px;
+	height: 50px;
 }
 
-#login-nav-content
+#navigation-contents
 {
-	width: 1100px;
+	margin: 0 auto;
 }
 
-#login-nav-content div
+#navigation-contents > div
 {
-	display: inline;
+	display: inline-block;
+	vertical-align: top;
+	line-height: 50px;
 }
 
-#home-nav
+#navigation-contents img
 {
-	display: inline;
-	padding: 0;
-	margin: 0 0 0 20px;
-	line-height: 70px;
+	vertical-align: middle;
 }
 
-#home-nav li
+#nav-main-links
 {
-	display: inline;
-	padding: 0;
-	margin: 0;
+	width: 20%;
 }
 
-#home-nav li
+#nav-search-container
 {
-    margin-right:20px;
+	width: 60%;
 }
 
-#nav-login-table
+#nav-extra-links
 {
-	padding: 0 20px 0 20px;
+	width: 20%;
+}
+
+.search-box-main
+{
+	width: 350px;
+	border: 1px solid #b0b0b0;
+	border-right: none;
+}
+
+.search-button-main
+{
+	border: 1px solid #4679bd;;
+	background: #4679bd;
+	font-weight: bold;
+	color: white;
+	margin: 0 0 0 -5px;
+}
+
+.search-box-main, .search-button-main
+{
+	padding: 6px;
+	font-size: 11pt;
+	-moz-box-sizing: content-box;
+	-webkit-box-sizing: content-box;
+	box-sizing: content-box;
 }
