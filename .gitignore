@@ -53,6 +53,9 @@ Temporary Items
 *.pydevproject
 *.metadata
 .metadata
+
+*.log
+
 .gradle
 bin/
 tmp/
