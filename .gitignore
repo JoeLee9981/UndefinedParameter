@@ -51,6 +51,7 @@ Temporary Items
 # Our ignore eclipse stuff and metadata
 #=======================
 *.pydevproject
+*.metadata
 .metadata
 .gradle
 bin/
