@@ -2,8 +2,6 @@ package com.UndefinedParameter.app.core;
 
 import java.util.Random;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 
 public class Question {
 	
@@ -18,53 +16,42 @@ public class Question {
 		//TODO: Add more question types as needed
 	}
 	
-	/*
-	 * The id of a question
-	 */
 	private int questionId;
-	
-	/*
-	 * The user id of the creator
-	 */
 	private int creatorId;
-	
-	/*
-	 * Difficulty rating of the question
-	 */
 	private int questionDifficulty;
-	
-	/*
-	 * Text Body of the question
-	 */
+	private int rating;
 	private String questionText;
-	
-	/*
-	 * The correct answer of the question
-	 */
 	private String correctAnswer;
-	
-	/*
-	 * Incorrect answers to the question - this is for
-	 * 		multiple choice and is optional
-	 */
 	private String[] wrongAnswers;
-	
-	/*
-	 * Whether the question has been flagged as incorrect
-	 * 		or unuseful by a user
-	 */
 	private boolean flagged = false;
 	
 	//TODO: These variables need to be added to table
 	//		default them for now for prototype only
 	private int answerCount = 5; //TODO: this has to be set properly
-
 	private int correctPosition = 0; //this only applies to unordered answers
 	private boolean ordered = false;
 	private QuestionType type = QuestionType.MULTIPLE_CHOICE;
 	
 	//contains a list of answers ordered by the flags
 	private String[] allAnswers;
+	
+	public Question(int qID)
+	{
+		this.questionId = qID;
+	}
+	
+	public Question(int qID, int cID, int difficulty, int rate, String qt, String qText, String answer, String[] wrong, Boolean flag)
+	{
+		this.questionId = qID;
+		this.creatorId = cID;
+		this.questionDifficulty = difficulty;
+		this.rating = rate;
+		this.type = QuestionType.valueOf(qt);
+		this.questionText = qText;
+		this.correctAnswer = answer;
+		this.wrongAnswers = wrong;
+		this.flagged = flag;
+	}
 	
 	public void setAnswers() {
 		String[] answers = new String[answerCount];
@@ -93,16 +80,10 @@ public class Question {
 		}
 	}
 	
-	/*
-	 * Check for correct answer to a question
-	 */
 	public boolean isCorrectAnswer(String answer) {
 		return answer.equals(correctAnswer);
 	}
 	
-	/*
-	 * Returns an answer of a question by an int index
-	 */
 	public String getAnswerAt(int index) {
 		if(allAnswers == null || allAnswers.length == 0)
 			setAnswers();
@@ -112,9 +93,6 @@ public class Question {
 			return "";
 	}
 	
-	/*
-	 * Returns an array of all the answers in a quiz
-	 */
 	public String[] getAnswers() {
 		if(allAnswers == null || allAnswers.length == 0) {
 			setAnswers();
@@ -122,114 +100,90 @@ public class Question {
 		return allAnswers;
 	}
 	
-	/*********************************** Getters and Setters *********************************/
-	
-	@JsonProperty
 	public int getQuestionId() {
 		return questionId;
 	}
 	
-	@JsonProperty
 	public void setQuestionId(int questionId) {
 		this.questionId = questionId;
 	}
 	
-	@JsonProperty
 	public int getCreatorId() {
 		return creatorId;
 	}
 	
-	@JsonProperty
 	public void setCreatorId(int creatorId) {
 		this.creatorId = creatorId;
 	}
 	
-	@JsonProperty
 	public int getQuestionDifficulty() {
 		return questionDifficulty;
 	}
 	
-	@JsonProperty
 	public void setQuestionDifficulty(int questionDifficulty) {
 		this.questionDifficulty = questionDifficulty;
 	}
 	
-	@JsonProperty
 	public String getQuestionText() {
 		return questionText;
 	}
 	
-	@JsonProperty
 	public void setQuestionText(String questionText) {
 		this.questionText = questionText;
 	}
 	
-	@JsonProperty
 	public String getCorrectAnswer() {
 		return correctAnswer;
 	}
 	
-	@JsonProperty
 	public void setCorrectAnswer(String correctAnswer) {
 		this.correctAnswer = correctAnswer;
 	}
 	
-	@JsonProperty
 	public String[] getWrongAnswers() {
 		return wrongAnswers;
 	}
 	
-	@JsonProperty
 	public void setWrongAnswers(String[] wrongAnswers) {
 		this.wrongAnswers = wrongAnswers;
 	}
 	
-	@JsonProperty
 	public boolean isFlagged() {
 		return flagged;
 	}
 	
-	@JsonProperty
 	public void setFlagged(boolean flagged) {
 		this.flagged = flagged;
 	}
 	
-	@JsonProperty
 	public boolean isOrdered() {
 		return ordered;
 	}
 	
-	@JsonProperty
 	public void setOrdered(boolean ordered) {
 		this.ordered = ordered;
 	}
 
-	@JsonProperty
 	public QuestionType getType() {
 		return type;
 	}
 
-	@JsonProperty
 	public void setType(QuestionType type) {
 		this.type = type;
 	}
-	
-	@JsonProperty
+
 	public int getCorrectPosition() {
 		return correctPosition;
 	}
 
-	@JsonProperty
 	public void setCorrectPosition(int correctPosition) {
 		this.correctPosition = correctPosition;
 	}
 
-	@JsonProperty
 	public int getAnswerCount() {
 		return answerCount;
 	}
 
-	@JsonProperty
 	public void setAnswerCount(int answerCount) {
 		this.answerCount = answerCount;
 	}
