@@ -3,44 +3,113 @@ package com.UndefinedParameter.app.core;
 import java.util.ArrayList;
 
 /*
- * Wrapper class for the quiz object.
+ * This is the class to represent a Quiz.
+ * 		It contains a list of incorrect questions (multiple choice)
+ * 		as well as the correct question and other stats
+ * 		This class can be used to randomize order of quiz, determine a correct
+ * 		answer and any other functions INTERNAL to the quiz
+ * 
+ * 		This class can function similar to an iterator. it can keep track of what
+ * 		question is currently being viewed, and is used to retreive the next
+ * 		or the last question.
  */
 public class Quiz {
 
+	/*
+	 * 	This is the id of the quiz
+	 */
 	private int quizId;
+	
+	/*
+	 * This is the user id of the quiz creator
+	 */
 	private int creatorId;
+	
+	/*
+	 * This is the difficulty of the quiz
+	 */
 	private int difficulty;
+	
+	/*
+	 * This is the user rating of the quiz
+	 * 		This is an averaged rating
+	 */
 	private int rating;
+	
+	/*
+	 * This is the description of the quiz
+	 */
 	private String description;
+	
+	/*
+	 * This is an optional argument for time
+	 * 		in milliseconds.
+	 */
 	private int time;
 	
+	/*
+	 * A list of populated questions
+	 */
 	private ArrayList<Question> questions;
 	
+	/*
+	 * This is the position of the current question in the quiz
+	 */
 	public int questionPosition = -1;
 	
+	//Constructor
 	public Quiz() {
 		questions = new ArrayList<Question>();
 	}
 	
+	//parameterized constructor to set a list of questions
 	public Quiz(ArrayList<Question> questions) {
 		this.questions = questions;
 	}
 	
+	/********************************* Quiz helper questions *********************************/
+	
+	/*
+	 * Submit a list of answers and determine results of the quiz
+	 * 		returns the number of correct answers
+	 */
+	public int submitQuestions(String[] answers) {
+		//TODO: Implement
+		return 0;
+	}
+	
+	
+	/*
+	 * Return the number of questions in a quiz
+	 */
 	public int getQuestionCount() {
 		return questions.size();
 	}
 	
+	/*
+	 * Return an array of questions
+	 */
 	public Question[] getQuestions() {
 		return questions.toArray(new Question[questions.size()]);
 	}
 	
+	/*
+	 * Sets the questions of a quiz to a list of provided questions
+	 */
+	@SuppressWarnings("unchecked")
 	public void setQuestions(ArrayList<Question> questions) {
 		this.questions = (ArrayList<Question>)questions.clone();
 	}
 	
+	/*
+	 * Add a single question to the list
+	 */
 	public void addQuestion(Question question) {
 		questions.add(question);
 	}
+	
+	
+	/******************************** Standard getters and setters ********************************/
 	
 	public int getQuizId() {
 		return quizId;
@@ -79,6 +148,11 @@ public class Quiz {
 		this.time = time;
 	}
 	
+	/********************** Iteration Methods ************************************/
+	
+	/*
+	 * Move the position of the quiz 1 over and return the question
+	 */
 	public Question getNextQuestion() throws Exception {
 		if(questions == null)
 			throw new Exception("Questions are empty, please add first");
@@ -90,6 +164,9 @@ public class Quiz {
 		}
 	}
 	
+	/*
+	 * Move the position of the quiz back by 1 and return the question
+	 */
 	public Question getPreviousQuestion() throws Exception {
 		if(questions == null)
 			throw new Exception("Questions are empty, please add first");
@@ -101,9 +178,26 @@ public class Quiz {
 		}
 	}
 	
+	/*
+	 * Return the current question
+	 */
 	public Question getCurrentQuestion() {
 		Question question = questions.get(questionPosition);
 		return question;
+	}
+	
+	/*
+	 * Check if at the end of the question list
+	 */
+	public boolean hasNext() {
+		return questionPosition < questions.size() - 1;
+	}
+	
+	/*
+	 * Check if at the beginning of the question list
+	 */
+	public boolean hasPrevious() {
+		return questionPosition > 0;
 	}
 
 }

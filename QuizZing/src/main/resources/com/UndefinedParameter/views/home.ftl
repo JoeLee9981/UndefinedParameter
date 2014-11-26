@@ -14,6 +14,9 @@
 		
 		<div class="content-width center">
 			Content is going to go here
+			
+			<a href=/service/orgs>Find Organization</a>
+			
 			<h1>${news.headline?html}!</h1>
 			<p>${news.body?html}!</p>
 		</div>

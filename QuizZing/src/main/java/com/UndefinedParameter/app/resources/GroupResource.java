@@ -9,12 +9,12 @@ import javax.ws.rs.core.MediaType;
 import com.UndefinedParameter.app.core.Group;
 import com.UndefinedParameter.views.GroupView;
 
-@Path("/group/{id}")
+@Path("/orgs/{orgId}/{groupId}")
 @Produces(MediaType.TEXT_HTML)
 public class GroupResource {
 
 	@GET
-	public GroupView getGroupView(@PathParam("id") int id) {
-		return new GroupView(new Group(id, "My Group"));
+	public GroupView getGroupView(@PathParam("orgId") int orgId, @PathParam("groupId") int groupId) {
+		return new GroupView(new Group(groupId, orgId, "My Group"));
 	}
 }

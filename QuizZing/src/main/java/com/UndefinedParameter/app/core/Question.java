@@ -16,17 +16,47 @@ public class Question {
 		//TODO: Add more question types as needed
 	}
 	
+	/*
+	 * The id of a question
+	 */
 	private int questionId;
+	
+	/*
+	 * The user id of the creator
+	 */
 	private int creatorId;
+	
+	/*
+	 * Difficulty rating of the question
+	 */
 	private int questionDifficulty;
+	
+	/*
+	 * Text Body of the question
+	 */
 	private String questionText;
+	
+	/*
+	 * The correct answer of the question
+	 */
 	private String correctAnswer;
+	
+	/*
+	 * Incorrect answers to the question - this is for
+	 * 		multiple choice and is optional
+	 */
 	private String[] wrongAnswers;
+	
+	/*
+	 * Whether the question has been flagged as incorrect
+	 * 		or unuseful by a user
+	 */
 	private boolean flagged = false;
 	
 	//TODO: These variables need to be added to table
 	//		default them for now for prototype only
 	private int answerCount = 5; //TODO: this has to be set properly
+
 	private int correctPosition = 0; //this only applies to unordered answers
 	private boolean ordered = false;
 	private QuestionType type = QuestionType.MULTIPLE_CHOICE;
@@ -61,10 +91,16 @@ public class Question {
 		}
 	}
 	
+	/*
+	 * Check for correct answer to a question
+	 */
 	public boolean isCorrectAnswer(String answer) {
 		return answer.equals(correctAnswer);
 	}
 	
+	/*
+	 * Returns an answer of a question by an int index
+	 */
 	public String getAnswerAt(int index) {
 		if(allAnswers == null || allAnswers.length == 0)
 			setAnswers();
@@ -74,12 +110,17 @@ public class Question {
 			return "";
 	}
 	
+	/*
+	 * Returns an array of all the answers in a quiz
+	 */
 	public String[] getAnswers() {
 		if(allAnswers == null || allAnswers.length == 0) {
 			setAnswers();
 		}
 		return allAnswers;
 	}
+	
+	/*********************************** Getters and Setters *********************************/
 	
 	public int getQuestionId() {
 		return questionId;

@@ -7,7 +7,7 @@ public class QuizCreatorView extends View {
 
 	
 	public QuizCreatorView() {
-		super("quizcreator.ftl");
+		super("quiz_create.ftl");
 	}
 	
 	
