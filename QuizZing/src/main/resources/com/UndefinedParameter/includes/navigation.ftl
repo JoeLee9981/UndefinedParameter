@@ -14,6 +14,12 @@
 			</form>
 		</div>
 		<div id="nav-extra-links">
+			<ul>
+				<li><a href=/service/orgs>Organization</a></li>
+				<li>Statistics</li>
+				<li>Sign In</li>
+				<li>Register</li>
+			</ul>
 		</div>
 	</div>
 </div>
