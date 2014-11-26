@@ -54,6 +54,11 @@ Temporary Items
 *.metadata
 .metadata
 
+*.metadata/
+.metadata/
+*.log/
+.log/
+
 *.log
 
 .gradle
