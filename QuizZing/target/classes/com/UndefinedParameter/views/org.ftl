@@ -15,9 +15,13 @@
 		<div class="content-width center">
 			Content is going to go here
 			
-			<a href=/service/orgs/0/0>Example Group</a>
+			<h1>${organization.name?html}</h1>
+			<h2>${organization.city?html}</h2>
+			<h2>${organization.state?html}</h2>
+			<h2>${organization.country?html}</h2>
+			<p>${organization.description?html}</p>
 			
-			<h1>${organization.name?html}!</h1>
+			<a href=/service/orgs/0/0>Example Group</a>
 		</div>
 		
 		<#include "../includes/footer/unauthenticated_user_home_footer.ftl">

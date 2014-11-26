@@ -7,6 +7,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import com.UndefinedParameter.app.core.Organization;
+import com.UndefinedParameter.app.core.OrganizationManager;
 import com.UndefinedParameter.views.OrganizationView;
 
 @Path("orgs/{id}")
@@ -15,6 +16,6 @@ public class OrganizationResource {
 
 	@GET
 	public OrganizationView getOrganizationView(@PathParam("id") int id) {
-		return new OrganizationView(new Organization(id, "My organization"));
+		return new OrganizationView(OrganizationManager.findOrgById(id));
 	}
 }

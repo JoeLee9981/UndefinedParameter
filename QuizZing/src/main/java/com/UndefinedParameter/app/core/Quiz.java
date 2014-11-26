@@ -2,6 +2,8 @@ package com.UndefinedParameter.app.core;
 
 import java.util.ArrayList;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 /*
  * This is the class to represent a Quiz.
  * 		It contains a list of incorrect questions (multiple choice)
@@ -111,39 +113,62 @@ public class Quiz {
 	
 	/******************************** Standard getters and setters ********************************/
 	
+	@JsonProperty
 	public int getQuizId() {
 		return quizId;
 	}
+	
+	@JsonProperty
 	public void setQuizId(int quizId) {
 		this.quizId = quizId;
 	}
+	
+	@JsonProperty
 	public int getCreatorId() {
 		return creatorId;
 	}
+	
+	@JsonProperty
 	public void setCreatorId(int creatorId) {
 		this.creatorId = creatorId;
 	}
+	
+	@JsonProperty
 	public int getDifficulty() {
 		return difficulty;
 	}
+	
+	@JsonProperty
 	public void setDifficulty(int difficulty) {
 		this.difficulty = difficulty;
 	}
+	
+	@JsonProperty
 	public int getRating() {
 		return rating;
 	}
+	
+	@JsonProperty
 	public void setRating(int rating) {
 		this.rating = rating;
 	}
+	
+	@JsonProperty
 	public String getDescription() {
 		return description;
 	}
+	
+	@JsonProperty
 	public void setDescription(String description) {
 		this.description = description;
 	}
+	
+	@JsonProperty
 	public int getTime() {
 		return time;
 	}
+	
+	@JsonProperty
 	public void setTime(int time) {
 		this.time = time;
 	}

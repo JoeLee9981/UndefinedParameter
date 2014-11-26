@@ -1,5 +1,7 @@
 package com.UndefinedParameter.app.core;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 /*
  * This is the root of a organization and class structure
  * 		For example the University of utah (Organization) owns the
@@ -49,50 +51,62 @@ public class Organization {
 	
 	/******************************** Getters and Setters ****************************/
 
+	@JsonProperty
 	public int getId() {
 		return id;
 	}
 
+	@JsonProperty
 	public void setId(int id) {
 		this.id = id;
 	}
 
+	@JsonProperty
 	public String getName() {
 		return name;
 	}
 
+	@JsonProperty
 	public void setName(String name) {
 		this.name = name;
 	}
 
+	@JsonProperty
 	public String getDescription() {
 		return description;
 	}
 
+	@JsonProperty
 	public void setDescription(String description) {
 		this.description = description;
 	}
 
+	@JsonProperty
 	public String getCity() {
 		return city;
 	}
 
+	@JsonProperty
 	public void setCity(String city) {
 		this.city = city;
 	}
 
+	@JsonProperty
 	public String getState() {
 		return state;
 	}
 
+	@JsonProperty
 	public void setState(String state) {
 		this.state = state;
 	}
 
+	@JsonProperty
 	public String getCountry() {
 		return country;
 	}
 
+	@JsonProperty
 	public void setCountry(String country) {
 		this.country = country;
 	}

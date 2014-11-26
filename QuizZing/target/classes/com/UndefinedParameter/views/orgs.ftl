@@ -15,9 +15,12 @@
 		<div class="content-width center">
 			Content is going to go here
 			
-			<a href=/service/orgs/0>Example Organization</a>
-			
 			<h1>Organizations Page</h1>
+			<br/>
+			<#list getOrganizations("Salt Lake") as org>
+				<a href="/service/orgs/${org.id}">${org.name}</a><br/>
+			</#list>
+			
 		</div>
 		
 		<#include "../includes/footer/unauthenticated_user_home_footer.ftl">

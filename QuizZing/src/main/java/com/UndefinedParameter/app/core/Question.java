@@ -2,6 +2,8 @@ package com.UndefinedParameter.app.core;
 
 import java.util.Random;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 
 public class Question {
 	
@@ -122,90 +124,112 @@ public class Question {
 	
 	/*********************************** Getters and Setters *********************************/
 	
+	@JsonProperty
 	public int getQuestionId() {
 		return questionId;
 	}
 	
+	@JsonProperty
 	public void setQuestionId(int questionId) {
 		this.questionId = questionId;
 	}
 	
+	@JsonProperty
 	public int getCreatorId() {
 		return creatorId;
 	}
 	
+	@JsonProperty
 	public void setCreatorId(int creatorId) {
 		this.creatorId = creatorId;
 	}
 	
+	@JsonProperty
 	public int getQuestionDifficulty() {
 		return questionDifficulty;
 	}
 	
+	@JsonProperty
 	public void setQuestionDifficulty(int questionDifficulty) {
 		this.questionDifficulty = questionDifficulty;
 	}
 	
+	@JsonProperty
 	public String getQuestionText() {
 		return questionText;
 	}
 	
+	@JsonProperty
 	public void setQuestionText(String questionText) {
 		this.questionText = questionText;
 	}
 	
+	@JsonProperty
 	public String getCorrectAnswer() {
 		return correctAnswer;
 	}
 	
+	@JsonProperty
 	public void setCorrectAnswer(String correctAnswer) {
 		this.correctAnswer = correctAnswer;
 	}
 	
+	@JsonProperty
 	public String[] getWrongAnswers() {
 		return wrongAnswers;
 	}
 	
+	@JsonProperty
 	public void setWrongAnswers(String[] wrongAnswers) {
 		this.wrongAnswers = wrongAnswers;
 	}
 	
+	@JsonProperty
 	public boolean isFlagged() {
 		return flagged;
 	}
 	
+	@JsonProperty
 	public void setFlagged(boolean flagged) {
 		this.flagged = flagged;
 	}
 	
+	@JsonProperty
 	public boolean isOrdered() {
 		return ordered;
 	}
 	
+	@JsonProperty
 	public void setOrdered(boolean ordered) {
 		this.ordered = ordered;
 	}
 
+	@JsonProperty
 	public QuestionType getType() {
 		return type;
 	}
 
+	@JsonProperty
 	public void setType(QuestionType type) {
 		this.type = type;
 	}
-
+	
+	@JsonProperty
 	public int getCorrectPosition() {
 		return correctPosition;
 	}
 
+	@JsonProperty
 	public void setCorrectPosition(int correctPosition) {
 		this.correctPosition = correctPosition;
 	}
 
+	@JsonProperty
 	public int getAnswerCount() {
 		return answerCount;
 	}
 
+	@JsonProperty
 	public void setAnswerCount(int answerCount) {
 		this.answerCount = answerCount;
 	}

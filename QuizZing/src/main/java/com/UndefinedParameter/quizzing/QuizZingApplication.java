@@ -17,7 +17,6 @@ import com.UndefinedParameter.app.resources.OrgsResource;
 import com.UndefinedParameter.app.resources.QuestionCreatorResource;
 import com.UndefinedParameter.app.resources.QuizCreatorResource;
 import com.UndefinedParameter.app.resources.QuizResource;
-import com.UndefinedParameter.app.resources.QuizZingResource;
 
 
 
@@ -46,13 +45,9 @@ public class QuizZingApplication extends Application<QuizZingConfiguration> {
 	public void run(QuizZingConfiguration configuration, Environment environment)
 			throws Exception {
 		
-		environment.jersey().setUrlPattern("/service/*");
-		
-		final QuizZingResource resource = new QuizZingResource(configuration.getTemplate(), configuration.getDefaultName());
-		
+		environment.jersey().setUrlPattern("/service/*");		
 		final TemplateHealthCheck healthCheck = new TemplateHealthCheck(configuration.getTemplate());
 		environment.healthChecks().register("template", healthCheck);
-		environment.jersey().register(resource);
 		
 		/***** REGISTER VIEWS ******/
 		environment.jersey().register(new HomeResource());
