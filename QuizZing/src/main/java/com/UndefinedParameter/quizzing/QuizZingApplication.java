@@ -12,13 +12,10 @@ import org.slf4j.LoggerFactory;
 
 import com.UndefinedParameter.app.health.TemplateHealthCheck;
 import com.UndefinedParameter.app.resources.GroupResource;
-import com.UndefinedParameter.app.resources.GroupsResource;
 import com.UndefinedParameter.app.resources.HomeResource;
 import com.UndefinedParameter.app.resources.NewsArticleResource;
 import com.UndefinedParameter.app.resources.OrganizationResource;
-import com.UndefinedParameter.app.resources.OrgsResource;
 import com.UndefinedParameter.app.resources.QuestionCreatorResource;
-import com.UndefinedParameter.app.resources.QuizCreatorResource;
 import com.UndefinedParameter.app.resources.QuizResource;
 
 
@@ -70,10 +67,7 @@ public class QuizZingApplication extends Application<QuizZingConfiguration> {
 		environment.jersey().register(new NewsArticleResource());
 		environment.jersey().register(new QuizResource());
 		environment.jersey().register(new GroupResource());
-		environment.jersey().register(new GroupsResource());
 		environment.jersey().register(new OrganizationResource());
-		environment.jersey().register(new OrgsResource());
-		environment.jersey().register(new QuizCreatorResource());
 		environment.jersey().register(new QuestionCreatorResource());
 	}
 }

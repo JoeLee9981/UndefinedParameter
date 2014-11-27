@@ -35,6 +35,10 @@ public class Group {
 		this.name = name;
 	}
 	
+	public Group() {
+		this.id = -1;
+	}
+	
 	
 	/************************** Standard Getters and Setters *************************/
 	

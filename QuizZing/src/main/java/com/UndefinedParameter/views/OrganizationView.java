@@ -2,6 +2,7 @@ package com.UndefinedParameter.views;
 
 import io.dropwizard.views.View;
 
+import com.UndefinedParameter.app.core.GroupManager;
 import com.UndefinedParameter.app.core.Organization;
 
 public class OrganizationView extends View {
