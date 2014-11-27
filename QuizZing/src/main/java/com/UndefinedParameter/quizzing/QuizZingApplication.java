@@ -23,8 +23,10 @@ import com.UndefinedParameter.app.resources.QuizResource;
 
 
 
-/**
- * Hello world!
+/*
+ * QuizZing Application is the main entry point of the server
+ * 	It contains the main method to run the server and registers
+ * 	the views with Jersey
  *
  */
 public class QuizZingApplication extends Application<QuizZingConfiguration> {

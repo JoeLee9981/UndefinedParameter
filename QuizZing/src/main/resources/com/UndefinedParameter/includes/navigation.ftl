@@ -1,10 +1,10 @@
-<link rel="stylesheet" type="text/css" href="../css/navigation.css" />
+<link rel="stylesheet" type="text/css" href="/css/navigation.css" />
 
 <div id="navigation-container">
 	<div id="navigation-contents" class="content-width">
 		<div id="nav-main-links">
 			<a href="#">
-				<img src="../images/quizzinglogo.png" alt="some_text">
+				<img src="/images/quizzinglogo.png" alt="some_text">
 			</a>
 		</div>
 		<div id="nav-search-container">

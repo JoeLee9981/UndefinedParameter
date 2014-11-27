@@ -24,9 +24,9 @@
 			
 			<br/>
 			<h2>Add a group</h2>
-			<input type="text" name="email" placeholder="Email"><br/>
-			<input type="password" name="password" placeholder="Password"><br/>
-			<button type="submit">Login</button><br/>
+			<input type="text" name="name" placeholder="Name"><br/>
+			<input type="textarea" name="description" placeholder="Description"><br/>
+			<button type="submit">Add</button><br/>
 		</div>
 		
 		
