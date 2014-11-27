@@ -1,7 +1,7 @@
 #navigation-container
 {
 	top: 0;
-	background: #37474F;
+	background: #1976D2;
 	width: 100%;
 	min-width: 1050px;
 	box-shadow:  0 0 3px black;
@@ -59,8 +59,8 @@
 
 .search-button-main
 {
-	border: 1px solid #FF8F00;;
-	background: #FF8F00;
+	border: 1px solid #01579B;;
+	background: #01579B;
 	font-weight: bold;
 	color: white;
 	margin: 0 0 0 -5px;
