@@ -24,6 +24,17 @@ public class Group {
 	 */
 	private String name;
 	
+	
+	/*
+	 * TODO: Add long name and description fields
+	 * 	May also want to consider a category field
+	 * 		For exampe. name would be CS-4962, long Name
+	 * 		would be Mobile Apps - Android/iOS, category would
+	 * 		be Computer Science, description would be a description
+	 * 		of the class.
+	 */
+	
+	
 	/*
 	 * constructor - For now organizationId is not required to create
 	 * 		The group object, this allows more flexibility, may be

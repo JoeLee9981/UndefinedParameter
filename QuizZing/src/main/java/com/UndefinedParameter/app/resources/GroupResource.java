@@ -41,8 +41,8 @@ public class GroupResource {
 	
 	@GET
 	@Path("/{groupId}")
-	public GroupView getGroupView(@PathParam("orgId") int orgId, @PathParam("groupId") int groupId) {
-		return new GroupView(new Group(groupId, orgId, "My Group"));
+	public GroupView getGroupView(@PathParam("groupId") int groupId) {
+		return new GroupView(GroupManager.findGroupById(groupId));
 	}
 	
 	

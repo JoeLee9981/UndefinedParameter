@@ -20,7 +20,9 @@
 			<h2>${organization.country?html}</h2>
 			<p>${organization.description?html}</p>
 			
-			<a href=/service/group/0>Example Group</a>
+			<#list groups as group>
+				<a href="/service/group/${group.id}">${group.name?html}</a><br/>
+			</#list>
 			
 			<br/>
 			<h2>Add a group</h2>
@@ -38,8 +40,11 @@
 <script>
 	
 	function addGroup() {
-		var j = {organizationId: ${organization.id}, name:document.getElementById('nameText').value };
-		alert(JSON.stringify(j));
+		
+		//TODO Prevalidate these fields
+		
+		//TODO Add more fields to the entry - see Group.java file for more info
+		
 		 $.ajax({
 			type: 'POST',
 			url: "/service/group",

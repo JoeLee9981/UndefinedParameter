@@ -12,11 +12,14 @@
 		
 		
 		<div class="content-width center">
-			Content is going to go here
+
 			<h1>${group.name?html}!</h1>
 			
 			<a href="/service/quiz/0">Take a Quiz</a>
 			<a href="/service/quiz/create">Create a New Quiz</a>
+			
+			<p>Return to: </p><br/>
+			<a href="/service/orgs/${organization.id}">${organization.name}</a>
 		</div>
 		
 		<#include "../includes/footer/unauthenticated_user_home_footer.ftl">
