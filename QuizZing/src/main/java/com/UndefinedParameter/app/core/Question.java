@@ -35,9 +35,8 @@ public class Question {
 	//contains a list of answers ordered by the flags
 	private String[] allAnswers;
 	
-	public Question(int qID)
+	public Question()
 	{
-		this.questionId = qID;
 	}
 	
 	public Question(int qID, int cID, int difficulty, int rate, String qt, String qText, String answer, String[] wrong, Boolean flag)
@@ -188,4 +187,11 @@ public class Question {
 		this.answerCount = answerCount;
 	}
 	
+	public int getRating() {
+		return rating;
+	}
+
+	public void setRating(int rating) {
+		this.rating = rating;
+	}
 }

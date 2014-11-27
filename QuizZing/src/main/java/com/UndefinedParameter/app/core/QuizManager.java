@@ -2,6 +2,12 @@ package com.UndefinedParameter.app.core;
 
 import java.util.ArrayList;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.UndefinedParameter.jdbi.QuizDAO;
+import com.UndefinedParameter.quizzing.QuizZingApplication;
+
 /*
  * Class is responsible for managing of quizzes
  * 	Contains methods for creating, editing, removing
@@ -9,41 +15,59 @@ import java.util.ArrayList;
  */
 public class QuizManager {
 	
+	final static Logger logger = LoggerFactory.getLogger(QuizZingApplication.class);
+	final static int defaultNumOfQuestions = 10;
+	final static int maxNumOfQuestions = 100;
+	
 	/*
-	 * Generates a random quiz
-	 * 		TODO: Need parameters and possible overloaded methods
-	 * 			  to allow customization
+	 *	generateRandomQuiz - Pulls questions from database by groupId, 
+	 *	puts them in a Quiz object.
 	 */
-	public static Quiz generateRandomQuiz() {
-		//TODO: retreive quiz from database
-		Quiz quiz = new Quiz();
+	public static Quiz generateRandomQuiz(int groupId) {
+		Quiz quiz = new Quiz(QuizDAO.retrieveQuiz(groupId));
 		
-		//TODO: Implement
+		//TODO: Narrow quiz to numOfQuestions.
 		
 		return quiz;
 	}
 	
 	/*
-	 * TODO: Implement this
+	 * 	generateRandomQuiz - Pulls questions from database by tags,
+	 * 	puts them in a Quiz object.
 	 */
-	public static void deleteQuiz(int id) {
-		//remove quiz from database
+	public static Quiz generateRandomQuiz(int[] tagIds) {
+		
+		Quiz quiz = new Quiz(QuizDAO.retrieveQuiz(tagIds));
+		
+		//TODO: Narrow quiz to numOfQuestions
+		
+		return quiz;
+	}
+	
+	/*
+	 *	deleteQuiz - Deletes quiz based on quiz ID.
+	 */
+	public static void deleteQuiz(int qID) {
+		QuizDAO.deleteQuiz(qID);
 	}
 	
 	/*
 	 * TODO: Add methods used for quiz management
 	 */
-	public static Quiz findQuiz(int id) {
-		//TODO: Make a call to db to find this
+	public static Quiz findQuiz(int qID) {
+		//TODO: Uncomment code below when we're ready to implement. 
+		
+		//Quiz quiz = new Quiz(QuizDAO.retrieveExistingQuiz(qID));
+		
 		Quiz quiz = new Quiz();
 		
-		quiz.setQuizId(id);
+		quiz.setQuizId(qID);
 		quiz.setCreatorId(100);
 		quiz.setDescription("THIS IS A FUN QUIZ");
 		quiz.setRating(5);
 		quiz.setDifficulty(1);
 		quiz.setTime(1000);
-		quiz.setQuestions(getQuestions(id));
+		quiz.setQuestions(getQuestions(qID));
 		return quiz;
 	}
 	
@@ -51,7 +75,7 @@ public class QuizManager {
 	 * TODO: Implement this
 	 */
 	private static ArrayList<Question> getQuestions(int quizId) {
-		ArrayList<Question> questions = new ArrayList<Question>(); //TODO: get this from database
+		ArrayList<Question> questions = new ArrayList<Question>(); 
 		
 		for(int i = 0; i < 5; i++) {
 			questions.add(getQuestion(i));
@@ -63,7 +87,8 @@ public class QuizManager {
 	 *  TODO: Implement this - NOTE THIS WILL NOT WORK FOR REAL CODING
 	 */
 	private static Question getQuestion(int questionId) {
-		Question question = new Question(questionId);
+		Question question = new Question();
+		question.setQuestionId(questionId);
 		question.setType(Question.QuestionType.MULTIPLE_CHOICE);
 		question.setCreatorId(questionId * questionId);
 		question.setQuestionDifficulty(5);
