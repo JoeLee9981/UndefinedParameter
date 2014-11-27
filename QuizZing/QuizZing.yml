@@ -5,6 +5,20 @@ server:
   connector:
     type: http
     port: 8080
+    
+logging:
+  level: Info
+  appenders:
+
+    - type: console
+      threshold: ALL
+
+    - type: file
+      threshold: ALL
+      currentLogFilename: ./logs/debug.log
+      archivedLogFilenamePattern: ./logs/example-%d{yyyy-MM-dd}.logg.gz
+      archivedFileCount: 30
+      timeZone: UTC
 
 template: Hello, %s!
 defaultName: UndefinedParameter

@@ -7,6 +7,9 @@ import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
 import io.dropwizard.views.ViewBundle;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.UndefinedParameter.app.health.TemplateHealthCheck;
 import com.UndefinedParameter.app.resources.GroupResource;
 import com.UndefinedParameter.app.resources.GroupsResource;
@@ -25,7 +28,9 @@ import com.UndefinedParameter.app.resources.QuizResource;
  *
  */
 public class QuizZingApplication extends Application<QuizZingConfiguration> {
-    public static void main( String[] args ) throws Exception {
+    final static Logger logger = LoggerFactory.getLogger(QuizZingApplication.class);
+	
+	public static void main( String[] args ) throws Exception {
         new QuizZingApplication().run(args);
     }
     
@@ -44,6 +49,9 @@ public class QuizZingApplication extends Application<QuizZingConfiguration> {
 	@Override
 	public void run(QuizZingConfiguration configuration, Environment environment)
 			throws Exception {
+		
+		logger.info("QuizZingApplication - Running Server");
+
 		
 		environment.jersey().setUrlPattern("/service/*");		
 		final TemplateHealthCheck healthCheck = new TemplateHealthCheck(configuration.getTemplate());

@@ -63,9 +63,8 @@ public class QuizManager {
 	 *  TODO: Implement this - NOTE THIS WILL NOT WORK FOR REAL CODING
 	 */
 	private static Question getQuestion(int questionId) {
-		Question question = new Question();
+		Question question = new Question(questionId);
 		question.setType(Question.QuestionType.MULTIPLE_CHOICE);
-		question.setQuestionId(questionId);
 		question.setCreatorId(questionId * questionId);
 		question.setQuestionDifficulty(5);
 		question.setQuestionText("This is question " + questionId + ", please pick your answer");
