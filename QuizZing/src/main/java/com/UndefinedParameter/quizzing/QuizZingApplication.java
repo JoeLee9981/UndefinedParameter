@@ -31,7 +31,13 @@ public class QuizZingApplication extends Application<QuizZingConfiguration> {
     final static Logger logger = LoggerFactory.getLogger(QuizZingApplication.class);
 	
 	public static void main( String[] args ) throws Exception {
-        new QuizZingApplication().run(args);
+		
+		try {
+			new QuizZingApplication().run(args);
+		}
+		catch(Exception e) {
+			logger.error("QuizZing Application - Unable to start Server: " + e.getStackTrace());
+		}
     }
     
     @Override

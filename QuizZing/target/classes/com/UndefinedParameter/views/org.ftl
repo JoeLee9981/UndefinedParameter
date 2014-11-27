@@ -3,13 +3,12 @@
 	<head>
 		<title>QuizZing</title>
 		<link rel="stylesheet" type="text/css" href="/css/main.css" />
-		<link rel="stylesheet" type="text/css" href="/css/navigation.css" />
-		<link rel="stylesheet" type="text/css" href="/css/footer.css" />		
-		<script src="/scripts/libraries/jquery.js"></script>
+		<link rel="stylesheet" type="text/css" href="/css/home.css" />
+		<script src="/scripts/jquery-2.1.1.min.js"></script>
 	</head>
 
 	<body>
-		<#include "../includes/navigation/login_navigation_bar.ftl">
+		<#include "../includes/navigation.ftl">
 		
 		
 		<div class="content-width center">
@@ -22,7 +21,14 @@
 			<p>${organization.description?html}</p>
 			
 			<a href=/service/orgs/0/0>Example Group</a>
+			
+			<br/>
+			<h2>Add a group</h2>
+			<input type="text" name="email" placeholder="Email"><br/>
+			<input type="password" name="password" placeholder="Password"><br/>
+			<button type="submit">Login</button><br/>
 		</div>
+		
 		
 		<#include "../includes/footer/unauthenticated_user_home_footer.ftl">
 	</body>
