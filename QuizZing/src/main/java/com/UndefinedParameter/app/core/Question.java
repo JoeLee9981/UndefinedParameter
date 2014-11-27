@@ -1,5 +1,6 @@
 package com.UndefinedParameter.app.core;
 
+import java.util.HashSet;
 import java.util.Random;
 
 
@@ -24,6 +25,10 @@ public class Question {
 	private String correctAnswer;
 	private String[] wrongAnswers;
 	private boolean flagged = false;
+	
+	// This contains a list of all the associated groups for this question
+	// The Hashset will contain a an association with group ID and group name
+	private HashSet test;
 	
 	//TODO: These variables need to be added to table
 	//		default them for now for prototype only

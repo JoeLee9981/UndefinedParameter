@@ -1,9 +1,12 @@
 <link rel="stylesheet" type="text/css" href="/css/navigation.css" />
+<link rel="stylesheet" type="text/css" href="/plugins/unicorn/unicorn_buttons.css" />
+
+
 
 <div id="navigation-container">
 	<div id="navigation-contents" class="content-width">
 		<div id="nav-main-links">
-			<a href="#">
+			<a href="/service/home">
 				<img src="/images/quizzinglogo.png" alt="some_text">
 			</a>
 		</div>
@@ -15,16 +18,19 @@
 		</div>
 		<div id="nav-extra-links">
 			<ul>
-				<li><a href=/service/orgs>Organization</a></li>
-				<li>Statistics</li>
-				<li>Sign In</li>
-				<li>Register</li>
+				<li><a href="/service/orgs">Organizations</a></li>
+				<li><a href="#">Groups</a></li>
+				<li><a href="#">Stats</a></li>
+				<li><a href="#">Register</a></li>
+				<li><a href="#">Sign In</a></li>
 			</ul>
 		</div>
 	</div>
 </div>
 <div id="navigation-buffer">
 </div>
+
+
 
 <script>
 	
@@ -48,3 +54,6 @@
 		}
 	}
 </script>
+
+
+

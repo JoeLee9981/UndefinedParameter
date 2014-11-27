@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.UndefinedParameter.jdbi.QuizDAO;
+//import com.UndefinedParameter.jdbi.QuizDAO;
 import com.UndefinedParameter.quizzing.QuizZingApplication;
 
 /*
@@ -24,7 +24,7 @@ public class QuizManager {
 	 *	puts them in a Quiz object.
 	 */
 	public static Quiz generateRandomQuiz(int groupId) {
-		Quiz quiz = new Quiz(QuizDAO.retrieveQuiz(groupId));
+		Quiz quiz = null;//new Quiz(QuizDAO.retrieveQuiz(groupId));
 		
 		//TODO: Narrow quiz to numOfQuestions.
 		
@@ -37,7 +37,7 @@ public class QuizManager {
 	 */
 	public static Quiz generateRandomQuiz(int[] tagIds) {
 		
-		Quiz quiz = new Quiz(QuizDAO.retrieveQuiz(tagIds));
+		Quiz quiz = null;//new Quiz(QuizDAO.retrieveQuiz(tagIds));
 		
 		//TODO: Narrow quiz to numOfQuestions
 		
@@ -48,7 +48,7 @@ public class QuizManager {
 	 *	deleteQuiz - Deletes quiz based on quiz ID.
 	 */
 	public static void deleteQuiz(int qID) {
-		QuizDAO.deleteQuiz(qID);
+		//QuizDAO.deleteQuiz(qID);
 	}
 	
 	/*
