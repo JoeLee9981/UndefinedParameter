@@ -1,0 +1,41 @@
+.searchbox input[type="text"]
+{
+	padding-right: 25px !important;
+}
+
+
+
+/*
+.metro .dropdown-menu.dark .menu-title,
+.metro .dropdown-menu.dark .menu-title:hover 
+{
+	background-color: #616161;
+}
+
+.metro .dropdown-menu.dark li:hover 
+{
+	border: 0;
+	background-color: #BDBDBD;
+	color: #ffffff;
+}
+
+.metro .dropdown-menu.dark 
+{
+	background-color: #EEEEEE;
+	border: none;
+	color: #ffffff;
+}
+
+.metro .dropdown-menu.dark a
+{
+	color: #424242 !important;
+	font-size: 10pt !important;
+	padding: 4px 8px !important;
+}
+
+.metro .dropdown-menu.dark li a
+{
+	padding: 4px 8px !important;
+	font-family: inherit;
+}
+*/

@@ -1,39 +1,53 @@
 <link rel="stylesheet" type="text/css" href="/css/navigation.css" />
-<link rel="stylesheet" type="text/css" href="/plugins/unicorn/unicorn_buttons.css" />
 
+<div class="metro">
+	<nav id="main-nav" class="navigation-bar dark">
+	    <nav id="main-nav-content" class="navigation-bar-content page-content">
+	    
+	    	<a class="element brand" href="#">Home Link</a>
+	    	<span class="element-divider"></span>
+	    	<a class="element brand" href="#">Organizations</a>
+	    	<span class="element-divider"></span>
+	    	<a class="element brand" href="#">Stats</a>    	
+			<span class="element-divider"></span>
+            <div class="element">
+                <a class="dropdown-toggle" href="#">
+                    Create &nbsp;
+                </a>
+                <ul class="dropdown-menu dark" data-role="dropdown">
+					<li class="menu-title">Questions</li>
+				    <li><a href="#">Create a question</a></li>
+				    <li class="menu-title">Quizzes</li>
+				    <li><a href="#">Create a quiz</a></li>
+				    <li><a href="#">Edit a quiz</a></li>
+				    <li class="menu-title">Group or Organization</li>
+				    <li><a href="#">Create group</a></li>	
+				    <li><a href="#">Create organization</a></li>				    
+                </ul>
+            </div>	
 
-
-<div id="navigation-container">
-	<div id="navigation-contents" class="content-width">
-		<div id="nav-main-links">
-			<a href="/service/home">
-				<img src="/images/quizzinglogo.png" alt="some_text">
-			</a>
-		</div>
-		<div id="nav-search-container">
-			<form id="searchform" onsubmit="alert('TODO')">
-				<input class="search-box-main" type="text" placeholder="Find what your mind desires...">
-				<input class="search-button-main" type="submit" value="Search">
-			</form>
-		</div>
-		<div id="nav-extra-links">
-			<ul>
-				<li><a href="/service/orgs">Organizations</a></li>
-				<li><a href="#">Groups</a></li>
-				<li><a href="#">Stats</a></li>
-				<li><a href="#">Register</a></li>
-				<li><a href="#">Sign In</a></li>
-			</ul>
-		</div>
-	</div>
+	        <div class="element input-element">
+	            <form id="search">
+	                <div class="input-control text searchbox">
+	                    <input type="text" placeholder="Find what your mind desires..." class="size6">
+	                    <button class="btn-search"></button>
+	                </div>
+	            </form>
+	        </div>
+	        	
+            <a class="element brand place-right" href="#">Login</a> 
+            <span class="element-divider place-right"></span>
+            <a class="element brand place-right" href="#">Register</a>   	    
+              
+	    </nav>
+	</nav>
 </div>
-<div id="navigation-buffer">
+<div id="nav-buffer">
 </div>
 
 
 
-<script>
-	
+<script>	
 	ManageNavigationBarPosition();
 	
 	$(window).resize(function() {
@@ -42,18 +56,15 @@
 	
 	function ManageNavigationBarPosition()
 	{
-		if ($(window).width() < $("#navigation-contents").width())
+		if ($(window).width() < $("#main-nav-content").width())
 		{
-			$("#navigation-container").css("position", "static");
-			$("#navigation-buffer").hide();
+			$("#main-nav").removeClass("fixed-top");
+			$("#nav-buffer").hide();
 		}
 		else
 		{
-			$("#navigation-container").css("position", "fixed");
-			$("#navigation-buffer").show();
+			$("#main-nav").addClass("fixed-top");
+			$("#nav-buffer").show();
 		}
 	}
 </script>
-
-
-

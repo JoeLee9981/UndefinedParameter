@@ -1,5 +1,7 @@
 package com.UndefinedParameter.app.resources;
 
+import java.awt.List;
+
 import javax.validation.Valid;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -27,6 +29,11 @@ public class QuestionCreatorResource {
 	@POST
 	public Result creatQuestion(@Valid Question question) {
 		
+		return null;
+	}
+	
+	public List	getQuestionTypes()
+	{
 		return null;
 	}
 	

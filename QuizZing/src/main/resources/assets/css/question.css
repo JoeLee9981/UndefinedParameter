@@ -1,0 +1,19 @@
+#create-question-form
+{
+	
+}
+
+#mc-answer-options input[type="text"]
+{
+	/*border-right: none;*/
+}
+
+#mc-answer-options .input-control.checkbox label
+{
+	/*border: 1px #d9d9d9 solid;
+	border-left: none;
+	padding-top: 4px;
+	padding-bottom: 6px;
+	margin-left: -4px;
+	background: WHITE;*/
+}

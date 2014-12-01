@@ -8,66 +8,18 @@
 		<script src="/scripts/jquery-2.1.1.min.js"></script>
 		<script src="/scripts/jquery-ui.min.js"></script>
 		<script src="/plugins/metro_ui/min/metro.min.js"></script>
+		<link href="/plugins/metro_ui/min/iconFont.min.css" rel="stylesheet">
+		<link href="/css/overrides.css" rel="stylesheet">
+		<link href="/css/question.css" rel="stylesheet">
+		
+		<link rel="stylesheet" type="text/css" href="/plugins/unicorn/unicorn_buttons.css" />
+		
 				
 	</head>
 	<body>
+		
 		<#include "../includes/navigation.ftl">
 
-
-
-
-
-		<div class="page-content">
-		<br>
-		<br>
-		<br>
-		<br>
-		<br>d
-		<br>
-		<br>
-		<br>
-		<br>d
-		<br>
-		<br>
-		<br>
-		<br>
-		<br>
-		<br>
-		<br>d
-		<br>
-		<br>
-		<br>
-		<br>
-		<br>d
-		<br>
-		<br>
-		<br>
-		<br>
 		
-		<br>
-		<br>
-		<br>
-		
-		<br>d
-		<br>
-		<br>
-		
-		<br>
-		<br>
-		<br>
-		
-		<br>
-		<br>
-		<br>
-		<br>
-		<br>
-		<br>
-		<br>
-		<br>
-		<br>
-		<br>
-		<br>
-		<br>
-		</div>
 	</body>
 </html>
