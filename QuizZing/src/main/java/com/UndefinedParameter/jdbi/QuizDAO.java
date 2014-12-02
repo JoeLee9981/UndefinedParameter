@@ -26,10 +26,47 @@ public class QuizDAO {
 		// TODO: Implement retrieve quiz questions query based on quiz id.
 		ArrayList<Question> questions = new ArrayList<Question>();
 		
-		try{
-			
+		if(qID == 0)
+		{
+			return questions;
 		}
-		catch(Exception e){
+		
+		// Retrieve all questions with quiz id.
+		String select = "SELECT Qt.* "
+				+ "FROM Question Qt, Quiz Qz, QuizQuestion Qq "
+				+ "WHERE Qt.QuestionID = Qq.QuestionID "
+				+ "AND Qq.QuizID = Qz.QuizID "
+				+ "AND Qz.QuizID = " + qID;
+			
+		Connection connection = null;
+		Statement statement = null;
+		
+		try{
+			connection = DriverManager.getConnection("jdbc:sqlite:" + dbPath);
+			connection.setAutoCommit(false);
+			
+			statement = connection.createStatement();
+			ResultSet results = statement.executeQuery(select);
+			
+			if(results.next())
+			{				
+				int qid = results.getInt("QuestionID");
+				int cid = results.getInt("CreatorID");
+				int diff = results.getInt("QuestionDifficulty");
+				int rate = results.getInt("Rating");
+				String qText = results.getString("QuestionText");
+				String answer = results.getString("CorrectAnswer");
+				String qType = results.getString("QuestionType");
+				String wrongA1 = results.getString("WrongAnswer1");
+				String wrongA2 = results.getString("WrongAnswer2");
+				String wrongA3 = results.getString("WrongAnswer3");
+				String wrongA4 = results.getString("WrongAnswer4");
+				Boolean flag = results.getBoolean("Flagged");	
+				questions.add(new Question(qid, cid, diff, rate, qType, qText, answer,	new String[] {wrongA1, wrongA2, wrongA3, wrongA4}, flag));
+			}
+		}
+		catch(Exception e)
+		{
 			String errorMsg = "Could not retrieve quiz. Quiz " + qID + " may not exist."; 
 			logger.error(errorMsg);
 			e.printStackTrace();
@@ -47,7 +84,29 @@ public class QuizDAO {
 		// TODO: Implement the retrieve quiz details query using the quiz id.
 		Quiz quiz = new Quiz();
 		
+		Connection connection = null;
+		Statement statement = null;
+		
+		String select = "SELECT Description "
+				+ "FROM Quiz "
+				+ "WHEREQuizID = " + qID;
+			
+		
+		
 		try{
+			
+			
+			connection = DriverManager.getConnection("jdbc:sqlite:" + dbPath);
+			connection.setAutoCommit(false);
+			
+			statement = connection.createStatement();
+			ResultSet results = statement.executeQuery(select);
+			
+			String descript = results.getString("Description");
+			
+			quiz.setQuizId(qID);
+			quiz.setDescription(descript);
+			
 			
 		}
 		catch(Exception e){
@@ -66,7 +125,26 @@ public class QuizDAO {
 	{
 		// TODO: Implement delete query based on quiz id.
 		
+		
+		String deletequiz = "DELETE FROM Quiz WHERE QuizID = " + qID;
+		String deletequizquestion = "DELETE FROM QuizQuestion WHERE QuizID = " + qID;
+		String deletetagquiz = "DELETE FROM TagQuiz WHERE QuizID = " + qID;
+		
+		Connection connection = null;
+		Statement statement = null;
+		
+
+		
+		
 		try{
+			connection = DriverManager.getConnection("jdbc:sqlite:" + dbPath);
+			connection.setAutoCommit(false);
+			
+			statement = connection.createStatement();
+			
+			statement.executeUpdate(deletequiz);
+			statement.executeUpdate(deletequizquestion);
+			statement.executeUpdate(deletetagquiz);
 			
 		}
 		catch(Exception e){
