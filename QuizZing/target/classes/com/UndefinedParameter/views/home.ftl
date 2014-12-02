@@ -15,10 +15,9 @@
 	<body>
 		
 		<#include "../includes/navigation.ftl">
-<<<<<<< HEAD
-=======
+
 		<a href="/service/orgs">Organizations</a>
->>>>>>> origin/master
+
 		
 	</body>
 </html>

@@ -8,17 +8,8 @@
 		<script src="/scripts/jquery-ui.min.js"></script>
 		<script src="/plugins/metro_ui/min/metro.min.js"></script>
 		<link href="/plugins/metro_ui/min/iconFont.min.css" rel="stylesheet">
-<<<<<<< HEAD
-		<link href="/css/overrides.css" rel="stylesheet">		
 		<link href="/css/organizations.css" rel="stylesheet">	
-=======
 		<link href="/css/overrides.css" rel="stylesheet">
-		<link href="/css/question.css" rel="stylesheet">
-		
-		<link rel="stylesheet" type="text/css" href="/plugins/unicorn/unicorn_buttons.css" />
-		
-				
->>>>>>> origin/master
 	</head>
 
 	<body class="metro">
@@ -87,12 +78,8 @@
 			    </div>
 			</div>
 		</div>
-<<<<<<< HEAD
 
 		<#include "../includes/footer.ftl">
-=======
-		
-		
->>>>>>> origin/master
+
 	</body>
 </html>
