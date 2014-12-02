@@ -5,6 +5,9 @@ import java.util.ArrayList;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+
+
+import com.UndefinedParameter.jdbi.QuestionDAO;
 //import com.UndefinedParameter.jdbi.QuizDAO;
 import com.UndefinedParameter.quizzing.QuizZingApplication;
 
@@ -18,6 +21,10 @@ public class QuizManager {
 	final static Logger logger = LoggerFactory.getLogger(QuizZingApplication.class);
 	final static int defaultNumOfQuestions = 10;
 	final static int maxNumOfQuestions = 100;
+	
+	/*
+	 * 	--------------- Retrieve Methods ---------------
+	 */
 	
 	/*
 	 *	generateRandomQuiz - Pulls questions from database by groupId, 
@@ -104,5 +111,31 @@ public class QuizManager {
 		question.setWrongAnswers(wrongAnswers);
 		
 		return question;
+	}
+	
+	
+	
+	/*
+	 * 	--------------- Creation Methods ---------------
+	 */
+	
+	public static void createQuestion(Question question) throws Exception
+	{
+		// TODO: Implement a return check. True for success, false for failure.
+		
+		// Check for invalid parameters in the question.
+		if(question.getCreatorId() < 0)
+			throw new Exception("Invalid creator ID. Must be greater than 0.");
+		else if(question.getAnswerCount() <= 0 )
+			throw new Exception("No answers were provided for this question.");
+		else if(question.getQuestionText() == null || question.getQuestionText() == "")
+			throw new Exception("No question text was provided.");
+		else
+			QuestionDAO.createQuestion(question);
+	}
+	
+	public static void createQuiz(Quiz quiz) throws Exception
+	{
+		
 	}
 }
