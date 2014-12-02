@@ -32,15 +32,99 @@
 		Time: ${quiz.time?html}</p>
 		<br/>
 		<br/>
-
 		
-		<#list 0..quiz.questionCount-1 as _>
-			<h2>${quiz.nextQuestion.questionText}</h2>
-			
-			<#list quiz.currentQuestion.answers as answer>
-				<p>${answer}</p>
-			</#list>
-		</#list>
+		<div id="startQuizDiv">
+			<h2>Start Quiz</h2>
+			<button onclick="startQuiz()">Start</button>
+		</div>
+		<div id="quizDiv" hidden="true">
+			<h2 id="questionHead"> </h2><br/>
+			<div id="answerDiv"></div>
+			<button id="prevQuestion" onclick="previousQuestion()">previous</button>
+			<button id="nextQuestion" onclick="nextQuestion()">next</next>
+		</div>
+
 
 	</body>
+	
+	<script>
+		var quiz = [];
+		//this is a multidimensional array of the answers by question
+		var questions = [];
+		var submittedAnswers = [];
+		var quizPosition = -1;
+
+		//On the window being loaded we read from freemarker and add the quiz information into an
+		//	array
+		window.onload = function() {
+			<#list quiz.questions as quest>
+				quiz.push("${quest.questionText}");
+				var answers = [];
+				<#list quest.answers as answer>
+					answers.push("${answer}");
+				</#list>
+				questions.push(answers);
+				submittedAnswers.push(-1);
+			</#list>
+		}
+		
+		function startQuiz() {
+			document.getElementById('startQuizDiv').hidden = true;
+			document.getElementById('quizDiv').hidden = false;
+			nextQuestion();
+		}
+
+		function nextQuestion() {
+			if(quizPosition < quiz.length - 1)
+				quizPosition++;
+			document.getElementById('questionHead').innerHTML = quiz[quizPosition];
+			
+			setAnswers()
+			
+			if(quizPosition == quiz.length - 1) {
+				document.getElementById('nextQuestion').disabled = true;
+			}
+			else {
+				document.getElementById('nextQuestion').disabled = false;
+				document.getElementById('prevQuestion').disabled = false;
+			}
+
+		}
+		
+		function previousQuestion() {
+			if(quizPosition > 0)
+				quizPosition--;
+			document.getElementById('questionHead').innerHTML = quiz[quizPosition];
+			
+			setAnswers()
+			
+			if(quizPosition == 0) {
+				document.getElementById('prevQuestion').disabled = true;
+			}
+			else {
+				document.getElementById('prevQuestion').disabled = false;
+				document.getElementById('nextQuestion').disabled = false;
+			}
+		}
+		
+		function setAnswers() {
+			var answers = questions[quizPosition];
+			var html = '<table>'; 
+			
+			for(var i = 0; i < answers.length; i++) {
+				var isChecked = submittedAnswers[quizPosition] == i ? true : false;
+				html += '<tr><td><input type="radio" name="answer" onclick="setAnswer(' + i + ')"'; 
+				if(isChecked)
+					html += ' checked';
+				html += '></td><td><h3>' + answers[i] + '</h3></td>';
+			}
+			html += '</table>';
+			document.getElementById('answerDiv').innerHTML = html;
+		}
+		
+		function setAnswer(val) {
+			submittedAnswers[quizPosition] = parseInt(val);
+		}
+		
+	</script>
 </html>

@@ -26,8 +26,35 @@
 			
 			<h1>Create A Quiz</h1><br/>
 			<a href="/service/quiz/create/question">Add a question</a>
+			<form action="addQuiz()">
+				Description:<br/>
+				<input type="text" name="descText" id="descText" />
+				
+			</form>
 
 		</div>
 		
 	</body>
+	
+	<script>
+	
+	function addGroup() {
+		
+		//TODO Prevalidate these fields
+		var groupName = document.getElementById('nameText').value;
+		var desc = document.getElementById('descriptionText').value;
+		//TODO Add more fields to the entry - see Group.java file for more info
+
+		 $.ajax({
+			type: 'POST',
+			url: "/service/group",
+			data: JSON.stringify({organizationId: ${organization.id}, name: groupName }),
+			dataType: "json",
+			headers: {
+				Accept: "application/json",
+				"Content-Type": "application/json"
+			}
+		});
+	}
+	</script>
 </html>

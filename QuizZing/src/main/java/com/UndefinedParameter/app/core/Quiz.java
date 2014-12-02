@@ -211,6 +211,13 @@ public class Quiz {
 		return question;
 	}
 	
+	public Question getQuestion(int pos) {
+		if(pos < getQuestionCount())
+			return questions.get(pos);
+		else
+			return null;
+	}
+	
 	/*
 	 * Check if at the end of the question list
 	 */
