@@ -19,95 +19,6 @@ public class QuizDAO {
 	private static final String dbPath = "database\\QuizZing";
 	
 	/*
-	 * 	retrieveQuiz - Retrieves questions from a database that fall under specific tags.
-	 */
-	public static ArrayList<Question> retrieveQuiz(int [] tagIds)
-	{
-		// TODO: Currently retrieves all questions of that category. Need to
-		// narrow that number down to 100.
-		
-		ArrayList<Question> questions = new ArrayList<Question>();
-		
-		// TODO: Do we want to return an empty array of questions on tags = 0?
-		if(tagIds.length == 0)
-			return questions;
-		
-		// Retrieve all questions with tag ids.
-		String select = "SELECT Q "
-				+ "FROM Question Q, TagQuestion TQ, Tags T "
-				+ "WHERE Q.QuestionID = TQ.QuestionID "
-				+ "AND TQ.TagID = T.TagID "
-				+ "AND TagID = (";
-			
-		// TODO: Check to see if this behemoth query actually works.
-		// Append all tag ids to the select statement.
-		for(int index : tagIds)
-		{
-			if(index == tagIds.length - 1)
-				select += index + ") ";
-			else
-				select += index + ",";
-		}
-		
-		Connection connection = null;
-		Statement statement = null;
-		
-		try {
-			connection = DriverManager.getConnection("jdbc:sqlite:" + dbPath);
-			connection.setAutoCommit(false);
-			
-			statement = connection.createStatement();
-			ResultSet results = statement.executeQuery(select);
-			
-			if(results.next()) {
-				int qid = results.getInt("QuestionID");
-				int cid = results.getInt("CreatorID");
-				int diff = results.getInt("QuestionDifficulty");
-				int rate = results.getInt("Rating");
-				String qText = results.getString("QuestionText");
-				String answer = results.getString("CorrectAnswer");
-				String qType = results.getString("QuestionType");
-				String wrongA1 = results.getString("WrongAnswer1");
-				String wrongA2 = results.getString("WrongAnswer2");
-				String wrongA3 = results.getString("WrongAnswer3");
-				String wrongA4 = results.getString("WrongAnswer4");
-				Boolean flag = results.getBoolean("Flagged");
-				questions.add(new Question(qid, cid, diff, rate, qType, qText, answer, 
-						new String[] {wrongA1, wrongA2, wrongA3, wrongA4}, flag));
-			}
-			results.close();
-			statement.close();
-			connection.close();
-		}
-		catch(Exception e) {
-			logger.error("Could not retrieve quiz questions.");
-			e.printStackTrace();
-		}	
-		
-		return questions;
-	}
-	
-	/*
-	 * 	retrieveQuiz - Retrieves quiz questions from a specific group id.
-	 */
-	public static ArrayList<Question> retrieveQuiz(int gID)
-	{
-		// TODO: Implement retrieve questions query based on group id.
-		ArrayList<Question> questions = new ArrayList<Question>();
-		
-		try{
-			
-		}
-		catch(Exception e){
-			String errorMsg = "Could not retrieve quiz. Group " + gID + " or their questions may not exist."; 
-			logger.error(errorMsg);
-			e.printStackTrace();
-		}
-		
-		return questions;
-	}
-	
-	/*
 	 * 	retrieveExistingQuiz - Retrieves quiz questions from a specific existing quiz id.
 	 */
 	public static ArrayList<Question> retrieveExistingQuiz(int qID)
@@ -164,5 +75,92 @@ public class QuizDAO {
 			e.printStackTrace();
 		}
 	}
-
+	
+	/*
+	 * 	createQuiz - Adds a quiz to the database. Assume all questions
+	 * 	already exist in the database.
+	 */
+	public static void createQuiz(Quiz quiz)
+	{
+		int result = -1;
+		int id = -1;
+		
+		String insert = "INSERT INTO Question(CreatorID, Difficulty, Description, Time) "
+				+ "VALUES(" 
+				+ quiz.getCreatorId() + ", "
+				+ quiz.getDifficulty() + ", "
+				+ quiz.getDescription() + ", "
+				+ quiz.getTime() + ") ";
+		String select = "SELECT last_insert_rowid() "
+				+ "FROM Quiz ";
+		
+		Connection connection = null;
+		Statement statement = null;
+		
+		try {
+			connection = DriverManager.getConnection("jdbc:sqlite:" + dbPath);
+			connection.setAutoCommit(false);
+			
+			// Insert quiz information in the Quiz table.
+			statement = connection.createStatement();
+			result = statement.executeUpdate(insert);
+			
+			// Get the last id put in the Quiz table, which is presumably this quiz's.
+			ResultSet quizID = statement.executeQuery(select);
+			
+			if(quizID.next()) {
+				id = quizID.getInt("QuizID");
+			}
+			
+			quizID.close();			
+			statement.close();
+			connection.close();	
+			
+			// Set quiz id and send it to the linking method.
+			quiz.setQuizId(id);
+			linkToQuestions(quiz);
+		}
+		catch(Exception e){
+			String errorMsg = "Quiz could not be created. result = " + result; 
+			logger.error(errorMsg);
+			e.printStackTrace();
+		}
+	}
+	
+	/*
+	 * 	linkToQuestions - Helper method will link quiz to its questions
+	 * 	in the database.
+	 */
+	private static void linkToQuestions(Quiz quiz)
+	{
+		int result = -1;
+		int quizID = quiz.getQuizId();
+		Question[] questions = quiz.getQuestions();
+		
+		// Using UNION to add multiple rows at a time to the database.
+		String insert = "INSERT INTO TagQuestion "
+				+ "SELECT " + quizID + " AS QuizID, " + questions[0].getQuestionId() + " AS QuestionID ";
+		
+		for(int i = 1; i < questions.length; i++)
+			insert += "UNION SELECT " + quizID + ", " + questions[i].getQuestionId() + " ";
+		
+		Connection connection = null;
+		Statement statement = null;
+		
+		try {
+			connection = DriverManager.getConnection("jdbc:sqlite:" + dbPath);
+			connection.setAutoCommit(false);
+			
+			statement = connection.createStatement();
+			result = statement.executeUpdate(insert);
+			
+			statement.close();
+			connection.close();	
+		}
+		catch(Exception e){
+			String errorMsg = "Quiz " + quizID + " could not be linked to its questions. result = " + result; 
+			logger.error(errorMsg);
+			e.printStackTrace();
+		}
+	}
 }

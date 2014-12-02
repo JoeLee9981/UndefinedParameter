@@ -7,7 +7,9 @@ import org.slf4j.LoggerFactory;
 
 
 
+
 import com.UndefinedParameter.jdbi.QuestionDAO;
+import com.UndefinedParameter.jdbi.QuizDAO;
 //import com.UndefinedParameter.jdbi.QuizDAO;
 import com.UndefinedParameter.quizzing.QuizZingApplication;
 
@@ -136,6 +138,30 @@ public class QuizManager {
 	
 	public static void createQuiz(Quiz quiz) throws Exception
 	{
+		// TODO: Implement a return check.
 		
+		// Check for invalid parameters.
+		if(quiz.getCreatorId() < 0)
+			throw new Exception("Invalid creator ID. Must be greater than 0.");
+		else if(quiz.getQuestionCount() <= 0)
+			throw new Exception("There aren't any questions in this quiz.");
+		else
+		{
+			// Check that all quiz questions exist within the database.
+			Boolean allQuestionsExist = true;
+			Question[] existingQuestions = quiz.getQuestions();
+			
+			for(int i = 0; i < existingQuestions.length; i++)
+			{
+				// Default ID value is -1, meaning not added to the database.
+				if(existingQuestions[i].getQuestionId() < 0)
+					allQuestionsExist = false;
+			}
+			
+			if(allQuestionsExist)
+				QuizDAO.createQuiz(quiz);
+			else
+				throw new Exception("Not all questions exist in the database.");
+		}
 	}
 }
