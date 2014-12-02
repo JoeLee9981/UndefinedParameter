@@ -19,7 +19,7 @@
 	<body>
 		
 		<#include "../includes/navigation.ftl">
-
+		<a href="/service/orgs">Organizations</a>
 		
 	</body>
 </html>
