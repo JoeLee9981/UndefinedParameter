@@ -83,3 +83,17 @@ local.properties
 .target
 # TeXlipse plugin
 .texlipse
+QuizZing/src/main/resources/com/UndefinedParameter/views/orgs.ftl
+QuizZing/src/main/resources/com/UndefinedParameter/views/orgs.ftl
+QuizZing/target/classes/com/UndefinedParameter/views/orgs.ftl
+QuizZing/src/main/resources/com/UndefinedParameter/views/orgs.ftl
+QuizZing/target/classes/com/UndefinedParameter/views/orgs.ftl
+QuizZing/src/main/resources/com/UndefinedParameter/views/orgs.ftl
+QuizZing/target/classes/com/UndefinedParameter/views/orgs.ftl
+QuizZing/src/main/resources/com/UndefinedParameter/views/orgs.ftl
+QuizZing/src/main/resources/com/UndefinedParameter/views/orgs.ftl
+QuizZing/target/classes/com/UndefinedParameter/app/core/QuizManager.class
+QuizZing/target/classes/com/UndefinedParameter/views/orgs.ftl
+*.class
+*.java
+*.class

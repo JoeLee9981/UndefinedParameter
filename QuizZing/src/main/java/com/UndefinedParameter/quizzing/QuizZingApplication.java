@@ -17,6 +17,7 @@ import com.UndefinedParameter.app.resources.NewsArticleResource;
 import com.UndefinedParameter.app.resources.OrganizationResource;
 import com.UndefinedParameter.app.resources.QuestionCreatorResource;
 import com.UndefinedParameter.app.resources.QuizResource;
+import com.UndefinedParameter.jdbi.QuizDAO;
 
 
 
@@ -69,5 +70,11 @@ public class QuizZingApplication extends Application<QuizZingConfiguration> {
 		environment.jersey().register(new GroupResource());
 		environment.jersey().register(new OrganizationResource());
 		environment.jersey().register(new QuestionCreatorResource());
+		
+<<<<<<< HEAD
+		QuizDAO.retrieveExistingQuiz(0);
+=======
+		QuizDAO.retrieveQuiz(0);
+>>>>>>> origin/master
 	}
 }

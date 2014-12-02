@@ -1,0 +1,11 @@
+#footer
+{
+	width: 100%;
+	background-color: #757575;
+}
+
+#footer-content
+{
+	min-height: 150px;
+	margin-top: 50px;
+}

@@ -10,16 +10,15 @@
 		<script src="/plugins/metro_ui/min/metro.min.js"></script>
 		<link href="/plugins/metro_ui/min/iconFont.min.css" rel="stylesheet">
 		<link href="/css/overrides.css" rel="stylesheet">
-		<link href="/css/question.css" rel="stylesheet">
-		
-		<link rel="stylesheet" type="text/css" href="/plugins/unicorn/unicorn_buttons.css" />
-		
-				
+		<link href="/css/question.css" rel="stylesheet">			
 	</head>
 	<body>
 		
 		<#include "../includes/navigation.ftl">
-
+<<<<<<< HEAD
+=======
+		<a href="/service/orgs">Organizations</a>
+>>>>>>> origin/master
 		
 	</body>
 </html>
