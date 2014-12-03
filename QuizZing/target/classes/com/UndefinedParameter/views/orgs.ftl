@@ -61,16 +61,9 @@
                         </thead>
 
                         <tbody>
-                        <tr><td><a href="#">University of Utah</a></td><td class="right">5421</td><td class="right">800</td><td class="right">5000</td><td class="right">79</td><td class="right">79</td><td class="right">11/12/14</td></tr>
-                        <tr><td><a href="#">Utah State University</a></td><td class="right">950</td><td class="right">700</td><td class="right">4000</td><td class="right">75</td><td class="right">79</td><td class="right">11/12/14</td></tr>
-                        <tr><td><a href="#">Weber State University</a></td><td class="right">725</td><td class="right">600</td><td class="right">3500</td><td class="right">46</td><td class="right">79</td><td class="right">11/12/14</td></tr>
-                        <tr><td><a href="#">Utah Valley University</a></td><td class="right">436</td><td class="right">500</td><td class="right">3000</td><td class="right">65</td><td class="right">79</td><td class="right">11/12/14</td></tr>
-                        <tr><td><a href="#">Snow College</a></td><td class="right">144</td><td class="right">400</td><td class="right">2000</td><td class="right">32</td><td class="right">79</td><td class="right">11/12/14</td></tr>
-                        <tr><td><a href="#">Harvard</a></td><td class="right">126</td><td class="right">300</td><td class="right">1000</td><td class="right">11</td><td class="right">79</td><td class="right">11/12/14</td></tr>
-                        <tr><td><a href="#">Chemistry 1210</a></td><td class="right">126</td><td class="right">300</td><td class="right">1000</td><td class="right">11</td><td class="right">79</td><td class="right">11/12/14</td></tr>
-                        <tr><td><a href="#">CS 4400</a></td><td class="right">126</td><td class="right">300</td><td class="right">1000</td><td class="right">11</td><td class="right">79</td><td class="right">11/12/14</td></tr>
-                        <tr><td><a href="#">Neumant</a></td><td class="right">126</td><td class="right">300</td><td class="right">1000</td><td class="right">11</td><td class="right">79</td><td class="right">11/12/14</td></tr>
-                        <tr><td><a href="#">Brigham Young University</a></td><td class="right">126</td><td class="right">300</td><td class="right">1000</td><td class="right">11</td><td class="right">79</td><td class="right">11/12/14</td></tr>
+                        <#list getOrganizations("Salt Lake") as org>
+                        	<tr><td><a href="/service/orgs/${org.id}">${org.name}</a></td><td class="right">${org.memberCount}</td><td class="right">${org.quizCount}</td><td class="right">${org.questionCount}</td><td class="right">79</td><td class="right">79</td><td class="right">11/12/14</td></tr>
+                        </#list>            
                         </tbody>
 
                         <tfoot></tfoot>

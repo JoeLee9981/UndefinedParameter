@@ -42,6 +42,14 @@ public class Organization {
 	/*
 	 * MORE IDENTIFIERS MAY BE NECESSARY IN THE FUTURE
 	 */
+	
+	//TODO: These may need to be located somewhere else
+	private int memberCount;
+	private int quizCount;
+	private int questionCount;
+	
+	//TODO: Add a date created
+	
 
 	//constructor
 	public Organization(int id, String name) {
@@ -110,7 +118,37 @@ public class Organization {
 	public void setCountry(String country) {
 		this.country = country;
 	}
-		
+	
+	@JsonProperty	
+	public int getMemberCount() {
+		return memberCount;
+	}
+
+	@JsonProperty
+	public void setMemberCount(int memberCount) {
+		this.memberCount = memberCount;
+	}
+
+	@JsonProperty
+	public int getQuizCount() {
+		return quizCount;
+	}
+
+	@JsonProperty
+	public void setQuizCount(int quizCount) {
+		this.quizCount = quizCount;
+	}
+
+	@JsonProperty
+	public int getQuestionCount() {
+		return questionCount;
+	}
+
+	@JsonProperty
+	public void setQuestionCount(int questionCount) {
+		this.questionCount = questionCount;
+	}
+
 	/****************************** Organization Helper Methods **********************************/
 
 	/*
