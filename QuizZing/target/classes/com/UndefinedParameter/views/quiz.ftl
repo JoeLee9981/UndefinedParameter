@@ -42,6 +42,7 @@
 			<div id="answerDiv"></div>
 			<button id="prevQuestion" onclick="previousQuestion()">previous</button>
 			<button id="nextQuestion" onclick="nextQuestion()">next</next>
+			<button id="submitQuiz" onclick="submitQuiz()">submit</next>
 		</div>
 
 
@@ -51,6 +52,7 @@
 		var quiz = [];
 		//this is a multidimensional array of the answers by question
 		var questions = [];
+		var correctAnswers = [];
 		var submittedAnswers = [];
 		var quizPosition = -1;
 
@@ -59,6 +61,7 @@
 		window.onload = function() {
 			<#list quiz.questions as quest>
 				quiz.push("${quest.questionText}");
+				correctAnswers.push("${quest.correctAnswer}");
 				var answers = [];
 				<#list quest.answers as answer>
 					answers.push("${answer}");
@@ -124,6 +127,20 @@
 		
 		function setAnswer(val) {
 			submittedAnswers[quizPosition] = parseInt(val);
+		}
+		
+		function submitQuiz() {
+			var score = 0.0;
+
+			for(var i = 0; i < submittedAnswers.length; i++) {
+
+				if(submittedAnswers[i] != -1) {
+					var answers = questions[i];
+					if(answers[submittedAnswers[i]] == correctAnswers[i])
+						score++;
+				}
+			}
+			alert("Score: " + score / correctAnswers.length * 100 + "%");
 		}
 		
 	</script>
