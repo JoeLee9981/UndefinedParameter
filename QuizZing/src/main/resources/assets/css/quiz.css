@@ -1,0 +1,18 @@
+#quiz-subnav
+{
+	margin-top: 0 !important;
+}
+
+#questionHead
+{
+	font-size: 1.3em;
+	line-height: 1.3em;
+}
+
+#answerDiv .command-button
+{
+	margin-bottom: 10px;
+	padding: 8px;
+	border-radius:3px;
+	margin-left: 0;
+}

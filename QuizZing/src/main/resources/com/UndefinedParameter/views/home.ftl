@@ -15,12 +15,14 @@
 	<body>
 		
 		<#include "../includes/navigation.ftl">
+
+
 		<#list news as n>
 			<h1>${n.headline}</h1>
 			<p>${n.body}</p>
 		</#list>
-		
 
-		
+	
+
 	</body>
 </html>
