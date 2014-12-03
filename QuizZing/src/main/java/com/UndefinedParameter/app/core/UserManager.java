@@ -15,4 +15,17 @@ public class UserManager {
 		return random.nextInt(100);
 	}
 	
+	/*
+	 * Gets the number of quizzes the user has contributed towards
+	 * 	This is open to interpretation so we will figure out exactly how
+	 * 	this should function before we implement it - This can wait to be done
+	 *  next semester
+	 */
+	public static int retreiveQuizzesParticipated(int userId, int orgId) {
+		//TODO: Implement
+		
+		Random random = new Random();
+		return random.nextInt(100);
+	}
+	
 }

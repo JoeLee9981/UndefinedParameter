@@ -62,7 +62,7 @@
 
                         <tbody>
                         <#list getOrganizations("Salt Lake") as org>
-                        	<tr><td><a href="/service/orgs/${org.id}">${org.name}</a></td><td class="right">${org.memberCount}</td><td class="right">${org.quizCount}</td><td class="right">${org.questionCount}</td><td class="right">79</td><td class="right">79</td><td class="right">11/12/14</td></tr>
+                        	<tr><td><a href="/service/orgs/${org.id}">${org.name}</a></td><td class="right">${org.memberCount}</td><td class="right">${org.quizCount}</td><td class="right">${org.questionCount}</td><td class="right">${getContributionScore(org.id)}</td><td class="right">${getQuizzesParticipated(org.id)}</td><td class="right">11/12/14</td></tr>
                         </#list>            
                         </tbody>
 
