@@ -10,17 +10,23 @@
 		<script src="/plugins/metro_ui/min/metro.min.js"></script>
 		<link href="/plugins/metro_ui/min/iconFont.min.css" rel="stylesheet">
 		<link href="/css/overrides.css" rel="stylesheet">
-		<link href="/css/question.css" rel="stylesheet">			
+		<link href="/css/question.css" rel="stylesheet">
+		
+		<link rel="stylesheet" type="text/css" href="/plugins/unicorn/unicorn_buttons.css" />
+		
+				
 	</head>
-	<body>
-		
-		<#include "../includes/navigation.ftl">
-		<#list news as n>
-			<h1>${n.headline}</h1>
-			<p>${n.body}</p>
-		</#list>
-		
 
+	<body>
+		<#include "../includes/navigation.ftl">
+		
+		
+		<div class="content-width center">
+			<h1>Score: ${score}</h1>
+			<img src="/images/bar_graph.png" />
+			<img src="/images/personal_line.png" />
+		</div>
+		
 		
 	</body>
 </html>

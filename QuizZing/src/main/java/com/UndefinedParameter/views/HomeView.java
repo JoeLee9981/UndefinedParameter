@@ -13,7 +13,7 @@ public class HomeView extends View{
 		this.newsList = newsList;
 	}
 	
-	public NewsArticle getNews() {
-		return newsList[0];
+	public NewsArticle[] getNews() {
+		return newsList;
 	}
 }

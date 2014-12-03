@@ -70,7 +70,6 @@ public class QuizZingApplication extends Application<QuizZingConfiguration> {
 		environment.jersey().register(new GroupResource());
 		environment.jersey().register(new OrganizationResource());
 		environment.jersey().register(new QuestionCreatorResource());
-		
-		QuizDAO.retrieveExistingQuiz(0);
+
 	}
 }

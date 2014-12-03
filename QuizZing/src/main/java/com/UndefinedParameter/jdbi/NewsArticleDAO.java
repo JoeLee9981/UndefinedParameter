@@ -30,7 +30,7 @@ public class NewsArticleDAO {
 			statement = connection.createStatement();
 			ResultSet results = statement.executeQuery(select);
 			
-			if(results.next()) {
+			while(results.next()) {
 				int id = results.getInt("NewsID");
 				String headline = results.getString("Headline");
 				String body = results.getString("Body");

@@ -15,8 +15,11 @@
 	<body>
 		
 		<#include "../includes/navigation.ftl">
-
-		<a href="/service/orgs">Organizations</a>
+		<#list news as n>
+			<h1>${n.headline}</h1>
+			<p>${n.body}</p>
+		</#list>
+		
 
 		
 	</body>

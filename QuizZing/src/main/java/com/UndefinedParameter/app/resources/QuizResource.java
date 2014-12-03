@@ -10,11 +10,11 @@ import javax.ws.rs.core.MediaType;
 
 import org.eclipse.jetty.http.HttpGenerator.Result;
 
-import com.UndefinedParameter.app.core.Question;
 import com.UndefinedParameter.app.core.Quiz;
 import com.UndefinedParameter.app.core.QuizManager;
 import com.UndefinedParameter.views.QuizCreatorView;
 import com.UndefinedParameter.views.QuizView;
+import com.UndefinedParameter.views.ScoreView;
 
 @Path("/quiz")
 @Produces(MediaType.TEXT_HTML)
@@ -39,6 +39,13 @@ public class QuizResource {
 	public Result createQuiz(@Valid Quiz quiz) {
 		
 		return null;
+	}
+	
+	@GET
+	@Path("/score/{id}")
+	public ScoreView getScoreView(@PathParam("id") int id) {
+		
+		return new ScoreView(id);
 	}
 	
 }

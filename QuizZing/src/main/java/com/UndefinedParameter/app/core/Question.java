@@ -42,6 +42,7 @@ public class Question {
 	//contains a list of answers ordered by the flags
 	private String[] allAnswers;
 	
+	//this is necessary for the JSON Serialization
 	public Question()
 	{
 	}
