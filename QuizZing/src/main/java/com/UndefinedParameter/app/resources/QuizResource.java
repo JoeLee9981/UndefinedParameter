@@ -1,6 +1,9 @@
 package com.UndefinedParameter.app.resources;
 
+import io.dropwizard.Application;
+
 import javax.validation.Valid;
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -10,6 +13,7 @@ import javax.ws.rs.core.MediaType;
 
 import org.eclipse.jetty.http.HttpGenerator.Result;
 
+import com.UndefinedParameter.app.core.Question;
 import com.UndefinedParameter.app.core.Quiz;
 import com.UndefinedParameter.app.core.QuizManager;
 import com.UndefinedParameter.views.QuizCreatorView;
@@ -46,6 +50,14 @@ public class QuizResource {
 	public ScoreView getScoreView(@PathParam("id") int id) {
 		
 		return new ScoreView(id);
+	}
+	
+	@POST
+	@Path("/question/create")
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Result createQuestion(@Valid Question question)
+	{
+		return null;
 	}
 	
 }

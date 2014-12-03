@@ -54,7 +54,7 @@
                             <th class="text-left">Members</th>
                             <th class="text-left">Quizes</th>
                             <th class="text-left">Questions</th>
-                            <th class="text-left">Contribution Score <i class="icon-help fg-blue"></i></th>
+                            <th class="text-left">Contribution Score <a href="#" data-hint="Contribution Score|A contribution score is something that we must figure out later. It will be super cool" data-hint-position="right" data-hint-mode="2"><i class="icon-help fg-blue"></i></a></th>
                             <th class="text-left">Quizzes Participated</th>
                             <th class="text-left">Date Created</th>
                         </tr>
