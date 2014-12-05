@@ -3,8 +3,28 @@
 	padding-right: 25px !important;
 }
 
+.no-span-left-margin [class*="span"]
+{
+	margin-left: 0 !important;
+}
 
+form.medium .input-control
+{
+	height: 28px !important;
+	font-size: 90% !important;
+}
 
+form.medium .input-control .check
+{
+	height: 16px !important;
+	width: 16px !important;
+}
+
+form.medium .check:after
+{
+	font-size: 80% !important;
+	margin-top: 0px !important;
+}
 
 /*
 .metro .dropdown-menu.dark .menu-title,

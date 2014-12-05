@@ -1,0 +1,31 @@
+#login-form input[type="submit"]
+{
+	margin-right: -4px;
+}
+
+#login-form-container,
+#register-form-container
+{
+	background: #FAFAFA;
+	border: 1px solid #EEEEEE;
+	border-radius: 3px;
+	padding-bottom: 12px;
+}
+
+#login-form,
+#register-form
+{
+	padding: 12px;
+}
+
+#register-form-container
+{
+	margin-top: 20px;
+}
+
+#home-content-right
+{
+	border: 1px solid #FFC400;
+	border-radius: 3px;
+	background: #FFC400;
+}
