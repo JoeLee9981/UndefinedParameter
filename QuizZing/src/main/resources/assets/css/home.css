@@ -25,7 +25,15 @@
 
 #home-content-right
 {
+	/*
 	border: 1px solid #FFC400;
 	border-radius: 3px;
-	background: #FFC400;
+	background: #FFC400;*/
+}
+
+body
+{
+	background-image: url('../images/batman3.jpg');
+	width: 100%;
+	height: 100%;
 }

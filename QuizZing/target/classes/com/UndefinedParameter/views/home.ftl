@@ -107,12 +107,14 @@
 		<br>
 		<br>
 
+<div class="" style="background:gray">
+
 		<#list news as n>
 			<h1>${n.headline}</h1>
 			<p>${n.body}</p>
 		</#list>
 
-	
+</div>
 
 	</body>
 </html>
