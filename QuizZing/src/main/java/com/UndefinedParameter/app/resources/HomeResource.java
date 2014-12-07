@@ -14,7 +14,7 @@ import com.UndefinedParameter.app.core.NewsArticle;
 import com.UndefinedParameter.jdbi.NewsArticleDAO;
 import com.UndefinedParameter.views.HomeView;
 
-@Path("/home")
+@Path("/")
 @Produces(MediaType.TEXT_HTML)
 public class HomeResource {
 	

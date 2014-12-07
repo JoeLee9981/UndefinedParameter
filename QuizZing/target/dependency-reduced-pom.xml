@@ -21,7 +21,7 @@
               <transformers>
                 <transformer />
                 <transformer>
-                  <mainClass>com.UndefinedParameter.app.QuizZingApplication</mainClass>
+                  <mainClass>com.UndefinedParameter.quizzing.QuizZingApplication</mainClass>
                 </transformer>
               </transformers>
             </configuration>

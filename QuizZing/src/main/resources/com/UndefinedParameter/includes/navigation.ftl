@@ -1,12 +1,12 @@
-<link rel="stylesheet" type="text/css" href="/css/navigation.css" />
+<link rel="stylesheet" type="text/css" href="/assets/css/navigation.css" />
 
 <div class="metro">
 	<nav id="main-nav" class="navigation-bar dark">
 	    <nav id="main-nav-content" class="navigation-bar-content page-content">
 	    
-	    	<a class="element brand" href="/service/home">Home Link</a>
+	    	<a class="element brand" href="/">Home Link</a>
 	    	<span class="element-divider"></span>
-	    	<a class="element brand" href="/service/orgs">Organizations</a>
+	    	<a class="element brand" href="/orgs">Organizations</a>
 	    	<span class="element-divider"></span>
 	    	<a class="element brand" href="#">Stats</a>    	
 			<span class="element-divider"></span>
@@ -16,13 +16,13 @@
                 </a>
                 <ul class="dropdown-menu dark" data-role="dropdown">
 					<li class="menu-title">Questions</li>
-				    <li><a href="/service/quiz/create/question">Create a question</a></li>
+				    <li><a href="/quiz/create/question">Create a question</a></li>
 				    <li class="menu-title">Quizzes</li>
-				    <li><a href="/service/quiz/create">Create a quiz</a></li>
+				    <li><a href="/quiz/create">Create a quiz</a></li>
 				    <li><a href="#">Edit a quiz</a></li>
 				    <li class="menu-title">Group or Organization</li>
-				    <li><a href="/service/group/add">Create group</a></li>	
-				    <li><a href="/service/orgs/add">Create organization</a></li>				    
+				    <li><a href="/group/add">Create group</a></li>	
+				    <li><a href="/orgs/add">Create organization</a></li>				    
                 </ul>
             </div>	
 

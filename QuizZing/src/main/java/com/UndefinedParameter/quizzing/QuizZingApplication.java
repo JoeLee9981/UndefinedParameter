@@ -47,7 +47,7 @@ public class QuizZingApplication extends Application<QuizZingConfiguration> {
 
 	@Override
 	public void initialize(Bootstrap<QuizZingConfiguration> bootstrap) {
-		bootstrap.addBundle(new AssetsBundle("/assets/", "/"));
+		bootstrap.addBundle(new AssetsBundle("/assets/", "/assets/"));
 		bootstrap.addBundle((Bundle) new ViewBundle());
 		
 	}
@@ -58,8 +58,7 @@ public class QuizZingApplication extends Application<QuizZingConfiguration> {
 		
 		logger.info("QuizZingApplication - Running Server");
 
-		
-		environment.jersey().setUrlPattern("/service/*");		
+			
 		final TemplateHealthCheck healthCheck = new TemplateHealthCheck(configuration.getTemplate());
 		environment.healthChecks().register("template", healthCheck);
 		
