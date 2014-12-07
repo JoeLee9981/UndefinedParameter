@@ -57,6 +57,11 @@ public class Organization {
 		this.name = name;
 	}
 	
+	public Organization() 
+	{
+		this.id = -1;
+	}
+	
 	/******************************** Getters and Setters ****************************/
 
 	@JsonProperty

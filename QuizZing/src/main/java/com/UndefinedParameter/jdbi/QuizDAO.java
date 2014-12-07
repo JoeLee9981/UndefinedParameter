@@ -48,7 +48,7 @@ public class QuizDAO {
 			statement = connection.createStatement();
 			ResultSet results = statement.executeQuery(select);
 			
-			if(results.next())
+			while(results.next())
 			{				
 				int qid = results.getInt("QuestionID");
 				int cid = results.getInt("CreatorID");
@@ -89,9 +89,7 @@ public class QuizDAO {
 		
 		String select = "SELECT Description "
 				+ "FROM Quiz "
-				+ "WHEREQuizID = " + qID;
-			
-		
+				+ "WHEREQuizID = " + qID;	
 		
 		try{
 			

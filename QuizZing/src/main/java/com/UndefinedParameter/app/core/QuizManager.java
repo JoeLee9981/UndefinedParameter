@@ -64,19 +64,16 @@ public class QuizManager {
 	 * TODO: Add methods used for quiz management
 	 */
 	public static Quiz findQuiz(int qID) {
-		//TODO: Uncomment code below when we're ready to implement. 
 		
-		//Quiz quiz = new Quiz(QuizDAO.retrieveExistingQuiz(qID));
+		Quiz quiz = QuizDAO.retrieveExistingQuizDetails(qID);
 		
-		Quiz quiz = new Quiz();
-		
-		quiz.setQuizId(qID);
-		quiz.setCreatorId(100);
-		quiz.setDescription("THIS IS A FUN QUIZ");
-		quiz.setRating(5);
-		quiz.setDifficulty(1);
-		quiz.setTime(1000);
-		quiz.setQuestions(getQuestions(qID));
+		if(quiz.getQuizId() > 0) {
+			quiz.setQuestions(getQuestions(qID));
+			logger.debug(String.format("<QuizManager> -- Quiz %d retrieved from database", quiz.getQuizId()));
+		}
+		else {
+			logger.warn("<QuizManager> -- Quiz was not found in database");
+		}
 		return quiz;
 	}
 	
@@ -84,12 +81,8 @@ public class QuizManager {
 	 * TODO: Implement this
 	 */
 	private static ArrayList<Question> getQuestions(int quizId) {
-		ArrayList<Question> questions = new ArrayList<Question>(); 
-		
-		for(int i = 0; i < 5; i++) {
-			questions.add(getQuestion(i));
-		}
-		return questions;
+		//TODO: Validation
+		return QuizDAO.retrieveExistingQuiz(quizId);
 	}
 	
 	/*
@@ -121,7 +114,7 @@ public class QuizManager {
 	 * 	--------------- Creation Methods ---------------
 	 */
 	
-	public static void createQuestion(Question question) throws Exception
+	public static boolean createQuestion(Question question) throws Exception
 	{
 		// TODO: Implement a return check. True for success, false for failure.
 		
@@ -133,18 +126,18 @@ public class QuizManager {
 		else if(question.getQuestionText() == null || question.getQuestionText() == "")
 			throw new Exception("No question text was provided.");
 		else
-			QuestionDAO.createQuestion(question);
+			return QuestionDAO.createQuestion(question);
 	}
 	
 	public static void createQuiz(Quiz quiz) throws Exception
 	{
-		// TODO: Implement a return check.
 		
 		// Check for invalid parameters.
 		if(quiz.getCreatorId() < 0)
 			throw new Exception("Invalid creator ID. Must be greater than 0.");
-		else if(quiz.getQuestionCount() <= 0)
+		else if(quiz.getQuestionCount() <= 0) {
 			throw new Exception("There aren't any questions in this quiz.");
+		}
 		else
 		{
 			// Check that all quiz questions exist within the database.

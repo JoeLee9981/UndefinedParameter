@@ -33,6 +33,6 @@ public class GroupView extends View {
 	 * 		This is being set automatically from the constructor
 	 */
 	private Organization findOrg(int orgId) {
-		return OrganizationManager.findOrgById(orgId);
+		return OrganizationManager.findOrgById(orgId+1);
 	}
 }

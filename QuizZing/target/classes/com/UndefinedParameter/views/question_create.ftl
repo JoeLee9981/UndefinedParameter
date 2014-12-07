@@ -35,7 +35,7 @@
 						<form id="create-question-form">
 							<label><h5>Question</h5>
 								<div class="input-control textarea">
-								    <textarea></textarea>
+								    <textarea id="descriptionText"></textarea>
 								</div>
 							</label>
 							
@@ -43,41 +43,53 @@
 								<div class="span8">
 									<label id="mc-answer-options"><h5>Answer Options</h5>
 										<div class="input-control text size5">
-										    <input type="text"/>
+										    <input type="text" id="qText1"/>
 										</div>
 										<div class="input-control checkbox place-right">
 										    <label>
-										        <input type="checkbox" />
+										        <input type="checkbox" id="qCheck1" />
 										        <span class="check"></span>
 										    </label>
 										</div>
 										<div class="input-control text size5">
-										    <input type="text"/>
+										    <input type="text" id="qText2"/>
 										</div>
 										<div class="input-control checkbox place-right">
 										    <label>
-										        <input type="checkbox" />
+										        <input type="checkbox" id="qCheck2"/>
 										        <span class="check"></span>
 										    </label>
 										</div>								
 										<div class="input-control text size5">
-										    <input type="text"/>
+										    <input type="text" id="qText3"/>
 										</div>
 										<div class="input-control checkbox place-right">
 										    <label>
-										        <input type="checkbox" />
+										        <input type="checkbox" id="qCheck3"/>
 										        <span class="check"></span>
 										    </label>
 										</div>								
 										<div class="input-control text size5">
-										    <input type="text"/>
+										    <input type="text" id="qText4"/>
 										</div>
 										<div class="input-control checkbox place-right">
 										    <label>
-										        <input type="checkbox" />
+										        <input type="checkbox" id="qCheck4"/>
 										        <span class="check"></span>
 										    </label>
-										</div>								
+										</div>	
+										<div class="input-control text size5">
+										    <input type="text" id="qText5"/>
+										</div>
+										<div class="input-control checkbox place-right">
+										    <label>
+										        <input type="checkbox" id="qCheck5"/>
+										        <span class="check"></span>
+										    </label>
+										</div>
+										<div class="span4">
+											<input type="button" onclick="addQuestion()">Submit</input>
+										</div>						
 									</label>
 								</div>
 								<div class="span4">
@@ -99,4 +111,53 @@
 		</div>
 		
 	</body>
+	<script>
+		var maxAnswers = 5;
+		
+		function addQuestion() {
+			
+			
+			//TODO Prevalidate these fields
+			var desc = document.getElementById('descriptionText').value;
+			var correct;
+			var type = "MULTIPLE_CHOICE";
+			var incorrect = [];
+			
+			for(var i = 1; i <= maxAnswers; i++) {
+				if(document.getElementById('qCheck' + i).checked) {
+					correct = document.getElementById('qText' + i).value;
+				}
+				else {
+					incorrect.push(document.getElementById('qText' + i).value);
+				}
+			}
+			
+			if(!correct) {
+				//TODO: This needs to not be an alert box
+				alert("Must choose a correct answer");
+				return;
+			}
+			
+	
+			 $.ajax({
+				type: 'POST',
+				url: "/quiz/create/question",
+				data: JSON.stringify({questionText: desc, correctAnswer: correct, type: type, wrongAnswers: incorrect }),
+				dataType: "json",
+				headers: {
+					Accept: "application/json",
+					"Content-Type": "application/json"
+				},
+				success: function(data, textStatus, JQxhr) {
+					alert(JSON.parse(data));
+					alert(textStatus);
+					alert(JQxhr);
+				}
+			});
+		}
+		
+	
+		
+	</script>
 </html>
+

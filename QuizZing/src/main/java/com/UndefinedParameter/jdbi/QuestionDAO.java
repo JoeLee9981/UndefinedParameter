@@ -2,6 +2,7 @@ package com.UndefinedParameter.jdbi;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -21,38 +22,39 @@ public class QuestionDAO {
 	 * 	createQuestion - Given a question, insert it into the database assuming all
 	 * 	necessary parameters are present. 
 	 */
-	public static void createQuestion(Question question)
+	public static boolean createQuestion(Question question)
 	{
 		// TODO: Check if the INSERT statement works.
 		int result = -1;
-		String select = "INSERT INTO Question(CreatorID, QuestionDifficulty, QuestionText, "
-				+ "CorrectAnswer, WrongAnswer1, WrongAnswer2, WrongAnswer3, WrongAnswer4) "
-				+ "VALUES(" 
-				+ question.getCreatorId() + ", "
-				+ question.getQuestionDifficulty() + ", "
-				+ question.getQuestionText() + ", "
-				+ question.getCorrectAnswer();
-		
-		for(int i = 0; i < question.getAnswerCount(); i++)
-		{
-			select += ", " + question.getAnswerAt(i);
-		}
-		
-		select += ") ";
-		
+		String select = "INSERT INTO Question (CreatorID, QuestionDifficulty, QuestionText, "
+				+ "CorrectAnswer, WrongAnswer1, WrongAnswer2, WrongAnswer3, WrongAnswer4, QuestionType) "
+				+ "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
 		Connection connection = null;
-		Statement statement = null;
+		PreparedStatement statement = null;
 		
 		try {
 			connection = DriverManager.getConnection("jdbc:sqlite:" + dbPath);
 			connection.setAutoCommit(false);
 			
 			// TODO: Return result == 0 for failure?
-			statement = connection.createStatement();
-			result = statement.executeUpdate(select);
-
+			statement = connection.prepareStatement(select);
+			statement.setInt(1, question.getCreatorId());
+			statement.setInt(2, 3);
+			statement.setString(3, question.getQuestionText());
+			statement.setString(4, question.getCorrectAnswer());
+			String[] wrongAnswers = question.getWrongAnswers();
+			for(int i = 0; i < wrongAnswers.length; i++) {
+				statement.setString((i + 5), wrongAnswers[i]);
+			}
+			statement.setString(9, question.getType().toString());
+			result = statement.executeUpdate();
+			connection.commit();
+			
 			statement.close();
-			connection.close();		
+			connection.close();	
+			
+			return true;
 		}
 		catch(Exception e){
 			String errorMsg = "Question could not be inserted into the database. result = " + result; 
@@ -60,7 +62,7 @@ public class QuestionDAO {
 			e.printStackTrace();
 		}
 		
-		// 	TODO: Return a failure or success?
+		return false;
 	}
 	
 	/*
@@ -151,4 +153,5 @@ public class QuestionDAO {
 		
 		return questions;
 	}
+	
 }
