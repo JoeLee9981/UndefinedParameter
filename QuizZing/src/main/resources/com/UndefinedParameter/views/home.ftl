@@ -88,7 +88,7 @@
 					<div class="span9 no-span-left-margin">
 						<div class="offset1 span11">
 							<div>
-								<h2 class="fg-white"><strong>Welcome to QuizZing, the new way to study.</strong></h2>
+								<h1 class="fg-white"><strong>Welcome to QuizZing</strong></h1>
 							</div>
 							<div>
 								<p class="fg-white">
@@ -129,19 +129,42 @@
 			</div>	
 		</div>
 		
+		<div class="divider1">
+		</div>
 		
+		<div class="metro" id="home-page-subsection">
+			<div class="grid fluid">
+				<div class="page-content">
+					<div class="home-subsection">
+						<div class="row">
+							<h1>What Is Quizzing?</h1>
+						</div>
+
+						<#list news as n>
+											
+							<div class="row">
+								<div class="span3">
+									<div class="notice marker-on-right bg-amber fg-white font-size-medium">
+									 	${n.headline}
+									</div>
+								</div>
+								<div class="span9">
+										<p>${n.body}</p>
+								</div>
+							</div>
+						
+						</#list>										
+					</div>
+				</div>
+			</div>
+		<div>
+		
+			
+
+					
+									
 		<#include "../includes/footer.ftl">
 		
-		
-		<!--
-		<div class="page-content" style="background:white">
-			<#list news as n>
-				<h1>${n.headline}</h1>
-				<p>${n.body}</p>
-			</#list>
-		</div>
-		-->
-
 </div>
 
 	</body>

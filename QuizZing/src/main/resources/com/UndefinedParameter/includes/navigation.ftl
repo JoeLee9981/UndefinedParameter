@@ -4,7 +4,7 @@
 	<nav id="main-nav" class="navigation-bar dark">
 	    <nav id="main-nav-content" class="navigation-bar-content page-content">
 	    
-	    	<a class="element brand" href="/">Home Link</a>
+	    	<a class="element brand" href="/"><i class="icon-home"></i></a>
 	    	<span class="element-divider"></span>
 	    	<a class="element brand" href="/orgs">Organizations</a>
 	    	<span class="element-divider"></span>
