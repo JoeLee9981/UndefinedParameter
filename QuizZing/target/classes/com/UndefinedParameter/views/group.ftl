@@ -22,7 +22,7 @@
 
 			<h1>${group.name?html}!</h1>
 			
-			<a href="/quiz/0">Take a Quiz</a>
+			<a href="/quiz/1">Take a Quiz</a>
 			<a href="/quiz/create">Create a New Quiz</a>
 			
 			<p>Return to: </p><br/>

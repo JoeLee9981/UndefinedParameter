@@ -87,9 +87,9 @@ public class QuizDAO {
 		Connection connection = null;
 		Statement statement = null;
 		
-		String select = "SELECT Description "
+		String select = "SELECT * "
 				+ "FROM Quiz "
-				+ "WHEREQuizID = " + qID;	
+				+ "WHERE QuizID = " + qID;	
 		
 		try{
 			
