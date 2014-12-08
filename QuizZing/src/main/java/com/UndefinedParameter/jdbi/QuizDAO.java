@@ -143,7 +143,7 @@ public class QuizDAO {
 			statement.executeUpdate(deletequiz);
 			statement.executeUpdate(deletequizquestion);
 			statement.executeUpdate(deletetagquiz);
-			
+			connection.commit();
 		}
 		catch(Exception e){
 			String errorMsg = "Could not delete quiz. Quiz " + qID + " may not exist."; 
@@ -188,6 +188,8 @@ public class QuizDAO {
 				id = quizID.getInt("QuizID");
 			}
 			
+			connection.commit();
+			
 			quizID.close();			
 			statement.close();
 			connection.close();	
@@ -229,6 +231,8 @@ public class QuizDAO {
 			
 			statement = connection.createStatement();
 			result = statement.executeUpdate(insert);
+			
+			connection.commit();
 			
 			statement.close();
 			connection.close();	
@@ -275,6 +279,8 @@ public class QuizDAO {
 			
 			statement = connection.createStatement();
 			result = statement.executeUpdate(insert);
+			
+			connection.commit();
 			
 			statement.close();
 			connection.close();	
