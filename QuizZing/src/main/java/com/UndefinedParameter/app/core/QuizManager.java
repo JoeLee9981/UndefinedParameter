@@ -1,9 +1,11 @@
 package com.UndefinedParameter.app.core;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
 
 
 
@@ -77,6 +79,14 @@ public class QuizManager {
 		return quiz;
 	}
 	
+	private static ArrayList<Question> getRandomizedQuestions(int quizId)
+	{
+		ArrayList<Question> randomizedQuestionList = QuizDAO.retrieveExistingQuiz(quizId);
+		Collections.shuffle(randomizedQuestionList);
+		
+		return randomizedQuestionList;
+	}
+	
 	/*
 	 * TODO: Implement this
 	 */
@@ -130,8 +140,7 @@ public class QuizManager {
 	}
 	
 	public static void createQuiz(Quiz quiz) throws Exception
-	{
-		
+	{		
 		// Check for invalid parameters.
 		if(quiz.getCreatorId() < 0)
 			throw new Exception("Invalid creator ID. Must be greater than 0.");
