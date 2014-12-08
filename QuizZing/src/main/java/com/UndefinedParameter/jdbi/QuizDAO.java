@@ -239,4 +239,152 @@ public class QuizDAO {
 			e.printStackTrace();
 		}
 	}
+	
+	
+	/*
+	 * 	CreateAQuestion. Will add a new question to the database.
+	 */
+	private static void createQuestion(Question question)
+	{
+
+		int result = -1;
+		
+		String insert = "INSERT INTO Question "
+				+ "(CreatorID, QuestionDifficulty, Rating, "
+				+ "QuestionText, CorrectAnswer, QuestionType, WrongAnswer1, "
+				+ "WrongAnswer2, WrongAnswer3, WrongAnswer4, Flagged) "
+				+ "VALUES ("
+				+ question.getCreatorId() + ", "
+				+ question.getQuestionDifficulty() + ", "
+				+ question.getRating() + ", "
+				+ question.getQuestionText() + ", "
+				+ question.getCorrectAnswer() + ", "
+				+ question.getType() + ", "
+				+ question.getWrongAnswers()[0] + ", "
+				+ question.getWrongAnswers()[1] + ", "
+				+ question.getWrongAnswers()[2] + ", "
+				+ question.getWrongAnswers()[3] + ", "
+				+ question.isFlagged() + ")";
+		
+		Connection connection = null;
+		Statement statement = null;
+		
+		try {
+			connection = DriverManager.getConnection("jdbc:sqlite:" + dbPath);
+			connection.setAutoCommit(false);
+			
+			statement = connection.createStatement();
+			result = statement.executeUpdate(insert);
+			
+			statement.close();
+			connection.close();	
+		}
+		catch(Exception e){
+			String errorMsg = "Could not add question to database. Database respone = " + result; 
+			logger.error(errorMsg);
+			e.printStackTrace();
+		}
+	}
+	
+	
+	/*
+	 * 	CreateAQuestion. Will get a question from the database.
+	 */
+	private static Question getQuestion(int qID)
+	{
+
+		int result = -1;
+		Question question = null;
+		
+		String select = "SELECT * FROM Question WHERE QuestionID = " + qID;
+		
+		Connection connection = null;
+		Statement statement = null;
+		
+		try {
+
+			connection = DriverManager.getConnection("jdbc:sqlite:" + dbPath);
+			connection.setAutoCommit(false);
+			
+			statement = connection.createStatement();
+			ResultSet results = statement.executeQuery(select);
+			
+			while(results.next())
+			{				
+				
+				int qid = results.getInt("QuestionID");
+				int cid = results.getInt("CreatorID");
+				int diff = results.getInt("QuestionDifficulty");
+				int rate = results.getInt("Rating");
+				String qText = results.getString("QuestionText");
+				String answer = results.getString("CorrectAnswer");
+				String qType = results.getString("QuestionType");
+				String wrongA1 = results.getString("WrongAnswer1");
+				String wrongA2 = results.getString("WrongAnswer2");
+				String wrongA3 = results.getString("WrongAnswer3");
+				String wrongA4 = results.getString("WrongAnswer4");
+				Boolean flag = results.getBoolean("Flagged");	
+				question = new Question(qid, cid, diff, rate, qType, qText, answer, new String[] {wrongA1, wrongA2, wrongA3, wrongA4}, flag);
+			}			
+		}
+		catch(Exception e){
+			String errorMsg = "Could not get selected question by ID from database. Database respone = " + result; 
+			logger.error(errorMsg);
+			e.printStackTrace();
+		}
+		return question;
+	}
+	
+	
+	/*
+	 * 	CreateAQuestion. Will add a new question to the database.
+	 */
+	private static ArrayList<Question> getAllQuestions()
+	{
+
+		int result = -1;
+		Question question = null;
+		ArrayList<Question> array = null;
+		
+		
+		String select = "SELECT * FROM Question ORDER BY QuestionID";
+		
+		Connection connection = null;
+		Statement statement = null;
+		
+		try {
+
+			connection = DriverManager.getConnection("jdbc:sqlite:" + dbPath);
+			connection.setAutoCommit(false);
+			
+			statement = connection.createStatement();
+			ResultSet results = statement.executeQuery(select);
+			
+			while(results.next())
+			{				
+				
+				int qid = results.getInt("QuestionID");
+				int cid = results.getInt("CreatorID");
+				int diff = results.getInt("QuestionDifficulty");
+				int rate = results.getInt("Rating");
+				String qText = results.getString("QuestionText");
+				String answer = results.getString("CorrectAnswer");
+				String qType = results.getString("QuestionType");
+				String wrongA1 = results.getString("WrongAnswer1");
+				String wrongA2 = results.getString("WrongAnswer2");
+				String wrongA3 = results.getString("WrongAnswer3");
+				String wrongA4 = results.getString("WrongAnswer4");
+				Boolean flag = results.getBoolean("Flagged");	
+				question = new Question(qid, cid, diff, rate, qType, qText, answer, new String[] {wrongA1, wrongA2, wrongA3, wrongA4}, flag);
+				
+				array.add(question);
+			}			
+		}
+		catch(Exception e){
+			String errorMsg = "Could not add question to database. Database respone = " + result; 
+			logger.error(errorMsg);
+			e.printStackTrace();
+		}
+		return array;
+	}
 }
