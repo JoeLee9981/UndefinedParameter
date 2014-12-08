@@ -1,11 +1,19 @@
 #footer
 {
 	width: 100%;
-	background-color: #757575;
+	background-color: #333333;
+	opacity: 0.8;
+	min-width: 1050px;
 }
 
 #footer-content
 {
 	min-height: 150px;
-	margin-top: 50px;
+	margin-top: 20px;
+	padding-top: 20px;
+}
+
+#bottom-links ul li a
+{
+	color: white;
 }

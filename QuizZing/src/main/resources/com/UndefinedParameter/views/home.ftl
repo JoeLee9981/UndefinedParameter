@@ -86,34 +86,61 @@
 						</div>											
 					</div>
 					<div class="span9 no-span-left-margin">
-						<div id="home-content-right" class="span12">
+						<div class="offset1 span11">
+							<div>
+								<h2 class="fg-white"><strong>Welcome to QuizZing, the new way to study.</strong></h2>
+							</div>
+							<div>
+								<p class="fg-white">
+									QuizZing provides a better, more efficient way to study. Study in groups from within your
+									classes and schools as well as those across the country. Create your own questions, quizzes,
+									and all sorts of other cool stuff that I can't think of right now.
+								</p>
+							</div>
 						</div>
+						<div id="home-page-quick-links" class="offset1 span11 fg-white">
+							<div>
+								<span>
+									<a href="#">
+										<i class="icon-globe on-left"></i>
+										Get Connected To Your Group
+									</a>
+								</span>
+							</div>
+							<div>
+								<span>
+									<a href="#">
+										<i class="icon-glasses-2 on-left"></i>
+										Learn More
+									</a>
+								</span>
+							</div>
+							<div>
+								<span>
+									<a href="#">
+										<i class="icon-search on-left"></i>
+										Search For More
+									</a>
+								<span>
+							</div>
+						</div>						
 					</div>
 				</div>
 			</div>	
 		</div>
 		
+		
+		<#include "../includes/footer.ftl">
+		
+		
+		<!--
 		<div class="page-content" style="background:white">
 			<#list news as n>
 				<h1>${n.headline}</h1>
 				<p>${n.body}</p>
 			</#list>
 		</div>
-		
-		<script>		
-			$(window).load(function(){
-				$("#home-content-right").height($("#home-content").height());
-			});
-		</script>
-		
-		<#include "../includes/footer.ftl">
-		
-		
-		<br>
-		<br>
-		<br>
-		<br>
-
+		-->
 
 </div>
 
