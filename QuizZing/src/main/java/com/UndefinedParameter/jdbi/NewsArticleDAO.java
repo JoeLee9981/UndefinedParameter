@@ -12,7 +12,7 @@ import com.UndefinedParameter.app.core.NewsArticle;
 
 public class NewsArticleDAO {
 
-	private static final String dbPath = "database\\QuizZing";
+	private static final String dbPath = "database/QuizZing";
 	
 	
 	public static List<NewsArticle> selectAllNews() {

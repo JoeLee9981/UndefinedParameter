@@ -16,7 +16,7 @@ import com.UndefinedParameter.quizzing.QuizZingApplication;
 public class QuizDAO {
 	
 	final static Logger logger = LoggerFactory.getLogger(QuizZingApplication.class);
-	private static final String dbPath = "database\\QuizZing";
+	private static final String dbPath = "database/QuizZing";
 	
 	/*
 	 * 	retrieveExistingQuiz - Retrieves quiz questions from a specific existing quiz id.

@@ -16,7 +16,7 @@ import com.UndefinedParameter.quizzing.QuizZingApplication;
 public class OrganizationDAO {
 	
 	final static Logger logger = LoggerFactory.getLogger(QuizZingApplication.class);
-	private static final String dbPath = "database\\QuizZing";
+	private static final String dbPath = "database/QuizZing";
 	
 	/*
 	 * Fetches all organizations from the db

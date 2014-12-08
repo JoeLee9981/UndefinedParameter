@@ -16,7 +16,7 @@ import com.UndefinedParameter.quizzing.QuizZingApplication;
 public class QuestionDAO {
 
 	final static Logger logger = LoggerFactory.getLogger(QuizZingApplication.class);
-	private static final String dbPath = "database\\QuizZing";
+	private static final String dbPath = "database/QuizZing";
 	
 	/*
 	 * 	createQuestion - Given a question, insert it into the database assuming all

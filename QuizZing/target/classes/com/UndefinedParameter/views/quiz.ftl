@@ -60,7 +60,6 @@
 								<div>
 									<button id="prevQuestion" onclick="previousQuestion()" class="primary">Previous</button>
 									<button id="nextQuestion" onclick="nextQuestion()" class="success">Next</next>
-									<button id="submitQuiz" onclick="submitQuiz()" class="success">submit</next>
 								</div>
 							</div>
 						</div>
@@ -70,7 +69,8 @@
 					</div>
 				</div>
 				<div id="quizFinish" hidden="true">
-					<h2>Your Quiz Stats</h2>
+					<h2>Your Quiz Stats: </h2><br/>
+					<t/><h3 id="scoreText"/>
 				</div>
 				<div class="row">
 					Bottom
@@ -138,11 +138,13 @@
 		function nextQuestion() {
 			$("#answerDiv").fadeOut(150, function() {
 				quizPosition++;
+				
 				if (quizPosition == quiz.length)
 				{
-					$("#quizDiv").hide();
 					$("#quizFinish").show();
 					SetProgressBar();
+					submitQuiz();
+					document.getElementById('nextQuestion').disabled = true;
 					return;
 				}
 				
@@ -159,10 +161,7 @@
 				
 				setAnswers();
 				
-				if(quizPosition == quiz.length) {
-					document.getElementById('nextQuestion').disabled = true;
-				}
-				else {
+				if(quizPosition < quiz.length) {
 					document.getElementById('nextQuestion').disabled = false;
 					document.getElementById('prevQuestion').disabled = false;
 				}
@@ -206,26 +205,24 @@
 		function setAnswers() 
 		{
 			var answers = questions[quizPosition];
+			var correct = correctAnswers[quizPosition];
+
 			var html = ''; 
-			
-			/*
-			for(var i = 0; i < answers.length; i++) 
-			{
-				var isChecked = submittedAnswers[quizPosition] == i ? true : false;
-				html += '<tr><td><input type="radio" name="answer" onclick="setAnswer(' + i + ')"'; 
-				if(isChecked)
-					html += ' checked';
-				html += '></td><td><h3>' + answers[i] + '</h3></td>';
-			}*/
-			
 			
 			for(var i = 0; i < answers.length; i++) 
 			{
 				var style = "";
 				var isChecked = submittedAnswers[quizPosition] == i ? true : false;
-				if (isChecked)
+				if (isChecked && quizInProgress)
 				{
 					style = "primary";
+				}
+				if (!quizInProgress) {
+					if(answers[i] == correct)
+						style = "success";
+					else if(isChecked) {
+						style = "danger";
+					}
 				}
 				html += "<button class='command-button block " + style +" size8' onclick='setAnswer(" + i + ")'><small>";
 				html += answers[i];
@@ -237,11 +234,14 @@
 		}
 		
 		function setAnswer(val) {
+			if(!quizInProgress)
+				return;
 			submittedAnswers[quizPosition] = parseInt(val);
 			nextQuestion();
 		}
 		
 		function submitQuiz() {
+			quizInProgress = false;
 			var score = 0.0;
 
 			for(var i = 0; i < submittedAnswers.length; i++) {
@@ -252,7 +252,7 @@
 						score++;
 				}
 			}
-			alert("Score: " + score / correctAnswers.length * 100 + "%");
+			document.getElementById('scoreText').innerHTML = "Score: " + score / correctAnswers.length * 100 + "%";
 		}
 		
 		
