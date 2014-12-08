@@ -1,9 +1,11 @@
 package com.UndefinedParameter.app.core;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
 
 
 
@@ -75,6 +77,14 @@ public class QuizManager {
 			logger.warn("<QuizManager> -- Quiz was not found in database");
 		}
 		return quiz;
+	}
+	
+	private static ArrayList<Question> getRandomizedQuestions(int quizId)
+	{
+		ArrayList<Question> randomizedQuestionList = QuizDAO.retrieveExistingQuiz(quizId);
+		Collections.shuffle(randomizedQuestionList);
+		
+		return randomizedQuestionList;
 	}
 	
 	/*
