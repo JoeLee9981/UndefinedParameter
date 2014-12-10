@@ -123,6 +123,14 @@
 									</a>
 								<span>
 							</div>
+							<div>
+								<span>
+									<a href="/feedback">
+										<i class="icon-search on-left"></i>
+										Give Us Your Feedback
+									</a>
+								<span>
+							</div>
 						</div>						
 					</div>
 				</div>
@@ -137,6 +145,7 @@
 				<div class="page-content">
 					<div class="home-subsection">
 						<div class="row">
+							<h1><a href="/quiz/2">Take the CS-4400 Study Guide</a></h1>
 							<h1>What Is Quizzing?</h1>
 						</div>
 

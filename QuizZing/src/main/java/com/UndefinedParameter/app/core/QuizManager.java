@@ -98,7 +98,7 @@ public class QuizManager {
 	/*
 	 *  TODO: Implement this - NOTE THIS WILL NOT WORK FOR REAL CODING
 	 */
-	private static Question getQuestion(int questionId) {
+	/*private static Question getQuestion(int questionId) {
 		Question question = new Question();
 		question.setQuestionId(questionId);
 		question.setType(Question.QuestionType.MULTIPLE_CHOICE);
@@ -116,7 +116,7 @@ public class QuizManager {
 		question.setWrongAnswers(wrongAnswers);
 		
 		return question;
-	}
+	}*/
 	
 	
 	

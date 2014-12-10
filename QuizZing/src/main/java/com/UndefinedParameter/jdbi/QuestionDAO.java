@@ -43,9 +43,9 @@ public class QuestionDAO {
 			statement.setInt(2, 3);
 			statement.setString(3, question.getQuestionText());
 			statement.setString(4, question.getCorrectAnswer());
-			String[] wrongAnswers = question.getWrongAnswers();
-			for(int i = 0; i < wrongAnswers.length; i++) {
-				statement.setString((i + 5), wrongAnswers[i]);
+			ArrayList<String> wrongAnswers = question.getWrongAnswers();
+			for(int i = 0; i < wrongAnswers.size(); i++) {
+				statement.setString((i + 5), wrongAnswers.get(i));
 			}
 			statement.setString(9, question.getType().toString());
 			result = statement.executeUpdate();
@@ -119,8 +119,18 @@ public class QuestionDAO {
 				String wrongA3 = results.getString("WrongAnswer3");
 				String wrongA4 = results.getString("WrongAnswer4");
 				Boolean flag = results.getBoolean("Flagged");
+				
+				ArrayList<String> wrongAnswers = new ArrayList<String>();
+				if(wrongA1 != null && wrongA1.length() > 0)
+					wrongAnswers.add(wrongA1);
+				if(wrongA2 != null && wrongA2.length() > 0)
+					wrongAnswers.add(wrongA2);
+				if(wrongA3 != null && wrongA3.length() > 0)
+					wrongAnswers.add(wrongA3);
+				if(wrongA4 != null && wrongA4.length() > 0)
+					wrongAnswers.add(wrongA4);
 				questions.add(new Question(qid, cid, diff, rate, qType, qText, answer, 
-						new String[] {wrongA1, wrongA2, wrongA3, wrongA4}, flag));
+						wrongAnswers, flag));
 			}
 			results.close();
 			statement.close();
@@ -172,7 +182,17 @@ public class QuestionDAO {
 				String wrongA3 = results.getString("WrongAnswer3");
 				String wrongA4 = results.getString("WrongAnswer4");
 				Boolean flag = results.getBoolean("Flagged");	
-				question = new Question(qid, cid, diff, rate, qType, qText, answer, new String[] {wrongA1, wrongA2, wrongA3, wrongA4}, flag);
+				
+				ArrayList<String> wrongAnswers = new ArrayList<String>();
+				if(wrongA1 != null && wrongA1.length() > 0)
+					wrongAnswers.add(wrongA1);
+				if(wrongA2 != null && wrongA2.length() > 0)
+					wrongAnswers.add(wrongA2);
+				if(wrongA3 != null && wrongA3.length() > 0)
+					wrongAnswers.add(wrongA3);
+				if(wrongA4 != null && wrongA4.length() > 0)
+					wrongAnswers.add(wrongA4);
+				question = new Question(qid, cid, diff, rate, qType, qText, answer, wrongAnswers, flag);
 			}			
 		}
 		catch(Exception e){
@@ -224,7 +244,17 @@ public class QuestionDAO {
 				String wrongA3 = results.getString("WrongAnswer3");
 				String wrongA4 = results.getString("WrongAnswer4");
 				Boolean flag = results.getBoolean("Flagged");	
-				question = new Question(qid, cid, diff, rate, qType, qText, answer, new String[] {wrongA1, wrongA2, wrongA3, wrongA4}, flag);
+				
+				ArrayList<String> wrongAnswers = new ArrayList<String>();
+				if(wrongA1 != null && wrongA1.length() > 0)
+					wrongAnswers.add(wrongA1);
+				if(wrongA2 != null && wrongA2.length() > 0)
+					wrongAnswers.add(wrongA2);
+				if(wrongA3 != null && wrongA3.length() > 0)
+					wrongAnswers.add(wrongA3);
+				if(wrongA4 != null && wrongA4.length() > 0)
+					wrongAnswers.add(wrongA4);
+				question = new Question(qid, cid, diff, rate, qType, qText, answer, wrongAnswers, flag);
 				
 				array.add(question);
 			}
@@ -287,7 +317,17 @@ public class QuestionDAO {
 				String wrongA3 = results.getString("WrongAnswer3");
 				String wrongA4 = results.getString("WrongAnswer4");
 				Boolean flag = results.getBoolean("Flagged");	
-				question = new Question(qid, cid, diff, rate, qType, qText, answer, new String[] {wrongA1, wrongA2, wrongA3, wrongA4}, flag);
+				
+				ArrayList<String> wrongAnswers = new ArrayList<String>();
+				if(wrongA1 != null && wrongA1.length() > 0)
+					wrongAnswers.add(wrongA1);
+				if(wrongA2 != null && wrongA2.length() > 0)
+					wrongAnswers.add(wrongA2);
+				if(wrongA3 != null && wrongA3.length() > 0)
+					wrongAnswers.add(wrongA3);
+				if(wrongA4 != null && wrongA4.length() > 0)
+					wrongAnswers.add(wrongA4);
+				question = new Question(qid, cid, diff, rate, qType, qText, answer, wrongAnswers, flag);
 				
 				array.add(question);
 			}			

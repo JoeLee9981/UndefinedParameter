@@ -1,5 +1,6 @@
 package com.UndefinedParameter.app.core;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Random;
 
@@ -25,7 +26,7 @@ public class Question {
 	private int rating;
 	private String questionText;
 	private String correctAnswer;
-	private String[] wrongAnswers;
+	private ArrayList<String> wrongAnswers;
 	private boolean flagged = false;
 	
 	// This contains a list of all the associated groups for this question
@@ -34,7 +35,6 @@ public class Question {
 	
 	//TODO: These variables need to be added to table
 	//		default them for now for prototype only
-	private int answerCount = 5; //TODO: this has to be set properly
 	private int correctPosition = 0; //this only applies to unordered answers
 	private boolean ordered = false;
 	private QuestionType type = QuestionType.MULTIPLE_CHOICE;
@@ -47,7 +47,7 @@ public class Question {
 	{
 	}
 	
-	public Question(int qID, int cID, int difficulty, int rate, String qt, String qText, String answer, String[] wrong, Boolean flag)
+	public Question(int qID, int cID, int difficulty, int rate, String qt, String qText, String answer, ArrayList<String> wrong, Boolean flag)
 	{
 		this.questionId = qID;
 		this.creatorId = cID;
@@ -61,16 +61,16 @@ public class Question {
 	}
 	
 	public void setAnswers() {
-		String[] answers = new String[answerCount];
+		String[] answers = new String[wrongAnswers.size() + 1];
 		
 		//build the answers from correct and wrong
 		int pos = 0;
 		for(; pos < correctPosition; pos++)
-			answers[pos] = wrongAnswers[pos];
+			answers[pos] = wrongAnswers.get(pos);
 		answers[correctPosition] = correctAnswer;
 		pos++;
-		for(; pos < answerCount; pos++)
-			answers[pos] = wrongAnswers[pos-1];
+		for(; pos < getAnswerCount(); pos++)
+			answers[pos] = wrongAnswers.get(pos-1);
 
 		//set all answers
 		allAnswers = answers;
@@ -156,12 +156,12 @@ public class Question {
 	}
 	
 	@JsonProperty
-	public String[] getWrongAnswers() {
+	public ArrayList<String> getWrongAnswers() {
 		return wrongAnswers;
 	}
 	
 	@JsonProperty
-	public void setWrongAnswers(String[] wrongAnswers) {
+	public void setWrongAnswers(ArrayList<String> wrongAnswers) {
 		this.wrongAnswers = wrongAnswers;
 	}
 	
@@ -207,14 +207,9 @@ public class Question {
 
 	@JsonProperty
 	public int getAnswerCount() {
-		return answerCount;
+		return wrongAnswers.size() + 1;
 	}
 
-	@JsonProperty
-	public void setAnswerCount(int answerCount) {
-		this.answerCount = answerCount;
-	}
-	
 	@JsonProperty
 	public int getRating() {
 		return rating;

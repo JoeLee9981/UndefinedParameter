@@ -62,7 +62,17 @@ public class QuizDAO {
 				String wrongA3 = results.getString("WrongAnswer3");
 				String wrongA4 = results.getString("WrongAnswer4");
 				Boolean flag = results.getBoolean("Flagged");	
-				questions.add(new Question(qid, cid, diff, rate, qType, qText, answer,	new String[] {wrongA1, wrongA2, wrongA3, wrongA4}, flag));
+				
+				ArrayList<String> wrongAnswers = new ArrayList<String>();
+				if(wrongA1 != null && wrongA1.length() > 0)
+					wrongAnswers.add(wrongA1);
+				if(wrongA2 != null && wrongA2.length() > 0)
+					wrongAnswers.add(wrongA2);
+				if(wrongA3 != null && wrongA3.length() > 0)
+					wrongAnswers.add(wrongA3);
+				if(wrongA4 != null && wrongA4.length() > 0)
+					wrongAnswers.add(wrongA4);
+				questions.add(new Question(qid, cid, diff, rate, qType, qText, answer,	wrongAnswers, flag));
 			}
 		}
 		catch(Exception e)
@@ -264,10 +274,10 @@ public class QuizDAO {
 				+ question.getQuestionText() + ", "
 				+ question.getCorrectAnswer() + ", "
 				+ question.getType() + ", "
-				+ question.getWrongAnswers()[0] + ", "
-				+ question.getWrongAnswers()[1] + ", "
-				+ question.getWrongAnswers()[2] + ", "
-				+ question.getWrongAnswers()[3] + ", "
+				+ question.getWrongAnswers().get(0) + ", "
+				+ question.getWrongAnswers().get(1) + ", "
+				+ question.getWrongAnswers().get(2) + ", "
+				+ question.getWrongAnswers().get(3) + ", "
 				+ question.isFlagged() + ")";
 		
 		Connection connection = null;
@@ -330,7 +340,17 @@ public class QuizDAO {
 				String wrongA3 = results.getString("WrongAnswer3");
 				String wrongA4 = results.getString("WrongAnswer4");
 				Boolean flag = results.getBoolean("Flagged");	
-				question = new Question(qid, cid, diff, rate, qType, qText, answer, new String[] {wrongA1, wrongA2, wrongA3, wrongA4}, flag);
+				
+				ArrayList<String> wrongAnswers = new ArrayList<String>();
+				if(wrongA1 != null && wrongA1.length() > 0)
+					wrongAnswers.add(wrongA1);
+				if(wrongA2 != null && wrongA2.length() > 0)
+					wrongAnswers.add(wrongA2);
+				if(wrongA3 != null && wrongA3.length() > 0)
+					wrongAnswers.add(wrongA3);
+				if(wrongA4 != null && wrongA4.length() > 0)
+					wrongAnswers.add(wrongA4);
+				question = new Question(qid, cid, diff, rate, qType, qText, answer, wrongAnswers, flag);
 			}			
 		}
 		catch(Exception e){
@@ -381,7 +401,17 @@ public class QuizDAO {
 				String wrongA3 = results.getString("WrongAnswer3");
 				String wrongA4 = results.getString("WrongAnswer4");
 				Boolean flag = results.getBoolean("Flagged");	
-				question = new Question(qid, cid, diff, rate, qType, qText, answer, new String[] {wrongA1, wrongA2, wrongA3, wrongA4}, flag);
+				
+				ArrayList<String> wrongAnswers = new ArrayList<String>();
+				if(wrongA1 != null && wrongA1.length() > 0)
+					wrongAnswers.add(wrongA1);
+				if(wrongA2 != null && wrongA2.length() > 0)
+					wrongAnswers.add(wrongA2);
+				if(wrongA3 != null && wrongA3.length() > 0)
+					wrongAnswers.add(wrongA3);
+				if(wrongA4 != null && wrongA4.length() > 0)
+					wrongAnswers.add(wrongA4);
+				question = new Question(qid, cid, diff, rate, qType, qText, answer, wrongAnswers, flag);
 				
 				array.add(question);
 			}			

@@ -26,13 +26,13 @@
 				</div>
 				<div id="quiz-subnav" class="row">
 					<div class="span12">
-						Upper Content
+						<h1>${quiz.description?html}<h1/>
 					</div>
 				</div>
 				<div id="start-quiz-div">
 					<div class="row">
 						<div class="offset2 span4">
-							<p>${quiz.description?html}<br/>
+							
 							Created By: ${quiz.creatorId?html}<br/>
 							Difficulty: ${quiz.difficulty?html}<br/>
 							Rating: ${quiz.rating?html}<br/>
@@ -70,7 +70,8 @@
 				</div>
 				<div id="quizFinish" hidden="true">
 					<h2>Your Quiz Stats: </h2><br/>
-					<t/><h3 id="scoreText"/>
+					<h3 id="scoreText"/>
+					<h3><a href="/feedback">Give Us Your Feedback</a></h3>
 				</div>
 				<div class="row">
 					Bottom
