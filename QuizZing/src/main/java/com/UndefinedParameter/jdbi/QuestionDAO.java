@@ -68,16 +68,38 @@ public class QuestionDAO {
 	/*
 	 * 	retrieveQuestions - Retrieves all the questions that are tagged with a given list of tags.
 	 */
-	public static ArrayList<Question> retrieveQuestions(int[] tagIds)
+	public static ArrayList<Question> retrieveQuestions(int[] tagIds, int maxQuestions)
 	{
 		// TODO: Currently retrieves all questions of that category. Need to
 		// narrow that number down to 100.
 		
 		ArrayList<Question> questions = new ArrayList<Question>();
 		
+		int taglength = tagIds.length -1;
+		
 		// TODO: Do we want to return an empty array of questions on tags = 0?
 		if(tagIds.length == 0)
 			return questions;
+		
+		// Retrieve all questions with tag ids.
+		//String select = "SELECT Q "
+		//		+ "FROM Question Q, TagQuestion TQ, Tags T "
+		//		+ "WHERE Q.QuestionID = TQ.QuestionID "
+		//		+ "AND TQ.TagID = T.TagID "
+		//		+ "AND TagID = (";
+		
+		Connection connection = null;
+		PreparedStatement statement = null;
+		
+		// TODO: Check to see if this behemoth query actually works.
+		// Append all tag ids to the select statement.
+		//for(int index : tagIds)
+		//{
+		//	if(index == tagIds.length - 1)
+		//		select += index + ") ";
+		//	else
+		//		select += index + ",";
+		//}
 		
 		// Retrieve all questions with tag ids.
 		String select = "SELECT Q "
@@ -85,28 +107,41 @@ public class QuestionDAO {
 				+ "WHERE Q.QuestionID = TQ.QuestionID "
 				+ "AND TQ.TagID = T.TagID "
 				+ "AND TagID = (";
-			
-		// TODO: Check to see if this behemoth query actually works.
-		// Append all tag ids to the select statement.
-		for(int index : tagIds)
+		for(int x = 0; x <= taglength; x++)
 		{
-			if(index == tagIds.length - 1)
-				select += index + ") ";
+			if(x == taglength)
+			{
+				select = select + "?)";
+			}
 			else
-				select += index + ",";
+			{
+				select = select + "?, ";
+			}
 		}
 		
-		Connection connection = null;
-		Statement statement = null;
+		//Connection connection = null;
+		//Statement statement = null;
 		
 		try {
 			connection = DriverManager.getConnection("jdbc:sqlite:" + dbPath);
 			connection.setAutoCommit(false);
 			
-			statement = connection.createStatement();
-			ResultSet results = statement.executeQuery(select);
+			//statement = connection.createStatement();
+			statement = connection.prepareStatement(select);
+			for(int x = 0; x < taglength; x++)
+			{
+				statement.setInt(x+1, tagIds[0]);
+			}
 			
-			if(results.next()) {
+			ResultSet results = statement.executeQuery();
+			//ResultSet results = statement.executeQuery(select);
+			
+			int x = 0;
+			while(results.next()) {
+				if(x == maxQuestions)
+				{
+					break;
+				}
 				int qid = results.getInt("QuestionID");
 				int cid = results.getInt("CreatorID");
 				int diff = results.getInt("QuestionDifficulty");
@@ -131,6 +166,7 @@ public class QuestionDAO {
 					wrongAnswers.add(wrongA4);
 				questions.add(new Question(qid, cid, diff, rate, qType, qText, answer, 
 						wrongAnswers, flag));
+				x++;
 			}
 			results.close();
 			statement.close();
@@ -157,15 +193,19 @@ public class QuestionDAO {
 		String select = "SELECT * FROM Question WHERE QuestionID = " + qID;
 		
 		Connection connection = null;
-		Statement statement = null;
+		//Statement statement = null;
+		PreparedStatement statement = null;
 		
 		try {
 
 			connection = DriverManager.getConnection("jdbc:sqlite:" + dbPath);
 			connection.setAutoCommit(false);
 			
-			statement = connection.createStatement();
-			ResultSet results = statement.executeQuery(select);
+			//statement = connection.createStatement();
+			statement = connection.prepareStatement(select);
+			statement.setInt(1, qID);
+			ResultSet results = statement.executeQuery();
+			//ResultSet results = statement.executeQuery(select);
 			
 			while(results.next())
 			{				
