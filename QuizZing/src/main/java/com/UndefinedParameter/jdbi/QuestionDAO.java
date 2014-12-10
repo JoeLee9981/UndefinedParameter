@@ -193,7 +193,10 @@ public class QuestionDAO {
 				if(wrongA4 != null && wrongA4.length() > 0)
 					wrongAnswers.add(wrongA4);
 				question = new Question(qid, cid, diff, rate, qType, qText, answer, wrongAnswers, flag);
-			}			
+			}
+			
+			statement.close();
+			connection.close();	
 		}
 		catch(Exception e){
 			String errorMsg = "Could not get selected question by ID from database. Database respone = " + result; 
@@ -219,7 +222,7 @@ public class QuestionDAO {
 		
 		Connection connection = null;
 		Statement statement = null;
-		ArrayList<Question> array = null;
+		ArrayList<Question> array = new ArrayList<Question>();
 		
 		try
 		{
@@ -259,6 +262,9 @@ public class QuestionDAO {
 				array.add(question);
 			}
 			
+			statement.close();
+			connection.close();	
+			
 		}
 		catch(Exception e){
 			String errorMsg = "Could not retrieve questions. Group " + gID + " or their questions may not exist."; 
@@ -278,8 +284,8 @@ public class QuestionDAO {
 	{
 		int i = 0;
 		int result = -1;
-		Question question = null;
-		ArrayList<Question> array = null;
+		Question question = new Question();
+		ArrayList<Question> array = new ArrayList<Question>();
 		
 		
 		String select = "SELECT * FROM Question ORDER BY QuestionID";
@@ -331,6 +337,9 @@ public class QuestionDAO {
 				
 				array.add(question);
 			}			
+			
+			statement.close();
+			connection.close();	
 		}
 		catch(Exception e){
 			String errorMsg = "Could not get question from database. Database respone = " + result; 

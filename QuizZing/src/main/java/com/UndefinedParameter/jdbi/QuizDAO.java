@@ -74,6 +74,9 @@ public class QuizDAO {
 					wrongAnswers.add(wrongA4);
 				questions.add(new Question(qid, cid, diff, rate, qType, qText, answer,	wrongAnswers, flag));
 			}
+			
+			statement.close();
+			connection.close();	
 		}
 		catch(Exception e)
 		{
@@ -115,7 +118,8 @@ public class QuizDAO {
 			quiz.setQuizId(qID);
 			quiz.setDescription(descript);
 			
-			
+			statement.close();
+			connection.close();	
 		}
 		catch(Exception e){
 			String errorMsg = "Could not retrieve quiz details. Quiz " + qID + " may not exist."; 
@@ -154,6 +158,9 @@ public class QuizDAO {
 			statement.executeUpdate(deletequizquestion);
 			statement.executeUpdate(deletetagquiz);
 			connection.commit();
+			
+			statement.close();
+			connection.close();	
 		}
 		catch(Exception e){
 			String errorMsg = "Could not delete quiz. Quiz " + qID + " may not exist."; 
@@ -207,6 +214,7 @@ public class QuizDAO {
 			// Set quiz id and send it to the linking method.
 			quiz.setQuizId(id);
 			linkToQuestions(quiz);
+			
 		}
 		catch(Exception e){
 			String errorMsg = "Quiz could not be created. result = " + result; 
@@ -351,7 +359,10 @@ public class QuizDAO {
 				if(wrongA4 != null && wrongA4.length() > 0)
 					wrongAnswers.add(wrongA4);
 				question = new Question(qid, cid, diff, rate, qType, qText, answer, wrongAnswers, flag);
-			}			
+			}
+			
+			statement.close();
+			connection.close();	
 		}
 		catch(Exception e){
 			String errorMsg = "Could not get selected question by ID from database. Database respone = " + result; 
@@ -414,7 +425,10 @@ public class QuizDAO {
 				question = new Question(qid, cid, diff, rate, qType, qText, answer, wrongAnswers, flag);
 				
 				array.add(question);
-			}			
+			}
+			
+			statement.close();
+			connection.close();	
 		}
 		catch(Exception e){
 			String errorMsg = "Could not add question to database. Database respone = " + result; 

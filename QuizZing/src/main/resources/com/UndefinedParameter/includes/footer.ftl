@@ -1,4 +1,4 @@
-<link href="assets/css/footer.css" rel="stylesheet">	
+<link href="/assets/css/footer.css" rel="stylesheet">	
 <div id="footer">
 	<div id="footer-content" class="page-content metro">
 		<div id="bottom-links" class="grid fluid">

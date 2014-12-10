@@ -142,6 +142,9 @@ public class Question {
 	
 	@JsonProperty
 	public void setQuestionText(String questionText) {
+		if(questionText != null) {
+			questionText = questionText.replace("\n", "<br/>");
+		}
 		this.questionText = questionText;
 	}
 	
