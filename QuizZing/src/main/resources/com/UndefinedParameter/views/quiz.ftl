@@ -48,13 +48,13 @@
 				<div id="quizDiv" hidden="true">
 					<div class="row">
 						<div class="span8">
-							<div class="row">
-								<p id="questionHead"> </p>
-							</div>
+								<div class="row">
+									<pre><p id="questionHead"> </p></pre>
+								</div>
 							<div class="row">
 								<div id="answerDiv">
 									
-								</div>												
+								</div>										
 							</div>
 							<div class="row">
 								<div>

@@ -41,6 +41,7 @@ public class QuestionCreatorResource {
 		HashMap<String, String> response = new HashMap<String, String>();
 		if(QuestionDAO.createQuestion(question) != -1) {
 			response.put("response", "success");
+			response.put("message", "Your question has been created.");
 		}
 		else {
 			response.put("response", "fail");
@@ -57,9 +58,10 @@ public class QuestionCreatorResource {
 		int questionId = QuestionDAO.createQuestion(question);
 		if(questionId != -1 && QuizManager.addQuestionToQuiz(quizId, questionId)) {
 			response.put("response", "success");
+			response.put("message", "Your question has been created.");
 		}
 		else {
-			response.put("response", "fail");
+			response.put("response", "Unable to create your question.");
 		}
 		return response;
 	}

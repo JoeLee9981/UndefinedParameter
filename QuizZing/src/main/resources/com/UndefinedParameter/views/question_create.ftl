@@ -87,8 +87,9 @@
 										        <span class="check"></span>
 										    </label>
 										</div>
-										<div class="span4">
+										<div class="span8">
 											<input type="button" onclick="addQuestion()">Submit</input>
+											<p id="responseLabel" />
 										</div>						
 									</label>
 								</div>
@@ -124,6 +125,8 @@
 			var incorrect = [];
 			var path = "/quiz/create/question/";
 			
+			document.getElementById('responseLabel').innerHTML = "";
+			
 			if(quizId > 0)
 				path += quizId;
 			
@@ -138,7 +141,8 @@
 			
 			if(!correct) {
 				//TODO: This needs to not be an alert box
-				alert("Must choose a correct answer");
+				document.getElementById('responseLabel').innerHTML = "You must check a correct answer";
+				document.getElementById('responseLabel').className = "text-alert";
 				return;
 			}
 			
@@ -152,15 +156,33 @@
 					Accept: "application/json",
 					"Content-Type": "application/json"
 				},
-				success: function(data, textStatus, JQxhr) {
-					alert(JSON.parse(data));
-					alert(textStatus);
-					alert(JQxhr);
+				success: function(data) {
+					if("success" == data["response"]) {
+						clear();
+						document.getElementById('responseLabel').className = "text-success";
+					}
+					else {
+						document.getElementById('responseLabel').className = "text-alert";
+					}
+					document.getElementById('responseLabel').innerHTML = data["message"];
 				}
 			});
 		}
 		
-	
+		
+		function clear() {
+			document.getElementById('descriptionText').value = "";
+			document.getElementById('qText1').value = "";
+			document.getElementById('qText2').value = "";
+			document.getElementById('qText3').value = "";
+			document.getElementById('qText4').value = "";
+			document.getElementById('qText5').value = "";
+			document.getElementById('qCheck1').checked = false;
+			document.getElementById('qCheck2').checked = false;
+			document.getElementById('qCheck3').checked = false;
+			document.getElementById('qCheck4').checked = false;
+			document.getElementById('qCheck5').checked = false;
+		}
 		
 	</script>
 </html>
