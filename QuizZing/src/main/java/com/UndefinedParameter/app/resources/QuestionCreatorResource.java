@@ -45,6 +45,7 @@ public class QuestionCreatorResource {
 		}
 		else {
 			response.put("response", "fail");
+			response.put("message", "Unable to create your question.");
 		}
 		return response;
 	}
@@ -61,14 +62,10 @@ public class QuestionCreatorResource {
 			response.put("message", "Your question has been created.");
 		}
 		else {
-			response.put("response", "Unable to create your question.");
+			response.put("response", "fail");
+			response.put("message", "Unable to create your question.");
 		}
 		return response;
-	}
-	
-	public List	getQuestionTypes()
-	{
-		return null;
 	}
 	
 }

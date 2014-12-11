@@ -26,7 +26,7 @@ public class QuizResource {
 	@Path("/{id}")
 	public QuizView getQuizView(@PathParam("id") int id) {
 		
-		return new QuizView(QuizManager.findQuiz(id));
+		return new QuizView(QuizManager.getRandomizedQuestions(id));
 	}
 	
 	@GET

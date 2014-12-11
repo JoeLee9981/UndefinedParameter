@@ -24,6 +24,25 @@ public class Group {
 	 */
 	private String name;
 	
+	/*
+	 * Description of the group
+	 */
+	private String description;
+	
+	/*
+	 * Number of members in the group
+	 */
+	private int memberCount;
+	
+	/*
+	 * Number of quizzes in the group
+	 */
+	private int quizCount;
+	
+	/*
+	 * Number of questions in the group
+	 */
+	private int questionCount;
 	
 	/*
 	 * TODO: Add long name and description fields
@@ -81,6 +100,46 @@ public class Group {
 	@JsonProperty
 	public void setOrganizationId(int organizationId) {
 		this.organizationId = organizationId;
+	}
+
+	@JsonProperty
+	public String getDescription() {
+		return description;
+	}
+
+	@JsonProperty
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	@JsonProperty
+	public int getMemberCount() {
+		return memberCount;
+	}
+
+	@JsonProperty
+	public void setMemberCount(int memberCount) {
+		this.memberCount = memberCount;
+	}
+
+	@JsonProperty
+	public int getQuizCount() {
+		return quizCount;
+	}
+
+	@JsonProperty
+	public void setQuizCount(int quizCount) {
+		this.quizCount = quizCount;
+	}
+
+	@JsonProperty
+	public int getQuestionCount() {
+		return questionCount;
+	}
+
+	@JsonProperty
+	public void setQuestionCount(int questionCount) {
+		this.questionCount = questionCount;
 	}
 	
 }

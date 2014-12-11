@@ -79,12 +79,19 @@ public class QuizManager {
 		return quiz;
 	}
 	
-	private static ArrayList<Question> getRandomizedQuestions(int quizId)
+	public static Quiz getRandomizedQuestions(int quizId)
 	{
+		//get and randomize questions
 		ArrayList<Question> randomizedQuestionList = QuizDAO.retrieveExistingQuiz(quizId);
 		Collections.shuffle(randomizedQuestionList);
+		//get the quiz from db
+		Quiz quiz = QuizDAO.retrieveExistingQuizDetails(quizId);
 		
-		return randomizedQuestionList;
+		//validate the quiz
+		if(quiz.getQuizId() > 0)
+			quiz.setQuestions(randomizedQuestionList);
+		
+		return quiz;
 	}
 	
 	/*

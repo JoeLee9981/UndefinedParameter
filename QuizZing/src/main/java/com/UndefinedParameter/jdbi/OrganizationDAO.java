@@ -10,7 +10,9 @@ import java.util.ArrayList;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.UndefinedParameter.app.core.Group;
 import com.UndefinedParameter.app.core.Organization;
+import com.UndefinedParameter.app.core.Question;
 import com.UndefinedParameter.quizzing.QuizZingApplication;
 
 public class OrganizationDAO {
@@ -124,6 +126,65 @@ public class OrganizationDAO {
 			e.printStackTrace();
 		}
 		return org;
+	}
+	
+	/*
+	 * Finds the groups that belong to an organization based upon the organizations id
+	 */
+	public static ArrayList<Group> findGroups(int orgId) {
+		// TODO: Implement retrieve quiz questions query based on quiz id.
+		ArrayList<Group> groups = new ArrayList<Group>();
+		
+		if(orgId < 0)
+		{
+			return groups;
+		}
+		
+		// Retrieve all questions with quiz id.
+		String select = "SELECT * FROM Group WHERE OrgId = ?";
+			
+		Connection connection = null;
+		PreparedStatement statement = null;
+		
+		try{
+			connection = DriverManager.getConnection("jdbc:sqlite:" + dbPath);
+			connection.setAutoCommit(false);
+			
+			statement = connection.prepareStatement(select);
+			statement.setInt(1, orgId);
+			ResultSet results = statement.executeQuery();
+			
+			while(results.next())
+			{				
+				int groupId = results.getInt("GroupID");
+				String name = results.getString("Name");
+				String description = results.getString("Description");
+				int memberCount = results.getInt("MemberCount");
+				int quizCount = results.getInt("QuizCount");
+				int questionCount = results.getInt("QuestionCount");
+				
+				Group group = new Group();
+				group.setId(groupId);
+				group.setOrganizationId(orgId);
+				group.setName(name);
+				group.setDescription(description);
+				group.setMemberCount(memberCount);
+				group.setQuizCount(quizCount);
+				group.setQuestionCount(questionCount);
+			}
+			
+			statement.close();
+			connection.close();	
+		}
+		catch(Exception e)
+		{
+			String errorMsg = "Could not retrieve quiz. Quiz " + qID + " may not exist."; 
+			logger.error(errorMsg);
+			e.printStackTrace();
+		}
+		
+		return groups;
+	
 	}
 	
 
