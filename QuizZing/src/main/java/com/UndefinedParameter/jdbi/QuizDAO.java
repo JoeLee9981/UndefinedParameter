@@ -2,6 +2,7 @@ package com.UndefinedParameter.jdbi;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -437,4 +438,39 @@ public class QuizDAO {
 		}
 		return array;
 	}
+	
+	public static boolean addQuestion(int quizId, int questionId) {
+		
+		if(quizId < 1 || questionId < 1)
+			return false;
+		
+		String select = "INSERT INTO QuizQuestion (QuizId, QuestionId) VALUES(?, ?)";
+		
+		Connection connection = null;
+		PreparedStatement statement = null;
+		
+		try {
+
+			connection = DriverManager.getConnection("jdbc:sqlite:" + dbPath);
+			connection.setAutoCommit(false);
+			
+			statement = connection.prepareStatement(select);
+			statement.setInt(1, quizId);
+			statement.setInt(2, questionId);
+			int result = statement.executeUpdate();
+			connection.commit();
+			
+			statement.close();
+			connection.close();	
+			
+			return result > 0;
+		}
+		catch(Exception e){
+			String errorMsg = "Error trying to insert QuizQuestion into database"; 
+			logger.error(errorMsg);
+			e.printStackTrace();
+		}
+		return false;
+	}
+	
 }

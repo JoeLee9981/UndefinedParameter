@@ -113,7 +113,7 @@
 	</body>
 	<script>
 		var maxAnswers = 5;
-		
+		var quizId = ${quizId};
 		function addQuestion() {
 			
 			
@@ -122,6 +122,10 @@
 			var correct;
 			var type = "MULTIPLE_CHOICE";
 			var incorrect = [];
+			var path = "/quiz/create/question/";
+			
+			if(quizId > 0)
+				path += quizId;
 			
 			for(var i = 1; i <= maxAnswers; i++) {
 				if(document.getElementById('qCheck' + i).checked) {
@@ -141,7 +145,7 @@
 	
 			 $.ajax({
 				type: 'POST',
-				url: "/quiz/create/question",
+				url: path,
 				data: JSON.stringify({questionText: desc, correctAnswer: correct, type: type, wrongAnswers: incorrect }),
 				dataType: "json",
 				headers: {

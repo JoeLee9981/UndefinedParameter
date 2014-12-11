@@ -11,6 +11,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.UndefinedParameter.app.health.TemplateHealthCheck;
+import com.UndefinedParameter.app.resources.CS4400Resource;
 import com.UndefinedParameter.app.resources.FeedbackResource;
 import com.UndefinedParameter.app.resources.GroupResource;
 import com.UndefinedParameter.app.resources.HomeResource;
@@ -70,6 +71,7 @@ public class QuizZingApplication extends Application<QuizZingConfiguration> {
 		environment.jersey().register(new OrganizationResource());
 		environment.jersey().register(new QuestionCreatorResource());
 		environment.jersey().register(new FeedbackResource());
+		environment.jersey().register(new CS4400Resource());
 
 	}
 }

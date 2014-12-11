@@ -124,7 +124,7 @@ public class QuizManager {
 	 * 	--------------- Creation Methods ---------------
 	 */
 	
-	public static boolean createQuestion(Question question) throws Exception
+	public static int createQuestion(Question question) throws Exception
 	{
 		// TODO: Implement a return check. True for success, false for failure.
 		
@@ -167,4 +167,15 @@ public class QuizManager {
 				throw new Exception("Not all questions exist in the database.");
 		}
 	}
+	
+	/*
+	 * Adds a quiz to question association into the QuizQuestion table of the database
+	 */
+	public static boolean addQuestionToQuiz(int quizId, int questionId) {
+		if(quizId < 1 || questionId < 1)
+			return false;
+		return QuizDAO.addQuestion(quizId, questionId);
+	}
+	
+	
 }

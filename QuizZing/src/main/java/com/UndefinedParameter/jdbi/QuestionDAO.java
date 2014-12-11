@@ -22,10 +22,9 @@ public class QuestionDAO {
 	 * 	createQuestion - Given a question, insert it into the database assuming all
 	 * 	necessary parameters are present. 
 	 */
-	public static boolean createQuestion(Question question)
+	public static int createQuestion(Question question)
 	{
-		// TODO: Check if the INSERT statement works.
-		int result = -1;
+		int key = -1;
 		String select = "INSERT INTO Question (CreatorID, QuestionDifficulty, QuestionText, "
 				+ "CorrectAnswer, WrongAnswer1, WrongAnswer2, WrongAnswer3, WrongAnswer4, QuestionType) "
 				+ "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
@@ -38,7 +37,7 @@ public class QuestionDAO {
 			connection.setAutoCommit(false);
 			
 			// TODO: Return result == 0 for failure?
-			statement = connection.prepareStatement(select);
+			statement = connection.prepareStatement(select, Statement.RETURN_GENERATED_KEYS);
 			statement.setInt(1, question.getCreatorId());
 			statement.setInt(2, 3);
 			statement.setString(3, question.getQuestionText());
@@ -48,21 +47,26 @@ public class QuestionDAO {
 				statement.setString((i + 5), wrongAnswers.get(i));
 			}
 			statement.setString(9, question.getType().toString());
-			result = statement.executeUpdate();
+			statement.executeUpdate();
+
+			ResultSet result = statement.getGeneratedKeys();
+			if(result != null && result.next())
+				key = result.getInt(1);
+			
 			connection.commit();
 			
 			statement.close();
 			connection.close();	
 			
-			return true;
+			return key;
 		}
 		catch(Exception e){
-			String errorMsg = "Question could not be inserted into the database. result = " + result; 
+			String errorMsg = "Question could not be inserted into the database. result = "; 
 			logger.error(errorMsg);
 			e.printStackTrace();
 		}
 		
-		return false;
+		return key;
 	}
 	
 	/*

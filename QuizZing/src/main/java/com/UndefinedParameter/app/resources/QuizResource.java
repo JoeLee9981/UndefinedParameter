@@ -1,7 +1,5 @@
 package com.UndefinedParameter.app.resources;
 
-import io.dropwizard.Application;
-
 import javax.validation.Valid;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
