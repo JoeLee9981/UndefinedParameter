@@ -131,7 +131,7 @@ public class OrganizationDAO {
 	/*
 	 * Finds the groups that belong to an organization based upon the organizations id
 	 */
-	public static ArrayList<Group> findGroups(int orgId) {
+	public static ArrayList<Group> findGroupsByOrgId(int orgId) {
 		// TODO: Implement retrieve quiz questions query based on quiz id.
 		ArrayList<Group> groups = new ArrayList<Group>();
 		
@@ -141,7 +141,7 @@ public class OrganizationDAO {
 		}
 		
 		// Retrieve all questions with quiz id.
-		String select = "SELECT * FROM Group WHERE OrgId = ?";
+		String select = "SELECT * FROM SubGroup WHERE OrgID = ?";
 			
 		Connection connection = null;
 		PreparedStatement statement = null;
@@ -171,6 +171,8 @@ public class OrganizationDAO {
 				group.setMemberCount(memberCount);
 				group.setQuizCount(quizCount);
 				group.setQuestionCount(questionCount);
+				
+				groups.add(group);
 			}
 			
 			statement.close();
@@ -178,13 +180,113 @@ public class OrganizationDAO {
 		}
 		catch(Exception e)
 		{
-			String errorMsg = "Could not retrieve quiz. Quiz " + qID + " may not exist."; 
+			String errorMsg = "Unable to find any groups associated with org: " + orgId; 
 			logger.error(errorMsg);
 			e.printStackTrace();
 		}
 		
 		return groups;
 	
+	}
+	
+	/*
+	 * Finds the groups that belong to an organization based upon the organizations id
+	 */
+	public static Group findGroupById(int groupId) {
+		// TODO: Implement retrieve quiz questions query based on quiz id.
+		Group group = new Group();
+		
+		if(groupId < 0)
+		{
+			return group;
+		}
+		
+		// Retrieve all questions with quiz id.
+		String select = "SELECT * FROM SubGroup WHERE GroupId = ?";
+			
+		Connection connection = null;
+		PreparedStatement statement = null;
+		
+		try{
+			connection = DriverManager.getConnection("jdbc:sqlite:" + dbPath);
+			connection.setAutoCommit(false);
+			
+			statement = connection.prepareStatement(select);
+			statement.setInt(1, groupId);
+			ResultSet results = statement.executeQuery();
+			
+			if(results.next())
+			{				
+				int orgId = results.getInt("OrgID");
+				String name = results.getString("Name");
+				String description = results.getString("Description");
+				int memberCount = results.getInt("MemberCount");
+				int quizCount = results.getInt("QuizCount");
+				int questionCount = results.getInt("QuestionCount");
+				
+				group.setId(groupId);
+				group.setOrganizationId(orgId);
+				group.setName(name);
+				group.setDescription(description);
+				group.setMemberCount(memberCount);
+				group.setQuizCount(quizCount);
+				group.setQuestionCount(questionCount);
+			}
+			
+			statement.close();
+			connection.close();	
+		}
+		catch(Exception e)
+		{
+			String errorMsg = "Unable to find any group by ID: " + groupId; 
+			logger.error(errorMsg);
+			e.printStackTrace();
+		}
+		
+		return group;
+	
+	}
+	
+	/*
+	 * Add a group into the SubGroup table of the database. Group must have an organizationid
+	 */
+	public static int createGroup(Group group) {
+		
+		int key = -1;
+		String select = "INSERT INTO SubGroup (Name, Description, OrgID) VALUES(?, ?, ?)";
+
+		Connection connection = null;
+		PreparedStatement statement = null;
+		
+		try {
+			connection = DriverManager.getConnection("jdbc:sqlite:" + dbPath);
+			connection.setAutoCommit(false);
+			
+			// TODO: Return result == 0 for failure?
+			statement = connection.prepareStatement(select, Statement.RETURN_GENERATED_KEYS);
+			statement.setString(1, group.getName());
+			statement.setString(2, group.getDescription());
+			statement.setInt(3, group.getOrganizationId());
+			statement.executeUpdate();
+
+			ResultSet result = statement.getGeneratedKeys();
+			if(result != null && result.next())
+				key = result.getInt(1);
+			
+			connection.commit();
+			
+			statement.close();
+			connection.close();	
+			
+			return key;
+		}
+		catch(Exception e){
+			String errorMsg = "Question could not be inserted into the database. result = "; 
+			logger.error(errorMsg);
+			e.printStackTrace();
+		}
+		
+		return key;
 	}
 	
 

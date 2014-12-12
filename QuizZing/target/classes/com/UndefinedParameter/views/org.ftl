@@ -94,11 +94,19 @@
 		 $.ajax({
 			type: 'POST',
 			url: "/group",
-			data: JSON.stringify({organizationId: ${organization.id}, name: groupName }),
+			data: JSON.stringify({organizationId: ${organization.id}, name: groupName, description: desc }),
 			dataType: "json",
 			headers: {
 				Accept: "application/json",
 				"Content-Type": "application/json"
+			},
+			success: function(data) {
+				if("success" == data["response"]) {
+
+					location.reload();
+				}
+		
+
 			}
 		});
 	}

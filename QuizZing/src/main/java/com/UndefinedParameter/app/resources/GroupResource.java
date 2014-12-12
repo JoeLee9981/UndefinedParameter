@@ -1,6 +1,8 @@
 package com.UndefinedParameter.app.resources;
 
 
+import java.util.HashMap;
+
 import javax.validation.Valid;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -29,14 +31,21 @@ public class GroupResource {
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public void addGroup(@Valid Group group) {
-		//if(group.getId() == 0 || group.getName() == null) {
-			//TODO: Return a failure response
-		//}
+	public HashMap<String, String> addGroup(@Valid Group group) {
 			
-		GroupManager.addGroup(group);
-		//return new Response();
-
+		HashMap<String, String> response = new HashMap<String, String>();
+		int groupId = GroupManager.addGroup(group);
+		
+		if(groupId >= 1) {
+			response.put("response", "success");
+			response.put("message", "Group " + group.getName() + " has been created.");
+		}
+		else {
+			response.put("response", "fail");
+			response.put("message", "Unable to create group " + group.getName());
+		}
+		
+		return response;
 	}
 	
 	@GET

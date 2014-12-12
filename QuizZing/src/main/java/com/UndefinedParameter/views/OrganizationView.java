@@ -2,6 +2,8 @@ package com.UndefinedParameter.views;
 
 import io.dropwizard.views.View;
 
+import java.util.ArrayList;
+
 import com.UndefinedParameter.app.core.Group;
 import com.UndefinedParameter.app.core.GroupManager;
 import com.UndefinedParameter.app.core.Organization;
@@ -19,7 +21,8 @@ public class OrganizationView extends View {
 		return organization;
 	}
 	
-	public Group[] getGroups() {
-		return GroupManager.findGroupsByOrg(organization.getId());
+	public ArrayList<Group> getGroups() {
+		ArrayList<Group> groups = GroupManager.findGroupsByOrg(organization.getId());
+		return groups;
 	}
 }
