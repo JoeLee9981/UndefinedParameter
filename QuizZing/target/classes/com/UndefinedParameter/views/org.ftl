@@ -57,12 +57,7 @@
                     </table>    
 			    </div>
 			</div>
-		</div>
-		
-		
-		
-		
-		<div class="content-width center">
+					<div class="content-width center">
 			Content is going to go here
 			
 			<h1></h1>
@@ -76,6 +71,12 @@
 			<input type="text" id="descriptionText" name="description" placeholder="Description"><br/>
 			<button onclick="addGroup()" >Add</button><br/>
 		</div>
+		</div>
+		
+		
+		
+		
+
 		
 		<#include "../includes/footer.ftl">
 	</body>
