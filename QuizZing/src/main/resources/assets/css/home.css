@@ -33,14 +33,14 @@
 
 body
 {
-	background: url('../images/studying1.jpg') no-repeat 0px -310px; 
-
+	background: linear-gradient(rgba(255, 127, 0, 0.5), rgba(255, 127, 0, 0.5)), url('../images/orange1.jpg') no-repeat 0px 0px;
+	background-size: 100%;
 }
 
 #home-page-quick-links > div
 {
-	margin: 30px;
-	padding: 25px;
+	margin: 38px;
+	padding: 10px;
 }
 
 #home-page-quick-links > div > span
@@ -69,4 +69,21 @@ body
 {
 	padding-top: 20px;
 	padding-bottom: 20px;
+}
+
+#welcome-message
+{
+	line-height: 120%;
+}
+
+#welcome-message a:link
+{
+	color: White;
+	text-decoration: underline;
+}
+
+#welcome-message a:visited
+{
+	color: White;
+	text-decoration: underline;
 }

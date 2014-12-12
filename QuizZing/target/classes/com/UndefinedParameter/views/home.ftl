@@ -40,14 +40,14 @@
 									    </label>
 									</div>
 									<div>
-										<a href="#">Forgot your email?</a>
+										<a href="#" class="todo">Forgot your email?</a>
 									</div>
 									<div>
-										<a href="#">Forgot your password?</a>
+										<a href="#" class="todo">Forgot your password?</a>
 									</div>
 								</div>			
 								<div class="span4">
-									<input class="place-right primary" type="submit" value="Login"/>
+									<input class="place-right primary todo" type="submit" value="Login"/>
 								</div>											
 							</form>
 						</div>
@@ -73,14 +73,14 @@
 								    <label>
 								        <input type="checkbox" />
 								        <span class="check"></span>
-								        I Accept the <a href="#">Terms and Conditions</a>.
+								        I Accept the <a href="#" class="todo">Terms and Conditions</a>.
 								    </label>
 								</div>
 								<div class="span8">
 	
 								</div>			
 								<div class="span4">
-									<input class="place-right success" type="submit" value="Register"/>
+									<input class="place-right success todo" type="submit" value="Register"/>
 								</div>											
 							</form>
 						</div>											
@@ -88,20 +88,21 @@
 					<div class="span9 no-span-left-margin">
 						<div class="offset1 span11">
 							<div>
-								<h1 class="fg-white"><strong>Welcome to QuizZing</strong></h1>
+								<h2 id="welcome-message" class="fg-white"><strong>Welcome to QuizZing.</strong>  Get connected to study groups
+								and discover the new, better way to study.  Try it out with our tailored for you <a href="/group/CS4400">CS4400 Quiz.</a></h2>
 							</div>
-							<div>
+							<!--<div>
 								<p class="fg-white">
 									QuizZing provides a better, more efficient way to study. Study in groups from within your
 									classes and schools as well as those across the country. Create your own questions, quizzes,
 									and all sorts of other cool stuff that I can't think of right now.
 								</p>
-							</div>
+							</div>-->
 						</div>
 						<div id="home-page-quick-links" class="offset1 span11 fg-white">
 							<div>
 								<span>
-									<a href="#">
+									<a href="#" class="todo">
 										<i class="icon-globe on-left"></i>
 										Get Connected To Your Group
 									</a>
@@ -109,7 +110,7 @@
 							</div>
 							<div>
 								<span>
-									<a href="#">
+									<a href="#" onclick="scrollToLearnMore();">
 										<i class="icon-glasses-2 on-left"></i>
 										Learn More
 									</a>
@@ -117,7 +118,7 @@
 							</div>
 							<div>
 								<span>
-									<a href="#">
+									<a href="#" class="todo">
 										<i class="icon-search on-left"></i>
 										Search For More
 									</a>
@@ -126,7 +127,7 @@
 							<div>
 								<span>
 									<a href="/feedback">
-										<i class="icon-search on-left"></i>
+										<i class="icon-printer on-left"></i>
 										Give Us Your Feedback
 									</a>
 								<span>
@@ -141,11 +142,10 @@
 		</div>
 		
 		<div class="metro" id="home-page-subsection">
-			<div class="grid fluid">
+			<div class="grid fluid" id="learnmore">
 				<div class="page-content">
 					<div class="home-subsection">
 						<div class="row">
-							<h1><a href="/group/CS4400">Take the CS-4400 Study Guide</a></h1>
 							<h1>What Is Quizzing?</h1>
 						</div>
 
@@ -169,6 +169,14 @@
 		<div>
 		
 			
+		<script>
+			function scrollToLearnMore()
+			{
+				$('html, body').animate({
+	       			scrollTop: $("#learnmore").offset().top
+	   				}, 1000);
+			}
+		</script>
 
 					
 									
