@@ -75,14 +75,6 @@ public class QuizManager {
 		return quiz;
 	}
 	
-	public static ArrayList<Quiz> findQuizzesByGroup(int groupId) {
-		ArrayList<Quiz> quizzes = new ArrayList<Quiz>();
-		if(groupId >= 1)
-			quizzes = QuizDAO.retreiveQuizzesByGroup(groupId);
-		return quizzes;
-		
-	}
-	
 	public static Quiz getRandomizedQuestions(int quizId)
 	{
 		//get and randomize questions
@@ -179,4 +171,15 @@ public class QuizManager {
 			return false;
 		return QuizDAO.linkToGroup(quizId, groupId);
 	}
+
+	/*
+	 * Return a list of quizzes from the database
+	 */
+	public static ArrayList<Quiz> findQuizzesByGroup(int groupId) {
+		ArrayList<Quiz> quizzes = new ArrayList<Quiz>();
+		if(groupId >= 1)
+			quizzes = QuizDAO.retreiveQuizzesByGroup(groupId);
+		return quizzes;
+	}
+
 }
