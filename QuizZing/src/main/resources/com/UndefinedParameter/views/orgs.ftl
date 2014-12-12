@@ -23,19 +23,19 @@
 					</div>
 				</div>
 			    <div class="row">
-					<button class="shortcut primary span3">
+					<button class="shortcut primary span3 todo">
 					    <i class="icon-bookmark-4"></i>
 					    University
 					</button>
-					<button class="shortcut info span3">
+					<button class="shortcut info span3 todo">
 					    <i class="icon-book"></i>
 					    Class
 					</button>
-					<button class="shortcut success span3">
+					<button class="shortcut success span3 todo">
 					    <i class="icon-lab"></i>
 					    Subject
 					</button>
-					<button class="shortcut warning span3">
+					<button class="shortcut warning span3 todo">
 					    <i class="icon-comments-2"></i>
 					    Group
 					</button>															

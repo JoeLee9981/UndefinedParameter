@@ -26,19 +26,23 @@
 				</div>
 				<div id="quiz-subnav" class="row">
 					<div class="span12">
-						<h1>${quiz.description?html}<h1/>
+						<h2>${quiz.description?html}</h2>
 					</div>
 				</div>
 				<div id="start-quiz-div">
 					<div class="row">
-						<div class="offset2 span4">
-							
-							Created By: ${quiz.creatorId?html}<br/>
-							Difficulty: ${quiz.difficulty?html}<br/>
-							Rating: ${quiz.rating?html}<br/>
-							<i class="icon-clock"></i> ${quiz.time?html}</p>
-							<br/>
-							<br/>				
+						<div class="span3">
+							<div class="panel">
+							    <div class="panel-header">
+							        Quiz Details
+							    </div>
+							    <div class="panel-content">
+					       			<h5>Created By: ${quiz.creatorId?html}</h5>
+									<h5>Difficulty: ${quiz.difficulty?html}</h5>
+									<h5>Rating: ${quiz.rating?html}</h5>
+									<h5><i class="icon-clock"></i> ${quiz.time?html}</h5>
+							    </div>
+							</div>			
 						</div>
 						<div class="span2">
 							<button class="primary large" onclick="startQuiz()">Start</button>
@@ -64,7 +68,7 @@
 							</div>
 						</div>
 						<div class="span4">
-							Side menu
+							
 						</div>
 					</div>
 				</div>
@@ -74,7 +78,7 @@
 					<h3><a href="/feedback">Give Us Your Feedback</a></h3>
 				</div>
 				<div class="row">
-					Bottom
+					
 				</div>
 			</div>
 		</div>
@@ -133,12 +137,24 @@
 			quizInProgress = true;
 			document.getElementById('start-quiz-div').hidden = true;
 			document.getElementById('quizDiv').hidden = false;
+			
+			// Quick hack to trick it so that it will be on quesiton 0 when starting quiz. TODO
+			quizPosition = -1;
+
 			nextQuestion();
 		}
 
 		function nextQuestion() {
 			$("#answerDiv").fadeOut(150, function() {
 				quizPosition++;
+				if (quizPosition == 0)
+				{
+					$("#prevQuestion").hide();
+				}
+				else
+				{
+					$("#prevQuestion").show();
+				}
 				
 				if (quizPosition == quiz.length)
 				{
@@ -148,6 +164,8 @@
 					document.getElementById('nextQuestion').disabled = true;
 					return;
 				}
+				
+
 				
 				if (quizPosition == quiz.length - 1)
 				{
@@ -178,6 +196,15 @@
 				if(quizPosition > 0)
 					quizPosition--;
 				document.getElementById('questionHead').innerHTML = quiz[quizPosition];
+				
+				if (quizPosition == 0)
+				{
+					$("#prevQuestion").hide();
+				}
+				else
+				{
+					$("#prevQuestion").show();
+				}
 				
 				if (quizPosition == quiz.length - 1)
 				{
