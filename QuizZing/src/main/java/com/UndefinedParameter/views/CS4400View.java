@@ -14,12 +14,6 @@ public class CS4400View extends View{
 	}
 	
 	public ArrayList<Quiz> getQuizzes() {
-		ArrayList<Quiz> quizzes = new ArrayList<Quiz>();
-		
-		quizzes.add(QuizManager.findQuiz(2));
-		quizzes.add(QuizManager.findQuiz(3));
-		quizzes.add(QuizManager.findQuiz(4));
-		
-		return quizzes;
+		return QuizManager.findQuizzesByGroup(1);
 	}
 }

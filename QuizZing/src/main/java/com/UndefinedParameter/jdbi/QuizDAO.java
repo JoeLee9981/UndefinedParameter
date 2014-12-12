@@ -90,6 +90,69 @@ public class QuizDAO {
 	}
 	
 	/*
+	 * 	Retrieve a list of quizzes from the database by group id
+	 */
+	public static ArrayList<Quiz> retreiveQuizzesByGroup(int groupID) {
+		// TODO: Implement retrieve quiz questions query based on quiz id.
+				ArrayList<Quiz> quizzes = new ArrayList<Quiz>();
+				
+				if(groupID < 1)
+				{
+					return quizzes;
+				}
+				
+				// Retrieve all questions with quiz id.
+				String select = "SELECT quiz.* "
+						+ "FROM Quiz quiz, SubGroup sub, GroupQuiz gquiz "
+						+ "WHERE quiz.QuizID = gquiz.QuizID "
+						+ "AND sub.GroupID = gquiz.GroupID "
+						+ "AND sub.GroupID = ?";
+					
+				Connection connection = null;
+				PreparedStatement statement = null;
+				
+				try{
+					connection = DriverManager.getConnection("jdbc:sqlite:" + dbPath);
+					connection.setAutoCommit(false);
+					
+					statement = connection.prepareStatement(select);
+					statement.setInt(1, groupID);
+					ResultSet results = statement.executeQuery();
+					
+					while(results.next())
+					{		
+						Quiz quiz = new Quiz();
+						int quizId = results.getInt("QuizID");
+						int creatorId = results.getInt("CreatorID");
+						int difficulty = results.getInt("Difficulty");
+						int rating = results.getInt("Rating");
+						String description = results.getString("Description");
+						int time = results.getInt("Time");
+
+						quiz.setQuizId(quizId);
+						quiz.setCreatorId(creatorId);
+						quiz.setDifficulty(difficulty);
+						quiz.setRating(rating);
+						quiz.setDescription(description);
+						quiz.setTime(time);
+						
+						quizzes.add(quiz);
+					}
+					
+					statement.close();
+					connection.close();	
+				}
+				catch(Exception e)
+				{
+					String errorMsg = "Unable to retreive quizzes from Group ID: ." + groupID; 
+					logger.error(errorMsg);
+					e.printStackTrace();
+				}
+				
+				return quizzes;
+	}
+	
+	/*
 	 * 	retrieveExistingQuizDetails - Retrieves quiz details from the database.
 	 */
 	public static Quiz retrieveExistingQuizDetails(int qID)
@@ -174,54 +237,48 @@ public class QuizDAO {
 	 * 	createQuiz - Adds a quiz to the database. Assume all questions
 	 * 	already exist in the database.
 	 */
-	public static void createQuiz(Quiz quiz)
+	public static int createQuiz(Quiz quiz)
 	{
-		int result = -1;
 		int id = -1;
 		
-		String insert = "INSERT INTO Question(CreatorID, Difficulty, Description, Time) "
-				+ "VALUES(" 
-				+ quiz.getCreatorId() + ", "
-				+ quiz.getDifficulty() + ", "
-				+ quiz.getDescription() + ", "
-				+ quiz.getTime() + ") ";
-		String select = "SELECT last_insert_rowid() "
-				+ "FROM Quiz ";
+		String select = "INSERT INTO Quiz (CreatorID, Difficulty, Rating, Description, Time) VALUES(?, ?, ?, ?, ?)"; 
 		
 		Connection connection = null;
-		Statement statement = null;
+		PreparedStatement statement = null;
 		
 		try {
 			connection = DriverManager.getConnection("jdbc:sqlite:" + dbPath);
 			connection.setAutoCommit(false);
 			
 			// Insert quiz information in the Quiz table.
-			statement = connection.createStatement();
-			result = statement.executeUpdate(insert);
+			statement = connection.prepareStatement(select, Statement.RETURN_GENERATED_KEYS);
+			statement.setInt(1, quiz.getCreatorId());
+			statement.setInt(2, quiz.getDifficulty());
+			statement.setInt(3, quiz.getRating());
+			statement.setString(4, quiz.getDescription());
+			statement.setInt(5, quiz.getTime());
 			
-			// Get the last id put in the Quiz table, which is presumably this quiz's.
-			ResultSet quizID = statement.executeQuery(select);
+			statement.executeUpdate();
 			
-			if(quizID.next()) {
-				id = quizID.getInt("QuizID");
-			}
+			ResultSet result = statement.getGeneratedKeys();
+			if(result != null && result.next()) {
+				id = result.getInt(1);
+			}		
 			
 			connection.commit();
-			
-			quizID.close();			
+				
 			statement.close();
 			connection.close();	
-			
-			// Set quiz id and send it to the linking method.
-			quiz.setQuizId(id);
-			linkToQuestions(quiz);
+
 			
 		}
 		catch(Exception e){
-			String errorMsg = "Quiz could not be created. result = " + result; 
+			String errorMsg = "Quiz could not be created"; 
 			logger.error(errorMsg);
 			e.printStackTrace();
 		}
+		
+		return id;
 	}
 	
 	/*
@@ -439,6 +496,9 @@ public class QuizDAO {
 		return array;
 	}
 	
+	/*
+	 * Adds a question onto a quiz
+	 */
 	public static boolean addQuestion(int quizId, int questionId) {
 		
 		if(quizId < 1 || questionId < 1)
@@ -467,6 +527,40 @@ public class QuizDAO {
 		}
 		catch(Exception e){
 			String errorMsg = "Error trying to insert QuizQuestion into database"; 
+			logger.error(errorMsg);
+			e.printStackTrace();
+		}
+		return false;
+	}
+	
+	/*
+	 * Links a quiz to a group
+	 */
+	public static boolean linkToGroup(int quizId, int groupId) {
+		
+		String select = "INSERT INTO GroupQuiz (QuizID, GroupID) VALUES(?, ?)";
+		
+		Connection connection = null;
+		PreparedStatement statement = null;
+		
+		try {
+
+			connection = DriverManager.getConnection("jdbc:sqlite:" + dbPath);
+			connection.setAutoCommit(false);
+			
+			statement = connection.prepareStatement(select);
+			statement.setInt(1, quizId);
+			statement.setInt(2, groupId);
+			int result = statement.executeUpdate();
+			connection.commit();
+			
+			statement.close();
+			connection.close();	
+			
+			return result > 0;
+		}
+		catch(Exception e){
+			String errorMsg = "Error trying to insert GroupQuiz into database"; 
 			logger.error(errorMsg);
 			e.printStackTrace();
 		}

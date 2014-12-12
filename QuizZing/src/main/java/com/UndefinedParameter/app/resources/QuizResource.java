@@ -1,5 +1,7 @@
 package com.UndefinedParameter.app.resources;
 
+import java.util.HashMap;
+
 import javax.validation.Valid;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -37,10 +39,34 @@ public class QuizResource {
 	}
 	
 	@POST
-	@Path("/create")
-	public Result createQuiz(@Valid Quiz quiz) {
+	@Path("/{groupId}/create")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public HashMap<String, String> createQuiz(@Valid Quiz quiz, @PathParam("groupId") int groupId) {
 		
-		return null;
+		HashMap<String, String> response = new HashMap<String, String>();
+		//TODO: Find some of these instead of insert
+		quiz.setCreatorId(1);
+		quiz.setDifficulty(3);
+		quiz.setRating(3);
+		quiz.setTime(10000);
+		
+		int quizId = QuizManager.createQuiz(quiz);
+		if(quizId >= 1) {
+			if(QuizManager.addQuizToGroup(quizId, groupId)) {
+				response.put("response", "success");
+				response.put("message", "Quiz is successfully created.");
+			}
+			else {
+				response.put("response", "fail");
+				response.put("message", "Unable to add the quiz to the group");
+			}
+		}
+		else {
+			response.put("response", "fail");
+			response.put("message", "Unable to create the quiz");
+		}
+		return response;
 	}
 	
 	@GET

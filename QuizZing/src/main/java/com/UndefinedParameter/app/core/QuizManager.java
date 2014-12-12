@@ -6,10 +6,6 @@ import java.util.Collections;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-
-
-
-
 import com.UndefinedParameter.jdbi.QuestionDAO;
 import com.UndefinedParameter.jdbi.QuizDAO;
 //import com.UndefinedParameter.jdbi.QuizDAO;
@@ -79,6 +75,14 @@ public class QuizManager {
 		return quiz;
 	}
 	
+	public static ArrayList<Quiz> findQuizzesByGroup(int groupId) {
+		ArrayList<Quiz> quizzes = new ArrayList<Quiz>();
+		if(groupId >= 1)
+			quizzes = QuizDAO.retreiveQuizzesByGroup(groupId);
+		return quizzes;
+		
+	}
+	
 	public static Quiz getRandomizedQuestions(int quizId)
 	{
 		//get and randomize questions
@@ -102,30 +106,6 @@ public class QuizManager {
 		return QuizDAO.retrieveExistingQuiz(quizId);
 	}
 	
-	/*
-	 *  TODO: Implement this - NOTE THIS WILL NOT WORK FOR REAL CODING
-	 */
-	/*private static Question getQuestion(int questionId) {
-		Question question = new Question();
-		question.setQuestionId(questionId);
-		question.setType(Question.QuestionType.MULTIPLE_CHOICE);
-		question.setCreatorId(questionId * questionId);
-		question.setQuestionDifficulty(5);
-		question.setQuestionText("This is question " + questionId + ", please pick your answer");
-		question.setCorrectAnswer("This is the correct answer");
-		question.setCorrectPosition(questionId);
-		String[] wrongAnswers = {
-				"This is a wrong answer", 
-				"This is another wrong answer", 
-				"This is the 3rd wrong answer", 
-				"Last wrong answere here"
-			};
-		question.setWrongAnswers(wrongAnswers);
-		
-		return question;
-	}*/
-	
-	
 	
 	/*
 	 * 	--------------- Creation Methods ---------------
@@ -146,17 +126,21 @@ public class QuizManager {
 			return QuestionDAO.createQuestion(question);
 	}
 	
-	public static void createQuiz(Quiz quiz) throws Exception
-	{
+	public static int createQuiz(Quiz quiz) {
+		
+		
+		//TODO Commenting this out for now since the framework is not in place
+		//			to allow these validations, once it is in place will need to edit this
+		
 		
 		// Check for invalid parameters.
-		if(quiz.getCreatorId() < 0)
+		/*if(quiz.getCreatorId() < 0)
 			throw new Exception("Invalid creator ID. Must be greater than 0.");
 		else if(quiz.getQuestionCount() <= 0) {
 			throw new Exception("There aren't any questions in this quiz.");
 		}
 		else
-		{
+		{ 
 			// Check that all quiz questions exist within the database.
 			Boolean allQuestionsExist = true;
 			Question[] existingQuestions = quiz.getQuestions();
@@ -172,7 +156,9 @@ public class QuizManager {
 				QuizDAO.createQuiz(quiz);
 			else
 				throw new Exception("Not all questions exist in the database.");
-		}
+		}*/
+		
+		return QuizDAO.createQuiz(quiz);
 	}
 	
 	/*
@@ -184,5 +170,13 @@ public class QuizManager {
 		return QuizDAO.addQuestion(quizId, questionId);
 	}
 	
-	
+	/*
+	 * Links a quiz to a group - this creates an association in GroupQuiz table
+	 * 	of a GroupID to QuizID
+	 */
+	public static boolean addQuizToGroup(int quizId, int groupId) {
+		if(quizId < 1 || groupId < 1)
+			return false;
+		return QuizDAO.linkToGroup(quizId, groupId);
+	}
 }
