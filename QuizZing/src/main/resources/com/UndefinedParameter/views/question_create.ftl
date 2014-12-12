@@ -56,7 +56,7 @@
 										</div>
 										<div class="input-control radio">
 										    <label>
-										        <input name="question-options" type="radio" id="qText2" />
+										        <input name="question-options" type="radio" id="qCheck2" />
 										        <span class="check"></span>
 										    </label>
 										</div>							

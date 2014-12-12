@@ -36,7 +36,7 @@
 								    <textarea id="miscText"></textarea>
 								</div>
 							</label>
-							<input type="button" onclick="addFeedback()" class="success">Submit</input>
+							<input type="button" onclick="addFeedback()" value="Submit" class="success"></input>
 						</form>
 					</div>
 				</div>
