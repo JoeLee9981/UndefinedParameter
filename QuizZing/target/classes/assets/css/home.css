@@ -33,7 +33,7 @@
 
 body
 {
-	background: linear-gradient(rgba(255, 127, 0, 0.5), rgba(255, 127, 0, 0.5)), url('../images/orange1.jpg') no-repeat 0px 0px;
+	background: url('../images/books3.jpg') no-repeat 0px 0px;
 	background-size: 100%;
 }
 

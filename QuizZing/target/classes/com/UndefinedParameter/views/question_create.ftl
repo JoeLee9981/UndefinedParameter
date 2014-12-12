@@ -45,50 +45,50 @@
 										<div class="input-control text size5">
 										    <input type="text" id="qText1"/>
 										</div>
-										<div class="input-control checkbox place-right">
+										<div class="input-control radio">
 										    <label>
-										        <input type="checkbox" id="qCheck1" />
+										        <input name="question-options" type="radio" id="qCheck1" />
 										        <span class="check"></span>
 										    </label>
-										</div>
+										</div>	
 										<div class="input-control text size5">
 										    <input type="text" id="qText2"/>
 										</div>
-										<div class="input-control checkbox place-right">
+										<div class="input-control radio">
 										    <label>
-										        <input type="checkbox" id="qCheck2"/>
+										        <input name="question-options" type="radio" id="qText2" />
 										        <span class="check"></span>
 										    </label>
-										</div>								
+										</div>							
 										<div class="input-control text size5">
 										    <input type="text" id="qText3"/>
 										</div>
-										<div class="input-control checkbox place-right">
+										<div class="input-control radio">
 										    <label>
-										        <input type="checkbox" id="qCheck3"/>
+										        <input name="question-options" type="radio" id="qCheck3" />
 										        <span class="check"></span>
 										    </label>
 										</div>								
 										<div class="input-control text size5">
 										    <input type="text" id="qText4"/>
 										</div>
-										<div class="input-control checkbox place-right">
+										<div class="input-control radio">
 										    <label>
-										        <input type="checkbox" id="qCheck4"/>
+										        <input name="question-options" type="radio" id="qCheck4" />
 										        <span class="check"></span>
 										    </label>
 										</div>	
 										<div class="input-control text size5">
 										    <input type="text" id="qText5"/>
 										</div>
-										<div class="input-control checkbox place-right">
+										<div class="input-control radio">
 										    <label>
-										        <input type="checkbox" id="qCheck5"/>
+										        <input name="question-options" type="radio" id="qCheck5" />
 										        <span class="check"></span>
 										    </label>
-										</div>
+										</div>	
 										<div class="span8">
-											<input type="button" onclick="addQuestion()">Submit</input>
+											<input type="button" onclick="addQuestion()" value="Submit"></input>
 											<p id="responseLabel" />
 										</div>						
 									</label>
