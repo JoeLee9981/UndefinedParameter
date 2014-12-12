@@ -45,6 +45,7 @@ body
 #home-page-quick-links > div > span
 {
 	font-size: 210%;
+	text-shadow: 2px 2px 4px WHITE;
 }
 
 #home-page-quick-links > div > span i
