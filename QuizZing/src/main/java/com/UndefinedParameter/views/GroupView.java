@@ -43,7 +43,7 @@ public class GroupView extends View {
 	/*
 	 * Get a list of quizzes in a group
 	 */
-	public ArrayList<Quiz> getQuizzes() {
+	public ArrayList<Quiz> getQuizList() {
 		ArrayList<Quiz> quizzes = QuizManager.findQuizzesByGroup(group.getId());
 		
 		return quizzes;

@@ -28,4 +28,26 @@ public class UserManager {
 		return random.nextInt(100);
 	}
 	
+	public static User findUserById(int userId) {
+		return null;
+	}
+	
+	public static User findUserByUserName(String userName) {
+		User user = new User();
+		
+		//TODO Get this from the database
+		user.setUserName("TestUser");
+		user.setFirstName("John");
+		user.setLastName("Doe");
+		user.setCountry("United States");
+		user.setCity("Salt Lake City");
+		user.setState("Utah");
+		user.setEmail("Test@Test.com");
+		user.setPassword("password");
+		user.setSecretQuestion("Secret Question");
+		user.setSecretAnswer("Secret Answer");
+		
+		return user;
+	}
+	
 }

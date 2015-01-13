@@ -4,8 +4,8 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
 import org.eclipse.jetty.http.HttpTester.Response;
@@ -25,8 +25,8 @@ public class OrganizationResource {
 	}
 	
 	@GET
-	@Path("/{id}")
-	public OrganizationView getOrganizationView(@PathParam("id") int id) {
+	@Path("/org")
+	public OrganizationView getOrganizationView(@QueryParam("id") int id) {
 		return new OrganizationView(OrganizationManager.findOrgById(id));
 	}
 	

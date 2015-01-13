@@ -26,7 +26,7 @@
 						
 						<div class="home-subsection">
 							<table>
-								<#list quizzes as quiz>	
+								<#list quizList as quiz>	
 									<tr>
 										<td>
 											<a href="/quiz/${quiz.quizId}"><h3 class="text-info">${quiz.description}</h3></a>

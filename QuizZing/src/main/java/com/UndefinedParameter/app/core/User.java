@@ -21,6 +21,10 @@ public class User {
 		this.id = id;
 	}
 	
+	public User() {
+		
+	}
+	
 	/************************* GETTERS AND SETTERS ******************************************/
 
 	@JsonProperty

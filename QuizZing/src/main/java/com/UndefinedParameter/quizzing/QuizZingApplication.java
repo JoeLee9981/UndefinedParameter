@@ -3,6 +3,7 @@ package com.UndefinedParameter.quizzing;
 import io.dropwizard.Application;
 import io.dropwizard.Bundle;
 import io.dropwizard.assets.AssetsBundle;
+import io.dropwizard.auth.basic.BasicAuthProvider;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
 import io.dropwizard.views.ViewBundle;
@@ -10,6 +11,7 @@ import io.dropwizard.views.ViewBundle;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.UndefinedParameter.app.core.User;
 import com.UndefinedParameter.app.health.TemplateHealthCheck;
 import com.UndefinedParameter.app.resources.CS4400Resource;
 import com.UndefinedParameter.app.resources.FeedbackResource;
@@ -31,6 +33,8 @@ import com.UndefinedParameter.app.resources.QuizResource;
 public class QuizZingApplication extends Application<QuizZingConfiguration> {
     final static Logger logger = LoggerFactory.getLogger(QuizZingApplication.class);
 	
+    private static BasicAuthenticator authenticator = null;
+    
 	public static void main( String[] args ) throws Exception {
 		
 		try {
@@ -57,11 +61,18 @@ public class QuizZingApplication extends Application<QuizZingConfiguration> {
 	public void run(QuizZingConfiguration configuration, Environment environment)
 			throws Exception {
 		
+		
 		logger.info("QuizZingApplication - Running Server");
 
-			
+		authenticator = new BasicAuthenticator();
+		
 		final TemplateHealthCheck healthCheck = new TemplateHealthCheck(configuration.getTemplate());
 		environment.healthChecks().register("template", healthCheck);
+		
+		/****** Registering Authentication ******/
+	    environment.jersey().register(new BasicAuthProvider<User>(
+	    		authenticator, 
+	    		"STUFF"));
 		
 		/***** REGISTER VIEWS ******/
 		environment.jersey().register(new HomeResource());
