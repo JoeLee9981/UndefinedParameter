@@ -26,10 +26,10 @@
 							</div>						
 							<form id="login-form" class="medium">
 								<div class="input-control text">
-								    <input type="text" value="" placeholder="Email or Username"/>
+								    <input id="username" type="text" value="" placeholder="Email or Username"/>
 								</div>
 								<div class="input-control password">
-								    <input type="password" value="" placeholder="Password"/>
+								    <input id="password" type="password" value="" placeholder="Password"/>
 								</div>
 								<div class="span8">
 									<div class="input-control checkbox">
@@ -47,7 +47,7 @@
 									</div>
 								</div>			
 								<div class="span4">
-									<input class="place-right primary todo" type="submit" value="Login"/>
+									<input class="place-right primary" type="submit" value="Login"/>
 								</div>											
 							</form>
 						</div>
@@ -166,23 +166,34 @@
 					</div>
 				</div>
 			</div>
-		<div>
-		
-			
-		<script>
-			function scrollToLearnMore()
-			{
-				$('html, body').animate({
-	       			scrollTop: $("#learnmore").offset().top
-	   				}, 1000);
-			}
-		</script>
-
-					
+		<div>				
 									
 		<#include "../includes/footer.ftl">
-		
-</div>
+	</div>
 
 	</body>
+	<script>
+		function scrollToLearnMore()
+		{
+			$('html, body').animate({
+	   			scrollTop: $("#learnmore").offset().top
+				}, 1000);
+		}
+		
+		$('#login-form').submit(function(event) {
+			event.preventDefault();
+			$.ajax({
+			    url: '/login',
+			    username: $('#username').val(),
+			    password: $('#password').val(),
+			    type: 'POST',
+			    success: function(data) {
+			    	console.log(data);
+			    	window.location='/';
+			    },
+			    error: function(error) {
+			    }
+			});
+		});
+	</script>
 </html>
