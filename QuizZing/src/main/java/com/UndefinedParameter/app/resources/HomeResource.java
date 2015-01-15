@@ -34,12 +34,12 @@ public class HomeResource {
 		
 		if(user == null) {
 			ArrayList<NewsArticle> news = (ArrayList<NewsArticle>)NewsArticleDAO.selectAllNews();
-			return Response.ok(new HomeView(news.toArray(new NewsArticle[news.size()]))).build();
+			return Response.ok(new HomeView("home.ftl", news.toArray(new NewsArticle[news.size()]))).build();
 		}
 		else {
 			//TODO: Create a customized view for the user and return it, instead of the standard
 			ArrayList<NewsArticle> news = (ArrayList<NewsArticle>)NewsArticleDAO.selectAllNews();
-			return Response.ok(new HomeView(news.toArray(new NewsArticle[news.size()]))).build();
+			return Response.ok(new HomeView("user_home.ftl", news.toArray(new NewsArticle[news.size()]), user)).build();
 		}
 	}
 	
@@ -59,5 +59,11 @@ public class HomeResource {
 	@Path("/login")
 	public Response getLoginView() {
 		return Response.ok(new LoginView()).build();
+	}
+	
+	@POST
+	@Path("/logout")
+	public Response logout() {
+		return Response.status(401).build();
 	}
 }
