@@ -1,83 +1,25 @@
 package com.UndefinedParameter.jdbi;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.Statement;
-import java.util.ArrayList;
 import java.util.List;
+
+import org.skife.jdbi.v2.sqlobject.Bind;
+import org.skife.jdbi.v2.sqlobject.SqlQuery;
+import org.skife.jdbi.v2.sqlobject.SqlUpdate;
+import org.skife.jdbi.v2.sqlobject.customizers.RegisterMapper;
 
 import com.UndefinedParameter.app.core.NewsArticle;
 
-public class NewsArticleDAO {
+@RegisterMapper(NewsArticleMapper.class)
+public interface NewsArticleDAO {
 
-	private static final String dbPath = "database/QuizZing";
+	@SqlQuery("SELECT * FROM NewsArticle")
+	public List<NewsArticle> findAllNews();
 	
+	@SqlQuery("SELECT * FROM NewsArticle WHERE NewsID = :id")
+	public NewsArticle findNewsById(@Bind("id") int id);
 	
-	public static List<NewsArticle> selectAllNews() {
-		
-		ArrayList<NewsArticle> news = new ArrayList<NewsArticle>();
-		String select = "SELECT * FROM NewsArticle";
-		
-		Connection connection = null;
-		Statement statement = null;
-		
-		try {
-			connection = DriverManager.getConnection("jdbc:sqlite:" + dbPath);
-			connection.setAutoCommit(false);
-			
-			statement = connection.createStatement();
-			ResultSet results = statement.executeQuery(select);
-			
-			while(results.next()) {
-				int id = results.getInt("NewsID");
-				String headline = results.getString("Headline");
-				String body = results.getString("Body");
-				news.add(new NewsArticle(id, headline, body));
-			}
-			results.close();
-			statement.close();
-			connection.close();
-		}
-		catch(Exception e) {
-			e.printStackTrace();
-		}	
-		return news;
-	}
+	@SqlUpdate("INSERT INTO NewsArticle (Headline, Body) values (:headline, :body)")
+	void insert(@Bind("headline") String headline, @Bind("body") String body);
 	
-	public static NewsArticle getNewsById(int newsId) {
-		
-		NewsArticle news = new NewsArticle();
-		String select = "SELECT * FROM NewsArticle WHERE NewsID = ?";
-		
-		Connection connection = null;
-		PreparedStatement statement = null;
-		
-		try {
-			connection = DriverManager.getConnection("jdbc:sqlite:" + dbPath);
-			connection.setAutoCommit(false);
-			
-			statement = connection.prepareStatement(select);
-			statement.setInt(1, newsId);
-			ResultSet results = statement.executeQuery();
-			
-			if(results.next()) {
-				int id = results.getInt("NewsID");
-				String headline = results.getString("Headline");
-				String body = results.getString("Body");
-				news.setId(id);
-				news.setHeadline(headline);
-				news.setBody(body);
-			}
-			results.close();
-			statement.close();
-			connection.close();
-		}
-		catch(Exception e) {
-			e.printStackTrace();
-		}	
-		return news;
-	}
-	
+	void close();
 }

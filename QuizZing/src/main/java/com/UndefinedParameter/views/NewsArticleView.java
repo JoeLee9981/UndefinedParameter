@@ -9,7 +9,7 @@ public class NewsArticleView extends View {
 private final NewsArticle article;
 	
 	public NewsArticleView(NewsArticle article) {
-		super("home.ftl");
+		super("news.ftl");
 		this.article = article;
 	}
 	

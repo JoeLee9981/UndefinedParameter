@@ -1,10 +1,22 @@
 package com.UndefinedParameter.quizzing;
 
 import io.dropwizard.Configuration;
+import io.dropwizard.db.DataSourceFactory;
+
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+
 import org.hibernate.validator.constraints.NotEmpty;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class QuizZingConfiguration extends Configuration {
+	
+	@Valid
+	@NotNull
+	@JsonProperty
+	private DataSourceFactory database = new DataSourceFactory();
+	
 	@NotEmpty
 	private String template;
 	
@@ -31,4 +43,7 @@ public class QuizZingConfiguration extends Configuration {
 		this.defaultName = name;
 	}
 	
+	public DataSourceFactory getDataSourceFactory() {
+		return database;
+	}
 }

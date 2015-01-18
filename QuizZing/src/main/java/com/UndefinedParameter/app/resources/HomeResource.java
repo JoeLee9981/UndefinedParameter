@@ -10,9 +10,9 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import javax.ws.rs.core.UriBuilder;
 
 import com.UndefinedParameter.app.core.NewsArticle;
+import com.UndefinedParameter.app.core.NewsManager;
 import com.UndefinedParameter.app.core.User;
 import com.UndefinedParameter.jdbi.NewsArticleDAO;
 import com.UndefinedParameter.views.HomeView;
@@ -22,7 +22,12 @@ import com.UndefinedParameter.views.LoginView;
 @Produces(MediaType.TEXT_HTML)
 public class HomeResource {
 	
-	public HomeResource() {
+	private NewsArticleDAO newsDAO;
+	private NewsManager newsManager;
+	
+	public HomeResource(NewsArticleDAO newsDAO) {
+		this.newsDAO = newsDAO;
+		this.newsManager = new NewsManager(newsDAO);
 	}
 	
 	/*
@@ -33,12 +38,12 @@ public class HomeResource {
 	public Response getHomeView(@Auth(required = false) User user) {
 		
 		if(user == null) {
-			ArrayList<NewsArticle> news = (ArrayList<NewsArticle>)NewsArticleDAO.selectAllNews();
+			ArrayList<NewsArticle> news = (ArrayList<NewsArticle>)newsManager.getRecentNews();
 			return Response.ok(new HomeView("home.ftl", news.toArray(new NewsArticle[news.size()]))).build();
 		}
 		else {
 			//TODO: Create a customized view for the user and return it, instead of the standard
-			ArrayList<NewsArticle> news = (ArrayList<NewsArticle>)NewsArticleDAO.selectAllNews();
+			ArrayList<NewsArticle> news = (ArrayList<NewsArticle>)newsManager.getRecentNewsByUser(user.getId());
 			return Response.ok(new HomeView("user_home.ftl", news.toArray(new NewsArticle[news.size()]), user)).build();
 		}
 	}
