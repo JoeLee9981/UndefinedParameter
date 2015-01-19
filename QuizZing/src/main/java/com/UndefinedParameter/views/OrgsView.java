@@ -21,11 +21,13 @@ public class OrgsView extends View {
 	
 	public int getContributionScore(int orgId) {
 		//TODO: get the user id
-		return UserManager.retrieveContributionScore(0, orgId);
+		//return UserManager.retrieveContributionScore(0, orgId);
+		return 100;
 	}
 	
 	public int getQuizzesParticipated(int orgId) {
 		//TODO; get the user id
-		return UserManager.retreiveQuizzesParticipated(0, orgId);
+		//return UserManager.retreiveQuizzesParticipated(0, orgId);
+		return 10;
 	}
 }

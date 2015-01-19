@@ -24,6 +24,7 @@ import com.UndefinedParameter.app.resources.OrganizationResource;
 import com.UndefinedParameter.app.resources.QuestionCreatorResource;
 import com.UndefinedParameter.app.resources.QuizResource;
 import com.UndefinedParameter.jdbi.NewsArticleDAO;
+import com.UndefinedParameter.jdbi.UserDAO;
 
 
 
@@ -66,13 +67,12 @@ public class QuizZingApplication extends Application<QuizZingConfiguration> {
 		
 		
 		logger.info("QuizZingApplication - Running Server");
-
-		authenticator = new BasicAuthenticator();
 		
 		/****** Register the database objects *********/
 		final DBIFactory factory = new DBIFactory();
 		final DBI jdbi = factory.build(environment, configuration.getDataSourceFactory(), "mysql");
 		final NewsArticleDAO newsDAO = jdbi.onDemand(NewsArticleDAO.class);
+		final UserDAO userDAO = jdbi.onDemand(UserDAO.class);
 		
 		logger.info("Database objects registered successfully");
 		
@@ -83,6 +83,7 @@ public class QuizZingApplication extends Application<QuizZingConfiguration> {
 		logger.info("Health Check Completed");
 		
 		/****** Registering Authentication ******/
+		authenticator = new BasicAuthenticator(userDAO);
 	    environment.jersey().register(new BasicAuthProvider<User>(
 	    		authenticator, 
 	    		"STUFF"));
@@ -90,7 +91,7 @@ public class QuizZingApplication extends Application<QuizZingConfiguration> {
 	    logger.info("Authenticator initiated successfully");
 		
 		/***** REGISTER VIEWS ******/
-		environment.jersey().register(new HomeResource(newsDAO));
+		environment.jersey().register(new HomeResource(newsDAO, userDAO));
 		environment.jersey().register(new NewsArticleResource(newsDAO));
 		environment.jersey().register(new QuizResource());
 		environment.jersey().register(new GroupResource());

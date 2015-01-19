@@ -80,7 +80,7 @@
 	
 								</div>			
 								<div class="span4">
-									<input class="place-right success todo" type="submit" value="Register"/>
+									<input class="place-right success" type="submit" value="Register"/>
 								</div>											
 							</form>
 						</div>											
@@ -194,6 +194,12 @@
 			    error: function(error) {
 			    }
 			});
+		});
+		
+		$('#register-form').submit(function(event) {
+			event.preventDefault();
+			
+			window.location='/register';
 		});
 	</script>
 </html>

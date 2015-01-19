@@ -4,6 +4,8 @@ import io.dropwizard.auth.Auth;
 
 import java.util.ArrayList;
 
+import javax.validation.Valid;
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -14,20 +16,23 @@ import javax.ws.rs.core.Response;
 import com.UndefinedParameter.app.core.NewsArticle;
 import com.UndefinedParameter.app.core.NewsManager;
 import com.UndefinedParameter.app.core.User;
+import com.UndefinedParameter.app.core.UserManager;
 import com.UndefinedParameter.jdbi.NewsArticleDAO;
+import com.UndefinedParameter.jdbi.UserDAO;
 import com.UndefinedParameter.views.HomeView;
 import com.UndefinedParameter.views.LoginView;
+import com.UndefinedParameter.views.RegisterView;
 
 @Path("/")
 @Produces(MediaType.TEXT_HTML)
 public class HomeResource {
 	
-	private NewsArticleDAO newsDAO;
 	private NewsManager newsManager;
+	private UserManager userManager;
 	
-	public HomeResource(NewsArticleDAO newsDAO) {
-		this.newsDAO = newsDAO;
+	public HomeResource(NewsArticleDAO newsDAO, UserDAO userDAO) {
 		this.newsManager = new NewsManager(newsDAO);
+		this.userManager = new UserManager(userDAO);
 	}
 	
 	/*
@@ -70,5 +75,26 @@ public class HomeResource {
 	@Path("/logout")
 	public Response logout() {
 		return Response.status(401).build();
+	}
+	
+	@GET
+	@Path("/register")
+	public Response getRegisterView() {
+		return Response.ok(new RegisterView(null)).build();
+	}
+	
+	@POST
+	@Path("/register")
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Response register(@Valid User user) {
+		try {
+			userManager.registerNewUser(user);
+		}
+		catch(Exception e) {
+			//TODO: return error message
+			return Response.status(500).build();
+		}
+		return Response.ok().build();
 	}
 }

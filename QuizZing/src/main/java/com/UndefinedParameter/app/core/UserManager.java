@@ -2,13 +2,22 @@ package com.UndefinedParameter.app.core;
 
 import java.util.Random;
 
+import com.UndefinedParameter.jdbi.UserDAO;
+
 public class UserManager {
 
+	
+	private UserDAO userDAO;
+	
+	public UserManager(UserDAO userDAO) {
+		this.userDAO = userDAO;
+	}
+	
 	/*
 	 * Gets the users contribution score by the user id and the organization id
 	 * 	to which the user has contributed to
 	 */
-	public static int retrieveContributionScore(int userId, int orgId) {
+	public int retrieveContributionScore(int userId, int orgId) {
 		//TODO: Implement
 		
 		Random random = new Random();
@@ -21,18 +30,18 @@ public class UserManager {
 	 * 	this should function before we implement it - This can wait to be done
 	 *  next semester
 	 */
-	public static int retreiveQuizzesParticipated(int userId, int orgId) {
+	public int retreiveQuizzesParticipated(int userId, int orgId) {
 		//TODO: Implement
 		
 		Random random = new Random();
 		return random.nextInt(100);
 	}
 	
-	public static User findUserById(int userId) {
+	public User findUserById(int userId) {
 		return null;
 	}
 	
-	public static User findUserByUserName(String userName) {
+	public User findUserByUserName(String userName) {
 		User user = new User();
 		
 		//TODO Get this from the database
@@ -50,4 +59,23 @@ public class UserManager {
 		return user;
 	}
 	
+	public boolean registerNewUser(User user) throws Exception {
+		try {
+			userDAO.insert(user.getUserName(), 
+						   user.getFirstName(), 
+						   user.getLastName(), 
+						   user.getMiddleName(),
+						   user.getCountry(), 
+						   user.getCity(), 
+						   user.getState(), 
+						   user.getEmail(), 
+						   user.getPassword(), 
+						   user.getSecretQuestion(), 
+						   user.getSecretAnswer());
+		}
+		catch(Exception e) {
+			return false;
+		}
+		return true;
+	}
 }
