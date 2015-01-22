@@ -3,6 +3,7 @@ package com.UndefinedParameter.app.resources;
 import io.dropwizard.auth.Auth;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.validation.Valid;
 import javax.ws.rs.Consumes;
@@ -88,13 +89,23 @@ public class HomeResource {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response register(@Valid User user) {
+		HashMap<String, String> response = new HashMap<String, String>();
 		try {
-			userManager.registerNewUser(user);
+			if(userManager.registerNewUser(user)) {
+				response.put("response", "success");
+				return Response.ok(response).build();
+			}
+			else {
+				response.put("response", "error");
+				response.put("message", "Your email address has already been registered.");
+				return Response.ok(response).build();
+			}
+			
 		}
 		catch(Exception e) {
 			//TODO: return error message
 			return Response.status(500).build();
 		}
-		return Response.ok().build();
+		
 	}
 }

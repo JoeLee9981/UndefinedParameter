@@ -55,6 +55,7 @@
 						<input type="text" id="sanswer"/>
 						<br/>
 						<button type="submit" id="submit" onClick="submit()">Submit</button>
+						<p id="error_label" class="text-alert" />
 					</div>
 				</div>
 			<div>			
@@ -80,35 +81,74 @@
 		var squestion = document.getElementById('squestion').value;
 		var sanswer = document.getElementById('sanswer').value;
 
+		if(!first || !last) {
+			doError("Please enter First and Last name.");
+			return;
+		}
+		
+		if(!isValidEmail(email)) {
+			doError("Please enter a valid email address.");
+			return;
+		}
+		
+		if(!password || !reenterPassword) {
+			doError("Please enter and confirm your password.");
+			return;
+		}
+		
+		if(password != reenterPassword) {
+			doError("Your passwords don't match.");
+			return;
+		}
+		
+		if(!country || !city) {
+			doError("Please fill out your country and city.");
+			return;
+		}
+		
+		if(!squestion || !sanswer) {
+			doError("Please enter your secret question and answer.");
+			return;
+		}
+		
+		
+		var payload = JSON.stringify({ userName: email, firstName: first, middleName: mid, lastName: last,
+						country: country, city: city, state: state, email: email, password: password,
+						secretQuestion: squestion, secretAnswer: sanswer });
 
-		var isValid = (first && last && password && reenterPassword && country && city && squestion && sanswer) && 
-						(password == reenterPassword);
-		
-		if(isValid) {
-		
-			var payload = JSON.stringify({ userName: email, firstName: first, middleName: mid, lastName: last,
-							country: country, city: city, state: state, email: email, password: password,
-							secretQuestion: squestion, secretAnswer: sanswer });
-			alert(payload);	
-			$.ajax({
-				type: 'POST',
-				url: "/register",
-				data: payload,
-				dataType: "json",
-				headers: {
-					Accept: "application/json",
-					"Content-Type": "application/json"
-				},
-				success: function(data) {
-					alert("Registered");
+		$.ajax({
+			type: 'POST',
+			url: "/register",
+			data: payload,
+			dataType: "json",
+			headers: {
+				Accept: "application/json",
+				"Content-Type": "application/json"
+			},
+			success: function(data) {
+				if(data["response"] == "success") {
+					alert("registered");
+					//TODO: post to login and redirect to home
 				}
-			});
-		}
-		else {
-			alert("Please enter all fields");
-		}
+				else {
+					doError(data["message"]);
+				}
+			},
+			error: function(data) {
+				doError("Unable to complete registration, please try again");
+			}
+		});
 	}
 	
-
+	//posts an error message into the error label
+	function doError(message) {
+		document.getElementById('error_label').innerHTML = message;
+	}
+	
+	//validates an email pattern
+	function isValidEmail(email) {
+		var pattern = /^.*@.*\..*$/
+		return email.match(pattern);
+	}
 	
 </script>
