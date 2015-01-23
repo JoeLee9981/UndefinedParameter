@@ -127,8 +127,7 @@
 			},
 			success: function(data) {
 				if(data["response"] == "success") {
-					alert("registered");
-					//TODO: post to login and redirect to home
+					doLogin(email, password);
 				}
 				else {
 					doError(data["message"]);
@@ -149,6 +148,24 @@
 	function isValidEmail(email) {
 		var pattern = /^.*@.*\..*$/
 		return email.match(pattern);
+	}
+	
+	
+	function doLogin(username, password) {
+	
+		$.ajax({
+		    url: '/login',
+		    username: username,
+		    password: password,
+		    type: 'POST',
+		    success: function(data) {
+		    	console.log(data);
+		    	window.location='/';
+		    },
+		    error: function(error) {
+		    	console.log(error);
+		    }
+		});
 	}
 	
 </script>

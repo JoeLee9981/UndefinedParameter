@@ -42,21 +42,10 @@ public class UserManager {
 	}
 	
 	public User findUserByUserName(String userName) {
-		User user = new User();
+		if(userDAO == null)
+			return null;
 		
-		//TODO Get this from the database
-		user.setUserName("TestUser");
-		user.setFirstName("John");
-		user.setLastName("Doe");
-		user.setCountry("United States");
-		user.setCity("Salt Lake City");
-		user.setState("Utah");
-		user.setEmail("Test@Test.com");
-		user.setPassword("password");
-		user.setSecretQuestion("Secret Question");
-		user.setSecretAnswer("Secret Answer");
-		
-		return user;
+		return userDAO.findUserByUserName(userName);
 	}
 	
 	public boolean registerNewUser(User user) throws Exception {
