@@ -16,9 +16,10 @@ public interface UserDAO {
 	@SqlQuery("SELECT * FROM User WHERE UserID = :userId")
 	public User findUserByUserId(@Bind("userId") int userId);
 	
-	@SqlUpdate("INSERT INTO User (Username, FirstName, LastName, MiddleName, Country, City, "
-			+ "State, Email, Password, SQuestion, SAnswer) values (:username, :firstName, "
-			+ ":lastName, :middleName, :country, :city, :state, :email, :password, :squestion, :sanswer)")
+	@SqlUpdate("INSERT INTO User "
+			+ "(Username, FirstName, LastName, MiddleName, Country, City, State, Email, Password, SQuestion, SAnswer) "
+			+ "values "
+			+ "(:username, :firstName, :lastName, :middleName, :country, :city, :state, :email, :password, :squestion, :sanswer)")
 	public void insert(@Bind("username") String username, 
 					   @Bind("firstName") String firstName,
 					   @Bind("lastName") String lastName,

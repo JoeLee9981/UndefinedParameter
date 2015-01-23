@@ -11,6 +11,7 @@ import javax.ws.rs.core.MediaType;
 import org.eclipse.jetty.http.HttpTester.Response;
 
 import com.UndefinedParameter.app.core.OrganizationManager;
+import com.UndefinedParameter.jdbi.OrganizationDAO;
 import com.UndefinedParameter.views.OrganizationView;
 import com.UndefinedParameter.views.OrgsView;
 
@@ -19,15 +20,21 @@ import com.UndefinedParameter.views.OrgsView;
 @Consumes(MediaType.APPLICATION_JSON)
 public class OrganizationResource {
 
+	private OrganizationManager manager;
+	
+	public OrganizationResource(OrganizationDAO orgDAO) {
+		manager = new OrganizationManager(orgDAO);
+	}
+	
 	@GET
 	public OrgsView getOrgsView() {
-		return new OrgsView();
+		return new OrgsView(manager.findOrgsByLocation("city"));
 	}
 	
 	@GET
 	@Path("/org")
 	public OrganizationView getOrganizationView(@QueryParam("id") int id) {
-		return new OrganizationView(OrganizationManager.findOrgById(id));
+		return new OrganizationView(manager.findOrgById(id), manager.findGroupsById(id));
 	}
 	
 	@POST

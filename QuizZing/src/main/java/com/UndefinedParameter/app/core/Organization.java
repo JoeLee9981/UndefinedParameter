@@ -1,5 +1,7 @@
 package com.UndefinedParameter.app.core;
 
+import org.joda.time.DateTime;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /*
@@ -48,7 +50,7 @@ public class Organization {
 	private int quizCount;
 	private int questionCount;
 	
-	//TODO: Add a date created
+	private DateTime dateCreated;
 	
 
 	//constructor
@@ -154,19 +156,31 @@ public class Organization {
 		this.questionCount = questionCount;
 	}
 
+	@JsonProperty
+	public DateTime getDateCreated() {
+		return dateCreated;
+	}
+
+	@JsonProperty
+	public void setDateCreated(DateTime dateCreated) {
+		this.dateCreated = dateCreated;
+	}
+
 	/****************************** Organization Helper Methods **********************************/
 
 	/*
 	 * returns an array of groups by category for this organization only
 	 */
 	public Group[] getGroupsByCategory(String category) {
-		return OrganizationManager.findGroupsByCategory(id, category);
+		return null;
+		//return OrganizationManager.findGroupsByCategory(id, category);
 	}
 	
 	/*
 	 * Returns an array of all groups belonging to this organization
 	 */
 	public Group[] getGroups() {
-		return OrganizationManager.findGroupsById(id);
+		return null;
+		//return OrganizationManager.findGroupsById(id);
 	}
 }

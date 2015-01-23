@@ -9,6 +9,7 @@ tmp/
 *~.nib
 *.log
 *.zip
+*.class
 local.properties
 .settings/
 .loadpath

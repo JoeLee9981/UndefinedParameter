@@ -25,8 +25,9 @@
 								<span class="subheader-secondary">Login</span>
 							</div>						
 							<form id="login-form" class="medium">
+								<p id="loginErrorLabel" class="text-alert" />
 								<div class="input-control text">
-								    <input id="username" type="text" value="" placeholder="Email or Username"/>
+								    <input id="username" type="text" value="" placeholder="Email Address"/>
 								</div>
 								<div class="input-control password">
 								    <input id="password" type="password" value="" placeholder="Password"/>
@@ -182,16 +183,31 @@
 		
 		$('#login-form').submit(function(event) {
 			event.preventDefault();
+			
+			var username = $('#username').val();
+			var password = $('#password').val();
+			
+			if(!username) {
+				doLoginError("Please enter your email");
+				return;
+			}
+			
+			if(!password) {
+				doLoginError("Please enter your password");
+				return;
+			}
+			
 			$.ajax({
 			    url: '/login',
-			    username: $('#username').val(),
-			    password: $('#password').val(),
+			    username: username,
+			    password: password,
 			    type: 'POST',
 			    success: function(data) {
 			    	console.log(data);
 			    	window.location='/';
 			    },
 			    error: function(error) {
+			    	doLoginError("Invalid email and/or password");
 			    }
 			});
 		});
@@ -201,5 +217,10 @@
 			
 			window.location='/register';
 		});
+		
+		function doLoginError(message) {
+			document.getElementById('loginErrorLabel').innerHTML = message;
+		}
+		
 	</script>
 </html>

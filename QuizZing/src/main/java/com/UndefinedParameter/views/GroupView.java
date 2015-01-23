@@ -17,10 +17,10 @@ public class GroupView extends View {
 	//the organization this group belongs to
 	private Organization organization;
 	
-	public GroupView(Group group) {
+	public GroupView(Group group, Organization org) {
 		super("group.ftl");
 		this.group = group;
-		this.organization = findOrg(group.getOrganizationId());
+		this.organization = org;
 	}
 	
 	public Group getGroup() {
@@ -36,8 +36,8 @@ public class GroupView extends View {
 	 * Find the parent organization
 	 * 		This is being set automatically from the constructor
 	 */
-	private Organization findOrg(int orgId) {
-		return OrganizationManager.findOrgById(orgId);
+	private Organization findOrg() {
+		return organization;
 	}
 	
 	/*

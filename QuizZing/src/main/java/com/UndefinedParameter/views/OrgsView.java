@@ -3,19 +3,21 @@ package com.UndefinedParameter.views;
 import io.dropwizard.views.View;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import com.UndefinedParameter.app.core.Organization;
 import com.UndefinedParameter.app.core.OrganizationManager;
-import com.UndefinedParameter.app.core.UserManager;
 
 public class OrgsView extends View {
 	
-	public OrgsView() {
+	ArrayList<Organization> orgs;
+	
+	public OrgsView(List<Organization> orgs) {
 		super("orgs.ftl");
+		this.orgs = (ArrayList<Organization>)orgs;
 	}
 	
-	public ArrayList<Organization> getOrganizations(String city) {
-		ArrayList<Organization> orgs = OrganizationManager.findOrgsByLocation("city");
+	public ArrayList<Organization> getOrganizations() {
 		return orgs;
 	}
 	

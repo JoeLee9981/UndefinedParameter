@@ -61,7 +61,7 @@
                         </thead>
 
                         <tbody>
-                        <#list getOrganizations("Salt Lake") as org>
+                        <#list organizations as org>
                         	<tr><td><a href="/orgs/org?id=${org.id}">${org.name}</a></td><td class="right">${org.memberCount}</td><td class="right">${org.quizCount}</td><td class="right">${org.questionCount}</td><td class="right">${getContributionScore(org.id)}</td><td class="right">${getQuizzesParticipated(org.id)}</td><td class="right">11/12/14</td></tr>
                         </#list>            
                         </tbody>
