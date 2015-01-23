@@ -7,11 +7,11 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
-
-import org.eclipse.jetty.http.HttpTester.Response;
+import javax.ws.rs.core.Response;
 
 import com.UndefinedParameter.app.core.OrganizationManager;
 import com.UndefinedParameter.jdbi.OrganizationDAO;
+import com.UndefinedParameter.views.OrganizationCreatorView;
 import com.UndefinedParameter.views.OrganizationView;
 import com.UndefinedParameter.views.OrgsView;
 
@@ -37,6 +37,13 @@ public class OrganizationResource {
 		return new OrganizationView(manager.findOrgById(id), manager.findGroupsById(id));
 	}
 	
+	@GET
+	@Path("/create") 
+	public Response getCreateOrgView() {
+		
+		return Response.ok(new OrganizationCreatorView()).build();
+	}
+	
 	@POST
 	@Path("/add")
 	public Response addOrg() {
@@ -49,6 +56,6 @@ public class OrganizationResource {
 		//}
 			
 		//GroupManager.addGroup(group);
-		return new Response();
+		return Response.ok().build();
 	}
 }
