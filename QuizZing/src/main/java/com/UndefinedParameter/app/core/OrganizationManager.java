@@ -45,4 +45,14 @@ public class OrganizationManager {
 		
 		return orgDAO.findOrganization(id);
 	}
+	
+	public long createOrganization(Organization org) {
+		try {
+			long id = orgDAO.insertOrganization(org.getName(), org.getDescription(), org.getCity(), org.getState(), org.getCountry());
+			return id;
+		}
+		catch(Exception e) {
+			return -1;
+		}
+	}
 }

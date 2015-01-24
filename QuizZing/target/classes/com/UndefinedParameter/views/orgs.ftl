@@ -19,7 +19,8 @@
 			<div class="grid fluid">
 				<div class="row">
 					<div>
-						<h2>Organizations and Groups</h2>
+						<h2>Organizations and Groups <button class="place-right success" onclick="location.href='/orgs/create'">Create A New Organization</button></h2>
+						
 					</div>
 				</div>
 			    <div class="row">

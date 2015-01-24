@@ -3,6 +3,7 @@ package com.UndefinedParameter.jdbi;
 import java.util.List;
 
 import org.skife.jdbi.v2.sqlobject.Bind;
+import org.skife.jdbi.v2.sqlobject.GetGeneratedKeys;
 import org.skife.jdbi.v2.sqlobject.SqlQuery;
 import org.skife.jdbi.v2.sqlobject.SqlUpdate;
 import org.skife.jdbi.v2.sqlobject.customizers.RegisterMapper;
@@ -31,7 +32,8 @@ public interface OrganizationDAO {
 							@Bind("orgId") int orgId);
 	
 	@SqlUpdate("INSERT INTO Organization (Name, Description, City, State, Country) VALUES (:name, :desc, :city, :state, :country)")
-	public void insertOrganization(@Bind("name") String name,
+	@GetGeneratedKeys
+	public long insertOrganization(@Bind("name") String name,
 								   @Bind("desc") String description,
 								   @Bind("city") String city,
 								   @Bind("state") String state,
