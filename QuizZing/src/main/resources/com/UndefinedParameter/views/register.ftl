@@ -80,7 +80,13 @@
 								<div class="row">
 								</div>
 								<div class="row" id="acceptterms">						
-  									I Accept the <a href="#" class="todo">Terms and Conditions</a>.
+									<div class="input-control checkbox">
+									    <label>
+									        <input type="checkbox" />
+									        <span class="check"></span>
+									        I Accept the <a href="#" class="todo">Terms and Conditions</a>.
+									    </label>
+									</div>
 								</div>	
 								<div class="row">
 									<button type="submit" class="large primary">Create Account</button>								
