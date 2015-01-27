@@ -4,68 +4,192 @@
 		<title>QuizZing</title>
 		<link rel="stylesheet" href="/assets/plugins/metro_ui/css/metro-bootstrap.css">
 		<link rel="stylesheet" type="text/css" href="/assets/css/main.css" />
-		<link rel="stylesheet" type="text/css" href="/assets/css/home.css" />
 		<script src="/assets/scripts/jquery-2.1.1.min.js"></script>
 		<script src="/assets/scripts/jquery-ui.min.js"></script>
 		<script src="/assets/plugins/metro_ui/min/metro.min.js"></script>
 		<link href="/assets/plugins/metro_ui/min/iconFont.min.css" rel="stylesheet">
 		<link href="/assets/css/overrides.css" rel="stylesheet">
-		<link href="/assets/css/home.css" rel="stylesheet">			
+		<link href="/assets/css/register.css" rel="stylesheet">
 	</head>
 
 	<body>
 		
 		<#include "../includes/navigation.ftl">
-		<div class="divider1">
-			<div class="metro" id="home-page-subsection">
+		
+			<div class="metro">
 				<div class="grid fluid">
 					<div class="page-content">
 						
-						<p>First Name</p>
-						<input type="text" id="firstName"/>
-						<br/>
-						<p>Middle Name</p>
-						<input type="text" id="middleName"/>
-						<br/>
-						<p>Last Name</p>
-						<input type="text" id="lastName"/>
-						<br/>
-						<p>Email</p>
-						<input type="text" id="email"/>
-						<br/>
-						<p>Create Password</p>
-						<input type="text" id="password"/>
-						<br/>
-						<p>Reenter Password</p>
-						<input type="text" id="reenterPassword"/>
-						<br/>
-						<p>Country</p>
-						<input type="text" id="country"/>
-						<br/>
-						<p>State</p>
-						<input type="text" id="state"/>
-						<br/>
-						<p>City</p>
-						<input type="text" id="city"/>
-						<br/>
-						<p>Secret Question</p>
-						<input type="text" id="squestion"/>
-						<br/>
-						<p>Secret Answer</p>
-						<input type="text" id="sanswer"/>
-						<br/>
-						<button type="submit" id="submit" onClick="submit()">Submit</button>
-						<p id="error_label" class="text-alert" />
+					    <div class="row">
+					    	<div>
+								<h2>Sign Up For QuizZing</h2>
+							</div>
+						</div>
+						<div class="row">
+							<form id="register" class="span6" onsubmit="register();return false;">
+								<div>
+									<h4>Profile Information</h4>
+								</div>
+								<div class="row">
+									<div class="input-control text span6">
+									    <input type="text" id="firstname" value="" placeholder="First Name"/>
+									</div>
+									<div class="input-control text span6">
+									    <input type="text" id="lastname" value="" placeholder="Last Name"/>
+									</div>		
+								</div>
+								<div class="row">
+									<div class="input-control text span12">
+									    <input type="text" id="email" value="" placeholder="Email Address"/>
+									</div>											
+								</div>		
+								<div class="row">
+									<div class="input-control text span4">
+									    <input type="text" id="city" value="" placeholder="City"/>
+									</div>		
+									<div class="input-control text span4">
+									    <input type="text" id="state" value="" placeholder="State/Province"/>
+									</div>	
+									<div class="input-control text span4">
+									    <input type="text" id="country" value="" placeholder="Country"/>
+									</div>											
+								</div>
+								<div>
+									<h4>Password And Account Recovery</h4>
+								</div>
+								<div class="row">
+									<div class="input-control password span12">
+									    <input type="password" id="password" value="" placeholder="Password"/>
+									</div>											
+								</div>
+								<div class="row">
+									<div class="input-control password span12">
+									    <input type="password" id="confirmPassword" value="" placeholder="Confirm Password"/>
+									</div>		
+								</div>
+								<div class="row">
+									<div class="input-control text span12">
+									    <input type="text" id="secretQuestion" value="" placeholder="Secret Question"/>
+									</div>									
+								</div>		
+								<div class="row">
+									<div class="input-control text span12">
+									    <input type="text" id="secretAnswer" value="" placeholder="Answer To Secret Question"/>
+									</div>									
+								</div>
+								<div class="row">
+								</div>
+								<div class="row" id="acceptterms">						
+  									I Accept the <a href="#" class="todo">Terms and Conditions</a>.
+								</div>	
+								<div class="row">
+									<button type="submit" class="large primary">Create Account</button>								
+								</div>						
+							</form>
+						</div>
+						
 					</div>
 				</div>
-			<div>			
+			<div>	
+								
 		<#include "../includes/footer.ftl">
-		</div>
 
 	</body>
 </html>
 
 <script>
+	
+	function register()
+	{
+		alert('hi');
+		return false;
+	}
+	
+	function validateNotEmpty(field)
+	{
+		field.val($.trim(field.val()));
+		field.addClass('valid');
+		if (field.val().length > 0)
+		{
+			field.removeClass('invalid').addClass('valid');
+			return true;
+		}
+		else
+		{
+			field.removeClass('valid').addClass('invalid');
+			return false;
+		}
+	}
+	
+	$('#firstname').focusout(function(){
+		var field = $('#firstname');
+		validateNotEmpty(field);
+	});
+	
+	$('#lastname').focusout(function(){
+		var field = $('#lastname');
+		validateNotEmpty(field);
+	});
+	
+	$('#email').focusout(function(){
+		var field = $('#email');
+		field.val($.trim(field.val()));
+		var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+		if (re.test(field.val()))
+		{
+			field.removeClass('invalid').addClass('valid');
+		}
+		else
+		{
+			field.removeClass('valid').addClass('invalid');
+		}
+	});
+	
+	$('#city').focusout(function(){
+		var field = $('#city');
+		field.val($.trim(field.val()));
+	});
+	
+	$('#state').focusout(function(){
+		var field = $('#state');
+		field.val($.trim(field.val()));
+	});
+	
+	$('#country').focusout(function(){
+		var field = $('#country');
+		field.val($.trim(field.val()));
+	});		
+	
+	var confirmHasBeenEntered = false;
+	$('#password').focusout(function(){
+		var field = $('#password');
+		if (field.val().length > 8)
+		{
+			field.removeClass('invalid').addClass('valid');
+		}
+		else
+		{
+			field.removeClass('valid').addClass('invalid');
+		}
+		
+		if (confirmHasBeenEntered)
+		{
+			$('#confirmPassword').focusout();
+		}
+	});
+	
+	$('#confirmPassword').focusout(function(){
+		confirmHasBeenEntered = true;
+		var field = $('#confirmPassword');
+		if (field.val() === $('#password').val())
+		{
+			field.removeClass('invalid').addClass('valid');
+		}
+		else
+		{
+			field.removeClass('valid').addClass('invalid');
+		}
+	});	
 	
 	function submit() {
 		
