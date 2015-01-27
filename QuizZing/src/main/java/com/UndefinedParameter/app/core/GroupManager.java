@@ -1,18 +1,18 @@
 package com.UndefinedParameter.app.core;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import com.UndefinedParameter.jdbi.OrganizationDAO;
 
 public class GroupManager {
 
+	private OrganizationDAO orgsDAO;
 	
-	/*
-	 * Note for Melynda - Feel free to refactor -> rename methods to meet
-	 * 		the naming convention you are using
-	 */
+	public GroupManager(OrganizationDAO orgsDAO) {
+		this.orgsDAO = orgsDAO;
+	}
 	
-	public static int addGroup(Group group) {
+	public int addGroup(Group group) {
 		
 		/*
 		 * Important - The id of the group will not be instantiated
@@ -24,29 +24,34 @@ public class GroupManager {
 			//invalid ID
 			return -1;
 		}
-		return OrganizationDAO.createGroup(group);
+		orgsDAO.insertGroup(group.getName(), group.getDescription(), group.getOrganizationId());
+		return 1;
 	}
 	
 	/*
 	 * Find the groups within an organization by the organizations id
 	 * 	return as an array of Group classes.
 	 */
-	public static ArrayList<Group> findGroupsByOrg(int orgId) {
+	public List<Group> findGroupsByOrg(int orgId) {
 		
 		//TODO: get groups from database - this should be ok to retreive a complete listing
 		//		as not there should be a manageable number of groups inside an org, however,
 		//		we may want to consider limiting the number we can grab from DAO at once.
 		
-		return OrganizationDAO.findGroupsByOrgId(orgId);
+		return orgsDAO.findGroupsByOrgId(orgId);
 	}
 	
 	/*
 	 * Get a group from the database by the
 	 * 	groups id
 	 */
-	public static Group findGroupById(int id) {
+	public Group findGroupById(int id) {
 		//TODO: Get this from the datatbase
 		
-		return OrganizationDAO.findGroupById(id);
+		return orgsDAO.findGroupById(id);
+	}
+	
+	public Organization findParentOrganization(int orgId) {
+		return orgsDAO.findOrganization(orgId);
 	}
 }

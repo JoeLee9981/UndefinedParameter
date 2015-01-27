@@ -24,6 +24,7 @@ import com.UndefinedParameter.app.resources.OrganizationResource;
 import com.UndefinedParameter.app.resources.QuestionCreatorResource;
 import com.UndefinedParameter.app.resources.QuizResource;
 import com.UndefinedParameter.jdbi.NewsArticleDAO;
+import com.UndefinedParameter.jdbi.OrganizationDAO;
 import com.UndefinedParameter.jdbi.UserDAO;
 
 
@@ -73,6 +74,7 @@ public class QuizZingApplication extends Application<QuizZingConfiguration> {
 		final DBI jdbi = factory.build(environment, configuration.getDataSourceFactory(), "mysql");
 		final NewsArticleDAO newsDAO = jdbi.onDemand(NewsArticleDAO.class);
 		final UserDAO userDAO = jdbi.onDemand(UserDAO.class);
+		final OrganizationDAO orgDAO = jdbi.onDemand(OrganizationDAO.class);
 		
 		logger.info("Database objects registered successfully");
 		
@@ -94,8 +96,8 @@ public class QuizZingApplication extends Application<QuizZingConfiguration> {
 		environment.jersey().register(new HomeResource(newsDAO, userDAO));
 		environment.jersey().register(new NewsArticleResource(newsDAO));
 		environment.jersey().register(new QuizResource());
-		environment.jersey().register(new GroupResource());
-		environment.jersey().register(new OrganizationResource());
+		environment.jersey().register(new GroupResource(orgDAO));
+		environment.jersey().register(new OrganizationResource(orgDAO));
 		environment.jersey().register(new QuestionCreatorResource());
 		environment.jersey().register(new FeedbackResource());
 		environment.jersey().register(new CS4400Resource());

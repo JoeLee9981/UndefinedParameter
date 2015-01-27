@@ -22,7 +22,7 @@ public class BasicAuthenticator implements Authenticator<BasicCredentials, User>
 		
 		User userToAuth = userManager.findUserByUserName(credentials.getUsername());
 		
-		if(userToAuth.getPassword() != null && userToAuth.getPassword().equals(credentials.getPassword())) {
+		if(userToAuth != null && userToAuth.getPassword() != null && userToAuth.getPassword().equals(credentials.getPassword())) {
 			//TODO: Check for time out
 			//TODO: Store time of access for sucessful login
 			return Optional.of(userToAuth);

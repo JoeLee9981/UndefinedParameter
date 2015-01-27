@@ -14,6 +14,7 @@ import javax.ws.rs.core.MediaType;
 
 import com.UndefinedParameter.app.core.Group;
 import com.UndefinedParameter.app.core.GroupManager;
+import com.UndefinedParameter.jdbi.OrganizationDAO;
 import com.UndefinedParameter.views.GroupView;
 import com.UndefinedParameter.views.GroupsView;
 
@@ -23,6 +24,12 @@ import com.UndefinedParameter.views.GroupsView;
 @Consumes(MediaType.APPLICATION_JSON)
 public class GroupResource {
 
+	public GroupManager manager;
+	
+	public GroupResource(OrganizationDAO orgsDAO) {
+		manager = new GroupManager(orgsDAO);
+	}
+	
 	@GET
 	public GroupsView getGroupsView() {
 		return new GroupsView();
@@ -34,7 +41,7 @@ public class GroupResource {
 	public HashMap<String, String> addGroup(@Valid Group group) {
 			
 		HashMap<String, String> response = new HashMap<String, String>();
-		int groupId = GroupManager.addGroup(group);
+		int groupId = manager.addGroup(group);
 		
 		if(groupId >= 1) {
 			response.put("response", "success");
@@ -51,7 +58,8 @@ public class GroupResource {
 	@GET
 	@Path("/{groupId}")
 	public GroupView getGroupView(@PathParam("groupId") int groupId) {
-		return new GroupView(GroupManager.findGroupById(groupId));
+		Group group = manager.findGroupById(groupId);
+		return new GroupView(group, manager.findParentOrganization(group.getOrganizationId()));
 	}
 	
 	

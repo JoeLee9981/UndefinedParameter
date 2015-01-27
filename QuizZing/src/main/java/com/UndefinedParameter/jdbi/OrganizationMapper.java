@@ -3,6 +3,7 @@ package com.UndefinedParameter.jdbi;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import org.joda.time.DateTime;
 import org.skife.jdbi.v2.StatementContext;
 import org.skife.jdbi.v2.tweak.ResultSetMapper;
 
@@ -24,6 +25,7 @@ public class OrganizationMapper implements ResultSetMapper<Organization>{
 		org.setMemberCount(r.getInt("MemberCount"));
 		org.setQuizCount(r.getInt("QuizCount"));
 		org.setQuestionCount(r.getInt("QuestionCount"));
+		org.setDateCreated(new DateTime(r.getDate("DateCreated")));
 		
 		return org;
 	}
