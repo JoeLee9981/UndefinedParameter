@@ -22,8 +22,8 @@ public class Question {
 	
 	private int questionId;
 	private int creatorId;
-	private int questionDifficulty;
-	private int rating;
+	private float questionDifficulty;
+	private float rating;
 	private String questionText;
 	private String correctAnswer;
 	private ArrayList<String> wrongAnswers;
@@ -47,7 +47,7 @@ public class Question {
 	{
 	}
 	
-	public Question(int qID, int cID, int difficulty, int rate, String qt, String qText, String answer, ArrayList<String> wrong, Boolean flag)
+	public Question(int qID, int cID, float difficulty, float rate, String qt, String qText, String answer, ArrayList<String> wrong, Boolean flag)
 	{
 		this.questionId = qID;
 		this.creatorId = cID;
@@ -126,13 +126,13 @@ public class Question {
 	}
 	
 	@JsonProperty
-	public int getQuestionDifficulty() {
+	public float getQuestionDifficulty() {
 		return questionDifficulty;
 	}
 	
 	@JsonProperty
-	public void setQuestionDifficulty(int questionDifficulty) {
-		this.questionDifficulty = questionDifficulty;
+	public void setQuestionDifficulty(float f) {
+		this.questionDifficulty = f;
 	}
 	
 	@JsonProperty
@@ -214,12 +214,22 @@ public class Question {
 	}
 
 	@JsonProperty
-	public int getRating() {
+	public float getRating() {
 		return rating;
 	}
 
 	@JsonProperty
-	public void setRating(int rating) {
-		this.rating = rating;
+	public void setRating(float f) {
+		this.rating = f;
+	}
+
+	@JsonProperty
+	public void setQuestionType(QuestionType questionType) {
+		this.type = questionType;		
+	}
+	
+	public QuestionType getQuestionType()
+	{
+		return type;
 	}
 }
