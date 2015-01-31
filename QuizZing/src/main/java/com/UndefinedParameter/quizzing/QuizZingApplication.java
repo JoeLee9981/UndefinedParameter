@@ -23,6 +23,7 @@ import com.UndefinedParameter.app.resources.NewsArticleResource;
 import com.UndefinedParameter.app.resources.OrganizationResource;
 import com.UndefinedParameter.app.resources.QuestionCreatorResource;
 import com.UndefinedParameter.app.resources.QuizResource;
+import com.UndefinedParameter.app.resources.UserProfileResource;
 import com.UndefinedParameter.jdbi.GroupDAO;
 import com.UndefinedParameter.jdbi.NewsArticleDAO;
 import com.UndefinedParameter.jdbi.OrganizationDAO;
@@ -103,6 +104,7 @@ public class QuizZingApplication extends Application<QuizZingConfiguration> {
 		environment.jersey().register(new QuestionCreatorResource());
 		environment.jersey().register(new FeedbackResource());
 		environment.jersey().register(new CS4400Resource());
+		environment.jersey().register(new UserProfileResource(userDAO));
 
 		logger.info("All Views Registered");
 	}
