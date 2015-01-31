@@ -1,5 +1,7 @@
 package com.UndefinedParameter.app.resources;
 
+import io.dropwizard.auth.Auth;
+
 import java.util.HashMap;
 
 import javax.ws.rs.Consumes;
@@ -13,6 +15,7 @@ import javax.ws.rs.core.Response;
 
 import com.UndefinedParameter.app.core.Organization;
 import com.UndefinedParameter.app.core.OrganizationManager;
+import com.UndefinedParameter.app.core.User;
 import com.UndefinedParameter.jdbi.OrganizationDAO;
 import com.UndefinedParameter.views.OrganizationCreatorView;
 import com.UndefinedParameter.views.OrganizationView;
@@ -29,8 +32,13 @@ public class OrganizationResource {
 	}
 	
 	@GET
-	public OrgsView getOrgsView() {
-		return new OrgsView(manager.findOrgsByLocation("city"));
+	public Response getOrgsView(@Auth(required = false) User user) {
+		if(user == null) {
+			return Response.ok(new OrgsView(manager.findOrgsByLocation("city"))).build();
+		}
+		else {
+			return Response.ok(new OrgsView(manager.findOrgsByLocation("city"))).build();
+		}
 	}
 	
 	@GET
