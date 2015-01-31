@@ -39,7 +39,7 @@
                         <tr>
                             <th class="text-left">Group</th>
                             <th class="text-left">Members</th>
-                            <th class="text-left">Quizes</th>
+                            <th class="text-left">Quizzes</th>
                             <th class="text-left">Questions</th>
                             <th class="text-left">Contribution Score <a href="#" data-hint="Contribution Score|A contribution score is something that we must figure out later. It will be super cool" data-hint-position="right" data-hint-mode="2"><i class="icon-help fg-blue"></i></a></th>
                             <th class="text-left">Quizzes Participated</th>
@@ -49,7 +49,7 @@
 
                         <tbody>
 	                        <#list groups as group>
-								<tr><td><a href="/group/${group.id}">${group.name?html}</a></td><td class="right">255</td><td class="right">35</td><td class="right">100</td><td class="right">35</td><td class="right">3</td><td class="right">11/12/14</td></tr>
+								<tr><td><a href="/group/${group.id}">${group.name?html}</a></td><td class="right">${group.memberCount}</td><td class="right">${group.quizCount}</td><td class="right">${group.questionCount}</td><td class="right">35</td><td class="right">3</td><td class="right">${group.dateAsString}</td></tr>
 							</#list>     
                         </tbody>
 
