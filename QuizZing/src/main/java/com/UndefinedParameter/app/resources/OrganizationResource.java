@@ -13,6 +13,7 @@ import javax.ws.rs.core.Response;
 
 import com.UndefinedParameter.app.core.Organization;
 import com.UndefinedParameter.app.core.OrganizationManager;
+import com.UndefinedParameter.jdbi.GroupDAO;
 import com.UndefinedParameter.jdbi.OrganizationDAO;
 import com.UndefinedParameter.views.OrganizationCreatorView;
 import com.UndefinedParameter.views.OrganizationView;
@@ -24,8 +25,8 @@ public class OrganizationResource {
 
 	private OrganizationManager manager;
 	
-	public OrganizationResource(OrganizationDAO orgDAO) {
-		manager = new OrganizationManager(orgDAO);
+	public OrganizationResource(OrganizationDAO orgDAO, GroupDAO groupDAO) {
+		manager = new OrganizationManager(orgDAO, groupDAO);
 	}
 	
 	@GET

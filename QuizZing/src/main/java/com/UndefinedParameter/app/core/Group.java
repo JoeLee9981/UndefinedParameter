@@ -1,5 +1,7 @@
 package com.UndefinedParameter.app.core;
 
+import org.joda.time.DateTime;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /*
@@ -43,6 +45,8 @@ public class Group {
 	 * Number of questions in the group
 	 */
 	private int questionCount;
+	
+	private DateTime dateCreated;
 	
 	/*
 	 * TODO: Add long name and description fields
@@ -140,6 +144,20 @@ public class Group {
 	@JsonProperty
 	public void setQuestionCount(int questionCount) {
 		this.questionCount = questionCount;
+	}
+
+	@JsonProperty
+	public DateTime getDateCreated() {
+		return dateCreated;
+	}
+
+	@JsonProperty
+	public void setDateCreated(DateTime dateCreated) {
+		this.dateCreated = dateCreated;
+	}
+	
+	public String getDateAsString() {
+		return dateCreated.toString("MM/dd/yyyy");
 	}
 	
 }

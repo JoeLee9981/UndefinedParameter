@@ -14,6 +14,7 @@ import javax.ws.rs.core.MediaType;
 
 import com.UndefinedParameter.app.core.Group;
 import com.UndefinedParameter.app.core.GroupManager;
+import com.UndefinedParameter.jdbi.GroupDAO;
 import com.UndefinedParameter.jdbi.OrganizationDAO;
 import com.UndefinedParameter.views.GroupView;
 import com.UndefinedParameter.views.GroupsView;
@@ -26,8 +27,8 @@ public class GroupResource {
 
 	public GroupManager manager;
 	
-	public GroupResource(OrganizationDAO orgsDAO) {
-		manager = new GroupManager(orgsDAO);
+	public GroupResource(OrganizationDAO orgsDAO, GroupDAO groupDAO) {
+		manager = new GroupManager(orgsDAO, groupDAO);
 	}
 	
 	@GET

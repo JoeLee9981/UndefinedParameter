@@ -2,14 +2,17 @@ package com.UndefinedParameter.app.core;
 
 import java.util.List;
 
+import com.UndefinedParameter.jdbi.GroupDAO;
 import com.UndefinedParameter.jdbi.OrganizationDAO;
 
 public class OrganizationManager {
 	
 	private OrganizationDAO orgDAO;
+	private GroupDAO groupDAO;
 	
-	public OrganizationManager(OrganizationDAO orgDAO) {
+	public OrganizationManager(OrganizationDAO orgDAO, GroupDAO groupDAO) {
 		this.orgDAO = orgDAO;
+		this.groupDAO = groupDAO;
 	}
 	
 	/*
@@ -33,7 +36,7 @@ public class OrganizationManager {
 	 * Finds all of the groups by an organizations id
 	 */
 	public List<Group> findGroupsById(int orgId) {
-		return orgDAO.findGroupsByOrgId(orgId);
+		return groupDAO.findGroupsByOrgId(orgId);
 	}
 	
 	public List<Organization> findOrgsByLocation(String city) {

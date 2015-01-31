@@ -1,5 +1,7 @@
 package com.UndefinedParameter.app.core;
 
+import java.text.SimpleDateFormat;
+
 import org.joda.time.DateTime;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -164,6 +166,10 @@ public class Organization {
 	@JsonProperty
 	public void setDateCreated(DateTime dateCreated) {
 		this.dateCreated = dateCreated;
+	}
+	
+	public String getDateAsString() {
+		return dateCreated.toString("MM/dd/yyyy");
 	}
 
 	/****************************** Organization Helper Methods **********************************/

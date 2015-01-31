@@ -2,14 +2,17 @@ package com.UndefinedParameter.app.core;
 
 import java.util.List;
 
+import com.UndefinedParameter.jdbi.GroupDAO;
 import com.UndefinedParameter.jdbi.OrganizationDAO;
 
 public class GroupManager {
 
 	private OrganizationDAO orgsDAO;
+	private GroupDAO groupDAO;
 	
-	public GroupManager(OrganizationDAO orgsDAO) {
+	public GroupManager(OrganizationDAO orgsDAO, GroupDAO groupDAO) {
 		this.orgsDAO = orgsDAO;
+		this.groupDAO = groupDAO;
 	}
 	
 	public int addGroup(Group group) {
@@ -24,7 +27,7 @@ public class GroupManager {
 			//invalid ID
 			return -1;
 		}
-		orgsDAO.insertGroup(group.getName(), group.getDescription(), group.getOrganizationId());
+		groupDAO.insertGroup(group.getName(), group.getDescription(), group.getOrganizationId());
 		return 1;
 	}
 	
@@ -38,7 +41,7 @@ public class GroupManager {
 		//		as not there should be a manageable number of groups inside an org, however,
 		//		we may want to consider limiting the number we can grab from DAO at once.
 		
-		return orgsDAO.findGroupsByOrgId(orgId);
+		return groupDAO.findGroupsByOrgId(orgId);
 	}
 	
 	/*
@@ -48,7 +51,7 @@ public class GroupManager {
 	public Group findGroupById(int id) {
 		//TODO: Get this from the datatbase
 		
-		return orgsDAO.findGroupById(id);
+		return groupDAO.findGroupById(id);
 	}
 	
 	public Organization findParentOrganization(int orgId) {

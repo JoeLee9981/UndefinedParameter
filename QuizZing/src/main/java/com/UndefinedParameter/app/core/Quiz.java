@@ -2,6 +2,8 @@ package com.UndefinedParameter.app.core;
 
 import java.util.ArrayList;
 
+import org.joda.time.DateTime;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /*
@@ -20,12 +22,12 @@ public class Quiz {
 	/*
 	 * 	This is the id of the quiz
 	 */
-	private int quizId;
+	private long quizId;
 	
 	/*
 	 * This is the user id of the quiz creator
 	 */
-	private int creatorId;
+	private long creatorId;
 	
 	/*
 	 * This is the difficulty of the quiz
@@ -48,6 +50,21 @@ public class Quiz {
 	 * 		in milliseconds.
 	 */
 	private int time;
+	
+	/*
+	 * When the quiz was created
+	 */
+	private DateTime dateCreated;
+	
+	/*
+	 * Time stamp of the last time the quiz was modified
+	 */
+	private DateTime dateModified;
+	
+	/*
+	 * Timestamp for when the quiz was last accessed
+	 */
+	private DateTime lastAccessed;
 	
 	/*
 	 * A list of populated questions
@@ -114,22 +131,22 @@ public class Quiz {
 	/******************************** Standard getters and setters ********************************/
 	
 	@JsonProperty
-	public int getQuizId() {
+	public long getQuizId() {
 		return quizId;
 	}
 	
 	@JsonProperty
-	public void setQuizId(int quizId) {
+	public void setQuizId(long quizId) {
 		this.quizId = quizId;
 	}
 	
 	@JsonProperty
-	public int getCreatorId() {
+	public long getCreatorId() {
 		return creatorId;
 	}
 	
 	@JsonProperty
-	public void setCreatorId(int creatorId) {
+	public void setCreatorId(long creatorId) {
 		this.creatorId = creatorId;
 	}
 	
@@ -173,6 +190,48 @@ public class Quiz {
 		this.time = time;
 	}
 	
+	@JsonProperty
+	public DateTime getDateCreated() {
+		return dateCreated;
+	}
+
+	@JsonProperty
+	public void setDateCreated(DateTime dateCreated) {
+		this.dateCreated = dateCreated;
+	}
+
+	@JsonProperty
+	public DateTime getDateModified() {
+		return dateModified;
+	}
+
+	@JsonProperty
+	public void setDateModified(DateTime dateModified) {
+		this.dateModified = dateModified;
+	}
+
+	@JsonProperty
+	public DateTime getLastAccessed() {
+		return lastAccessed;
+	}
+
+	@JsonProperty
+	public void setLastAccessed(DateTime lastAccessed) {
+		this.lastAccessed = lastAccessed;
+	}
+	
+	public String getDateCreatedAsString() {
+		return dateCreated.toString("MM/dd/yyyy");
+	}
+	
+	public String getLastAccessedAsString() {
+		return dateCreated.toString("MM/dd/yyyy");
+	}
+	
+	public String getDateModifiedAsString() {
+		return dateCreated.toString("MM/dd/yyyy");
+	}
+
 	/********************** Iteration Methods ************************************/
 	
 	/*

@@ -20,17 +20,6 @@ public interface OrganizationDAO {
 	@SqlQuery("SELECT * FROM Organization WHERE OrgID = :orgId")
 	public Organization findOrganization(@Bind("orgId") int id);
 	
-	@SqlQuery("SELECT * FROM SubGroup WHERE OrgID = :orgId")
-	public List<Group> findGroupsByOrgId(@Bind("orgId") int id);
-	
-	@SqlQuery("SELECT * FROM SubGroup WHERE GroupId = :groupId")
-	public Group findGroupById(@Bind("groupId") int id);
-	
-	@SqlUpdate("INSERT INTO SubGroup (Name, Description, OrgID) VALUES (:name, :desc, :orgId)")
-	public void insertGroup(@Bind("name") String name, 
-							@Bind("desc") String description, 
-							@Bind("orgId") int orgId);
-	
 	@SqlUpdate("INSERT INTO Organization (Name, Description, City, State, Country) VALUES (:name, :desc, :city, :state, :country)")
 	@GetGeneratedKeys
 	public long insertOrganization(@Bind("name") String name,

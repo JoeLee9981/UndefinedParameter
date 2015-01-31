@@ -1,3 +1,6 @@
+
+
+
 package com.UndefinedParameter.jdbi;
 
 import java.sql.Connection;
@@ -252,7 +255,7 @@ public class QuizDAO {
 			
 			// Insert quiz information in the Quiz table.
 			statement = connection.prepareStatement(select, Statement.RETURN_GENERATED_KEYS);
-			statement.setInt(1, quiz.getCreatorId());
+			statement.setLong(1, quiz.getCreatorId());
 			statement.setInt(2, quiz.getDifficulty());
 			statement.setInt(3, quiz.getRating());
 			statement.setString(4, quiz.getDescription());
@@ -288,7 +291,7 @@ public class QuizDAO {
 	private static void linkToQuestions(Quiz quiz)
 	{
 		int result = -1;
-		int quizID = quiz.getQuizId();
+		long quizID = quiz.getQuizId();
 		Question[] questions = quiz.getQuestions();
 		
 		// Using UNION to add multiple rows at a time to the database.
@@ -568,3 +571,5 @@ public class QuizDAO {
 	}
 	
 }
+
+
