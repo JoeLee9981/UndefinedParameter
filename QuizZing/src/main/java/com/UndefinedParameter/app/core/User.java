@@ -1,5 +1,7 @@
 package com.UndefinedParameter.app.core;
 
+import org.joda.time.DateTime;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class User {
@@ -16,6 +18,7 @@ public class User {
 	private String password;
 	private String secretQuestion;
 	private String secretAnswer;
+	private DateTime lastAccessed;
 	
 	public User(int id) {
 		this.id = id;
@@ -147,5 +150,13 @@ public class User {
 		this.secretAnswer = secretAnswer;
 	}
 	
+	@JsonProperty
+	public DateTime getLastAccessed() {
+		return lastAccessed;
+	}
 	
+	@JsonProperty
+	public void setLastAccessed(DateTime lastAccessed) {
+		this.lastAccessed = lastAccessed;
+	}
 }
