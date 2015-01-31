@@ -2,6 +2,7 @@ package com.UndefinedParameter.app.core;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,6 +19,14 @@ import com.UndefinedParameter.quizzing.QuizZingApplication;
  */
 public class QuizManager {
 	
+	private QuizDAO quizDAO;
+	private QuestionDAO questionDAO;
+	
+	public QuizManager(QuizDAO quizDAO, QuestionDAO questionDAO) {
+		this.quizDAO = quizDAO;
+		this.questionDAO = questionDAO;
+	}
+	
 	final static Logger logger = LoggerFactory.getLogger(QuizZingApplication.class);
 	final static int defaultNumOfQuestions = 10;
 	final static int maxNumOfQuestions = 100;
@@ -30,7 +39,7 @@ public class QuizManager {
 	 *	generateRandomQuiz - Pulls questions from database by groupId, 
 	 *	puts them in a Quiz object.
 	 */
-	public static Quiz generateRandomQuiz(int groupId) {
+	public Quiz generateRandomQuiz(int groupId) {
 		Quiz quiz = null;//new Quiz(QuizDAO.retrieveQuiz(groupId));
 		
 		//TODO: Narrow quiz to numOfQuestions.
@@ -42,7 +51,7 @@ public class QuizManager {
 	 * 	generateRandomQuiz - Pulls questions from database by tags,
 	 * 	puts them in a Quiz object.
 	 */
-	public static Quiz generateRandomQuiz(int[] tagIds) {
+	public Quiz generateRandomQuiz(int[] tagIds) {
 		
 		Quiz quiz = null;//new Quiz(QuizDAO.retrieveQuiz(tagIds));
 		
@@ -54,16 +63,16 @@ public class QuizManager {
 	/*
 	 *	deleteQuiz - Deletes quiz based on quiz ID.
 	 */
-	public static void deleteQuiz(int qID) {
+	public void deleteQuiz(int qID) {
 		//QuizDAO.deleteQuiz(qID);
 	}
 	
 	/*
 	 * TODO: Add methods used for quiz management
 	 */
-	public static Quiz findQuiz(int qID) {
+	public Quiz findQuiz(long qID) {
 		
-		Quiz quiz = QuizDAO.retrieveExistingQuizDetails(qID);
+		Quiz quiz = quizDAO.retrieveExistingQuizDetails(qID);
 		
 		if(quiz.getQuizId() > 0) {
 			quiz.setQuestions(getQuestions(qID));
@@ -75,13 +84,13 @@ public class QuizManager {
 		return quiz;
 	}
 	
-	public static Quiz getRandomizedQuestions(int quizId)
+	public Quiz getRandomizedQuestions(int quizId)
 	{
 		//get and randomize questions
-		ArrayList<Question> randomizedQuestionList = QuizDAO.retrieveExistingQuiz(quizId);
+		List<Question> randomizedQuestionList = questionDAO.retrieveExistingQuiz(quizId);
 		Collections.shuffle(randomizedQuestionList);
 		//get the quiz from db
-		Quiz quiz = QuizDAO.retrieveExistingQuizDetails(quizId);
+		Quiz quiz = quizDAO.retrieveExistingQuizDetails(quizId);
 		
 		//validate the quiz
 		if(quiz.getQuizId() > 0)
@@ -93,9 +102,9 @@ public class QuizManager {
 	/*
 	 * TODO: Implement this
 	 */
-	private static ArrayList<Question> getQuestions(int quizId) {
+	private List<Question> getQuestions(long quizId) {
 		//TODO: Validation
-		return QuizDAO.retrieveExistingQuiz(quizId);
+		return questionDAO.retrieveExistingQuiz(quizId);
 	}
 	
 	
@@ -103,22 +112,29 @@ public class QuizManager {
 	 * 	--------------- Creation Methods ---------------
 	 */
 	
-	public static int createQuestion(Question question) throws Exception
+	public long createQuestion(Question question) throws Exception
 	{
 		// TODO: Implement a return check. True for success, false for failure.
 		
 		// Check for invalid parameters in the question.
-		if(question.getCreatorId() < 0)
+		if(question.getCreatorId() < 0) {
 			throw new Exception("Invalid creator ID. Must be greater than 0.");
-		else if(question.getAnswerCount() <= 0 )
+		}
+		else if(question.getAnswerCount() <= 0 ) {
 			throw new Exception("No answers were provided for this question.");
-		else if(question.getQuestionText() == null || question.getQuestionText() == "")
+		}
+		else if(question.getQuestionText() == null || question.getQuestionText() == "") {
 			throw new Exception("No question text was provided.");
-		else
-			return QuestionDAO.createQuestion(question);
+		}
+		else {
+			List<String> wrongAnswers = question.getWrongAnswers();
+			return questionDAO.createQuestion(question.getCreatorId(), question.getQuestionDifficulty(), question.getRating(),
+					question.getQuestionText(), question.getCorrectAnswer(), question.getQuestionType(), wrongAnswers.get(0), wrongAnswers.get(1),
+					wrongAnswers.get(2), wrongAnswers.get(3));
+		}
 	}
 	
-	public static int createQuiz(Quiz quiz) {
+	public long createQuiz(Quiz quiz) {
 		
 		
 		//TODO Commenting this out for now since the framework is not in place
@@ -150,36 +166,37 @@ public class QuizManager {
 				throw new Exception("Not all questions exist in the database.");
 		}*/
 		
-		return QuizDAO.createQuiz(quiz);
+		return quizDAO.createQuiz(quiz.getCreatorId(), quiz.getDifficulty(), quiz.getRating(), quiz.getDescription(), quiz.getTime());
 	}
 	
 	/*
 	 * Adds a quiz to question association into the QuizQuestion table of the database
 	 */
-	public static boolean addQuestionToQuiz(int quizId, int questionId) {
+	public boolean addQuestionToQuiz(long quizId, long questionId) {
 		if(quizId < 1 || questionId < 1)
 			return false;
-		return QuizDAO.addQuestion(quizId, questionId);
+		quizDAO.addQuestion(quizId, questionId);
+		return true;
 	}
 	
 	/*
 	 * Links a quiz to a group - this creates an association in GroupQuiz table
 	 * 	of a GroupID to QuizID
 	 */
-	public static boolean addQuizToGroup(int quizId, int groupId) {
+	public boolean addQuizToGroup(long quizId, long groupId) {
 		if(quizId < 1 || groupId < 1)
 			return false;
-		return QuizDAO.linkToGroup(quizId, groupId);
+		quizDAO.linkToGroup(quizId, groupId);
+		return true;
 	}
 
 	/*
 	 * Return a list of quizzes from the database
 	 */
-	public static ArrayList<Quiz> findQuizzesByGroup(int groupId) {
-		ArrayList<Quiz> quizzes = new ArrayList<Quiz>();
+	public List<Quiz> findQuizzesByGroup(long groupId) {
 		if(groupId >= 1)
-			quizzes = QuizDAO.retreiveQuizzesByGroup(groupId);
-		return quizzes;
+			return quizDAO.retrieveQuizzesByGroup(groupId);
+		return null;
 	}
 
 }

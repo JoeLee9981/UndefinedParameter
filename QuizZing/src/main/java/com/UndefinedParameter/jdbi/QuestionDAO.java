@@ -1,81 +1,72 @@
 package com.UndefinedParameter.jdbi;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.Statement;
-import java.util.ArrayList;
+import java.util.List;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.skife.jdbi.v2.sqlobject.Bind;
+import org.skife.jdbi.v2.sqlobject.GetGeneratedKeys;
+import org.skife.jdbi.v2.sqlobject.SqlQuery;
+import org.skife.jdbi.v2.sqlobject.SqlUpdate;
+import org.skife.jdbi.v2.sqlobject.customizers.RegisterMapper;
 
 import com.UndefinedParameter.app.core.Question;
-import com.UndefinedParameter.quizzing.QuizZingApplication;
 
-public class QuestionDAO {
-
-	final static Logger logger = LoggerFactory.getLogger(QuizZingApplication.class);
-	private static final String dbPath = "database/QuizZing";
+@RegisterMapper(QuestionMapper.class)
+public interface QuestionDAO {
 	
 	/*
-	 * 	createQuestion - Given a question, insert it into the database assuming all
-	 * 	necessary parameters are present. 
+	 * 	CreateAQuestion. Will get a question from the database.
 	 */
-	public static int createQuestion(Question question)
-	{
-		int key = -1;
-		String select = "INSERT INTO Question (CreatorID, QuestionDifficulty, QuestionText, "
-				+ "CorrectAnswer, WrongAnswer1, WrongAnswer2, WrongAnswer3, WrongAnswer4, QuestionType) "
-				+ "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
-
-		Connection connection = null;
-		PreparedStatement statement = null;
-		
-		try {
-			connection = DriverManager.getConnection("jdbc:sqlite:" + dbPath);
-			connection.setAutoCommit(false);
-			
-			// TODO: Return result == 0 for failure?
-			statement = connection.prepareStatement(select, Statement.RETURN_GENERATED_KEYS);
-			statement.setInt(1, question.getCreatorId());
-			statement.setInt(2, 3);
-			statement.setString(3, question.getQuestionText());
-			statement.setString(4, question.getCorrectAnswer());
-			ArrayList<String> wrongAnswers = question.getWrongAnswers();
-			for(int i = 0; i < wrongAnswers.size(); i++) {
-				statement.setString((i + 5), wrongAnswers.get(i));
-			}
-			statement.setString(9, question.getType().toString());
-			statement.executeUpdate();
-
-			ResultSet result = statement.getGeneratedKeys();
-			if(result != null && result.next())
-				key = result.getInt(1);
-			
-			connection.commit();
-			
-			statement.close();
-			connection.close();	
-			
-			return key;
-		}
-		catch(Exception e){
-			String errorMsg = "Question could not be inserted into the database. result = "; 
-			logger.error(errorMsg);
-			e.printStackTrace();
-		}
-		
-		return key;
-	}
+	@SqlQuery("SELECT * FROM Question WHERE QuestionID = :questionId")
+	public Question getQuestion(@Bind("questionId") long questionId);
 	
 	/*
-	 * 	retrieveQuestions - Retrieves all the questions that are tagged with a given list of tags.
+	 * Get all questions
+	 * TODO: Restrict this to categories
 	 */
+	@SqlQuery("SELECT * FROM Question ORDER BY QuestionID")
+	public List<Question> getAllQuestions();
+	
+	
+	/*
+	 * 	retrieveExistingQuiz - Retrieves quiz questions from a specific existing quiz id.
+	 */
+	@SqlQuery("SELECT Qt.* "
+			+ "FROM Question Qt, Quiz Qz, QuizQuestion Qq "
+			+ "WHERE Qt.QuestionID = Qq.QuestionID "
+			+ "AND Qq.QuizID = Qz.QuizID "
+			+ "AND Qz.QuizID = :quizId")
+	public List<Question> retrieveExistingQuiz(@Bind("quizId") long quizId);
+	
+	/*
+	 * 	CreateAQuestion. Will add a new question to the database.
+	 */
+	@SqlUpdate("INSERT INTO Question "
+				+ "(CreatorID, QuestionDifficulty, Rating, "
+				+ "QuestionText, CorrectAnswer, QuestionType, WrongAnswer1, WrongAnswer2, WrongAnswer3, WrongAnswer4, Flagged) "
+				+ "VALUES (:creatorId, :difficulty, :rating, :questionText, :correctAnswer, :questionType, :wrongAnswer1, :wrongAnswer2, "
+				+ ":wrongAnswer3, :wrongAnswer4, :flagged)")
+	@GetGeneratedKeys
+	public long createQuestion(@Bind("creatorId") long creatorId, 
+							   @Bind("difficulty") float difficulty, 
+							   @Bind("rating") float rating,
+							   @Bind("questionText") String questionText,
+							   @Bind("correctAnswer") String correctAnswer,
+							   @Bind("questionType") Question.QuestionType questionType,
+							   @Bind("wrongAnswer1") String wrongAnswer1,
+							   @Bind("wrongAsnwer2") String wrongAnswer2,
+							   @Bind("wrongAnswer3") String wrongAnswer3,
+							   @Bind("wrongAnswer4") String wrongAnswer4);
+	
+	/*
+	 * 	retrieveQuiz - Retrieves questions from a specific group id.
+	 */
+	@SqlQuery("SELECT q.* FROM Question q, UserGroups u WHERE u.UserID = q.UserID AND u.GroupID = :groupId")
+	public List<Question> getQuestionsByGroupId(@Bind("groupId") long groupId);
+}
+
+	/* TODO NEED TO CONVERT THIS QUERY
 	public static ArrayList<Question> retrieveQuestions(int[] tagIds, int maxQuestions)
 	{
-		// TODO: Currently retrieves all questions of that category. Need to
-		// narrow that number down to 100.
 		
 		ArrayList<Question> questions = new ArrayList<Question>();
 		
@@ -85,12 +76,6 @@ public class QuestionDAO {
 		if(tagIds.length == 0)
 			return questions;
 		
-		// Retrieve all questions with tag ids.
-		//String select = "SELECT Q "
-		//		+ "FROM Question Q, TagQuestion TQ, Tags T "
-		//		+ "WHERE Q.QuestionID = TQ.QuestionID "
-		//		+ "AND TQ.TagID = T.TagID "
-		//		+ "AND TagID = (";
 		
 		Connection connection = null;
 		PreparedStatement statement = null;
@@ -182,216 +167,4 @@ public class QuestionDAO {
 		}	
 		
 		return questions;
-	}
-	
-	
-	/*
-	 * 	Will get a question from the database by Question ID.
-	 */
-	private static Question getQuestion(int qID)
-	{
-
-		int result = -1;
-		Question question = null;
-		
-		String select = "SELECT * FROM Question WHERE QuestionID = " + qID;
-		
-		Connection connection = null;
-		//Statement statement = null;
-		PreparedStatement statement = null;
-		
-		try {
-
-			connection = DriverManager.getConnection("jdbc:sqlite:" + dbPath);
-			connection.setAutoCommit(false);
-			
-			//statement = connection.createStatement();
-			statement = connection.prepareStatement(select);
-			statement.setInt(1, qID);
-			ResultSet results = statement.executeQuery();
-			//ResultSet results = statement.executeQuery(select);
-			
-			while(results.next())
-			{				
-				
-				int qid = results.getInt("QuestionID");
-				int cid = results.getInt("CreatorID");
-				int diff = results.getInt("QuestionDifficulty");
-				int rate = results.getInt("Rating");
-				String qText = results.getString("QuestionText");
-				String answer = results.getString("CorrectAnswer");
-				String qType = results.getString("QuestionType");
-				String wrongA1 = results.getString("WrongAnswer1");
-				String wrongA2 = results.getString("WrongAnswer2");
-				String wrongA3 = results.getString("WrongAnswer3");
-				String wrongA4 = results.getString("WrongAnswer4");
-				Boolean flag = results.getBoolean("Flagged");	
-				
-				ArrayList<String> wrongAnswers = new ArrayList<String>();
-				if(wrongA1 != null && wrongA1.length() > 0)
-					wrongAnswers.add(wrongA1);
-				if(wrongA2 != null && wrongA2.length() > 0)
-					wrongAnswers.add(wrongA2);
-				if(wrongA3 != null && wrongA3.length() > 0)
-					wrongAnswers.add(wrongA3);
-				if(wrongA4 != null && wrongA4.length() > 0)
-					wrongAnswers.add(wrongA4);
-				question = new Question(qid, cid, diff, rate, qType, qText, answer, wrongAnswers, flag);
-			}
-			
-			statement.close();
-			connection.close();	
-		}
-		catch(Exception e){
-			String errorMsg = "Could not get selected question by ID from database. Database respone = " + result; 
-			logger.error(errorMsg);
-			e.printStackTrace();
-		}
-		return question;
-	}
-	
-	
-	/*
-	 * 	retrieveQuiz - Retrieves questions from a specific group id.
-	 */
-	public static ArrayList<Question> retrieveQuestions(int gID)
-	{
-		// TODO: Implement retrieve questions query based on group id.
-		ArrayList<Question> questions = new ArrayList<Question>();
-		
-		int result = -1;
-		Question question = null;
-		
-		String select = "SELECT q.* FROM Question q, UserGroups u WHERE u.UserID = q.UserID AND u.GroupID = " + gID;
-		
-		Connection connection = null;
-		Statement statement = null;
-		ArrayList<Question> array = new ArrayList<Question>();
-		
-		try
-		{
-			
-			connection = DriverManager.getConnection("jdbc:sqlite:" + dbPath);
-			connection.setAutoCommit(false);
-			
-			statement = connection.createStatement();
-			ResultSet results = statement.executeQuery(select);
-			
-			while(results.next())
-			{				
-				int qid = results.getInt("QuestionID");
-				int cid = results.getInt("CreatorID");
-				int diff = results.getInt("QuestionDifficulty");
-				int rate = results.getInt("Rating");
-				String qText = results.getString("QuestionText");
-				String answer = results.getString("CorrectAnswer");
-				String qType = results.getString("QuestionType");
-				String wrongA1 = results.getString("WrongAnswer1");
-				String wrongA2 = results.getString("WrongAnswer2");
-				String wrongA3 = results.getString("WrongAnswer3");
-				String wrongA4 = results.getString("WrongAnswer4");
-				Boolean flag = results.getBoolean("Flagged");	
-				
-				ArrayList<String> wrongAnswers = new ArrayList<String>();
-				if(wrongA1 != null && wrongA1.length() > 0)
-					wrongAnswers.add(wrongA1);
-				if(wrongA2 != null && wrongA2.length() > 0)
-					wrongAnswers.add(wrongA2);
-				if(wrongA3 != null && wrongA3.length() > 0)
-					wrongAnswers.add(wrongA3);
-				if(wrongA4 != null && wrongA4.length() > 0)
-					wrongAnswers.add(wrongA4);
-				question = new Question(qid, cid, diff, rate, qType, qText, answer, wrongAnswers, flag);
-				
-				array.add(question);
-			}
-			
-			statement.close();
-			connection.close();	
-			
-		}
-		catch(Exception e){
-			String errorMsg = "Could not retrieve questions. Group " + gID + " or their questions may not exist."; 
-			logger.error(errorMsg);
-			e.printStackTrace();
-		}
-		
-		return questions;
-	}
-	
-	
-	
-	/*
-	 * Get all questions
-	 */
-	private static ArrayList<Question> getXQuestions(int maxamount)
-	{
-		int i = 0;
-		int result = -1;
-		Question question = new Question();
-		ArrayList<Question> array = new ArrayList<Question>();
-		
-		
-		String select = "SELECT * FROM Question ORDER BY QuestionID";
-		
-		Connection connection = null;
-		Statement statement = null;
-		
-		try {
-
-			connection = DriverManager.getConnection("jdbc:sqlite:" + dbPath);
-			connection.setAutoCommit(false);
-			
-			statement = connection.createStatement();
-			ResultSet results = statement.executeQuery(select);
-			
-			while(results.next())
-			{				
-				if(i > maxamount)
-				{
-					break;
-				}
-				else
-				{
-					i++;
-				}
-				int qid = results.getInt("QuestionID");
-				int cid = results.getInt("CreatorID");
-				int diff = results.getInt("QuestionDifficulty");
-				int rate = results.getInt("Rating");
-				String qText = results.getString("QuestionText");
-				String answer = results.getString("CorrectAnswer");
-				String qType = results.getString("QuestionType");
-				String wrongA1 = results.getString("WrongAnswer1");
-				String wrongA2 = results.getString("WrongAnswer2");
-				String wrongA3 = results.getString("WrongAnswer3");
-				String wrongA4 = results.getString("WrongAnswer4");
-				Boolean flag = results.getBoolean("Flagged");	
-				
-				ArrayList<String> wrongAnswers = new ArrayList<String>();
-				if(wrongA1 != null && wrongA1.length() > 0)
-					wrongAnswers.add(wrongA1);
-				if(wrongA2 != null && wrongA2.length() > 0)
-					wrongAnswers.add(wrongA2);
-				if(wrongA3 != null && wrongA3.length() > 0)
-					wrongAnswers.add(wrongA3);
-				if(wrongA4 != null && wrongA4.length() > 0)
-					wrongAnswers.add(wrongA4);
-				question = new Question(qid, cid, diff, rate, qType, qText, answer, wrongAnswers, flag);
-				
-				array.add(question);
-			}			
-			
-			statement.close();
-			connection.close();	
-		}
-		catch(Exception e){
-			String errorMsg = "Could not get question from database. Database respone = " + result; 
-			logger.error(errorMsg);
-			e.printStackTrace();
-		}
-		return array;
-	}
-	
-	
-}
+	} */

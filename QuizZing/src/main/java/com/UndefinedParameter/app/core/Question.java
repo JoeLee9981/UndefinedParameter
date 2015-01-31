@@ -20,8 +20,8 @@ public class Question {
 		//TODO: Add more question types as needed
 	}
 	
-	private int questionId;
-	private int creatorId;
+	private long questionId;
+	private long creatorId;
 	private float questionDifficulty;
 	private float rating;
 	private String questionText;
@@ -107,21 +107,21 @@ public class Question {
 		return allAnswers;
 	}
 	
-	public int getQuestionId() {
+	public long getQuestionId() {
 		return questionId;
 	}
 	
-	public void setQuestionId(int questionId) {
+	public void setQuestionId(long questionId) {
 		this.questionId = questionId;
 	}
 	
 	@JsonProperty
-	public int getCreatorId() {
+	public long getCreatorId() {
 		return creatorId;
 	}
 	
 	@JsonProperty
-	public void setCreatorId(int creatorId) {
+	public void setCreatorId(long creatorId) {
 		this.creatorId = creatorId;
 	}
 	

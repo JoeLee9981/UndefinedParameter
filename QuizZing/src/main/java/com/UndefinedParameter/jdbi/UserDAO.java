@@ -1,6 +1,7 @@
 package com.UndefinedParameter.jdbi;
 
 import org.skife.jdbi.v2.sqlobject.Bind;
+import org.skife.jdbi.v2.sqlobject.GetGeneratedKeys;
 import org.skife.jdbi.v2.sqlobject.SqlQuery;
 import org.skife.jdbi.v2.sqlobject.SqlUpdate;
 import org.skife.jdbi.v2.sqlobject.customizers.RegisterMapper;
@@ -14,13 +15,14 @@ public interface UserDAO {
 	public User findUserByUserName(@Bind("username") String username);
 	
 	@SqlQuery("SELECT * FROM User WHERE UserID = :userId")
-	public User findUserByUserId(@Bind("userId") int userId);
+	public User findUserByUserId(@Bind("userId") long userId);
 	
 	@SqlUpdate("INSERT INTO User "
 			+ "(Username, FirstName, LastName, MiddleName, Country, City, State, Email, Password, SQuestion, SAnswer) "
 			+ "values "
 			+ "(:username, :firstName, :lastName, :middleName, :country, :city, :state, :email, :password, :squestion, :sanswer)")
-	public void insert(@Bind("username") String username, 
+	@GetGeneratedKeys
+	public long insert(@Bind("username") String username, 
 					   @Bind("firstName") String firstName,
 					   @Bind("lastName") String lastName,
 					   @Bind("middleName") String middleName,

@@ -1,6 +1,7 @@
 package com.UndefinedParameter.app.core;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.joda.time.DateTime;
 
@@ -32,13 +33,13 @@ public class Quiz {
 	/*
 	 * This is the difficulty of the quiz
 	 */
-	private int difficulty;
+	private float difficulty;
 	
 	/*
 	 * This is the user rating of the quiz
 	 * 		This is an averaged rating
 	 */
-	private int rating;
+	private float rating;
 	
 	/*
 	 * This is the description of the quiz
@@ -69,7 +70,7 @@ public class Quiz {
 	/*
 	 * A list of populated questions
 	 */
-	private ArrayList<Question> questions;
+	private List<Question> questions;
 	
 	/*
 	 * This is the position of the current question in the quiz
@@ -115,9 +116,8 @@ public class Quiz {
 	/*
 	 * Sets the questions of a quiz to a list of provided questions
 	 */
-	@SuppressWarnings("unchecked")
-	public void setQuestions(ArrayList<Question> questions) {
-		this.questions = (ArrayList<Question>)questions.clone();
+	public void setQuestions(List<Question> questions) {
+		this.questions = questions;
 	}
 	
 	/*
@@ -151,7 +151,7 @@ public class Quiz {
 	}
 	
 	@JsonProperty
-	public int getDifficulty() {
+	public float getDifficulty() {
 		return difficulty;
 	}
 	
@@ -161,7 +161,7 @@ public class Quiz {
 	}
 	
 	@JsonProperty
-	public int getRating() {
+	public float getRating() {
 		return rating;
 	}
 	
