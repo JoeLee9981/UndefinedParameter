@@ -49,6 +49,11 @@ public class OrganizationManager {
 		return orgDAO.findOrganization(id);
 	}
 	
+	public List<Organization> findOrgsByUser(User user) {
+		//TODO: Get by user id registered
+		return orgDAO.findOrganizations();
+	}
+	
 	public long createOrganization(Organization org) {
 		try {
 			long id = orgDAO.insertOrganization(org.getName(), org.getDescription(), org.getCity(), org.getState(), org.getCountry());

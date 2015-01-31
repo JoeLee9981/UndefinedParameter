@@ -58,12 +58,21 @@
                             <th class="text-left">Contribution Score <a href="#" data-hint="Contribution Score|A contribution score is something that we must figure out later. It will be super cool" data-hint-position="right" data-hint-mode="2"><i class="icon-help fg-blue"></i></a></th>
                             <th class="text-left">Quizzes Participated</th>
                             <th class="text-left">Date Created</th>
+                            <th class="text-left">Join</th>
                         </tr>
                         </thead>
 
                         <tbody>
                         <#list organizations as org>
-                        	<tr><td><a href="/orgs/org?id=${org.id}">${org.name}</a></td><td class="right">${org.memberCount}</td><td class="right">${org.quizCount}</td><td class="right">${org.questionCount}</td><td class="right">${getContributionScore(org.id)}</td><td class="right">${getQuizzesParticipated(org.id)}</td><td class="right">11/12/14</td></tr>
+                        	<tr>
+	                        	<td><a href="/orgs/org?id=${org.id}">${org.name}</a></td>
+	                        	<td class="right">${org.memberCount}</td>
+	                        	<td class="right">${org.quizCount}</td><td class="right">${org.questionCount}</td>
+	                        	<td class="right">${getContributionScore(org.id)}</td>
+	                        	<td class="right">${getQuizzesParticipated(org.id)}</td>
+	                        	<td class="right">11/12/14</td>
+	                        	<td class="right"><button class="success">+</button></td>
+                        	</tr>
                         </#list>            
                         </tbody>
 
