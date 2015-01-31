@@ -16,6 +16,8 @@ import org.eclipse.jetty.http.HttpGenerator.Result;
 import com.UndefinedParameter.app.core.Question;
 import com.UndefinedParameter.app.core.Quiz;
 import com.UndefinedParameter.app.core.QuizManager;
+import com.UndefinedParameter.jdbi.QuestionDAO;
+import com.UndefinedParameter.jdbi.QuizDAO;
 import com.UndefinedParameter.views.QuizCreatorView;
 import com.UndefinedParameter.views.QuizView;
 import com.UndefinedParameter.views.ScoreView;
@@ -24,11 +26,17 @@ import com.UndefinedParameter.views.ScoreView;
 @Produces(MediaType.TEXT_HTML)
 public class QuizResource {
 	
+	private QuizManager quizManager;
+	
+	public QuizResource(QuizDAO quizDAO, QuestionDAO questionDAO) {
+		quizManager = new QuizManager(quizDAO, questionDAO);
+	}
+	
 	@GET
 	@Path("/{id}")
-	public QuizView getQuizView(@PathParam("id") int id) {
+	public QuizView getQuizView(@PathParam("id") long id) {
 		
-		return new QuizView(QuizManager.getRandomizedQuestions(id));
+		return new QuizView(quizManager.getRandomizedQuestions(id));
 	}
 	
 	@GET
@@ -42,7 +50,7 @@ public class QuizResource {
 	@Path("/{groupId}/create")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public HashMap<String, String> createQuiz(@Valid Quiz quiz, @PathParam("groupId") int groupId) {
+	public HashMap<String, String> createQuiz(@Valid Quiz quiz, @PathParam("groupId") long groupId) {
 		
 		HashMap<String, String> response = new HashMap<String, String>();
 		//TODO: Find some of these instead of insert
@@ -51,9 +59,9 @@ public class QuizResource {
 		quiz.setRating(3);
 		quiz.setTime(10000);
 		
-		int quizId = QuizManager.createQuiz(quiz);
+		long quizId = quizManager.createQuiz(quiz);
 		if(quizId >= 1) {
-			if(QuizManager.addQuizToGroup(quizId, groupId)) {
+			if(quizManager.addQuizToGroup(quizId, groupId)) {
 				response.put("response", "success");
 				response.put("message", "Quiz is successfully created.");
 			}

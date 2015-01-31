@@ -15,7 +15,6 @@ import org.slf4j.LoggerFactory;
 
 import com.UndefinedParameter.app.core.User;
 import com.UndefinedParameter.app.health.TemplateHealthCheck;
-import com.UndefinedParameter.app.resources.CS4400Resource;
 import com.UndefinedParameter.app.resources.FeedbackResource;
 import com.UndefinedParameter.app.resources.GroupResource;
 import com.UndefinedParameter.app.resources.HomeResource;
@@ -27,6 +26,8 @@ import com.UndefinedParameter.app.resources.UserProfileResource;
 import com.UndefinedParameter.jdbi.GroupDAO;
 import com.UndefinedParameter.jdbi.NewsArticleDAO;
 import com.UndefinedParameter.jdbi.OrganizationDAO;
+import com.UndefinedParameter.jdbi.QuestionDAO;
+import com.UndefinedParameter.jdbi.QuizDAO;
 import com.UndefinedParameter.jdbi.UserDAO;
 
 
@@ -78,6 +79,8 @@ public class QuizZingApplication extends Application<QuizZingConfiguration> {
 		final UserDAO userDAO = jdbi.onDemand(UserDAO.class);
 		final OrganizationDAO orgDAO = jdbi.onDemand(OrganizationDAO.class);
 		final GroupDAO groupDAO = jdbi.onDemand(GroupDAO.class);
+		final QuizDAO quizDAO = jdbi.onDemand(QuizDAO.class);
+		final QuestionDAO questionDAO = jdbi.onDemand(QuestionDAO.class);
 		
 		logger.info("Database objects registered successfully");
 		
@@ -98,12 +101,11 @@ public class QuizZingApplication extends Application<QuizZingConfiguration> {
 		/***** REGISTER VIEWS ******/
 		environment.jersey().register(new HomeResource(newsDAO, userDAO));
 		environment.jersey().register(new NewsArticleResource(newsDAO));
-		environment.jersey().register(new QuizResource());
-		environment.jersey().register(new GroupResource(orgDAO, groupDAO));
+		environment.jersey().register(new QuizResource(quizDAO, questionDAO));
+		environment.jersey().register(new GroupResource(orgDAO, groupDAO, quizDAO, questionDAO));
 		environment.jersey().register(new OrganizationResource(orgDAO, groupDAO));
-		environment.jersey().register(new QuestionCreatorResource());
+		environment.jersey().register(new QuestionCreatorResource(quizDAO, questionDAO));
 		environment.jersey().register(new FeedbackResource());
-		environment.jersey().register(new CS4400Resource());
 		environment.jersey().register(new UserProfileResource(userDAO));
 
 		logger.info("All Views Registered");

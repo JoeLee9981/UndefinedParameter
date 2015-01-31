@@ -14,8 +14,11 @@ import javax.ws.rs.core.MediaType;
 
 import com.UndefinedParameter.app.core.Group;
 import com.UndefinedParameter.app.core.GroupManager;
+import com.UndefinedParameter.app.core.QuizManager;
 import com.UndefinedParameter.jdbi.GroupDAO;
 import com.UndefinedParameter.jdbi.OrganizationDAO;
+import com.UndefinedParameter.jdbi.QuestionDAO;
+import com.UndefinedParameter.jdbi.QuizDAO;
 import com.UndefinedParameter.views.GroupView;
 import com.UndefinedParameter.views.GroupsView;
 
@@ -26,9 +29,11 @@ import com.UndefinedParameter.views.GroupsView;
 public class GroupResource {
 
 	public GroupManager manager;
+	public QuizManager quizManager;
 	
-	public GroupResource(OrganizationDAO orgsDAO, GroupDAO groupDAO) {
+	public GroupResource(OrganizationDAO orgsDAO, GroupDAO groupDAO, QuizDAO quizDAO, QuestionDAO questionDAO) {
 		manager = new GroupManager(orgsDAO, groupDAO);
+		this.quizManager = new QuizManager(quizDAO, questionDAO);
 	}
 	
 	@GET
@@ -60,7 +65,7 @@ public class GroupResource {
 	@Path("/{groupId}")
 	public GroupView getGroupView(@PathParam("groupId") int groupId) {
 		Group group = manager.findGroupById(groupId);
-		return new GroupView(group, manager.findParentOrganization(group.getOrganizationId()));
+		return new GroupView(group, manager.findParentOrganization(group.getOrganizationId()), quizManager);
 	}
 	
 	

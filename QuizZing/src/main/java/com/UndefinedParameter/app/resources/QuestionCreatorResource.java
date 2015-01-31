@@ -1,6 +1,5 @@
 package com.UndefinedParameter.app.resources;
 
-import java.awt.List;
 import java.util.HashMap;
 
 import javax.validation.Valid;
@@ -15,12 +14,19 @@ import javax.ws.rs.core.MediaType;
 import com.UndefinedParameter.app.core.Question;
 import com.UndefinedParameter.app.core.QuizManager;
 import com.UndefinedParameter.jdbi.QuestionDAO;
+import com.UndefinedParameter.jdbi.QuizDAO;
 import com.UndefinedParameter.views.QuestionCreatorView;
 
 @Path("/quiz/create/question")
 @Produces(MediaType.TEXT_HTML)
 @Consumes(MediaType.APPLICATION_JSON)
 public class QuestionCreatorResource {
+	
+	private QuizManager quizManager;
+	
+	public QuestionCreatorResource(QuizDAO quizDAO, QuestionDAO questionDAO) {
+		quizManager = new QuizManager(quizDAO, questionDAO);
+	}
 	
 	@GET
 	public QuestionCreatorView getQuestionCreatorView() {
@@ -39,15 +45,23 @@ public class QuestionCreatorResource {
 	@Produces(MediaType.APPLICATION_JSON)
 	public HashMap<String, String> creatQuestion(@Valid Question question) {
 		HashMap<String, String> response = new HashMap<String, String>();
-		if(QuestionDAO.createQuestion(question) != -1) {
-			response.put("response", "success");
-			response.put("message", "Your question has been created.");
+		
+		//TODO: Clean me up - return Response, handle all exceptions and messages
+		try {
+			if(quizManager.createQuestion(question) > 0) {
+				response.put("response", "success");
+				response.put("message", "Your question has been created.");
+			}
+			else {
+				response.put("response", "fail");
+				response.put("message", "Unable to create your question.");
+			}
+			return response;
 		}
-		else {
-			response.put("response", "fail");
-			response.put("message", "Unable to create your question.");
+		catch(Exception e) {
+			//return a bad response
+			return null;
 		}
-		return response;
 	}
 	
 	@POST
@@ -56,16 +70,24 @@ public class QuestionCreatorResource {
 	@Produces(MediaType.APPLICATION_JSON)
 	public HashMap<String, String> creatQuestionForQuiz(@PathParam("quizId") int quizId, @Valid Question question) {
 		HashMap<String, String> response = new HashMap<String, String>();
-		int questionId = QuestionDAO.createQuestion(question);
-		if(questionId != -1 && QuizManager.addQuestionToQuiz(quizId, questionId)) {
-			response.put("response", "success");
-			response.put("message", "Your question has been created.");
+		
+		//TODO: Clean me up - return Response and handle all exceptions
+		try {
+			long questionId = quizManager.createQuestion(question);
+			if(questionId > 0 && quizManager.addQuestionToQuiz(quizId, questionId)) {
+				response.put("response", "success");
+				response.put("message", "Your question has been created.");
+			}
+			else {
+				response.put("response", "fail");
+				response.put("message", "Unable to create your question.");
+			}
+			return response;
 		}
-		else {
-			response.put("response", "fail");
-			response.put("message", "Unable to create your question.");
+		catch(Exception e) {
+			//TODO: Return a response error
+			return null;
 		}
-		return response;
 	}
 	
 }

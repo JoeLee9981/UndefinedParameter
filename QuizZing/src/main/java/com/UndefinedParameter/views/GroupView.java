@@ -2,11 +2,10 @@ package com.UndefinedParameter.views;
 
 import io.dropwizard.views.View;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import com.UndefinedParameter.app.core.Group;
 import com.UndefinedParameter.app.core.Organization;
-import com.UndefinedParameter.app.core.OrganizationManager;
 import com.UndefinedParameter.app.core.Quiz;
 import com.UndefinedParameter.app.core.QuizManager;
 
@@ -16,11 +15,14 @@ public class GroupView extends View {
 	private Group group;
 	//the organization this group belongs to
 	private Organization organization;
+	//Manager object to find quizzes
+	private QuizManager quizManager;
 	
-	public GroupView(Group group, Organization org) {
+	public GroupView(Group group, Organization org, QuizManager quizManager) {
 		super("group.ftl");
 		this.group = group;
 		this.organization = org;
+		this.quizManager = quizManager;
 	}
 	
 	public Group getGroup() {
@@ -43,9 +45,8 @@ public class GroupView extends View {
 	/*
 	 * Get a list of quizzes in a group
 	 */
-	public ArrayList<Quiz> getQuizList() {
-		ArrayList<Quiz> quizzes = QuizManager.findQuizzesByGroup(group.getId());
-		
+	public List<Quiz> getQuizList() {
+		List<Quiz> quizzes = quizManager.findQuizzesByGroup(group.getId());
 		return quizzes;
 	}
 }

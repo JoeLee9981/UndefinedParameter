@@ -84,7 +84,7 @@ public class QuizManager {
 		return quiz;
 	}
 	
-	public Quiz getRandomizedQuestions(int quizId)
+	public Quiz getRandomizedQuestions(long quizId)
 	{
 		//get and randomize questions
 		List<Question> randomizedQuestionList = questionDAO.retrieveExistingQuiz(quizId);

@@ -11,7 +11,7 @@ import javax.ws.rs.core.Response;
 import com.UndefinedParameter.app.core.User;
 import com.UndefinedParameter.jdbi.UserDAO;
 
-@Path("/")
+@Path("/user")
 @Produces(MediaType.TEXT_HTML)
 public class UserProfileResource {
 	
