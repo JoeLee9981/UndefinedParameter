@@ -26,7 +26,7 @@ public class QuestionMapper implements ResultSetMapper<Question>{
 		que.setQuestionType(QuestionType.valueOf(r.getString("QuestionType")));
 		que.setCorrectAnswer(r.getString("CorrectAnswer"));
 		
-		ArrayList<String> wronganswers = null;
+		ArrayList<String> wronganswers = new ArrayList<String>();
 		
 		wronganswers.add(r.getString("WrongAnswer1"));
 		wronganswers.add(r.getString("WrongAnswer2"));

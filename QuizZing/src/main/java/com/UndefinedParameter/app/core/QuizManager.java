@@ -128,9 +128,10 @@ public class QuizManager {
 		}
 		else {
 			List<String> wrongAnswers = question.getWrongAnswers();
-			return questionDAO.createQuestion(question.getCreatorId(), question.getQuestionDifficulty(), question.getRating(),
-					question.getQuestionText(), question.getCorrectAnswer(), question.getQuestionType(), wrongAnswers.get(0), wrongAnswers.get(1),
-					wrongAnswers.get(2), wrongAnswers.get(3));
+			long id = questionDAO.createQuestion(question.getCreatorId(), question.getQuestionDifficulty(), question.getRating(),
+					question.getQuestionText(), question.getCorrectAnswer(), question.getQuestionType().toString(), wrongAnswers.get(0), wrongAnswers.get(1),
+					wrongAnswers.get(2), wrongAnswers.get(3), question.isFlagged());
+			return id;
 		}
 	}
 	

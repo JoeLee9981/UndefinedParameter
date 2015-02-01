@@ -123,6 +123,7 @@
 			var correct;
 			var type = "MULTIPLE_CHOICE";
 			var incorrect = [];
+			var creatorId = 1;
 			var path = "/quiz/create/question/";
 			
 			document.getElementById('responseLabel').innerHTML = "";
@@ -150,7 +151,7 @@
 			 $.ajax({
 				type: 'POST',
 				url: path,
-				data: JSON.stringify({questionText: desc, correctAnswer: correct, type: type, wrongAnswers: incorrect }),
+				data: JSON.stringify({questionText: desc, correctAnswer: correct, type: type, wrongAnswers: incorrect, creatorId: creatorId }),
 				dataType: "json",
 				headers: {
 					Accept: "application/json",

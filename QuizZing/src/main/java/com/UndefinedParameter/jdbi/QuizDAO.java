@@ -14,7 +14,7 @@ import org.skife.jdbi.v2.sqlobject.customizers.RegisterMapper;
 
 import com.UndefinedParameter.app.core.Quiz;
 
-@RegisterMapper(OrganizationMapper.class)
+@RegisterMapper(QuizMapper.class)
 public interface QuizDAO {
 
 	/*

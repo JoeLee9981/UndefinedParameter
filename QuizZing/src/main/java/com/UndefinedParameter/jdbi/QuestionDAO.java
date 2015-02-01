@@ -51,11 +51,12 @@ public interface QuestionDAO {
 							   @Bind("rating") float rating,
 							   @Bind("questionText") String questionText,
 							   @Bind("correctAnswer") String correctAnswer,
-							   @Bind("questionType") Question.QuestionType questionType,
+							   @Bind("questionType") String questionType,
 							   @Bind("wrongAnswer1") String wrongAnswer1,
-							   @Bind("wrongAsnwer2") String wrongAnswer2,
+							   @Bind("wrongAnswer2") String wrongAnswer2,
 							   @Bind("wrongAnswer3") String wrongAnswer3,
-							   @Bind("wrongAnswer4") String wrongAnswer4);
+							   @Bind("wrongAnswer4") String wrongAnswer4,
+							   @Bind("flagged") boolean flagged);
 	
 	/*
 	 * 	retrieveQuiz - Retrieves questions from a specific group id.
