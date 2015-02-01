@@ -28,10 +28,20 @@ public class QuestionMapper implements ResultSetMapper<Question>{
 		
 		ArrayList<String> wronganswers = new ArrayList<String>();
 		
-		wronganswers.add(r.getString("WrongAnswer1"));
-		wronganswers.add(r.getString("WrongAnswer2"));
-		wronganswers.add(r.getString("WrongAnswer3"));
-		wronganswers.add(r.getString("WrongAnswer4"));
+		String wrong1 = r.getString("WrongAnswer1");
+		String wrong2 = r.getString("WrongAnswer2");
+		String wrong3 = r.getString("WrongAnswer3");
+		String wrong4 = r.getString("WrongAnswer4");
+		//only add the wrong answers if not null
+		if(!"".equals(wrong1))
+			wronganswers.add(wrong1);
+		if(!"".equals(wrong2))
+			wronganswers.add(wrong2);
+		if(!"".equals(wrong3))
+			wronganswers.add(wrong3);
+		if(!"".equals(wrong4))
+			wronganswers.add(wrong4);
+		
 		que.setWrongAnswers(wronganswers);
 		
 		/*
