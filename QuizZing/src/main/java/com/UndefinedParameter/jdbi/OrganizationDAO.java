@@ -17,6 +17,12 @@ public interface OrganizationDAO {
 	@SqlQuery("SELECT * FROM Organization")
 	public List<Organization> findOrganizations();
 	
+	@SqlQuery("SELECT * FROM Organization org, User user, UserOrganization userOrg "
+			+ "WHERE userOrg.UserID = userOrg.UserID "
+			+ "AND org.OrgID = userOrg.OrgID "
+			+ "AND user.UserID = :userId")
+	public List<Organization> findOrganizationsByUserId(@Bind("userId") long userId);
+	
 	@SqlQuery("SELECT * FROM Organization WHERE OrgID = :orgId")
 	public Organization findOrganization(@Bind("orgId") int id);
 	
@@ -27,4 +33,21 @@ public interface OrganizationDAO {
 								   @Bind("city") String city,
 								   @Bind("state") String state,
 								   @Bind("country") String country);
+	
+	
+	/*
+	 * TODO: Below are 2 statements to register a user and increment member count.
+	 * 	If possible do this at same time
+	 */
+	@SqlUpdate("INSERT INTO UserOrganization (OrgID, UserID) values (:orgId, :userId)")
+	public void registerOrganization(@Bind("orgId") long orgId, @Bind("userId") long userId);
+	
+	@SqlUpdate("UPDATE Organiation SET MemberCount = MemberCount + 1 WHERE OrgID = :orgId")
+	public void incrementOrgMembers(@Bind("orgId") long orgId);
+	
+	@SqlUpdate("DELETE FROM UserOrganization WHERE OrgID = :orgId AND UserID = :userId")
+	public void removeUserOrganization(@Bind("orgId") long orgId, @Bind("userId") long userId);
+	
+	@SqlUpdate("UPDATE Organiation SET MemberCount = MemberCount - 1 WHERE OrgID = :orgId")
+	public void decrementOrgMembers(@Bind("orgId") long orgId);
 }

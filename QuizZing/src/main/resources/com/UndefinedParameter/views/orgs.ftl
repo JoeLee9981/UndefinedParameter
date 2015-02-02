@@ -42,6 +42,45 @@
 					</button>															
 			    </div>
 			    
+			    <#if registeredOrganizations??>
+			    	<div class="row">
+			    	<div>
+						<h4>Your Registered Organizations</h4>
+					</div>
+					<div class="row">
+						<table class="table hovered">
+	                        <thead>
+	                        <tr>
+	                            <th class="text-left">Organization/Group</th>
+	                            <th class="text-left">Members</th>
+	                            <th class="text-left">Quizes</th>
+	                            <th class="text-left">Questions</th>
+	                            <th class="text-left">Contribution Score <a href="#" data-hint="Contribution Score|A contribution score is something that we must figure out later. It will be super cool" data-hint-position="right" data-hint-mode="2"><i class="icon-help fg-blue"></i></a></th>
+	                            <th class="text-left">Quizzes Participated</th>
+	                            <th class="text-left">Date Created</th>
+	                            <th class="text-left">Leave</th>
+	                        </tr>
+	                        </thead>
+	
+	                        <tbody>
+	                        <#list registeredOrganizations as org>
+	                        	<tr>
+		                        	<td><a href="/orgs/org?id=${org.id}">${org.name}</a></td>
+		                        	<td class="right">${org.memberCount}</td>
+		                        	<td class="right">${org.quizCount}</td><td class="right">${org.questionCount}</td>
+		                        	<td class="right">${getContributionScore(org.id)}</td>
+		                        	<td class="right">${getQuizzesParticipated(org.id)}</td>
+		                        	<td class="right">11/12/14</td>
+		                        	<td class="right"><button class="danger" onClick="leave(${org.id})">-</button></td>
+	                        	</tr>
+	                        </#list>            
+	                        </tbody>
+	
+	                        <tfoot></tfoot>
+	                    </table>    
+				    </div>
+			    </#if>
+			    
 			    <div class="row">
 			    	<div>
 						<h4>Top Organizations and Groups</h4>
@@ -71,7 +110,7 @@
 	                        	<td class="right">${getContributionScore(org.id)}</td>
 	                        	<td class="right">${getQuizzesParticipated(org.id)}</td>
 	                        	<td class="right">11/12/14</td>
-	                        	<td class="right"><button class="success">+</button></td>
+	                        	<td class="right"><button class="success" onClick="register(${org.id})">+</button></td>
                         	</tr>
                         </#list>            
                         </tbody>
@@ -84,5 +123,40 @@
 
 		<#include "../includes/footer.ftl">
 
+		<script>
+			
+			function register(orgId) {
+				$.ajax({
+				    url: '/orgs/register?orgId=' + orgId,
+				    type: 'POST',
+				    success: function(data) {
+				    	console.log(data);
+				    	window.location='/orgs/org?id=' + orgId;
+				    },
+				    error: function(error) {
+				    	displayError("Unable to register for organization");
+				    }
+				});
+			}
+			
+			function leave(orgId) {
+				$.ajax({
+				    url: '/orgs/leave?orgId=' + orgId,
+				    type: 'DELETE',
+				    success: function(data) {
+				    	console.log(data);
+				    	window.location='/orgs';
+				    },
+				    error: function(error) {
+				    	displayError("There was an error when attempting to leave organization");
+				    }
+				});
+			}
+			
+			function displayError(message) {
+				alert(message);
+			}
+			
+		</script>
 	</body>
 </html>

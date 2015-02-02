@@ -44,6 +44,10 @@ public class OrganizationManager {
 		return orgDAO.findOrganizations();
 	}
 	
+	public List<Organization> findOrgsByUserId(long userId) {
+		return orgDAO.findOrganizationsByUserId(userId);
+	}
+	
 	public Organization findOrgById(int id) {
 		
 		return orgDAO.findOrganization(id);
@@ -61,6 +65,26 @@ public class OrganizationManager {
 		}
 		catch(Exception e) {
 			return -1;
+		}
+	}
+	
+	public boolean registerOrganization(long orgId, long userId) {
+		try {
+			orgDAO.registerOrganization(orgId, userId);
+			return true;
+		}
+		catch(Exception e) {
+			return false;
+		}
+	}
+	
+	public boolean leaveOrganization(long orgId, long userId) {
+		try {
+			orgDAO.removeUserOrganization(orgId, userId);
+			return true;
+		}
+		catch(Exception e) {
+			return false;
 		}
 	}
 }

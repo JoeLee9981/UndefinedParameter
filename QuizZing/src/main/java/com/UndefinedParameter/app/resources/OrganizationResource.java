@@ -1,8 +1,11 @@
 package com.UndefinedParameter.app.resources;
 
+import io.dropwizard.auth.Auth;
+
 import java.util.HashMap;
 
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -10,9 +13,11 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.Status;
 
 import com.UndefinedParameter.app.core.Organization;
 import com.UndefinedParameter.app.core.OrganizationManager;
+import com.UndefinedParameter.app.core.User;
 import com.UndefinedParameter.jdbi.GroupDAO;
 import com.UndefinedParameter.jdbi.OrganizationDAO;
 import com.UndefinedParameter.views.OrganizationCreatorView;
@@ -30,14 +35,17 @@ public class OrganizationResource {
 	}
 	
 	@GET
-	public OrgsView getOrgsView() {
-		return new OrgsView(manager.findOrgsByLocation("city"));
+	public Response getOrgsView(@Auth(required=false) User user) {
+		if(user != null)
+			return Response.ok(new OrgsView(manager.findOrgsByLocation("city"), manager.findOrgsByUserId(user.getId()), user)).build();
+		else
+			return Response.ok(new OrgsView(manager.findOrgsByLocation("city"), null, null)).build();
 	}
 	
 	@GET
 	@Path("/org")
-	public OrganizationView getOrganizationView(@QueryParam("id") int id) {
-		return new OrganizationView(manager.findOrgById(id), manager.findGroupsById(id));
+	public Response getOrganizationView(@QueryParam("id") int id) {
+		return Response.ok(new OrganizationView(manager.findOrgById(id), manager.findGroupsById(id))).build();
 	}
 	
 	@GET
@@ -45,6 +53,38 @@ public class OrganizationResource {
 	public Response getCreateOrgView() {
 		
 		return Response.ok(new OrganizationCreatorView()).build();
+	}
+	
+	@POST
+	@Path("/register")
+	public Response registerOrg(@Auth User user, @QueryParam("orgId") long orgId) {
+		if(orgId > 0 && user != null) {
+			if(manager.registerOrganization(orgId, user.getId())) {
+				return Response.ok().build();
+			}
+			else {
+				return Response.status(Status.BAD_REQUEST).build();
+			}
+		}
+		else {
+			return Response.status(Status.BAD_REQUEST).build();
+		}
+	}
+	
+	@DELETE
+	@Path("/leave")
+	public Response leaveOrg(@Auth User user, @QueryParam("orgId") long orgId) {
+		if(orgId > 0 && user != null) {
+			if(manager.leaveOrganization(orgId, user.getId())) {
+				return Response.ok().build();
+			}
+			else {
+				return Response.status(Status.BAD_REQUEST).build();
+			}
+		}
+		else {
+			return Response.status(Status.BAD_REQUEST).build();
+		}
 	}
 	
 	@POST

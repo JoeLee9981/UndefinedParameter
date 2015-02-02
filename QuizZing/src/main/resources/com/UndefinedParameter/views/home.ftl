@@ -204,7 +204,7 @@
 			    type: 'POST',
 			    success: function(data) {
 			    	console.log(data);
-			    	//window.location='/';
+			    	window.location='/';
 			    },
 			    error: function(error) {
 			    	doLoginError("Invalid email and/or password");
