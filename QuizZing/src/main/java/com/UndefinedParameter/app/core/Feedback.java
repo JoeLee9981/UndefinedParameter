@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Feedback {
 	
+	private long FeedbackID;
 	private String suggestedFeature;
 	private String improvement;
 	private String miscellaneous;
@@ -37,6 +38,18 @@ public class Feedback {
 	public void setMiscellaneous(String miscellaneous) {
 		this.miscellaneous = miscellaneous;
 	}
+
+	@JsonProperty
+	public void setId(long long1) {
+		this.FeedbackID = long1;
+		// TODO Auto-generated method stub
+		
+	}
 	
+	@JsonProperty
+	public long getID()
+	{
+		return FeedbackID;
+	}
 	
 }
