@@ -27,15 +27,15 @@
 				<h2>${user.city?html}</h2>
 				<h2>${user.state?html}</h2>
 			</div>
-			
+		
 		</div>
 		
-		<div>											
+		<div>												
 			<#include "../includes/footer.ftl">
 		</div>
 
 	</body>
 	<script>
-		
+
 	</script>
 </html>
