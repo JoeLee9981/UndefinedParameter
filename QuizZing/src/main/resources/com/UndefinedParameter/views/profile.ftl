@@ -17,7 +17,7 @@
 		<#include "../includes/navigation.ftl">
 
 		<div id="home-content" class="page-content metro">
-		
+			
 			<div>
 				<h2>${user.userName?html}</h2>
 				<h2>${user.firstName?html}</h2>
@@ -30,7 +30,7 @@
 			
 		</div>
 		
-		<div>											
+		<div>														
 			<#include "../includes/footer.ftl">
 		</div>
 

@@ -23,6 +23,7 @@
 						<div id="login-form-container" class="span12">
 							<h3>Logged in as ${user.userName}</h3>
 							<a href="" id="logout">Logout</a>
+							<a href="/user?userid=${user.id}">My Profile</a>
 						</div>
 
 						<div id="register-form-container" class="span12">
