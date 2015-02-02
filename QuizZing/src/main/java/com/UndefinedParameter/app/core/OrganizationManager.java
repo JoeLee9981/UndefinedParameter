@@ -71,6 +71,7 @@ public class OrganizationManager {
 	public boolean registerOrganization(long orgId, long userId) {
 		try {
 			orgDAO.registerOrganization(orgId, userId);
+			orgDAO.incrementOrgMembers(orgId);
 			return true;
 		}
 		catch(Exception e) {
@@ -81,6 +82,7 @@ public class OrganizationManager {
 	public boolean leaveOrganization(long orgId, long userId) {
 		try {
 			orgDAO.removeUserOrganization(orgId, userId);
+			orgDAO.decrementOrgMembers(orgId);
 			return true;
 		}
 		catch(Exception e) {

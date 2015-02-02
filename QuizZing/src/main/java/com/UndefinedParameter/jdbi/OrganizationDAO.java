@@ -42,12 +42,12 @@ public interface OrganizationDAO {
 	@SqlUpdate("INSERT INTO UserOrganization (OrgID, UserID) values (:orgId, :userId)")
 	public void registerOrganization(@Bind("orgId") long orgId, @Bind("userId") long userId);
 	
-	@SqlUpdate("UPDATE Organiation SET MemberCount = MemberCount + 1 WHERE OrgID = :orgId")
+	@SqlUpdate("UPDATE Organization SET MemberCount = MemberCount + 1 WHERE OrgID = :orgId")
 	public void incrementOrgMembers(@Bind("orgId") long orgId);
 	
 	@SqlUpdate("DELETE FROM UserOrganization WHERE OrgID = :orgId AND UserID = :userId")
 	public void removeUserOrganization(@Bind("orgId") long orgId, @Bind("userId") long userId);
 	
-	@SqlUpdate("UPDATE Organiation SET MemberCount = MemberCount - 1 WHERE OrgID = :orgId")
+	@SqlUpdate("UPDATE Organization SET MemberCount = MemberCount - 1 WHERE OrgID = :orgId")
 	public void decrementOrgMembers(@Bind("orgId") long orgId);
 }
