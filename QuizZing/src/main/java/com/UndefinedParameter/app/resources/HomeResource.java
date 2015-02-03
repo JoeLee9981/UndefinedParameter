@@ -23,6 +23,7 @@ import com.UndefinedParameter.jdbi.UserDAO;
 import com.UndefinedParameter.views.HomeView;
 import com.UndefinedParameter.views.LoginView;
 import com.UndefinedParameter.views.RegisterView;
+import com.UndefinedParameter.views.UserProfileView;
 
 @Path("/")
 @Produces(MediaType.TEXT_HTML)
@@ -80,8 +81,18 @@ public class HomeResource {
 	
 	@GET
 	@Path("/register")
-	public Response getRegisterView() {
-		return Response.ok(new RegisterView(null)).build();
+	public Response getRegisterView(@Auth(required = false) User user) 
+	{
+		// If the user is already logged in, redirect them to their profile page
+		if (user == null)
+		{
+			return Response.ok(new RegisterView(null)).build();
+		}
+		else
+		{
+			// TODO This is not currently set to go to their user page.  I think it should go to /profile -Braeden
+			return Response.ok(new RegisterView(null)).build();
+		}
 	}
 	
 	@POST

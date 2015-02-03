@@ -3,3 +3,12 @@
 	height: 45px;
 }
 
+#userAndImageBox:hover
+{
+	background-color: #333333 !important;
+}
+
+#userAndImageBox
+{
+	margin-right: 15px
+}

@@ -34,10 +34,25 @@
 	                </div>
 	            </form>
 	        </div>
-	        	
-            <a class="element brand place-right todo" href="#">Login</a> 
-            <span class="element-divider place-right"></span>
-            <a class="element brand place-right todo" href="#">Register</a>   	    
+	        <#if user??>
+			  <div class="element place-right">
+		            <a class="dropdown-toggle" href="#">
+		                <span class="icon-cog"></span> &nbsp;
+		            </a>
+		            <ul class="dropdown-menu place-right" data-role="dropdown">
+		                <li><a href="#">TODO</a></li>
+		            </ul>
+		        </div>			
+		        <span class="element-divider place-right"></span>
+		        <button id="userAndImageBox" class="element image-button image-left place-right todo">
+		            ${user.userName?html}
+		            <img src=""/>
+		        </button>
+            <#else>
+	            <a class="element brand place-right todo" href="#">Login</a> 
+	            <span class="element-divider place-right"></span>
+	            <a class="element brand place-right todo" href="#">Register</a>              
+            </#if>
               
 	    </nav>
 	</nav>

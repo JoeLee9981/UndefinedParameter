@@ -10,6 +10,7 @@
 		<link href="/assets/plugins/metro_ui/min/iconFont.min.css" rel="stylesheet">
 		<link href="/assets/css/overrides.css" rel="stylesheet">
 		<link href="/assets/css/register.css" rel="stylesheet">
+		<link href="/assets/css/modals.css" rel="stylesheet">
 	</head>
 
 	<body>
@@ -17,16 +18,15 @@
 		<#include "../includes/navigation.ftl">
 		
 			<div class="metro">
-				<div class="grid fluid">
-					<div class="page-content">
-						
+				<div class="grid fluid">		
+					<div class="page-content">						
 					    <div class="row">
 					    	<div>
 								<h2>Sign Up For QuizZing</h2>
 							</div>
 						</div>
 						<div class="row">
-							<form id="register" class="span6" onsubmit="register();return false;">
+							<div id="register" class="span6">
 								<div>
 									<h4>Profile Information</h4>
 								</div>
@@ -41,8 +41,9 @@
 								<div class="row">
 									<div class="input-control text span12">
 									    <input type="text" id="email" value="" placeholder="Email Address"/>
-									</div>											
+									</div>										
 								</div>		
+								<p class="tertiary-text">Though not required, adding a location to your profile will help us to connect you to people near you who are interested in the same subjects or are in the same class.</p>
 								<div class="row">
 									<div class="input-control text span4">
 									    <input type="text" id="city" value="" placeholder="City"/>
@@ -67,6 +68,7 @@
 									    <input type="password" id="confirmPassword" value="" placeholder="Confirm Password"/>
 									</div>		
 								</div>
+								<p class="tertiary-text">Having a secret question and secret answer will allow easier account recovery if you forget your password. This can be added later if you can't think of anything now.</p>
 								<div class="row">
 									<div class="input-control text span12">
 									    <input type="text" id="secretQuestion" value="" placeholder="Secret Question"/>
@@ -89,9 +91,9 @@
 									</div>
 								</div>	
 								<div class="row">
-									<button type="submit" class="large primary">Create Account</button>								
+									<button type="submit" class="large primary" onclick="register()">Create Account</button>								
 								</div>						
-							</form>
+							</div>
 						</div>
 						
 					</div>
@@ -107,8 +109,58 @@
 	
 	function register()
 	{
-		alert('hi');
-		return false;
+		var email = $('#email').val();
+		var first = $('#firstname').val();
+		var mid = "";//document.getElementById('#middleName').val();
+		var last = $('#lastname').val();
+		var password = $('#password').val();
+		var reenterPassword = $('#confirmPassword').val();
+		var country = $('#country').val();
+		var state = $('#state').val();
+		var city = $('#city').val();
+		var squestion = $('#secretQuestion').val();
+		var sanswer = $('#secretAnswer').val();
+			
+		var payload = JSON.stringify({ 
+						userName: email, 
+						firstName: first, 
+						middleName: mid, 
+						lastName: last,
+						country: country, 
+						city: city, 
+						state: state, 
+						email: email, 
+						password: password,
+						secretQuestion: squestion, 
+						secretAnswer: sanswer 
+		});
+												
+		$.ajax({
+			type: 'POST',
+			url: "/register",
+			data: payload,
+			dataType: "json",
+			headers: {
+				Accept: "application/json",
+				"Content-Type": "application/json"
+			},
+			success: function(data) 
+			{
+				if (data["response"] == "success")
+				{
+					var username = $('#email').val();
+					var password = $('#password').val();
+					doLogin(username, password);
+				}
+				else
+				{
+					alert('unable');
+				}
+			},
+			error: function(data) {
+				alert('error occured: TODO');
+			}
+		});						
 	}
 	
 	function validateNotEmpty(field)
@@ -197,92 +249,8 @@
 		}
 	});	
 	
-	function submit() {
-		
-		var email = document.getElementById('email').value;
-		var first = document.getElementById('firstName').value;
-		var mid = document.getElementById('middleName').value;
-		var last = document.getElementById('lastName').value;
-		var password = document.getElementById('password').value;
-		var reenterPassword = document.getElementById('reenterPassword').value;
-		var country = document.getElementById('country').value;
-		var state = document.getElementById('state').value;
-		var city = document.getElementById('city').value;
-		var squestion = document.getElementById('squestion').value;
-		var sanswer = document.getElementById('sanswer').value;
-
-		if(!first || !last) {
-			doError("Please enter First and Last name.");
-			return;
-		}
-		
-		if(!isValidEmail(email)) {
-			doError("Please enter a valid email address.");
-			return;
-		}
-		
-		if(!password || !reenterPassword) {
-			doError("Please enter and confirm your password.");
-			return;
-		}
-		
-		if(password != reenterPassword) {
-			doError("Your passwords don't match.");
-			return;
-		}
-		
-		if(!country || !city) {
-			doError("Please fill out your country and city.");
-			return;
-		}
-		
-		if(!squestion || !sanswer) {
-			doError("Please enter your secret question and answer.");
-			return;
-		}
-		
-		
-		var payload = JSON.stringify({ userName: email, firstName: first, middleName: mid, lastName: last,
-						country: country, city: city, state: state, email: email, password: password,
-						secretQuestion: squestion, secretAnswer: sanswer });
-
-		$.ajax({
-			type: 'POST',
-			url: "/register",
-			data: payload,
-			dataType: "json",
-			headers: {
-				Accept: "application/json",
-				"Content-Type": "application/json"
-			},
-			success: function(data) {
-				if(data["response"] == "success") {
-					doLogin(email, password);
-				}
-				else {
-					doError(data["message"]);
-				}
-			},
-			error: function(data) {
-				doError("Unable to complete registration, please try again");
-			}
-		});
-	}
-	
-	//posts an error message into the error label
-	function doError(message) {
-		document.getElementById('error_label').innerHTML = message;
-	}
-	
-	//validates an email pattern
-	function isValidEmail(email) {
-		var pattern = /^.*@.*\..*$/
-		return email.match(pattern);
-	}
-	
 	
 	function doLogin(username, password) {
-	
 		$.ajax({
 		    url: '/login',
 		    username: username,
