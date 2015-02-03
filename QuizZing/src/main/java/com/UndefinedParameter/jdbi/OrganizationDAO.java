@@ -18,7 +18,7 @@ public interface OrganizationDAO {
 	public List<Organization> findOrganizations();
 	
 	@SqlQuery("SELECT * FROM Organization org, User user, UserOrganization userOrg "
-			+ "WHERE userOrg.UserID = userOrg.UserID "
+			+ "WHERE userOrg.UserID = user.UserID "
 			+ "AND org.OrgID = userOrg.OrgID "
 			+ "AND user.UserID = :userId")
 	public List<Organization> findOrganizationsByUserId(@Bind("userId") long userId);
