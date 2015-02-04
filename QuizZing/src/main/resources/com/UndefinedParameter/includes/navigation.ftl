@@ -42,16 +42,17 @@
 		            <ul class="dropdown-menu place-right" data-role="dropdown">
 		                <li><a href="#">TODO</a></li>
 		            </ul>
-		        </div>			
-		        <span class="element-divider place-right"></span>
-		        <button id="userAndImageBox" class="element image-button image-left place-right todo">
-		            ${user.userName?html}
-		            <img src=""/>
+		        </div>
+		        <button id="userAndImageBox" class="element image-button image-left place-right">
+			        <a href="/user?userid=${user.id}">
+			            ${user.userName?html}
+			            <img src=""/>
+		            </a>
 		        </button>
             <#else>
-	            <a class="element brand place-right todo" href="#">Login</a> 
+	            <a class="element brand place-right" href="/login">Login</a> 
 	            <span class="element-divider place-right"></span>
-	            <a class="element brand place-right todo" href="#">Register</a>              
+	            <a class="element brand place-right" href="/register">Register</a>              
             </#if>
               
 	    </nav>
