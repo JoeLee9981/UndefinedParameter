@@ -23,6 +23,7 @@ import com.UndefinedParameter.app.resources.OrganizationResource;
 import com.UndefinedParameter.app.resources.QuestionCreatorResource;
 import com.UndefinedParameter.app.resources.QuizResource;
 import com.UndefinedParameter.app.resources.UserProfileResource;
+import com.UndefinedParameter.jdbi.FeedbackDAO;
 import com.UndefinedParameter.jdbi.GroupDAO;
 import com.UndefinedParameter.jdbi.NewsArticleDAO;
 import com.UndefinedParameter.jdbi.OrganizationDAO;
@@ -81,6 +82,7 @@ public class QuizZingApplication extends Application<QuizZingConfiguration> {
 		final GroupDAO groupDAO = jdbi.onDemand(GroupDAO.class);
 		final QuizDAO quizDAO = jdbi.onDemand(QuizDAO.class);
 		final QuestionDAO questionDAO = jdbi.onDemand(QuestionDAO.class);
+		final FeedbackDAO feedbackDAO = jdbi.onDemand(FeedbackDAO.class);
 		
 		logger.info("Database objects registered successfully");
 		
@@ -105,7 +107,7 @@ public class QuizZingApplication extends Application<QuizZingConfiguration> {
 		environment.jersey().register(new GroupResource(orgDAO, groupDAO, quizDAO, questionDAO));
 		environment.jersey().register(new OrganizationResource(orgDAO, groupDAO));
 		environment.jersey().register(new QuestionCreatorResource(quizDAO, questionDAO));
-		environment.jersey().register(new FeedbackResource());
+		environment.jersey().register(new FeedbackResource(feedbackDAO));
 		environment.jersey().register(new UserProfileResource(userDAO));
 
 		logger.info("All Views Registered");

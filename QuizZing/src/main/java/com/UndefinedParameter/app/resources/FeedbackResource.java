@@ -16,8 +16,12 @@ import com.UndefinedParameter.views.FeedbackView;
 @Path("/feedback")
 @Produces(MediaType.TEXT_HTML)
 public class FeedbackResource {
-	public FeedbackResource() {
+	private FeedbackDAO feedbackDAO;
+	
+	public FeedbackResource(FeedbackDAO feedbackDAO) {
+		this.feedbackDAO = feedbackDAO;
 	}
+
 	
 	@GET
 	public FeedbackView getFeedbackView() {
@@ -27,7 +31,7 @@ public class FeedbackResource {
 	@GET
 	@Path("/view")
 	public FeedbackResultView getFeedbackResultsView() {
-		return new FeedbackResultView(FeedbackDAO.retrieveFeedback());
+		return new FeedbackResultView(feedbackDAO.retrieveFeedback());
 	}
 	
 	@POST
@@ -35,7 +39,7 @@ public class FeedbackResource {
 	@Produces(MediaType.APPLICATION_JSON)
 	public void addGroup(@Valid Feedback feedback) {
 		
-		FeedbackDAO.addFeedback(feedback);
+		feedbackDAO.addFeedback(feedback.getSuggestedFeature(), feedback.getImprovement(), feedback.getMiscellaneous());
 	}
 }
 
