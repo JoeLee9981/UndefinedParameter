@@ -1,7 +1,7 @@
 <link rel="stylesheet" type="text/css" href="/assets/css/navigation.css" />
 
 <div class="metro">
-	<nav id="main-nav" class="navigation-bar dark">
+	<nav id="main-nav" class="navigation-bar">
 	    <nav id="main-nav-content" class="navigation-bar-content page-content">
 	    
 	    	<a class="element brand" href="/"><i class="icon-home"></i></a>
@@ -14,7 +14,7 @@
                 <a class="dropdown-toggle" href="#">
                     Create &nbsp;
                 </a>
-                <ul class="dropdown-menu dark" data-role="dropdown">
+                <ul class="dropdown-menu" data-role="dropdown">
 					<li class="menu-title todo">Questions</li>
 				    <li><a href="/quiz/create/question">Create a question</a></li>
 				    <li class="menu-title todo">Quizzes</li>
@@ -40,7 +40,10 @@
 		                <span class="icon-cog"></span> &nbsp;
 		            </a>
 		            <ul class="dropdown-menu place-right" data-role="dropdown">
-		                <li><a href="#">TODO</a></li>
+		            	<li><a href="#" class="todo">My Groups</a></li>
+		                <li><a href="#" class="todo">My Quizzes</a></li>
+		                <li><a href="/user?userid=${user.id}">Account Settings</a></li>
+		                <li><a href="#" class="todo">Logout</a></li>
 		            </ul>
 		        </div>
 		        <button id="userAndImageBox" class="element image-button image-left place-right">

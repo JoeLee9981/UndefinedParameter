@@ -35,3 +35,18 @@ body
 	color: #CC0000 !important;
 }
 
+.valid
+{
+	border: 1px GREEN solid !important;
+}
+
+.invalid
+{
+	border: 1px #CC0000 solid !important;
+}
+
+.topMarginMedium
+{
+	margin-top: 20px !important;
+}
+

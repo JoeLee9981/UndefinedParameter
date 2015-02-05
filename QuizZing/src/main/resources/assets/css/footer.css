@@ -4,6 +4,10 @@
 	background-color: #333333;
 	opacity: 0.8;
 	min-width: 1050px;
+	
+	-webkit-box-shadow: 0 150px 0px 0px #333333;
+ 	-moz-box-shadow: 0 150px 0px 0px #333333;
+   	box-shadow: 0 150px 0px 0px #333333;
 }
 
 #footer-content

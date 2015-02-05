@@ -26,6 +26,11 @@ form.medium .check:after
 	margin-top: 0px !important;
 }
 
+.metro .navigation-bar, .metro .navbar
+{
+	/*background-color: #C63D0F !important;*/
+}
+
 /*
 .metro .dropdown-menu.dark .menu-title,
 .metro .dropdown-menu.dark .menu-title:hover 
