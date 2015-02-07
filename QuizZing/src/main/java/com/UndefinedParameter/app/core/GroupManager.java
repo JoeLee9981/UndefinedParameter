@@ -15,7 +15,7 @@ public class GroupManager {
 		this.groupDAO = groupDAO;
 	}
 	
-	public int addGroup(Group group) {
+	public long addGroup(Group group) {
 		
 		/*
 		 * Important - The id of the group will not be instantiated
@@ -27,8 +27,7 @@ public class GroupManager {
 			//invalid ID
 			return -1;
 		}
-		groupDAO.insertGroup(group.getName(), group.getDescription(), group.getOrganizationId());
-		return 1;
+		return groupDAO.insertGroup(group.getName(), group.getDescription(), group.getOrganizationId());
 	}
 	
 	/*

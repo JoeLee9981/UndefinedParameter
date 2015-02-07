@@ -93,7 +93,7 @@
                         <tbody>
 	                        <#list groups as group>
 								<tr>
-									<td><a href="/group/${group.id}">${group.name?html}</a></td>
+									<td><a href="/group?groupId=${group.id}">${group.name?html}</a></td>
 									<td class="right">${group.memberCount}</td><td class="right">${group.quizCount}</td>
 									<td class="right">${group.questionCount}</td><td class="right">35</td><td class="right">3</td>
 									<td class="right">${group.dateAsString}</td>
@@ -120,33 +120,6 @@
 
 
 <script>
-	
-	function addGroup() {
-		
-		//TODO Prevalidate these fields
-		var groupName = document.getElementById('nameText').value;
-		var desc = document.getElementById('descriptionText').value;
-		//TODO Add more fields to the entry - see Group.java file for more info
-
-		 $.ajax({
-			type: 'POST',
-			url: "/group",
-			data: JSON.stringify({organizationId: ${organization.id}, name: groupName, description: desc }),
-			dataType: "json",
-			headers: {
-				Accept: "application/json",
-				"Content-Type": "application/json"
-			},
-			success: function(data) {
-				if("success" == data["response"]) {
-
-					location.reload();
-				}
-		
-
-			}
-		});
-	}
 	
 	function register(groupId) {
 

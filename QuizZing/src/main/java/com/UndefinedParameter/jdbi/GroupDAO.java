@@ -3,6 +3,7 @@ package com.UndefinedParameter.jdbi;
 import java.util.List;
 
 import org.skife.jdbi.v2.sqlobject.Bind;
+import org.skife.jdbi.v2.sqlobject.GetGeneratedKeys;
 import org.skife.jdbi.v2.sqlobject.SqlQuery;
 import org.skife.jdbi.v2.sqlobject.SqlUpdate;
 import org.skife.jdbi.v2.sqlobject.customizers.RegisterMapper;
@@ -26,7 +27,8 @@ public interface GroupDAO {
 	public List<Group> findGroupsByUser(@Bind("userId") long userId, @Bind("orgId") long orgId);
 	
 	@SqlUpdate("INSERT INTO SubGroup (Name, Description, OrgID) VALUES (:name, :desc, :orgId)")
-	public void insertGroup(@Bind("name") String name, 
+	@GetGeneratedKeys
+	public long insertGroup(@Bind("name") String name, 
 							@Bind("desc") String description, 
 							@Bind("orgId") long orgId);
 	

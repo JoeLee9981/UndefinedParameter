@@ -15,6 +15,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
+import com.UndefinedParameter.app.core.Group;
 import com.UndefinedParameter.app.core.Organization;
 import com.UndefinedParameter.app.core.OrganizationManager;
 import com.UndefinedParameter.app.core.User;

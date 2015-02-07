@@ -23,19 +23,13 @@
 				
 				<form id="create-form" class="medium">
 					<div class="input-control text">
-					    <input id="name" type="text" value="" placeholder="Organization Name"/>
+					    <input id="name" type="text" value="" placeholder="Group Name"/>
 					</div>
 					<div class="input-control text">
-					    <input id="country" type="text" value="" placeholder="Country"/>
-					</div>
-					<div class="input-control text">
-					    <input id="state" type="text" value="" placeholder="State"/>
-					</div>
-					<div class="input-control text">
-					    <input id="city" type="text" value="" placeholder="City"/>
+					    <input id="categories" type="text" value="" placeholder="Categories (not used yet)"/>
 					</div>
 					<div class="input-control textarea">
-					    <textarea id="description"></textarea>
+					    <textarea id="description" placeholder="description"></textarea>
 					    <br/>
 					    <p class="text-alert" id="errorLabel"> </p>
 					    <input class="success span2" type="submit" value="Create"/>
@@ -52,12 +46,11 @@
 <script>
 	
 	$('#create-form').submit(function(event) {
+
 		event.preventDefault();
 		
 		var name = $('#name').val();
-		var country = $('#country').val();
-		var state = $('#state').val();
-		var city = $('#city').val();
+		var categories = $('#categories').val();
 		var description = $('#description').val();
 		
 		if(!name) {
@@ -72,8 +65,8 @@
 		
 		$.ajax({
 			type: 'POST',
-			url: "/orgs/org/add?orgId=" + ${organization.id},
-			data: JSON.stringify({name: name, description: description, city: city, state: state, country: country }),
+			url: '/group',
+			data: JSON.stringify({name: name, description: description, organizationId: ${organization.id} }),
 			dataType: "json",
 			headers: {
 				Accept: "application/json",
