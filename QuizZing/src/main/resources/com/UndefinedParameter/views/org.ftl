@@ -17,6 +17,7 @@
 		
 		<div class="page-content">
 			<div class="grid fluid">
+				<h5><a href="/">home</a> >> <a href="/orgs">organizations</a> >> ${organization.name}</h5>
 				<div class="row">
 					<div>
 						<h2>${organization.name?html} Groups <button class="place-right success" onclick="location.href='/orgs/org/create?orgId=${organization.id}'">Create A New Group</button></h2>
@@ -53,7 +54,7 @@
 	                        <tbody>
 		                        <#list registeredGroups as group>
 									<tr>
-										<td><a href="/group/${group.id}">${group.name?html}</a></td>
+										<td><a href="/group?groupId=${group.id}">${group.name?html}</a></td>
 										<td class="right">${group.memberCount}</td><td class="right">${group.quizCount}</td>
 										<td class="right">${group.questionCount}</td><td class="right">35</td><td class="right">3</td>
 										<td class="right">${group.dateAsString}</td>

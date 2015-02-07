@@ -2,21 +2,19 @@ package com.UndefinedParameter.views;
 
 import io.dropwizard.views.View;
 
-import java.util.ArrayList;
-
-import com.UndefinedParameter.app.core.Question;
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.UndefinedParameter.app.core.Group;
 
 public class QuizCreatorView extends View {
 
-	private ArrayList<Question> questions;
+	public Group group;
 	
-	public QuizCreatorView() {
+	public QuizCreatorView(Group group) {
 		super("quiz_create.ftl");
+		this.group = group;
 	}
 	
-	public ArrayList<Question> getQuestions() {
-		return questions;
+	public Group getGroup() {
+		return this.group;
 	}
 	
 }

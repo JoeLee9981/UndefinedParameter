@@ -167,7 +167,7 @@ public class QuizManager {
 				throw new Exception("Not all questions exist in the database.");
 		}*/
 		
-		return quizDAO.createQuiz(quiz.getCreatorId(), quiz.getDifficulty(), quiz.getRating(), quiz.getDescription(), quiz.getTime());
+		return quizDAO.createQuiz(quiz.getCreatorId(), quiz.getName(), quiz.getDifficulty(), quiz.getRating(), quiz.getDescription(), quiz.getTime());
 	}
 	
 	/*

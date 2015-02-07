@@ -16,6 +16,7 @@
 		<#include "../includes/navigation.ftl">
 		
 		<div class="page-content">
+			<h5><a href="/">home</a> >> <a href="/orgs">organizations</a> >> create</h5>
 			<div id="register-form-container" class="span12">
 				<div class="form-title-header">
 					<span class="subheader-secondary">Create your <strong>Organization</strong></span>
@@ -111,7 +112,5 @@
 		});
 
 	});
-	
 
-	
 </script>

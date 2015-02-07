@@ -26,6 +26,11 @@ public class Quiz {
 	private long quizId;
 	
 	/*
+	 * Name of the quiz
+	 */
+	private String name;
+	
+	/*
 	 * This is the user id of the quiz creator
 	 */
 	private long creatorId;
@@ -230,6 +235,16 @@ public class Quiz {
 	
 	public String getDateModifiedAsString() {
 		return dateCreated.toString("MM/dd/yyyy");
+	}
+	
+	@JsonProperty
+	public String getName() {
+		return name;
+	}
+
+	@JsonProperty
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	/********************** Iteration Methods ************************************/

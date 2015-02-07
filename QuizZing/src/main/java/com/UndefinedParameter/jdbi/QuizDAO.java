@@ -55,9 +55,9 @@ public interface QuizDAO {
 	 * 	createQuiz - Adds a quiz to the database. Assume all questions
 	 * 	already exist in the database.
 	 */
-	@SqlUpdate("INSERT INTO Quiz (CreatorID, Difficulty, Rating, Description, Time) VALUES(:creatorId, :diff, :rating, :desc, :time)")
+	@SqlUpdate("INSERT INTO Quiz (CreatorID, Name, Difficulty, Rating, Description, Time) VALUES(:creatorId, :name, :diff, :rating, :desc, :time)")
 	@GetGeneratedKeys
-	public long createQuiz(@Bind("creatorId") long creatorId, @Bind("diff") float diff, @Bind("rating") double rating, @Bind("desc") String desc, @Bind("time") int time);
+	public long createQuiz(@Bind("creatorId") long creatorId, @Bind("name") String name, @Bind("diff") float diff, @Bind("rating") double rating, @Bind("desc") String desc, @Bind("time") int time);
 	
 	/*
 	 * 	linkToQuestions - Helper method will link quiz to its questions

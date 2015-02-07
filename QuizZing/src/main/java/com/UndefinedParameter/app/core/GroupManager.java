@@ -47,13 +47,13 @@ public class GroupManager {
 	 * Get a group from the database by the
 	 * 	groups id
 	 */
-	public Group findGroupById(int id) {
+	public Group findGroupById(long id) {
 		//TODO: Get this from the datatbase
 		
 		return groupDAO.findGroupById(id);
 	}
 	
-	public Organization findParentOrganization(int orgId) {
+	public Organization findParentOrganization(long orgId) {
 		return orgsDAO.findOrganization(orgId);
 	}
 }
