@@ -24,7 +24,7 @@ public interface OrganizationDAO {
 	public List<Organization> findOrganizationsByUserId(@Bind("userId") long userId);
 	
 	@SqlQuery("SELECT * FROM Organization WHERE OrgID = :orgId")
-	public Organization findOrganization(@Bind("orgId") int id);
+	public Organization findOrganization(@Bind("orgId") long id);
 	
 	@SqlUpdate("INSERT INTO Organization (Name, Description, City, State, Country) VALUES (:name, :desc, :city, :state, :country)")
 	@GetGeneratedKeys

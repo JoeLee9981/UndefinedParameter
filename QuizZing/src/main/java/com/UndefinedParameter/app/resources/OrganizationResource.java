@@ -20,6 +20,8 @@ import com.UndefinedParameter.app.core.OrganizationManager;
 import com.UndefinedParameter.app.core.User;
 import com.UndefinedParameter.jdbi.GroupDAO;
 import com.UndefinedParameter.jdbi.OrganizationDAO;
+import com.UndefinedParameter.views.GroupCreatorView;
+import com.UndefinedParameter.views.LoginView;
 import com.UndefinedParameter.views.OrganizationCreatorView;
 import com.UndefinedParameter.views.OrganizationView;
 import com.UndefinedParameter.views.OrgsView;
@@ -44,21 +46,40 @@ public class OrganizationResource {
 	
 	@GET
 	@Path("/org")
-	public Response getOrganizationView(@QueryParam("id") int id) {
-		return Response.ok(new OrganizationView(manager.findOrgById(id), manager.findGroupsById(id))).build();
+	public Response getOrganizationView(@Auth(required = false) User user, @QueryParam("id") int id) {
+		if(user != null)
+			return Response.ok(new OrganizationView(manager.findOrgById(id), manager.findGroupsById(id), manager.findRegisteredGroupsById(id, user.getId()), true)).build();
+		else
+			return Response.ok(new OrganizationView(manager.findOrgById(id), manager.findGroupsById(id), null, false)).build();
 	}
 	
 	@GET
 	@Path("/create") 
-	public Response getCreateOrgView() {
-		
-		return Response.ok(new OrganizationCreatorView()).build();
+	public Response getCreateOrgView(@Auth(required = false) User user) {
+		if(user != null)
+			return Response.ok(new OrganizationCreatorView()).build();
+		else
+			return Response.ok(new LoginView()).build();
+	}
+	
+	@GET
+	@Path("/org/create")
+	public Response getCreateGroupView(@Auth(required = false) User user, @QueryParam("orgId") long orgId) {
+		if(user != null)
+			return Response.ok(new GroupCreatorView(manager.findOrgById(orgId))).build();
+		else
+			return Response.ok(new LoginView()).build();
 	}
 	
 	@POST
 	@Path("/register")
-	public Response registerOrg(@Auth User user, @QueryParam("orgId") long orgId) {
-		if(orgId > 0 && user != null) {
+	public Response registerOrg(@Auth(required = false) User user, @QueryParam("orgId") long orgId) {
+		
+		if(user == null) {
+			return Response.status(Status.UNAUTHORIZED).build();
+		}
+		
+		if(orgId > 0) {
 			if(manager.registerOrganization(orgId, user.getId())) {
 				return Response.ok().build();
 			}
@@ -73,8 +94,13 @@ public class OrganizationResource {
 	
 	@DELETE
 	@Path("/leave")
-	public Response leaveOrg(@Auth User user, @QueryParam("orgId") long orgId) {
-		if(orgId > 0 && user != null) {
+	public Response leaveOrg(@Auth(required = false) User user, @QueryParam("orgId") long orgId) {
+		
+		if(user == null) {
+			return Response.status(Status.UNAUTHORIZED).build();
+		}
+		
+		if(orgId > 0) {
 			if(manager.leaveOrganization(orgId, user.getId())) {
 				return Response.ok().build();
 			}
@@ -91,7 +117,11 @@ public class OrganizationResource {
 	@Path("/add")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Response addOrg(Organization org) {
+	public Response addOrg(@Auth(required = false) User user, Organization org) {
+		
+		if(user == null) {
+			return Response.ok(new LoginView()).build();
+		}
 		
 		HashMap<String, String> response = new HashMap<String, String>();
 		long id = manager.createOrganization(org);
@@ -105,5 +135,47 @@ public class OrganizationResource {
 			response.put("message", "Unable to create your organization.");
 		}
 		return Response.ok(response).build();
+	}
+	
+	@POST
+	@Path("/org/register")
+	public Response registerGroup(@Auth(required = false) User user, @QueryParam("groupId") long groupId) {
+		
+		if(user == null) {
+			return Response.status(Status.UNAUTHORIZED).build();
+		}
+		
+		if(groupId > 0) {
+			if(manager.registerUserForGroup(groupId, user.getId())) {
+				return Response.ok().build();
+			}
+			else {
+				return Response.status(Status.BAD_REQUEST).build();
+			}
+		}
+		else {
+			return Response.status(Status.BAD_REQUEST).build();
+		}
+	}
+	
+	@DELETE
+	@Path("/org/leave")
+	public Response leaveGroup(@Auth(required = false) User user, @QueryParam("groupId") long groupId) {
+		
+		if(user == null) {
+			return Response.status(Status.UNAUTHORIZED).build();
+		}
+		
+		if(groupId > 0 && user != null) {
+			if(manager.removeuserFromGroupById(groupId, user.getId())) {
+				return Response.ok().build();
+			}
+			else {
+				return Response.status(Status.BAD_REQUEST).build();
+			}
+		}
+		else {
+			return Response.status(Status.BAD_REQUEST).build();
+		}
 	}
 }

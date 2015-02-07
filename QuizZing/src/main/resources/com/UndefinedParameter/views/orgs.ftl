@@ -97,7 +97,9 @@
                             <th class="text-left">Contribution Score <a href="#" data-hint="Contribution Score|A contribution score is something that we must figure out later. It will be super cool" data-hint-position="right" data-hint-mode="2"><i class="icon-help fg-blue"></i></a></th>
                             <th class="text-left">Quizzes Participated</th>
                             <th class="text-left">Date Created</th>
-                            <th class="text-left">Join</th>
+                            <#if loggedIn>
+                            	<th class="text-left">Join</th>
+                            </#if>
                         </tr>
                         </thead>
 
@@ -110,7 +112,9 @@
 	                        	<td class="right">${getContributionScore(org.id)}</td>
 	                        	<td class="right">${getQuizzesParticipated(org.id)}</td>
 	                        	<td class="right">11/12/14</td>
-	                        	<td class="right"><button class="success" onClick="register(${org.id})">+</button></td>
+	                        	<#if loggedIn>
+	                        		<td class="right"><button class="success" onClick="register(${org.id})">+</button></td>
+	                        	</#if>
                         	</tr>
                         </#list>            
                         </tbody>

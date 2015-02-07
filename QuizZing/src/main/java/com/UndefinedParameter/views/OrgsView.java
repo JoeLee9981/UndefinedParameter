@@ -44,4 +44,8 @@ public class OrgsView extends View {
 		//return UserManager.retreiveQuizzesParticipated(0, orgId);
 		return 10;
 	}
+	
+	public boolean isLoggedIn() {
+		return user != null;
+	}
 }

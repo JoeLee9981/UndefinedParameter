@@ -21,13 +21,13 @@ public class OrganizationManager {
 	 * 		for example CS or Computer Science. This would return
 	 * 		all classes related to the CS category for the organization
 	 */
-	public Group[] findGroupsByCategory(int orgId, int categoryId) {
+	public Group[] findGroupsByCategory(long orgId, long categoryId) {
 		//TODO: Implement - note may want to use helper methods to group id's
 				// then retrieve the groups
 		return null;
 	}
 	
-	public Group[] findGroupsByCategory(int orgId, String category) {
+	public Group[] findGroupsByCategory(long orgId, String category) {
 		int catId = 0;//TODO: Find the category id from database
 		return findGroupsByCategory(orgId, catId);
 	}
@@ -35,7 +35,7 @@ public class OrganizationManager {
 	/*
 	 * Finds all of the groups by an organizations id
 	 */
-	public List<Group> findGroupsById(int orgId) {
+	public List<Group> findGroupsById(long orgId) {
 		return groupDAO.findGroupsByOrgId(orgId);
 	}
 	
@@ -44,18 +44,9 @@ public class OrganizationManager {
 		return orgDAO.findOrganizations();
 	}
 	
-	public List<Organization> findOrgsByUserId(long userId) {
-		return orgDAO.findOrganizationsByUserId(userId);
-	}
-	
-	public Organization findOrgById(int id) {
+	public Organization findOrgById(long id) {
 		
 		return orgDAO.findOrganization(id);
-	}
-	
-	public List<Organization> findOrgsByUser(User user) {
-		//TODO: Get by user id registered
-		return orgDAO.findOrganizations();
 	}
 	
 	public long createOrganization(Organization org) {
@@ -66,6 +57,25 @@ public class OrganizationManager {
 		catch(Exception e) {
 			return -1;
 		}
+	}
+	
+	
+	/*
+	 * This section is for UserOrganization which controls the association between user and organizations
+	 * 	Includes register for organization
+	 * 	Leave organization and return all organizations registered for
+	 */
+	
+	/*
+	 * find organizations that a user is registered by the user id
+	 */
+	public List<Organization> findOrgsByUser(User user) {
+		//TODO: Get by user id registered
+		return orgDAO.findOrganizations();
+	}
+	
+	public List<Organization> findOrgsByUserId(long userId) {
+		return orgDAO.findOrganizationsByUserId(userId);
 	}
 	
 	public boolean registerOrganization(long orgId, long userId) {
@@ -89,4 +99,42 @@ public class OrganizationManager {
 			return false;
 		}
 	}
+	
+	/*
+	 * 	Methods below here are for UserGroup registration
+	 * 		includes ability to add a user into a group
+	 * 		remove a user from a group
+	 * 		retrieve all groups a user is registered by orgid
+	 */
+	
+	
+	/*
+	 * Finds all of the groups by an organization id and user id
+	 */
+	public List<Group> findRegisteredGroupsById(long orgId, long userId) {
+		return groupDAO.findGroupsByUser(userId, orgId);
+	}
+	
+	public boolean registerUserForGroup(long groupId, long userId) {
+		try {
+			groupDAO.registerGroup(userId, groupId);
+			groupDAO.incrementGroupMembers(groupId);
+			return true;
+		}
+		catch(Exception e) {
+			return false;
+		}
+	}
+	
+	public boolean  removeuserFromGroupById(long groupId, long userId) {
+		try {
+			groupDAO.removeUserGroup(groupId, userId);
+			groupDAO.decrementGroupMembers(groupId);
+			return true;
+		}
+		catch(Exception e) {
+			return false;
+		}
+	}
+	
 }

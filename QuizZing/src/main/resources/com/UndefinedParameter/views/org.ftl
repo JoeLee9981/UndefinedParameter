@@ -19,18 +19,58 @@
 			<div class="grid fluid">
 				<div class="row">
 					<div>
-						<h2>${organization.name?html} Groups</h2>
+						<h2>${organization.name?html} Groups <button class="place-right success" onclick="location.href='/orgs/org/create?orgId=${organization.id}'">Create A New Group</button></h2>
 						<h2>${organization.city?html}</h2>
 						<h3>${organization.state?html}</h2>
 						<h3>${organization.country?html}</h2>
 						<p>${organization.description?html}</p>
 					</div>
 				</div>
+				
+			    <!-- Registered Groups -->
+			    <#if registeredGroups??>
+				    <div class="row">
+				    	<div>
+							<h4>Your Registered Groups</h4>
+						</div>
+					</div>
+				
+				    <div class="row">
+						<table class="table hovered">
+	                        <thead>
+	                        <tr>
+	                            <th class="text-left">Group</th>
+	                            <th class="text-left">Members</th>
+	                            <th class="text-left">Quizzes</th>
+	                            <th class="text-left">Questions</th>
+	                            <th class="text-left">Contribution Score <a href="#" data-hint="Contribution Score|A contribution score is something that we must figure out later. It will be super cool" data-hint-position="right" data-hint-mode="2"><i class="icon-help fg-blue"></i></a></th>
+	                            <th class="text-left">Quizzes Participated</th>
+	                            <th class="text-left">Date Created</th>
+                            	<th class="text-left">Leave</th>
+	                        </tr>
+	                        </thead>
+	
+	                        <tbody>
+		                        <#list registeredGroups as group>
+									<tr>
+										<td><a href="/group/${group.id}">${group.name?html}</a></td>
+										<td class="right">${group.memberCount}</td><td class="right">${group.quizCount}</td>
+										<td class="right">${group.questionCount}</td><td class="right">35</td><td class="right">3</td>
+										<td class="right">${group.dateAsString}</td>
+										<td class="right"><button class="danger" onClick="leave(${group.id})">-</button></td>
+									</tr>
+								</#list>     
+	                        </tbody>
+	
+	                        <tfoot></tfoot>
+	                    </table>    
+				    </div>
+			    </#if>
 			    
-			    
+			    <!-- Top Groups -->
 			    <div class="row">
 			    	<div>
-						<h4>Top Organizations and Groups</h4>
+						<h4>Suggested Groups</h4>
 					</div>
 				</div>
 			    <div class="row">
@@ -44,12 +84,23 @@
                             <th class="text-left">Contribution Score <a href="#" data-hint="Contribution Score|A contribution score is something that we must figure out later. It will be super cool" data-hint-position="right" data-hint-mode="2"><i class="icon-help fg-blue"></i></a></th>
                             <th class="text-left">Quizzes Participated</th>
                             <th class="text-left">Date Created</th>
+                            <#if loggedIn>
+                            	<th class="text-left">Join</th>
+                            </#if>
                         </tr>
                         </thead>
 
                         <tbody>
 	                        <#list groups as group>
-								<tr><td><a href="/group/${group.id}">${group.name?html}</a></td><td class="right">${group.memberCount}</td><td class="right">${group.quizCount}</td><td class="right">${group.questionCount}</td><td class="right">35</td><td class="right">3</td><td class="right">${group.dateAsString}</td></tr>
+								<tr>
+									<td><a href="/group/${group.id}">${group.name?html}</a></td>
+									<td class="right">${group.memberCount}</td><td class="right">${group.quizCount}</td>
+									<td class="right">${group.questionCount}</td><td class="right">35</td><td class="right">3</td>
+									<td class="right">${group.dateAsString}</td>
+									<#if loggedIn>
+										<td class="right"><button class="success" onClick="register(${group.id})">+</button></td>
+									</#if>
+								</tr>
 							</#list>     
                         </tbody>
 
@@ -57,26 +108,11 @@
                     </table>    
 			    </div>
 			</div>
-					<div class="content-width center">
-			Content is going to go here
-			
-			<h1></h1>
-			
-			
-			
-			
-			<br/>
-			<h2>Add a group</h2>
-			<input type="text" id="nameText" name="name" placeholder="Name"><br/>
-			<input type="text" id="descriptionText" name="description" placeholder="Description"><br/>
-			<button onclick="addGroup()" >Add</button><br/>
-		</div>
-		</div>
-		
-		
-		
-		
-
+			<div class="content-width center">
+				Content is going to go here
+				
+			</div>
+			</div>
 		
 		<#include "../includes/footer.ftl">
 	</body>
@@ -112,6 +148,38 @@
 		});
 	}
 	
+	function register(groupId) {
 
+		$.ajax({
+		    url: '/orgs/org/register?groupId=' + groupId,
+		    type: 'POST',
+		    success: function(data) {
+		    	console.log(data);
+		    	window.location='/orgs/org?id=' + ${organization.id};
+		    },
+		    error: function(error) {
+		    	displayError("Unable to register for the group");
+		    }
+		});
+	}
+	
+	function leave(groupId) {
+	
+		$.ajax({
+		    url: '/orgs/org/leave?groupId=' + groupId,
+		    type: 'DELETE',
+		    success: function(data) {
+		    	console.log(data);
+		    	window.location='/orgs/org?id=' + ${organization.id};
+		    },
+		    error: function(error) {
+		    	displayError("There was an error when attempting to leave the group");
+		    }
+		});
+	}
+	
+	function displayError(message) {
+		alert(message);
+	}
 	
 </script>
