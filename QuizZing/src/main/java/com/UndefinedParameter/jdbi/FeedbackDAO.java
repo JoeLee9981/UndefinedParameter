@@ -13,7 +13,7 @@ import com.UndefinedParameter.app.core.Feedback;
 @RegisterMapper(FeedbackMapper.class)
 public interface FeedbackDAO {
 
-	@SqlUpdate("INSERT INTO Feedback (feature, improvement, miscellaneous) VALUES(:feature, :improvement, :miscellaneous)")
+	@SqlUpdate("INSERT INTO Feedback (Feature, Improvement, Miscellaneous) VALUES(:feature, :improvement, :miscellaneous)")
 	@GetGeneratedKeys
 	public long addFeedback(@Bind("feature") String feedback, @Bind("improvement") String improvement, @Bind("miscellaneous") String miscellanoues);
 	
