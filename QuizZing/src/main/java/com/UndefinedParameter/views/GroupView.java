@@ -7,7 +7,6 @@ import java.util.List;
 import com.UndefinedParameter.app.core.Group;
 import com.UndefinedParameter.app.core.Organization;
 import com.UndefinedParameter.app.core.Quiz;
-import com.UndefinedParameter.app.core.QuizManager;
 
 public class GroupView extends View {
 
@@ -15,14 +14,20 @@ public class GroupView extends View {
 	private Group group;
 	//the organization this group belongs to
 	private Organization organization;
-	//Manager object to find quizzes
-	private QuizManager quizManager;
+	//list of group quizzes
+	private List<Quiz> quizzes;
+	//list of a users quizzes, may be null
+	private List<Quiz> userQuizzes;
+	//is the user logged in
+	private boolean loggedIn;
 	
-	public GroupView(Group group, Organization org, QuizManager quizManager) {
+	public GroupView(Group group, Organization org, List<Quiz> quizzes, List<Quiz> userQuizzes, boolean loggedIn) {
 		super("group.ftl");
 		this.group = group;
 		this.organization = org;
-		this.quizManager = quizManager;
+		this.quizzes = quizzes;
+		this.userQuizzes = userQuizzes;
+		this.loggedIn = loggedIn;
 	}
 	
 	public Group getGroup() {
@@ -35,18 +40,21 @@ public class GroupView extends View {
 	}
 	
 	/*
-	 * Find the parent organization
-	 * 		This is being set automatically from the constructor
+	 * Get a list of quizzes in a group
 	 */
-	private Organization findOrg() {
-		return organization;
+	public List<Quiz> getQuizzes() {
+		return quizzes;
 	}
 	
 	/*
-	 * Get a list of quizzes in a group
+	 * Get a list of a users quizzes in the group
+	 * 	May be null
 	 */
-	public List<Quiz> getQuizList() {
-		List<Quiz> quizzes = quizManager.findQuizzesByGroup(group.getId());
-		return quizzes;
+	public List<Quiz> getUserQuizzes() {
+		return userQuizzes;
+	}
+	
+	public boolean isLoggedIn() {
+		return loggedIn;
 	}
 }

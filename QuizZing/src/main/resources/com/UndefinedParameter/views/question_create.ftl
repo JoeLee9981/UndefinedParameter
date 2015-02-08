@@ -124,12 +124,9 @@
 			var type = "MULTIPLE_CHOICE";
 			var incorrect = [];
 			var creatorId = 1;
-			var path = "/quiz/create/question/";
+			var path = "/question/create?quizId=" + quizId;
 			
 			document.getElementById('responseLabel').innerHTML = "";
-			
-			if(quizId > 0)
-				path += quizId;
 			
 			for(var i = 1; i <= maxAnswers; i++) {
 				if(document.getElementById('qCheck' + i).checked) {
@@ -141,7 +138,6 @@
 			}
 			
 			if(!correct) {
-				//TODO: This needs to not be an alert box
 				document.getElementById('responseLabel').innerHTML = "You must check a correct answer";
 				document.getElementById('responseLabel').className = "text-alert";
 				return;
@@ -159,31 +155,16 @@
 				},
 				success: function(data) {
 					if("success" == data["response"]) {
-						clear();
-						document.getElementById('responseLabel').className = "text-success";
+						window.location = data['redirect'];
 					}
 					else {
 						document.getElementById('responseLabel').className = "text-alert";
+						document.getElementById('responseLabel').innerHTML = data["message"];
 					}
-					document.getElementById('responseLabel').innerHTML = data["message"];
 				}
 			});
 		}
 		
-		
-		function clear() {
-			document.getElementById('descriptionText').value = "";
-			document.getElementById('qText1').value = "";
-			document.getElementById('qText2').value = "";
-			document.getElementById('qText3').value = "";
-			document.getElementById('qText4').value = "";
-			document.getElementById('qText5').value = "";
-			document.getElementById('qCheck1').checked = false;
-			document.getElementById('qCheck2').checked = false;
-			document.getElementById('qCheck3').checked = false;
-			document.getElementById('qCheck4').checked = false;
-			document.getElementById('qCheck5').checked = false;
-		}
 		
 	</script>
 </html>

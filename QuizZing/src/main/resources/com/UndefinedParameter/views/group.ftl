@@ -24,15 +24,77 @@
 							<h1>${group.name?html}! <button class="place-right success" onclick="location.href='/quiz/create?groupId=${group.id}'">Create A New Quiz</button></h1>
 							<h3>Study for your final here</h3>
 							
+							<#if userQuizzes??>
+								<div class="home-subsection">
+									<h3>Your Group Quizzes</h3>
+									<table>
+										<#list userQuizzes as quiz>	
+											<tr>
+												<th>Quiz Name</th>
+												<th>Description</th>
+												<th># of Questions</th>
+												<th>Difficulty</th>
+												<th>Rating</th>
+												<th>Time</th>
+												<th>Edit</th>
+											</tr>
+											<tr>
+												<td>
+													<a href="/quiz?quizId=${quiz.quizId}"><h3 class="text-info">${quiz.name} </h3></a>
+												</td>
+												<td>
+													<h3>${quiz.description}</h3>
+												</td>
+												<td>
+													<h3>${quiz.questionCount}</h3>
+												</td>
+												<td>
+													<h3>${quiz.difficulty}</h3>
+												</td>
+												<td>
+													<h3>${quiz.rating}</h3>
+												</td>
+												<td>
+													<h3>${quiz.time}</h3>
+												</td>
+												<td>
+													<a href="/quiz/edit?groupId=${group.id}&quizId=${quiz.quizId}"><h3 class="text-success"><button id="editQuizButton">+</button></h3></a>
+												</td>
+											</tr>
+										</#list>
+									</table>
+								</div>
+							</#if>
 							<div class="home-subsection">
+								<h3>All Group Quizzes</h3>
 								<table>
-									<#list quizList as quiz>	
+									<#list quizzes as quiz>	
+										<tr>
+											<th>Quiz Name</th>
+											<th>Description</th>
+											<th># of Questions</th>
+											<th>Difficulty</th>
+											<th>Rating</th>
+											<th>Time</th>
+										</tr>
 										<tr>
 											<td>
-												<a href="/quiz?quizId=${quiz.quizId}"><h3 class="text-info">${quiz.description}</h3></a>
+												<h3><a href="/quiz?quizId=${quiz.quizId}"><h3 class="text-info">${quiz.name} </h3></a>
 											</td>
 											<td>
-												<a href="/quiz/create/question/${quiz.quizId}"><h3 class="text-success">Add a question</h3></a>
+												<h3>${quiz.description}</h3>
+											</td>
+											<td>
+												<h3>${quiz.questionCount}</h3>
+											</td>
+											<td>
+												<h3>${quiz.difficulty}</h3>
+											</td>
+											<td>
+												<h3>${quiz.rating}</h3>
+											</td>
+											<td>
+												<h3>${quiz.time}</h3>
 											</td>
 										</tr>
 									</#list>

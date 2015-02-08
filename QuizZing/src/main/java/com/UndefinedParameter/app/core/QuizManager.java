@@ -100,6 +100,30 @@ public class QuizManager {
 	}
 	
 	/*
+	 * Find all quizzes created by a user
+	 */
+	public List<Quiz> findQuizzesByCreatorId(long creatorId) {
+		if(creatorId < 1) {
+			return null;
+		}
+		else {
+			return quizDAO.retrieveQuizzesByCreatorId(creatorId);
+		}
+	}
+	
+	/*
+	 * Find all quizzes in a group created by the user
+	 */
+	public List<Quiz> findQuizzesByCreatorId(long creatorId, long groupId) {
+		if(creatorId < 1 || groupId < 1) {
+			return null;
+		}
+		else {
+			return quizDAO.retrieveQuizzesByCreatorAndGroup(creatorId, groupId);
+		}
+	}
+	
+	/*
 	 * TODO: Implement this
 	 */
 	private List<Question> getQuestions(long quizId) {

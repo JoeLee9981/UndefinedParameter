@@ -28,6 +28,22 @@ public interface QuizDAO {
 	public List<Quiz> retrieveQuizzesByGroup(@Bind("groupId") long groupId);
 	
 	/*
+	 * Retrieve Quizzes by creator ID
+	 */
+	@SqlQuery("SELECT * FROM Quiz WHERE CreatorID = :creatorId")
+	public List<Quiz> retrieveQuizzesByCreatorId(@Bind("creatorId") long creatorId);
+	
+	/*
+	 * Retrieve Quizzes by group id and creator Id
+	 */
+	@SqlQuery("SELECT * FROM Quiz q, GroupQuiz gq, SubGroup sg WHERE "
+			+ "q.QuizID = gq.QuizID AND "
+			+ "sg.GroupID = gq.GroupID AND "
+			+ "CreatorID = :creatorId AND "
+			+ "gq.GroupID = :groupId")
+	public List<Quiz> retrieveQuizzesByCreatorAndGroup(@Bind("creatorId") long creatorId, @Bind("groupId") long groupId);
+	
+	/*
 	 * 	retrieveExistingQuizDetails - Retrieves quiz details from the database.
 	 */
 	@SqlQuery("SELECT * FROM Quiz WHERE QuizID = :quizId")
