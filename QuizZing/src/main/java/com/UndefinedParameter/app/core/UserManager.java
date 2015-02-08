@@ -67,4 +67,27 @@ public class UserManager {
 		}
 		return true;
 	}
+	
+	public boolean updateUser(User user) throws Exception {
+		try {
+			userDAO.update(user.getUserName(), 
+						   user.getFirstName(), 
+						   user.getLastName(), 
+						   user.getMiddleName(),
+						   user.getCountry(), 
+						   user.getCity(), 
+						   user.getState(), 
+						   user.getEmail(), 
+						   user.getPassword(), 
+						   user.getSecretQuestion(), 
+						   user.getSecretAnswer(),
+						   user.getActive(),
+						   user.getLastAccessed(),
+						   user.getSeeAgain());
+		}
+		catch(Exception e) {
+			return false;
+		}
+		return true;
+	}
 }

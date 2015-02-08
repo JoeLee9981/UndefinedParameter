@@ -19,6 +19,8 @@ public class User {
 	private String secretQuestion;
 	private String secretAnswer;
 	private DateTime lastAccessed;
+	private int active;
+	private int seeagain;
 	
 	public User(int id) {
 		this.id = id;
@@ -159,4 +161,25 @@ public class User {
 	public void setLastAccessed(DateTime lastAccessed) {
 		this.lastAccessed = lastAccessed;
 	}
+
+	@JsonProperty
+	public int getActive() {
+		return active;
+	}
+	
+	@JsonProperty
+	public void setActive(int active) {
+		this.active = active;
+	}
+
+	@JsonProperty
+	public int getSeeAgain() {
+		return seeagain;
+	}
+	
+	@JsonProperty
+	public void setSeeagain(int seeagain) {
+		this.seeagain = seeagain;
+	}
+	
 }
