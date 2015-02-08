@@ -44,7 +44,21 @@ public class OrganizationManager {
 		return orgDAO.findOrganizations();
 	}
 	
-	public Organization findOrgById(long id) {
+	/*
+	 * Returns a list of unregistered organizations for a user
+	 */
+	public List<Organization> findUnregisteredOrgs(long userId) {
+		return orgDAO.findUnregisteredOrganizations(userId);
+	}
+	
+	/*
+	 * Returns a list of unregistered Groups for a user
+	 */
+	public List<Group> findUnregisteredGroupsByOrg(long userId, long orgId) {
+		return groupDAO.findUnregisteredGroupsByUser(userId, orgId);
+	}
+	
+ 	public Organization findOrgById(long id) {
 		
 		return orgDAO.findOrganization(id);
 	}

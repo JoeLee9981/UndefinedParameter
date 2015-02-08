@@ -19,6 +19,13 @@ public interface GroupDAO {
 	@SqlQuery("SELECT * FROM SubGroup WHERE GroupId = :groupId")
 	public Group findGroupById(@Bind("groupId") long id);
 	
+	@SqlQuery("SELECT * FROM SubGroup sg WHERE sg.OrgID = :orgId AND NOT EXISTS "
+			+ "(SELECT * FROM UserGroups ug, User user WHERE "
+			+ "ug.GroupID = sg.GroupID AND "
+			+ "ug.UserID = user.UserID AND "
+			+ "user.UserID = :userId)")
+	public List<Group> findUnregisteredGroupsByUser(@Bind("userId") long userId, @Bind("orgId") long orgId);
+	
 	@SqlQuery("SELECT * FROM UserGroups ug, SubGroup sg, User user WHERE "
 			+ "ug.GroupID = sg.GroupID AND "
 			+ "ug.UserID = user.UserID AND "

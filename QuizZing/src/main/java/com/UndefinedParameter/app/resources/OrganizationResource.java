@@ -3,6 +3,7 @@ package com.UndefinedParameter.app.resources;
 import io.dropwizard.auth.Auth;
 
 import java.util.HashMap;
+import java.util.List;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -40,7 +41,7 @@ public class OrganizationResource {
 	@GET
 	public Response getOrgsView(@Auth(required=false) User user) {
 		if(user != null)
-			return Response.ok(new OrgsView(manager.findOrgsByLocation("city"), manager.findOrgsByUserId(user.getId()), user)).build();
+			return Response.ok(new OrgsView(manager.findUnregisteredOrgs(user.getId()), manager.findOrgsByUserId(user.getId()), user)).build();
 		else
 			return Response.ok(new OrgsView(manager.findOrgsByLocation("city"), null, null)).build();
 	}
@@ -48,10 +49,13 @@ public class OrganizationResource {
 	@GET
 	@Path("/org")
 	public Response getOrganizationView(@Auth(required = false) User user, @QueryParam("id") int id) {
-		if(user != null)
-			return Response.ok(new OrganizationView(manager.findOrgById(id), manager.findGroupsById(id), manager.findRegisteredGroupsById(id, user.getId()), true)).build();
-		else
+		if(user != null) {
+			List<Group> unregGroups = manager.findUnregisteredGroupsByOrg(user.getId(), id);
+			return Response.ok(new OrganizationView(manager.findOrgById(id), unregGroups, manager.findRegisteredGroupsById(id, user.getId()), true)).build();
+		}
+		else {
 			return Response.ok(new OrganizationView(manager.findOrgById(id), manager.findGroupsById(id), null, false)).build();
+		}
 	}
 	
 	@GET

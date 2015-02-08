@@ -34,7 +34,7 @@ public class GroupManager {
 	 * Find the groups within an organization by the organizations id
 	 * 	return as an array of Group classes.
 	 */
-	public List<Group> findGroupsByOrg(int orgId) {
+	public List<Group> findGroupsByOrg(long orgId) {
 		
 		//TODO: get groups from database - this should be ok to retreive a complete listing
 		//		as not there should be a manageable number of groups inside an org, however,

@@ -17,6 +17,13 @@ public interface OrganizationDAO {
 	@SqlQuery("SELECT * FROM Organization")
 	public List<Organization> findOrganizations();
 	
+	@SqlQuery("SELECT * FROM Organization org WHERE NOT EXISTS "
+			+ "(SELECT * FROM User user, UserOrganization userOrg WHERE "
+			+ "userOrg.UserID = user.UserID AND "
+			+ "org.OrgID = userOrg.OrgID AND "
+			+ "user.UserID = :userId)")
+	public List<Organization> findUnregisteredOrganizations(@Bind("userId") long userId);
+	
 	@SqlQuery("SELECT * FROM Organization org, User user, UserOrganization userOrg "
 			+ "WHERE userOrg.UserID = user.UserID "
 			+ "AND org.OrgID = userOrg.OrgID "
