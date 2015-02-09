@@ -17,7 +17,7 @@ public class UserManager {
 	 * Gets the users contribution score by the user id and the organization id
 	 * 	to which the user has contributed to
 	 */
-	public int retrieveContributionScore(int userId, int orgId) {
+	public int retrieveContributionScore(long userId, long orgId) {
 		//TODO: Implement
 		
 		Random random = new Random();
@@ -30,15 +30,18 @@ public class UserManager {
 	 * 	this should function before we implement it - This can wait to be done
 	 *  next semester
 	 */
-	public int retreiveQuizzesParticipated(int userId, int orgId) {
+	public int retreiveQuizzesParticipated(long userId, long orgId) {
 		//TODO: Implement
 		
 		Random random = new Random();
 		return random.nextInt(100);
 	}
 	
-	public User findUserById(int userId) {
-		return null;
+	public User findUserById(long userId) {
+		if(userDAO == null)
+			return null;
+		
+		return userDAO.findUserByUserId(userId);
 	}
 	
 	public User findUserByUserName(String userName) {

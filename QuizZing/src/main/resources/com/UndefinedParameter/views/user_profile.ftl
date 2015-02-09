@@ -17,25 +17,26 @@
 		<#include "../includes/navigation.ftl">
 
 		<div id="home-content" class="page-content metro">
-		
-			<div>
-				<h2>${user.userName?html}</h2>
-				<h2>${user.firstName?html}</h2>
-				<h2>${user.middleName?html}</h2>
-				<h2>${user.lastName?html}</h2>
-				<h2>${user.country?html}</h2>
-				<h2>${user.city?html}</h2>
-				<h2>${user.state?html}</h2>
-			</div>
+			
+			<#if user??>
+				<div>
+					<h2>${user.userName?html}</h2>
+					<h2>${user.firstName?html}</h2>
+					<h2>${user.middleName?html}</h2>
+					<h2>${user.lastName?html}</h2>
+					<h2>${user.country?html}</h2>
+					<h2>${user.city?html}</h2>
+					<h2>${user.state?html}</h2>
+				</div>
+			<#else>
+				<h2> Oh no. :((( Your user profile is not available.</h2>
+			</#if>
 			
 		</div>
 		
-		<div>											
+		<div>														
 			<#include "../includes/footer.ftl">
 		</div>
 
 	</body>
-	<script>
-		
-	</script>
 </html>

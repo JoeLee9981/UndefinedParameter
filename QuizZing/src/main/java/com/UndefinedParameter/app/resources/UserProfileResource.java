@@ -9,8 +9,11 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import com.UndefinedParameter.app.core.QuizManager;
 import com.UndefinedParameter.app.core.User;
 import com.UndefinedParameter.app.core.UserManager;
+import com.UndefinedParameter.jdbi.QuestionDAO;
+import com.UndefinedParameter.jdbi.QuizDAO;
 import com.UndefinedParameter.jdbi.UserDAO;
 import com.UndefinedParameter.views.UserProfileView;
 
@@ -18,11 +21,13 @@ import com.UndefinedParameter.views.UserProfileView;
 @Produces(MediaType.TEXT_HTML)
 public class UserProfileResource {
 	
-	private UserManager userManager;
+	public UserManager userManager;
+	public QuizManager quizManager;
 	
-	public UserProfileResource(UserDAO userdao)
+	public UserProfileResource(UserDAO userdao, QuizDAO quizdao, QuestionDAO questiondao)
 	{
 		this.userManager = new UserManager(userdao);
+		this.quizManager = new QuizManager(quizdao, questiondao);
 	}
 
 	/*
@@ -33,16 +38,18 @@ public class UserProfileResource {
 	public Response getUserProfileView(@Auth(required = false) User user, @QueryParam("userid") long userID) {
 		
 		if(user != null && user.getId() == userID) {
-			return Response.ok(new UserProfileView("user_profile.ftl", user)).build();
+			return Response.ok(new UserProfileView("profile.ftl", user, quizManager.findQuizzesByCreatorId(user.getId()), true)).build();
 		}
 		else {
-			return Response.ok(new UserProfileView("profile.ftl")).build();
+			User currentUser = userManager.findUserById(userID);
+			return Response.ok(new UserProfileView("profile.ftl", currentUser, quizManager.findQuizzesByCreatorId(currentUser.getId()), false)).build();
 		}
 	}
+	
 	
 	@GET
 	@Path("/edit")
 	public Response getProfileEditView(@Auth User user) {
-		return Response.ok(new UserProfileView("edit_profile.ftl", user)).build();
+		return Response.ok(new UserProfileView("edit_profile.ftl", user, quizManager.findQuizzesByCreatorId(user.getId()), false)).build();
 	}
 }
