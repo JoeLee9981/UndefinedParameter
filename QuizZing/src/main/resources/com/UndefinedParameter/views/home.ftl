@@ -39,7 +39,7 @@
 										    </label>
 										</div>		
 										<div class="row">
-											<button type="submit" class="success">Login</button>
+											<button type="submit" class="primary">Login</button>
 										</div>								
 									</form>	
 									<div class="row topMarginMedium">
@@ -51,8 +51,14 @@
 								<div class="row">
 									<div id="bannerHeader" class="span6">
 										<h2><strong>You can learn anything.</strong></h2>
-										<span class="subheader-secondary">QuizZing offers the tools you need to succeed in any subject. Receive help, and help others
-										to increase your knowledge.</span>
+										<span class="subheader-secondary">
+											QuizZing offers the tools you need to succeed in any subject. Receive help, and help others
+											to increase your knowledge.
+										</span>
+										<div id="headerButtons">
+											<button type="button" onclick="location.href = '/register'" class="success large">Register</button>
+											<button type="button" class="warning large todo">Learn More</button>		
+										</div>
 									</div>
 								</div>
 							</div>
@@ -77,7 +83,7 @@
 						<button class="shortcut bg-amber fg-white span3">
 							<a href="/register">
 						    <i class="icon-user-3"></i>
-						    Sign Up
+						    Find An Organization
 						    </a>
 						</button>											
 				    </div>

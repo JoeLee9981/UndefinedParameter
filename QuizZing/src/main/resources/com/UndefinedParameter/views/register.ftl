@@ -93,7 +93,7 @@
 										<p id="iAcceptError" class="tertiary-text-secondary errorFormText1 registerError" hidden>Accept the terms and conditions to register</p>					
 										<div class="input-control checkbox">
 										    <label>
-										        <input id="iAccept" type="checkbox" />
+										        <input class="registerError" id="iAccept" type="checkbox" />
 										        <span class="check"></span>
 										        I Accept the <a href="#" class="todo">Terms and Conditions</a>.
 										    </label>

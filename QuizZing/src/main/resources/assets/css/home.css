@@ -104,10 +104,9 @@ body
 
 #homeBanner
 {
-	background: #f1f1f1;
 	margin-top: 0 !important;
-	background: url('../images/sky1.jpg') no-repeat -200px 0px;
-	background-size: 2000px;
+	background: url('../images/sky1.jpg') no-repeat;
+	background-position: center;
 	border-bottom: 20px solid #f1f1f1;
 }
 
@@ -119,4 +118,19 @@ body
 #bannerHeader > *
 {
 	color:white;
+}
+
+#bannerHeader
+{
+	min-height: 300px;
+}
+
+#headerButtons
+{
+	padding: 55px 0;
+}
+
+#headerButtons button
+{
+	margin-right: 30px
 }

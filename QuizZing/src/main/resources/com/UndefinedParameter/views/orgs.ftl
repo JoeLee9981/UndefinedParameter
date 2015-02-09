@@ -18,29 +18,19 @@
 		<div class="page-content">
 			<div class="grid fluid">
 				<div class="row">
+					<nav class="breadcrumbs">
+                        <ul>
+                            <li><a href="/"><i class="icon-home"></i></a></li>
+                            <li class="active"><a>Organizations</a></li>
+                        </ul>
+                    </nav>
+				</div>
+				<div class="row">
 					<div>
-						<h2>Organizations and Groups <button class="place-right success" onclick="location.href='/orgs/create'">Create A New Organization</button></h2>
-						
+						<h2>Organizations and Groups <button class="place-right success" onclick="location.href='/orgs/create'">Create A New Organization</button></h2>			
 					</div>
 				</div>
-			    <div class="row">
-					<button class="shortcut primary span3 todo">
-					    <i class="icon-bookmark-4"></i>
-					    University
-					</button>
-					<button class="shortcut info span3 todo">
-					    <i class="icon-book"></i>
-					    Class
-					</button>
-					<button class="shortcut success span3 todo">
-					    <i class="icon-lab"></i>
-					    Subject
-					</button>
-					<button class="shortcut warning span3 todo">
-					    <i class="icon-comments-2"></i>
-					    Group
-					</button>															
-			    </div>
+	
 			    
 			    <#if registeredOrganizations??>
 			    	<div class="row">

@@ -16,10 +16,18 @@
 	<body>
 		<#include "../includes/navigation.ftl">
 		<div class="page-content">
-			<h5><a href="/">home</a> >> <a href="/orgs">organizations</a> >> <a href="/orgs/org?id=${organization.id}">${organization.name}</a> >> ${group.name}</h5>
-			<div class="divider1">
-				<div class="metro" id="home-page-subsection">
+				<div class="metro">
 					<div class="grid fluid">
+						<div class="row">
+							<nav class="breadcrumbs">
+		                        <ul>
+		                            <li><a href="/"><i class="icon-home"></i></a></li>
+		                            <li><a href="/orgs">Organizations</a></li>
+		                            <li><a href="/orgs/org?id=${organization.id}">${organization.name}</a></li>
+		                            <li class="active"><a>${group.name}</a></li>
+		                        </ul>
+		                    </nav>
+						</div>		
 						
 							<h1>${group.name?html}! <button class="place-right success" onclick="location.href='/quiz/create?groupId=${group.id}'">Create A New Quiz</button></h1>
 							<h3>Study for your final here</h3>

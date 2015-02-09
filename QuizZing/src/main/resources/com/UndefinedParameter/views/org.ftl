@@ -17,7 +17,16 @@
 		
 		<div class="page-content">
 			<div class="grid fluid">
-				<h5><a href="/">home</a> >> <a href="/orgs">organizations</a> >> ${organization.name}</h5>
+				<div class="row">
+					<nav class="breadcrumbs">
+                        <ul>
+                            <li><a href="/"><i class="icon-home"></i></a></li>
+                            <li><a href="/orgs">Organizations</a></li>
+                            <li class="active"><a>${organization.name}</a></li>
+                        </ul>
+                    </nav>
+				</div>			
+
 				<div class="row">
 					<div>
 						<h2>${organization.name?html} Groups <button class="place-right success" onclick="location.href='/orgs/org/create?orgId=${organization.id}'">Create A New Group</button></h2>

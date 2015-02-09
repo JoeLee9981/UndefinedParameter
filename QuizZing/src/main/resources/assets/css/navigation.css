@@ -5,7 +5,8 @@
 
 #userAndImageBox:hover
 {
-	background-color: #1ba1e2 !important;
+	background: none !important;
+	color: inherit !important;
 }
 
 #userAndImageBox
@@ -15,5 +16,5 @@
 
 #main-nav
 {
-	border-bottom: 1px solid orange;
+	/*border-bottom: 1px solid orange;*/
 }

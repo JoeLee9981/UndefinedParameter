@@ -50,3 +50,8 @@ body
 	margin-top: 20px !important;
 }
 
+textarea
+{
+	font: normal normal normal 13.3333330154419px/normal Arial;
+	line-height: 1.4em;
+}

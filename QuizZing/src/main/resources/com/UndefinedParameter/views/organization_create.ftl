@@ -9,108 +9,230 @@
 		<script src="/assets/plugins/metro_ui/min/metro.min.js"></script>
 		<link href="/assets/plugins/metro_ui/min/iconFont.min.css" rel="stylesheet">
 		<link href="/assets/css/organizations.css" rel="stylesheet">	
+		<script src="/assets/scripts/expanding.js"></script>
 		<link href="/assets/css/overrides.css" rel="stylesheet">
 	</head>
 
 	<body class="metro">
-		<#include "../includes/navigation.ftl">
+		<#include "../includes/navigation.ftl">		
 		
 		<div class="page-content">
-			<h5><a href="/">home</a> >> <a href="/orgs">organizations</a> >> create</h5>
-			<div id="register-form-container" class="span12">
-				<div class="form-title-header">
-					<span class="subheader-secondary">Create your <strong>Organization</strong></span>
+			<div class="grid fluid">
+				<div class="row">
+					<nav class="breadcrumbs">
+                        <ul>
+                            <li><a href="/"><i class="icon-home"></i></a></li>
+                            <li><a href="/orgs">Organizations</a></li>
+                            <li class="active"><a>Create</a></li>
+                        </ul>
+                    </nav>
 				</div>
-				<div class="button-set">
-					<button class="shortcut primary span3">
-					    <i class="icon-bookmark-4"></i>
-					    University
-					</button>
-					<button class="shortcut info span3">
-					    <i class="icon-book"></i>
-					    Class
-					</button>
-					<button class="shortcut success span3">
-					    <i class="icon-lab"></i>
-					    Subject
-					</button>
-					<button class="shortcut warning span3">
-					    <i class="icon-comments-2"></i>
-					    Group
-					</button>															
-			    </div>
-				<br/>
-				<form id="create-form" class="medium">
-					<div class="input-control text">
-					    <input id="name" type="text" value="" placeholder="Organization Name"/>
+
+
+				 <div class="row">
+					<div class="offset1 span6">
+						<h2>Create An Organization</h2>
+						<p id="mainCreateError" class="tertiary-text-secondary errorFormText1 orgCreateError" hidden>* There were errors with the information you entered.  Fix the errors in red and then click 'Create Organization'.</p>										
 					</div>
-					<div class="input-control text">
-					    <input id="country" type="text" value="" placeholder="Country"/>
-					</div>
-					<div class="input-control text">
-					    <input id="state" type="text" value="" placeholder="State"/>
-					</div>
-					<div class="input-control text">
-					    <input id="city" type="text" value="" placeholder="City"/>
-					</div>
-					<div class="input-control textarea">
-					    <textarea id="description"></textarea>
-					    <br/>
-					    <p class="text-alert" id="errorLabel"> </p>
-					    <input class="success span2" type="submit" value="Create"/>
-					</div>									
-				</form>
-			
+				</div>
+				<div class="row">
+					<form id="createOrgForm">
+						<div id="register" class="offset1 span6">
+							<div>
+								<h4>Basic Organization Information</h4>
+							</div>
+							<p id="organizationNameError" class="tertiary-text-secondary errorFormText1 createOrgError" hidden>Enter a name for this organization.</p>
+							<p id="alreadyExistsError" class="tertiary-text-secondary errorFormText1 createOrgError" hidden></p>		
+							<div class="row">
+								<div class="input-control text span12">
+								    <input type="text" id="organizationName" value="" placeholder="Organization Name"/>
+								</div>
+							</div>	
+							<p class="tertiary-text">A location is not required, but adding a location will help others to find this organization.</p>
+							<div class="row">
+								<div class="input-control text span4">
+								    <input type="text" id="city" value="" placeholder="City"/>
+								</div>		
+								<div class="input-control text span4">
+								    <input type="text" id="state" value="" placeholder="State/Province"/>
+								</div>	
+								<div class="input-control text span4">
+								    <input type="text" id="country" value="" placeholder="Country"/>
+								</div>											
+							</div>
+							<div>
+								<h4>Description</h4>
+							</div>
+							<p id="descriptionError" class="tertiary-text-secondary errorFormText1 createOrgError" hidden>Enter a description for this organization.</p>
+							<div class="input-control textarea">
+							    <textarea maxlength="2000" class="expanding" id="description"></textarea>
+							</div>	
+				
+							<div class="row">
+							</div>
+							<div class="row" id="acceptterms">	
+								<p id="iAcceptError" class="tertiary-text-secondary errorFormText1 createOrgError" hidden>Accept the terms and conditions to create an organization.</p>					
+								<div class="input-control checkbox">
+								    <label>
+								        <input class="createOrgError" id="iAccept" type="checkbox" />
+								        <span class="check"></span>
+								        I Accept the <a href="#" class="todo">Terms and Conditions</a>.
+								    </label>
+								</div>
+							</div>							
+							<div class="row">
+								<button type="button" class="large primary" onclick="createOrganization()">Create Organization</button>								
+							</div>						
+						</div>
+					</form>
+				</div>
+						
+
+
+
+
+			</div>
 		</div>
-		
+
 		<#include "../includes/footer.ftl">
+
+		<script>
+			
+			$('#organizationName').focusout(function(){
+				if ($('#organizationName').val().length < 1)
+				{
+					$('#organizationName').removeClass('valid').addClass('invalid');
+				}
+				else
+				{
+					$('#organizationName').removeClass('invalid').addClass('valid');
+				}
+			});
+
+			$('#description').focusout(function(){
+				if ($('#description').val().length < 1)
+				{
+					$('#description').removeClass('valid').addClass('invalid');
+				}
+				else
+				{
+					$('#description').removeClass('invalid').addClass('valid');
+				}
+			});
+			
+			$("#createOrgForm").keypress(function(e) {
+				// Enter button
+				if (e.keyCode == 13 && e.target.id != "description")
+				{
+					createOrganization();
+				}
+			});
+			
+			function createOrganization()
+			{
+				$(".createOrgError").hide();
+				
+				var allFieldsValid = true;
+				if ($('#organizationName').val().length < 1)
+				{
+					allFieldsValid = false;
+					$('#organizationNameError').show();
+					$('#organizationName').removeClass('valid').addClass('invalid');
+				}
+				else
+				{
+					$('#organizationName').removeClass('invalid').addClass('valid');
+				}
+				
+				if ($('#description').val().length < 1)
+				{
+					allFieldsValid = false;
+					$('#descriptionError').show();
+					$('#description').removeClass('valid').addClass('invalid');
+				}
+				else
+				{
+					$('#description').removeClass('invalid').addClass('valid');
+				}
+				
+				if (!$("#iAccept").is(":checked"))
+				{
+					allFieldsValid = false;
+					$("#iAcceptError").show();
+				}
+				
+				if (allFieldsValid)
+				{
+					var name = $('#organizationName').val();
+					var description = $('#description').val();
+					var city = $('#city').val();
+					var state = $('#state').val();
+					var country = $('#country').val();
+					
+					$.ajax({
+						type: 'POST',
+						url: "/orgs/add",
+						data: JSON.stringify({name: name, description: description, city: city, state: state, country: country }),
+						dataType: "json",
+						headers: {
+							Accept: "application/json",
+							"Content-Type": "application/json"
+						},
+						success: function(data) {
+							if("success" == data["response"]) {
+								window.location = data["redirect"];
+							}
+							else {
+								alert('error');
+								$('#errorLabel').html(data["message"]);
+							}
+						},
+						error: function(error) {
+					    	alert('An unexpected error occured');
+					    }
+					});
+				}
+				else
+				{
+					$('#mainCreateError').show();
+					$("html, body").animate({ scrollTop: 0 }, 300);
+				}
+				
+			}
+			
+			
+			function register(orgId) {
+				$.ajax({
+				    url: '/orgs/register?orgId=' + orgId,
+				    type: 'POST',
+				    success: function(data) {
+				    	console.log(data);
+				    	window.location='/orgs/org?id=' + orgId;
+				    },
+				    error: function(error) {
+				    	displayError("Unable to register for organization");
+				    }
+				});
+			}
+			
+			function leave(orgId) {
+				$.ajax({
+				    url: '/orgs/leave?orgId=' + orgId,
+				    type: 'DELETE',
+				    success: function(data) {
+				    	console.log(data);
+				    	window.location='/orgs';
+				    },
+				    error: function(error) {
+				    	displayError("There was an error when attempting to leave organization");
+				    }
+				});
+			}
+			
+			function displayError(message) {
+				alert(message);
+			}
+			
+		</script>
 	</body>
 </html>
-
-
-<script>
-	
-	$('#create-form').submit(function(event) {
-		event.preventDefault();
-		
-		var name = $('#name').val();
-		var country = $('#country').val();
-		var state = $('#state').val();
-		var city = $('#city').val();
-		var description = $('#description').val();
-		
-		if(!name) {
-			$('#errorLabel').html("Please enter a name");
-			return;
-		}
-		
-		if(!description) {
-			$('#errorLabel').html("Please enter a description");
-			return;
-		}
-		
-		$.ajax({
-			type: 'POST',
-			url: "/orgs/add",
-			data: JSON.stringify({name: name, description: description, city: city, state: state, country: country }),
-			dataType: "json",
-			headers: {
-				Accept: "application/json",
-				"Content-Type": "application/json"
-			},
-			success: function(data) {
-				if("success" == data["response"]) {
-					window.location = data["redirect"];
-				}
-				else {
-					$('#errorLabel').html(data["message"]);
-				}
-			},
-			error: function(error) {
-		    	$('#errorLabel').html("Unable to create your organization.");
-		    }
-		});
-
-	});
-
-</script>
