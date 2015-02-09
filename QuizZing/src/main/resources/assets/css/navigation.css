@@ -12,3 +12,8 @@
 {
 	margin-right: 15px
 }
+
+#main-nav
+{
+	border-bottom: 1px solid orange;
+}

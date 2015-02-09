@@ -1,13 +1,13 @@
 #footer
 {
 	width: 100%;
-	background-color: #333333;
+	background-color: #f1f1f1;
 	opacity: 0.8;
 	min-width: 1050px;
 	
-	-webkit-box-shadow: 0 150px 0px 0px #333333;
- 	-moz-box-shadow: 0 150px 0px 0px #333333;
-   	box-shadow: 0 150px 0px 0px #333333;
+	-webkit-box-shadow: 0 150px 0px 0px #f1f1f1;
+ 	-moz-box-shadow: 0 150px 0px 0px #f1f1f1;
+   	box-shadow: 0 150px 0px 0px #f1f1f1;
 }
 
 #footer-content
@@ -19,5 +19,5 @@
 
 #bottom-links ul li a
 {
-	color: white;
+	/*color: white;*/
 }

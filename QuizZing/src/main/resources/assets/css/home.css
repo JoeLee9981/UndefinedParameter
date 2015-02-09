@@ -87,3 +87,36 @@ body
 	color: White;
 	text-decoration: underline;
 }
+
+.homeOptions
+{
+	height: 65px !important;
+}
+
+#loginFormContainer
+{
+	margin: 25px 0 25px 0;
+	background: #f9f9f9;
+	border: 1px solid #ececec;
+	border-radius: 3px;
+	padding: 15px;
+}
+
+#homeBanner
+{
+	background: #f1f1f1;
+	margin-top: 0 !important;
+	background: url('../images/sky1.jpg') no-repeat -200px 0px;
+	background-size: 2000px;
+	border-bottom: 20px solid #f1f1f1;
+}
+
+#bannerContent
+{
+	margin-top: 0;
+}
+
+#bannerHeader > *
+{
+	color:white;
+}
