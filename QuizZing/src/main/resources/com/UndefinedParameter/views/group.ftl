@@ -107,10 +107,6 @@
 										</tr>
 									</#list>
 								</table>
-								<h3 class="text-success">Feel free to add questions - But please be courteous</h3>
-								<p class="text-alert">Since this site is still under construction, be courteous to those using these quizzes to study.
-										Be sure of the validity of the question before you add it to a quiz - Thank You!</p>
-								<p>In the future there will be user controls to manage the content yourself, preventing this problem, but they are not yet implemented</p>
 								<br/>
 
 							</div>

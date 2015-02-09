@@ -57,7 +57,7 @@
 										</span>
 										<div id="headerButtons">
 											<button type="button" onclick="location.href = '/register'" class="success large">Register</button>
-											<button type="button" class="warning large todo">Learn More</button>		
+											<button type="button" class="warning large" onclick="location.href = '/about'">Learn More</button>		
 										</div>
 									</div>
 								</div>

@@ -20,10 +20,10 @@ import com.UndefinedParameter.app.core.User;
 import com.UndefinedParameter.app.core.UserManager;
 import com.UndefinedParameter.jdbi.NewsArticleDAO;
 import com.UndefinedParameter.jdbi.UserDAO;
+import com.UndefinedParameter.views.AboutView;
 import com.UndefinedParameter.views.HomeView;
 import com.UndefinedParameter.views.LoginView;
 import com.UndefinedParameter.views.RegisterView;
-import com.UndefinedParameter.views.UserProfileView;
 
 @Path("/")
 @Produces(MediaType.TEXT_HTML)
@@ -118,5 +118,11 @@ public class HomeResource {
 			return Response.status(500).build();
 		}
 		
+	}
+	
+	@GET
+	@Path("/about")
+	public Response getAboutPage() {
+		return Response.ok(new AboutView(newsManager.getRecentNews())).build();
 	}
 }
