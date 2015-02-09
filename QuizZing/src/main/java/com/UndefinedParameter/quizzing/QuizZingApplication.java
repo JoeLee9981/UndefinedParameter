@@ -110,7 +110,7 @@ public class QuizZingApplication extends Application<QuizZingConfiguration> {
 		environment.jersey().register(new OrganizationResource(orgDAO, groupDAO));
 		environment.jersey().register(new QuestionCreatorResource(quizDAO, questionDAO));
 		environment.jersey().register(new FeedbackResource(feedbackDAO, bugDAO));
-		environment.jersey().register(new UserProfileResource(userDAO));
+		environment.jersey().register(new UserProfileResource(userDAO, quizDAO, questionDAO));
 
 		logger.info("All Views Registered");
 	}
