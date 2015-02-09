@@ -6,9 +6,9 @@
 	    
 	    	<a class="element brand" href="/"><i class="icon-home"></i></a>
 	    	<span class="element-divider"></span>
-	    	<a class="element brand" href="/orgs">Organizations</a>
-	    	<span class="element-divider"></span>
-	    	<a class="element brand todo" href="#">Stats</a>    	
+	    	<a class="element brand" href="/orgs">Organizations</a>	
+			<span class="element-divider"></span>
+			<a class="element brand todo" href="#">Categories</a>	
 			<span class="element-divider"></span>
             <div class="element">
                 <a class="dropdown-toggle" href="#">
@@ -43,12 +43,16 @@
 		            	<li><a href="#" class="todo">My Groups</a></li>
 		                <li><a href="#" class="todo">My Quizzes</a></li>
 		                <li><a href="/user?userid=${user.id}">Account Settings</a></li>
-		                <li><a href="#" class="todo">Logout</a></li>
+		                <li><a href="#" onclick="logoutUser()">Logout</a></li>
 		            </ul>
 		        </div>
 		        <button id="userAndImageBox" class="element image-button image-left place-right">
 			        <a href="/user?userid=${user.id}">
-			            ${user.userName?html}
+			        	<#if user.userName?length &gt; 19>
+			        		${user.userName?substring(0, 18)}...
+			        	<#else>
+			        		${user.userName?html}
+			        	</#if>      
 			            <img src=""/>
 		            </a>
 		        </button>

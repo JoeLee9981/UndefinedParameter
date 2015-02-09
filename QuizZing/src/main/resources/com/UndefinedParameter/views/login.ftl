@@ -18,7 +18,14 @@
 		
 			<div class="metro">
 				<div class="grid fluid">		
-					<div class="page-content">						
+					<div class="page-content">
+						<#if redirectUrl??>
+							<div class="row">
+								<div class="offset1 span6">
+									<h4>You must log into QuizZing to access this page.</h4>
+								</div>
+							</div>	
+						</#if>					
 					    <div class="row">
 					    	<div class="offset1 span6">
 								<h2>Sign In To QuizZing</h2>
@@ -112,7 +119,11 @@
 		    type: 'POST',
 		    success: function(data) {
 		    	//console.log(data);
-		    	window.location='/';
+			    <#if redirectUrl??>
+			    	window.location='${redirectUrl?html}';
+			    <#else>
+			    	window.location='/';
+			    </#if>
 		    },
 		    error: function(error) {
 		    	$("#mainLoginError").html("The email and/or password you entered are incorrect.");

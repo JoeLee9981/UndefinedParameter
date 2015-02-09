@@ -14,13 +14,15 @@ public class OrganizationView extends View {
 	private boolean loggedIn;
 	private List<Group> registeredGroups;
 	private List<Group> groups;
+	private User user;
 	
-	public OrganizationView(Organization org, List<Group> groups, List<Group> registeredGroups, boolean loggedIn) {
+	public OrganizationView(Organization org, List<Group> groups, List<Group> registeredGroups, boolean loggedIn, User user) {
 		super("org.ftl");
 		this.loggedIn = loggedIn;
 		this.organization = org;
 		this.groups = groups;
 		this.registeredGroups = registeredGroups;
+		this.user = user;
 	}
 	
 	public Organization getOrganization() {
@@ -37,5 +39,9 @@ public class OrganizationView extends View {
 	
 	public boolean isLoggedIn() {
 		return loggedIn;
+	}
+	
+	public User getUser() {
+		return this.user;
 	}
 }

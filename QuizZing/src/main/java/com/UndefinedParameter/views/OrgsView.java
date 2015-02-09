@@ -48,4 +48,8 @@ public class OrgsView extends View {
 	public boolean isLoggedIn() {
 		return user != null;
 	}
+	
+	public User getUser() {
+		return this.user;
+	}	
 }

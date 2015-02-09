@@ -51,10 +51,10 @@ public class OrganizationResource {
 	public Response getOrganizationView(@Auth(required = false) User user, @QueryParam("id") int id) {
 		if(user != null) {
 			List<Group> unregGroups = manager.findUnregisteredGroupsByOrg(user.getId(), id);
-			return Response.ok(new OrganizationView(manager.findOrgById(id), unregGroups, manager.findRegisteredGroupsById(id, user.getId()), true)).build();
+			return Response.ok(new OrganizationView(manager.findOrgById(id), unregGroups, manager.findRegisteredGroupsById(id, user.getId()), true, user)).build();
 		}
 		else {
-			return Response.ok(new OrganizationView(manager.findOrgById(id), manager.findGroupsById(id), null, false)).build();
+			return Response.ok(new OrganizationView(manager.findOrgById(id), manager.findGroupsById(id), null, false, user)).build();
 		}
 	}
 	
@@ -62,9 +62,9 @@ public class OrganizationResource {
 	@Path("/create") 
 	public Response getCreateOrgView(@Auth(required = false) User user) {
 		if(user != null)
-			return Response.ok(new OrganizationCreatorView()).build();
+			return Response.ok(new OrganizationCreatorView(user)).build();
 		else
-			return Response.ok(new LoginView()).build();
+			return Response.ok(new LoginView("/orgs/create")).build();
 	}
 	
 	@GET
