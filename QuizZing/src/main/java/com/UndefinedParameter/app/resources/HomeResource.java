@@ -16,9 +16,12 @@ import javax.ws.rs.core.Response;
 
 import com.UndefinedParameter.app.core.NewsArticle;
 import com.UndefinedParameter.app.core.NewsManager;
+import com.UndefinedParameter.app.core.OrganizationManager;
 import com.UndefinedParameter.app.core.User;
 import com.UndefinedParameter.app.core.UserManager;
+import com.UndefinedParameter.jdbi.GroupDAO;
 import com.UndefinedParameter.jdbi.NewsArticleDAO;
+import com.UndefinedParameter.jdbi.OrganizationDAO;
 import com.UndefinedParameter.jdbi.UserDAO;
 import com.UndefinedParameter.views.AboutView;
 import com.UndefinedParameter.views.HomeView;
@@ -31,10 +34,13 @@ public class HomeResource {
 	
 	private NewsManager newsManager;
 	private UserManager userManager;
+	private OrganizationManager orgManager;
 	
-	public HomeResource(NewsArticleDAO newsDAO, UserDAO userDAO) {
+	public HomeResource(NewsArticleDAO newsDAO, UserDAO userDAO, OrganizationDAO orgDAO, GroupDAO groupDAO) {
 		this.newsManager = new NewsManager(newsDAO);
 		this.userManager = new UserManager(userDAO);
+		this.orgManager = new OrganizationManager(orgDAO, groupDAO);
+		
 	}
 	
 	/*
@@ -51,7 +57,7 @@ public class HomeResource {
 		else {
 			//TODO: Create a customized view for the user and return it, instead of the standard
 			ArrayList<NewsArticle> news = (ArrayList<NewsArticle>)newsManager.getRecentNewsByUser(user.getId());
-			return Response.ok(new HomeView("user_home.ftl", news.toArray(new NewsArticle[news.size()]), user)).build();
+			return Response.ok(new HomeView("user_home.ftl", news.toArray(new NewsArticle[news.size()]), user, orgManager.findOrgsByUserId(user.getId()))).build();
 		}
 	}
 	

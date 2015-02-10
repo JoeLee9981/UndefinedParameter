@@ -16,105 +16,309 @@
 		
 		<#include "../includes/navigation.ftl">
 
-		<div id="home-content" class="page-content metro">
-			<div class="grid fluid">
-				<div class="row">
-					<div class="span3 no-span-left-margin" >
-						<div id="login-form-container" class="span12">
-							<h3>Logged in as ${user.userName}</h3>
-							<a href="" id="logout">Logout</a>
-							<a href="/user?userid=${user.id}">My Profile</a>
-						</div>
 
-						<div id="register-form-container" class="span12">
-							<div class="form-title-header">
-								<span class="subheader-secondary">Put stuff here</span>
-							</div>
-							
-						</div>											
+		<div id="home-content" class=" metro">
+			<div class="grid fluid">
+			
+				
+				<div class="page-content">
+					<div class="row">
+						<button class="shortcut bg-amber fg-white span3 todo">
+						    <i class="icon-help"></i>
+						   	Find A Quiz
+						</button>
+						<button class="shortcut bg-amber fg-white span3 todo">
+						    <i class="icon-lightning"></i>
+						   	Random Quiz
+						</button>
+						<button class="shortcut bg-amber fg-white span3 todo">
+						    <i class="icon-comments-2"></i>
+						    Find A Group
+						</button>
+						<button class="shortcut bg-amber fg-white span3 todo">
+							<a href="#">
+						    <i class="icon-user-3"></i>
+						    Find An Organization
+						    </a>
+						</button>											
+				    </div>
+				</div>
+			
+				<div class="page-content row">
+					<div class="span6">
+						<div class="row">
+							<h2>Top Quizzes</h2>
+							<table class="table hovered">
+		                        <thead>
+			                        <tr>
+			                            <th class="text-left">Quiz</th>
+			                            <th class="text-right">Attempts</th>
+			                            <th class="text-right">Rating</th>
+			                        </tr>
+		                        </thead>
+		                        <tbody>                         
+		                        </tbody>
+									<tr>
+										<td><a href="#" class="todo"> Content here </a></td>
+										<td class="text-right right">17</td>
+										<td class="text-right right">4.3</td>
+									</tr>
+									<tr>
+										<td><a href="#" class="todo"> Content here </a></td>
+										<td class="text-right right">17</td>
+										<td class="text-right right">4.3</td>
+									</tr>
+									<tr>
+										<td><a href="#" class="todo"> Content here </a></td>
+										<td class="text-right right">17</td>
+										<td class="text-right right">4.3</td>
+									</tr>
+									<tr>
+										<td><a href="#" class="todo"> Content here </a></td>
+										<td class="text-right right">17</td>
+										<td class="text-right right">4.3</td>
+									</tr>
+									<tr>
+										<td><a href="#" class="todo"> Content here </a></td>
+										<td class="text-right right">17</td>
+										<td class="text-right right">4.3</td>
+									</tr>
+									<tr>
+										<td><a href="#" class="todo"> Content here </a></td>
+										<td class="text-right right">17</td>
+										<td class="text-right right">4.3</td>
+									</tr>
+									<tr>
+										<td><a href="#" class="todo"> Content here </a></td>
+										<td class="text-right right">17</td>
+										<td class="text-right right">4.3</td>
+									</tr>
+									<tr>
+										<td><a href="#" class="todo"> Content here </a></td>
+										<td class="text-right right">17</td>
+										<td class="text-right right">4.3</td>
+									</tr>
+									<tr>
+										<td><a href="#" class="todo"> Content here </a></td>
+										<td class="text-right right">17</td>
+										<td class="text-right right">4.3</td>
+									</tr>
+									<tr>
+										<td><a href="#" class="todo"> Content here </a></td>
+										<td class="text-right right">17</td>
+										<td class="text-right right">4.3</td>
+									</tr>
+		                        <tfoot></tfoot>
+		                    </table>  
+	                    </div>
+						<div class="row">
+							<h2>Recently Added Quizzes</h2>
+							<table class="table hovered">
+		                        <thead>
+			                        <tr>
+			                            <th class="text-left">Quiz</th>
+			                            <th class="text-right">Attempts</th>
+			                            <th class="text-right">Rating</th>
+			                        </tr>
+		                        </thead>
+		                        <tbody>                         
+		                        </tbody>
+									<tr>
+										<td><a href="#" class="todo"> Content here </a></td>
+										<td class="text-right right">17</td>
+										<td class="text-right right">4.3</td>
+									</tr>
+									<tr>
+										<td><a href="#" class="todo"> Content here </a></td>
+										<td class="text-right right">17</td>
+										<td class="text-right right">4.3</td>
+									</tr>
+									<tr>
+										<td><a href="#" class="todo"> Content here </a></td>
+										<td class="text-right right">17</td>
+										<td class="text-right right">4.3</td>
+									</tr>
+									<tr>
+										<td><a href="#" class="todo"> Content here </a></td>
+										<td class="text-right right">17</td>
+										<td class="text-right right">4.3</td>
+									</tr>
+									<tr>
+										<td><a href="#" class="todo"> Content here </a></td>
+										<td class="text-right right">17</td>
+										<td class="text-right right">4.3</td>
+									</tr>
+									<tr>
+										<td><a href="#" class="todo"> Content here </a></td>
+										<td class="text-right right">17</td>
+										<td class="text-right right">4.3</td>
+									</tr>
+									<tr>
+										<td><a href="#" class="todo"> Content here </a></td>
+										<td class="text-right right">17</td>
+										<td class="text-right right">4.3</td>
+									</tr>
+									<tr>
+										<td><a href="#" class="todo"> Content here </a></td>
+										<td class="text-right right">17</td>
+										<td class="text-right right">4.3</td>
+									</tr>
+									<tr>
+										<td><a href="#" class="todo"> Content here </a></td>
+										<td class="text-right right">17</td>
+										<td class="text-right right">4.3</td>
+									</tr>
+									<tr>
+										<td><a href="#" class="todo"> Content here </a></td>
+										<td class="text-right right">17</td>
+										<td class="text-right right">4.3</td>
+									</tr>
+		                        <tfoot></tfoot>
+		                    </table>  
+	                    </div>                 			
 					</div>
-					<div class="span9 no-span-left-margin">
-						<div class="offset1 span11">
-							<div>
-								<h2 id="welcome-message" class="fg-white"><strong>Welcome to QuizZing.</strong>  Get connected to study groups
-								and discover the new, better way to study.  Try it out with our tailored for you <a href="/group/CS4400">CS4400 Quiz.</a></h2>
-							</div>
-							<!--<div>
-								<p class="fg-white">
-									QuizZing provides a better, more efficient way to study. Study in groups from within your
-									classes and schools as well as those across the country. Create your own questions, quizzes,
-									and all sorts of other cool stuff that I can't think of right now.
-								</p>
-							</div>-->
-						</div>
-						<div id="home-page-quick-links" class="offset1 span11 fg-white">
-							<div>
-								<span>
-									<a href="#" class="todo">
-										<i class="icon-globe on-left"></i>
-										Get Connected To Your Group
-									</a>
-								</span>
-							</div>
-							<div>
-								<span>
-									<a href="#" onclick="scrollToLearnMore();">
-										<i class="icon-glasses-2 on-left"></i>
-										Learn More
-									</a>
-								</span>
-							</div>
-							<div>
-								<span>
-									<a href="#" class="todo">
-										<i class="icon-search on-left"></i>
-										Search For More
-									</a>
-								<span>
-							</div>
-							<div>
-								<span>
-									<a href="/feedback">
-										<i class="icon-printer on-left"></i>
-										Give Us Your Feedback
-									</a>
-								<span>
-							</div>
-						</div>						
+					
+					<div class="offset1 span5">
+						<div class="row">
+							<h2>Top Groups</h2>
+							<table class="table hovered">
+		                        <thead>
+			                        <tr>
+			                            <th class="text-left">Group</th>
+			                            <th class="text-right">Members</th>
+			                            <th class="text-right">Quizzes</th>
+			                        </tr>
+		                        </thead>
+		                        <tbody>                         
+		                        </tbody>
+									<tr>
+										<td><a href="#" class="todo"> Content here </a></td>
+										<td class="text-right right">17</td>
+										<td class="text-right right">4.3</td>
+									</tr>
+									<tr>
+										<td><a href="#" class="todo"> Content here </a></td>
+										<td class="text-right right">17</td>
+										<td class="text-right right">4.3</td>
+									</tr>
+									<tr>
+										<td><a href="#" class="todo"> Content here </a></td>
+										<td class="text-right right">17</td>
+										<td class="text-right right">4.3</td>
+									</tr>
+									<tr>
+										<td><a href="#" class="todo"> Content here </a></td>
+										<td class="text-right right">17</td>
+										<td class="text-right right">4.3</td>
+									</tr>
+									<tr>
+										<td><a href="#" class="todo"> Content here </a></td>
+										<td class="text-right right">17</td>
+										<td class="text-right right">4.3</td>
+									</tr>
+									<tr>
+										<td><a href="#" class="todo"> Content here </a></td>
+										<td class="text-right right">17</td>
+										<td class="text-right right">4.3</td>
+									</tr>
+									<tr>
+										<td><a href="#" class="todo"> Content here </a></td>
+										<td class="text-right right">17</td>
+										<td class="text-right right">4.3</td>
+									</tr>
+									<tr>
+										<td><a href="#" class="todo"> Content here </a></td>
+										<td class="text-right right">17</td>
+										<td class="text-right right">4.3</td>
+									</tr>
+									<tr>
+										<td><a href="#" class="todo"> Content here </a></td>
+										<td class="text-right right">17</td>
+										<td class="text-right right">4.3</td>
+									</tr>
+									<tr>
+										<td><a href="#" class="todo"> Content here </a></td>
+										<td class="text-right right">17</td>
+										<td class="text-right right">4.3</td>
+									</tr>
+		                        <tfoot></tfoot>
+		                    </table>  
+	                    </div>
+						<div class="row">
+							<h2>Top Categories</h2>
+							<table class="table hovered">
+		                        <thead>
+			                        <tr>
+			                            <th class="text-left">Subject</th>
+			                            <th class="text-right">Quizzes</th>
+			                            <th class="text-right">Groups</th>
+			                        </tr>
+		                        </thead>
+		                        <tbody>                         
+		                        </tbody>
+									<tr>
+										<td><a href="#" class="todo"> Content here </a></td>
+										<td class="text-right right">17</td>
+										<td class="text-right right">4.3</td>
+									</tr>
+									<tr>
+										<td><a href="#" class="todo"> Content here </a></td>
+										<td class="text-right right">17</td>
+										<td class="text-right right">4.3</td>
+									</tr>
+									<tr>
+										<td><a href="#" class="todo"> Content here </a></td>
+										<td class="text-right right">17</td>
+										<td class="text-right right">4.3</td>
+									</tr>
+									<tr>
+										<td><a href="#" class="todo"> Content here </a></td>
+										<td class="text-right right">17</td>
+										<td class="text-right right">4.3</td>
+									</tr>
+									<tr>
+										<td><a href="#" class="todo"> Content here </a></td>
+										<td class="text-right right">17</td>
+										<td class="text-right right">4.3</td>
+									</tr>
+									<tr>
+										<td><a href="#" class="todo"> Content here </a></td>
+										<td class="text-right right">17</td>
+										<td class="text-right right">4.3</td>
+									</tr>
+									<tr>
+										<td><a href="#" class="todo"> Content here </a></td>
+										<td class="text-right right">17</td>
+										<td class="text-right right">4.3</td>
+									</tr>
+									<tr>
+										<td><a href="#" class="todo"> Content here </a></td>
+										<td class="text-right right">17</td>
+										<td class="text-right right">4.3</td>
+									</tr>
+									<tr>
+										<td><a href="#" class="todo"> Content here </a></td>
+										<td class="text-right right">17</td>
+										<td class="text-right right">4.3</td>
+									</tr>
+									<tr>
+										<td><a href="#" class="todo"> Content here </a></td>
+										<td class="text-right right">17</td>
+										<td class="text-right right">4.3</td>
+									</tr>
+		                        <tfoot></tfoot>
+		                    </table>  
+	                    </div>  					
 					</div>
 				</div>
+			
+			
+			
+				
 			</div>	
 		</div>
 		
-		<div class="divider1">
-		</div>
-		
-		<div class="metro" id="home-page-subsection">
-			<div class="grid fluid" id="learnmore">
-				<div class="page-content">
-					<div class="home-subsection">
-						<div class="row">
-							<h1>What Is Quizzing?</h1>
-						</div>
-
-						<#list news as n>
-											
-							<div class="row">
-								<div class="span3">
-									<div class="notice marker-on-right bg-amber fg-white font-size-medium">
-									 	${n.headline}
-									</div>
-								</div>
-								<div class="span9">
-										<p>${n.body}</p>
-								</div>
-							</div>
-						
-						</#list>										
-					</div>
-				</div>
-			</div>
-		<div>				
+					
 									
 		<#include "../includes/footer.ftl">
 	</div>
@@ -128,17 +332,46 @@
 				}, 1000);
 		}
 		
-		$('#logout').click(function(event) {
+		$('#loginForm').submit(function(event) {
 			event.preventDefault();
+			
+			var username = $('#email').val();
+			var password = $('#password').val();
+			
+			if(!username) {
+				//doLoginError("Please enter your email");
+				//return;
+			}
+			
+			if(!password) {
+				//doLoginError("Please enter your password");
+				//return;
+			}
+			
 			$.ajax({
-			    url: '/logout',
-			    username: $('#username').val(),
-			    password: $('#password').val(),
+			    url: '/login',
+			    username: username,
+			    password: password,
 			    type: 'POST',
-			    error: function(error) {
+			    success: function(data) {
+			    	console.log(data);
 			    	window.location='/';
+			    },
+			    error: function(error) {
+			    	doLoginError("Invalid email and/or password");
 			    }
 			});
 		});
+		
+		$('#register-form').submit(function(event) {
+			event.preventDefault();
+			
+			window.location='/register';
+		});
+		
+		function doLoginError(message) {
+			document.getElementById('loginErrorLabel').innerHTML = message;
+		}
+		
 	</script>
 </html>

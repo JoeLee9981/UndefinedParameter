@@ -1,0 +1,15 @@
+#profileContent
+{
+	
+}
+
+#newsFeed
+{
+	border-right: 1px solid #eeeeee;
+	border-left: 1px solid #eeeeee;
+}
+
+#myOrgs *
+{
+	font-size: 0.95em;
+}
