@@ -23,7 +23,7 @@
 				
 				<div class="page-content">
 					<div class="row">
-						<button class="shortcut bg-amber fg-white span3 todo">
+						<button class="shortcut bg-amber fg-white span3" onclick="location.href = '/quiz/quizzes'">
 						    <i class="icon-help"></i>
 						   	Find A Quiz
 						</button>
@@ -31,11 +31,11 @@
 						    <i class="icon-lightning"></i>
 						   	Random Quiz
 						</button>
-						<button class="shortcut bg-amber fg-white span3 todo">
+						<button class="shortcut bg-amber fg-white span3" onclick="location.href = '/group/top'">
 						    <i class="icon-comments-2"></i>
 						    Find A Group
 						</button>
-						<button class="shortcut bg-amber fg-white span3 todo">
+						<button class="shortcut bg-amber fg-white span3" onclick="location.href = '/orgs'">
 							<a href="#">
 						    <i class="icon-user-3"></i>
 						    Find An Organization

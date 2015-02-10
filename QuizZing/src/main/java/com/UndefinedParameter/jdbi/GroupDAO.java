@@ -13,6 +13,9 @@ import com.UndefinedParameter.app.core.Group;
 @RegisterMapper(GroupMapper.class)
 public interface GroupDAO {
 
+	@SqlQuery("SELECT * FROM SubGroup ORDER BY MemberCount")
+	public List<Group> findTopGroups();
+	
 	@SqlQuery("SELECT * FROM SubGroup WHERE OrgID = :orgId")
 	public List<Group> findGroupsByOrgId(@Bind("orgId") long id);
 	
@@ -32,6 +35,12 @@ public interface GroupDAO {
 			+ "user.UserID = :userId AND "
 			+ "sg.OrgID = :orgId")
 	public List<Group> findGroupsByUser(@Bind("userId") long userId, @Bind("orgId") long orgId);
+	
+	@SqlQuery("SELECT * FROM UserGroups ug, SubGroup sg, User user WHERE "
+			+ "ug.GroupID = sg.GroupID AND "
+			+ "ug.UserID = user.UserID AND "
+			+ "user.UserID = :userId")
+	public List<Group> findGroupsByUser(@Bind("userId") long userId);
 	
 	@SqlUpdate("INSERT INTO SubGroup (Name, Description, OrgID) VALUES (:name, :desc, :orgId)")
 	@GetGeneratedKeys

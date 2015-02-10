@@ -28,6 +28,7 @@ import com.UndefinedParameter.jdbi.OrganizationDAO;
 import com.UndefinedParameter.jdbi.QuestionDAO;
 import com.UndefinedParameter.jdbi.QuizDAO;
 import com.UndefinedParameter.views.GroupView;
+import com.UndefinedParameter.views.GroupsView;
 import com.UndefinedParameter.views.LoginView;
 
 
@@ -91,5 +92,14 @@ public class GroupResource {
 		
 	}
 	
-	
+	@GET
+	@Path("/top")
+	public Response getTopGroups(@Auth(required = false) User user) {
+		if(user != null) {
+			return Response.ok(new GroupsView(manager.findTopGroups(), manager.findRegisteredGroups(user.getId()), true)).build();
+		}
+		else {
+			return Response.ok(new GroupsView(manager.findTopGroups(), null, false)).build();
+		}
+	}
 }

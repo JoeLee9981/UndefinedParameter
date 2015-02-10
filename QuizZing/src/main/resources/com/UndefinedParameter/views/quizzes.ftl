@@ -23,16 +23,17 @@
 							<div class="home-subsection">
 								<h3>Your Quizzes</h3>
 								<table>
+									
+									<tr>
+										<th>Quiz Name</th>
+										<th>Description</th>
+										<th># of Questions</th>
+										<th>Difficulty</th>
+										<th>Rating</th>
+										<th>Time</th>
+										<th>Edit</th>
+									</tr>
 									<#list userQuizzes as quiz>	
-										<tr>
-											<th>Quiz Name</th>
-											<th>Description</th>
-											<th># of Questions</th>
-											<th>Difficulty</th>
-											<th>Rating</th>
-											<th>Time</th>
-											<th>Edit</th>
-										</tr>
 										<tr>
 											<td>
 												<a href="/quiz?quizId=${quiz.quizId}"><h3 class="text-info">${quiz.name} </h3></a>
@@ -52,9 +53,6 @@
 											<td>
 												<h3>${quiz.time}</h3>
 											</td>
-											<!--<td>
-												<a href="/quiz/edit?groupId=${group.id}&quizId=${quiz.quizId}"><h3 class="text-success"><button id="editQuizButton">+</button></h3></a>
-											</td>-->
 										</tr>
 									</#list>
 								</table>

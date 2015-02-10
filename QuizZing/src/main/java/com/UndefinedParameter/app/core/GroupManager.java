@@ -53,6 +53,15 @@ public class GroupManager {
 		return groupDAO.findGroupById(id);
 	}
 	
+	public List<Group> findTopGroups() {
+		//TODO: Restrict this to prevent pulling 1000 entries from the DB
+		return groupDAO.findTopGroups();
+	}
+	
+	public List<Group> findRegisteredGroups(long userId) {
+		return groupDAO.findGroupsByUser(userId);
+	}
+	
 	public Organization findParentOrganization(long orgId) {
 		return orgsDAO.findOrganization(orgId);
 	}
