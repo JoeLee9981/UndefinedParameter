@@ -35,13 +35,15 @@ public interface UserDAO {
 					   @Bind("squestion") String squestion,
 					   @Bind("sanswer") String sanswer);
 	
-	@SqlUpdate("UPDATE User "
-			+ "(Username, FirstName, LastName, MiddleName, Country, City, State, Email, Password, SQuestion, SAnswer, Active, ActivationCode, LastAccessed, SeeAgain) "
-			+ "values "
-			+ "(:username, :firstName, :lastName, :middleName, :country, :city, :state, :email, :password, :squestion, :sanswer, :active, :activecode, :lastacessed, :seeagain) "
+	@SqlUpdate("UPDATE User SET "
+			+ "UserName=:username, FirstName=:firstName, LastName=:lastName, "
+			+ "MiddleName=:middleName, Country=:country, City=:city, State=:state, "
+			+ "Email=:email, Password=:password, SQuestion=:squestion, SAnswer=:sanswer, "
+			+ "Active=:active, ActivationCode=:activecode, LastAccessed=:lastaccessed, SeeAgain=:seeagain "
 			+ "WHERE UserID = :userid")
 	@GetGeneratedKeys
-	public long update(@Bind("username") String username, 
+	public long update(@Bind("userid") long userid,
+					   @Bind("username") String username, 
 					   @Bind("firstName") String firstName,
 					   @Bind("lastName") String lastName,
 					   @Bind("middleName") String middleName,
@@ -53,7 +55,8 @@ public interface UserDAO {
 					   @Bind("squestion") String squestion,
 					   @Bind("sanswer") String sanswer,
 					   @Bind("active") int active,
-					   @Bind("activecode") DateTime date,
+					   @Bind("activecode") String code,
+					   @Bind("lastaccessed") DateTime date,
 					   @Bind("seeagain") int again);
 	
 	

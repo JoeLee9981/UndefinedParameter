@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class User {
 	
-	private int id;
+	private long id;
 	private String userName;
 	private String firstName;
 	private String middleName;
@@ -18,11 +18,12 @@ public class User {
 	private String password;
 	private String secretQuestion;
 	private String secretAnswer;
+	private String activeCode;
 	private DateTime lastAccessed;
 	private int active;
 	private int seeagain;
 	
-	public User(int id) {
+	public User(long id) {
 		this.id = id;
 	}
 	
@@ -33,12 +34,12 @@ public class User {
 	/************************* GETTERS AND SETTERS ******************************************/
 
 	@JsonProperty
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
 	@JsonProperty
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
@@ -180,6 +181,16 @@ public class User {
 	@JsonProperty
 	public void setSeeagain(int seeagain) {
 		this.seeagain = seeagain;
+	}
+
+	@JsonProperty
+	public String getActiveCode() {
+		return activeCode;
+	}
+	
+	@JsonProperty
+	public void setActiveCode(String activeCode) {
+		this.activeCode = activeCode;
 	}
 	
 }

@@ -73,7 +73,8 @@ public class UserManager {
 	
 	public boolean updateUser(User user) throws Exception {
 		try {
-			userDAO.update(user.getUserName(), 
+			userDAO.update(user.getId(),
+						   user.getUserName(), 
 						   user.getFirstName(), 
 						   user.getLastName(), 
 						   user.getMiddleName(),
@@ -85,6 +86,7 @@ public class UserManager {
 						   user.getSecretQuestion(), 
 						   user.getSecretAnswer(),
 						   user.getActive(),
+						   user.getActiveCode(),
 						   user.getLastAccessed(),
 						   user.getSeeAgain());
 		}

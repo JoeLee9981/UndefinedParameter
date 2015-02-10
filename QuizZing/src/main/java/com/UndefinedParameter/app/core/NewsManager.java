@@ -23,7 +23,7 @@ public class NewsManager {
 	}
 	
 	
-	public List<NewsArticle> getRecentNewsByUser(int userId) {
+	public List<NewsArticle> getRecentNewsByUser(long userId) {
 		//TODO: Select news by user id, format and return
 		return newsDAO.findAllNews();
 	}
