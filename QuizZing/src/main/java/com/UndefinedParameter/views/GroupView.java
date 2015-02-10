@@ -7,6 +7,7 @@ import java.util.List;
 import com.UndefinedParameter.app.core.Group;
 import com.UndefinedParameter.app.core.Organization;
 import com.UndefinedParameter.app.core.Quiz;
+import com.UndefinedParameter.app.core.User;
 
 public class GroupView extends View {
 
@@ -20,14 +21,16 @@ public class GroupView extends View {
 	private List<Quiz> userQuizzes;
 	//is the user logged in
 	private boolean loggedIn;
+	private User user;
 	
-	public GroupView(Group group, Organization org, List<Quiz> quizzes, List<Quiz> userQuizzes, boolean loggedIn) {
+	public GroupView(Group group, Organization org, List<Quiz> quizzes, List<Quiz> userQuizzes, boolean loggedIn, User user) {
 		super("group.ftl");
 		this.group = group;
 		this.organization = org;
 		this.quizzes = quizzes;
 		this.userQuizzes = userQuizzes;
 		this.loggedIn = loggedIn;
+		this.user = user;
 	}
 	
 	public Group getGroup() {
@@ -57,4 +60,8 @@ public class GroupView extends View {
 	public boolean isLoggedIn() {
 		return loggedIn;
 	}
+	
+	public User getUser() {
+		return this.user;
+	}	
 }

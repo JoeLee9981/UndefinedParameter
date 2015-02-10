@@ -23,7 +23,7 @@
                         <ul>
                             <li><a href="/"><i class="icon-home"></i></a></li>
                             <li><a href="/orgs">Organizations</a></li>
-                            <li class="active"><a>Create</a></li>
+                            <li class="active"><a>Create Organization</a></li>
                         </ul>
                     </nav>
 				</div>
@@ -31,8 +31,8 @@
 
 				 <div class="row">
 					<div class="offset1 span6">
-						<h2>Create An Organization</h2>
-						<p id="mainCreateError" class="tertiary-text-secondary errorFormText1 orgCreateError" hidden>* There were errors with the information you entered.  Fix the errors in red and then click 'Create Organization'.</p>										
+						<h2>Create An <strong>Organization</strong></h2>
+						<p id="mainCreateError" class="tertiary-text-secondary errorFormText1 createOrgError" hidden>* There were errors with the information you entered.  Fix the errors in red and then click 'Create Organization'.</p>										
 					</div>
 				</div>
 				<div class="row">
@@ -45,19 +45,19 @@
 							<p id="alreadyExistsError" class="tertiary-text-secondary errorFormText1 createOrgError" hidden></p>		
 							<div class="row">
 								<div class="input-control text span12">
-								    <input type="text" id="organizationName" value="" placeholder="Organization Name"/>
+								    <input class="focusOutTrim" type="text" id="organizationName" value="" placeholder="Organization Name"/>
 								</div>
 							</div>	
 							<p class="tertiary-text">A location is not required, but adding a location will help others to find this organization.</p>
 							<div class="row">
 								<div class="input-control text span4">
-								    <input type="text" id="city" value="" placeholder="City"/>
+								    <input class="focusOutTrim" type="text" id="city" value="" placeholder="City"/>
 								</div>		
 								<div class="input-control text span4">
-								    <input type="text" id="state" value="" placeholder="State/Province"/>
+								    <input class="focusOutTrim" type="text" id="state" value="" placeholder="State/Province"/>
 								</div>	
 								<div class="input-control text span4">
-								    <input type="text" id="country" value="" placeholder="Country"/>
+								    <input class="focusOutTrim" type="text" id="country" value="" placeholder="Country"/>
 								</div>											
 							</div>
 							<div>
@@ -65,7 +65,7 @@
 							</div>
 							<p id="descriptionError" class="tertiary-text-secondary errorFormText1 createOrgError" hidden>Enter a description for this organization.</p>
 							<div class="input-control textarea">
-							    <textarea maxlength="2000" class="expanding" id="description"></textarea>
+							    <textarea maxlength="2000" class="expanding" id="description" placeholder="Describe this organization."></textarea>
 							</div>	
 				
 							<div class="row">

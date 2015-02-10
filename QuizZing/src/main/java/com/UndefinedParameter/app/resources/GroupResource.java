@@ -82,11 +82,11 @@ public class GroupResource {
 		if(user != null) {
 			//user is logged in, can display all information
 			List<Quiz> userQuizzes = quizManager.findQuizzesByCreatorId(user.getId(), groupId);
-			return Response.ok(new GroupView(group, organization, quizzes, userQuizzes, true)).build();
+			return Response.ok(new GroupView(group, organization, quizzes, userQuizzes, true, user)).build();
 		}
 		else {
 			//user is not logged in, can't display edit or user quizzes
-			return Response.ok(new GroupView(group, organization, quizzes, null, false)).build();
+			return Response.ok(new GroupView(group, organization, quizzes, null, false, user)).build();
 		}
 		
 	}

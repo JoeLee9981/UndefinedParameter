@@ -73,7 +73,7 @@ public class OrganizationResource {
 		if(user != null)
 			return Response.ok(new GroupCreatorView(manager.findOrgById(orgId))).build();
 		else
-			return Response.ok(new LoginView()).build();
+			return Response.ok(new LoginView("/orgs/org/create?orgId=" + orgId)).build();
 	}
 	
 	@POST

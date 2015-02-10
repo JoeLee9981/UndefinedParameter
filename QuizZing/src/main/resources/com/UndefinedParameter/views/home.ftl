@@ -80,8 +80,8 @@
 						    <i class="icon-comments-2"></i>
 						    Find A Group
 						</button>
-						<button class="shortcut bg-amber fg-white span3">
-							<a href="/register">
+						<button class="shortcut bg-amber fg-white span3 todo">
+							<a href="#">
 						    <i class="icon-user-3"></i>
 						    Find An Organization
 						    </a>
