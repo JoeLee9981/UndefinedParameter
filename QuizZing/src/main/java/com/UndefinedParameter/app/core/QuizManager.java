@@ -224,4 +224,9 @@ public class QuizManager {
 		return null;
 	}
 
+	
+	public List<Quiz> findTopQuizzes() {
+		//TODO Restrict this to avoid returning the entire database
+		return quizDAO.retrieveTopQuizzes();
+	}
 }

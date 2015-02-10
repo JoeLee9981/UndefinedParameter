@@ -68,7 +68,7 @@
 				
 				<div class="page-content">
 					<div class="row">
-						<button class="shortcut bg-amber fg-white span3 todo">
+						<button class="shortcut bg-amber fg-white span3" onclick="location.href = '/quiz/quizzes'">
 						    <i class="icon-help"></i>
 						   	Find A Quiz
 						</button>
