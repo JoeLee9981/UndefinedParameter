@@ -28,6 +28,7 @@ import com.UndefinedParameter.views.LoginView;
 import com.UndefinedParameter.views.QuizCreatorView;
 import com.UndefinedParameter.views.QuizEditView;
 import com.UndefinedParameter.views.QuizView;
+import com.UndefinedParameter.views.QuizzesView;
 import com.UndefinedParameter.views.ScoreView;
 
 @Path("/quiz")
@@ -141,4 +142,15 @@ public class QuizResource {
 		return Response.status(Status.BAD_REQUEST).build();
 	}
 	
+	
+	@GET
+	@Path("/quizzes")
+	public Response getQuizzesPage(@Auth(required = false) User user) {
+		if(user != null) {
+			return Response.ok(new QuizzesView(quizManager.findTopQuizzes(), quizManager.findQuizzesByCreatorId(user.getId()))).build();
+		}
+		else {
+			return Response.ok(new QuizzesView(quizManager.findTopQuizzes(), null)).build();
+		}
+	}
 }

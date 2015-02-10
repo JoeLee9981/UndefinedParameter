@@ -36,7 +36,6 @@
 								<div class="home-subsection">
 									<h3>Your Group Quizzes</h3>
 									<table>
-										<#list userQuizzes as quiz>	
 											<tr>
 												<th>Quiz Name</th>
 												<th>Description</th>
@@ -46,6 +45,9 @@
 												<th>Time</th>
 												<th>Edit</th>
 											</tr>
+											
+										<#list userQuizzes as quiz>		
+										
 											<tr>
 												<td>
 													<a href="/quiz?quizId=${quiz.quizId}"><h3 class="text-info">${quiz.name} </h3></a>
@@ -76,7 +78,7 @@
 							<div class="home-subsection">
 								<h3>All Group Quizzes</h3>
 								<table>
-									<#list quizzes as quiz>	
+										
 										<tr>
 											<th>Quiz Name</th>
 											<th>Description</th>
@@ -85,6 +87,9 @@
 											<th>Rating</th>
 											<th>Time</th>
 										</tr>
+										
+									<#list quizzes as quiz>
+										
 										<tr>
 											<td>
 												<h3><a href="/quiz?quizId=${quiz.quizId}"><h3 class="text-info">${quiz.name} </h3></a>
