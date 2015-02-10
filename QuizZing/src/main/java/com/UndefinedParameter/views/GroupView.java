@@ -22,6 +22,7 @@ public class GroupView extends View {
 	//is the user logged in
 	private boolean loggedIn;
 	private User user;
+	private boolean userIsGroupMember = false;
 	
 	public GroupView(Group group, Organization org, List<Quiz> quizzes, List<Quiz> userQuizzes, boolean loggedIn, User user) {
 		super("group.ftl");

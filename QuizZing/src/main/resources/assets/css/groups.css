@@ -14,14 +14,8 @@
 	margin-bottom: 10px;
 }
 
-#description
+#quickGroupDash
 {
-	max-height: 500px;
+	border-top: 1px solid GRAY;
 }
 
-.groupImage
-{
-	width:75px;
-	height:75px;
-	border: 1px solid GRAY;
-}

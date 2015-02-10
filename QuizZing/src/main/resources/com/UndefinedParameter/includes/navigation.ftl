@@ -10,7 +10,9 @@
 			<span class="element-divider"></span>
 			<a class="element brand todo" href="#">Categories</a>	
 			<span class="element-divider"></span>
-            <div class="element">
+			<a class="element brand" href="/feedback/bug">Feedback</a>	
+            <!--<div class="element">
+            
                 <a class="dropdown-toggle" href="#">
                     Create &nbsp;
                 </a>
@@ -24,7 +26,8 @@
 				    <li><a class="todo" href="#">Create group</a></li>	
 				    <li><a class="todo" href="#">Create organization</a></li>				    
                 </ul>
-            </div>	
+                
+            </div>	-->
 
 	        <div class="element input-element">
 	            <form id="search">
@@ -48,8 +51,8 @@
 		        </div>
 		        <button id="userAndImageBox" class="element image-button image-left place-right">
 			        <a href="/user?userid=${user.id}">
-			        	<#if user.userName?length &gt; 19>
-			        		${user.userName?substring(0, 18)}...
+			        	<#if user.userName?length &gt; 14>
+			        		${user.userName?substring(0, 13)}...
 			        	<#else>
 			        		${user.userName?html}
 			        	</#if>      
