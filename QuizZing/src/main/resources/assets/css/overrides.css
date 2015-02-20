@@ -26,10 +26,29 @@ form.medium .check:after
 	margin-top: 0px !important;
 }
 
+.metro .breadcrumbs
+{
+	margin: 0 !important;
+}
+
 .metro .navigation-bar, .metro .navbar
 {
 	/*background-color: #C63D0F !important;*/
 }
+
+.metro .breadcrumbs ul a
+{
+	background: #f6f6f6 ;
+}
+.metro .breadcrumbs ul a:before
+{
+	border-color: #f6f6f6 #f6f6f6 #f6f6f6 transparent ;
+}
+.metro .breadcrumbs ul a:after
+{
+	border-left: 1em solid #f6f6f6 ;
+}
+
 
 /*
 .metro .dropdown-menu.dark .menu-title,

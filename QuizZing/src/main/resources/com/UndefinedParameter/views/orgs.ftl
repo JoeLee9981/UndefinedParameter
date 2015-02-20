@@ -25,9 +25,18 @@
                         </ul>
                     </nav>
 				</div>
+				<div class="row" id="orgWelcomeContainer">
+					<div class="span7 notificationBox">
+					</div>
+					<div class="span5 notificationBox">
+					</div>
+				</div>
 				<div class="row">
 					<div>
-						<h2>Organizations and Groups <button class="place-right success" onclick="location.href='/orgs/create'">Create A New Organization</button></h2>			
+						<h2>Organizations<button class="place-right success" onclick="location.href='/orgs/create'">Create Organization</button></h2>			
+						<p>Organizations provide a way to contain a specific area of interest.  Universities, clubs, or even subjects can make great
+						organizations. Inside organizations you will be able to create subgroups which can focus even more on a specific subject
+						or area of interest.</p>					
 					</div>
 				</div>
 	

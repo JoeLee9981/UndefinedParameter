@@ -4,22 +4,23 @@
 		<title>QuizZing</title>
 		<link rel="stylesheet" href="/assets/plugins/metro_ui/css/metro-bootstrap.css">
 		<link rel="stylesheet" type="text/css" href="/assets/css/main.css" />
-		<link rel="stylesheet" type="text/css" href="/assets/css/home.css" />
+		<link rel="stylesheet" href="/assets/plugins/metro_ui/min/iconFont.min.css" >
+		<link rel="stylesheet" href="/assets/css/overrides.css">
+		<link rel="stylesheet" href="/assets/css/groups.css">
 		<script src="/assets/scripts/jquery-2.1.1.min.js"></script>
 		<script src="/assets/scripts/jquery-ui.min.js"></script>
 		<script src="/assets/plugins/metro_ui/min/metro.min.js"></script>
-		<link href="/assets/plugins/metro_ui/min/iconFont.min.css" rel="stylesheet">
-		<link href="/assets/css/overrides.css" rel="stylesheet">
-		<link href="/assets/css/home.css" rel="stylesheet">			
 	</head>
 
 	<body>
+		
 		<#include "../includes/navigation.ftl">
-		<div class="page-content">
-				<div class="metro">
-					<div class="grid fluid">
-						<div class="row">
-							<nav class="breadcrumbs">
+		
+			<div class="metro">
+				<div class="grid fluid">		
+					<div class="page-content">				
+					    <div class="row">
+					    	<nav class="breadcrumbs">
 		                        <ul>
 		                            <li><a href="/"><i class="icon-home"></i></a></li>
 		                            <li><a href="/orgs">Organizations</a></li>
@@ -27,12 +28,64 @@
 		                            <li class="active"><a>${group.name}</a></li>
 		                        </ul>
 		                    </nav>
-						</div>		
+						</div>
+						<div class="row" id="groupImageContainer">
+						</div>
+						<div class="row noMargin">
+							<nav class="navigation-bar white" id="groupNav">
+							    <nav class="navigation-bar-content">
+							    	<a href="#" class="element todo">
+							    		<strong>
+							    			${group.memberCount?html} 
+							        		<#if group.memberCount == 1>
+							        			member
+							        		<#else>
+							        			members
+							        		</#if>
+							    		</strong>
+							    	</a>
+							    	<span class="element-divider"></span>
+							    	<a href="#" class="element todo">
+								     	<strong>
+							        		${quizCount?html} 
+							        		<#if group.quizCount == 1>
+							        			quiz
+							        		<#else>
+							        			quizzes
+							        		</#if>
+							        	</strong>
+							    	</a>
+							    	<span class="element-divider"></span>
+							    	<a href="#" class="element todo">
+							        	<strong>
+							        		${questionCount?html} 
+							        		<#if group.questionCount == 1>
+							        			question
+							        		<#else>
+							        			questions
+							        		</#if>
+							        	</strong>
+						        	</a>
+						        	<span class="element-divider"></span>
+							        <#if userIsGroupMember>  
+							        	<a href="/quiz/create?groupId=${group.id}" class="element brand place-right"><strong><i class="icon-tools on-left"></i>Create Quiz</strong></a>
+								        <span class="element-divider place-right"></span>      
+							        	<a href="#" class="element brand place-right" onclick="leave(${group.id})"><strong>Leave Group</strong></a>
+						        	<#else>
+						        		<a href="#" class="element brand place-right" onclick="register(${group.id})"><strong>Join Group</strong></a>
+						        	</#if>
+						        	<span class="element-divider place-right"></span>
+							    </nav>
+							</nav>
+						</div>
+						<div class="row noMargin">
+							<h2><strong>${group.name}<strong></h2>
+							<p>${group.description}</p>
+						</div>	
 						
-							<h1>${group.name?html}! <button class="place-right success" onclick="location.href='/quiz/create?groupId=${group.id}'">Create A New Quiz</button></h1>
-							<h3>Study for your final here</h3>
-							
-							<#if userQuizzes??>
+						
+						<br/><br/><br/><br/><br/>
+						<#if userQuizzes??>
 								<div class="home-subsection">
 									<h3>Your Group Quizzes</h3>
 									<table>
@@ -115,50 +168,54 @@
 								<br/>
 
 							</div>
-	
+						
+						
+						
+						
+														
 					</div>
-				<div>			
-			<#include "../includes/footer.ftl">
-			</div>
-		</div>
+				</div>
+			<div>	
+								
+		<#include "../includes/footer.ftl">
+
 	</body>
 </html>
 
 <script>
-	
-	function createQuiz() {
-		
-		//TODO Prevalidate these fields
-		var desc = document.getElementById('descriptionText').value;
-		//TODO Add more fields to the entry - see Group.java file for more info
-		if(desc == null || desc == "") {
-			document.getElementById('quizCreateResponse').innerHTML = "You must enter a quiz description";
-			document.getElementById('quizCreateResponse').className = "text-alert";
-			return;
-		}
 
-		 $.ajax({
-			type: 'POST',
-			url: "/quiz/${group.id}/create",
-			data: JSON.stringify({ description: desc }),
-			dataType: "json",
-			headers: {
-				Accept: "application/json",
-				"Content-Type": "application/json"
-			},
-			success: function(data) {
-				if("success" == data["response"]) {
+	function register(groupId) {
 
-					location.reload();
-				}
-				else {
-					document.getElementById('quizCreateResponse').innerHTML = data["message"];
-					document.getElementById('quizCreateResponse').className = "text-alert";
-				}
-			}
+		$.ajax({
+		    url: '/orgs/org/register?groupId=' + groupId,
+		    type: 'POST',
+		    success: function(data) {
+		    	console.log(data);
+		    	window.location='/group?groupId=${group.id}';
+		    },
+		    error: function(error) {
+		    	displayError("Unable to register for the group");
+		    }
 		});
 	}
 	
-
+	function leave(groupId) {
+	
+		$.ajax({
+		    url: '/orgs/org/leave?groupId=' + groupId,
+		    type: 'DELETE',
+		    success: function(data) {
+		    	console.log(data);
+		    	window.location='/group?groupId=${group.id}';
+		    },
+		    error: function(error) {
+		    	displayError("There was an error when attempting to leave the group");
+		    }
+		});
+	}
+	
+	function displayError(message) {
+		alert(message);
+	}
 	
 </script>

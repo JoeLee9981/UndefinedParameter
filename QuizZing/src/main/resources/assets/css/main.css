@@ -7,7 +7,7 @@ body
 .page-content
 {
 	margin: 0 auto;
-	width: 1050px;
+	width: 1050px !important;
 }
 
 .form-title-header
@@ -54,4 +54,14 @@ textarea
 {
 	font: normal normal normal 13.3333330154419px/normal Arial;
 	line-height: 1.4em;
+}
+
+.noMargin
+{
+	margin: 0 !important;
+}
+
+.notificationBox
+{
+	background: #CDEDFF;
 }

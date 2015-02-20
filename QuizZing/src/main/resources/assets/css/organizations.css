@@ -18,3 +18,8 @@
 {
 	max-height: 500px;
 }
+
+#orgWelcomeContainer > div
+{
+	min-height: 150px;
+}

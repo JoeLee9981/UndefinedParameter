@@ -22,9 +22,10 @@ public class GroupView extends View {
 	//is the user logged in
 	private boolean loggedIn;
 	private User user;
-	private boolean userIsGroupMember = false;
+	// List of the groups this user is registered for
+	private List<Group> registeredGroups;
 	
-	public GroupView(Group group, Organization org, List<Quiz> quizzes, List<Quiz> userQuizzes, boolean loggedIn, User user) {
+	public GroupView(Group group, Organization org, List<Quiz> quizzes, List<Quiz> userQuizzes, boolean loggedIn, User user, List<Group> registeredGroups) {
 		super("group.ftl");
 		this.group = group;
 		this.organization = org;
@@ -32,6 +33,7 @@ public class GroupView extends View {
 		this.userQuizzes = userQuizzes;
 		this.loggedIn = loggedIn;
 		this.user = user;
+		this.registeredGroups = registeredGroups;
 	}
 	
 	public Group getGroup() {
@@ -50,6 +52,22 @@ public class GroupView extends View {
 		return quizzes;
 	}
 	
+	public int getQuizCount()
+	{
+		return quizzes.size();
+	}
+	
+	public int getQuestionCount()
+	{
+		int total = 0;
+		for (int i = 0; i < quizzes.size(); i++)
+		{
+			total += quizzes.get(i).getQuestionCount();
+		}
+		
+		return total;
+	}
+	
 	/*
 	 * Get a list of a users quizzes in the group
 	 * 	May be null
@@ -65,4 +83,21 @@ public class GroupView extends View {
 	public User getUser() {
 		return this.user;
 	}	
+	
+	public boolean getUserIsGroupMember()
+	{
+		// This is currently a very inefficient way of finding if the user is in this group
+		if (registeredGroups != null)
+		{
+			for (int i = 0; i < registeredGroups.size(); i++)
+			{
+				if (registeredGroups.get(i).getId() == this.group.getId())
+				{
+					return true;
+				}
+			}
+		}
+		
+		return false;
+	}
 }

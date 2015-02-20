@@ -1,33 +1,23 @@
 <link rel="stylesheet" type="text/css" href="/assets/css/navigation.css" />
 
 <div class="metro">
-	<nav id="main-nav" class="navigation-bar light">
+	<nav id="main-nav" class="navigation-bar dark">
 	    <nav id="main-nav-content" class="navigation-bar-content page-content">
 	    
-	    	<a class="element brand" href="/"><i class="icon-home"></i></a>
+	    	<a id="home-link" class="element brand" href="/"><i class="icon-home"></i></a>
 	    	<span class="element-divider"></span>
 	    	<a class="element brand" href="/orgs">Organizations</a>	
 			<span class="element-divider"></span>
-			<a class="element brand todo" href="#">Categories</a>	
-			<span class="element-divider"></span>
-			<a class="element brand" href="/feedback/bug">Feedback</a>	
-            <!--<div class="element">
-            
-                <a class="dropdown-toggle" href="#">
-                    Create &nbsp;
-                </a>
-                <ul class="dropdown-menu" data-role="dropdown">
-					<li class="menu-title todo">Questions</li>
-				    <li><a href="/quiz/create/question">Create a question</a></li>
-				    <li class="menu-title todo">Quizzes</li>
-				    <li><a href="/quiz/create">Create a quiz</a></li>
-				    <li><a href="#" class="todo">Edit a quiz</a></li>
-				    <li class="menu-title todo">Group or Organization</li>
-				    <li><a class="todo" href="#">Create group</a></li>	
-				    <li><a class="todo" href="#">Create organization</a></li>				    
-                </ul>
-                
-            </div>	-->
+            <div class="element"  id="category-dropdown">
+	            <a class="dropdown-toggle" href="#">
+	                Categories &nbsp;
+	            </a>
+	            <ul class="dropdown-menu page-content" id="category-dropdown-container" data-role="dropdown">
+					<div style="height:300px;width:100%;padding:100px;">
+						<p> Categories are coming soon! </p>
+					</div>			    
+	            </ul>          
+            </div>
 
 	        <div class="element input-element">
 	            <form id="search">
@@ -75,7 +65,7 @@
 
 <script>	
 	ManageNavigationBarPosition();
-	
+	SetCategoryDropdownLocation();
 	$(window).resize(function() {
 		ManageNavigationBarPosition();
 	});
@@ -92,5 +82,12 @@
 			$("#main-nav").addClass("fixed-top");
 			$("#nav-buffer").show();
 		}
+	}
+	
+	function SetCategoryDropdownLocation()
+	{
+		var leftPosition = $("#home-link").position().left;
+		var categoryPosition = $("#category-dropdown").position().left;
+		$("#category-dropdown-container").css("left","-" + (categoryPosition - leftPosition) + "px");
 	}
 </script>
