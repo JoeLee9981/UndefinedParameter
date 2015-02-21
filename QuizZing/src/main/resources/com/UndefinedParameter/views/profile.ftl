@@ -29,8 +29,8 @@
 							<div class="home-subsection">
 							<h3>${userProf.firstName?html}'s Quizzes</h3>
 							<#if userQuizzes??>
-								<table>
-									<#list userQuizzes as quiz>	
+								<table class="table hovered">
+									<thead>
 										<tr>
 											<th>Quiz Name</th>
 											<th>Description</th>
@@ -42,6 +42,10 @@
 												<th>Edit</th>
 											</#if>
 										</tr>
+									</thead>
+										
+									<tbody>
+									<#list userQuizzes as quiz>	
 										<tr>
 											<td>
 												<a href="/quiz?quizId=${quiz.quizId}"><h3 class="text-info">${quiz.name} </h3></a>
@@ -68,11 +72,48 @@
 											</#if>
 										</tr>
 									</#list>
+									</tbody>
+									
+									<tfood></tfoot>
 								</table>							
 							<#else>
 								This user doesn't have any quizzes yet!
 							</#if>
-						</div>	
+						</div>
+						
+						<div class="home-subsection">
+							<h3>${userProf.firstName?html}'s Groups</h3>
+							<#if userGroups??>
+								<table class="table hovered">
+			                        <thead>
+			                        <tr>
+			                            <th class="text-left">Group</th>
+			                            <th class="text-left">Members</th>
+			                            <th class="text-left">Quizzes</th>
+			                            <th class="text-left">Questions</th>
+			                            <th class="text-left">Contribution Score <a href="#" data-hint="Contribution Score|A contribution score is something that we must figure out later. It will be super cool" data-hint-position="right" data-hint-mode="2"><i class="icon-help fg-blue"></i></a></th>
+			                            <th class="text-left">Quizzes Participated</th>
+			                            <th class="text-left">Date Created</th>
+			                        </tr>
+			                        </thead>
+			
+			                        <tbody>
+				                        <#list userGroups as group>
+											<tr>
+												<td><a href="/group?groupId=${group.id}">${group.name?html}</a></td>
+												<td class="right">${group.memberCount}</td><td class="right">${group.quizCount}</td>
+												<td class="right">${group.questionCount}</td><td class="right">35</td><td class="right">3</td>
+												<td class="right">${group.dateAsString}</td>
+											</tr>
+										</#list>     
+			                        </tbody>
+			
+			                        <tfoot></tfoot>
+			                    </table>							
+							<#else>
+								This user doesn't have any groups yet!
+							</#if>
+						</div>		
 						<#else>
 							<h1>User profile unavailable.</h1>
 						</#if>
