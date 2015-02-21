@@ -19,14 +19,11 @@
 		<div class="page-content">
 			<div class="grid fluid">
 				<#if group??>
-					<h5><a href="/group?groupId=${group.id}">Return to ${group.name}</a></h5>
+					<h5><a href="quiz/edit?groupId=${groupId}&quizId=${quizId}">Cancel</a></h5>
 				</#if>
 				<div class="row">
 
-					<h1>${quiz.name} 
-						<button class="place-right success" onclick="location.href='/question/create?quizId=${quiz.quizId}'">Create A Question</button>
-						<button class="place-right warning" onclick="location.href='/question/add?groupId=${group.groupId}&quizId=${quiz.quizId}'">Add A Question</button>
-					</h1><br/>
+					<h1>${quiz.name}</h1><br/>
 					<h2>${quiz.description}</h2>
 					
 					<ul>

@@ -16,11 +16,13 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
 import com.UndefinedParameter.app.core.Question;
+import com.UndefinedParameter.app.core.Quiz;
 import com.UndefinedParameter.app.core.QuizManager;
 import com.UndefinedParameter.app.core.User;
 import com.UndefinedParameter.jdbi.QuestionDAO;
 import com.UndefinedParameter.jdbi.QuizDAO;
 import com.UndefinedParameter.views.LoginView;
+import com.UndefinedParameter.views.QuestionAddView;
 import com.UndefinedParameter.views.QuestionCreatorView;
 
 @Path("/question")
@@ -49,7 +51,12 @@ public class QuestionCreatorResource {
 	@Path("/create")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response creatQuestionForQuiz(@QueryParam("quizId") int quizId, @Valid Question question) {
+	public Response creatQuestionForQuiz(@Auth(required = false) User user, @QueryParam("quizId") int quizId, @Valid Question question) {
+		//User must be logged in to perform this
+		if(user == null) {
+			return Response.status(Status.UNAUTHORIZED).build();
+		}
+		
 		HashMap<String, String> response = new HashMap<String, String>();
 		
 		try {
@@ -69,4 +76,23 @@ public class QuestionCreatorResource {
 		}
 	}
 	
+	@GET
+	@Path("/add")
+	public Response getQuestionAddView(@Auth(required = false) User user, @QueryParam("quizId") long quizId, @QueryParam("groupId") long groupId) {
+		
+		if(user == null) {
+			return Response.ok(new LoginView()).build();
+		}
+		else {
+			Quiz quiz = quizManager.findQuiz(quizId);
+			if(quiz.getCreatorId() == user.getId()) {
+				//only the creator can add to this quiz
+				//TODO: Collaborators
+				return Response.ok(new QuestionAddView(quiz, groupId)).build();
+			}
+			else {
+				return Response.status(Status.BAD_REQUEST).build();
+			}
+		}
+	}
 }
