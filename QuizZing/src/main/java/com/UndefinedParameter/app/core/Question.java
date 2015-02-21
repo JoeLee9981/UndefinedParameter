@@ -22,8 +22,9 @@ public class Question {
 	
 	private long questionId;
 	private long creatorId;
-	private float questionDifficulty;
-	private float rating;
+	private long groupId; //this is the original group the question was created for
+	private double questionDifficulty;
+	private double rating;
 	private String questionText;
 	private String correctAnswer;
 	private ArrayList<String> wrongAnswers;
@@ -47,10 +48,11 @@ public class Question {
 	{
 	}
 	
-	public Question(int qID, int cID, float difficulty, float rate, String qt, String qText, String answer, ArrayList<String> wrong, Boolean flag)
+	public Question(long qID, long cID, long groupId, double difficulty, double rate, String qt, String qText, String answer, ArrayList<String> wrong, Boolean flag)
 	{
 		this.questionId = qID;
 		this.creatorId = cID;
+		this.groupId = groupId;
 		this.questionDifficulty = difficulty;
 		this.rating = rate;
 		this.type = QuestionType.valueOf(qt);
@@ -126,12 +128,12 @@ public class Question {
 	}
 	
 	@JsonProperty
-	public float getQuestionDifficulty() {
+	public double getQuestionDifficulty() {
 		return questionDifficulty;
 	}
 	
 	@JsonProperty
-	public void setQuestionDifficulty(float f) {
+	public void setQuestionDifficulty(double f) {
 		this.questionDifficulty = f;
 	}
 	
@@ -214,12 +216,12 @@ public class Question {
 	}
 
 	@JsonProperty
-	public float getRating() {
+	public double getRating() {
 		return rating;
 	}
 
 	@JsonProperty
-	public void setRating(float f) {
+	public void setRating(double f) {
 		this.rating = f;
 	}
 
@@ -228,8 +230,21 @@ public class Question {
 		this.type = questionType;		
 	}
 	
+	@JsonProperty
 	public QuestionType getQuestionType()
 	{
 		return type;
 	}
+
+	@JsonProperty
+	public long getGroupId() {
+		return groupId;
+	}
+
+	@JsonProperty
+	public void setGroupId(long groupId) {
+		this.groupId = groupId;
+	}
+	
+	
 }

@@ -4,7 +4,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import org.joda.time.DateTime;
 import org.skife.jdbi.v2.StatementContext;
 import org.skife.jdbi.v2.tweak.ResultSetMapper;
 
@@ -18,8 +17,9 @@ public class QuestionMapper implements ResultSetMapper<Question>{
 		
 		Question que = new Question();
 		
-		que.setQuestionId(r.getInt("QuestionID"));
-		que.setCreatorId(r.getInt("CreatorID"));
+		que.setQuestionId(r.getLong("QuestionID"));
+		que.setCreatorId(r.getLong("CreatorID"));
+		que.setGroupId(r.getLong("GroupID"));
 		que.setQuestionDifficulty(r.getFloat("QuestionDifficulty"));
 		que.setRating(r.getFloat("Rating"));
 		que.setQuestionText(r.getString("QuestionText"));
@@ -44,20 +44,6 @@ public class QuestionMapper implements ResultSetMapper<Question>{
 		
 		que.setWrongAnswers(wronganswers);
 		
-		/*
-		org.setId(r.getInt("OrgID"));
-		org.setName(r.getString("Name"));
-		org.setDescription(r.getString("Description"));
-		org.setCity(r.getString("City"));
-		org.setState(r.getString("State"));
-		org.setCountry(r.getString("Country"));
-		org.setMemberCount(r.getInt("MemberCount"));
-		org.setQuizCount(r.getInt("QuizCount"));
-		org.setQuestionCount(r.getInt("QuestionCount"));
-		org.setDateCreated(new DateTime(r.getDate("DateCreated")));
-		
-		return org;
-		*/
 		return que;
 	}
 

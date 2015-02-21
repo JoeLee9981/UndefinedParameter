@@ -95,7 +95,8 @@ public interface QuizDAO {
 	 * Adds questions into a quiz
 	 */
 	@SqlUpdate("INSERT INTO QuizQuestion (QuizId, QuestionId) VALUES(:quizId, :questionId)")
-	public void addQuestion(@Bind("quizId") long quizId, @Bind("questionId") long questionId);
+	@GetGeneratedKeys
+	public long addQuestion(@Bind("quizId") long quizId, @Bind("questionId") long questionId);
 	
 	/*
 	 * Links a quiz to a group

@@ -1,6 +1,5 @@
 package com.UndefinedParameter.app.core;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -131,6 +130,15 @@ public class QuizManager {
 		return questionDAO.retrieveExistingQuiz(quizId);
 	}
 	
+	public List<Question> findQuestionsByGroup(long groupId) {
+		if(groupId > 0) {
+			return questionDAO.getQuestionsByGroupId(groupId);
+		}
+		else {
+			return null;
+		}
+	}
+	
 	
 	/*
 	 * 	--------------- Creation Methods ---------------
@@ -152,7 +160,7 @@ public class QuizManager {
 		}
 		else {
 			List<String> wrongAnswers = question.getWrongAnswers();
-			long id = questionDAO.createQuestion(question.getCreatorId(), question.getQuestionDifficulty(), question.getRating(),
+			long id = questionDAO.createQuestion(question.getCreatorId(), question.getGroupId(), question.getQuestionDifficulty(), question.getRating(),
 					question.getQuestionText(), question.getCorrectAnswer(), question.getQuestionType().toString(), wrongAnswers.get(0), wrongAnswers.get(1),
 					wrongAnswers.get(2), wrongAnswers.get(3), question.isFlagged());
 			return id;
@@ -200,8 +208,12 @@ public class QuizManager {
 	public boolean addQuestionToQuiz(long quizId, long questionId) {
 		if(quizId < 1 || questionId < 1)
 			return false;
-		quizDAO.addQuestion(quizId, questionId);
-		return true;
+		long id = quizDAO.addQuestion(quizId, questionId);
+		
+		if(id > 0)
+			return true;
+		else
+			return false;
 	}
 	
 	/*

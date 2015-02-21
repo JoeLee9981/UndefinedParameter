@@ -16,7 +16,8 @@ database:
   maxWaitForConnection: 1s
   minSize: 1
   maxSize: 32
-  checkConnectionWhileIdle: false
+  checkConnectionWhileIdle: true
+  checkConnectionOnBorrow: true
   evictionInterval: 10s
   minIdleTime: 1 minute
     

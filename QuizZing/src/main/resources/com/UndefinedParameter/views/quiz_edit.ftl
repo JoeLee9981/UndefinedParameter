@@ -24,8 +24,8 @@
 				<div class="row">
 
 					<h1>${quiz.name} 
-						<button class="place-right success" onclick="location.href='/question/create?quizId=${quiz.quizId}'">Create A Question</button>
-						<button class="place-right warning" onclick="location.href='/question/add?groupId=${group.groupId}&quizId=${quiz.quizId}'">Add A Question</button>
+						<button id="createButton" class="place-right success">Create A Question</button>
+						<button id="addButton" class="place-right warning">Add A Question</button>
 					</h1><br/>
 					<h2>${quiz.description}</h2>
 					
@@ -39,13 +39,47 @@
 						<li>No Questions Added Yet!</li>
 					</#if>
 					</ul>
-					<a href="/question/create?quizId=${quiz.quizId}">create a question</a>
-					<a href="/question/add?quizId=${quiz.quizId}">Add an existing question</a>
 					<label id="errorLabel" />
+					
+					<div id="questionDiv"/>
 				</div>
 			</div>
 		</div>
 		<#include "../includes/footer.ftl">
 	</body>
+
+	<script>
+	
+		$(document).ready(function() {
+			$.ajax({
+				type: 'GET',
+				url: '/question/add?groupId=${group.id}&quizId=${quiz.quizId}',
+				success: function(data) {
+					$("#questionDiv").html(data);
+				}
+			});
+		});
+		
+		$("#addButton").click(function() {
+			$.ajax({
+				type: 'GET',
+				url: '/question/add?groupId=${group.id}&quizId=${quiz.quizId}',
+				success: function(data) {
+					$("#questionDiv").html(data);
+				}
+			});
+		});
+		
+		$("#createButton").click(function() {
+			$.ajax({
+				type: 'GET',
+				url: '/question/create?groupId=${group.id}&quizId=${quiz.quizId}',
+				success: function(data) {
+					$("#questionDiv").html(data);
+				}
+			});
+		});
+	</script>	
+
 
 </html>

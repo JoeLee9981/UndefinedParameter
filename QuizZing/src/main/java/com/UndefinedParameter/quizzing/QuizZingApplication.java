@@ -20,7 +20,7 @@ import com.UndefinedParameter.app.resources.GroupResource;
 import com.UndefinedParameter.app.resources.HomeResource;
 import com.UndefinedParameter.app.resources.NewsArticleResource;
 import com.UndefinedParameter.app.resources.OrganizationResource;
-import com.UndefinedParameter.app.resources.QuestionCreatorResource;
+import com.UndefinedParameter.app.resources.QuestionResource;
 import com.UndefinedParameter.app.resources.QuizResource;
 import com.UndefinedParameter.app.resources.UserProfileResource;
 import com.UndefinedParameter.jdbi.BugDAO;
@@ -108,7 +108,7 @@ public class QuizZingApplication extends Application<QuizZingConfiguration> {
 		environment.jersey().register(new QuizResource(quizDAO, questionDAO, orgDAO, groupDAO));
 		environment.jersey().register(new GroupResource(orgDAO, groupDAO, quizDAO, questionDAO));
 		environment.jersey().register(new OrganizationResource(orgDAO, groupDAO));
-		environment.jersey().register(new QuestionCreatorResource(quizDAO, questionDAO));
+		environment.jersey().register(new QuestionResource(quizDAO, questionDAO));
 		environment.jersey().register(new FeedbackResource(feedbackDAO, bugDAO));
 		environment.jersey().register(new UserProfileResource(userDAO, quizDAO, questionDAO));
 

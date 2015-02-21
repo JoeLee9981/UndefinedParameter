@@ -2,29 +2,53 @@ package com.UndefinedParameter.views;
 
 import io.dropwizard.views.View;
 
+import java.util.List;
+
+import com.UndefinedParameter.app.core.Question;
 import com.UndefinedParameter.app.core.Quiz;
 
 public class QuestionAddView extends View {
 	
-	private Quiz quiz;
+	private long quizId;
 	private long groupId;
 	
-	public QuestionAddView(Quiz quiz, long groupId) {
+	//This is a list of all questions associated with this group
+	private List<Question> questions;
+	
+	public QuestionAddView(List<Question> questions, long quizId, long groupId) {
 		super("question_add.ftl");
-		this.quiz = quiz;
+		this.quizId = quizId;
 		this.groupId = groupId;
-		
+		this.questions = questions;
 	}
-	
-	public Quiz getQuiz() {
-		return quiz;
+
+	public List<Question> getQuestions() {
+		if(questions != null && questions.size() > 0)
+			return questions;
+		else
+			return null;
 	}
-	
+
+	public void setQuestions(List<Question> questions) {
+		this.questions = questions;
+	}
+
 	public long getQuizId() {
-		return quiz.getQuizId();
+		return quizId;
 	}
-	
+
+	public void setQuizId(long quizId) {
+		this.quizId = quizId;
+	}
+
 	public long getGroupId() {
 		return groupId;
 	}
+
+	public void setGroupId(long groupId) {
+		this.groupId = groupId;
+	}
+	
+	
+	
 }

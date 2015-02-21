@@ -41,14 +41,15 @@ public interface QuestionDAO {
 	 * 	CreateAQuestion. Will add a new question to the database.
 	 */
 	@SqlUpdate("INSERT INTO Question "
-				+ "(CreatorID, QuestionDifficulty, Rating, "
+				+ "(CreatorID, GroupID, QuestionDifficulty, Rating, "
 				+ "QuestionText, CorrectAnswer, QuestionType, WrongAnswer1, WrongAnswer2, WrongAnswer3, WrongAnswer4, Flagged) "
-				+ "VALUES (:creatorId, :difficulty, :rating, :questionText, :correctAnswer, :questionType, :wrongAnswer1, :wrongAnswer2, "
+				+ "VALUES (:creatorId, :groupId, :difficulty, :rating, :questionText, :correctAnswer, :questionType, :wrongAnswer1, :wrongAnswer2, "
 				+ ":wrongAnswer3, :wrongAnswer4, :flagged)")
 	@GetGeneratedKeys
 	public long createQuestion(@Bind("creatorId") long creatorId, 
-							   @Bind("difficulty") float difficulty, 
-							   @Bind("rating") float rating,
+							   @Bind("groupId") long groupId,
+							   @Bind("difficulty") double difficulty, 
+							   @Bind("rating") double rating,
 							   @Bind("questionText") String questionText,
 							   @Bind("correctAnswer") String correctAnswer,
 							   @Bind("questionType") String questionType,
@@ -61,7 +62,7 @@ public interface QuestionDAO {
 	/*
 	 * 	retrieveQuiz - Retrieves questions from a specific group id.
 	 */
-	@SqlQuery("SELECT q.* FROM Question q, UserGroups u WHERE u.UserID = q.UserID AND u.GroupID = :groupId")
+	@SqlQuery("SELECT * FROM Question WHERE GroupID = :groupId")
 	public List<Question> getQuestionsByGroupId(@Bind("groupId") long groupId);
 }
 

@@ -135,7 +135,7 @@ public class QuizResource {
 		Quiz quiz = quizManager.findQuiz(id);
 		Group group = null;
 		if(groupId > 0)
-			groupManager.findGroupById(groupId);
+			group = groupManager.findGroupById(groupId);
 		if(quiz != null && user.getId() == quiz.getCreatorId()) {
 			return Response.ok(new QuizEditView(quiz, group)).build();
 		}
