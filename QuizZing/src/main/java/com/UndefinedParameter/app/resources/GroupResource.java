@@ -79,15 +79,15 @@ public class GroupResource {
 		
 		Organization organization = manager.findParentOrganization(group.getOrganizationId());
 		List<Quiz> quizzes = quizManager.findQuizzesByGroup(groupId);
-		
+		int questionCount = manager.countQuestionsByGroup(groupId);
 		if(user != null) {
 			//user is logged in, can display all information
 			List<Quiz> userQuizzes = quizManager.findQuizzesByCreatorId(user.getId(), groupId);
-			return Response.ok(new GroupView(group, organization, quizzes, userQuizzes, true, user, manager.findRegisteredGroups(user.getId()))).build();
+			return Response.ok(new GroupView(group, organization, quizzes, userQuizzes, true, user, manager.findRegisteredGroups(user.getId()), questionCount)).build();
 		}
 		else {
 			//user is not logged in, can't display edit or user quizzes
-			return Response.ok(new GroupView(group, organization, quizzes, null, false, user, null)).build();
+			return Response.ok(new GroupView(group, organization, quizzes, null, false, user, null, questionCount)).build();
 		}
 		
 	}

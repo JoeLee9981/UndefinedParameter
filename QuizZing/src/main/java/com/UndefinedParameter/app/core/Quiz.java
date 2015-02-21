@@ -78,6 +78,11 @@ public class Quiz {
 	private List<Question> questions;
 	
 	/*
+	 * Count of questions in the quiz
+	 */
+	private int questionCount;
+	
+	/*
 	 * This is the position of the current question in the quiz
 	 */
 	public int questionPosition = -1;
@@ -108,7 +113,14 @@ public class Quiz {
 	 * Return the number of questions in a quiz
 	 */
 	public int getQuestionCount() {
-		return questions.size();
+		return this.questionCount;
+	}
+	
+	/*
+	 * Set the count of questions
+	 */
+	public void setQuestionCount(int questionCount) {
+		this.questionCount = questionCount;
 	}
 	
 	/*

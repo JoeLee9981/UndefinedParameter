@@ -51,10 +51,13 @@ public class OrganizationResource {
 	public Response getOrganizationView(@Auth(required = false) User user, @QueryParam("id") int id) {
 		if(user != null) {
 			List<Group> unregGroups = manager.findUnregisteredGroupsByOrg(user.getId(), id);
-			return Response.ok(new OrganizationView(manager.findOrgById(id), unregGroups, manager.findRegisteredGroupsById(id, user.getId()), true, user)).build();
+			List<Group> regGroups = manager.findRegisteredGroupsById(id, user.getId());
+			
+			return Response.ok(new OrganizationView(manager.findOrgById(id), unregGroups, regGroups, true, user)).build();
 		}
 		else {
-			return Response.ok(new OrganizationView(manager.findOrgById(id), manager.findGroupsById(id), null, false, user)).build();
+			List<Group> groups = manager.findGroupsById(id);
+			return Response.ok(new OrganizationView(manager.findOrgById(id), groups, null, false, user)).build();
 		}
 	}
 	

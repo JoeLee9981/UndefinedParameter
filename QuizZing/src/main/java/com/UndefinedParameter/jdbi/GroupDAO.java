@@ -59,4 +59,10 @@ public interface GroupDAO {
 	
 	@SqlUpdate("UPDATE SubGroup SET MemberCount = MemberCount - 1 WHERE GroupID = :groupId")
 	public void decrementGroupMembers(@Bind("groupId") long groupId);
+	
+	@SqlQuery("SELECT COUNT(QuestionID) FROM Question WHERE GroupID = :groupId")
+	public int countQuestions(@Bind("groupId") long groupId);
+	
+	@SqlQuery("SELECT COUNT(*) FROM Quiz quiz, GroupQuiz gquiz WHERE quiz.QuizID = gquiz.QuizID and gquiz.GroupID = :groupId")
+	public int countQuizzes(@Bind("groupId") long groupId);
 }

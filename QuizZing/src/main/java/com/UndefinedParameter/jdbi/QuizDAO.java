@@ -104,6 +104,12 @@ public interface QuizDAO {
 	@SqlUpdate("INSERT INTO GroupQuiz (QuizID, GroupID) VALUES(:quizId, :groupId)")
 	public void linkToGroup(@Bind("quizId") long quizId, @Bind("groupId") long groupId);
 	
+	@SqlUpdate("UPDATE Quiz SET QuestionCount = QuestionCount + 1 WHERE QuizID = :quizId")
+	public void incrementQuestionCount(@Bind("quizId") long quizId);
+	
+	@SqlUpdate("UPDATE Quiz SET QuestionCount = QuestionCount - 1 WHERE QuizID = :quizId")
+	public void decrementQuestionCount(@Bind("quizId") long quizId);
+	
 }
 	
 	/*

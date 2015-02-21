@@ -36,26 +36,54 @@ public class OrganizationManager {
 	 * Finds all of the groups by an organizations id
 	 */
 	public List<Group> findGroupsById(long orgId) {
-		return groupDAO.findGroupsByOrgId(orgId);
+		
+		List<Group> groups = groupDAO.findGroupsByOrgId(orgId);
+		for(int i = 0; i < groups.size(); i++) {
+			Group g = groups.get(i);
+			g.setQuestionCount(countQuestionsByGroup(g.getId()));
+			g.setQuizCount(countQuizzesByGroup(g.getId()));
+		}
+		return groups;
 	}
 	
 	public List<Organization> findOrgsByLocation(String city) {
 		
-		return orgDAO.findOrganizations();
+		List<Organization> orgs = orgDAO.findOrganizations();
+		for(int i = 0; i < orgs.size(); i++) {
+			Organization org = orgs.get(i);
+			org.setQuestionCount(orgDAO.countQuestions(org.getId()));
+			org.setQuizCount(orgDAO.countQuizzes(org.getId()));
+		}
+		
+		return orgs;
 	}
 	
 	/*
 	 * Returns a list of unregistered organizations for a user
 	 */
 	public List<Organization> findUnregisteredOrgs(long userId) {
-		return orgDAO.findUnregisteredOrganizations(userId);
+		List<Organization> orgs = orgDAO.findUnregisteredOrganizations(userId);
+		
+		for(int i = 0; i < orgs.size(); i++) {
+			Organization org = orgs.get(i);
+			org.setQuestionCount(orgDAO.countQuestions(org.getId()));
+			org.setQuizCount(orgDAO.countQuizzes(org.getId()));
+		}
+		
+		return orgs;
 	}
 	
 	/*
 	 * Returns a list of unregistered Groups for a user
 	 */
 	public List<Group> findUnregisteredGroupsByOrg(long userId, long orgId) {
-		return groupDAO.findUnregisteredGroupsByUser(userId, orgId);
+		List<Group> groups = groupDAO.findUnregisteredGroupsByUser(userId, orgId);
+		for(int i = 0; i < groups.size(); i++) {
+			Group g = groups.get(i);
+			g.setQuestionCount(countQuestionsByGroup(g.getId()));
+			g.setQuizCount(countQuizzesByGroup(g.getId()));
+		}
+		return groups;
 	}
 	
  	public Organization findOrgById(long id) {
@@ -89,7 +117,15 @@ public class OrganizationManager {
 	}
 	
 	public List<Organization> findOrgsByUserId(long userId) {
-		return orgDAO.findOrganizationsByUserId(userId);
+		List<Organization> orgs = orgDAO.findOrganizationsByUserId(userId);
+		
+		for(int i = 0; i < orgs.size(); i++) {
+			Organization org = orgs.get(i);
+			org.setQuestionCount(orgDAO.countQuestions(org.getId()));
+			org.setQuizCount(orgDAO.countQuizzes(org.getId()));
+		}
+		
+		return orgs; 
 	}
 	
 	public boolean registerOrganization(long orgId, long userId) {
@@ -126,7 +162,14 @@ public class OrganizationManager {
 	 * Finds all of the groups by an organization id and user id
 	 */
 	public List<Group> findRegisteredGroupsById(long orgId, long userId) {
-		return groupDAO.findGroupsByUser(userId, orgId);
+		
+		List<Group> groups = groupDAO.findGroupsByUser(userId, orgId);
+		for(int i = 0; i < groups.size(); i++) {
+			Group g = groups.get(i);
+			g.setQuestionCount(countQuestionsByGroup(g.getId()));
+			g.setQuizCount(countQuizzesByGroup(g.getId()));
+		}
+		return groups;
 	}
 	
 	public boolean registerUserForGroup(long groupId, long userId) {
@@ -151,4 +194,53 @@ public class OrganizationManager {
 		}
 	}
 	
+	/*
+	 * Count the questions inside of a group by the group id
+	 */
+	public int countQuestionsByGroup(long groupId) {
+		try {
+			int count = groupDAO.countQuestions(groupId);
+			return count;
+		}
+		catch(Exception e) {
+			return 0;
+		}
+	}
+	
+	/*
+	 * Count the quizzes belonging to a group by the group id
+	 */
+	public int countQuizzesByGroup(long groupId) {
+		try {
+			int count = groupDAO.countQuizzes(groupId);
+			return count;
+		}
+		catch(Exception e) {
+			return 0;
+		}
+	}
+	
+	/*
+	 * Count quizzes in all groups of an organization
+	 */
+	public int countQuizzesByOrg(long orgId) {
+		try {
+			return orgDAO.countQuizzes(orgId);
+		}
+		catch(Exception e) {
+			return 0;
+		}
+	}
+	
+	/*
+	 * Count questions in all groups of an organization
+	 */
+	public int countQuestionsByOrg(long orgId) {
+		try {
+			return orgDAO.countQuestions(orgId);
+		}
+		catch(Exception e) {
+			return 0;
+		}
+	}
 }

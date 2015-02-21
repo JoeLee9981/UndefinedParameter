@@ -64,8 +64,11 @@
 		                        <#list registeredGroups as group>
 									<tr>
 										<td><a href="/group?groupId=${group.id}">${group.name?html}</a></td>
-										<td class="right">${group.memberCount}</td><td class="right">${group.quizCount}</td>
-										<td class="right">${group.questionCount}</td><td class="right">35</td><td class="right">3</td>
+										<td class="right">${group.memberCount}</td>
+										<td class="right">${group.quizCount}</td>
+										<td class="right">${group.questionCount}</td>
+										<td class="right">35</td>
+										<td class="right">3</td>
 										<td class="right">${group.dateAsString}</td>
 										<td class="right"><button class="danger" onClick="leave(${group.id})">-</button></td>
 									</tr>

@@ -25,7 +25,10 @@ public class GroupView extends View {
 	// List of the groups this user is registered for
 	private List<Group> registeredGroups;
 	
-	public GroupView(Group group, Organization org, List<Quiz> quizzes, List<Quiz> userQuizzes, boolean loggedIn, User user, List<Group> registeredGroups) {
+	//count of questions
+	private int questionCount;
+	
+	public GroupView(Group group, Organization org, List<Quiz> quizzes, List<Quiz> userQuizzes, boolean loggedIn, User user, List<Group> registeredGroups, int questionCount) {
 		super("group.ftl");
 		this.group = group;
 		this.organization = org;
@@ -34,6 +37,7 @@ public class GroupView extends View {
 		this.loggedIn = loggedIn;
 		this.user = user;
 		this.registeredGroups = registeredGroups;
+		this.questionCount = questionCount;
 	}
 	
 	public Group getGroup() {
@@ -59,13 +63,7 @@ public class GroupView extends View {
 	
 	public int getQuestionCount()
 	{
-		int total = 0;
-		for (int i = 0; i < quizzes.size(); i++)
-		{
-			total += quizzes.get(i).getQuestionCount();
-		}
-		
-		return total;
+		return this.questionCount;
 	}
 	
 	/*

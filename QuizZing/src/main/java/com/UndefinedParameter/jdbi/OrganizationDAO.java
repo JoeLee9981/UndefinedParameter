@@ -57,4 +57,10 @@ public interface OrganizationDAO {
 	
 	@SqlUpdate("UPDATE Organization SET MemberCount = MemberCount - 1 WHERE OrgID = :orgId")
 	public void decrementOrgMembers(@Bind("orgId") long orgId);
+	
+	@SqlQuery("SELECT COUNT(QuestionID) FROM Question question, SubGroup sub WHERE question.GroupID = sub.GroupID AND sub.OrgID = :orgId")
+	public int countQuestions(@Bind("orgId") long orgId);
+	
+	@SqlQuery("SELECT COUNT(*) FROM Quiz quiz, GroupQuiz gquiz, SubGroup g WHERE quiz.QuizID = gquiz.QuizID and gquiz.GroupID = g.GroupID and g.OrgID = :orgId")
+	public int countQuizzes(@Bind("orgId") long orgId);
 }

@@ -210,10 +210,13 @@ public class QuizManager {
 			return false;
 		long id = quizDAO.addQuestion(quizId, questionId);
 		
-		if(id > 0)
+		if(id > 0) {
+			quizDAO.incrementQuestionCount(quizId);
 			return true;
-		else
+		}
+		else {
 			return false;
+		}
 	}
 	
 	/*

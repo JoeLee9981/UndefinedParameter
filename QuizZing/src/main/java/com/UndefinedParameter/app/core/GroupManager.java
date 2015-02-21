@@ -65,4 +65,24 @@ public class GroupManager {
 	public Organization findParentOrganization(long orgId) {
 		return orgsDAO.findOrganization(orgId);
 	}
+	
+	public int countQuestionsByGroup(long groupId) {
+		try {
+			int count = groupDAO.countQuestions(groupId);
+			return count;
+		}
+		catch(Exception e) {
+			return 0;
+		}
+	}
+	
+	public int countQuestionsByQuiz(long groupId) {
+		try {
+			int count = groupDAO.countQuizzes(groupId);
+			return count;
+		}
+		catch(Exception e) {
+			return 0;
+		}
+	}
 }
