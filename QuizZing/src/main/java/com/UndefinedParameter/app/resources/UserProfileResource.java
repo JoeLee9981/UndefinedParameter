@@ -16,9 +16,12 @@ import javax.ws.rs.core.Response;
 
 import org.joda.time.DateTime;
 
+import com.UndefinedParameter.app.core.GroupManager;
 import com.UndefinedParameter.app.core.QuizManager;
 import com.UndefinedParameter.app.core.User;
 import com.UndefinedParameter.app.core.UserManager;
+import com.UndefinedParameter.jdbi.GroupDAO;
+import com.UndefinedParameter.jdbi.OrganizationDAO;
 import com.UndefinedParameter.jdbi.QuestionDAO;
 import com.UndefinedParameter.jdbi.QuizDAO;
 import com.UndefinedParameter.jdbi.UserDAO;
@@ -30,11 +33,13 @@ public class UserProfileResource {
 	
 	public UserManager userManager;
 	public QuizManager quizManager;
+	public GroupManager groupManager;
 	
-	public UserProfileResource(UserDAO userdao, QuizDAO quizdao, QuestionDAO questiondao)
+	public UserProfileResource(UserDAO userdao, QuizDAO quizdao, QuestionDAO questiondao, OrganizationDAO orgdao, GroupDAO groupdao)
 	{
 		this.userManager = new UserManager(userdao);
 		this.quizManager = new QuizManager(quizdao, questiondao);
+		this.groupManager = new GroupManager(orgdao, groupdao);
 	}
 
 	/*
@@ -45,11 +50,11 @@ public class UserProfileResource {
 	public Response getUserProfileView(@Auth(required = false) User user, @QueryParam("userid") long userID) {
 		
 		if(user != null && user.getId() == userID) {
-			return Response.ok(new UserProfileView("profile.ftl", user, quizManager.findQuizzesByCreatorId(user.getId()), true)).build();
+			return Response.ok(new UserProfileView("profile.ftl", user, quizManager.findQuizzesByCreatorId(user.getId()), groupManager.findRegisteredGroups(user.getId()), true)).build();
 		}
 		else {
 			User currentUser = userManager.findUserById(userID);
-			return Response.ok(new UserProfileView("profile.ftl", currentUser, quizManager.findQuizzesByCreatorId(currentUser.getId()), false)).build();
+			return Response.ok(new UserProfileView("profile.ftl", currentUser, quizManager.findQuizzesByCreatorId(currentUser.getId()), groupManager.findRegisteredGroups(userID), false)).build();
 		}
 	}
 	
@@ -57,7 +62,7 @@ public class UserProfileResource {
 	@GET
 	@Path("/edit")
 	public Response getProfileEditView(@Auth User user) {
-		return Response.ok(new UserProfileView("edit_profile.ftl", user, quizManager.findQuizzesByCreatorId(user.getId()), false)).build();
+		return Response.ok(new UserProfileView("edit_profile.ftl", user, quizManager.findQuizzesByCreatorId(user.getId()), groupManager.findRegisteredGroups(user.getId()), false)).build();
 	}
 	
 	@POST
