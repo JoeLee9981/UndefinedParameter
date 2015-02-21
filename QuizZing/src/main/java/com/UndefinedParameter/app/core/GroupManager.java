@@ -55,11 +55,28 @@ public class GroupManager {
 	
 	public List<Group> findTopGroups() {
 		//TODO: Restrict this to prevent pulling 1000 entries from the DB
-		return groupDAO.findTopGroups();
+		List<Group> groups = groupDAO.findTopGroups(); 
+		
+		for(int i = 0; i < groups.size(); i++) {
+			Group g = groups.get(i);
+			g.setQuestionCount(groupDAO.countQuestions(g.getId()));
+			g.setQuizCount(groupDAO.countQuizzes(g.getId()));
+		}
+		
+		return groups;
 	}
 	
 	public List<Group> findRegisteredGroups(long userId) {
-		return groupDAO.findGroupsByUser(userId);
+		
+		List<Group> groups = groupDAO.findGroupsByUser(userId);
+		
+		for(int i = 0; i < groups.size(); i++) {
+			Group g = groups.get(i);
+			g.setQuestionCount(groupDAO.countQuestions(g.getId()));
+			g.setQuizCount(groupDAO.countQuizzes(g.getId()));
+		}
+		
+		return groups;
 	}
 	
 	public Organization findParentOrganization(long orgId) {
