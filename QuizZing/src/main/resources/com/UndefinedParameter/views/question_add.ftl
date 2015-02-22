@@ -79,19 +79,19 @@
 									click: function(value, rating) {
 										alert("Not yet implemented");
 									}
-								});
-								
-								$(function() {
-									$("#rating${question.questionId}").rating({
-										static: false,
-										score: ${question.rating},
-										stars: 5,
-										showHint: true,
-										hints: ['wrong', 'poor', 'average', 'good', 'excellent'],
-										click: function(value, rating) {
-											alert("Not yet implemented");
-										}
-									});
+								});		
+							});
+							
+							$(function() {
+								$("#rating${question.questionId}").rating({
+									static: false,
+									score: ${question.rating},
+									stars: 5,
+									showHint: true,
+									hints: ['wrong', 'poor', 'average', 'good', 'excellent'],
+									click: function(value, rating) {
+										alert("Not yet implemented");
+									}
 								});
 							});
 						</script>

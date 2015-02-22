@@ -110,6 +110,22 @@ public interface QuizDAO {
 	@SqlUpdate("UPDATE Quiz SET QuestionCount = QuestionCount - 1 WHERE QuizID = :quizId")
 	public void decrementQuestionCount(@Bind("quizId") long quizId);
 	
+	@SqlUpdate("UPDATE Quiz SET Rating = Rating + :rating, RatingCount = RatingCount + 1 WHERE QuizID = :quizId")
+	public void rateQuizQuality(@Bind("rating") int rating, @Bind("quizId") long quizId);
+	
+	@SqlUpdate("UPDATE Quiz SET Rating = Rating + :rating WHERE QuizID = :quizId")
+	public void updateQuizQualityRating(@Bind("rating") int rating, @Bind("quizId") long quizId);
+	
+	@SqlQuery("SELECT UserRating FROM QuizRating WHERE QuizID = :quizId and UserID = :userId")
+	public int getQuizRating(@Bind("quizId") long quizId, @Bind("userId") long userId);
+	
+	@SqlUpdate("INSERT INTO QuizRating (QuizID, UserID, UserRating) VALUES(:quizId, :userId, :rating)")
+	@GetGeneratedKeys
+	public long insertQuizRating(@Bind("quizId") long quizId, @Bind("userId") long userId, @Bind("rating") int rating);
+	
+	@SqlUpdate("UPDATE QuizRating SET UserRating = :rating WHERE UserID = :userId AND QuizID = :quizId")
+	public void updateQuizRating(@Bind("userId") long userId, @Bind("quizId") long quizId, @Bind("rating") int rating);
+	
 }
 	
 	/*

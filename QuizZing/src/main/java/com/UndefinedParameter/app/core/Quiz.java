@@ -183,7 +183,7 @@ public class Quiz {
 	}
 	
 	@JsonProperty
-	public void setRating(int rating) {
+	public void setRating(float rating) {
 		this.rating = rating;
 	}
 	
@@ -318,4 +318,11 @@ public class Quiz {
 		return questionPosition > 0;
 	}
 
+	public String getTimeString() {
+		int hours = time / 3600;
+		int minutes = time % 3600 / 60;
+		int seconds = time % 60;
+		
+		return String.format("%02d:%02d:%02d", hours, minutes, seconds);
+	}
 }

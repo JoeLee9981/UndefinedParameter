@@ -44,7 +44,7 @@ public class QuizResource {
 	}
 	
 	@GET
-	public Response getQuizView(@Auth(required = false) User user, @QueryParam("quizId") long id) {
+	public Response getQuizView(@Auth(required = false) User user, @QueryParam("quizId") long id, @QueryParam("groupId") long groupId) {
 		
 		//invalid id return bad request
 		if(id < 1)
@@ -56,11 +56,19 @@ public class QuizResource {
 		if(quiz == null)
 			return Response.status(Status.BAD_REQUEST).build();
 		
+		//if user is not logged in
+		if(user == null)
+			return Response.ok(new QuizView(quiz, groupId, false, 0)).build();
+			
+		int userRating = quizManager.findUserRating(user.getId(), quiz.getQuizId());
 		//set editable to true if the user is the creator
-		if(user != null && user.getId() == quiz.getCreatorId())
-			return Response.ok(new QuizView(quiz, true)).build();
-		else
-			return Response.ok(new QuizView(quiz, false)).build();
+		if(user != null && user.getId() == quiz.getCreatorId()) {
+			
+			return Response.ok(new QuizView(quiz, groupId, true, userRating)).build();
+		}
+		else {
+			return Response.ok(new QuizView(quiz, groupId, false, userRating)).build();
+		}
 	}
 	
 	@GET
@@ -151,6 +159,25 @@ public class QuizResource {
 		}
 		else {
 			return Response.ok(new QuizzesView(quizManager.findTopQuizzes(), null)).build();
+		}
+	}
+	
+	@POST
+	@Path("/rate/rating")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response rateQuizQuality(@Auth(required = false) User user, @QueryParam("quizId") long quizId, @QueryParam("rating") int rating) {
+		
+		HashMap<String, String> response = new HashMap<String, String>();
+		if(user == null) {
+			response.put("response", "login");
+			return Response.ok(response).build();
+		}
+		if(quizManager.rateQuizQuality(user.getId(), quizId, rating)) {
+			response.put("response", "success");
+			return Response.ok(response).build();
+		}
+		else {
+			return Response.status(Status.BAD_REQUEST).build();
 		}
 	}
 }

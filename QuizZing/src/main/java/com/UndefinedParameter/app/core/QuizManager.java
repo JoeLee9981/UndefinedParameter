@@ -244,4 +244,45 @@ public class QuizManager {
 		//TODO Restrict this to avoid returning the entire database
 		return quizDAO.retrieveTopQuizzes();
 	}
+	
+	public int findUserRating(long userId, long quizId) {
+		if(userId == 0 || quizId == 0) {
+			//this is invalid
+			return 0;
+		}
+		return quizDAO.getQuizRating(quizId, userId);
+	}
+	
+	public boolean rateQuizQuality(long userId, long quizId, int rating) {
+		
+		if(userId < 1 || quizId < 1 || rating < 1) {
+			//this is invalid
+			return false;
+		}
+		try {
+			int existingRating = quizDAO.getQuizRating(quizId, userId);
+			
+			if(existingRating > 0) {
+				quizDAO.updateQuizRating(userId, quizId, rating);
+				quizDAO.updateQuizQualityRating(rating - existingRating, quizId);
+			}
+			else {
+				long key = quizDAO.insertQuizRating(quizId, userId, rating);
+				if(key > 0) {
+					quizDAO.rateQuizQuality(rating, quizId);
+					return true;
+				}
+				else {
+					//insert failed, return false
+					return false;
+				}
+			}
+			
+			return true;
+		}
+		catch(Exception e) {
+			//database insert fails
+			return false;
+		}
+	}
 }

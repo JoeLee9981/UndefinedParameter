@@ -5,6 +5,7 @@
 		<link rel="stylesheet" href="/assets/plugins/metro_ui/css/metro-bootstrap.css">
 		<link rel="stylesheet" type="text/css" href="/assets/css/main.css" />
 		<script src="/assets/scripts/jquery-2.1.1.min.js"></script>
+		<script src="/assets/scripts/rate.js"></script>
 		<script src="/assets/scripts/jquery-ui.min.js"></script>
 		<script src="/assets/plugins/metro_ui/min/metro.min.js"></script>
 		<script src="/assets/plugins/metro_ui/js/metro-countdown.js"></script>
@@ -26,6 +27,12 @@
 				</div>
 				<div id="quiz-subnav" class="row">
 					<div class="span12">
+						<h2>
+							<strong>${quiz.name}</strong>
+							<#if editable>
+								<button id="editButton" onclick="location.href='/quiz/edit?groupId=${groupId}&quizId=${quiz.quizId}'" class="place-right success">Edit Quiz</button>
+							</#if>
+						</h2>
 						<h2>${quiz.description?html}</h2>
 					</div>
 				</div>
@@ -38,15 +45,31 @@
 							    </div>
 							    <div class="panel-content">
 					       			<h5>Created By: ${quiz.creatorId?html}</h5>
-									<h5>Difficulty: ${quiz.difficulty?html}</h5>
-									<h5>Rating: ${quiz.rating?html}</h5>
-									<h5><i class="icon-clock"></i> ${quiz.time?html}</h5>
+									<h5>Difficulty:</h5>
+									<div id="difficulty" class="rating small fg-red">
+									</div>
+									<h5>Rating:</h5>
+									<#if userRating &gt; 0>
+										<div id="rating" class="fg-yellow rating small">
+										</div>
+									<#else>
+										<div id="rating" class="rating small">
+										</div>
+									</#if>
+									<h5><i class="icon-clock"></i> ${quiz.timeString}</h5>
 							    </div>
 							</div>			
 						</div>
-						<div class="span2">
-							<button class="primary large" onclick="startQuiz()">Start</button>
-						</div>
+						<#if !empty>
+							<div class="span2">
+									<button class="primary large" onclick="startQuiz()">Start</button>
+							</div>
+						<#else>
+							<div class="span4">
+								<h2 class="text-alert"><strong>There are no questions in this quiz.</strong></h2>
+							</div>
+						</#if>
+						
 `					</div>
 				</div>
 				<div id="quizDiv" hidden="true">
@@ -75,6 +98,17 @@
 				<div id="quizFinish" hidden="true">
 					<h2>Your Quiz Stats: </h2><br/>
 					<h3 id="scoreText"/>
+					<h5>Rate the Quiz Difficulty:</h5>
+					<div id="setdifficulty" class="rating small fg-red">
+					</div>
+					<h5>Rate the Quiz Quality:</h5>
+					<#if userRating &gt; 0>
+						<div id="setrating" class="fg-yellow rating small">
+						</div>
+					<#else>
+						<div id="setrating" class="rating small">
+						</div>
+					</#if>
 					<h3><a href="/feedback">Give Us Your Feedback</a></h3>
 				</div>
 				<div class="row">
@@ -87,6 +121,67 @@
 	</body>
 	
 	<script>
+	
+		//Star rating for quiz quality (entry page)
+		$(function() {
+			$("#rating").rating({
+				static: true,
+				<#if userRating &gt; 0>
+					score: ${userRating},
+				<#else>
+					score: ${quiz.rating},
+				</#if>
+				stars: 5,
+				showHint: true,
+				hints: ['wrong', 'poor', 'average', 'good', 'excellent'],
+			});
+		});
+		//Star rating for difficulty (entry page)
+		$(function() {
+			$("#difficulty").rating({
+				static: true,
+				score: ${quiz.difficulty},
+				stars: 5,
+				showHint: true,
+				hints: ['cake', 'easy', 'average', 'hard', 'impossible'],
+			});		
+		});
+		
+		//star rating for finish page (end of quiz)
+		$(function() {
+			$("#setdifficulty").rating({
+				static: false,
+				score: ${quiz.difficulty},
+				stars: 5,
+				showHint: true,
+				hints: ['cake', 'easy', 'average', 'hard', 'impossible'],
+				click: function(value, rating) {
+					rateQuizDifficulty();
+				}
+			});		
+		});
+		
+		//star difficulty for finish page (end of quiz)
+		$(function() {
+			$("#setrating").rating({
+				static: false,
+				<#if userRating &gt; 0>
+					score: ${userRating},
+				<#else>
+					score: ${quiz.rating},
+				</#if>
+				stars: 5,
+				showHint: true,
+				hints: ['wrong', 'poor', 'average', 'good', 'excellent'],
+				click: function(value, rating) {
+					rateQuizQuality(value, ${quiz.quizId}, $("#setrating"))
+					$("#setrating").attr('class', 'rating small fg-yellow');
+					rating.rate(value);
+				}
+			});
+		});
+		
+		/*********************** QUIZ SYSTEM ****************************/
 		var quiz = [];
 		//this is a multidimensional array of the answers by question
 		var questions = [];
@@ -280,7 +375,7 @@
 						score++;
 				}
 			}
-			document.getElementById('scoreText').innerHTML = "Score: " + score / correctAnswers.length * 100 + "%";
+			document.getElementById('scoreText').innerHTML = "Score: " + (score / correctAnswers.length * 100).toFixed(2) + "%";
 		}
 		
 		

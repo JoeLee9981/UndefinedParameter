@@ -103,7 +103,7 @@
 										
 											<tr>
 												<td>
-													<a href="/quiz?quizId=${quiz.quizId}"><h3 class="text-info">${quiz.name} </h3></a>
+													<a href="/quiz?groupId=${group.id}&quizId=${quiz.quizId}"><h3 class="text-info">${quiz.name} </h3></a>
 												</td>
 												<td>
 													<h3>${quiz.description}</h3>
@@ -145,7 +145,7 @@
 										
 										<tr>
 											<td>
-												<h3><a href="/quiz?quizId=${quiz.quizId}"><h3 class="text-info">${quiz.name} </h3></a>
+												<h3><a href="/quiz?groupId=${group.id}&quizId=${quiz.quizId}"><h3 class="text-info">${quiz.name} </h3></a>
 											</td>
 											<td>
 												<h3>${quiz.description}</h3>
