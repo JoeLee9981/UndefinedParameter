@@ -173,7 +173,7 @@ public class Quiz {
 	}
 	
 	@JsonProperty
-	public void setDifficulty(int difficulty) {
+	public void setDifficulty(float difficulty) {
 		this.difficulty = difficulty;
 	}
 	

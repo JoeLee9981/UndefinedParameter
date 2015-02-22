@@ -8,25 +8,17 @@ function rateQuizQuality(rating, quizId) {
 	$.ajax({
 		type: 'POST',
 		url: '/quiz/rate/rating?quizId=' + quizId + '&rating=' + rating,
-		headers: {
-			Accept: "application/json",
-		},
-		success: function(data) {
-			if(data['response'] == 'login') {
-				alert("login");
-			}
-		},
-		error: function() {
-			alert("Error");
-		}
+	});
+}
+
+function rateQuizDifficulty(rating, quizId) {
+	$.ajax({
+		type: 'POST',
+		url: '/quiz/rate/difficulty?quizId=' + quizId + '&rating=' + rating,
 	});
 }
 
 function rateQuestionQuality() {
-	alert("Not yet implemented.");
-}
-
-function rateQuizDifficulty() {
 	alert("Not yet implemented.");
 }
 

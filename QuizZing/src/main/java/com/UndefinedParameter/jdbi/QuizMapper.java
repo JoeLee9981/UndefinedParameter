@@ -17,8 +17,8 @@ public class QuizMapper implements ResultSetMapper<Quiz> {
 		quiz.setQuizId(r.getLong("QuizID"));
 		quiz.setName(r.getString("Name"));
 		quiz.setCreatorId(r.getLong("CreatorID"));
-		quiz.setDifficulty(r.getInt("Difficulty"));
 		quiz.setRating((float)r.getInt("Rating") / (float)r.getInt("RatingCount"));
+		quiz.setDifficulty((float)r.getInt("Difficulty") / (float)r.getInt("DifficultyCount"));
 		quiz.setDescription(r.getString("Description"));
 		quiz.setTime(r.getInt("Time"));
 		quiz.setQuestionCount(r.getInt("QuestionCount"));
