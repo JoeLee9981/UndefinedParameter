@@ -110,6 +110,8 @@ public interface QuizDAO {
 	@SqlUpdate("UPDATE Quiz SET QuestionCount = QuestionCount - 1 WHERE QuizID = :quizId")
 	public void decrementQuestionCount(@Bind("quizId") long quizId);
 	
+	/********************************** Quiz Quality Ratings Query *****************************************************/
+	
 	@SqlUpdate("UPDATE Quiz SET Rating = Rating + :rating, RatingCount = RatingCount + 1 WHERE QuizID = :quizId")
 	public void rateQuizQuality(@Bind("rating") int rating, @Bind("quizId") long quizId);
 	
@@ -126,6 +128,23 @@ public interface QuizDAO {
 	@SqlUpdate("UPDATE QuizRating SET UserRating = :rating WHERE UserID = :userId AND QuizID = :quizId")
 	public void updateQuizRating(@Bind("userId") long userId, @Bind("quizId") long quizId, @Bind("rating") int rating);
 	
+	/********************************* Quiz Difficulty Ratings Query *******************************************************/
+	
+	@SqlUpdate("UPDATE Quiz SET Difficulty = Difficulty + :rating, DifficultyCount = DifficultyCount + 1 WHERE QuizID = :quizId")
+	public void rateQuizDifficulty(@Bind("rating") int rating, @Bind("quizId") long quizId);
+	
+	@SqlUpdate("UPDATE Quiz SET Difficulty = Difficulty + :rating WHERE QuizID = :quizId")
+	public void updateQuizDifficultyRating(@Bind("rating") int rating, @Bind("quizId") long quizId);
+	
+	@SqlQuery("SELECT UserRating FROM QuizDifficulty WHERE QuizID = :quizId and UserID = :userId")
+	public int getQuizDifficulty(@Bind("quizId") long quizId, @Bind("userId") long userId);
+	
+	@SqlUpdate("INSERT INTO QuizDifficulty (QuizID, UserID, UserRating) VALUES(:quizId, :userId, :rating)")
+	@GetGeneratedKeys
+	public long insertQuizDifficulty(@Bind("quizId") long quizId, @Bind("userId") long userId, @Bind("rating") int rating);
+	
+	@SqlUpdate("UPDATE QuizDifficulty SET UserRating = :rating WHERE UserID = :userId AND QuizID = :quizId")
+	public void updateQuizDifficulty(@Bind("userId") long userId, @Bind("quizId") long quizId, @Bind("rating") int rating);
 }
 	
 	/*

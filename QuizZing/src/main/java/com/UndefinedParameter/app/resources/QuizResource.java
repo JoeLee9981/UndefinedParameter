@@ -58,16 +58,19 @@ public class QuizResource {
 		
 		//if user is not logged in
 		if(user == null)
-			return Response.ok(new QuizView(quiz, groupId, false, 0)).build();
-			
+			return Response.ok(new QuizView(quiz, groupId, false, false, 0, 0)).build();
+		
+		//obtain the user rating
 		int userRating = quizManager.findUserRating(user.getId(), quiz.getQuizId());
+		int userDiff = quizManager.findUserDifficulty(user.getId(), quiz.getQuizId());
 		//set editable to true if the user is the creator
 		if(user != null && user.getId() == quiz.getCreatorId()) {
-			
-			return Response.ok(new QuizView(quiz, groupId, true, userRating)).build();
+			//user is logged in and owner
+			return Response.ok(new QuizView(quiz, groupId, true, true, userRating, userDiff)).build();
 		}
 		else {
-			return Response.ok(new QuizView(quiz, groupId, false, userRating)).build();
+			//user is logged in but not the owner
+			return Response.ok(new QuizView(quiz, groupId, true, false, userRating, userDiff)).build();
 		}
 	}
 	
@@ -164,17 +167,28 @@ public class QuizResource {
 	
 	@POST
 	@Path("/rate/rating")
-	@Produces(MediaType.APPLICATION_JSON)
 	public Response rateQuizQuality(@Auth(required = false) User user, @QueryParam("quizId") long quizId, @QueryParam("rating") int rating) {
 		
-		HashMap<String, String> response = new HashMap<String, String>();
 		if(user == null) {
-			response.put("response", "login");
-			return Response.ok(response).build();
+			return Response.status(Status.UNAUTHORIZED).build();
 		}
 		if(quizManager.rateQuizQuality(user.getId(), quizId, rating)) {
-			response.put("response", "success");
-			return Response.ok(response).build();
+			return Response.ok().build();
+		}
+		else {
+			return Response.status(Status.BAD_REQUEST).build();
+		}
+	}
+	
+	@POST
+	@Path("/rate/difficulty")
+	public Response rateQuizDifficulty(@Auth(required = false) User user, @QueryParam("quizId") long quizId, @QueryParam("rating") int rating) {
+		
+		if(user == null) {
+			return Response.status(Status.UNAUTHORIZED).build();
+		}
+		if(quizManager.rateQuizDifficulty(user.getId(), quizId, rating)) {
+			return Response.ok().build();
 		}
 		else {
 			return Response.status(Status.BAD_REQUEST).build();

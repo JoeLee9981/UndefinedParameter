@@ -245,6 +245,9 @@ public class QuizManager {
 		return quizDAO.retrieveTopQuizzes();
 	}
 	
+	/*
+	 * Find a user's entered quality rating for a quiz
+	 */
 	public int findUserRating(long userId, long quizId) {
 		if(userId == 0 || quizId == 0) {
 			//this is invalid
@@ -253,9 +256,20 @@ public class QuizManager {
 		return quizDAO.getQuizRating(quizId, userId);
 	}
 	
+	/*
+	 * Find a user's difficulty rating for a quiz
+	 */
+	public int findUserDifficulty(long userId, long quizId) {
+		if(userId == 0 || quizId == 0) {
+			//this is invalid
+			return 0;
+		}
+		return quizDAO.getQuizDifficulty(quizId, userId);
+	}
+	
 	public boolean rateQuizQuality(long userId, long quizId, int rating) {
 		
-		if(userId < 1 || quizId < 1 || rating < 1) {
+		if(userId < 1 || quizId < 1 || rating < 1 || rating > 5) {
 			//this is invalid
 			return false;
 		}
@@ -270,6 +284,39 @@ public class QuizManager {
 				long key = quizDAO.insertQuizRating(quizId, userId, rating);
 				if(key > 0) {
 					quizDAO.rateQuizQuality(rating, quizId);
+					return true;
+				}
+				else {
+					//insert failed, return false
+					return false;
+				}
+			}
+			
+			return true;
+		}
+		catch(Exception e) {
+			//database insert fails
+			return false;
+		}
+	}
+	
+public boolean rateQuizDifficulty(long userId, long quizId, int rating) {
+		
+		if(userId < 1 || quizId < 1 || rating < 1 || rating > 5) {
+			//this is invalid
+			return false;
+		}
+		try {
+			int existingRating = quizDAO.getQuizDifficulty(quizId, userId);
+			
+			if(existingRating > 0) {
+				quizDAO.updateQuizDifficulty(userId, quizId, rating);
+				quizDAO.updateQuizDifficultyRating(rating - existingRating, quizId);
+			}
+			else {
+				long key = quizDAO.insertQuizDifficulty(quizId, userId, rating);
+				if(key > 0) {
+					quizDAO.rateQuizDifficulty(rating, quizId);
 					return true;
 				}
 				else {

@@ -46,8 +46,15 @@
 							    <div class="panel-content">
 					       			<h5>Created By: ${quiz.creatorId?html}</h5>
 									<h5>Difficulty:</h5>
-									<div id="difficulty" class="rating small fg-red">
-									</div>
+									
+									<#if userDifficulty &gt; 0>
+										<div id="difficulty" class="rating small fg-yellow">
+										</div>
+									<#else>
+										<div id="difficulty" class="rating small fg-red">
+										</div>
+									</#if>
+									
 									<h5>Rating:</h5>
 									<#if userRating &gt; 0>
 										<div id="rating" class="fg-yellow rating small">
@@ -56,6 +63,7 @@
 										<div id="rating" class="rating small">
 										</div>
 									</#if>
+									
 									<h5><i class="icon-clock"></i> ${quiz.timeString}</h5>
 							    </div>
 							</div>			
@@ -99,8 +107,13 @@
 					<h2>Your Quiz Stats: </h2><br/>
 					<h3 id="scoreText"/>
 					<h5>Rate the Quiz Difficulty:</h5>
-					<div id="setdifficulty" class="rating small fg-red">
-					</div>
+					<#if userDifficulty &gt; 0>
+						<div id="setdifficulty" class="rating small fg-yellow">
+						</div>
+					<#else>
+						<div id="setdifficulty" class="rating small fg-red">
+						</div>
+					</#if>
 					<h5>Rate the Quiz Quality:</h5>
 					<#if userRating &gt; 0>
 						<div id="setrating" class="fg-yellow rating small">
@@ -140,7 +153,11 @@
 		$(function() {
 			$("#difficulty").rating({
 				static: true,
-				score: ${quiz.difficulty},
+				<#if userDifficulty &gt; 0>
+					score: ${userDifficulty},
+				<#else>
+					score: ${quiz.difficulty},
+				</#if>
 				stars: 5,
 				showHint: true,
 				hints: ['cake', 'easy', 'average', 'hard', 'impossible'],
@@ -150,13 +167,27 @@
 		//star rating for finish page (end of quiz)
 		$(function() {
 			$("#setdifficulty").rating({
-				static: false,
-				score: ${quiz.difficulty},
+				<#if loggedIn>
+					static: false,
+				<#else>
+					static: true,
+				</#if>
+				<#if userRating &gt; 0>
+					score: ${userDifficulty},
+				<#else>
+					score: ${quiz.difficulty},
+				</#if>
 				stars: 5,
 				showHint: true,
 				hints: ['cake', 'easy', 'average', 'hard', 'impossible'],
 				click: function(value, rating) {
-					rateQuizDifficulty();
+					<#if loggedIn>
+						rateQuizDifficulty(value, ${quiz.quizId});
+						$("#setdifficulty").attr('class', 'rating small fg-yellow');
+						rating.rate(value);
+					<#else>
+						loginDialog();
+					</#if>
 				}
 			});		
 		});
@@ -164,7 +195,11 @@
 		//star difficulty for finish page (end of quiz)
 		$(function() {
 			$("#setrating").rating({
-				static: false,
+				<#if loggedIn>
+					static: false,
+				<#else>
+					static: true,
+				</#if>
 				<#if userRating &gt; 0>
 					score: ${userRating},
 				<#else>
@@ -174,12 +209,30 @@
 				showHint: true,
 				hints: ['wrong', 'poor', 'average', 'good', 'excellent'],
 				click: function(value, rating) {
-					rateQuizQuality(value, ${quiz.quizId}, $("#setrating"))
-					$("#setrating").attr('class', 'rating small fg-yellow');
-					rating.rate(value);
+					<#if loggedIn>
+						rateQuizQuality(value, ${quiz.quizId});
+						$("#setrating").attr('class', 'rating small fg-yellow');
+						rating.rate(value);
+					<#else>
+						loginDialog();
+					</#if>
 				}
 			});
 		});
+		
+		function loginDialog() {
+			$.Dialog({
+		        shadow: true,
+		        overlay: true,
+		        flat: true,
+		        icon: '<span class="icon-rocket"></span>',
+		        title: 'Login',
+		        content: '<h5>You must log in to do ratings</h5>',
+		        onShow: function(_dialog){
+		            console.log(_dialog);
+		        }
+		    });
+		}
 		
 		/*********************** QUIZ SYSTEM ****************************/
 		var quiz = [];
