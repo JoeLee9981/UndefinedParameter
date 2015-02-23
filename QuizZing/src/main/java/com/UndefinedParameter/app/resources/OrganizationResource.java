@@ -41,9 +41,9 @@ public class OrganizationResource {
 	@GET
 	public Response getOrgsView(@Auth(required=false) User user) {
 		if(user != null)
-			return Response.ok(new OrgsView(manager.findUnregisteredOrgs(user.getId()), manager.findOrgsByUserId(user.getId()), user)).build();
+			return Response.ok(new OrgsView(manager.findAllOrganizationTypes(), manager.findUnregisteredOrgs(user.getId()), manager.findOrgsByUserId(user.getId()), manager.findNewestOrganizations(0, 15), manager.findLargestOrganizations(0, 15), user)).build();
 		else
-			return Response.ok(new OrgsView(manager.findOrgsByLocation("city"), null, null)).build();
+			return Response.ok(new OrgsView(manager.findAllOrganizationTypes(), manager.findOrgsByLocation("city"), null, manager.findNewestOrganizations(0, 15), manager.findLargestOrganizations(0, 15), null)).build();
 	}
 	
 	@GET

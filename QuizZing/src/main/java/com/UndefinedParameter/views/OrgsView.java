@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.UndefinedParameter.app.core.Organization;
+import com.UndefinedParameter.app.core.OrganizationType;
 import com.UndefinedParameter.app.core.User;
 
 public class OrgsView extends View {
@@ -13,12 +14,23 @@ public class OrgsView extends View {
 	private User user;
 	private ArrayList<Organization> orgs = null;
 	private ArrayList<Organization> registeredOrgs = null;
+	private ArrayList<Organization> newestOrgs = null;
+	private ArrayList<Organization> largestOrgs = null;
+	private ArrayList<OrganizationType> orgTypes = null;
 	
-	public OrgsView(List<Organization> orgs, List<Organization> registeredOrgs, User user) {
+	public OrgsView(List<OrganizationType> orgTypes, List<Organization> orgs, List<Organization> registeredOrgs, List<Organization> newestOrganizations, List<Organization> largestOrganizations,  User user) {
 		super("orgs.ftl");
 		this.orgs = (ArrayList<Organization>)orgs;
 		this.registeredOrgs = (ArrayList<Organization>)registeredOrgs;
+		this.newestOrgs = (ArrayList<Organization>)newestOrganizations;
+		this.largestOrgs = (ArrayList<Organization>)largestOrganizations;
+		this.orgTypes = (ArrayList<OrganizationType>)orgTypes;
 		this.user = user;
+	}
+	
+	public ArrayList<OrganizationType> getOrganizationTypes()
+	{
+		return orgTypes;
 	}
 	
 	public ArrayList<Organization> getOrganizations() {
@@ -27,6 +39,14 @@ public class OrgsView extends View {
 	
 	public ArrayList<Organization> getRegisteredOrganizations() {
 		return registeredOrgs;
+	}
+	
+	public ArrayList<Organization> getNewestOrganizations() {
+		return newestOrgs;
+	}
+	
+	public ArrayList<Organization> getLargestOrganizations() {
+		return largestOrgs;
 	}
 	
 	public long getUserId() {

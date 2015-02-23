@@ -65,3 +65,20 @@ textarea
 {
 	background: #CDEDFF;
 }
+
+.container
+{
+	border-top: 2px solid orange;
+}
+
+.containerFill
+{
+	border: 1px solid #f6f6f6;
+	background: #fafafa;
+	padding: 15px;
+}
+
+.marginTop
+{
+	margin-top:20px;
+}

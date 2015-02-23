@@ -15,6 +15,12 @@ public class OrganizationManager {
 		this.groupDAO = groupDAO;
 	}
 	
+	public List<OrganizationType> findAllOrganizationTypes()
+	{
+		List<OrganizationType> x = orgDAO.findAllOrganizationTypes();
+		return x;
+	}
+	
 	/*
 	 * Find groups within an organization by id
 	 * 		Category is the category the groups belong to
@@ -114,6 +120,18 @@ public class OrganizationManager {
 	public List<Organization> findOrgsByUser(User user) {
 		//TODO: Get by user id registered
 		return orgDAO.findOrganizations();
+	}
+	
+	/* Find the newest organizations sorted.  Return rows from StartCount to EndCount */
+	public List<Organization> findNewestOrganizations(int startCount, int endCount)
+	{
+		return orgDAO.findNewestOrganizations(startCount, endCount);
+	}
+	
+	/* Find the largest organizations sorted.  Return rows from StartCount to EndCount */
+	public List<Organization> findLargestOrganizations(int startCount, int endCount)
+	{
+		return orgDAO.findLargestOrganizations(startCount, endCount);
 	}
 	
 	public List<Organization> findOrgsByUserId(long userId) {

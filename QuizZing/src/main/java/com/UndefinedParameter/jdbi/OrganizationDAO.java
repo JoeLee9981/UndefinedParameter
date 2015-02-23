@@ -6,16 +6,35 @@ import org.skife.jdbi.v2.sqlobject.Bind;
 import org.skife.jdbi.v2.sqlobject.GetGeneratedKeys;
 import org.skife.jdbi.v2.sqlobject.SqlQuery;
 import org.skife.jdbi.v2.sqlobject.SqlUpdate;
+import org.skife.jdbi.v2.sqlobject.customizers.Mapper;
 import org.skife.jdbi.v2.sqlobject.customizers.RegisterMapper;
 
 import com.UndefinedParameter.app.core.Group;
 import com.UndefinedParameter.app.core.Organization;
+import com.UndefinedParameter.app.core.OrganizationType;
+
 
 @RegisterMapper(OrganizationMapper.class)
 public interface OrganizationDAO {
 	
+	@SqlQuery("SELECT * FROM OrganizationType")
+	@Mapper(OrganizationTypeMapper.class)
+	public List<OrganizationType> findAllOrganizationTypes();
+	
 	@SqlQuery("SELECT * FROM Organization")
 	public List<Organization> findOrganizations();
+	
+	@SqlQuery("SELECT * FROM Organization "
+			+ "ORDER BY DateCreated DESC "
+			+ "LIMIT :startCount, :endCount")
+	public List<Organization> findNewestOrganizations(@Bind("startCount") int startCount,
+													  @Bind("endCount") int endCount);
+	
+	@SqlQuery("SELECT * FROM Organization "
+			+ "ORDER BY MemberCount DESC "
+			+ "LIMIT :startCount, :endCount")
+	public List<Organization> findLargestOrganizations(@Bind("startCount") int startCount,
+													   @Bind("endCount") int endCount);
 	
 	@SqlQuery("SELECT * FROM Organization org WHERE NOT EXISTS "
 			+ "(SELECT * FROM User user, UserOrganization userOrg WHERE "
