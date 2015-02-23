@@ -44,6 +44,11 @@ public class Organization {
 	private String country;
 	
 	/*
+	 * Rating of the organization
+	 */
+	private int rating;
+	
+	/*
 	 * MORE IDENTIFIERS MAY BE NECESSARY IN THE FUTURE
 	 */
 	
@@ -170,6 +175,16 @@ public class Organization {
 	
 	public String getDateAsString() {
 		return dateCreated.toString("MM/dd/yyyy");
+	}
+	
+	@JsonProperty
+	public int getRating() {
+		return rating;
+	}
+	
+	@JsonProperty
+	public void setRating(int rating) {
+		this.rating = rating;
 	}
 
 	/****************************** Organization Helper Methods **********************************/

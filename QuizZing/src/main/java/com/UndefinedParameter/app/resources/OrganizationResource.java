@@ -53,11 +53,12 @@ public class OrganizationResource {
 			List<Group> unregGroups = manager.findUnregisteredGroupsByOrg(user.getId(), id);
 			List<Group> regGroups = manager.findRegisteredGroupsById(id, user.getId());
 			
-			return Response.ok(new OrganizationView(manager.findOrgById(id), unregGroups, regGroups, true, user)).build();
+			int userRating = 0;
+			return Response.ok(new OrganizationView(manager.findOrgById(id), unregGroups, regGroups, true, user, userRating)).build();
 		}
 		else {
 			List<Group> groups = manager.findGroupsById(id);
-			return Response.ok(new OrganizationView(manager.findOrgById(id), groups, null, false, user)).build();
+			return Response.ok(new OrganizationView(manager.findOrgById(id), groups, null, false, user, 0)).build();
 		}
 	}
 	

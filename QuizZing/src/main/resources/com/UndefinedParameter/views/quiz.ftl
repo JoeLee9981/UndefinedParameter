@@ -149,6 +149,7 @@
 				hints: ['wrong', 'poor', 'average', 'good', 'excellent'],
 			});
 		});
+		
 		//Star rating for difficulty (entry page)
 		$(function() {
 			$("#difficulty").rating({
@@ -227,7 +228,8 @@
 		        flat: true,
 		        icon: '<span class="icon-rocket"></span>',
 		        title: 'Login',
-		        content: '<h5>You must log in to do ratings</h5>',
+		        width: 500,
+		        content: '<h5>You must log in to participate in ratings</h5><button class=\"primary\" onclick=\"location.href=\'/login\'\">Login</button><button class=\"success\" onclick=\"location.href=\'/register\'\">Register</button>',
 		        onShow: function(_dialog){
 		            console.log(_dialog);
 		        }

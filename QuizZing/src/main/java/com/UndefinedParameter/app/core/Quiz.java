@@ -38,13 +38,13 @@ public class Quiz {
 	/*
 	 * This is the difficulty of the quiz
 	 */
-	private float difficulty;
+	private int difficulty;
 	
 	/*
 	 * This is the user rating of the quiz
 	 * 		This is an averaged rating
 	 */
-	private float rating;
+	private int rating;
 	
 	/*
 	 * This is the description of the quiz
@@ -168,22 +168,22 @@ public class Quiz {
 	}
 	
 	@JsonProperty
-	public float getDifficulty() {
+	public int getDifficulty() {
 		return difficulty;
 	}
 	
 	@JsonProperty
-	public void setDifficulty(float difficulty) {
+	public void setDifficulty(int difficulty) {
 		this.difficulty = difficulty;
 	}
 	
 	@JsonProperty
-	public float getRating() {
+	public int getRating() {
 		return rating;
 	}
 	
 	@JsonProperty
-	public void setRating(float rating) {
+	public void setRating(int rating) {
 		this.rating = rating;
 	}
 	
