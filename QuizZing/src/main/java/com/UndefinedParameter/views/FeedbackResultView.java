@@ -6,15 +6,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.UndefinedParameter.app.core.Feedback;
+import com.UndefinedParameter.app.core.User;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class FeedbackResultView extends View {
 	
 	private List<Feedback> feedbackList;
+	private User user;
 	
-	public FeedbackResultView(List<Feedback> feedbackList) {
+	public FeedbackResultView(User user, List<Feedback> feedbackList) {
 		super("feedbackresults.ftl");
 		this.feedbackList = feedbackList;
+		this.user = user;
 	}
 
 	@JsonProperty
@@ -27,5 +30,7 @@ public class FeedbackResultView extends View {
 		this.feedbackList = feedbackList;
 	}
 	
-	
+	public User getUser() {
+		return user;
+	}
 }

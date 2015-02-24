@@ -1,7 +1,9 @@
 package com.UndefinedParameter.views;
 
 import io.dropwizard.views.View;
+
 import com.UndefinedParameter.app.core.Quiz;
+import com.UndefinedParameter.app.core.User;
 
 public class QuizView extends View {
 
@@ -11,8 +13,9 @@ public class QuizView extends View {
 	private boolean editable;
 	private int userRating;
 	private int userDifficulty;
+	private User user;
 	
-	public QuizView(Quiz quiz, long groupId, boolean loggedIn, boolean editable, int userRating, int userDifficulty) {
+	public QuizView(User user, Quiz quiz, long groupId, boolean loggedIn, boolean editable, int userRating, int userDifficulty) {
 		super("quiz.ftl");
 		this.quiz = quiz;
 		this.loggedIn = loggedIn;
@@ -20,6 +23,7 @@ public class QuizView extends View {
 		this.groupId = groupId;
 		this.userRating = userRating;
 		this.userDifficulty = userDifficulty;
+		this.user = user;
 	}
 	
 	public Quiz getQuiz() {
@@ -53,4 +57,7 @@ public class QuizView extends View {
 		return this.loggedIn;
 	}
 	
+	public User getUser() {
+		return user;
+	}
 }

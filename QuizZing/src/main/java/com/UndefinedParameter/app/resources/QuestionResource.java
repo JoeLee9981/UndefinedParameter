@@ -42,10 +42,10 @@ public class QuestionResource {
 	public Response getAddQuestionView(@Auth(required = false) User user, @QueryParam("quizId") long quizId, @QueryParam("groupId") long groupId) {
 		
 		if(user == null) {
-			return Response.ok(new LoginView()).build();
+			return Response.ok(new LoginView(user)).build();
 		}
 		
-		return Response.ok(new QuestionCreatorView(quizId, groupId)).build();
+		return Response.ok(new QuestionCreatorView(user, quizId, groupId)).build();
 	}
 	
 	@POST
@@ -84,7 +84,7 @@ public class QuestionResource {
 	public Response getQuestionAddView(@Auth(required = false) User user, @QueryParam("quizId") long quizId, @QueryParam("groupId") long groupId) {
 		
 		if(user == null) {
-			return Response.ok(new LoginView()).build();
+			return Response.ok(new LoginView(user)).build();
 		}
 		else {
 			Quiz quiz = quizManager.findQuiz(quizId);
@@ -92,7 +92,7 @@ public class QuestionResource {
 			if(quiz.getCreatorId() == user.getId()) {
 				//only the creator can add to this quiz
 				//TODO: Collaborators
-				return Response.ok(new QuestionAddView(questions, quizId, groupId)).build();
+				return Response.ok(new QuestionAddView(user, questions, quizId, groupId)).build();
 			}
 			else {
 				return Response.status(Status.BAD_REQUEST).build();

@@ -58,7 +58,7 @@ public class QuizResource {
 		
 		//if user is not logged in
 		if(user == null)
-			return Response.ok(new QuizView(quiz, groupId, false, false, 0, 0)).build();
+			return Response.ok(new QuizView(user, quiz, groupId, false, false, 0, 0)).build();
 		
 		//obtain the user rating
 		int userRating = quizManager.findUserRating(user.getId(), quiz.getQuizId());
@@ -66,11 +66,11 @@ public class QuizResource {
 		//set editable to true if the user is the creator
 		if(user != null && user.getId() == quiz.getCreatorId()) {
 			//user is logged in and owner
-			return Response.ok(new QuizView(quiz, groupId, true, true, userRating, userDiff)).build();
+			return Response.ok(new QuizView(user, quiz, groupId, true, true, userRating, userDiff)).build();
 		}
 		else {
 			//user is logged in but not the owner
-			return Response.ok(new QuizView(quiz, groupId, true, false, userRating, userDiff)).build();
+			return Response.ok(new QuizView(user, quiz, groupId, true, false, userRating, userDiff)).build();
 		}
 	}
 	
@@ -79,10 +79,10 @@ public class QuizResource {
 	public Response getQuizCreatorView(@Auth(required = false) User user, @QueryParam("groupId") long groupId) {
 		
 		if(user == null) {
-			return Response.ok(new LoginView()).build();
+			return Response.ok(new LoginView(user)).build();
 		}
 		else if(groupId > 0) {
-			return Response.ok(new QuizCreatorView(groupManager.findGroupById(groupId))).build();
+			return Response.ok(new QuizCreatorView(user, groupManager.findGroupById(groupId))).build();
 		}
 		//not a valid group id return a bad request
 		return Response.status(Status.BAD_REQUEST).build();
@@ -126,9 +126,9 @@ public class QuizResource {
 	
 	@GET
 	@Path("/score")
-	public Response getScoreView(@QueryParam("quizId") int id) {
+	public Response getScoreView(@Auth(required=false) User user, @QueryParam("quizId") int id) {
 		
-		return Response.ok(new ScoreView(id)).build();
+		return Response.ok(new ScoreView(user, id)).build();
 	}
 	
 	@GET
@@ -141,14 +141,14 @@ public class QuizResource {
 			return Response.status(Status.BAD_REQUEST).build();
 		//user must be logged in
 		if(user == null)
-			return Response.ok(new LoginView()).build();
+			return Response.ok(new LoginView(user)).build();
 		//find quiz
 		Quiz quiz = quizManager.findQuiz(id);
 		Group group = null;
 		if(groupId > 0)
 			group = groupManager.findGroupById(groupId);
 		if(quiz != null && user.getId() == quiz.getCreatorId()) {
-			return Response.ok(new QuizEditView(quiz, group)).build();
+			return Response.ok(new QuizEditView(user, quiz, group)).build();
 		}
 		return Response.status(Status.BAD_REQUEST).build();
 	}
@@ -158,10 +158,10 @@ public class QuizResource {
 	@Path("/quizzes")
 	public Response getQuizzesPage(@Auth(required = false) User user) {
 		if(user != null) {
-			return Response.ok(new QuizzesView(quizManager.findTopQuizzes(), quizManager.findQuizzesByCreatorId(user.getId()))).build();
+			return Response.ok(new QuizzesView(user, quizManager.findTopQuizzes(), quizManager.findQuizzesByCreatorId(user.getId()))).build();
 		}
 		else {
-			return Response.ok(new QuizzesView(quizManager.findTopQuizzes(), null)).build();
+			return Response.ok(new QuizzesView(user, quizManager.findTopQuizzes(), null)).build();
 		}
 	}
 	

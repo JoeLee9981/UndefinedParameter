@@ -2,18 +2,21 @@ package com.UndefinedParameter.views;
 
 import io.dropwizard.views.View;
 
+import com.UndefinedParameter.app.core.User;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class QuestionCreatorView extends View {
 	
 	private long quizId;
 	private long groupId;
+	private User user;
 	
-	public QuestionCreatorView(long quizId, long groupId)
+	public QuestionCreatorView(User user, long quizId, long groupId)
 	{
 		super("question_create.ftl");
 		this.quizId = quizId;
 		this.groupId = groupId;
+		this.user = user;
 	}
 
 	@JsonProperty
@@ -36,4 +39,7 @@ public class QuestionCreatorView extends View {
 		this.groupId = groupId;
 	}
 	
+	public User getUser() {
+		return user;
+	}
 }

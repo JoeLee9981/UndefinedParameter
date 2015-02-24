@@ -75,8 +75,8 @@ public class HomeResource {
 	
 	@GET
 	@Path("/login")
-	public Response getLoginView() {
-		return Response.ok(new LoginView()).build();
+	public Response getLoginView(@Auth(required=false) User user) {
+		return Response.ok(new LoginView(user)).build();
 	}
 	
 	@POST
@@ -128,7 +128,7 @@ public class HomeResource {
 	
 	@GET
 	@Path("/about")
-	public Response getAboutPage() {
-		return Response.ok(new AboutView(newsManager.getRecentNews())).build();
+	public Response getAboutPage(@Auth(required=false) User user) {
+		return Response.ok(new AboutView(user, newsManager.getRecentNews())).build();
 	}
 }

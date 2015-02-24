@@ -1,5 +1,7 @@
 package com.UndefinedParameter.app.resources;
 
+import io.dropwizard.auth.Auth;
+
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -8,6 +10,7 @@ import javax.ws.rs.core.MediaType;
 
 import com.UndefinedParameter.app.core.NewsArticle;
 import com.UndefinedParameter.app.core.NewsManager;
+import com.UndefinedParameter.app.core.User;
 import com.UndefinedParameter.jdbi.NewsArticleDAO;
 import com.UndefinedParameter.views.NewsArticleView;
 
@@ -25,8 +28,8 @@ public class NewsArticleResource {
 	}
 	
 	@GET
-	public NewsArticleView getNewsArticleView(@QueryParam("id") int id) {
+	public NewsArticleView getNewsArticleView(@Auth(required=false) User user, @QueryParam("id") int id) {
 		NewsArticle news = newsManager.getNewsById(id);
-		return new NewsArticleView(news);
+		return new NewsArticleView(user, news);
 	}
 }

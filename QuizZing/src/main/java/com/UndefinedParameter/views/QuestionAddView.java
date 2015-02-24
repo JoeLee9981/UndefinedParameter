@@ -6,20 +6,23 @@ import java.util.List;
 
 import com.UndefinedParameter.app.core.Question;
 import com.UndefinedParameter.app.core.Quiz;
+import com.UndefinedParameter.app.core.User;
 
 public class QuestionAddView extends View {
 	
 	private long quizId;
 	private long groupId;
+	private User user;
 	
 	//This is a list of all questions associated with this group
 	private List<Question> questions;
 	
-	public QuestionAddView(List<Question> questions, long quizId, long groupId) {
+	public QuestionAddView(User user, List<Question> questions, long quizId, long groupId) {
 		super("question_add.ftl");
 		this.quizId = quizId;
 		this.groupId = groupId;
 		this.questions = questions;
+		this.user = user;
 	}
 
 	public List<Question> getQuestions() {
@@ -49,6 +52,8 @@ public class QuestionAddView extends View {
 		this.groupId = groupId;
 	}
 	
-	
+	public User getUser() {
+		return user;
+	}
 	
 }

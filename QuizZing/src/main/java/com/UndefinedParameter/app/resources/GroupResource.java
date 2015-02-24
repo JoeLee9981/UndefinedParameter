@@ -51,7 +51,7 @@ public class GroupResource {
 	public Response addGroup(@Auth(required = false) User user, @Valid Group group) {
 			
 		if(user == null) {
-			return Response.ok(new LoginView()).build();
+			return Response.ok(new LoginView(user)).build();
 		}
 		
 		HashMap<String, String> response = new HashMap<String, String>();
@@ -96,10 +96,10 @@ public class GroupResource {
 	@Path("/top")
 	public Response getTopGroups(@Auth(required = false) User user) {
 		if(user != null) {
-			return Response.ok(new GroupsView(manager.findTopGroups(), manager.findRegisteredGroups(user.getId()), true)).build();
+			return Response.ok(new GroupsView(user, manager.findTopGroups(), manager.findRegisteredGroups(user.getId()), true)).build();
 		}
 		else {
-			return Response.ok(new GroupsView(manager.findTopGroups(), null, false)).build();
+			return Response.ok(new GroupsView(user, manager.findTopGroups(), null, false)).build();
 		}
 	}
 }

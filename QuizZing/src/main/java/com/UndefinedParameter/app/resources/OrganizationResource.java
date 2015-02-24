@@ -75,7 +75,7 @@ public class OrganizationResource {
 	@Path("/org/create")
 	public Response getCreateGroupView(@Auth(required = false) User user, @QueryParam("orgId") long orgId) {
 		if(user != null)
-			return Response.ok(new GroupCreatorView(manager.findOrgById(orgId))).build();
+			return Response.ok(new GroupCreatorView(user, manager.findOrgById(orgId))).build();
 		else
 			return Response.ok(new LoginView("/orgs/org/create?orgId=" + orgId)).build();
 	}
@@ -129,7 +129,7 @@ public class OrganizationResource {
 	public Response addOrg(@Auth(required = false) User user, Organization org) {
 		
 		if(user == null) {
-			return Response.ok(new LoginView()).build();
+			return Response.ok(new LoginView(user)).build();
 		}
 		
 		HashMap<String, String> response = new HashMap<String, String>();

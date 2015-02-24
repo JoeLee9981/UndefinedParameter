@@ -37,14 +37,14 @@ public class FeedbackResource {
 
 	
 	@GET
-	public FeedbackView getFeedbackView() {
-		return new FeedbackView();
+	public FeedbackView getFeedbackView(@Auth(required=false) User user) {
+		return new FeedbackView(user);
 	}
 	
 	@GET
 	@Path("/view")
-	public FeedbackResultView getFeedbackResultsView() {
-		return new FeedbackResultView(feedbackDAO.retrieveFeedback());
+	public FeedbackResultView getFeedbackResultsView(@Auth(required=false) User user) {
+		return new FeedbackResultView(user, feedbackDAO.retrieveFeedback());
 	}
 	
 	@POST
@@ -57,9 +57,9 @@ public class FeedbackResource {
 	
 	@GET
 	@Path("/bug")
-	public Response getBugView() {
+	public Response getBugView(@Auth(required=false) User user) {
 
-		return Response.ok(new BugView()).build();
+		return Response.ok(new BugView(user)).build();
 	}
 	
 	@POST
@@ -92,10 +92,10 @@ public class FeedbackResource {
 	public Response viewBugs(@Auth(required = false) User user) {
 		
 		if(user != null) {
-			return Response.ok(new BugReportView(bugDAO.retrieveBugs())).build();
+			return Response.ok(new BugReportView(user, bugDAO.retrieveBugs())).build();
 		}
 		else {
-			return Response.ok(new LoginView()).build();
+			return Response.ok(new LoginView(user)).build();
 		}
 	}
 }
