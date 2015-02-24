@@ -82,20 +82,20 @@
 				</div>
 				<div id="quizDiv" hidden="true">
 					<div class="row">
-						<div class="span8">
-								<div class="row">
-									<pre><p id="questionHead"> </p></pre>
+						<div class="span12">
+							<div class="row">
+								<div>
+									<button id="prevQuestion" onclick="previousQuestion()" hidden="true" class="primary">Previous</button>
+									<button id="nextQuestion" onclick="nextQuestion()" class="success">Next</next>
 								</div>
+							</div>
+							<div class="row">
+								<pre style="white-space: pre-wrap"><p id="questionHead"> </p></pre>
+							</div>
 							<div class="row">
 								<div id="answerDiv">
 									
 								</div>										
-							</div>
-							<div class="row">
-								<div>
-									<button id="prevQuestion" onclick="previousQuestion()" class="primary">Previous</button>
-									<button id="nextQuestion" onclick="nextQuestion()" class="success">Next</next>
-								</div>
 							</div>
 						</div>
 						<div class="span4">
@@ -250,6 +250,7 @@
 		//On the window being loaded we read from freemarker and add the quiz information into an
 		//	array
 		window.onload = function() {
+			//var quiz = new Quiz(5, "Stuff");
 			<#list quiz.questions as quest>
 				quiz.push("${quest.questionText}");
 				correctAnswers.push("${quest.correctAnswer}");
