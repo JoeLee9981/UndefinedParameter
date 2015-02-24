@@ -162,7 +162,7 @@ public class QuizManager {
 			List<String> wrongAnswers = question.getWrongAnswers();
 			long id = questionDAO.createQuestion(question.getCreatorId(), question.getGroupId(), question.getQuestionDifficulty(), question.getRating(),
 					question.getQuestionText(), question.getCorrectAnswer(), question.getQuestionType().toString(), wrongAnswers.get(0), wrongAnswers.get(1),
-					wrongAnswers.get(2), wrongAnswers.get(3), question.isFlagged());
+					wrongAnswers.get(2), wrongAnswers.get(3), question.isFlagged(), question.getExplanation(), question.getReference());
 			return id;
 		}
 	}

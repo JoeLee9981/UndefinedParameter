@@ -29,6 +29,8 @@ public class Question {
 	private String correctAnswer;
 	private ArrayList<String> wrongAnswers;
 	private boolean flagged = false;
+	private String explanation;
+	private String reference;
 	
 	// This contains a list of all the associated groups for this question
 	// The Hashset will contain a an association with group ID and group name
@@ -48,7 +50,7 @@ public class Question {
 	{
 	}
 	
-	public Question(long qID, long cID, long groupId, double difficulty, double rate, String qt, String qText, String answer, ArrayList<String> wrong, Boolean flag)
+	public Question(long qID, long cID, long groupId, double difficulty, double rate, String qt, String qText, String answer, ArrayList<String> wrong, Boolean flag, String ref, String explan)
 	{
 		this.questionId = qID;
 		this.creatorId = cID;
@@ -60,6 +62,8 @@ public class Question {
 		this.correctAnswer = answer;
 		this.wrongAnswers = wrong;
 		this.flagged = flag;
+		this.reference = ref;
+		this.explanation = explan;
 	}
 	
 	public void setAnswers() {
@@ -246,5 +250,24 @@ public class Question {
 		this.groupId = groupId;
 	}
 	
+	@JsonProperty
+	public String getExplanation() {
+		return explanation;
+	}
+
+	@JsonProperty
+	public void setExplanation(String explan) {
+		this.explanation = explan;
+	}
+	
+	@JsonProperty
+	public String getReference() {
+		return reference;
+	}
+
+	@JsonProperty
+	public void setReference(String ref) {
+		this.reference = ref;
+	}
 	
 }
