@@ -61,6 +61,11 @@ textarea
 	margin: 0 !important;
 }
 
+.noPadding
+{
+	padding: 0 !important;
+}
+
 .notificationBox
 {
 	background: #CDEDFF;
@@ -81,4 +86,24 @@ textarea
 .marginTop
 {
 	margin-top:20px;
+}
+
+.padding5
+{
+	padding: 5px !important;
+}
+
+.padding9
+{
+	padding: 9px !important;
+}
+
+a > .leave
+{
+	color: red;
+}
+
+a > .join
+{
+	color: green;
 }

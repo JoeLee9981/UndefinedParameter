@@ -28,24 +28,92 @@
 						
 				<div class="row">
 					<div class="span8">
+						<form>
+						<div class="containerFill">
+							<h4>Find an Organization</h4>
+							<div class="row noMargin">
+								<div class="input-control text">
+								    <input type="text" placeholder="Search for an Organization..."/>
+								    <button class="btn-search todo"></button>
+								</div>
+							</div>
+							<div class="row noMargin">
+								<#list organizationTypes as orgType>
+									<div class="span3 noMargin">								
+										<div class="input-control checkbox noPadding noMargin">
+										    <label>
+										        <input type="checkbox" checked/>
+										        <span class="check"></span>
+										        ${orgType.typeName}
+										    </label>
+										</div>							
+									</div>
+								</#list>
+							</div>
+						</div>
+						</form>
+						<#if user??>
+							<div class="row noMargin">
+								<h5>My Joined Organizations
+									<span class="place-right">
+										<a href="#" class="todo">More<i class="icon-arrow-right-3 on-right"></i></a>
+									</span>
+								</h5>
+								<div class="container">				
+									<#if registeredOrganizations?size gt 0>								
+											<table class="table hovered">
+												<tbody>
+													<#list registeredOrganizations as org>
+														<tr>
+															<td class="padding5"><a href="/orgs/org?id=${org.id}">${org.name}</a></td>
+															<td class="right padding5"><a href="#" class="place-right" onClick="leave(${org.id})"><i class="icon-minus leave"></i></a></td>
+														</tr>
+													</#list>
+												</tbody>
+											</table>													
+									<#else>
+										<div class="span12" style="text-align:center;padding:20px;">
+											<h6>You are not a member of any organization yet.</h6>
+										</div>
+									</#if>
+								</div>
+							</div>
+						</#if>
+						<#if user??>
+							<div class="row noMargin">
+								<h5>My Created Organizations
+									<span class="place-right">
+										<a href="#" class="todo">More<i class="icon-arrow-right-3 on-right"></i></a>
+									</span>
+								</h5>
+								<div class="container">				
+								
+										<div class="span12" style="text-align:center;padding:20px;">
+											
+											<h6>You have not created any organizations TODO.</h6>
+										
+										</div>
+
+								</div>
+							</div>
+						</#if>
 						<div class="row noMargin">
-							<div class="">
-
-
-
-
-										<#list organizationTypes as orgType>
+							<h5>Recommended Organizations
+								<span class="place-right">
+									<a href="#" class="todo">More<i class="icon-arrow-right-3 on-right"></i></a>
+								</span>
+							</h5>
+							<div class="container">										
+								<table class="table hovered">
+									<tbody>
+										<#list organizations as org>
 											<tr>
-												<td></td>
-												<td class="right">${orgType.typeName},</td>
+												<td class="padding5"><a href="/orgs/org?id=${org.id}">${org.name}</a></td>
+												<td class="right padding5"><a href="#" class="place-right" onClick="joinOrg(${org.id})"><i class="icon-plus join"></i></a></td>
 											</tr>
 										</#list>
-
-
-
-
-
-
+									</tbody>
+								</table>	
 							</div>
 						</div>
 					</div>
@@ -59,20 +127,24 @@
 								on what you are interested in.
 							</div>
 							<div>
-								<div class="place-right marginTop">
-									<button class="success">Create Organization</button>
+								<div class="marginTop">
+									<button class="success" onclick="location.href='/orgs/create'">Create Organization</button>
 								</div>
 							</div>
 						</div>
 						<div class="row">
-							<h5>Largest</h5>
+							<h5>Largest ${largestOrganizations?size}
+								<span class="place-right">
+									<a href="#" class="todo">More<i class="icon-arrow-right-3 on-right"></i></a>
+								</span>
+							</h5>
 							<div class="container">
 								<table class="table hovered">
 									<tbody>
 										<#list largestOrganizations as org>
 											<tr>
-												<td><a href="/orgs/org?id=${org.id}">${org.name}</a></td>
-												<td class="right">${org.memberCount}</td>
+												<td class="padding5"><a href="/orgs/org?id=${org.id}">${org.name}</a></td>
+												<td class="right padding5"><span class="place-right">${org.memberCount}</span></td>
 											</tr>
 										</#list>
 									</tbody>
@@ -80,14 +152,18 @@
 							</div>
 						</div>
 						<div class="row noMargin">
-							<h5>New</h5>
+							<h5>Newest ${newestOrganizations?size}
+								<span class="place-right">
+									<a href="#" class="todo">More<i class="icon-arrow-right-3 on-right"></i></a>
+								</span>
+							</h5>
 							<div class="container">	
 								<table class="table hovered">
 									<tbody>
 										<#list newestOrganizations as org>
 											<tr>
-												<td><a href="/orgs/org?id=${org.id}">${org.name}</a></td>
-												<td class="right">${org.dateAsString}</td>
+												<td class="padding5"><a href="/orgs/org?id=${org.id}">${org.name}</a></td>
+												<td class="right padding5"><span class="place-right">${org.dateAsString}</span></td>
 											</tr>
 										</#list>
 									</tbody>
@@ -104,7 +180,7 @@
 
 		<script>
 			
-			function register(orgId) {
+			function joinOrg(orgId) {
 				$.ajax({
 				    url: '/orgs/register?orgId=' + orgId,
 				    type: 'POST',
