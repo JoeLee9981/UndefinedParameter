@@ -18,6 +18,17 @@
 					</div>			    
 	            </ul>          
             </div>
+			<span class="element-divider"></span>
+			<div class="element"  id="">
+	            <a class="dropdown-toggle" href="#">
+	                Feedback &nbsp;
+	            </a>
+	            <ul class="dropdown-menu" data-role="dropdown">
+	            	<li><a href="/feedback">Leave Feedback</a></li>
+	                <li><a href="/feedback/bug">Report a Bug</a></li>
+	            </ul>
+	      	</div>
+
 
 	        <div class="element input-element">
 	            <form id="search">
@@ -41,8 +52,8 @@
 		        </div>
 		        <button id="userAndImageBox" class="element image-button image-left place-right">
 			        <a href="/user?userid=${user.id}">
-			        	<#if user.userName?length &gt; 14>
-			        		${user.userName?substring(0, 13)}...
+			        	<#if user.userName?length &gt; 7>
+			        		${user.userName?substring(0, 7)}...
 			        	<#else>
 			        		${user.userName?html}
 			        	</#if>      

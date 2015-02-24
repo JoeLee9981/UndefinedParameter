@@ -109,7 +109,9 @@
 										<#list organizations as org>
 											<tr>
 												<td class="padding5"><a href="/orgs/org?id=${org.id}">${org.name}</a></td>
-												<td class="right padding5"><a href="#" class="place-right" onClick="joinOrg(${org.id})"><i class="icon-plus join"></i></a></td>
+												<#if user??>
+													<td class="right padding5"><a href="#" class="place-right" onClick="joinOrg(${org.id})"><i class="icon-plus join"></i></a></td>
+												</#if>
 											</tr>
 										</#list>
 									</tbody>

@@ -73,14 +73,15 @@ textarea
 
 .container
 {
-	border-top: 2px solid orange;
+	border-top: 2px solid GRAY;
 }
 
 .containerFill
 {
-	border: 1px solid #f6f6f6;
+	border: 1px solid #d3d3d3;
 	background: #fafafa;
 	padding: 15px;
+	box-shadow: 0px 2px 2px #d3d3d3;
 }
 
 .marginTop
