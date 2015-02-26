@@ -32,7 +32,7 @@ public interface OrganizationDAO {
 									@Bind("userID") long userID,
 									@Bind("rating") int rating);
 	
-	@SqlQuery("UPDATE Organization SET Rating = :rating WHERE OrgID = :orgID")
+	@SqlQuery("UPDATE Organization SET Rating = Rating + :rating WHERE OrgID = :orgID")
 	public int updateOrganizationRating(@Bind("orgID") long orgId, @Bind("rating") int rating);
 	
 	@SqlQuery("UPDATE Organization SET RatingCount = :ratingcount WHERE OrgID = :orgID")
