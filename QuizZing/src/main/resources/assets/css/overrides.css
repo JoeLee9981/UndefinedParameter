@@ -40,15 +40,26 @@ form.medium .check:after
 {
 	background: #f6f6f6 ;
 }
+
 .metro .breadcrumbs ul a:before
 {
 	border-color: #f6f6f6 #f6f6f6 #f6f6f6 transparent ;
 }
+
 .metro .breadcrumbs ul a:after
 {
 	border-left: 1em solid #f6f6f6 ;
 }
 
+.metro .rating
+{
+	margin: 0 !important;
+	height: auto !important;
+}
+.metro .rating ul
+{
+	margin-bottom: 0 !important;
+}
 
 /*
 .metro .dropdown-menu.dark .menu-title,

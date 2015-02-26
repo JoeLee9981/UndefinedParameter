@@ -18,3 +18,8 @@
 {
 	/*border-bottom: 1px solid orange;*/
 }
+
+#category-dropdown-container
+{
+	width: 1030px !important;
+}

@@ -33,7 +33,7 @@
 	        <div class="element input-element">
 	            <form id="search">
 	                <div class="input-control text searchbox">
-	                    <input type="text" placeholder="Find what your mind desires..." class="size6">
+	                    <input type="text" placeholder="Find what your mind desires..." class="size5">
 	                    <button class="btn-search todo"></button>
 	                </div>
 	            </form>
@@ -52,8 +52,8 @@
 		        </div>
 		        <button id="userAndImageBox" class="element image-button image-left place-right">
 			        <a href="/user?userid=${user.id}">
-			        	<#if user.userName?length &gt; 7>
-			        		${user.userName?substring(0, 7)}...
+			        	<#if user.userName?length &gt; 14>
+			        		${user.userName?substring(0, 14)}...
 			        	<#else>
 			        		${user.userName?html}
 			        	</#if>      

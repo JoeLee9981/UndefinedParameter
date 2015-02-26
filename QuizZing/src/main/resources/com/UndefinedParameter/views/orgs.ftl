@@ -6,6 +6,7 @@
 		<link rel="stylesheet" type="text/css" href="/assets/css/main.css" />
 		<script src="/assets/scripts/jquery-2.1.1.min.js"></script>
 		<script src="/assets/scripts/jquery-ui.min.js"></script>
+		<script src="/assets/plugins/metro_ui/js/metro-accordion.js"></script>
 		<script src="/assets/plugins/metro_ui/min/metro.min.js"></script>
 		<link href="/assets/plugins/metro_ui/min/iconFont.min.css" rel="stylesheet">
 		<link href="/assets/css/organizations.css" rel="stylesheet">	
@@ -29,9 +30,9 @@
 				<div class="row">
 					<div class="span8">
 						<form>
-						<div class="containerFill">
+						<div class="row noMargin containerFill">
 							<h4>Find an Organization</h4>
-							<div class="row noMargin">
+							<div class="">
 								<div class="input-control text">
 								    <input type="text" placeholder="Search for an Organization..."/>
 								    <button class="btn-search todo"></button>
@@ -52,52 +53,56 @@
 							</div>
 						</div>
 						</form>
-						<#if user??>
-							<div class="row noMargin">
-								<h5>My Joined Organizations
-									<span class="place-right">
-										<a href="#" class="todo">More<i class="icon-arrow-right-3 on-right"></i></a>
-									</span>
-								</h5>
-								<div class="container">				
-									<#if registeredOrganizations?size gt 0>								
-											<table class="table hovered">
-												<tbody>
-													<#list registeredOrganizations as org>
-														<tr>
-															<td class="padding5"><a href="/orgs/org?id=${org.id}">${org.name}</a></td>
-															<td class="right padding5"><a href="#" class="place-right" onClick="leave(${org.id})"><i class="icon-minus leave"></i></a></td>
-														</tr>
-													</#list>
-												</tbody>
-											</table>													
-									<#else>
-										<div class="span12" style="text-align:center;padding:20px;">
-											<h6>You are not a member of any organization yet.</h6>
+						
+						
+						<#if user??>					
+							<div class="row">					
+								<div class="accordion with-marker" data-role="accordion" data-closeany="false">
+									<div class="accordion-frame <#if registeredOrganizations?size gt 0>active</#if>">
+										<a href="#" class="heading bg-lightBlue fg-white">My Joined Organizations</a>			
+										<div class="content">									
+											<#if registeredOrganizations?size gt 0>								
+												<table class="table hovered">
+													<tbody>
+														<#list registeredOrganizations as org>
+															<tr>
+																<td class="padding5"><a href="/orgs/org?id=${org.id}">${org.name}</a></td>
+																<td class="padding5"><span class="place-right">${org.quizCount}<i class="icon-clipboard-2 on-right"></i></span></td>
+																<td class="padding5"><span class="place-right">${org.questionCount}<i class="icon-help-2 on-right"></i></span></td>
+																<td class="padding5"><span class="place-right">${org.memberCount}<i class="icon-user-3 on-right"></i></span></td>
+				
+																<#if user??>
+																	<td class="right padding5"><a href="#" class="place-right" onClick="leave(${org.id})"><i class="icon-minus leave"></i></a></td>
+																</#if>
+															</tr>
+														</#list>
+													</tbody>
+												</table>													
+											<#else>
+												<div style="text-align:center;padding:20px;">
+													<h6>You are not a member of any organization yet.</h6>
+												</div>
+											</#if>																				
 										</div>
-									</#if>
-								</div>
-							</div>
-						</#if>
-						<#if user??>
-							<div class="row noMargin">
-								<h5>My Created Organizations
-									<span class="place-right">
-										<a href="#" class="todo">More<i class="icon-arrow-right-3 on-right"></i></a>
-									</span>
-								</h5>
-								<div class="container">				
-								
-										<div class="span12" style="text-align:center;padding:20px;">
+									</div>
+									
+									<div class="accordion-frame">
+										<a href="#" class="heading bg-lightBlue fg-white">My Created Organizations</a>
+										<div class="content">
+										
+											<div style="text-align:center;padding:20px;">
+												
+												<h6>You have not created any organizations TODO.</h6>
 											
-											<h6>You have not created any organizations TODO.</h6>
+											</div>														
 										
 										</div>
-
+									</div>
 								</div>
 							</div>
 						</#if>
-						<div class="row noMargin">
+
+						<div class="row">
 							<h5>Recommended Organizations
 								<span class="place-right">
 									<a href="#" class="todo">More<i class="icon-arrow-right-3 on-right"></i></a>
@@ -109,6 +114,10 @@
 										<#list organizations as org>
 											<tr>
 												<td class="padding5"><a href="/orgs/org?id=${org.id}">${org.name}</a></td>
+												<td class="padding5"><span class="place-right">${org.quizCount}<i class="icon-clipboard-2 on-right"></i></span></td>
+												<td class="padding5"><span class="place-right">${org.questionCount}<i class="icon-help-2 on-right"></i></span></td>
+												<td class="padding5"><span class="place-right">${org.memberCount}<i class="icon-user-3 on-right"></i></span></td>
+
 												<#if user??>
 													<td class="right padding5"><a href="#" class="place-right" onClick="joinOrg(${org.id})"><i class="icon-plus join"></i></a></td>
 												</#if>
@@ -135,7 +144,7 @@
 							</div>
 						</div>
 						<div class="row">
-							<h5>Largest ${largestOrganizations?size}
+							<h5>Largest Organizations
 								<span class="place-right">
 									<a href="#" class="todo">More<i class="icon-arrow-right-3 on-right"></i></a>
 								</span>
@@ -154,7 +163,7 @@
 							</div>
 						</div>
 						<div class="row noMargin">
-							<h5>Newest ${newestOrganizations?size}
+							<h5>Newest Organizations
 								<span class="place-right">
 									<a href="#" class="todo">More<i class="icon-arrow-right-3 on-right"></i></a>
 								</span>
