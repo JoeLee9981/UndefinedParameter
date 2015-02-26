@@ -17,6 +17,27 @@ import com.UndefinedParameter.app.core.OrganizationType;
 @RegisterMapper(OrganizationMapper.class)
 public interface OrganizationDAO {
 	
+	@SqlQuery("SELECT Rating FROM Organization WHERE OrgID = :orgID")
+	public int getOrganizationRating(@Bind("orgID") long orgId);
+	
+	@SqlQuery("SELECT RatingCount FROM Organization WHERE OrgID = :orgID")
+	public int getOrganizationRatingCount(@Bind("orgID") long orgId);
+	
+	@SqlQuery("SELECT Rating FROM UserOrganization WHERE OrgID = :orgID AND UserID = :userID")
+	public int getUserOrganizationRating(@Bind("orgID") long orgID,
+										 @Bind("userID") long userID);
+	
+	@SqlUpdate("UPDATE UserOrganization SET Rating = :rating WHERE OrgID = :orgId AND UserID = :userID")
+	public void updateUserOrgRating(@Bind("orgID") long orgID,
+									@Bind("userID") long userID,
+									@Bind("rating") int rating);
+	
+	@SqlQuery("UPDATE Organization SET Rating = :rating WHERE OrgID = :orgID")
+	public int updateOrganizationRating(@Bind("orgID") long orgId, @Bind("rating") int rating);
+	
+	@SqlQuery("UPDATE Organization SET RatingCount = :ratingcount WHERE OrgID = :orgID")
+	public int updateOrganizationRatingCount(@Bind("orgID") long orgId, @Bind("ratingcount") int count);
+	
 	@SqlQuery("SELECT * FROM OrganizationType")
 	@Mapper(OrganizationTypeMapper.class)
 	public List<OrganizationType> findAllOrganizationTypes();

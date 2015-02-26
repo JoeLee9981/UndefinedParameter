@@ -11,6 +11,8 @@ import com.UndefinedParameter.app.core.Organization;
 
 public class OrganizationMapper implements ResultSetMapper<Organization>{
 
+	private OrganizationDAO orgDAO;
+	
 	public Organization map(int index, ResultSet r, StatementContext ctx)
 			throws SQLException {
 		
@@ -31,4 +33,45 @@ public class OrganizationMapper implements ResultSetMapper<Organization>{
 		return org;
 	}
 
+	
+	public boolean rateOrganization(long userId, long orgId, int rating) {
+		
+		if(userId < 1 || orgId < 1 || rating < 1 || rating > 5) {
+			//this is invalid
+			return false;
+		}
+		try {
+			int existingRating = orgDAO.getOrganizationRating(orgId);
+			int existingRatingAmount = orgDAO.getOrganizationRatingCount(orgId);
+			int existingUserRating = orgDAO.getUserOrganizationRating(orgId, userId);
+			
+			if(existingUserRating == 0)
+			{
+				existingRatingAmount = existingRatingAmount + 1;
+				existingRating = (existingRating + rating) / existingRatingAmount;
+				
+				orgDAO.updateUserOrgRating(orgId, userId, rating);
+				
+				orgDAO.updateOrganizationRating(orgId, existingRating);
+				orgDAO.updateOrganizationRatingCount(orgId, existingRatingAmount);
+				
+				//orgDAO.updateQuizRating(userId, orgId, rating);
+				//orgDAO.updateQuizQualityRating(rating - existingRating, orgId);
+			}
+			else
+			{
+				int newrating = rating - existingRating;
+				existingRating = (existingRating + newrating) / existingRatingAmount;
+				
+				orgDAO.updateOrganizationRating(orgId, existingRating);
+				
+				orgDAO.updateUserOrgRating(orgId, userId, rating);
+			}
+			return true;
+		}
+		catch(Exception e) {
+			//database insert fails
+			return false;
+		}
+	}
 }
