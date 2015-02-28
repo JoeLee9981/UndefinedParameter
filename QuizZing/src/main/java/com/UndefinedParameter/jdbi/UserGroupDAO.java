@@ -11,10 +11,10 @@ import com.UndefinedParameter.app.core.UserGroup;
 @RegisterMapper(UserMapper.class)
 public interface UserGroupDAO {
 
-	@SqlQuery("SELECT * FROM UserGroup WHERE GroupID = :groupid")
+	@SqlQuery("SELECT * FROM UserGroups WHERE GroupID = :groupid")
 	public UserGroup findUserByGroupId(@Bind("groupid") int groupid);
 	
-	@SqlQuery("SELECT * FROM UserGroup WHERE UserID = :userid")
+	@SqlQuery("SELECT * FROM UserGroups WHERE UserID = :userid")
 	public UserGroup findUserByUserId(@Bind("userid") int userid);
 	
 	@SqlUpdate("INSERT INTO UserGroup "
@@ -25,11 +25,11 @@ public interface UserGroupDAO {
 	public void insert(@Bind("userid") int userid,
 						@Bind("groupid") int groupid);
 
-	@SqlUpdate("DELETE FROM UserGroup WHERE GroupID = :gId AND UserID = :uId")
+	@SqlUpdate("DELETE FROM UserGroups WHERE GroupID = :gId AND UserID = :uId")
 	public void delete(@Bind("uId") int user,
 						@Bind("gId") int group);
 	
-	@SqlUpdate("UPDATE UserGroup SET Rating = :rating WHERE GroupID = :groupID AND UserID = :userID")
+	@SqlUpdate("UPDATE UserGroups SET Rating = :rating WHERE GroupID = :groupID AND UserID = :userID")
 	public void updateUserGroupRating(@Bind("groupID") long groupID,
 									@Bind("userID") long userID,
 									@Bind("rating") int rating);
@@ -43,7 +43,7 @@ public interface UserGroupDAO {
 	@SqlQuery("SELECT RatingCount FROM SubGroup WHERE GroupID = :groupID")
 	public int getSubGroupRatingCount(@Bind("groupID") long groupId);
 	
-	@SqlQuery("SELECT Rating FROM UserGroup WHERE GroupID = :groupID AND UserID = :userID")
+	@SqlQuery("SELECT Rating FROM UserGroups WHERE GroupID = :groupID AND UserID = :userID")
 	public int getUserGroupRating(@Bind("groupID") long orgID,
 									@Bind("userID") long userID);
 	
