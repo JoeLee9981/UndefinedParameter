@@ -280,7 +280,7 @@ public class OrganizationManager {
 				
 				orgDAO.updateUserOrgRating(orgId, userId, rating);
 				orgDAO.updateOrganizationRating(orgId, existingRating);
-				orgDAO.updateOrganizationRatingCount(orgId, existingRatingAmount);
+				orgDAO.updateOrganizationRatingCount(orgId);
 				
 				//orgDAO.updateQuizRating(userId, orgId, rating);
 				//orgDAO.updateQuizQualityRating(rating - existingRating, orgId);

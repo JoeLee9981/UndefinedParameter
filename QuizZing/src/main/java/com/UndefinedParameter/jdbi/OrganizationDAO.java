@@ -27,7 +27,7 @@ public interface OrganizationDAO {
 	public int getUserOrganizationRating(@Bind("orgID") long orgID,
 										 @Bind("userID") long userID);
 	
-	@SqlUpdate("UPDATE UserOrganization SET Rating = :rating WHERE OrgID = :orgId AND UserID = :userID")
+	@SqlUpdate("UPDATE UserOrganization SET Rating = :rating WHERE OrgID = :orgID AND UserID = :userID")
 	public void updateUserOrgRating(@Bind("orgID") long orgID,
 									@Bind("userID") long userID,
 									@Bind("rating") int rating);
@@ -35,8 +35,8 @@ public interface OrganizationDAO {
 	@SqlQuery("UPDATE Organization SET Rating = Rating + :rating WHERE OrgID = :orgID")
 	public int updateOrganizationRating(@Bind("orgID") long orgId, @Bind("rating") int rating);
 	
-	@SqlQuery("UPDATE Organization SET RatingCount = :ratingcount WHERE OrgID = :orgID")
-	public int updateOrganizationRatingCount(@Bind("orgID") long orgId, @Bind("ratingcount") int count);
+	@SqlQuery("UPDATE Organization SET RatingCount = RatingCount + 1 WHERE OrgID = :orgID")
+	public int updateOrganizationRatingCount(@Bind("orgID") long orgId);
 	
 	@SqlQuery("SELECT * FROM OrganizationType")
 	@Mapper(OrganizationTypeMapper.class)

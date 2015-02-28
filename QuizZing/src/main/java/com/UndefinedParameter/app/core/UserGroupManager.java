@@ -45,4 +45,51 @@ public class UserGroupManager {
 		
 		return usergroupDAO.findUserByGroupId(groupid);
 	}
+	
+	
+	
+	
+	public boolean rateGroup(long userId, long groupID, int rating) {
+		//Goes to mananger
+		if(userId < 1 || groupID < 1 || rating < 1 || rating > 5) {
+			//this is invalid
+			return false;
+		}
+		try {
+			int existingRating = usergroupDAO.getSubGroupRating(groupID);
+			int existingRatingAmount = usergroupDAO.updateSubGroupRatingCount(groupID);
+			int existingUserRating = usergroupDAO.getUserGroupRating(groupID, userId);
+			
+			if(existingUserRating == 0)
+			{
+				existingRatingAmount = existingRatingAmount + 1;
+				existingRating = existingRating + rating;
+				
+				usergroupDAO.updateUserGroupRating(groupID, userId, rating);
+				
+				usergroupDAO.updateSubGroupRating(groupID, existingRating);
+				usergroupDAO.updateSubGroupRatingCount(groupID);
+				
+				//orgDAO.updateQuizRating(userId, orgId, rating);
+				//orgDAO.updateQuizQualityRating(rating - existingRating, orgId);
+			}
+			else
+			{
+				int newrating = rating - existingRating;
+				existingRating = existingRating + newrating;
+				
+				usergroupDAO.updateUserGroupRating(groupID, userId, rating);
+				
+				usergroupDAO.updateSubGroupRating(groupID, newrating);
+				
+			}
+			return true;
+		}
+		catch(Exception e)
+		{
+			//database insert fails
+			return false;
+		}
+	}
+	
 }

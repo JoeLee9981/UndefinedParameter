@@ -17,7 +17,6 @@ public interface UserGroupDAO {
 	@SqlQuery("SELECT * FROM UserGroup WHERE UserID = :userid")
 	public UserGroup findUserByUserId(@Bind("userid") int userid);
 	
-
 	@SqlUpdate("INSERT INTO UserGroup "
 		+ "(UserID, GroupID) "
 		+ "values "
@@ -29,4 +28,28 @@ public interface UserGroupDAO {
 	@SqlUpdate("DELETE FROM UserGroup WHERE GroupID = :gId AND UserID = :uId")
 	public void delete(@Bind("uId") int user,
 						@Bind("gId") int group);
+	
+	@SqlUpdate("UPDATE UserGroup SET Rating = :rating WHERE GroupID = :groupID AND UserID = :userID")
+	public void updateUserGroupRating(@Bind("groupID") long groupID,
+									@Bind("userID") long userID,
+									@Bind("rating") int rating);
+	
+	@SqlQuery("UPDATE SubGroup SET Rating = Rating + :rating WHERE GroupID = :groupID")
+	public int updateSubGroupRating(@Bind("groupID") long groupId, @Bind("rating") int rating);
+	
+	@SqlQuery("SELECT Rating FROM SubGroup WHERE GroupID = :groupID")
+	public int getSubGroupRating(@Bind("groupID") long groupId);
+	
+	@SqlQuery("SELECT RatingCount FROM SubGroup WHERE GroupID = :groupID")
+	public int getSubGroupRatingCount(@Bind("groupID") long groupId);
+	
+	@SqlQuery("SELECT Rating FROM UserGroup WHERE GroupID = :groupID AND UserID = :userID")
+	public int getUserGroupRating(@Bind("groupID") long orgID,
+									@Bind("userID") long userID);
+	
+	@SqlQuery("UPDATE SubGroup SET RatingCount = RatingCount + 1 WHERE GroupID = :groupID")
+	public int updateSubGroupRatingCount(@Bind("groupID") long groupId);
+	
+	
+	
 }
