@@ -80,8 +80,6 @@
 		var activeCode = "${userRecover.activeCode}";
 		var givenCode = $('#recoveryCode').val();
 		
-		alert(activeCode == givenCode);
-		
 		if(activeCode == givenCode)
 			$("#recoverPassword").show();
 		else

@@ -87,9 +87,8 @@ public class UserManager {
 			emailBody += recoveryCode;
 			emailBody += "\n\nPlease do not reply to this email,\n\nSincerely yours,\n\nThe QuizZing Development Team";
 			
-			// TODO: Fill in actual username and password;
 			GoogleMail gm = new GoogleMail();
-			//gm.Send("quizzingteam", "undefinedparameter", email, emailSubject, emailBody);
+			gm.Send("quizzingteam", "undefinedparameter", email, emailSubject, emailBody);
 			
 			// Update user with recovery code.
 			recoverUser.setActiveCode(recoveryCode);
