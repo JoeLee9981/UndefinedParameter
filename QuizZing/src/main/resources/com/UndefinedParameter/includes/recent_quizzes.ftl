@@ -4,7 +4,7 @@
         <thead>
             <tr>
                 <th class="text-left">Quiz</th>
-                <th class="text-right">Rating</th>
+                <th>Rating</th>
                 <th class="text-right">Date Created</th>
             </tr>
         </thead>

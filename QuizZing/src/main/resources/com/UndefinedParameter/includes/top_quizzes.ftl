@@ -4,8 +4,8 @@
         <thead>
             <tr>
                 <th class="text-left">Quiz</th>
-                <th class="text-right">Difficulty</th>
-                <th class="text-right">Rating</th>
+                <th>Difficulty</th>
+                <th>Rating</th>
             </tr>
         </thead>
         <tbody>                         

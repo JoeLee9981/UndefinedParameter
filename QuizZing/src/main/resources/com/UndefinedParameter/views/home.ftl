@@ -43,7 +43,7 @@
 										</div>								
 									</form>	
 									<div class="row topMarginMedium">
-										<p class="tertiary-text-secondary span12">Unable to login?  Use the <a href="#" class="todo">Account Retrieval</a> process to regain access to your account.</p>
+										<p class="tertiary-text-secondary span12">Unable to login?  Use the <a href="forgot">Account Retrieval</a> process to regain access to your account.</p>
 									</div>		
 								</div>	
 							</div>
