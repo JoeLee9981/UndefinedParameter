@@ -103,7 +103,7 @@ public class QuizZingApplication extends Application<QuizZingConfiguration> {
 	    logger.info("Authenticator initiated successfully");
 		
 		/***** REGISTER VIEWS ******/
-		environment.jersey().register(new HomeResource(newsDAO, userDAO, orgDAO, groupDAO));
+		environment.jersey().register(new HomeResource(newsDAO, userDAO, orgDAO, groupDAO, quizDAO, questionDAO));
 		environment.jersey().register(new NewsArticleResource(newsDAO));
 		environment.jersey().register(new QuizResource(quizDAO, questionDAO, orgDAO, groupDAO));
 		environment.jersey().register(new GroupResource(orgDAO, groupDAO, quizDAO, questionDAO));

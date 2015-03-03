@@ -13,7 +13,7 @@ import com.UndefinedParameter.app.core.Group;
 @RegisterMapper(GroupMapper.class)
 public interface GroupDAO {
 
-	@SqlQuery("SELECT * FROM SubGroup ORDER BY MemberCount")
+	@SqlQuery("SELECT * FROM SubGroup ORDER BY MemberCount DESC")
 	public List<Group> findTopGroups();
 	
 	@SqlQuery("SELECT * FROM SubGroup WHERE OrgID = :orgId")

@@ -22,8 +22,15 @@ public interface QuizDAO {
 	 * Retrieve quizzes from the database, order by rating
 	 * 	TODO: Restrict this to a number of quizzes by adding a range (first 100, second 100, etc)
 	 */
-	@SqlQuery("SELECT * FROM Quiz ORDER BY Rating")
+	@SqlQuery("SELECT * FROM Quiz ORDER BY Rating DESC")
 	public List<Quiz> retrieveTopQuizzes();
+	
+	/*
+	 * Retrieve quizzes from the database, order by date
+	 * 	TODO: Restrict this to a number of quizzes by adding a range (first 100, second 100, etc)
+	 */
+	@SqlQuery("SELECT * FROM Quiz ORDER BY DateCreated DESC")
+	public List<Quiz> retrieveRecentQuizzes();
 	
 	/*
 	 * 	Retrieve a list of quizzes from the database by group id

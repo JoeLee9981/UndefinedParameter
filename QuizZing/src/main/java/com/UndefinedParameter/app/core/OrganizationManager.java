@@ -38,6 +38,11 @@ public class OrganizationManager {
 		return findGroupsByCategory(orgId, catId);
 	}
 	
+	public List<Group> findTopGroups() {
+		//TODO: Restrict the amount pulled from DB
+		return groupDAO.findTopGroups();
+	}
+	
 	/*
 	 * Finds all of the groups by an organizations id
 	 */

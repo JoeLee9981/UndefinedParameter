@@ -245,6 +245,11 @@ public class QuizManager {
 		return quizDAO.retrieveTopQuizzes();
 	}
 	
+	public List<Quiz> findRecentQuizzes() {
+		//TODO Restrict this to avoid returning the entire database
+		return quizDAO.retrieveRecentQuizzes();
+	}
+	
 	/*
 	 * Find a user's entered quality rating for a quiz
 	 */

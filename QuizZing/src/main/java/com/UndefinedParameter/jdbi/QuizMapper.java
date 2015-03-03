@@ -3,6 +3,8 @@ package com.UndefinedParameter.jdbi;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
 import org.skife.jdbi.v2.StatementContext;
 import org.skife.jdbi.v2.tweak.ResultSetMapper;
 
@@ -22,6 +24,11 @@ public class QuizMapper implements ResultSetMapper<Quiz> {
 		quiz.setDescription(r.getString("Description"));
 		quiz.setTime(r.getInt("Time"));
 		quiz.setQuestionCount(r.getInt("QuestionCount"));
+		
+		DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss.S");
+		quiz.setDateCreated(formatter.parseDateTime(r.getString("DateCreated")));
+		quiz.setDateModified(formatter.parseDateTime(r.getString("DateModified")));
+		quiz.setLastAccessed(formatter.parseDateTime(r.getString("LastAccessed")));
 		
 		return quiz;
 	}
