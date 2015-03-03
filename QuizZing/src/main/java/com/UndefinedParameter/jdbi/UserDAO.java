@@ -18,6 +18,9 @@ public interface UserDAO {
 	@SqlQuery("SELECT * FROM User WHERE UserID = :userId")
 	public User findUserByUserId(@Bind("userId") long userId);
 	
+	@SqlQuery("SELECT * FROM User WHERE Email = :email")
+	public User findUserByEmail(@Bind("email") String email);
+	
 	@SqlUpdate("INSERT INTO User "
 			+ "(Username, FirstName, LastName, MiddleName, Country, City, State, Email, Password, SQuestion, SAnswer) "
 			+ "values "

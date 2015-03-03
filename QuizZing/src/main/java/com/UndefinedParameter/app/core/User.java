@@ -155,7 +155,10 @@ public class User {
 	
 	@JsonProperty
 	public DateTime getLastAccessed() {
-		return lastAccessed;
+		if(lastAccessed == null)
+			return DateTime.now();
+		else
+			return lastAccessed;
 	}
 	
 	@JsonProperty

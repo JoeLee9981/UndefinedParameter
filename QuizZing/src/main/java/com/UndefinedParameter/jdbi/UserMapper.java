@@ -26,7 +26,7 @@ public class UserMapper implements ResultSetMapper<User> {
 		user.setEmail(r.getString("Email"));
 		user.setPassword(r.getString("Password"));
 		user.setSecretQuestion(r.getString("SQuestion"));
-		user.setSecretAnswer(r.getString("SAnswer"));	
+		user.setSecretAnswer(r.getString("SAnswer"));
 		
 		return user;
 	}

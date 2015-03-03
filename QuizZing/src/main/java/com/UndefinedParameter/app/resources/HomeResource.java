@@ -11,6 +11,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
@@ -24,6 +25,7 @@ import com.UndefinedParameter.jdbi.NewsArticleDAO;
 import com.UndefinedParameter.jdbi.OrganizationDAO;
 import com.UndefinedParameter.jdbi.UserDAO;
 import com.UndefinedParameter.views.AboutView;
+import com.UndefinedParameter.views.ForgotView;
 import com.UndefinedParameter.views.HomeView;
 import com.UndefinedParameter.views.LoginView;
 import com.UndefinedParameter.views.RegisterView;
@@ -115,6 +117,56 @@ public class HomeResource {
 			else {
 				response.put("response", "error");
 				response.put("message", "Your email address has already been registered.");
+				return Response.ok(response).build();
+			}
+			
+		}
+		catch(Exception e) {
+			//TODO: return error message
+			return Response.status(500).build();
+		}
+		
+	}
+	
+	@GET
+	@Path("/forgot")
+	public Response getForgotView() {
+		return Response.ok(new ForgotView("forgot.ftl")).build();
+	}
+	
+	@GET
+	@Path("/recover")
+	public Response getRecoverView(@QueryParam("email") String email) {
+		// TODO: Send email to usermanager for validation and recovery code generation.
+		try {
+			User recoveredUser = userManager.recoverUser(email);	
+			
+			if(recoveredUser != null)
+				return Response.ok(new ForgotView("recover.ftl", recoveredUser)).build();
+			else
+				return Response.ok(new ForgotView("dne.ftl", email)).build();
+		} 
+		catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return Response.status(500).build();
+		}
+	}
+	
+	@POST
+	@Path("/recover")
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Response recover(@Valid User user) {
+		HashMap<String, String> response = new HashMap<String, String>();
+		try {
+			if(userManager.updateUser(user)) {
+				response.put("response", "success");
+				return Response.ok(response).build();
+			}
+			else {
+				response.put("response", "error");
+				response.put("message", "Your password changes did not get passed to the database.");
 				return Response.ok(response).build();
 			}
 			

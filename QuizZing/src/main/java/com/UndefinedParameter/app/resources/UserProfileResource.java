@@ -71,10 +71,9 @@ public class UserProfileResource {
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response edit(@Valid User user) {
 		HashMap<String, String> response = new HashMap<String, String>();
-		User updatedUser = fillNullColumns(user);
-		
+
 		try {
-			if(userManager.updateUser(updatedUser)) {
+			if(userManager.updateUser(user)) {
 				response.put("response", "success");
 				return Response.ok(response).build();
 			}
@@ -90,59 +89,5 @@ public class UserProfileResource {
 			return Response.status(500).build();
 		}
 		
-	}
-	
-	/*
-	 * Fill empty User parameters before updating its row in the database.
-	 */
-	private User fillNullColumns(User user)
-	{
-		User currentUser = userManager.findUserById(user.getId());
-		User userQuery = user;
-		
-		// Set unchangeable parameters.
-		userQuery.setUserName(currentUser.getUserName());
-		userQuery.setSecretQuestion(currentUser.getSecretQuestion());
-		userQuery.setSecretAnswer(currentUser.getSecretAnswer());
-		userQuery.setLastAccessed(DateTime.now());
-		userQuery.setActive(currentUser.getActive());
-		userQuery.setActiveCode(currentUser.getActiveCode());
-		userQuery.setSeeagain(currentUser.getSeeAgain());
-		
-		// Fill in any null parameters with old parameters.
-		if(user.getLastName() == null || user.getLastName() == "")
-		{
-			userQuery.setLastName(currentUser.getLastName());
-		}
-		if(user.getFirstName() == null || user.getFirstName() == "")
-		{
-			userQuery.setFirstName(currentUser.getFirstName());
-		}
-		if(user.getMiddleName() == null || user.getMiddleName() == "")
-		{
-			userQuery.setMiddleName(currentUser.getMiddleName());
-		}
-		if(user.getCountry() == null || user.getCountry() == "")
-		{
-			userQuery.setCountry(currentUser.getCountry());
-		}
-		if(user.getCity() == null || user.getCity() == "")
-		{
-			userQuery.setCity(currentUser.getCity());
-		}
-		if(user.getState() == null || user.getState() == "")
-		{
-			userQuery.setState(currentUser.getState());
-		}
-		if(user.getEmail() == null || user.getEmail() == "")
-		{
-			userQuery.setEmail(currentUser.getEmail());
-		}
-		if(user.getPassword() == null || user.getPassword() == "")
-		{
-			userQuery.setPassword(currentUser.getPassword());
-		}
-		
-		return userQuery;
 	}
 }
