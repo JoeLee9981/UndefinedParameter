@@ -28,7 +28,10 @@
 						<button id="addButton" class="place-right warning">Add A Question</button>
 					</h1><br/>
 					<h2>${quiz.description}</h2>
+					<label id="errorLabel"></label>
 					
+					<div id="questionDiv"></div>
+					<h2>Current Questions</h2>
 					<ul>
 					<#if quiz.questions??>
 						
@@ -39,9 +42,7 @@
 						<li>No Questions Added Yet!</li>
 					</#if>
 					</ul>
-					<label id="errorLabel" />
 					
-					<div id="questionDiv"/>
 				</div>
 			</div>
 		</div>

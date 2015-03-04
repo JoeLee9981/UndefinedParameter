@@ -22,6 +22,11 @@
 						    <textarea id="descriptionText"></textarea>
 						</div>
 					</label>
+					<label><h5>Explanation of Answer</h5>
+						<div class="input-control textarea">
+						    <textarea id="explanationText"></textarea>
+						</div>
+					</label>
 					
 					<div class="row">	
 						<div class="span8">
@@ -107,6 +112,7 @@
 		var type = "MULTIPLE_CHOICE";
 		var incorrect = [];
 		var creatorId = 1;
+		var explanation = document.getElementById('explanationText').value;
 		var path = "/question/create?quizId=" + quizId;
 		
 		document.getElementById('responseLabel').innerHTML = "";
@@ -130,7 +136,7 @@
 		 $.ajax({
 			type: 'POST',
 			url: path,
-			data: JSON.stringify({groupId: ${groupId}, questionText: desc, correctAnswer: correct, type: type, wrongAnswers: incorrect, creatorId: creatorId }),
+			data: JSON.stringify({groupId: ${groupId}, questionText: desc, correctAnswer: correct, type: type, wrongAnswers: incorrect, creatorId: creatorId, explanation: explanation }),
 			dataType: "json",
 			headers: {
 				Accept: "application/json",
