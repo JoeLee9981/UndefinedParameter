@@ -29,6 +29,7 @@ public class OrganizationMapper implements ResultSetMapper<Organization>{
 		org.setQuestionCount(r.getInt("QuestionCount"));
 		org.setDateCreated(new DateTime(r.getDate("DateCreated")));
 		org.setRating(Math.round((float)r.getInt("Rating") / (float)r.getInt("RatingCount")));
+		org.setType(r.getString("OrganizationType"));
 		
 		return org;
 	}

@@ -59,7 +59,8 @@ public class Organization {
 	
 	private DateTime dateCreated;
 	
-
+	private String type;
+	
 	//constructor
 	public Organization(int id, String name) {
 		this.id = id;
@@ -187,6 +188,17 @@ public class Organization {
 		this.rating = rating;
 	}
 
+	@JsonProperty
+	public String getType() {
+		return type;
+	}
+
+	@JsonProperty
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	
 	/****************************** Organization Helper Methods **********************************/
 
 	/*
