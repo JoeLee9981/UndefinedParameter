@@ -15,9 +15,9 @@ public class OrganizationManager {
 		this.groupDAO = groupDAO;
 	}
 	
-	public List<OrganizationType> findAllOrganizationTypes()
+	public List<Organization> findAllOrganizationTypes()
 	{
-		List<OrganizationType> x = orgDAO.findAllOrganizationTypes();
+		List<Organization> x = orgDAO.findAllOrganizationTypes();
 		return x;
 	}
 	

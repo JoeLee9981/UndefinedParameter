@@ -11,7 +11,7 @@ import org.skife.jdbi.v2.sqlobject.customizers.RegisterMapper;
 
 import com.UndefinedParameter.app.core.Group;
 import com.UndefinedParameter.app.core.Organization;
-import com.UndefinedParameter.app.core.OrganizationType;
+//import com.UndefinedParameter.app.core.OrganizationType;
 
 
 @RegisterMapper(OrganizationMapper.class)
@@ -39,8 +39,8 @@ public interface OrganizationDAO {
 	public int updateOrganizationRatingCount(@Bind("orgID") long orgId);
 	
 	@SqlQuery("SELECT * FROM OrganizationType")
-	@Mapper(OrganizationTypeMapper.class)
-	public List<OrganizationType> findAllOrganizationTypes();
+	//@Mapper(OrganizationTypeMapper.class)
+	public List<Organization> findAllOrganizationTypes();
 	
 	@SqlQuery("SELECT * FROM Organization")
 	public List<Organization> findOrganizations();
