@@ -1,5 +1,6 @@
 package com.UndefinedParameter.app.core;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.UndefinedParameter.jdbi.GroupDAO;
@@ -17,8 +18,13 @@ public class OrganizationManager {
 	
 	public List<Organization> findAllOrganizationTypes()
 	{
-		List<Organization> x = orgDAO.findAllOrganizationTypes();
-		return x;
+		try {
+			List<Organization> x = orgDAO.findAllOrganizationTypes();
+			return x;
+		}
+		catch(Exception e) {
+			return new ArrayList<Organization>();
+		}
 	}
 	
 	/*

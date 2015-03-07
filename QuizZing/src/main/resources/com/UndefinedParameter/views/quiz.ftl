@@ -6,6 +6,7 @@
 		<link rel="stylesheet" type="text/css" href="/assets/css/main.css" />
 		<script src="/assets/scripts/jquery-2.1.1.min.js"></script>
 		<script src="/assets/scripts/rate.js"></script>
+		<script src="/assets/scripts/quiz.js"></script>
 		<script src="/assets/scripts/jquery-ui.min.js"></script>
 		<script src="/assets/plugins/metro_ui/min/metro.min.js"></script>
 		<script src="/assets/plugins/metro_ui/js/metro-countdown.js"></script>
@@ -238,38 +239,30 @@
 		}
 		
 		/*********************** QUIZ SYSTEM ****************************/
-		var quiz = [];
-		//this is a multidimensional array of the answers by question
-		var questions = [];
-		var correctAnswers = [];
-		var submittedAnswers = [];
-		var explanations = [];
-		var quizPosition = -1;
-		var quizInProgress = false;
-	
-		
+		var q;
 		
 		//On the window being loaded we read from freemarker and add the quiz information into an
 		//	array
 		window.onload = function() {
-			//var quiz = new Quiz(5, "Stuff");
+
+			var quest = [];
 			<#list quiz.questions as quest>
-				quiz.push("${quest.questionText}");
-				correctAnswers.push("${quest.correctAnswer}");
 				var answers = [];
+			
 				<#list quest.answers as answer>
 					answers.push("${answer}");
 				</#list>
-				questions.push(answers);
-				submittedAnswers.push(-1);
-				<#if quest.explanation??>
-					explanations.push("${quest.explanation}");
-				<#else>
-					explanations.push("No Explanation");
-				</#if>
+
+				var question;
 				
+				<#if quest.explanation??>
+					question = new Question("${quest.questionText}", "${quest.correctAnswer}", answers, "${quest.explanation}");
+				<#else>
+					question = new Question("${quest.questionText}", "${quest.correctAnswer}", answers, "No explanation has been given");
+				</#if>
+				quest.push(question);
 			</#list>
-			
+			q = new Quiz(quest.length, quest);
 		}
 		
 		$('#submitQuiz').click(function() {
@@ -293,7 +286,7 @@
 		
 		function SetProgressBar()
 		{
-			var percentage = (quizPosition + 1) / (quiz.length) * 100;
+			var percentage = q.getProgressPercent();
 
 			if (percentage >= 100)
 			{
@@ -311,6 +304,8 @@
 		
 		
 		function startQuiz() {
+			q.startQuiz();
+		
 			quizInProgress = true;
 			document.getElementById('start-quiz-div').hidden = true;
 			document.getElementById('quizDiv').hidden = false;
@@ -325,36 +320,25 @@
 			$("#answerDiv").fadeOut(150, function() {
 				quizPosition++;
 				
-				if (quizPosition == quiz.length)
-				{
-					//We reached this because the last answer was clicked
-					document.getElementById('nextQuestion').disabled = true;
-					
-					//we are out of bounds, reset back to the last answer then show
-					quizPosition--;
-					setAnswers();
-					
-					//return to skip the rest
-					$("#answerDiv").fadeIn(150);
-					return;
+				
+				var question = q.nextQuestion();
+				
+				if(!q.hasPrevious()) {
+					document.getElementById('prevQuestion').disabled = true;
+				}
+				else {
+					document.getElementById('prevQuestion').disabled = false;
 				}
 				
-
-				
-				if (quizPosition == quiz.length - 1)
-				{
+				if(!q.hasNext()) {
 					document.getElementById('nextQuestion').disabled = true;
-					SetProgressBar();
 				}
-
-				document.getElementById('questionHead').innerHTML = quiz[quizPosition];
+				
+				
+				document.getElementById('questionHead').innerHTML = q.getQuestionText();
 				
 				setAnswers();
 				
-				if(quizPosition < quiz.length - 1) {
-					document.getElementById('nextQuestion').disabled = false;
-					document.getElementById('prevQuestion').disabled = false;
-				}
 				SetProgressBar();
 				$("#answerDiv").fadeIn(150);	
 			});
@@ -364,19 +348,19 @@
 		function previousQuestion() {
 			$("#answerDiv").fadeOut(150, function()
 			{
+				var question = q.previousQuestion();
+				
+				if(!q.hasPrevious()) {
+					document.getElementById('prevQuestion').disabled = true;
+				}
+				document.getElementById('nextQuestion').disabled = false;
+				
 				if(quizPosition > 0)
 					quizPosition--;
-				document.getElementById('questionHead').innerHTML = quiz[quizPosition];
+				document.getElementById('questionHead').innerHTML = q.getQuestionText();
 				
 				setAnswers();
 				
-				if(quizPosition == 0) {
-					document.getElementById('prevQuestion').disabled = true;
-				}
-				else {
-					document.getElementById('prevQuestion').disabled = false;
-					document.getElementById('nextQuestion').disabled = false;
-				}
 				SetProgressBar();
 				$("#answerDiv").fadeIn(150);
 			});
@@ -386,28 +370,28 @@
 		function setAnswers() 
 		{
 
-			var answers = questions[quizPosition];
-			var correct = correctAnswers[quizPosition];
+			var answers = q.getAnswers();
+			var correct = q.getCorrectAnswer();
 
 			var html = ''; 
-			
+
 			for(var i = 0; i < answers.length; i++) 
 			{
 				var style = "";
-				var isChecked = submittedAnswers[quizPosition] == i ? true : false;
+				var isChecked = q.getSubmittedAnswer() == i ? true : false;
 				if (isChecked && quizInProgress)
 				{
 					style = "primary";
 				}
-				if (!quizInProgress) {
+				if (!q.inProgress) {
 					if(answers[i] == correct)
 						style = "success";
 					else if(isChecked) {
 						style = "danger";
 					}
 				}
-				html += "<button class='command-button block " + style +" size8' onclick='setAnswer(" + i + ")'><small>";
-				if(!quizInProgress) {
+				html += "<button id='answerButton" + i + "' class='command-button block " + style +" size8' onclick='setAnswer(" + i + ")'><small>";
+				if(!q.inProgress) {
 					if(answers[i] == correct && isChecked)
 						html += '<i class="icon-checkmark"></i> ';
 					else if(answers[i] == correct)
@@ -426,7 +410,7 @@
 		}
 		
 		function showExplanation() {
-			var content = explanations[quizPosition];
+			var content = q.getExplanation();
 			
 			$.Dialog({
 		        shadow: true,
@@ -441,12 +425,12 @@
 		}
 		
 		function setAnswer(val) {
-			if(!quizInProgress)
+			if(!q.inProgress)
 				return;
-			submittedAnswers[quizPosition] = parseInt(val);
+
+			q.submitAnswer(val);
 			
-			if(quizPosition < quiz.length)
-				nextQuestion();
+			nextQuestion();
 		}
 		
 		function submitQuiz() {
@@ -454,18 +438,8 @@
 			$('#submitQuiz').prop("disabled", true);
 			
 			$("#quizFinish").show();
-			quizInProgress = false;
-			var score = 0.0;
-
-			for(var i = 0; i < submittedAnswers.length; i++) {
-
-				if(submittedAnswers[i] != -1) {
-					var answers = questions[i];
-					if(answers[submittedAnswers[i]] == correctAnswers[i])
-						score++;
-				}
-			}
-			document.getElementById('scoreText').innerHTML = "Score: " + (score / correctAnswers.length * 100).toFixed(2) + "%";
+			var score = q.submitQuiz();
+			document.getElementById('scoreText').innerHTML = "Score: " + score + "%";
 			setAnswers();
 		}
 		
