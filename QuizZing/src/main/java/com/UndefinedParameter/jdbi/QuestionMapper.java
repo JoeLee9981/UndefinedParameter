@@ -20,6 +20,7 @@ public class QuestionMapper implements ResultSetMapper<Question>{
 		que.setQuestionId(r.getLong("QuestionID"));
 		que.setCreatorId(r.getLong("CreatorID"));
 		que.setGroupId(r.getLong("GroupID"));
+		que.setOrdered(r.getBoolean("Ordered"));
 		que.setQuestionDifficulty(r.getFloat("QuestionDifficulty"));
 		que.setRating(r.getFloat("Rating"));
 		que.setQuestionText(r.getString("QuestionText"));

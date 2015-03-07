@@ -30,7 +30,7 @@
 						<h2>
 							<strong>${quiz.name}</strong>
 							<#if editable>
-								<button id="editButton" onclick="location.href='/quiz/edit?groupId=${groupId}&quizId=${quiz.quizId}'" class="place-right success">Edit Quiz</button>
+								<button id="editButton" onclick="location.href='/quiz/edit?groupId=${groupId}&quizId=${quiz.quizId}'" class="place-right success large">Edit Quiz</button>
 							</#if>
 						</h2>
 						<h2>${quiz.description?html}</h2>
@@ -85,8 +85,9 @@
 						<div class="span12">
 							<div class="row">
 								<div>
-									<button id="prevQuestion" onclick="previousQuestion()" hidden="true" class="primary">Previous</button>
-									<button id="nextQuestion" onclick="nextQuestion()" class="success">Next</next>
+									<button id="prevQuestion" onclick="previousQuestion()" class="primary large" hidden><i class="icon-previous"></i></button>
+									<button id="nextQuestion" onclick="nextQuestion()" class="success large"><i class="icon-next"></i></button>
+									<button id="submitQuiz" class="warning place-right large" hidden><i class="icon-checkmark"></i> Submit Quiz</button>
 								</div>
 							</div>
 							<div class="row">
@@ -242,6 +243,7 @@
 		var questions = [];
 		var correctAnswers = [];
 		var submittedAnswers = [];
+		var explanations = [];
 		var quizPosition = -1;
 		var quizInProgress = false;
 	
@@ -260,15 +262,39 @@
 				</#list>
 				questions.push(answers);
 				submittedAnswers.push(-1);
+				<#if quest.explanation??>
+					explanations.push("${quest.explanation}");
+				<#else>
+					explanations.push("No Explanation");
+				</#if>
+				
 			</#list>
 			
-			/*startQuiz();*/
 		}
+		
+		$('#submitQuiz').click(function() {
+		
+			var content = '<div><h3>You are about to submit the quiz, once you do this you can not change your answer.</h3>';
+			content += '<button onclick="submitQuiz()" class="success">Submit</button>';
+			content += '<button onclick="$.Dialog.close()" class="danger">Cancel</button></div>';
+			
+			$.Dialog({
+		        shadow: true,
+		        overlay: true,
+		        flat: true,
+		        icon: '<span class="icon-power"></span>',
+		        title: 'Submit Quiz',
+		        width: 500,
+		        padding: 10,
+		        content: content
+		    });
+
+		});
 		
 		function SetProgressBar()
 		{
-			var percentage = quizPosition / (quiz.length) * 100;
-			
+			var percentage = (quizPosition + 1) / (quiz.length) * 100;
+
 			if (percentage >= 100)
 			{
 				$("#quiz-progress-bar").removeClass("bg-cyan").addClass("bg-green");	
@@ -298,21 +324,18 @@
 		function nextQuestion() {
 			$("#answerDiv").fadeOut(150, function() {
 				quizPosition++;
-				if (quizPosition == 0)
-				{
-					$("#prevQuestion").hide();
-				}
-				else
-				{
-					$("#prevQuestion").show();
-				}
 				
 				if (quizPosition == quiz.length)
 				{
-					$("#quizFinish").show();
-					SetProgressBar();
-					submitQuiz();
+					//We reached this because the last answer was clicked
 					document.getElementById('nextQuestion').disabled = true;
+					
+					//we are out of bounds, reset back to the last answer then show
+					quizPosition--;
+					setAnswers();
+					
+					//return to skip the rest
+					$("#answerDiv").fadeIn(150);
 					return;
 				}
 				
@@ -320,18 +343,15 @@
 				
 				if (quizPosition == quiz.length - 1)
 				{
-					$("#nextQuestion").html("Finish");
-				}
-				else
-				{
-					$("#nextQuestion").html("Next");
+					document.getElementById('nextQuestion').disabled = true;
+					SetProgressBar();
 				}
 
 				document.getElementById('questionHead').innerHTML = quiz[quizPosition];
 				
 				setAnswers();
 				
-				if(quizPosition < quiz.length) {
+				if(quizPosition < quiz.length - 1) {
 					document.getElementById('nextQuestion').disabled = false;
 					document.getElementById('prevQuestion').disabled = false;
 				}
@@ -347,24 +367,6 @@
 				if(quizPosition > 0)
 					quizPosition--;
 				document.getElementById('questionHead').innerHTML = quiz[quizPosition];
-				
-				if (quizPosition == 0)
-				{
-					$("#prevQuestion").hide();
-				}
-				else
-				{
-					$("#prevQuestion").show();
-				}
-				
-				if (quizPosition == quiz.length - 1)
-				{
-					$("#nextQuestion").html("Finish");
-				}
-				else
-				{
-					$("#nextQuestion").html("Next");
-				}
 				
 				setAnswers();
 				
@@ -383,6 +385,7 @@
 		
 		function setAnswers() 
 		{
+
 			var answers = questions[quizPosition];
 			var correct = correctAnswers[quizPosition];
 
@@ -404,22 +407,53 @@
 					}
 				}
 				html += "<button class='command-button block " + style +" size8' onclick='setAnswer(" + i + ")'><small>";
+				if(!quizInProgress) {
+					if(answers[i] == correct && isChecked)
+						html += '<i class="icon-checkmark"></i> ';
+					else if(answers[i] == correct)
+						html += '<i class="icon-cancel-2 fg-red"></i> ';
+				}
 				html += answers[i];
 				html += "</small></button>";
 			}
 			
+			if(!quizInProgress) {
+				html += '<button class="info large" onclick="showExplanation()">Show Explanation</button>';
+
+			}
 
 			document.getElementById('answerDiv').innerHTML = html;
+		}
+		
+		function showExplanation() {
+			var content = explanations[quizPosition];
+			
+			$.Dialog({
+		        shadow: true,
+		        overlay: true,
+		        flat: true,
+		        icon: '<span class="icon-power"></span>',
+		        title: 'Submit Quiz',
+		        width: 500,
+		        padding: 10,
+		        content: content
+		    });
 		}
 		
 		function setAnswer(val) {
 			if(!quizInProgress)
 				return;
 			submittedAnswers[quizPosition] = parseInt(val);
-			nextQuestion();
+			
+			if(quizPosition < quiz.length)
+				nextQuestion();
 		}
 		
 		function submitQuiz() {
+			$.Dialog.close();
+			$('#submitQuiz').prop("disabled", true);
+			
+			$("#quizFinish").show();
 			quizInProgress = false;
 			var score = 0.0;
 
@@ -432,6 +466,7 @@
 				}
 			}
 			document.getElementById('scoreText').innerHTML = "Score: " + (score / correctAnswers.length * 100).toFixed(2) + "%";
+			setAnswers();
 		}
 		
 		

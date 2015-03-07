@@ -17,12 +17,12 @@
 			</div>
 			<div class="span9">
 				<form id="create-question-form">
-					<label><h5>Question</h5>
+					<h5>Question <a href="#" data-hint="Question|The text of the question" data-hint-position="right" data-hint-mode="2"><i class="icon-help fg-blue"></i></a></h5>
 						<div class="input-control textarea">
 						    <textarea id="descriptionText"></textarea>
 						</div>
-					</label>
-					<label><h5>Explanation of Answer</h5>
+
+					<label><h5>Explanation of Answer <a href="#" data-hint="Explanation|A bit of text that explains, or gives background on the answer of the question" data-hint-position="right" data-hint-mode="2"><i class="icon-help fg-blue"></i></a></h5>
 						<div class="input-control textarea">
 						    <textarea id="explanationText"></textarea>
 						</div>
@@ -30,7 +30,7 @@
 					
 					<div class="row">	
 						<div class="span8">
-							<label id="mc-answer-options"><h5>Answer Options</h5>
+							<label id="mc-answer-options"><h5>Answer Options <a href="#" data-hint="Answer Options|These are the possible answers to choose from, use the radio to signify the correct answer" data-hint-position="right" data-hint-mode="2"><i class="icon-help fg-blue"></i></a></h5>
 								<div class="input-control text size5">
 								    <input type="text" id="qText1"/>
 								</div>
@@ -75,13 +75,32 @@
 								        <input name="question-options" type="radio" id="qCheck5" />
 								        <span class="check"></span>
 								    </label>
-								</div>	
+								</div>
+								<div class="input-control checkbox">
+									<label>
+										<input type="checkbox" id="randomize"/>
+										<span class="check"></span>
+										Lock Answer Positions
+									</label>
+								</div>
+								
+								<!--<label><p>Reference <a href="#" data-hint="Reference|Add the source of the information used to determine the correct answer" data-hint-position="right" data-hint-mode="2"><i class="icon-help fg-blue"></i></a></p>
+									<div class="input-control text size5">
+										<input type="text" id="referenceText" />
+									</div>
+								</label>
+								<label><p>Hyperlink <a href="#" data-hint="Hyperlink|Used with reference to provide an html hyperlink to the source referenced" data-hint-position="right" data-hint-mode="2"><i class="icon-help fg-blue"></i></a></p>
+									<div class="input-control text size5">
+										<input type="text" id="referenceLink" />
+									</div>
+								</label>-->
 								<div class="span8">
 									<input type="button" onclick="addQuestion()" value="Submit"></input>
 									<p id="responseLabel" />
 								</div>						
 							</label>
 						</div>
+						
 						<div class="span4">
 							<div class="panel">
 							    <div class="panel-header">
@@ -115,6 +134,15 @@
 		var explanation = document.getElementById('explanationText').value;
 		var path = "/question/create?quizId=" + quizId;
 		
+		//TODO: once ready uncomment this code
+		//var reference = document.getElementById('referenceText').value;
+		//var hyperlink = document.getElementById('referenceLink').value;
+		var reference = "";
+		var hyperlink = "";
+		
+		
+		var ordered = document.getElementById('randomize').checked;
+		
 		document.getElementById('responseLabel').innerHTML = "";
 		
 		for(var i = 1; i <= maxAnswers; i++) {
@@ -132,11 +160,17 @@
 			return;
 		}
 		
+		if(hyperlink && !reference) {
+			document.getElementById('responseLabel').innerHTML = "Reference must be filled out in conjunction to the hyperlink";
+			document.getElementById('responseLabel').className = "text-alert";
+			return;
+		}
+		
 
 		 $.ajax({
 			type: 'POST',
 			url: path,
-			data: JSON.stringify({groupId: ${groupId}, questionText: desc, correctAnswer: correct, type: type, wrongAnswers: incorrect, creatorId: creatorId, explanation: explanation }),
+			data: JSON.stringify({groupId: ${groupId}, questionText: desc, correctAnswer: correct, type: type, wrongAnswers: incorrect, creatorId: creatorId, explanation: explanation, ordered: ordered, reference: reference, referenceLink: hyperlink }),
 			dataType: "json",
 			headers: {
 				Accept: "application/json",

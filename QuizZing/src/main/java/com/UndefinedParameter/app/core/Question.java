@@ -31,6 +31,7 @@ public class Question {
 	private boolean flagged = false;
 	private String explanation;
 	private String reference;
+	private String referenceLink;
 	
 	// This contains a list of all the associated groups for this question
 	// The Hashset will contain a an association with group ID and group name
@@ -269,5 +270,16 @@ public class Question {
 	public void setReference(String ref) {
 		this.reference = ref;
 	}
+
+	@JsonProperty
+	public String getReferenceLink() {
+		return referenceLink;
+	}
+
+	@JsonProperty
+	public void setReferenceLink(String referenceLink) {
+		this.referenceLink = referenceLink;
+	}
+	
 	
 }

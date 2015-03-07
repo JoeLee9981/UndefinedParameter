@@ -42,9 +42,9 @@ public interface QuestionDAO {
 	 */
 	@SqlUpdate("INSERT INTO Question "
 				+ "(CreatorID, GroupID, QuestionDifficulty, Rating, "
-				+ "QuestionText, CorrectAnswer, QuestionType, WrongAnswer1, WrongAnswer2, WrongAnswer3, WrongAnswer4, Flagged, Explanation, Reference) "
+				+ "QuestionText, CorrectAnswer, QuestionType, WrongAnswer1, WrongAnswer2, WrongAnswer3, WrongAnswer4, Flagged, Explanation, Reference, Ordered) "
 				+ "VALUES (:creatorId, :groupId, :difficulty, :rating, :questionText, :correctAnswer, :questionType, :wrongAnswer1, :wrongAnswer2, "
-				+ ":wrongAnswer3, :wrongAnswer4, :flagged, :explanation, :reference)")
+				+ ":wrongAnswer3, :wrongAnswer4, :flagged, :explanation, :reference, :ordered)")
 	@GetGeneratedKeys
 	public long createQuestion(@Bind("creatorId") long creatorId, 
 							   @Bind("groupId") long groupId,
@@ -59,7 +59,8 @@ public interface QuestionDAO {
 							   @Bind("wrongAnswer4") String wrongAnswer4,
 							   @Bind("flagged") boolean flagged,
 							   @Bind("explanation") String explanation,
-							   @Bind("reference") String reference);
+							   @Bind("reference") String reference,
+							   @Bind("ordered") boolean ordered);
 	
 	/*
 	 * 	retrieveQuiz - Retrieves questions from a specific group id.

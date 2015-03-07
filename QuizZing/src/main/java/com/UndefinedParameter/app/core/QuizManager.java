@@ -160,9 +160,14 @@ public class QuizManager {
 		}
 		else {
 			List<String> wrongAnswers = question.getWrongAnswers();
+			String reference = question.getReference();
+			if(question.getReferenceLink() != null && !"".equals(question.getReferenceLink())) {
+				reference = "<a href=\"" + question.getReferenceLink() + "\">" + reference + "</a>";
+			}
+			
 			long id = questionDAO.createQuestion(question.getCreatorId(), question.getGroupId(), question.getQuestionDifficulty(), question.getRating(),
 					question.getQuestionText(), question.getCorrectAnswer(), question.getQuestionType().toString(), wrongAnswers.get(0), wrongAnswers.get(1),
-					wrongAnswers.get(2), wrongAnswers.get(3), question.isFlagged(), question.getExplanation(), question.getReference());
+					wrongAnswers.get(2), wrongAnswers.get(3), question.isFlagged(), question.getExplanation(), reference, question.isOrdered());
 			return id;
 		}
 	}
