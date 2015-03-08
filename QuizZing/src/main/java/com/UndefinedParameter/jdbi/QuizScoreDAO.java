@@ -18,6 +18,9 @@ public interface QuizScoreDAO {
 	@SqlQuery("SELECT * FROM QuizScore WHERE QuizID = :quizid")
 	public UserDAO findUserByQuizID(@Bind("userId") long quizid);
 	
+	@SqlQuery("SELECT * FROM QuizScore WHERE QuizID = :quizid AND UserID = :userId")
+	public UserDAO findUserByQuizID(@Bind("quizId") long quizid, @Bind("userId") long userid);
+	
 		
 	@SqlUpdate("INSERT INTO QuizScore "
 			+ "(UserID, QuizID, DateTime, Score) "

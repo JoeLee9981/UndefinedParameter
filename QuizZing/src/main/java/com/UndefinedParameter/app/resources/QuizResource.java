@@ -24,6 +24,7 @@ import com.UndefinedParameter.jdbi.GroupDAO;
 import com.UndefinedParameter.jdbi.OrganizationDAO;
 import com.UndefinedParameter.jdbi.QuestionDAO;
 import com.UndefinedParameter.jdbi.QuizDAO;
+import com.UndefinedParameter.jdbi.QuizScoreDAO;
 import com.UndefinedParameter.views.LoginView;
 import com.UndefinedParameter.views.QuizCreatorView;
 import com.UndefinedParameter.views.QuizEditView;
@@ -38,8 +39,8 @@ public class QuizResource {
 	private QuizManager quizManager;
 	private GroupManager groupManager;
 	
-	public QuizResource(QuizDAO quizDAO, QuestionDAO questionDAO, OrganizationDAO orgDAO, GroupDAO groupDAO) {
-		quizManager = new QuizManager(quizDAO, questionDAO);
+	public QuizResource(QuizDAO quizDAO, QuestionDAO questionDAO, OrganizationDAO orgDAO, GroupDAO groupDAO, QuizScoreDAO quizScoreDAO) {
+		quizManager = new QuizManager(quizDAO, questionDAO, quizScoreDAO);
 		groupManager = new GroupManager(orgDAO, groupDAO);
 	}
 	
@@ -72,6 +73,12 @@ public class QuizResource {
 			//user is logged in but not the owner
 			return Response.ok(new QuizView(user, quiz, groupId, true, false, userRating, userDiff)).build();
 		}
+	}
+	
+	@POST
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Response getQuizView(@Auth(required = false) User user, @QueryParam("quizId") long id) {
+		return Response.status(Status.BAD_REQUEST).build();
 	}
 	
 	@GET

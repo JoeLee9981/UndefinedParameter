@@ -30,6 +30,7 @@ import com.UndefinedParameter.jdbi.NewsArticleDAO;
 import com.UndefinedParameter.jdbi.OrganizationDAO;
 import com.UndefinedParameter.jdbi.QuestionDAO;
 import com.UndefinedParameter.jdbi.QuizDAO;
+import com.UndefinedParameter.jdbi.QuizScoreDAO;
 import com.UndefinedParameter.jdbi.UserDAO;
 
 
@@ -85,6 +86,7 @@ public class QuizZingApplication extends Application<QuizZingConfiguration> {
 		final QuestionDAO questionDAO = jdbi.onDemand(QuestionDAO.class);
 		final FeedbackDAO feedbackDAO = jdbi.onDemand(FeedbackDAO.class);
 		final BugDAO bugDAO = jdbi.onDemand(BugDAO.class);
+		final QuizScoreDAO quizScoreDAO = jdbi.onDemand(QuizScoreDAO.class);
 		
 		logger.info("Database objects registered successfully");
 		
@@ -103,14 +105,14 @@ public class QuizZingApplication extends Application<QuizZingConfiguration> {
 	    logger.info("Authenticator initiated successfully");
 		
 		/***** REGISTER VIEWS ******/
-		environment.jersey().register(new HomeResource(newsDAO, userDAO, orgDAO, groupDAO, quizDAO, questionDAO));
+		environment.jersey().register(new HomeResource(newsDAO, userDAO, orgDAO, groupDAO, quizDAO, questionDAO, quizScoreDAO));
 		environment.jersey().register(new NewsArticleResource(newsDAO));
-		environment.jersey().register(new QuizResource(quizDAO, questionDAO, orgDAO, groupDAO));
-		environment.jersey().register(new GroupResource(orgDAO, groupDAO, quizDAO, questionDAO));
+		environment.jersey().register(new QuizResource(quizDAO, questionDAO, orgDAO, groupDAO, quizScoreDAO));
+		environment.jersey().register(new GroupResource(orgDAO, groupDAO, quizDAO, questionDAO, quizScoreDAO));
 		environment.jersey().register(new OrganizationResource(orgDAO, groupDAO));
-		environment.jersey().register(new QuestionResource(quizDAO, questionDAO));
+		environment.jersey().register(new QuestionResource(quizDAO, questionDAO, quizScoreDAO));
 		environment.jersey().register(new FeedbackResource(feedbackDAO, bugDAO));
-		environment.jersey().register(new UserProfileResource(userDAO, quizDAO, questionDAO, orgDAO, groupDAO));
+		environment.jersey().register(new UserProfileResource(userDAO, quizDAO, questionDAO, orgDAO, groupDAO, quizScoreDAO));
 
 		logger.info("All Views Registered");
 	}

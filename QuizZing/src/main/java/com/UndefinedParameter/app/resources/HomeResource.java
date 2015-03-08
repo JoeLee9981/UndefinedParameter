@@ -26,6 +26,7 @@ import com.UndefinedParameter.jdbi.NewsArticleDAO;
 import com.UndefinedParameter.jdbi.OrganizationDAO;
 import com.UndefinedParameter.jdbi.QuestionDAO;
 import com.UndefinedParameter.jdbi.QuizDAO;
+import com.UndefinedParameter.jdbi.QuizScoreDAO;
 import com.UndefinedParameter.jdbi.UserDAO;
 import com.UndefinedParameter.views.AboutView;
 import com.UndefinedParameter.views.ForgotView;
@@ -42,11 +43,11 @@ public class HomeResource {
 	private OrganizationManager orgManager;
 	private QuizManager quizManager;
 	
-	public HomeResource(NewsArticleDAO newsDAO, UserDAO userDAO, OrganizationDAO orgDAO, GroupDAO groupDAO, QuizDAO quizDAO, QuestionDAO questionDAO) {
+	public HomeResource(NewsArticleDAO newsDAO, UserDAO userDAO, OrganizationDAO orgDAO, GroupDAO groupDAO, QuizDAO quizDAO, QuestionDAO questionDAO, QuizScoreDAO quizScoreDAO) {
 		this.newsManager = new NewsManager(newsDAO);
 		this.userManager = new UserManager(userDAO);
 		this.orgManager = new OrganizationManager(orgDAO, groupDAO);
-		this.quizManager = new QuizManager(quizDAO, questionDAO);
+		this.quizManager = new QuizManager(quizDAO, questionDAO, quizScoreDAO);
 	}
 	
 	/*

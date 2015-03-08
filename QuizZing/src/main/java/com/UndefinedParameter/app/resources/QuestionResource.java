@@ -22,6 +22,7 @@ import com.UndefinedParameter.app.core.QuizManager;
 import com.UndefinedParameter.app.core.User;
 import com.UndefinedParameter.jdbi.QuestionDAO;
 import com.UndefinedParameter.jdbi.QuizDAO;
+import com.UndefinedParameter.jdbi.QuizScoreDAO;
 import com.UndefinedParameter.views.LoginView;
 import com.UndefinedParameter.views.QuestionAddView;
 import com.UndefinedParameter.views.QuestionCreatorView;
@@ -33,8 +34,8 @@ public class QuestionResource {
 	
 	private QuizManager quizManager;
 	
-	public QuestionResource(QuizDAO quizDAO, QuestionDAO questionDAO) {
-		quizManager = new QuizManager(quizDAO, questionDAO);
+	public QuestionResource(QuizDAO quizDAO, QuestionDAO questionDAO, QuizScoreDAO quizScoreDAO) {
+		quizManager = new QuizManager(quizDAO, questionDAO, quizScoreDAO);
 	}
 	
 	@GET

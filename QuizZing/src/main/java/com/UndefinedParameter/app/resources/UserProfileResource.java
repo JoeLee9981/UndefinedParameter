@@ -24,6 +24,7 @@ import com.UndefinedParameter.jdbi.GroupDAO;
 import com.UndefinedParameter.jdbi.OrganizationDAO;
 import com.UndefinedParameter.jdbi.QuestionDAO;
 import com.UndefinedParameter.jdbi.QuizDAO;
+import com.UndefinedParameter.jdbi.QuizScoreDAO;
 import com.UndefinedParameter.jdbi.UserDAO;
 import com.UndefinedParameter.views.UserProfileView;
 
@@ -35,10 +36,10 @@ public class UserProfileResource {
 	public QuizManager quizManager;
 	public GroupManager groupManager;
 	
-	public UserProfileResource(UserDAO userdao, QuizDAO quizdao, QuestionDAO questiondao, OrganizationDAO orgdao, GroupDAO groupdao)
+	public UserProfileResource(UserDAO userdao, QuizDAO quizdao, QuestionDAO questiondao, OrganizationDAO orgdao, GroupDAO groupdao, QuizScoreDAO quizScoredao)
 	{
 		this.userManager = new UserManager(userdao);
-		this.quizManager = new QuizManager(quizdao, questiondao);
+		this.quizManager = new QuizManager(quizdao, questiondao, quizScoredao);
 		this.groupManager = new GroupManager(orgdao, groupdao);
 	}
 

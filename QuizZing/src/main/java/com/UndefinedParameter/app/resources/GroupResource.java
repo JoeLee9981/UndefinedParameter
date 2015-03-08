@@ -27,6 +27,7 @@ import com.UndefinedParameter.jdbi.GroupDAO;
 import com.UndefinedParameter.jdbi.OrganizationDAO;
 import com.UndefinedParameter.jdbi.QuestionDAO;
 import com.UndefinedParameter.jdbi.QuizDAO;
+import com.UndefinedParameter.jdbi.QuizScoreDAO;
 import com.UndefinedParameter.views.GroupView;
 import com.UndefinedParameter.views.GroupsView;
 import com.UndefinedParameter.views.LoginView;
@@ -40,9 +41,9 @@ public class GroupResource {
 	public GroupManager manager;
 	public QuizManager quizManager;
 	
-	public GroupResource(OrganizationDAO orgsDAO, GroupDAO groupDAO, QuizDAO quizDAO, QuestionDAO questionDAO) {
+	public GroupResource(OrganizationDAO orgsDAO, GroupDAO groupDAO, QuizDAO quizDAO, QuestionDAO questionDAO, QuizScoreDAO quizScoreDAO) {
 		manager = new GroupManager(orgsDAO, groupDAO);
-		this.quizManager = new QuizManager(quizDAO, questionDAO);
+		this.quizManager = new QuizManager(quizDAO, questionDAO, quizScoreDAO);
 	}
 	
 	@POST

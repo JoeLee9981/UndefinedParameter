@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 
 import com.UndefinedParameter.jdbi.QuestionDAO;
 import com.UndefinedParameter.jdbi.QuizDAO;
+import com.UndefinedParameter.jdbi.QuizScoreDAO;
 //import com.UndefinedParameter.jdbi.QuizDAO;
 import com.UndefinedParameter.quizzing.QuizZingApplication;
 
@@ -20,10 +21,12 @@ public class QuizManager {
 	
 	private QuizDAO quizDAO;
 	private QuestionDAO questionDAO;
+	private QuizScoreDAO quizScoreDAO;
 	
-	public QuizManager(QuizDAO quizDAO, QuestionDAO questionDAO) {
+	public QuizManager(QuizDAO quizDAO, QuestionDAO questionDAO, QuizScoreDAO quizScoreDAO) {
 		this.quizDAO = quizDAO;
 		this.questionDAO = questionDAO;
+		this.quizScoreDAO = quizScoreDAO;
 	}
 	
 	final static Logger logger = LoggerFactory.getLogger(QuizZingApplication.class);
