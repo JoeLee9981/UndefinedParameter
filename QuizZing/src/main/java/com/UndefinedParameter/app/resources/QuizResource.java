@@ -141,7 +141,7 @@ public class QuizResource {
 	@GET
 	@Path("/edit")
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Response editQuiz(@Auth User user, @QueryParam("quizId") long id, @QueryParam("groupId") long groupId) {
+	public Response editQuiz(@Auth(required = false) User user, @QueryParam("quizId") long id, @QueryParam("groupId") long groupId) {
 		
 		//invalid id
 		if(id == 0)
@@ -154,6 +154,9 @@ public class QuizResource {
 		Group group = null;
 		if(groupId > 0)
 			group = groupManager.findGroupById(groupId);
+		else
+			group = groupManager.findGroupByQuizId(id);
+		
 		if(quiz != null && user.getId() == quiz.getCreatorId()) {
 			return Response.ok(new QuizEditView(user, quiz, group)).build();
 		}

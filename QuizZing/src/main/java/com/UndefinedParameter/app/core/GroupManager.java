@@ -48,14 +48,37 @@ public class GroupManager {
 	 * 	groups id
 	 */
 	public Group findGroupById(long id) {
-		//TODO: Get this from the datatbase
 		
 		return groupDAO.findGroupById(id);
+	}
+	
+	/*
+	 * Uses a quiz id to find a group from the database
+	 */
+	public Group findGroupByQuizId(long quizId) {
+		
+		return groupDAO.findGroupByQuizId(quizId);
 	}
 	
 	public List<Group> findTopGroups() {
 		//TODO: Restrict this to prevent pulling 1000 entries from the DB
 		List<Group> groups = groupDAO.findTopGroups(); 
+		
+		for(int i = 0; i < groups.size(); i++) {
+			Group g = groups.get(i);
+			g.setQuestionCount(groupDAO.countQuestions(g.getId()));
+			g.setQuizCount(groupDAO.countQuizzes(g.getId()));
+		}
+		
+		return groups;
+	}
+	
+	/*
+	 * Return a list of top groups that a user is not registered for
+	 */
+	public List<Group> findUnregisteredTopGroups(long userId) {
+		//TODO: Restrict this to prevent pulling 1000 entries from the DB
+		List<Group> groups = groupDAO.findUnregisteredTopGroups(userId); 
 		
 		for(int i = 0; i < groups.size(); i++) {
 			Group g = groups.get(i);

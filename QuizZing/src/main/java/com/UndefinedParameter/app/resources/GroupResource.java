@@ -97,7 +97,7 @@ public class GroupResource {
 	@Path("/top")
 	public Response getTopGroups(@Auth(required = false) User user) {
 		if(user != null) {
-			return Response.ok(new GroupsView(user, manager.findTopGroups(), manager.findRegisteredGroups(user.getId()), true)).build();
+			return Response.ok(new GroupsView(user, manager.findUnregisteredTopGroups(user.getId()), manager.findRegisteredGroups(user.getId()), true)).build();
 		}
 		else {
 			return Response.ok(new GroupsView(user, manager.findTopGroups(), null, false)).build();

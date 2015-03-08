@@ -15,6 +15,7 @@ public class Question {
 	 */
 	public enum QuestionType {
 		MULTIPLE_CHOICE,
+		TRUE_FALSE,
 		FILL_IN_THE_BLANK,
 		SHORT_ANSWER
 		//TODO: Add more question types as needed
@@ -32,10 +33,6 @@ public class Question {
 	private String explanation;
 	private String reference;
 	private String referenceLink;
-	
-	// This contains a list of all the associated groups for this question
-	// The Hashset will contain a an association with group ID and group name
-	private HashSet test;
 	
 	//TODO: These variables need to be added to table
 	//		default them for now for prototype only
@@ -280,6 +277,4 @@ public class Question {
 	public void setReferenceLink(String referenceLink) {
 		this.referenceLink = referenceLink;
 	}
-	
-	
 }

@@ -16,11 +16,22 @@ public interface GroupDAO {
 	@SqlQuery("SELECT * FROM SubGroup ORDER BY MemberCount DESC")
 	public List<Group> findTopGroups();
 	
+	@SqlQuery("SELECT * FROM SubGroup sg WHERE NOT EXISTS "
+			+ "(SELECT * FROM UserGroups ug, User user WHERE "
+			+ "ug.UserID = user.UserID AND "
+			+ "ug.GroupID = sg.GroupID AND "
+			+ "user.UserID = :userId) "
+			+ "ORDER BY MemberCount DESC")
+	public List<Group> findUnregisteredTopGroups(@Bind("userId") long userId);
+	
 	@SqlQuery("SELECT * FROM SubGroup WHERE OrgID = :orgId")
 	public List<Group> findGroupsByOrgId(@Bind("orgId") long id);
 	
-	@SqlQuery("SELECT * FROM SubGroup WHERE GroupId = :groupId")
+	@SqlQuery("SELECT * FROM SubGroup WHERE GroupID = :groupId")
 	public Group findGroupById(@Bind("groupId") long id);
+	
+	@SqlQuery("SELECT * FROM SubGroup sg, GroupQuiz quiz WHERE sg.GroupID = quiz.GroupID AND quiz.QuizId = :quizId")
+	public Group findGroupByQuizId(@Bind("quizId") long id);
 	
 	@SqlQuery("SELECT * FROM SubGroup sg WHERE sg.OrgID = :orgId AND NOT EXISTS "
 			+ "(SELECT * FROM UserGroups ug, User user WHERE "

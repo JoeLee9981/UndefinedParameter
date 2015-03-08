@@ -28,6 +28,7 @@ public class QuestionMapper implements ResultSetMapper<Question>{
 		que.setCorrectAnswer(r.getString("CorrectAnswer"));
 		que.setExplanation(r.getString("Explanation"));
 		que.setReference(r.getString("Reference"));
+		que.setCorrectPosition(r.getInt("CorrectPosition"));
 		
 		ArrayList<String> wronganswers = new ArrayList<String>();
 		
@@ -46,6 +47,8 @@ public class QuestionMapper implements ResultSetMapper<Question>{
 			wronganswers.add(wrong4);
 		
 		que.setWrongAnswers(wronganswers);
+		
+		que.setAnswers();
 		
 		return que;
 	}
