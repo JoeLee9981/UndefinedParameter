@@ -14,12 +14,15 @@ public class OrganizationView extends View {
 	private boolean loggedIn;
 	private List<Group> registeredGroups;
 	private List<Group> groups;
+	private List<Organization> registeredOrganizations;
 	private User user;
 	private int userRating;
+	private boolean userIsInOrganization;
 	
-	public OrganizationView(Organization org, List<Group> groups, List<Group> registeredGroups, boolean loggedIn, User user, int userRating) {
+	public OrganizationView(Organization org, List<Organization> registeredOrganizations, List<Group> groups, List<Group> registeredGroups, boolean loggedIn, User user, int userRating) {
 		super("org.ftl");
 		this.loggedIn = loggedIn;
+		this.registeredOrganizations = registeredOrganizations;
 		this.organization = org;
 		this.groups = groups;
 		this.registeredGroups = registeredGroups;
@@ -49,5 +52,17 @@ public class OrganizationView extends View {
 	
 	public int getUserRating() {
 		return userRating;
+	}
+	
+	public boolean getUserIsInOrganization()
+	{
+		for (Organization org: this.registeredOrganizations)
+		{
+			if (org.getId() == this.organization.getId());
+			{
+				return true;
+			}
+		}
+		return false;
 	}
 }

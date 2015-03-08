@@ -28,14 +28,56 @@
 				</div>			
 
 				<div class="row">
-					<div>
-						<h2>${organization.name?html} Groups <button class="place-right success" onclick="location.href='/orgs/org/create?orgId=${organization.id}'">Create A New Group</button></h2>
-						<h2>${organization.city?html}</h2>
-						<h3>${organization.state?html}</h2>
-						<h3>${organization.country?html}</h2>
-						<p>${organization.description?html}</p>
+					<div id="orgImage" style="position:relative;">
+						<div style="position:absolute;top:20px;left:20px;padding:20px;background:red;">
+							<h2 class="fg-white"><strong>${organization.name?html}</strong></h2>
+							<p class="fg-white">${organization.city?html}, ${organization.state?html}, ${organization.country?html}</p>
+						</div>
+						<div style="position:absolute;right:20px;bottom:20px;">
+							<#if user??>
+								<#if userIsInOrganization>
+									<button onclick="leaveOrg('${organization.id}')" style="margin-right:10px;" class="bg-white large border1">Leave Organization</button>				
+								<#else>
+									<button onclick="joinOrg('${organization.id}')" style="margin-right:10px;" class="bg-white large border1">Join Organization</button>
+								</#if>
+							</#if>	
+							<button class="bg-white large border1" onclick="location.href='/orgs/org/create?orgId=${organization.id}'"><i class="icon-tools on-left"></i>Create Group</button>
+						</div>
 					</div>
 				</div>
+				<div class="row noMargin">
+					<nav class="navigation-bar white white-custom">
+					    <nav class="navigation-bar-content">
+					        <item class="element active"><a href="#" class="todo">${organization.name?html}</a></item>
+					        <item class="element-divider"></item>
+					        <item class="element"><a href="#" class="todo">About</a></item>
+					        <item class="element-divider"></item>
+					        <item class="element"><a href="#" class="todo">Statistics</a></item>
+					        
+		        	        <div class="element input-element noHover">
+					            <form id="searchOrg">
+					                <div class="input-control text searchbox">
+					                    <input type="text" placeholder="Search ${organization.name?html}..." class="size5">
+					                    <button class="btn-search todo"></button>
+					                </div>
+					            </form>
+					        </div>
+					        
+					        
+					        <item class="element place-right"><a href="#" class="todo"><strong>${organization.quizCount?html} <i class="icon-clipboard-2 on-right"></i></strong></a></item>
+					        <item class="element place-right"><a href="#" class="todo"><strong>${organization.questionCount?html} <i class="icon-help-2 on-right"></i></strong></a></item>
+					        <item class="element place-right"><a href="#" class="todo"><strong>${organization.memberCount?html} <i class="icon-user-3 on-right"></i></strong></a></item>
+					    </nav>
+					</nav>					
+				</div>
+
+				<div class="row noMargin">
+
+				</div>
+				<div class="row">
+					<p>${organization.description?html}</p>
+				</div>
+
 				
 			    <!-- Registered Groups -->
 			    <#if registeredGroups??>
@@ -133,6 +175,35 @@
 
 
 <script>
+			
+		function joinOrg(orgId) {
+			$.ajax({
+			    url: '/orgs/register?orgId=' + orgId,
+			    type: 'POST',
+			    success: function(data) {
+			    	console.log(data);
+			    	window.location='/orgs/org?id=' + orgId;
+			    },
+			    error: function(error) {
+			    	displayError("Unable to register for organization");
+			    }
+			});
+		}
+		
+		function leaveOrg(orgId) {
+			$.ajax({
+			    url: '/orgs/leave?orgId=' + orgId,
+			    type: 'DELETE',
+			    success: function(data) {
+			    	console.log(data);
+			    	window.location='/orgs';
+			    },
+			    error: function(error) {
+			    	displayError("There was an error when attempting to leave organization");
+			    }
+			});
+		}
+
 	
 	function register(groupId) {
 

@@ -38,17 +38,23 @@ form.medium .check:after
 
 .metro .breadcrumbs ul a
 {
-	background: #f6f6f6 ;
+	background: #ffc200 ;
+	color: white;
+}
+
+.metro .breadcrumbs ul li:last-child a
+{
+	color: white !important;
 }
 
 .metro .breadcrumbs ul a:before
 {
-	border-color: #f6f6f6 #f6f6f6 #f6f6f6 transparent ;
+	border-color: #ffc200 #ffc200 #ffc200 transparent ;
 }
 
 .metro .breadcrumbs ul a:after
 {
-	border-left: 1em solid #f6f6f6 ;
+	border-left: 1em solid #ffc200 ;
 }
 
 .metro .rating

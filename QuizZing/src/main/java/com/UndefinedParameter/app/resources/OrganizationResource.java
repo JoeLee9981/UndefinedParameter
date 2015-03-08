@@ -41,9 +41,9 @@ public class OrganizationResource {
 	@GET
 	public Response getOrgsView(@Auth(required=false) User user) {
 		if(user != null)
-			return Response.ok(new OrgsView(manager.findAllOrganizationTypes(), manager.findUnregisteredOrgs(user.getId()), manager.findOrgsByUserId(user.getId()), manager.findNewestOrganizations(0, 15), manager.findLargestOrganizations(0, 15), user)).build();
+			return Response.ok(new OrgsView(manager.findAllOrganizationTypes(), manager.findUnregisteredOrgs(user.getId()), manager.findOrgsByUserId(user.getId()), manager.findNewestOrganizations(0, 10), manager.findLargestOrganizations(0, 10), user)).build();
 		else
-			return Response.ok(new OrgsView(manager.findAllOrganizationTypes(), manager.findOrgsByLocation("city"), null, manager.findNewestOrganizations(0, 15), manager.findLargestOrganizations(0, 15), null)).build();
+			return Response.ok(new OrgsView(manager.findAllOrganizationTypes(), manager.findOrgsByLocation("city"), null, manager.findNewestOrganizations(0, 10), manager.findLargestOrganizations(0, 10), null)).build();
 	}
 	
 	@GET
@@ -54,11 +54,11 @@ public class OrganizationResource {
 			List<Group> regGroups = manager.findRegisteredGroupsById(id, user.getId());
 			
 			int userRating = 0;
-			return Response.ok(new OrganizationView(manager.findOrgById(id), unregGroups, regGroups, true, user, userRating)).build();
+			return Response.ok(new OrganizationView(manager.findOrgById(id), manager.findOrgsByUserId(user.getId()), unregGroups, regGroups, true, user, userRating)).build();
 		}
 		else {
 			List<Group> groups = manager.findGroupsById(id);
-			return Response.ok(new OrganizationView(manager.findOrgById(id), groups, null, false, user, 0)).build();
+			return Response.ok(new OrganizationView(manager.findOrgById(id), null, groups, null, false, user, 0)).build();
 		}
 	}
 	

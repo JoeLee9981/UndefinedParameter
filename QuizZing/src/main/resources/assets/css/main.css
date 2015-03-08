@@ -74,7 +74,7 @@ textarea
 
 .container
 {
-	border-top: 2px solid GRAY;
+	border-top: 1px solid GRAY;
 }
 
 .containerFill
@@ -108,4 +108,26 @@ a > .leave
 a > .join
 {
 	color: green;
+}
+
+.white-custom .element:not(.noHover):hover
+{
+	border-bottom: 3px solid RED;
+	background: white !important;
+	color: black !important;
+}
+
+.white-custom .element.active
+{
+	border-bottom: 3px solid RED;
+}
+
+.navigation-bar.white-custom
+{
+	border: 1px solid #d3d3d3;
+}
+
+.border1
+{
+	border: 1px solid GRAY !important;
 }
