@@ -73,8 +73,8 @@ public interface QuizDAO {
 	/*
 	 * delete Quiz to Question Association
 	 */
-	@SqlUpdate("DELETE FROM QuizQuestion WHERE QuizID = :quizId")
-	public void deleteQuizQuestion(@Bind("quizId") long quizId);
+	@SqlUpdate("DELETE FROM QuizQuestion WHERE QuizID = :quizId AND QuestionID = :questionId")
+	public void deleteQuizQuestion(@Bind("quizId") long quizId, @Bind("questionId") long questionId);
 	
 	/*
 	 * delete Quiz to Tag association

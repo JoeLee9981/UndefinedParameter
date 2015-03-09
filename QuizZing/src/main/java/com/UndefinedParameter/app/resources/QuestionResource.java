@@ -7,6 +7,7 @@ import java.util.List;
 
 import javax.validation.Valid;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -89,7 +90,7 @@ public class QuestionResource {
 		}
 		else {
 			Quiz quiz = quizManager.findQuiz(quizId);
-			List<Question> questions = quizManager.findQuestionsByGroup(groupId);
+			List<Question> questions = quizManager.findUnaddedGroupQuestions(groupId, quizId);
 			if(quiz.getCreatorId() == user.getId()) {
 				//only the creator can add to this quiz
 				//TODO: Collaborators
@@ -115,6 +116,26 @@ public class QuestionResource {
 			}
 		}
 		
+		return Response.status(Status.BAD_REQUEST).build();
+	}
+	
+	@DELETE
+	@Path("/remove")
+	public Response removeQuestion(@Auth(required = false) User user, @QueryParam("questionId") long questionId, @QueryParam("quizId") long quizId) {
+		
+		if(user == null) {
+			return Response.ok(new LoginView(user)).build();
+		}
+		
+		if(questionId == 0 || quizId == 0) {
+			return Response.status(Status.BAD_REQUEST).build();
+		}
+		
+		//remove and return ok
+		if(quizManager.removeQuestionFromQuiz(quizId, questionId)) {
+			return Response.ok().build();
+		}
+		//removal failed
 		return Response.status(Status.BAD_REQUEST).build();
 	}
 }

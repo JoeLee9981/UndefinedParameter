@@ -142,6 +142,15 @@ public class QuizManager {
 		}
 	}
 	
+	public List<Question> findUnaddedGroupQuestions(long groupId, long quizId) {
+		if(groupId > 0 && quizId > 0) {
+			return questionDAO.getUnaddedQuizQuestionsByGroup(groupId, quizId);
+		}
+		else {
+			return null;
+		}
+	}
+	
 	
 	/*
 	 * 	--------------- Creation Methods ---------------
@@ -236,6 +245,25 @@ public class QuizManager {
 			return true;
 		}
 		else {
+			return false;
+		}
+	}
+	
+	/*
+	 * Removes a question from a quiz
+	 */
+	public boolean removeQuestionFromQuiz(long quizId, long questionId) {
+		//invalid id's return fail
+		if(quizId < 1 || questionId < 1) {
+			return false;
+		}
+		//remove and return true
+		try {
+			quizDAO.deleteQuizQuestion(quizId, questionId);
+			return true;
+		}
+		catch(Exception e) {
+			//any exceptions removal failed, return false
 			return false;
 		}
 	}

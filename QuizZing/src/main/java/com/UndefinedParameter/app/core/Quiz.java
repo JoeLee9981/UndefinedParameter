@@ -73,6 +73,11 @@ public class Quiz {
 	private DateTime lastAccessed;
 	
 	/*
+	 * This signifies the quiz is open for editing from any group user
+	 */
+	private boolean open = false;
+	
+	/*
 	 * A list of populated questions
 	 */
 	private List<Question> questions;
@@ -257,6 +262,14 @@ public class Quiz {
 	@JsonProperty
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public boolean isOpen() {
+		return open;
+	}
+
+	public void setOpen(boolean open) {
+		this.open = open;
 	}
 
 	/********************** Iteration Methods ************************************/

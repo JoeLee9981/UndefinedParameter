@@ -27,6 +27,7 @@ import com.UndefinedParameter.jdbi.QuizDAO;
 import com.UndefinedParameter.jdbi.QuizScoreDAO;
 import com.UndefinedParameter.views.LoginView;
 import com.UndefinedParameter.views.QuizCreatorView;
+import com.UndefinedParameter.views.QuizEditQuestionsView;
 import com.UndefinedParameter.views.QuizEditView;
 import com.UndefinedParameter.views.QuizView;
 import com.UndefinedParameter.views.QuizzesView;
@@ -160,6 +161,27 @@ public class QuizResource {
 		if(quiz != null && user.getId() == quiz.getCreatorId()) {
 			return Response.ok(new QuizEditView(user, quiz, group)).build();
 		}
+		return Response.status(Status.BAD_REQUEST).build();
+	}
+	
+	@GET
+	@Path("/edit/questions")
+	public Response getQuizQuestions(@Auth(required = false) User user, @QueryParam("quizId") long quizId) {
+		
+		if(quizId == 0) {
+			return Response.status(Status.BAD_REQUEST).build();
+		}
+		
+		if(user == null) {
+			return Response.ok(new LoginView(user)).build();
+		}
+		
+		Quiz quiz = quizManager.findQuiz(quizId);
+		
+		if(quiz != null && (user.getId() == quiz.getCreatorId() || quiz.isOpen())) {
+			return Response.ok(new QuizEditQuestionsView(quiz)).build();
+		}
+		
 		return Response.status(Status.BAD_REQUEST).build();
 	}
 	

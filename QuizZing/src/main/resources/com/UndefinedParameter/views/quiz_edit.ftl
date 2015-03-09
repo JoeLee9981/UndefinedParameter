@@ -26,22 +26,12 @@
 					<h1>${quiz.name} 
 						<button id="createButton" class="place-right success">Create A Question</button>
 						<button id="addButton" class="place-right warning">Add A Question</button>
+						<button id="editButton" class="place-right primary">Edit Quiz</button>
 					</h1><br/>
 					<h2>${quiz.description}</h2>
 					<label id="errorLabel"></label>
 					
 					<div id="questionDiv"></div>
-					<h2>Current Questions</h2>
-					<ul>
-					<#if quiz.questions??>
-						
-						<#list quiz.questions as question>
-							<li>${question.questionText}</li>
-						</#list>
-					<#else>
-						<li>No Questions Added Yet!</li>
-					</#if>
-					</ul>
 					
 				</div>
 			</div>
@@ -75,6 +65,16 @@
 			$.ajax({
 				type: 'GET',
 				url: '/question/create?groupId=${group.id}&quizId=${quiz.quizId}',
+				success: function(data) {
+					$("#questionDiv").html(data);
+				}
+			});
+		});
+		
+		$("#editButton").click(function() {
+			$.ajax({
+				type: 'GET',
+				url: '/quiz/edit/questions?quizId=${quiz.quizId}',
 				success: function(data) {
 					$("#questionDiv").html(data);
 				}

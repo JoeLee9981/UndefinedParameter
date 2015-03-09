@@ -68,6 +68,13 @@ public interface QuestionDAO {
 	 */
 	@SqlQuery("SELECT * FROM Question WHERE GroupID = :groupId")
 	public List<Question> getQuestionsByGroupId(@Bind("groupId") long groupId);
+	
+	/*
+	 * 	retrieveQuiz - Retrieves questions from a specific group id excluding added questions
+	 */
+	@SqlQuery("SELECT * FROM Question q WHERE GroupID = :groupId AND NOT EXISTS "
+			+ "(SELECT * FROM QuizQuestion qq WHERE qq.QuestionID = q.QuestionID AND qq.QuizID = :quizId)")
+	public List<Question> getUnaddedQuizQuestionsByGroup(@Bind("groupId") long groupId, @Bind("quizId") long quizId);
 }
 
 	/* TODO NEED TO CONVERT THIS QUERY
