@@ -420,7 +420,7 @@
 		        title: 'Submit Quiz',
 		        width: 500,
 		        padding: 10,
-		        content: content
+		        content: "<div class='span8'>" + content + "</div>"
 		    });
 		}
 		

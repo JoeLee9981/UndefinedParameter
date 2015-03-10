@@ -36,23 +36,23 @@
 						<div style="position:absolute;right:20px;bottom:20px;">
 							<#if user??>
 								<#if userIsInOrganization>
-									<button onclick="leaveOrg('${organization.id}')" style="margin-right:10px;" class="bg-white large border1">Leave Organization</button>				
+									<button onclick="leaveOrg('${organization.id}')" style="margin-right:10px;" class="bg-white border1">Leave Organization</button>				
 								<#else>
-									<button onclick="joinOrg('${organization.id}')" style="margin-right:10px;" class="bg-white large border1">Join Organization</button>
+									<button onclick="joinOrg('${organization.id}')" style="margin-right:10px;" class="bg-white border1">Join Organization</button>
 								</#if>
 							</#if>	
-							<button class="bg-white large border1" onclick="location.href='/orgs/org/create?orgId=${organization.id}'"><i class="icon-tools on-left"></i>Create Group</button>
+							<button class="bg-white border1" onclick="location.href='/orgs/org/create?orgId=${organization.id}'"><i class="icon-tools on-left"></i>Create Group</button>
 						</div>
 					</div>
 				</div>
 				<div class="row noMargin">
 					<nav class="navigation-bar white white-custom">
 					    <nav class="navigation-bar-content">
-					        <item class="element active"><a href="#" class="todo">${organization.name?html}</a></item>
+					        <item class="element active"><a href="#" class="todo"><strong>${organization.name?html}</strong></a></item>
 					        <item class="element-divider"></item>
-					        <item class="element"><a href="#" class="todo">About</a></item>
+					        <item class="element"><a href="#" class="todo"><strong>About</strong></a></item>
 					        <item class="element-divider"></item>
-					        <item class="element"><a href="#" class="todo">Statistics</a></item>
+					        <item class="element"><a href="#" class="todo"><strong>Statistics</strong></a></item>
 					        
 		        	        <div class="element input-element noHover">
 					            <form id="searchOrg">
@@ -61,9 +61,7 @@
 					                    <button class="btn-search todo"></button>
 					                </div>
 					            </form>
-					        </div>
-					        
-					        
+					        </div>				        		        
 					        <item class="element place-right"><a href="#" class="todo"><strong>${organization.quizCount?html} <i class="icon-clipboard-2 on-right"></i></strong></a></item>
 					        <item class="element place-right"><a href="#" class="todo"><strong>${organization.questionCount?html} <i class="icon-help-2 on-right"></i></strong></a></item>
 					        <item class="element place-right"><a href="#" class="todo"><strong>${organization.memberCount?html} <i class="icon-user-3 on-right"></i></strong></a></item>
@@ -71,104 +69,90 @@
 					</nav>					
 				</div>
 
-				<div class="row noMargin">
-
-				</div>
 				<div class="row">
-					<p>${organization.description?html}</p>
-				</div>
-
-				
-			    <!-- Registered Groups -->
-			    <#if registeredGroups??>
-				    <div class="row">
-				    	<div>
-							<h4>Your Registered Groups</h4>
+					<div class="span8">
+						<div class="row noMargin">					
+							<div class="accordion with-marker" data-role="accordion" data-closeany="false">
+								
+								<#if user??>
+									<div class="accordion-frame <#if registeredGroups?size gt 0>active</#if>">
+										<a href="#" class="heading bg-lightBlue fg-white">My Joined Groups</a>			
+										<div class="content">									
+											<#if registeredGroups?size gt 0>								
+												<table class="table hovered">
+													<tbody>
+														<#list registeredGroups as group>
+															<tr>
+																<td class="padding5"><a href="/group?groupId=${group.id}">${group.name}</a></td>
+																<td class="padding5"><span class="place-right">${group.quizCount}<i class="icon-clipboard-2 on-right"></i></span></td>
+																<td class="padding5"><span class="place-right">${group.questionCount}<i class="icon-help-2 on-right"></i></span></td>
+																<td class="padding5"><span class="place-right">${group.memberCount}<i class="icon-user-3 on-right"></i></span></td>
+																<#if user??>
+																	<td class="right padding5"><a href="#" class="place-right" onClick="leaveGroup(${group.id})"><i class="icon-minus leave"></i></a></td>
+																</#if>
+															</tr>
+														</#list>
+													</tbody>
+												</table>													
+											<#else>
+												<div style="text-align:center;padding:20px;">
+													<h6>You have not joined any groups.</h6>
+												</div>
+											</#if>																				
+										</div>
+									</div>
+								</#if>
+								
+								<#if user??>
+									<div class="accordion-frame">
+										<a href="#" class="heading bg-lightBlue fg-white">My Created Groups</a>
+										<div class="content">			
+											<div style="text-align:center;padding:20px;">								
+												<h6>You have not created any groups.</h6>						
+											</div>														
+										
+										</div>
+									</div>
+								</#if>
+								
+								<div class="accordion-frame <#if groups?size gt 0>active</#if>">
+									<a href="#" class="heading bg-lightBlue fg-white">Recommended Groups</a>			
+									<div class="content">									
+										<#if groups?size gt 0>								
+											<table class="table hovered">
+												<tbody>
+													<#list groups as group>
+														<tr>
+															<td class="padding5"><a href="/group?groupId=${group.id}">${group.name}</a></td>
+															<td class="padding5"><span class="place-right">${group.quizCount}<i class="icon-clipboard-2 on-right"></i></span></td>
+															<td class="padding5"><span class="place-right">${group.questionCount}<i class="icon-help-2 on-right"></i></span></td>
+															<td class="padding5"><span class="place-right">${group.memberCount}<i class="icon-user-3 on-right"></i></span></td>
+			
+															<#if user??>
+																<td class="right padding5"><a href="#" class="place-right" onClick="joinGroup(${group.id})"><i class="icon-plus join"></i></a></td>
+															</#if>
+														</tr>
+													</#list>
+												</tbody>
+											</table>													
+										<#else>
+											<div style="text-align:center;padding:20px;">
+												<h6>You have no recommended groups.</h6>
+											</div>
+										</#if>																				
+									</div>
+								</div>														
+							</div>
 						</div>
 					</div>
-				
-				    <div class="row">
-						<table class="table hovered">
-	                        <thead>
-	                        <tr>
-	                            <th class="text-left">Group</th>
-	                            <th class="text-left">Members</th>
-	                            <th class="text-left">Quizzes</th>
-	                            <th class="text-left">Questions</th>
-	                            <th class="text-left">Contribution Score <a href="#" data-hint="Contribution Score|A contribution score is something that we must figure out later. It will be super cool" data-hint-position="right" data-hint-mode="2"><i class="icon-help fg-blue"></i></a></th>
-	                            <th class="text-left">Quizzes Participated</th>
-	                            <th class="text-left">Date Created</th>
-                            	<th class="text-left">Leave</th>
-	                        </tr>
-	                        </thead>
-	
-	                        <tbody>
-		                        <#list registeredGroups as group>
-									<tr>
-										<td><a href="/group?groupId=${group.id}">${group.name?html}</a></td>
-										<td class="right">${group.memberCount}</td>
-										<td class="right">${group.quizCount}</td>
-										<td class="right">${group.questionCount}</td>
-										<td class="right">35</td>
-										<td class="right">3</td>
-										<td class="right">${group.dateAsString}</td>
-										<td class="right"><button class="danger" onClick="leave(${group.id})">-</button></td>
-									</tr>
-								</#list>     
-	                        </tbody>
-	
-	                        <tfoot></tfoot>
-	                    </table>    
-				    </div>
-			    </#if>
-			    
-			    <!-- Top Groups -->
-			    <div class="row">
-			    	<div>
-						<h4>Suggested Groups</h4>
+					<div class="span4">
+						<div class="row noMargin">
+							<p>${organization.description?html}</p>
+						</div>
 					</div>
 				</div>
-			    <div class="row">
-					<table class="table hovered">
-                        <thead>
-                        <tr>
-                            <th class="text-left">Group</th>
-                            <th class="text-left">Members</th>
-                            <th class="text-left">Quizzes</th>
-                            <th class="text-left">Questions</th>
-                            <th class="text-left">Contribution Score <a href="#" data-hint="Contribution Score|A contribution score is something that we must figure out later. It will be super cool" data-hint-position="right" data-hint-mode="2"><i class="icon-help fg-blue"></i></a></th>
-                            <th class="text-left">Quizzes Participated</th>
-                            <th class="text-left">Date Created</th>
-                            <#if loggedIn>
-                            	<th class="text-left">Join</th>
-                            </#if>
-                        </tr>
-                        </thead>
-
-                        <tbody>
-	                        <#list groups as group>
-								<tr>
-									<td><a href="/group?groupId=${group.id}">${group.name?html}</a></td>
-									<td class="right">${group.memberCount}</td><td class="right">${group.quizCount}</td>
-									<td class="right">${group.questionCount}</td><td class="right">35</td><td class="right">3</td>
-									<td class="right">${group.dateAsString}</td>
-									<#if loggedIn>
-										<td class="right"><button class="success" onClick="register(${group.id})">+</button></td>
-									</#if>
-								</tr>
-							</#list>     
-                        </tbody>
-
-                        <tfoot></tfoot>
-                    </table>    
-			    </div>
 			</div>
-			<div class="content-width center">
-				Content is going to go here
-				
-			</div>
-			</div>
-		
+		</div>	
 		<#include "../includes/footer.ftl">
 	</body>
 </html>
@@ -205,7 +189,7 @@
 		}
 
 	
-	function register(groupId) {
+	function joinGroup(groupId) {
 
 		$.ajax({
 		    url: '/orgs/org/register?groupId=' + groupId,
@@ -220,7 +204,7 @@
 		});
 	}
 	
-	function leave(groupId) {
+	function leaveGroup(groupId) {
 	
 		$.ajax({
 		    url: '/orgs/org/leave?groupId=' + groupId,
