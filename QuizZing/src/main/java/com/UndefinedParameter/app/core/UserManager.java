@@ -105,17 +105,17 @@ public class UserManager {
 	
 	public boolean registerNewUser(User user) throws Exception {
 		try {
-			userDAO.insert(user.getUserName(), 
-						   user.getFirstName(), 
-						   user.getLastName(), 
-						   user.getMiddleName(),
-						   user.getCountry(), 
-						   user.getCity(), 
-						   user.getState(), 
-						   user.getEmail(), 
-						   user.getPassword(), 
-						   user.getSecretQuestion(), 
-						   user.getSecretAnswer());
+			userDAO.insert(InputUtils.sanitizeInput(user.getUserName()), 
+						   InputUtils.sanitizeInput(user.getFirstName()), 
+						   InputUtils.sanitizeInput(user.getLastName()), 
+						   InputUtils.sanitizeInput(user.getMiddleName()),
+						   InputUtils.sanitizeInput(user.getCountry()), 
+						   InputUtils.sanitizeInput(user.getCity()), 
+						   InputUtils.sanitizeInput(user.getState()), 
+						   InputUtils.sanitizeInput(user.getEmail()), 
+						   InputUtils.sanitizeInput(user.getPassword()), 
+						   InputUtils.sanitizeInput(user.getSecretQuestion()), 
+						   InputUtils.sanitizeInput(user.getSecretAnswer()));
 		}
 		catch(Exception e) {
 			return false;
@@ -128,21 +128,21 @@ public class UserManager {
 		
 		try {
 			userDAO.update(user.getId(),
-						   user.getUserName(), 
-						   user.getFirstName(), 
-						   user.getLastName(), 
-						   user.getMiddleName(),
-						   user.getCountry(), 
-						   user.getCity(), 
-						   user.getState(), 
-						   user.getEmail(), 
-						   user.getPassword(), 
-						   user.getSecretQuestion(), 
-						   user.getSecretAnswer(),
-						   user.getActive(),
-						   user.getActiveCode(),
-						   user.getLastAccessed(),
-						   user.getSeeAgain());
+							InputUtils.sanitizeInput(user.getUserName()), 
+							InputUtils.sanitizeInput(user.getFirstName()), 
+							InputUtils.sanitizeInput(user.getLastName()), 
+							InputUtils.sanitizeInput(user.getMiddleName()),
+							InputUtils.sanitizeInput( user.getCountry()), 
+							InputUtils.sanitizeInput(user.getCity()), 
+							InputUtils.sanitizeInput(user.getState()), 
+							InputUtils.sanitizeInput( user.getEmail()), 
+							InputUtils.sanitizeInput(user.getPassword()), 
+							InputUtils.sanitizeInput(user.getSecretQuestion()), 
+							InputUtils.sanitizeInput(user.getSecretAnswer()),
+						    user.getActive(),
+						    InputUtils.sanitizeInput(user.getActiveCode()),
+						    user.getLastAccessed(),
+						    user.getSeeAgain());
 		}
 		catch(Exception e) {
 			return false;

@@ -182,16 +182,16 @@ public class QuizManager {
 												 question.getGroupId(), 
 												 question.getQuestionDifficulty(), 
 												 question.getRating(),
-												 StringEscapeUtils.escapeHtml(question.getQuestionText()).replace("&lt;br/&gt;", "<br/>"), 
-												 StringEscapeUtils.escapeHtml(question.getCorrectAnswer()).replace("&lt;br/&gt;", "<br/>"), 
-												 StringEscapeUtils.escapeHtml(question.getQuestionType().toString()).replace("&lt;br/&gt;", "<br/>"), 
-												 StringEscapeUtils.escapeHtml(wrongAnswers.get(0)).replace("&lt;br/&gt;", "<br/>"), 
-												 StringEscapeUtils.escapeHtml(wrongAnswers.get(1)).replace("&lt;br/&gt;", "<br/>"),
-												 StringEscapeUtils.escapeHtml(wrongAnswers.get(2)).replace("&lt;br/&gt;", "<br/>"), 
-												 StringEscapeUtils.escapeHtml(wrongAnswers.get(3)).replace("&lt;br/&gt;", "<br/>"), 
+												 InputUtils.sanitizeInput(question.getQuestionText()), 
+												 InputUtils.sanitizeInput(question.getCorrectAnswer()), 
+												 InputUtils.sanitizeInput(question.getQuestionType().toString()), 
+												 InputUtils.sanitizeInput(wrongAnswers.get(0)), 
+												 InputUtils.sanitizeInput(wrongAnswers.get(1)),
+												 InputUtils.sanitizeInput(wrongAnswers.get(2)), 
+												 InputUtils.sanitizeInput(wrongAnswers.get(3)), 
 												 question.isFlagged(), 
-												 StringEscapeUtils.escapeHtml(question.getExplanation()).replace("&lt;br/&gt;", "<br/>"), 
-												 StringEscapeUtils.escapeHtml(reference).replace("&lt;br/&gt;", "<br/>"), 
+												 InputUtils.sanitizeInput(question.getExplanation()), 
+												 InputUtils.sanitizeInput(reference), 
 												 question.isOrdered(), 
 												 question.getCorrectPosition());
 			return id;
@@ -231,10 +231,10 @@ public class QuizManager {
 		}*/
 		
 		return quizDAO.createQuiz(quiz.getCreatorId(),
-								  StringEscapeUtils.escapeHtml(quiz.getName()).replace("&lt;br/&gt;", "<br/>"), 
+				InputUtils.sanitizeInput(quiz.getName()), 
 								  quiz.getDifficulty(), 
 								  quiz.getRating(), 
-								  StringEscapeUtils.escapeHtml(quiz.getDescription()).replace("&lt;br/&gt;", "<br/>"),
+								  InputUtils.sanitizeInput(quiz.getDescription()),
 								  quiz.getTime());
 	}
 	

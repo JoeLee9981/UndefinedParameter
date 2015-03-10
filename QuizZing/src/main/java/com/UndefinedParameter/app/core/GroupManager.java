@@ -27,7 +27,9 @@ public class GroupManager {
 			//invalid ID
 			return -1;
 		}
-		return groupDAO.insertGroup(group.getName(), group.getDescription(), group.getOrganizationId());
+		return groupDAO.insertGroup(InputUtils.sanitizeInput(group.getName()), 
+									InputUtils.sanitizeInput(group.getDescription()), 
+									group.getOrganizationId());
 	}
 	
 	/*

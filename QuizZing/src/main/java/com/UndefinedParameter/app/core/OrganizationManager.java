@@ -110,7 +110,11 @@ public class OrganizationManager {
 	
 	public long createOrganization(Organization org) {
 		try {
-			long id = orgDAO.insertOrganization(org.getName(), org.getDescription(), org.getCity(), org.getState(), org.getCountry());
+			long id = orgDAO.insertOrganization(InputUtils.sanitizeInput(org.getName()), 
+												InputUtils.sanitizeInput(org.getDescription()), 
+												InputUtils.sanitizeInput(org.getCity()), 
+												InputUtils.sanitizeInput(org.getState()), 
+												InputUtils.sanitizeInput(org.getCountry()));
 			return id;
 		}
 		catch(Exception e) {
