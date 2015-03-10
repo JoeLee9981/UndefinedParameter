@@ -401,7 +401,7 @@
 				html += "</small></button>";
 			}
 			
-			if(!quizInProgress) {
+			if(!q.inProgress) {
 				html += '<button class="info large" onclick="showExplanation()">Show Explanation</button>';
 
 			}

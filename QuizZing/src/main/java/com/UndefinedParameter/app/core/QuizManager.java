@@ -3,6 +3,7 @@ package com.UndefinedParameter.app.core;
 import java.util.Collections;
 import java.util.List;
 
+import org.apache.commons.lang.StringEscapeUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -181,16 +182,16 @@ public class QuizManager {
 												 question.getGroupId(), 
 												 question.getQuestionDifficulty(), 
 												 question.getRating(),
-												 question.getQuestionText(), 
-												 question.getCorrectAnswer(), 
-												 question.getQuestionType().toString(), 
-												 wrongAnswers.get(0), 
-												 wrongAnswers.get(1),
-												 wrongAnswers.get(2), 
-												 wrongAnswers.get(3), 
+												 StringEscapeUtils.escapeHtml(question.getQuestionText()).replace("&lt;br/&gt;", "<br/>"), 
+												 StringEscapeUtils.escapeHtml(question.getCorrectAnswer()).replace("&lt;br/&gt;", "<br/>"), 
+												 StringEscapeUtils.escapeHtml(question.getQuestionType().toString()).replace("&lt;br/&gt;", "<br/>"), 
+												 StringEscapeUtils.escapeHtml(wrongAnswers.get(0)).replace("&lt;br/&gt;", "<br/>"), 
+												 StringEscapeUtils.escapeHtml(wrongAnswers.get(1)).replace("&lt;br/&gt;", "<br/>"),
+												 StringEscapeUtils.escapeHtml(wrongAnswers.get(2)).replace("&lt;br/&gt;", "<br/>"), 
+												 StringEscapeUtils.escapeHtml(wrongAnswers.get(3)).replace("&lt;br/&gt;", "<br/>"), 
 												 question.isFlagged(), 
-												 question.getExplanation(), 
-												 reference, 
+												 StringEscapeUtils.escapeHtml(question.getExplanation()).replace("&lt;br/&gt;", "<br/>"), 
+												 StringEscapeUtils.escapeHtml(reference).replace("&lt;br/&gt;", "<br/>"), 
 												 question.isOrdered(), 
 												 question.getCorrectPosition());
 			return id;
@@ -229,7 +230,12 @@ public class QuizManager {
 				throw new Exception("Not all questions exist in the database.");
 		}*/
 		
-		return quizDAO.createQuiz(quiz.getCreatorId(), quiz.getName(), quiz.getDifficulty(), quiz.getRating(), quiz.getDescription(), quiz.getTime());
+		return quizDAO.createQuiz(quiz.getCreatorId(),
+								  StringEscapeUtils.escapeHtml(quiz.getName()).replace("&lt;br/&gt;", "<br/>"), 
+								  quiz.getDifficulty(), 
+								  quiz.getRating(), 
+								  StringEscapeUtils.escapeHtml(quiz.getDescription()).replace("&lt;br/&gt;", "<br/>"),
+								  quiz.getTime());
 	}
 	
 	/*

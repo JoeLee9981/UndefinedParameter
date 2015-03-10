@@ -93,14 +93,15 @@
 	<script>
 	
 		function removeQuestion(questionId) {
-			alert(questionId);
-			return;
 			
 			$.ajax({
 				type: 'DELETE',
-				url: '/quiz/edit/questions?quizId=${quiz.quizId}',
+				url: '/question/remove?quizId=${quiz.quizId}&questionId=' + questionId,
 				success: function(data) {
 					$("#questionDiv").html(data);
+				},
+				error: function() {
+					$("#error").html("* An error occurred attempting to remove the question.");
 				}
 			});
 		}

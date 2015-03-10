@@ -27,6 +27,7 @@ import com.UndefinedParameter.jdbi.QuizScoreDAO;
 import com.UndefinedParameter.views.LoginView;
 import com.UndefinedParameter.views.QuestionAddView;
 import com.UndefinedParameter.views.QuestionCreatorView;
+import com.UndefinedParameter.views.QuizEditQuestionsView;
 
 @Path("/question")
 @Produces(MediaType.TEXT_HTML)
@@ -133,7 +134,9 @@ public class QuestionResource {
 		
 		//remove and return ok
 		if(quizManager.removeQuestionFromQuiz(quizId, questionId)) {
-			return Response.ok().build();
+			//reload the quiz now
+			Quiz quiz = quizManager.findQuiz(quizId);
+			return Response.ok(new QuizEditQuestionsView(quiz)).build();
 		}
 		//removal failed
 		return Response.status(Status.BAD_REQUEST).build();
