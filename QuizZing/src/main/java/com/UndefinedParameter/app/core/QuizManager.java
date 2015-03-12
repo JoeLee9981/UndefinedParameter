@@ -265,7 +265,9 @@ public class QuizManager {
 		}
 		//remove and return true
 		try {
+			//TODO: Must check if question exists before we remove and decrement.
 			quizDAO.deleteQuizQuestion(quizId, questionId);
+			quizDAO.decrementQuestionCount(quizId);
 			return true;
 		}
 		catch(Exception e) {

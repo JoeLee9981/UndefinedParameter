@@ -1,5 +1,4 @@
 <div class="span9" id="fillblank-div" hidden>
-	<h1>Fill In The Blank</h1>
 	<form id="create-question-form">
 		<label></label><h5>Question <a href="#" data-hint="Question|The text of the question" data-hint-position="right" data-hint-mode="2"><i class="icon-help fg-blue"></i></a></h5>
 			<div class="input-control textarea">
@@ -80,11 +79,12 @@
 				document.getElementById('fb-responseLabel').innerHTML = "You may only add 5 blanks to the question.";
 				return;
 			}
-			$('#fb-descriptionText').val(explanation + " <blank/>");
+			$('#fb-descriptionText').val(explanation + " <blank> ");
+			$('#fb-descriptionText').focus();
 		});
 
 		function countBlanks(description) {
-			return (description.match(/<blank><\/blank>/g) || []).length;
+			return (description.match(/<blank>/g) || []).length;
 			return 0;
 		}
 	
@@ -94,7 +94,7 @@
 			var maxAnswers = 5;
 			var quizId = ${quizId};
 			var desc = document.getElementById('fb-descriptionText').value;
-			var correct = "n/a";
+			var correct = "";
 			var type = "FILL_IN_THE_BLANK";
 			var answers = [];
 			var creatorId = ${user.id};
@@ -109,18 +109,32 @@
 			
 			var ordered = true;
 			var count = countBlanks(desc);
+			
+			if(count == 0) {
+				document.getElementById('fb-responseLabel').className = "text-alert";
+				document.getElementById('fb-responseLabel').innerHTML = "You must at least have one blank and answer";
+				return;
+			}
+			else if(count > 5) {
+				document.getElementById('fb-responseLabel').className = "text-alert";
+				document.getElementById('fb-responseLabel').innerHTML = "You may only have 5 blanks";
+				return;
+			}
 
-			for(var i = 1; i <= count; i++) {
-				if(!$('#fb-qText' + i).val()) {
+			for(var i = 1; i <= maxAnswers; i++) {
+				if(!$('#fb-qText' + i).val() && i <= count) {
 					document.getElementById('fb-responseLabel').className = "text-alert";
 					document.getElementById('fb-responseLabel').innerHTML = "You must fill in the answer for blank " + i;
 				}
 				else {
-					answers.push($('#fb-qText' + i).val());
+					if(i == 1)
+						correct = ($('#fb-qText' + i).val());
+					else if(i <= count)
+						answers.push($('#fb-qText' + i).val());
+					else
+						answers.push("");
 				}
 			}
-
-			alert(answers);
 			
 			document.getElementById('responseLabel').innerHTML = "";
 			
@@ -135,12 +149,11 @@
 				document.getElementById('responseLabel').className = "text-alert";
 				return;
 			}
-				
-			
+			alert(${groupId} + " " + desc + " " + correct);
 			 $.ajax({
 				type: 'POST',
 				url: path,
-				data: JSON.stringify({groupId: ${groupId}, questionText: desc, correctAnswer: correct, type: type, wrongAnswers: incorrect, creatorId: creatorId, explanation: explanation, ordered: ordered, reference: reference, referenceLink: hyperlink, correctPosition: correctPos }),
+				data: JSON.stringify({groupId: ${groupId}, questionText: desc, correctAnswer: correct, type: type, wrongAnswers: answers, creatorId: creatorId, explanation: explanation, ordered: ordered, reference: reference, referenceLink: hyperlink }),
 				dataType: "json",
 				headers: {
 					Accept: "application/json",

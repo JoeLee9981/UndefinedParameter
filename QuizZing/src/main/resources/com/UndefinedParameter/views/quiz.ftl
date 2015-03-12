@@ -88,6 +88,10 @@
 								<div>
 									<button id="prevQuestion" onclick="previousQuestion()" class="primary large" hidden><i class="icon-previous"></i></button>
 									<button id="nextQuestion" onclick="nextQuestion()" class="success large"><i class="icon-next"></i></button>
+									<div id="quest-difficulty" class="rating small fg-red">
+									</div>
+									<div id="quest-rating" class="rating small fg-red">
+									</div>
 									<button id="submitQuiz" class="warning place-right large" hidden><i class="icon-checkmark"></i> Submit Quiz</button>
 								</div>
 							</div>
@@ -107,7 +111,7 @@
 				</div>
 				<div id="quizFinish" hidden="true">
 					<h2>Your Quiz Stats: </h2><br/>
-					<h3 id="scoreText"/>
+					<h3 id="scoreText"></h3>
 					<h5>Rate the Quiz Difficulty:</h5>
 					<#if userDifficulty &gt; 0>
 						<div id="setdifficulty" class="rating small fg-yellow">
@@ -137,6 +141,37 @@
 	
 	<script>
 	
+		/************************* QUIZ RATINGS HERE *********************************/
+	
+		$(function() {
+			$("#quest-rating").rating({
+				static: true,
+				<#if userRating &gt; 0>
+					score: ${userRating},
+				<#else>
+					score: ${quiz.rating},
+				</#if>
+				stars: 5,
+				showHint: true,
+				hints: ['wrong', 'poor', 'average', 'good', 'excellent'],
+			});
+		});
+		
+		//Star rating for difficulty (entry page)
+		$(function() {
+			$("#quest-difficulty").rating({
+				static: true,
+				<#if userDifficulty &gt; 0>
+					score: ${userDifficulty},
+				<#else>
+					score: ${quiz.difficulty},
+				</#if>
+				stars: 5,
+				showHint: true,
+				hints: ['cake', 'easy', 'average', 'hard', 'impossible'],
+			});		
+		});
+		
 		//Star rating for quiz quality (entry page)
 		$(function() {
 			$("#rating").rating({

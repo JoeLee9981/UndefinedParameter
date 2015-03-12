@@ -76,6 +76,9 @@ public interface QuizDAO {
 	@SqlUpdate("DELETE FROM QuizQuestion WHERE QuizID = :quizId AND QuestionID = :questionId")
 	public void deleteQuizQuestion(@Bind("quizId") long quizId, @Bind("questionId") long questionId);
 	
+	@SqlUpdate("SELECT COUNT(*) FROM QuizQuestion WHERE QuizID = :quizId")
+	public void countQuestions(@Bind("quizId") long quizId);
+	
 	/*
 	 * delete Quiz to Tag association
 	 */

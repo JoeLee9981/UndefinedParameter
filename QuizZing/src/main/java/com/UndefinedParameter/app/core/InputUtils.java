@@ -10,7 +10,7 @@ public class InputUtils {
 		}
 		//replace all newlines
 		input = input.replace("\n", "<br/>");
-		//escpae and readd <br/>
+		//escape and re-add <br/>
 		return StringEscapeUtils.escapeHtml(input).replace("&lt;br/&gt;", "<br/>");
 	}
 }
