@@ -152,6 +152,22 @@ public class QuizManager {
 		}
 	}
 	
+	public List<QuizScore> findScoresByQuiz(long quizId)
+	{
+		if(quizId > 0)
+			return quizScoreDAO.findScoresByQuizID(quizId);
+		else
+			return null;
+	}
+	
+	public List<QuizScore> findScoresByQuizAndUser(long quizId, long userId)
+	{
+		if(quizId > 0 || userId > 0)
+			return quizScoreDAO.findScoresByQuizAndUser(quizId, userId);
+		else
+			return null;
+	}
+	
 	
 	/*
 	 * 	--------------- Creation Methods ---------------
