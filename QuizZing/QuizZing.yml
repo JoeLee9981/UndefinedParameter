@@ -1,0 +1,39 @@
+server:
+  type: simple
+  applicationContextPath: /
+  adminContextPath: /admin
+  connector:
+    type: http
+    port: 8080
+
+database:
+  driverClass: com.mysql.jdbc.Driver
+  user: UndefParam
+  password: DiVide6910
+  url: jdbc:mysql://quizzing.cybeswdnopl1.us-west-2.rds.amazonaws.com:3306/innodb
+  properties:
+    charSet: UTF-8
+  maxWaitForConnection: 1s
+  minSize: 1
+  maxSize: 32
+  checkConnectionWhileIdle: true
+  checkConnectionOnBorrow: true
+  evictionInterval: 10s
+  minIdleTime: 1 minute
+    
+logging:
+  level: Info
+  appenders:
+
+    - type: console
+      threshold: ALL
+
+    - type: file
+      threshold: ALL
+      currentLogFilename: ./logs/debug.log
+      archivedLogFilenamePattern: ./logs/example-%d{yyyy-MM-dd}.logg.gz
+      archivedFileCount: 30
+      timeZone: UTC
+
+template: Hello, %s!
+defaultName: UndefinedParameter

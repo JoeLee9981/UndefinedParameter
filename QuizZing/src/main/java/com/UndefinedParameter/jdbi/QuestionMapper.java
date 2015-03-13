@@ -24,7 +24,8 @@ public class QuestionMapper implements ResultSetMapper<Question>{
 		que.setQuestionDifficulty(r.getFloat("QuestionDifficulty"));
 		que.setRating(r.getFloat("Rating"));
 		que.setQuestionText(r.getString("QuestionText"));
-		que.setQuestionType(QuestionType.valueOf(r.getString("QuestionType")));
+		String queType = r.getString("QuestionType");
+		que.setQuestionType(QuestionType.valueOf(queType));
 		que.setCorrectAnswer(r.getString("CorrectAnswer"));
 		que.setExplanation(r.getString("Explanation"));
 		que.setReference(r.getString("Reference"));

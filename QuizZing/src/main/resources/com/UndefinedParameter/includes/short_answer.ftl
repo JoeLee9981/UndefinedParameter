@@ -2,7 +2,7 @@
 	<form id="create-question-form">
 		<h5>Question <a href="#" data-hint="Question|The text of the question" data-hint-position="right" data-hint-mode="2"><i class="icon-help fg-blue"></i></a></h5>
 			<div class="input-control textarea">
-			    <textarea id="tf-descriptionText"></textarea>
+			    <textarea id="sa-descriptionText"></textarea>
 			</div>
 
 		<label><h5>Explanation of Answer <a href="#" data-hint="Explanation|A bit of text that explains, or gives background on the answer of the question" data-hint-position="right" data-hint-mode="2"><i class="icon-help fg-blue"></i></a></h5>
@@ -29,7 +29,7 @@
 		</label>
 		<div>
 			<input type="button" onclick="addShortAnswer()" value="Submit"></input>
-			<p id="responseLabel" />
+			<p id="sa-responseLabel" />
 		</div>
 	</form>
 	
@@ -37,17 +37,16 @@
 		
 	
 		function addShortAnswer() {
-
+			
 			//TODO Prevalidate these fields
 			var maxAnswers = 5;
 			var quizId = ${quizId};
-			var desc = document.getElementById('tf-descriptionText').value;
-			var correct;
-			var type = "TRUE_FALSE";
-			var incorrect = [];
+			var desc = document.getElementById('sa-descriptionText').value;
+			var correct = document.getElementById('sa-answerText').value;
+			var type = "SHORT_ANSWER";
+			var incorrect = ["", "", "", ""];
 			var creatorId = ${user.id};
-			var correctPos = 0;
-			var explanation = document.getElementById('tf-explanationText').value;
+			var explanation = document.getElementById('sa-explanationText').value;
 			var path = "/question/create?quizId=" + quizId;
 			
 			//TODO: once ready uncomment this code
@@ -58,40 +57,30 @@
 			
 			var ordered = true;
 			
-			document.getElementById('responseLabel').innerHTML = "";
-			
-			if($('#trueCheck').is(':checked')) {
-				correct = "True";
-				incorrect.push("False");
-				correctPos = 0;
-			}
-			else if($('#falseCheck').is(':checked')) {
-				correct = "False";
-				incorrect.push("True");
-				correctPos = 1;
-			}
-			else {
-				document.getElementById('responseLabel').innerHTML = "You must check a correct answer";
-				document.getElementById('responseLabel').className = "text-alert";
+			document.getElementById('sa-responseLabel').innerHTML = "";
+
+			if(!desc) {
+				document.getElementById('sa-responseLabel').innerHTML = "You must enter a question";
+				document.getElementById('sa-responseLabel').className = "text-alert";
 				return;
 			}
 			
-			incorrect.push("");
-			incorrect.push("");
-			incorrect.push("");
-			incorrect.push("");
+			if(!correct) {
+				document.getElementById('sa-responseLabel').innerHTML = "You must enter an answer";
+				document.getElementById('sa-responseLabel').className = "text-alert";
+				return;
+			}
 			
 			if(hyperlink && !reference) {
-				document.getElementById('responseLabel').innerHTML = "Reference must be filled out in conjunction to the hyperlink";
-				document.getElementById('responseLabel').className = "text-alert";
+				document.getElementById('sa-responseLabel').innerHTML = "Reference must be filled out in conjunction to the hyperlink";
+				document.getElementById('sa-responseLabel').className = "text-alert";
 				return;
 			}
 				
-			
 			 $.ajax({
 				type: 'POST',
 				url: path,
-				data: JSON.stringify({groupId: ${groupId}, questionText: desc, correctAnswer: correct, type: type, wrongAnswers: incorrect, creatorId: creatorId, explanation: explanation, ordered: ordered, reference: reference, referenceLink: hyperlink, correctPosition: correctPos }),
+				data: JSON.stringify({groupId: ${groupId}, questionText: desc, correctAnswer: correct, type: type, wrongAnswers: incorrect, creatorId: creatorId, explanation: explanation, ordered: ordered, reference: reference, referenceLink: hyperlink}),
 				dataType: "json",
 				headers: {
 					Accept: "application/json",
