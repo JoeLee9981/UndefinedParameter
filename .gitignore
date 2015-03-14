@@ -33,3 +33,5 @@ target/
 # TeXlipse plugin
 .texlipse
 /QuizZing/QuizZing.yml
+/design_doc/UML/*.db
+/QuizZing/logs/example-2015-03-06.logg.gz

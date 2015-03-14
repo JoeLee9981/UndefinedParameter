@@ -196,4 +196,7 @@ public class User {
 		this.activeCode = activeCode;
 	}
 	
+	public String getDisplayName() {
+		return firstName + " " + lastName.subSequence(0, 1);
+	}
 }

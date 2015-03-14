@@ -4,16 +4,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.UndefinedParameter.jdbi.GroupDAO;
+import com.UndefinedParameter.jdbi.OrgMemberDAO;
 import com.UndefinedParameter.jdbi.OrganizationDAO;
 
 public class OrganizationManager {
 	
 	private OrganizationDAO orgDAO;
 	private GroupDAO groupDAO;
+	private OrgMemberDAO orgMemberDAO;
 	
-	public OrganizationManager(OrganizationDAO orgDAO, GroupDAO groupDAO) {
+	public OrganizationManager(OrganizationDAO orgDAO, GroupDAO groupDAO, OrgMemberDAO orgMemberDAO) {
 		this.orgDAO = orgDAO;
 		this.groupDAO = groupDAO;
+		this.orgMemberDAO = orgMemberDAO;
 	}
 	
 	public List<Organization> findAllOrganizationTypes()
@@ -314,6 +317,18 @@ public class OrganizationManager {
 		{
 			//database insert fails
 			return false;
+		}
+	}
+	
+	/**
+	 * Retrieves a list of organization members from the Database
+	 */
+	public List<OrgMember> getMemberList(long orgId) {
+		try {
+			return orgMemberDAO.retrieveMembersByOrg(orgId);
+		}
+		catch(Exception e) {
+			return null;
 		}
 	}
 }

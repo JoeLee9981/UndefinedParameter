@@ -19,7 +19,7 @@
 				<div class="metro" id="home-page-subsection">
 					<div class="grid fluid">
 						<#if userProf??>
-							<h1>${userProf.firstName?html} ${userProf.lastName?html}</h1>
+							<h1>${displayName?html}</h1>
 							<h2>${userProf.country?html}</h2>
 							
 							<#if editable>

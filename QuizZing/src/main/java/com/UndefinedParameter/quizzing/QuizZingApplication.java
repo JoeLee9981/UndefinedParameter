@@ -27,6 +27,7 @@ import com.UndefinedParameter.jdbi.BugDAO;
 import com.UndefinedParameter.jdbi.FeedbackDAO;
 import com.UndefinedParameter.jdbi.GroupDAO;
 import com.UndefinedParameter.jdbi.NewsArticleDAO;
+import com.UndefinedParameter.jdbi.OrgMemberDAO;
 import com.UndefinedParameter.jdbi.OrganizationDAO;
 import com.UndefinedParameter.jdbi.QuestionDAO;
 import com.UndefinedParameter.jdbi.QuizDAO;
@@ -87,6 +88,7 @@ public class QuizZingApplication extends Application<QuizZingConfiguration> {
 		final FeedbackDAO feedbackDAO = jdbi.onDemand(FeedbackDAO.class);
 		final BugDAO bugDAO = jdbi.onDemand(BugDAO.class);
 		final QuizScoreDAO quizScoreDAO = jdbi.onDemand(QuizScoreDAO.class);
+		final OrgMemberDAO orgMemberDAO = jdbi.onDemand(OrgMemberDAO.class);
 		
 		logger.info("Database objects registered successfully");
 		
@@ -105,11 +107,11 @@ public class QuizZingApplication extends Application<QuizZingConfiguration> {
 	    logger.info("Authenticator initiated successfully");
 		
 		/***** REGISTER VIEWS ******/
-		environment.jersey().register(new HomeResource(newsDAO, userDAO, orgDAO, groupDAO, quizDAO, questionDAO, quizScoreDAO));
+		environment.jersey().register(new HomeResource(newsDAO, userDAO, orgDAO, groupDAO, quizDAO, questionDAO, quizScoreDAO, orgMemberDAO));
 		environment.jersey().register(new NewsArticleResource(newsDAO));
 		environment.jersey().register(new QuizResource(quizDAO, questionDAO, orgDAO, groupDAO, quizScoreDAO));
 		environment.jersey().register(new GroupResource(orgDAO, groupDAO, quizDAO, questionDAO, quizScoreDAO));
-		environment.jersey().register(new OrganizationResource(orgDAO, groupDAO));
+		environment.jersey().register(new OrganizationResource(orgDAO, groupDAO, orgMemberDAO));
 		environment.jersey().register(new QuestionResource(quizDAO, questionDAO, quizScoreDAO));
 		environment.jersey().register(new FeedbackResource(feedbackDAO, bugDAO));
 		environment.jersey().register(new UserProfileResource(userDAO, quizDAO, questionDAO, orgDAO, groupDAO, quizScoreDAO));

@@ -48,7 +48,7 @@
 				<div class="row noMargin">
 					<nav class="navigation-bar white white-custom">
 					    <nav class="navigation-bar-content">
-					        <item class="element active"><a href="#" class="todo"><strong>${organization.name?html}</strong></a></item>
+					        <item class="element active"><a href="" id="groupsLink"><strong>${organization.name?html}</strong></a></item>
 					        <item class="element-divider"></item>
 					        <item class="element"><a href="#" class="todo"><strong>About</strong></a></item>
 					        <item class="element-divider"></item>
@@ -64,14 +64,29 @@
 					        </div>				        		        
 					        <item class="element place-right"><a href="#" class="todo"><strong>${organization.quizCount?html} <i class="icon-clipboard-2 on-right"></i></strong></a></item>
 					        <item class="element place-right"><a href="#" class="todo"><strong>${organization.questionCount?html} <i class="icon-help-2 on-right"></i></strong></a></item>
-					        <item class="element place-right"><a href="#" class="todo"><strong>${organization.memberCount?html} <i class="icon-user-3 on-right"></i></strong></a></item>
+					        <item class="element place-right"><a href="" id="memberLink"><strong>${memberCount} <i class="icon-user-3 on-right"></i></strong></a></item>
 					    </nav>
 					</nav>					
 				</div>
 
 				<div class="row">
 					<div class="span8">
-						<div class="row noMargin">					
+						<div class="row noMargin" id="membersDiv" hidden="true">
+							<#if members??>
+								<table class="table hovered">
+									<#list members as member>
+										<tr>
+											<td class="padding5"><a href="/user?userid=${member.userId}">${member.displayName}</a></td>
+											<td class="padding5"><span class="place-right">${member.contribution}<i class="icon-clipboard-2 on-right"></i></span></td>
+											<td class="padding5"><span class="place-right">${member.joinDateString}<i class="icon-clipboard-2 on-right"></i></span></td>
+										</tr>
+									</#list>
+								</table>
+							<#else>
+								<h3>There are currently no members of this group</h3>
+							</#if>
+						</div>
+						<div class="row noMargin" id="groupsDiv">					
 							<div class="accordion with-marker" data-role="accordion" data-closeany="false">
 								
 								<#if user??>
@@ -159,34 +174,52 @@
 
 
 <script>
+
+	$(document).ready(function() {
+
+		$('#membersDiv').hide();
+	})
+
+	$('#memberLink').click(function(event) {
+
+		event.preventDefault();
+		$('#membersDiv').show();
+		$('#groupsDiv').hide();
+	});
+
+	$('#groupsLink').click(function(event) {
+		event.preventDefault();
+		$('#membersDiv').hide();
+		$('#groupsDiv').show();
+	});
 			
-		function joinOrg(orgId) {
-			$.ajax({
-			    url: '/orgs/register?orgId=' + orgId,
-			    type: 'POST',
-			    success: function(data) {
-			    	console.log(data);
-			    	window.location='/orgs/org?id=' + orgId;
-			    },
-			    error: function(error) {
-			    	displayError("Unable to register for organization");
-			    }
-			});
-		}
-		
-		function leaveOrg(orgId) {
-			$.ajax({
-			    url: '/orgs/leave?orgId=' + orgId,
-			    type: 'DELETE',
-			    success: function(data) {
-			    	console.log(data);
-			    	window.location='/orgs';
-			    },
-			    error: function(error) {
-			    	displayError("There was an error when attempting to leave organization");
-			    }
-			});
-		}
+	function joinOrg(orgId) {
+		$.ajax({
+		    url: '/orgs/register?orgId=' + orgId,
+		    type: 'POST',
+		    success: function(data) {
+		    	console.log(data);
+		    	window.location='/orgs/org?id=' + orgId;
+		    },
+		    error: function(error) {
+		    	displayError("Unable to register for organization");
+		    }
+		});
+	}
+	
+	function leaveOrg(orgId) {
+		$.ajax({
+		    url: '/orgs/leave?orgId=' + orgId,
+		    type: 'DELETE',
+		    success: function(data) {
+		    	console.log(data);
+		    	window.location='/orgs';
+		    },
+		    error: function(error) {
+		    	displayError("There was an error when attempting to leave organization");
+		    }
+		});
+	}
 
 	
 	function joinGroup(groupId) {

@@ -13,6 +13,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.Status;
 
 import org.joda.time.DateTime;
 
@@ -51,30 +52,44 @@ public class UserProfileResource {
 	public Response getUserProfileView(@Auth(required = false) User user, @QueryParam("userid") long userID) {
 		
 		if(user != null && user.getId() == userID) {
-			return Response.ok(new UserProfileView("profile.ftl", user, quizManager.findQuizzesByCreatorId(user.getId()), groupManager.findRegisteredGroups(user.getId()), true)).build();
+			return Response.ok(new UserProfileView("profile.ftl", user, user, quizManager.findQuizzesByCreatorId(user.getId()), groupManager.findRegisteredGroups(user.getId()), true)).build();
 		}
 		else {
 			User currentUser = userManager.findUserById(userID);
-			return Response.ok(new UserProfileView("profile.ftl", currentUser, quizManager.findQuizzesByCreatorId(currentUser.getId()), groupManager.findRegisteredGroups(userID), false)).build();
+			return Response.ok(new UserProfileView("profile.ftl", currentUser, user, quizManager.findQuizzesByCreatorId(currentUser.getId()), groupManager.findRegisteredGroups(userID), false)).build();
 		}
 	}
 	
 	
 	@GET
 	@Path("/edit")
-	public Response getProfileEditView(@Auth User user) {
-		return Response.ok(new UserProfileView("edit_profile.ftl", user, quizManager.findQuizzesByCreatorId(user.getId()), groupManager.findRegisteredGroups(user.getId()), false)).build();
+	public Response getProfileEditView(@Auth(required = false) User user, @QueryParam("userid") long userid) {
+	
+		if(userid < 1) {
+			return Response.status(Status.BAD_REQUEST).build();
+		}
+		
+		if(user == null || user.getId() != userid) {
+			return Response.status(Status.UNAUTHORIZED).build();
+		}
+		
+		return Response.ok(new UserProfileView("edit_profile.ftl", user, user, quizManager.findQuizzesByCreatorId(user.getId()), groupManager.findRegisteredGroups(user.getId()), false)).build();
 	}
 	
 	@POST
 	@Path("/edit")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Response edit(@Valid User user) {
+	public Response edit(@Auth(required = false) User user, @Valid User updateduser) {
+		
+		if(user == null) {
+			return Response.status(Status.UNAUTHORIZED).build();
+		}
+		
 		HashMap<String, String> response = new HashMap<String, String>();
 
 		try {
-			if(userManager.updateUser(user)) {
+			if(userManager.updateUser(updateduser)) {
 				response.put("response", "success");
 				return Response.ok(response).build();
 			}

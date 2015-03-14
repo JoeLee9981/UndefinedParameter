@@ -5,6 +5,7 @@ import io.dropwizard.views.View;
 import java.util.List;
 
 import com.UndefinedParameter.app.core.Group;
+import com.UndefinedParameter.app.core.OrgMember;
 import com.UndefinedParameter.app.core.Organization;
 import com.UndefinedParameter.app.core.User;
 
@@ -15,11 +16,11 @@ public class OrganizationView extends View {
 	private List<Group> registeredGroups;
 	private List<Group> groups;
 	private List<Organization> registeredOrganizations;
+	private List<OrgMember> members;
 	private User user;
 	private int userRating;
-	private boolean userIsInOrganization;
 	
-	public OrganizationView(Organization org, List<Organization> registeredOrganizations, List<Group> groups, List<Group> registeredGroups, boolean loggedIn, User user, int userRating) {
+	public OrganizationView(Organization org, List<Organization> registeredOrganizations, List<Group> groups, List<Group> registeredGroups, List<OrgMember> members, boolean loggedIn, User user, int userRating) {
 		super("org.ftl");
 		this.loggedIn = loggedIn;
 		this.registeredOrganizations = registeredOrganizations;
@@ -28,6 +29,7 @@ public class OrganizationView extends View {
 		this.registeredGroups = registeredGroups;
 		this.user = user;
 		this.userRating = userRating;
+		this.members = members;
 	}
 	
 	public Organization getOrganization() {
@@ -52,6 +54,17 @@ public class OrganizationView extends View {
 	
 	public int getUserRating() {
 		return userRating;
+	}
+	
+	public List<OrgMember> getMembers() {
+		return members;
+	}
+	
+	public int getMemberCount() {
+		if(members != null) {
+			return members.size();
+		}
+		return 0;
 	}
 	
 	public boolean getUserIsInOrganization()

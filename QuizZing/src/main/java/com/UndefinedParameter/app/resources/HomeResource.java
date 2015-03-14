@@ -23,6 +23,7 @@ import com.UndefinedParameter.app.core.User;
 import com.UndefinedParameter.app.core.UserManager;
 import com.UndefinedParameter.jdbi.GroupDAO;
 import com.UndefinedParameter.jdbi.NewsArticleDAO;
+import com.UndefinedParameter.jdbi.OrgMemberDAO;
 import com.UndefinedParameter.jdbi.OrganizationDAO;
 import com.UndefinedParameter.jdbi.QuestionDAO;
 import com.UndefinedParameter.jdbi.QuizDAO;
@@ -43,10 +44,10 @@ public class HomeResource {
 	private OrganizationManager orgManager;
 	private QuizManager quizManager;
 	
-	public HomeResource(NewsArticleDAO newsDAO, UserDAO userDAO, OrganizationDAO orgDAO, GroupDAO groupDAO, QuizDAO quizDAO, QuestionDAO questionDAO, QuizScoreDAO quizScoreDAO) {
+	public HomeResource(NewsArticleDAO newsDAO, UserDAO userDAO, OrganizationDAO orgDAO, GroupDAO groupDAO, QuizDAO quizDAO, QuestionDAO questionDAO, QuizScoreDAO quizScoreDAO, OrgMemberDAO orgMemberDAO) {
 		this.newsManager = new NewsManager(newsDAO);
 		this.userManager = new UserManager(userDAO);
-		this.orgManager = new OrganizationManager(orgDAO, groupDAO);
+		this.orgManager = new OrganizationManager(orgDAO, groupDAO, orgMemberDAO);
 		this.quizManager = new QuizManager(quizDAO, questionDAO, quizScoreDAO);
 	}
 	

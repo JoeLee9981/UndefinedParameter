@@ -20,7 +20,7 @@
 			
 			<#if user??>
 				<div>
-					<h2>${user.userName?html}</h2>
+					<h2>${displayName?html}</h2>
 					<h2>${user.firstName?html}</h2>
 					<h2>${user.middleName?html}</h2>
 					<h2>${user.lastName?html}</h2>

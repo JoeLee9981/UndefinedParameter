@@ -17,10 +17,12 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
 import com.UndefinedParameter.app.core.Group;
+import com.UndefinedParameter.app.core.OrgMember;
 import com.UndefinedParameter.app.core.Organization;
 import com.UndefinedParameter.app.core.OrganizationManager;
 import com.UndefinedParameter.app.core.User;
 import com.UndefinedParameter.jdbi.GroupDAO;
+import com.UndefinedParameter.jdbi.OrgMemberDAO;
 import com.UndefinedParameter.jdbi.OrganizationDAO;
 import com.UndefinedParameter.views.GroupCreatorView;
 import com.UndefinedParameter.views.LoginView;
@@ -34,8 +36,8 @@ public class OrganizationResource {
 
 	private OrganizationManager manager;
 	
-	public OrganizationResource(OrganizationDAO orgDAO, GroupDAO groupDAO) {
-		manager = new OrganizationManager(orgDAO, groupDAO);
+	public OrganizationResource(OrganizationDAO orgDAO, GroupDAO groupDAO, OrgMemberDAO orgMemberDAO) {
+		manager = new OrganizationManager(orgDAO, groupDAO, orgMemberDAO);
 	}
 	
 	@GET
@@ -49,16 +51,22 @@ public class OrganizationResource {
 	@GET
 	@Path("/org")
 	public Response getOrganizationView(@Auth(required = false) User user, @QueryParam("id") int id) {
+		if(id <= 0) {
+			return Response.status(Status.BAD_REQUEST).build();
+		}
+		//get a list of organization members
+		List<OrgMember> members = manager.getMemberList(id);
+		
 		if(user != null) {
 			List<Group> unregGroups = manager.findUnregisteredGroupsByOrg(user.getId(), id);
 			List<Group> regGroups = manager.findRegisteredGroupsById(id, user.getId());
 			
 			int userRating = 0;
-			return Response.ok(new OrganizationView(manager.findOrgById(id), manager.findOrgsByUserId(user.getId()), unregGroups, regGroups, true, user, userRating)).build();
+			return Response.ok(new OrganizationView(manager.findOrgById(id), manager.findOrgsByUserId(user.getId()), unregGroups, regGroups, members, true, user, userRating)).build();
 		}
 		else {
 			List<Group> groups = manager.findGroupsById(id);
-			return Response.ok(new OrganizationView(manager.findOrgById(id), null, groups, null, false, user, 0)).build();
+			return Response.ok(new OrganizationView(manager.findOrgById(id), null, groups, null, members, false, user, 0)).build();
 		}
 	}
 	
