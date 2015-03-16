@@ -19,14 +19,14 @@ public class OrganizationManager {
 		this.orgMemberDAO = orgMemberDAO;
 	}
 	
-	public List<Organization> findAllOrganizationTypes()
+	public List<String> findAllOrganizationTypes()
 	{
 		try {
-			List<Organization> x = orgDAO.findAllOrganizationTypes();
+			List<String> x = orgDAO.findAllOrganizationTypes();
 			return x;
 		}
 		catch(Exception e) {
-			return new ArrayList<Organization>();
+			return new ArrayList<String>();
 		}
 	}
 	
@@ -113,7 +113,8 @@ public class OrganizationManager {
 	
 	public long createOrganization(Organization org) {
 		try {
-			long id = orgDAO.insertOrganization(InputUtils.sanitizeInput(org.getName()), 
+			long id = orgDAO.insertOrganization(InputUtils.sanitizeInput(org.getType()),
+												InputUtils.sanitizeInput(org.getName()), 
 												InputUtils.sanitizeInput(org.getDescription()), 
 												InputUtils.sanitizeInput(org.getCity()), 
 												InputUtils.sanitizeInput(org.getState()), 

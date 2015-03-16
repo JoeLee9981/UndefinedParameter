@@ -32,7 +32,7 @@
 
 				 <div class="row">
 					<div class="offset1 span6">
-						<h2>Create A <strong>Group</strong></h2>
+						<h2>Create a <strong>Group</strong></h2>
 						<p id="mainCreateError" class="tertiary-text-secondary errorFormText1 createGroupError" hidden>* There were errors with the information you entered.  Fix the errors in red and then click 'Create Group'.</p>										
 					</div>
 				</div>

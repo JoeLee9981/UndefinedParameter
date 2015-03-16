@@ -9,7 +9,6 @@ import org.skife.jdbi.v2.sqlobject.SqlUpdate;
 import org.skife.jdbi.v2.sqlobject.customizers.Mapper;
 import org.skife.jdbi.v2.sqlobject.customizers.RegisterMapper;
 
-import com.UndefinedParameter.app.core.Group;
 import com.UndefinedParameter.app.core.Organization;
 //import com.UndefinedParameter.app.core.OrganizationType;
 
@@ -39,8 +38,7 @@ public interface OrganizationDAO {
 	public int updateOrganizationRatingCount(@Bind("orgID") long orgId);
 	
 	@SqlQuery("SELECT * FROM OrganizationType")
-	//@Mapper(OrganizationTypeMapper.class)
-	public List<Organization> findAllOrganizationTypes();
+	public List<String> findAllOrganizationTypes();
 	
 	@SqlQuery("SELECT * FROM Organization")
 	public List<Organization> findOrganizations();
@@ -73,9 +71,10 @@ public interface OrganizationDAO {
 	@SqlQuery("SELECT * FROM Organization WHERE OrgID = :orgId")
 	public Organization findOrganization(@Bind("orgId") long id);
 	
-	@SqlUpdate("INSERT INTO Organization (Name, Description, City, State, Country) VALUES (:name, :desc, :city, :state, :country)")
+	@SqlUpdate("INSERT INTO Organization (OrganizationType, Name, Description, City, State, Country) VALUES (:type, :name, :desc, :city, :state, :country)")
 	@GetGeneratedKeys
-	public long insertOrganization(@Bind("name") String name,
+	public long insertOrganization(@Bind("type") String type,
+								   @Bind("name") String name,
 								   @Bind("desc") String description,
 								   @Bind("city") String city,
 								   @Bind("state") String state,

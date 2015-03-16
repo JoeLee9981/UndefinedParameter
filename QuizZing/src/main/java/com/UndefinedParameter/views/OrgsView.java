@@ -16,19 +16,19 @@ public class OrgsView extends View {
 	private ArrayList<Organization> registeredOrgs = null;
 	private ArrayList<Organization> newestOrgs = null;
 	private ArrayList<Organization> largestOrgs = null;
-	private ArrayList<Organization> orgTypes = null;
+	private ArrayList<String> orgTypes = null;
 	
-	public OrgsView(List<Organization> orgTypes, List<Organization> orgs, List<Organization> registeredOrgs, List<Organization> newestOrganizations, List<Organization> largestOrganizations,  User user) {
+	public OrgsView(List<String> orgTypes, List<Organization> orgs, List<Organization> registeredOrgs, List<Organization> newestOrganizations, List<Organization> largestOrganizations,  User user) {
 		super("orgs.ftl");
 		this.orgs = (ArrayList<Organization>)orgs;
 		this.registeredOrgs = (ArrayList<Organization>)registeredOrgs;
 		this.newestOrgs = (ArrayList<Organization>)newestOrganizations;
 		this.largestOrgs = (ArrayList<Organization>)largestOrganizations;
-		this.orgTypes = (ArrayList<Organization>)orgTypes;
+		this.orgTypes = (ArrayList<String>)orgTypes;
 		this.user = user;
 	}
 	
-	public ArrayList<Organization> getOrganizationTypes()
+	public ArrayList<String> getOrganizationTypes()
 	{
 		return orgTypes;
 	}

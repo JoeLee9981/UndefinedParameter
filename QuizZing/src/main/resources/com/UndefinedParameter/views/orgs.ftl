@@ -53,13 +53,22 @@
 									</div>
 								</div>
 								<div class="row noMargin">
+									<div class="span3 noMargin">								
+										<div class="input-control checkbox noPadding noMargin">
+										    <label>
+										        <input type="checkbox" checked/>
+										        <span class="check"></span>
+										       	All
+										    </label>
+										</div>							
+									</div>
 									<#list organizationTypes as orgType>
 										<div class="span3 noMargin">								
 											<div class="input-control checkbox noPadding noMargin">
 											    <label>
-											        <input type="checkbox" checked/>
+											        <input type="checkbox"/>
 											        <span class="check"></span>
-											        ${orgType.typeName}
+											        ${orgType}
 											    </label>
 											</div>							
 										</div>
@@ -67,9 +76,6 @@
 								</div>
 							</div>
 						</form>
-						
-
-						
 				
 						<div class="row">					
 							<div class="accordion with-marker" data-role="accordion" data-closeany="false">

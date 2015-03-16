@@ -44,6 +44,21 @@
 							<p id="organizationNameError" class="tertiary-text-secondary errorFormText1 createOrgError" hidden>Enter a name for this organization.</p>
 							<p id="alreadyExistsError" class="tertiary-text-secondary errorFormText1 createOrgError" hidden></p>		
 							<div class="row">
+								<label for="organizationType">Type: 
+									<div class="input-control text span12">
+								    <select class="focusOutTrim" id="organizationType">
+								    	<option value="University">University</option>
+								    	<option value="Certification">Certification</option>
+								    	<option value="Club">Club</option>
+								    	<option value="SocialGroup">Social Group</option>
+								    	<option value="Business">Business</option>
+								    	<option value="Subject">Subject</option>
+								    	<option value="Other">Other</option>
+								    </select>
+								</div></label>
+							</div>
+							
+							<div class="row">	
 								<div class="input-control text span12">
 								    <input class="focusOutTrim" type="text" id="organizationName" value="" placeholder="Organization Name"/>
 								</div>
@@ -58,7 +73,7 @@
 								</div>	
 								<div class="input-control text span4">
 								    <input class="focusOutTrim" type="text" id="country" value="" placeholder="Country"/>
-								</div>											
+								</div>										
 							</div>
 							<div>
 								<h4>Description</h4>
@@ -66,7 +81,7 @@
 							<p id="descriptionError" class="tertiary-text-secondary errorFormText1 createOrgError" hidden>Enter a description for this organization.</p>
 							<div class="input-control textarea">
 							    <textarea maxlength="2000" class="expanding" id="description" placeholder="Describe this organization."></textarea>
-							</div>	
+							</div>
 				
 							<div class="row">
 							</div>
@@ -168,11 +183,12 @@
 					var city = $('#city').val();
 					var state = $('#state').val();
 					var country = $('#country').val();
+					var type = $('#organizationType').val();
 					
 					$.ajax({
 						type: 'POST',
 						url: "/orgs/add",
-						data: JSON.stringify({name: name, description: description, city: city, state: state, country: country }),
+						data: JSON.stringify({type: type, name: name, description: description, city: city, state: state, country: country }),
 						dataType: "json",
 						headers: {
 							Accept: "application/json",
