@@ -6,7 +6,18 @@ function Quiz(questionCount, questions) {
 	this.submittedAnswers = [];
 	
 	for(var i = 0; i < this.questionCount; i++) {
-		this.submittedAnswers.push(-1);
+		if(questions[i].type == "FILL_IN_THE_BLANK") {
+			var submitAnswers = [];
+		
+			for(var j = 0; j < questions[i].answers.length; j++) {
+
+				submitAnswers.push("");
+			}
+			this.submittedAnswers.push(submitAnswers);
+		}
+		else {
+			this.submittedAnswers.push("");
+		}		
 	}
 }
 
@@ -15,13 +26,18 @@ Quiz.prototype.submitQuiz = function() {
 	var score = 0.0;
 
 	for(var i = 0; i < this.submittedAnswers.length; i++) {
-		var submittedIndex = this.submittedAnswers[i];
+		var submittedAnswer = this.submittedAnswers[i];
 		var question = this.questions[i];
-		
-		if(submittedIndex >= 0) {
-			var answers = this.questions[i].answers;
-
-			if(answers[submittedIndex] == question.correctAnswer)
+		if(question.type == "FILL_IN_THE_BLANK") {
+			for(var j = 0; j < submittedAnswer.length; j++) {
+				
+				if(submittedAnswer[j] == question.answers[j]) {
+					score += 1.0 / submittedAnswer.length;
+				}
+			}
+		}
+		else {
+			if(submittedAnswer == question.correctAnswer)
 				score++;
 		}
 	}
@@ -59,6 +75,10 @@ Quiz.prototype.getAnswers = function() {
 	return this.questions[this.index].answers;
 }
 
+Quiz.prototype.getQuestionType = function() {
+	return this.questions[this.index].type;
+}
+
 Quiz.prototype.getQuestionText = function() {
 	return this.questions[this.index].questionText;
 }
@@ -87,7 +107,8 @@ Quiz.prototype.hasPrevious = function() {
 	return this.index > 0;
 }
 
-function Question(questionText, correctAnswer, answers, explanation) {
+function Question(type, questionText, correctAnswer, answers, explanation) {
+	this.type = type;
 	this.questionText = questionText;
 	this.correctAnswer = correctAnswer;
 	this.answers = answers;

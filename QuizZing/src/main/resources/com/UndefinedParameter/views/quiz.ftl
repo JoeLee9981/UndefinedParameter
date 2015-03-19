@@ -291,9 +291,9 @@
 				var question;
 				
 				<#if quest.explanation??>
-					question = new Question("${quest.questionText}", "${quest.correctAnswer}", answers, "${quest.explanation}");
+					question = new Question("${quest.type}", "${quest.questionText}", "${quest.correctAnswer}", answers, "${quest.explanation}");
 				<#else>
-					question = new Question("${quest.questionText}", "${quest.correctAnswer}", answers, "No explanation has been given");
+					question = new Question("${quest.type}", "${quest.questionText}", "${quest.correctAnswer}", answers, "No explanation has been given");
 				</#if>
 				quest.push(question);
 			</#list>
@@ -355,7 +355,6 @@
 			$("#answerDiv").fadeOut(150, function() {
 				quizPosition++;
 				
-				
 				var question = q.nextQuestion();
 				
 				if(!q.hasPrevious()) {
@@ -368,10 +367,7 @@
 				if(!q.hasNext()) {
 					document.getElementById('nextQuestion').disabled = true;
 				}
-				
-				
-				document.getElementById('questionHead').innerHTML = q.getQuestionText();
-				
+
 				setAnswers();
 				
 				SetProgressBar();
@@ -392,7 +388,6 @@
 				
 				if(quizPosition > 0)
 					quizPosition--;
-				document.getElementById('questionHead').innerHTML = q.getQuestionText();
 				
 				setAnswers();
 				
@@ -404,7 +399,57 @@
 		
 		function setAnswers() 
 		{
+			var html = "";
 
+			if(q.getQuestionType() == "MULTIPLE_CHOICE" || q.getQuestionType() == "TRUE_FALSE") {
+				document.getElementById('questionHead').innerHTML = q.getQuestionText();
+				html = getMultiChoiceDiv();
+			}
+			else if(q.getQuestionType() == "FILL_IN_THE_BLANK") {
+				var questText = q.getQuestionText();
+				var answers = q.getAnswers();
+				for(var i = 0; i < answers.length; i++) {
+					questText = questText.replace('&lt;blank&gt;', '<strong>' + (i + 1) + ': __________</strong>');
+				}
+				document.getElementById('questionHead').innerHTML = questText;
+				html = getFillBlankDiv();
+			}
+			else if(q.getQuestionType() == "SHORT_ANSWER") {
+				document.getElementById('questionHead').innerHTML = q.getQuestionText();
+				html = getShortAnswerDiv();
+			}
+			else if(q.getQuestionType() == "MATCHING") {
+				document.getElementById('questionHead').innerHTML = q.getQuestionText();
+			}
+
+			document.getElementById('answerDiv').innerHTML = html;
+		}
+
+		function getFillBlankDiv() {
+			var answers = q.getAnswers();
+			var submitAnswers = q.getSubmittedAnswer();
+			
+			var html = '';
+			
+			for(var i = 0; i < answers.length; i++) {
+
+				if(!q.inProgress) {
+					var style = "success";
+					if(submitAnswers[i] != answers[i]) {
+						style = "alert";
+					}
+					
+					html += '<p><strong>Correct Answer: </strong></p><h3 class="text-' + style + '">' + answers[i] + '</h3>';
+					html += '<h3>' + (i+1) + ': <input type="text" id="answerInput' + i + '" value="' + submitAnswers[i] + '" onchange="submitAnswers()" disabled/></h3>';
+				}
+				else {
+					html += '<h3>' + (i+1) + ': <input type="text" id="answerInput' + i + '" value="' + submitAnswers[i] + '" onchange="submitAnswers()"/></h3>';
+				}
+			}
+			return html;
+		}
+
+		function getMultiChoiceDiv() {
 			var answers = q.getAnswers();
 			var correct = q.getCorrectAnswer();
 
@@ -413,7 +458,8 @@
 			for(var i = 0; i < answers.length; i++) 
 			{
 				var style = "";
-				var isChecked = q.getSubmittedAnswer() == i ? true : false;
+				var isChecked = q.getSubmittedAnswer() == answers[i] ? true : false;
+
 				if (isChecked && quizInProgress)
 				{
 					style = "primary";
@@ -425,7 +471,7 @@
 						style = "danger";
 					}
 				}
-				html += "<button id='answerButton" + i + "' class='command-button block " + style +" size8' onclick='setAnswer(" + i + ")'><small>";
+				html += "<button id='answerButton" + i + "' class='command-button block " + style +" size8' onclick='setAnswer(\"" + answers[i] + "\")'><small>";
 				if(!q.inProgress) {
 					if(answers[i] == correct && isChecked)
 						html += '<i class="icon-checkmark"></i> ';
@@ -441,7 +487,57 @@
 
 			}
 
-			document.getElementById('answerDiv').innerHTML = html;
+			return html;
+		}
+
+		function getShortAnswerDiv() {
+			var answers = q.getAnswers();
+			var correct = q.getCorrectAnswer();
+
+			var html = ''; 
+			var style = "";
+
+			if (!q.inProgress) {
+				if(q.getCorrectAnswer() == q.getSubmittedAnswer()) {
+					style = "success";
+				}
+				else {
+					style = "alert";
+				}
+			}
+
+			html += '<div class="input-control text size5">'
+
+			if (!q.inProgress) {
+				html += '<input type="text" id="answerInput" value="' + q.getSubmittedAnswer() + '" onchange="submitAnswer()" disabled/>';
+				html += '</div>';
+				html += '<br/><p><strong>Correct Answer: </strong></p><h3 class="text-' + style + '">' + q.getCorrectAnswer() + '</h3>';
+				
+			}
+			else {
+				html += '<input type="text" id="answerInput" value="' + q.getSubmittedAnswer() + '" onchange="submitAnswer()"/>';
+				html += '</div>';
+			}
+
+			if(!q.inProgress) 
+				html += '<br/><button class="info large" onclick="showExplanation()">Show Explanation</button>';
+
+
+			return html;
+		}
+
+		function submitAnswer() {
+			q.submitAnswer($('#answerInput').val());
+		}
+
+		function submitAnswers() {
+			var submitAnswers = [];
+			var count = q.getAnswers().length;
+
+			for(var i = 0; i < count; i++) {
+				submitAnswers.push($('#answerInput' + i).val());
+			}
+			q.submitAnswer(submitAnswers);
 		}
 		
 		function showExplanation() {

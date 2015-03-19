@@ -16,8 +16,8 @@ public class Question {
 		MULTIPLE_CHOICE,
 		TRUE_FALSE,
 		FILL_IN_THE_BLANK,
-		SHORT_ANSWER
-		//TODO: Add more question types as needed
+		SHORT_ANSWER,
+		MATCHING
 	}
 	
 	private long questionId;
