@@ -112,6 +112,7 @@
 				<div id="quizFinish" hidden="true">
 					<h2>Your Quiz Stats: </h2><br/>
 					<h3 id="scoreText"></h3>
+					<h3 id="prevScoreText"></h3>
 					<h5>Rate the Quiz Difficulty:</h5>
 					<#if userDifficulty &gt; 0>
 						<div id="setdifficulty" class="rating small fg-yellow">
@@ -601,9 +602,17 @@
 				},
 				error: function(data) {
 					document.getElementById('scoreText').innerHTML = "Score: " + scored + "% (Warning: This score was not saved.)";
-					alert("uhgg");
 				}
 			});	
+						
+			var prevBestScore = ${userBestScore};
+
+			if(prevBestScore < 0.0) {
+				document.getElementById('prevScoreText').innerHTML = "Previous Best Score: n/a";
+			}
+			else {
+				document.getElementById('prevScoreText').innerHTML = "Previous Best Score: " + prevBestScore + "%";
+			}
 
 			setAnswers();
 		}

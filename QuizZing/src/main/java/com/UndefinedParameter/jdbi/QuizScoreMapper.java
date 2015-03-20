@@ -24,9 +24,9 @@ public class QuizScoreMapper implements ResultSetMapper<QuizScore> {
 		quizscore.setQuizId(r.getLong("QuizID"));
 		
 		//quizscore.setDateTime()
-		DateTimeFormatter formatter = DateTimeFormat.forPattern("dd/MM/yyyy HH:mm:ss");
-		DateTime dt = formatter.parseDateTime(r.getString("DateTime"));
-		quizscore.setDateTime(dt);
+		//DateTimeFormatter formatter = DateTimeFormat.forPattern("dd/MM/yyyy HH:mm:ss");
+		//DateTime dt = formatter.parseDateTime(r.getString("DateTime"));
+		quizscore.setDateTime(new DateTime(r.getDate("DateTime")));
 		quizscore.setScore(r.getFloat("Score"));
 		
 		return quizscore;

@@ -1,8 +1,11 @@
 package com.UndefinedParameter.views;
 
+import java.util.List;
+
 import io.dropwizard.views.View;
 
 import com.UndefinedParameter.app.core.Quiz;
+import com.UndefinedParameter.app.core.QuizScore;
 import com.UndefinedParameter.app.core.User;
 
 public class QuizView extends View {
@@ -14,8 +17,9 @@ public class QuizView extends View {
 	private int userRating;
 	private int userDifficulty;
 	private User currentUser;
+	private float userBestScore;
 	
-	public QuizView(User user, Quiz quiz, long groupId, boolean loggedIn, boolean editable, int userRating, int userDifficulty) {
+	public QuizView(User user, Quiz quiz, long groupId, boolean loggedIn, boolean editable, int userRating, int userDifficulty, float userBestScore) {
 		super("quiz.ftl");
 		this.quiz = quiz;
 		this.loggedIn = loggedIn;
@@ -24,6 +28,7 @@ public class QuizView extends View {
 		this.userRating = userRating;
 		this.userDifficulty = userDifficulty;
 		this.currentUser = user;
+		this.userBestScore = userBestScore;
 	}
 	
 	public Quiz getQuiz() {
@@ -59,5 +64,9 @@ public class QuizView extends View {
 	
 	public User getCurrentUser() {
 		return currentUser;
+	}
+	
+	public float getUserBestScore() {
+		return userBestScore;
 	}
 }

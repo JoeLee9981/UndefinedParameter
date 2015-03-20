@@ -3,6 +3,7 @@ package com.UndefinedParameter.app.resources;
 import io.dropwizard.auth.Auth;
 
 import java.util.HashMap;
+import java.util.List;
 
 import javax.validation.Valid;
 import javax.ws.rs.Consumes;
@@ -54,6 +55,7 @@ public class QuizResource {
 			return Response.status(Status.BAD_REQUEST).build();
 		
 		Quiz quiz = quizManager.getRandomizedQuestions(id);
+		float userBestScore = -1.0f;
 		
 		//return bad request if no quiz found
 		if(quiz == null)
@@ -61,19 +63,26 @@ public class QuizResource {
 		
 		//if user is not logged in
 		if(user == null)
-			return Response.ok(new QuizView(user, quiz, groupId, false, false, 0, 0)).build();
+			return Response.ok(new QuizView(user, quiz, groupId, false, false, 0, 0, userBestScore)).build();
 		
 		//obtain the user rating
 		int userRating = quizManager.findUserRating(user.getId(), quiz.getQuizId());
 		int userDiff = quizManager.findUserDifficulty(user.getId(), quiz.getQuizId());
+		List<QuizScore> userScores = quizManager.findScoresByQuizAndUser(id, user.getId());
+		
+		for(QuizScore score : userScores) {
+			if(score.getScore() > userBestScore)
+				userBestScore = score.getScore();
+		}
+		
 		//set editable to true if the user is the creator
 		if(user != null && user.getId() == quiz.getCreatorId()) {
 			//user is logged in and owner
-			return Response.ok(new QuizView(user, quiz, groupId, true, true, userRating, userDiff)).build();
+			return Response.ok(new QuizView(user, quiz, groupId, true, true, userRating, userDiff, userBestScore)).build();
 		}
 		else {
 			//user is logged in but not the owner
-			return Response.ok(new QuizView(user, quiz, groupId, true, false, userRating, userDiff)).build();
+			return Response.ok(new QuizView(user, quiz, groupId, true, false, userRating, userDiff, userBestScore)).build();
 		}
 	}
 	
