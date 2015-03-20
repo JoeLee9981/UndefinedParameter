@@ -92,4 +92,100 @@ public class UserGroupManager {
 		}
 	}
 	
+	
+	public boolean findIfUserMod(long userID, long groupID)
+	{
+		if(userID < 0 || groupID < 0)
+		{
+			return false;
+		}
+		//0 is false, 1 is true
+		int result = usergroupDAO.getUserGroupModStatus(groupID, userID);
+		
+		if(result == 1)
+		{
+			return true;
+		}
+		
+		return false;
+	}
+	
+	/*
+	 * Take a quiz, 2 points.
+	 * Make a quiz, 5 points.
+	 * Makes a comment, 1 point.
+	 * More later.
+	 * */
+	public int addPoints(long userID, long groupID, long points)
+	{
+		if(userID < 0 || groupID < 0)
+		{
+			return -1;
+		}
+		
+		usergroupDAO.addInUserGroupEarnedPoints(groupID, userID, points);
+		
+		//0 is false, 1 is true
+		int result = usergroupDAO.getUserGroupModStatus(groupID, userID);
+		int totalpoints = usergroupDAO.getUserGroupEarnedPoints(groupID, userID);
+		
+		if(totalpoints >= 300 && result == 0)
+		{
+			usergroupDAO.updateUserGroupModStatus(groupID, userID, 1);
+		}
+		else if(totalpoints < 300 && result == 1)
+		{
+			int totalmods = usergroupDAO.getTotalUserGroupModStatus(groupID, 1);
+			if(totalmods == 1)
+			{
+				
+			}
+			else
+			{
+				usergroupDAO.updateUserGroupModStatus(groupID, userID, 0);
+			}
+		}
+		
+		return 0;
+	}
+	
+	/*
+	 * Take a quiz, 2 points.
+	 * Make a quiz, 5 points.
+	 * Makes a comment, 1 point.
+	 * More later.
+	 * */
+	public int checkModWhenRemovingUser(long userID, long groupID)
+	{
+		if(userID < 0 || groupID < 0)
+		{
+			return -1;
+		}
+		
+		
+		//0 is false, 1 is true
+		int result = usergroupDAO.getUserGroupModStatus(groupID, userID);
+		if(result == 0)
+		{
+			usergroupDAO.delete(userID, groupID);
+			return 0;
+		}
+		
+		int totalmods = usergroupDAO.getTotalUserGroupModStatus(groupID, 1);
+		
+		if(totalmods > 1)
+		{
+			usergroupDAO.delete(userID, groupID);
+			return 0;
+		}
+		
+		int maxPoints = usergroupDAO.getMaxPointsUserGroup(groupID);
+		int secondMaxPoints = usergroupDAO.getSecondMaxPointsUserGroup(groupID, maxPoints);
+		
+		int newUserID = usergroupDAO.getUserByPointsAndGroup(groupID, secondMaxPoints);
+		usergroupDAO.updateUserGroupModStatus(groupID, newUserID, 1);
+		usergroupDAO.delete(userID, groupID);
+		
+		return 0;
+	}
 }

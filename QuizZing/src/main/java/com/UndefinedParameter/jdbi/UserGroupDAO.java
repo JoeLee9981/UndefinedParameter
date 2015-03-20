@@ -26,8 +26,8 @@ public interface UserGroupDAO {
 						@Bind("groupid") int groupid);
 
 	@SqlUpdate("DELETE FROM UserGroups WHERE GroupID = :gId AND UserID = :uId")
-	public void delete(@Bind("uId") int user,
-						@Bind("gId") int group);
+	public void delete(@Bind("uId") long userID,
+						@Bind("gId") long groupID);
 	
 	@SqlUpdate("UPDATE UserGroups SET Rating = :rating WHERE GroupID = :groupID AND UserID = :userID")
 	public void updateUserGroupRating(@Bind("groupID") long groupID,
@@ -67,4 +67,19 @@ public interface UserGroupDAO {
 	@SqlQuery("SELECT ModStatus FROM SubGroup WHERE GroupID = :groupID AND UserID = :userID")
 	public int getUserGroupModStatus(@Bind("groupID") long groupId,
 											@Bind("userID") long userId);
+	
+	@SqlQuery("SELECT COUNT(*) FROM SubGroup WHERE GroupID = :groupID AND ModStatus = :modstatus")
+	public int getTotalUserGroupModStatus(@Bind("groupID") long groupId,
+											@Bind("modstatus") long modstatus);
+	
+	@SqlQuery("SELECT Max(EarnedPoints) FROM SubGroup WHERE GroupID = :groupID")
+	public int getMaxPointsUserGroup(@Bind("groupID") long groupId);
+	
+	@SqlQuery("SELECT Max(EarnedPoints) FROM SubGroup WHERE GroupID = :groupID AND EarnedPoints != :points")
+	public int getSecondMaxPointsUserGroup(@Bind("groupID") long groupId,
+											@Bind("points") long points);
+	
+	@SqlQuery("SELECT UserID FROM SubGroup WHERE GroupID = :groupID AND EarnedPoints = :points")
+	public int getUserByPointsAndGroup(@Bind("groupID") long groupId,
+										@Bind("points") long points);
 }
