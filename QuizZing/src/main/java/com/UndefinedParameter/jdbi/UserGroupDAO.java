@@ -50,6 +50,21 @@ public interface UserGroupDAO {
 	@SqlQuery("UPDATE SubGroup SET RatingCount = RatingCount + 1 WHERE GroupID = :groupID")
 	public int updateSubGroupRatingCount(@Bind("groupID") long groupId);
 	
+	@SqlQuery("UPDATE SubGroup SET EarnedPoints = EarnedPoints + points WHERE GroupID = :groupID AND UserID = :userID")
+	public int addInUserGroupEarnedPoints(@Bind("groupID") long groupId,
+											@Bind("userID") long userId,
+											@Bind("points") long points);
 	
+	@SqlQuery("SELECT EarnedPoints FROM SubGroup WHERE GroupID = :groupID AND UserID = :userID")
+	public int getUserGroupEarnedPoints(@Bind("groupID") long groupId,
+											@Bind("userID") long userId);
 	
+	@SqlQuery("UPDATE SubGroup SET ModStatus = modstatus WHERE GroupID = :groupID AND UserID = :userID")
+	public int updateUserGroupModStatus(@Bind("groupID") long groupId,
+											@Bind("userID") long userId,
+											@Bind("modstatus") int modstat);
+	
+	@SqlQuery("SELECT ModStatus FROM SubGroup WHERE GroupID = :groupID AND UserID = :userID")
+	public int getUserGroupModStatus(@Bind("groupID") long groupId,
+											@Bind("userID") long userId);
 }
