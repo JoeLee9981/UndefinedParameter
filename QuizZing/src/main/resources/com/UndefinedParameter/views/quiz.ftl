@@ -299,6 +299,7 @@
 				quest.push(question);
 			</#list>
 			q = new Quiz(quest.length, quest);
+
 		}
 		
 		$('#submitQuiz').click(function() {
@@ -571,48 +572,53 @@
 			
 			$("#quizFinish").show();
 			var scored = q.submitQuiz();
+
+			<#if user??>
+				var userID = ${user.id};
 			
-			var userID = ${currentUser.id};
-			var quizID = ${quiz.quizId};
-			var payload = JSON.stringify({ 
-							quizId: quizID,
-							userId: userID,
-							score: scored,
-			});
-													
-			$.ajax({
-				type: 'POST',
-				url: "/quiz",
-				data: payload,
-				dataType: "json",
-				headers: {
-					Accept: "application/json",
-					"Content-Type": "application/json"
-				},
-				success: function(data) 
-				{
-					if (data["response"] == "success")
+				var quizID = ${quiz.quizId};
+				var payload = JSON.stringify({ 
+								quizId: quizID,
+								userId: userID,
+								score: scored,
+				});
+														
+				$.ajax({
+					type: 'POST',
+					url: "/quiz",
+					data: payload,
+					dataType: "json",
+					headers: {
+						Accept: "application/json",
+						"Content-Type": "application/json"
+					},
+					success: function(data) 
 					{
-						document.getElementById('scoreText').innerHTML = "Score: " + scored + "%";
-					}
-					else
-					{
+						if (data["response"] == "success")
+						{
+							document.getElementById('scoreText').innerHTML = "Score: " + scored + "%";
+						}
+						else
+						{
+							document.getElementById('scoreText').innerHTML = "Score: " + scored + "% (Warning: This score was not saved.)";
+						}
+					},
+					error: function(data) {
 						document.getElementById('scoreText').innerHTML = "Score: " + scored + "% (Warning: This score was not saved.)";
 					}
-				},
-				error: function(data) {
-					document.getElementById('scoreText').innerHTML = "Score: " + scored + "% (Warning: This score was not saved.)";
+				});	
+							
+				var prevBestScore = ${userBestScore};
+	
+				if(prevBestScore < 0.0) {
+					document.getElementById('prevScoreText').innerHTML = "Previous Best Score: n/a";
 				}
-			});	
-						
-			var prevBestScore = ${userBestScore};
-
-			if(prevBestScore < 0.0) {
-				document.getElementById('prevScoreText').innerHTML = "Previous Best Score: n/a";
-			}
-			else {
-				document.getElementById('prevScoreText').innerHTML = "Previous Best Score: " + prevBestScore + "%";
-			}
+				else {
+					document.getElementById('prevScoreText').innerHTML = "Previous Best Score: " + prevBestScore + "%";
+				}
+			<#else>
+				document.getElementById('scoreText').innerHTML = "Score: " + scored + "%";
+			</#if>
 
 			setAnswers();
 		}

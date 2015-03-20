@@ -16,7 +16,7 @@ public class QuizView extends View {
 	private boolean editable;
 	private int userRating;
 	private int userDifficulty;
-	private User currentUser;
+	private User user;
 	private float userBestScore;
 	
 	public QuizView(User user, Quiz quiz, long groupId, boolean loggedIn, boolean editable, int userRating, int userDifficulty, float userBestScore) {
@@ -27,7 +27,7 @@ public class QuizView extends View {
 		this.groupId = groupId;
 		this.userRating = userRating;
 		this.userDifficulty = userDifficulty;
-		this.currentUser = user;
+		this.user = user;
 		this.userBestScore = userBestScore;
 	}
 	
@@ -62,8 +62,8 @@ public class QuizView extends View {
 		return this.loggedIn;
 	}
 	
-	public User getCurrentUser() {
-		return currentUser;
+	public User getUser() {
+		return user;
 	}
 	
 	public float getUserBestScore() {
