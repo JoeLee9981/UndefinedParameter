@@ -548,7 +548,7 @@
 		        overlay: true,
 		        flat: true,
 		        icon: '<span class="icon-power"></span>',
-		        title: 'Submit Quiz',
+		        title: 'Answer Explanation',
 		        width: 500,
 		        padding: 10,
 		        content: "<div class='span8'>" + content + "</div>"
@@ -569,8 +569,42 @@
 			$('#submitQuiz').prop("disabled", true);
 			
 			$("#quizFinish").show();
-			var score = q.submitQuiz();
-			document.getElementById('scoreText').innerHTML = "Score: " + score + "%";
+			var scored = q.submitQuiz();
+			
+			var userID = ${currentUser.id};
+			var quizID = ${quiz.quizId};
+			var payload = JSON.stringify({ 
+							quizId: quizID,
+							userId: userID,
+							score: scored,
+			});
+													
+			$.ajax({
+				type: 'POST',
+				url: "/quiz",
+				data: payload,
+				dataType: "json",
+				headers: {
+					Accept: "application/json",
+					"Content-Type": "application/json"
+				},
+				success: function(data) 
+				{
+					if (data["response"] == "success")
+					{
+						document.getElementById('scoreText').innerHTML = "Score: " + scored + "%";
+					}
+					else
+					{
+						document.getElementById('scoreText').innerHTML = "Score: " + scored + "% (Warning: This score was not saved.)";
+					}
+				},
+				error: function(data) {
+					document.getElementById('scoreText').innerHTML = "Score: " + scored + "% (Warning: This score was not saved.)";
+					alert("uhgg");
+				}
+			});	
+
 			setAnswers();
 		}
 		

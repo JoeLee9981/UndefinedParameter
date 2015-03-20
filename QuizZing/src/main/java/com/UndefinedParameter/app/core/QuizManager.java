@@ -3,6 +3,7 @@ package com.UndefinedParameter.app.core;
 import java.util.Collections;
 import java.util.List;
 
+import org.joda.time.DateTime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -149,6 +150,14 @@ public class QuizManager {
 		else {
 			return null;
 		}
+	}
+	
+	public List<QuizScore> findScoresByUser(long userId)
+	{
+		if(userId > 0)
+			return quizScoreDAO.findScoresByUserId(userId);
+		else
+			return null;
 	}
 	
 	public List<QuizScore> findScoresByQuiz(long quizId)
@@ -377,7 +386,7 @@ public class QuizManager {
 		}
 	}
 	
-public boolean rateQuizDifficulty(long userId, long quizId, int rating) {
+	public boolean rateQuizDifficulty(long userId, long quizId, int rating) {
 		
 		if(userId < 1 || quizId < 1 || rating < 1 || rating > 5) {
 			//this is invalid
@@ -409,4 +418,15 @@ public boolean rateQuizDifficulty(long userId, long quizId, int rating) {
 			return false;
 		}
 	}
+	
+	public boolean insertScore(long quizId, long userId, float score)
+	{
+		if(quizId > 0 || userId > 0) {
+			quizScoreDAO.insert(userId, quizId, score);
+			return true;
+		}
+		else
+			return false;
+	}
 }
+

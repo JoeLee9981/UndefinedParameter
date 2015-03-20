@@ -25,13 +25,12 @@ public interface QuizScoreDAO {
 	
 		
 	@SqlUpdate("INSERT INTO QuizScore "
-			+ "(UserID, QuizID, DateTime, Score) "
+			+ "(UserID, QuizID, Score) "
 			+ "values "
-			+ "(:userid, :quizid, :datetime, :score)")
+			+ "(:userid, :quizid, :score)")
 	@GetGeneratedKeys
 	public long insert(@Bind("userid") long userid, 
 					   @Bind("quizid") long quizid,
-					   @Bind("datetime") DateTime datetime,
 					   @Bind("score") float score);
 	
 }

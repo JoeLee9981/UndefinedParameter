@@ -13,7 +13,7 @@ public class QuizView extends View {
 	private boolean editable;
 	private int userRating;
 	private int userDifficulty;
-	private User user;
+	private User currentUser;
 	
 	public QuizView(User user, Quiz quiz, long groupId, boolean loggedIn, boolean editable, int userRating, int userDifficulty) {
 		super("quiz.ftl");
@@ -23,7 +23,7 @@ public class QuizView extends View {
 		this.groupId = groupId;
 		this.userRating = userRating;
 		this.userDifficulty = userDifficulty;
-		this.user = user;
+		this.currentUser = user;
 	}
 	
 	public Quiz getQuiz() {
@@ -57,7 +57,7 @@ public class QuizView extends View {
 		return this.loggedIn;
 	}
 	
-	public User getUser() {
-		return user;
+	public User getCurrentUser() {
+		return currentUser;
 	}
 }

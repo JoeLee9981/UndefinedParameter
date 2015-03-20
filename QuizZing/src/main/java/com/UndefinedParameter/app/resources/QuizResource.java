@@ -19,6 +19,7 @@ import com.UndefinedParameter.app.core.Group;
 import com.UndefinedParameter.app.core.GroupManager;
 import com.UndefinedParameter.app.core.Quiz;
 import com.UndefinedParameter.app.core.QuizManager;
+import com.UndefinedParameter.app.core.QuizScore;
 import com.UndefinedParameter.app.core.User;
 import com.UndefinedParameter.jdbi.GroupDAO;
 import com.UndefinedParameter.jdbi.OrganizationDAO;
@@ -78,8 +79,20 @@ public class QuizResource {
 	
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Response getQuizView(@Auth(required = false) User user, @QueryParam("quizId") long id) {
-		return Response.status(Status.BAD_REQUEST).build();
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response getQuizView(@Auth(required = false) User user, @Valid QuizScore newScore) {
+		if(user == null) {
+			return Response.status(Status.UNAUTHORIZED).build();
+		}
+		
+		HashMap<String, String> response = new HashMap<String, String>();
+		
+		if(quizManager.insertScore(newScore.getQuizId(), newScore.getUserId(), newScore.getScore()))
+			response.put("response", "success");
+		else
+			response.put("fail", "Unable to save score.");
+		
+		return Response.ok(response).build();
 	}
 	
 	@GET
