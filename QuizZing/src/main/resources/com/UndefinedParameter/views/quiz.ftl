@@ -421,7 +421,35 @@
 				html = getShortAnswerDiv();
 			}
 			else if(q.getQuestionType() == "MATCHING") {
-				document.getElementById('questionHead').innerHTML = q.getQuestionText();
+	
+				var question = q.getQuestionText();
+				var pattern5 = /&lt;1&gt;(.*)&lt;2&gt;(.*)&lt;3&gt;(.*)&lt;4&gt;(.*)&lt;5&gt;(.*)/g;
+				var pattern4 = /&lt;1&gt;(.*)&lt;2&gt;(.*)&lt;3&gt;(.*)&lt;4&gt;(.*)/g;
+				var pattern3 = /&lt;1&gt;(.*)&lt;2&gt;(.*)&lt;3&gt;(.*)/g;
+				var pattern2 = /&lt;1&gt;(.*)&lt;2&gt;(.*)/g;
+
+				var foundMatch = 0;
+
+				if(match = pattern5.exec(question)) {
+					foundMatch = 5;
+				}
+				else if(match = pattern4.exec(question)) {
+					foundMatch = 4;
+				}
+				else if(match = pattern3.exec(question)) {
+					foundMatch = 3;
+				}
+				else if(match = pattern2.exec(question)) {
+					foundMatch = 2;
+				}
+				//there is no matching with a single question
+				var qText = "";
+				
+				for(var i = 1; i <= foundMatch; i++) {
+					qText += "<h3><strong>" + String.fromCharCode(64 + i) + ":</strong> " + match[i] + "</h3>";
+				}
+				document.getElementById('questionHead').innerHTML = qText;
+				html = getMatchingDiv();
 			}
 
 			document.getElementById('answerDiv').innerHTML = html;
@@ -525,6 +553,22 @@
 				html += '<br/><button class="info large" onclick="showExplanation()">Show Explanation</button>';
 
 
+			return html;
+		}
+
+		function getMatchingDiv() {
+
+			var html = '';
+			var options = '';
+			var answers = q.getAnswers();
+			
+			for(var i = 0; i < answers.length; i++) {
+				options += '<option value="' + String.fromCharCode(65 + i) + '">' + String.fromCharCode(65 + i) + '</option>';
+			}
+
+			for(var i = 0; i < answers.length; i++) {
+				html += '<h3><select id="answer' + i + '">' + options + '</select> ' + answers[i] + '</h3>';
+			}
 			return html;
 		}
 
