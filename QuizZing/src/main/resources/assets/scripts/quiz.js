@@ -36,6 +36,14 @@ Quiz.prototype.submitQuiz = function() {
 				}
 			}
 		}
+		else if(question.type == "MATCHING") {
+			for(var j = 0; j < submittedAnswer.length; j++) {
+				
+				if(submittedAnswer[j] == question.correctAnswers[j]) {
+					score += 1.0 / submittedAnswer.length;
+				}
+			}
+		}
 		else {
 			if(submittedAnswer == question.correctAnswer)
 				score++;
@@ -69,6 +77,10 @@ Quiz.prototype.getExplanation = function() {
 
 Quiz.prototype.getCorrectAnswer = function() {
 	return this.questions[this.index].correctAnswer;
+}
+
+Quiz.prototype.getCorrectAnswers = function() {
+	return this.questions[this.index].correctAnswers;
 }
 
 Quiz.prototype.getAnswers = function() {
@@ -113,6 +125,23 @@ function Question(type, questionText, correctAnswer, answers, explanation) {
 	this.correctAnswer = correctAnswer;
 	this.answers = answers;
 	this.explanation = explanation;
+	
+	if(type == "MATCHING") {
+		
+		this.correctAnswers = [];
+		for(var i = 0; i < answers.length; i++) {
+			var pattern = /&lt;([A-E])&gt;(.*)/g;
+			var match = pattern.exec(answers[i]);
+			if(match && match.length > 2) {
+				answers[i] = match[2];
+				this.correctAnswers.push(match[1]);
+			}
+			else {
+				answers[i] = "Whoops something has gone wrong! There must be an error in your question format.";
+				this.correctAnswers.push("");
+			}
+		}
+	}
 }
 
 Question.prototype.answerQuestion = function(answer) {

@@ -559,16 +559,41 @@
 		function getMatchingDiv() {
 
 			var html = '';
-			var options = '';
 			var answers = q.getAnswers();
-			
-			for(var i = 0; i < answers.length; i++) {
-				options += '<option value="' + String.fromCharCode(65 + i) + '">' + String.fromCharCode(65 + i) + '</option>';
-			}
+			var submitAnswers = q.getSubmittedAnswer();
+			var correctAnswers = q.getCorrectAnswers();
+			var style = '';
 
 			for(var i = 0; i < answers.length; i++) {
-				html += '<h3><select id="answer' + i + '">' + options + '</select> ' + answers[i] + '</h3>';
+				//build the select for the answer
+				var options = '';
+
+				if(!q.inProgress) {
+
+					if(submitAnswers[i] != correctAnswers[i]) {
+						style = "error-state";
+					}
+					else {
+						style = "success-state";
+					}
+				}
+				
+				for(var j = 0; j < answers.length; j++) {
+					
+					if(submitAnswers[i] == String.fromCharCode(65 + j)) {
+						options += '<div class="input-control select' + style + '"><option value="' + String.fromCharCode(65 + j) + '" selected="selected">' + String.fromCharCode(65 + j) + '</option></div>';
+						
+					}
+					else
+						options += '<div class="input-control select' + style + '"><option value="' + String.fromCharCode(65 + j) + '">' + String.fromCharCode(65 + j) + '</option></div>';
+				}
+				
+				html += '<h3><select id="answerInput' + i + '" value="' + submitAnswers[i] + '" onchange="submitAnswers()">' + options + '</select> ' + answers[i] + '</h3>';
 			}
+
+			if(!q.inProgress) 
+				html += '<br/><button class="info large" onclick="showExplanation()">Show Explanation</button>';
+			
 			return html;
 		}
 
@@ -585,6 +610,15 @@
 			}
 			q.submitAnswer(submitAnswers);
 		}
+
+		function setAnswer(val) {
+			if(!q.inProgress)
+				return;
+
+			q.submitAnswer(val);
+			
+			nextQuestion();
+		}
 		
 		function showExplanation() {
 			var content = q.getExplanation();
@@ -599,15 +633,6 @@
 		        padding: 10,
 		        content: "<div class='span8'>" + content + "</div>"
 		    });
-		}
-		
-		function setAnswer(val) {
-			if(!q.inProgress)
-				return;
-
-			q.submitAnswer(val);
-			
-			nextQuestion();
 		}
 		
 		function submitQuiz() {

@@ -97,10 +97,10 @@
 				else if($('#matchText' + i).val() && $('#match-descriptionText-' + i).val()) {
 					desc += "<" + count + ">" + $('#match-descriptionText-' + i).val() + " ";
 					if(i == 1) {
-						correct = $('#matchText' + i).val();
+						correct = '<A>' + $('#matchText' + i).val();
 					}
 					else {
-						incorrect.push($('#matchText' + i).val());
+						incorrect.push('<' + String.fromCharCode(64 + count) + '>' + $('#matchText' + i).val());
 					}
 					count++;
 				}
