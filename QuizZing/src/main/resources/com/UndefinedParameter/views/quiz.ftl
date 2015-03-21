@@ -569,26 +569,28 @@
 				var options = '';
 
 				if(!q.inProgress) {
-
 					if(submitAnswers[i] != correctAnswers[i]) {
 						style = "error-state";
+						html += '<p><strong>Correct Answer: </strong></p><h3 class="text-alert">' + correctAnswers[i] + '</h3>';
 					}
 					else {
 						style = "success-state";
+						html += '<p><strong>Correct Answer: </strong></p><h3 class="text-success">' + correctAnswers[i] + '</h3>';
 					}
+					
 				}
 				
 				for(var j = 0; j < answers.length; j++) {
 					
 					if(submitAnswers[i] == String.fromCharCode(65 + j)) {
-						options += '<div class="input-control select' + style + '"><option value="' + String.fromCharCode(65 + j) + '" selected="selected">' + String.fromCharCode(65 + j) + '</option></div>';
+						options += '<option value="' + String.fromCharCode(65 + j) + '" selected="selected">' + String.fromCharCode(65 + j) + '</option>';
 						
 					}
 					else
-						options += '<div class="input-control select' + style + '"><option value="' + String.fromCharCode(65 + j) + '">' + String.fromCharCode(65 + j) + '</option></div>';
+						options += '<option value="' + String.fromCharCode(65 + j) + '">' + String.fromCharCode(65 + j) + '</option>';
 				}
 				
-				html += '<h3><select id="answerInput' + i + '" value="' + submitAnswers[i] + '" onchange="submitAnswers()">' + options + '</select> ' + answers[i] + '</h3>';
+				html += '<h3>' + answers[i] + '</h3><div class="input-control select size1 inline' + style + '"><select id="answerInput' + i + '" value="' + submitAnswers[i] + '" onchange="submitAnswers()">' + options + '</select></div>';
 			}
 
 			if(!q.inProgress) 
