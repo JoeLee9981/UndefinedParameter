@@ -36,6 +36,11 @@ public class Quiz {
 	private long creatorId;
 	
 	/*
+	 * Display Name of the Creator
+	 */
+	private String creatorName;
+	
+	/*
 	 * This is the difficulty of the quiz
 	 */
 	private int difficulty;
@@ -270,6 +275,14 @@ public class Quiz {
 
 	public void setOpen(boolean open) {
 		this.open = open;
+	}
+
+	public String getCreatorName() {
+		return creatorName;
+	}
+
+	public void setCreatorName(String creatorName) {
+		this.creatorName = creatorName;
 	}
 
 	/********************** Iteration Methods ************************************/

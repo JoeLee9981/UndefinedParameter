@@ -65,7 +65,7 @@ public class QuestionResource {
 		
 		try {
 			question.setRating(3.0);
-			question.setQuestionDifficulty(3.0);
+			question.setDifficulty(3.0);
 			long questionId = quizManager.createQuestion(question);
 			if(questionId > 0 && quizManager.addQuestionToQuiz(quizId, questionId)) {
 				response.put("response", "success");
@@ -140,5 +140,35 @@ public class QuestionResource {
 		}
 		//removal failed
 		return Response.status(Status.BAD_REQUEST).build();
+	}
+	
+	@POST
+	@Path("/rate/rating")
+	public Response rateQuizQuality(@Auth(required = false) User user, @QueryParam("questionId") long questionId, @QueryParam("rating") int rating) {
+		
+		if(user == null) {
+			return Response.status(Status.UNAUTHORIZED).build();
+		}
+		if(quizManager.rateQuestionQuality(user.getId(), questionId, rating)) {
+			return Response.ok().build();
+		}
+		else {
+			return Response.status(Status.BAD_REQUEST).build();
+		}
+	}
+	
+	@POST
+	@Path("/rate/difficulty")
+	public Response rateQuizDifficulty(@Auth(required = false) User user, @QueryParam("questionId") long questionId, @QueryParam("rating") int rating) {
+		
+		if(user == null) {
+			return Response.status(Status.UNAUTHORIZED).build();
+		}
+		if(quizManager.rateQuestionDifficulty(user.getId(), questionId, rating)) {
+			return Response.ok().build();
+		}
+		else {
+			return Response.status(Status.BAD_REQUEST).build();
+		}
 	}
 }

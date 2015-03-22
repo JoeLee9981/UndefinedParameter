@@ -21,8 +21,7 @@ public class QuestionMapper implements ResultSetMapper<Question>{
 		que.setCreatorId(r.getLong("CreatorID"));
 		que.setGroupId(r.getLong("GroupID"));
 		que.setOrdered(r.getBoolean("Ordered"));
-		que.setQuestionDifficulty(r.getFloat("QuestionDifficulty"));
-		que.setRating(r.getFloat("Rating"));
+		que.setRating((float)r.getInt("Rating") /(float)r.getInt("RatingCount"));
 		que.setQuestionText(r.getString("QuestionText"));
 		String queType = r.getString("QuestionType");
 		que.setQuestionType(QuestionType.valueOf(queType));
@@ -30,6 +29,7 @@ public class QuestionMapper implements ResultSetMapper<Question>{
 		que.setExplanation(r.getString("Explanation"));
 		que.setReference(r.getString("Reference"));
 		que.setCorrectPosition(r.getInt("CorrectPosition"));
+		que.setDifficulty((float)r.getInt("QuestionDifficulty") /(float)r.getInt("DifficultyCount"));
 		
 		ArrayList<String> wronganswers = new ArrayList<String>();
 		

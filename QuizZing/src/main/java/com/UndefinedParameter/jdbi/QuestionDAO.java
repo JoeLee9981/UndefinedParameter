@@ -41,15 +41,13 @@ public interface QuestionDAO {
 	 * 	CreateAQuestion. Will add a new question to the database.
 	 */
 	@SqlUpdate("INSERT INTO Question "
-				+ "(CreatorID, GroupID, QuestionDifficulty, Rating, "
+				+ "(CreatorID, GroupID, "
 				+ "QuestionText, CorrectAnswer, QuestionType, WrongAnswer1, WrongAnswer2, WrongAnswer3, WrongAnswer4, Flagged, Explanation, Reference, Ordered, CorrectPosition) "
-				+ "VALUES (:creatorId, :groupId, :difficulty, :rating, :questionText, :correctAnswer, :questionType, :wrongAnswer1, :wrongAnswer2, "
+				+ "VALUES (:creatorId, :groupId, :questionText, :correctAnswer, :questionType, :wrongAnswer1, :wrongAnswer2, "
 				+ ":wrongAnswer3, :wrongAnswer4, :flagged, :explanation, :reference, :ordered, :correctPos)")
 	@GetGeneratedKeys
 	public long createQuestion(@Bind("creatorId") long creatorId, 
 							   @Bind("groupId") long groupId,
-							   @Bind("difficulty") double difficulty, 
-							   @Bind("rating") double rating,
 							   @Bind("questionText") String questionText,
 							   @Bind("correctAnswer") String correctAnswer,
 							   @Bind("questionType") String questionType,
@@ -70,11 +68,54 @@ public interface QuestionDAO {
 	public List<Question> getQuestionsByGroupId(@Bind("groupId") long groupId);
 	
 	/*
+	 * 	retrieveQuiz - Retrieves questions from a specific group id where the given user is the creator.
+	 */
+	@SqlQuery("SELECT * FROM Question WHERE GroupID = :groupId AND CreatorID = :userId")
+	public List<Question> getQuestionsByUserAndGroup(@Bind("groupId") long groupId, @Bind("userId") long userId);
+	
+	/*
 	 * 	retrieveQuiz - Retrieves questions from a specific group id excluding added questions
 	 */
 	@SqlQuery("SELECT * FROM Question q WHERE GroupID = :groupId AND NOT EXISTS "
 			+ "(SELECT * FROM QuizQuestion qq WHERE qq.QuestionID = q.QuestionID AND qq.QuizID = :quizId)")
 	public List<Question> getUnaddedQuizQuestionsByGroup(@Bind("groupId") long groupId, @Bind("quizId") long quizId);
+	
+	/********************************** Quiz Quality Ratings Query *****************************************************/
+	
+	@SqlUpdate("UPDATE Question SET Rating = Rating + :rating, RatingCount = RatingCount + 1 WHERE QuestionID = :questionId")
+	public void rateQuestionQuality(@Bind("rating") int rating, @Bind("questionId") long questionId);
+	
+	@SqlUpdate("UPDATE Question SET Rating = Rating + :rating WHERE QuestionID = :questionId")
+	public void updateQuestionQualityRating(@Bind("rating") int rating, @Bind("questionId") long questionId);
+	
+	@SqlQuery("SELECT UserRating FROM QuestionRating WHERE QuestionID = :questionId and UserID = :userId")
+	public int getQuestionRating(@Bind("questionId") long questionId, @Bind("userId") long userId);
+	
+	@SqlUpdate("INSERT INTO QuestionRating (QuestionID, UserID, UserRating) VALUES(:questionId, :userId, :rating)")
+	@GetGeneratedKeys
+	public long insertQuestionRating(@Bind("questionId") long questionId, @Bind("userId") long userId, @Bind("rating") int rating);
+	
+	@SqlUpdate("UPDATE QuestionRating SET UserRating = :rating WHERE UserID = :userId AND QuestionID = :questionId")
+	public void updateQuestionRating(@Bind("userId") long userId, @Bind("questionId") long questionId, @Bind("rating") int rating);
+	
+	/********************************* Quiz Difficulty Ratings Query *******************************************************/
+	
+	@SqlUpdate("UPDATE Question SET QuestionDifficulty = QuestionDifficulty + :rating, DifficultyCount = DifficultyCount + 1 WHERE QuestionID = :questionId")
+	public void rateQuestionDifficulty(@Bind("rating") int rating, @Bind("questionId") long questionId);
+	
+	@SqlUpdate("UPDATE Question SET QuestionDifficulty = QuestionDifficulty + :rating WHERE QuestionID = :questionId")
+	public void updateQuestionDifficultyRating(@Bind("rating") int rating, @Bind("questionId") long questionId);
+	
+	@SqlQuery("SELECT UserDifficulty FROM QuestionDifficulty WHERE QuestionID = :questionId and UserID = :userId")
+	public int getQuestionDifficulty(@Bind("questionId") long questionId, @Bind("userId") long userId);
+	
+	@SqlUpdate("INSERT INTO QuestionDifficulty (QuestionID, UserID, UserDifficulty) VALUES(:questionId, :userId, :rating)")
+	@GetGeneratedKeys
+	public long insertQuestionDifficulty(@Bind("questionId") long questionId, @Bind("userId") long userId, @Bind("rating") int rating);
+	
+	@SqlUpdate("UPDATE QuestionDifficulty SET UserDifficulty = :rating WHERE UserID = :userId AND QuestionID = :questionId")
+	public void updateQuestionDifficulty(@Bind("userId") long userId, @Bind("questionId") long questionId, @Bind("rating") int rating);
+	
 }
 
 	/* TODO NEED TO CONVERT THIS QUERY

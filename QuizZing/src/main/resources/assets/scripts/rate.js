@@ -18,10 +18,16 @@ function rateQuizDifficulty(rating, quizId) {
 	});
 }
 
-function rateQuestionQuality() {
-	alert("Not yet implemented.");
+function rateQuestionQuality(rating, questionId) {
+	$.ajax({
+		type: 'POST',
+		url: '/question/rate/rating?questionId=' + questionId + '&rating=' + rating,
+	});
 }
 
-function rateQuestionDifficulty() {
-	alert("Not yet implemented.");
+function rateQuestionDifficulty(rating, questionId) {
+	$.ajax({
+		type: 'POST',
+		url: '/question/rate/difficulty?questionId=' + questionId + '&rating=' + rating,
+	});
 }

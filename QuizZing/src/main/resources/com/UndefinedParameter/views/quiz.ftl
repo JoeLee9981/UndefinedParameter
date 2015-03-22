@@ -45,7 +45,7 @@
 							        Quiz Details
 							    </div>
 							    <div class="panel-content">
-					       			<h5>Created By: ${quiz.creatorId?html}</h5>
+					       			<h5>Created By: ${quiz.creatorName?html}</h5>
 									<h5>Difficulty:</h5>
 									
 									<#if userDifficulty &gt; 0>
@@ -88,11 +88,12 @@
 								<div>
 									<button id="prevQuestion" onclick="previousQuestion()" class="primary large" hidden><i class="icon-previous"></i></button>
 									<button id="nextQuestion" onclick="nextQuestion()" class="success large"><i class="icon-next"></i></button>
-									<div id="quest-difficulty" class="rating small fg-red">
-									</div>
-									<div id="quest-rating" class="rating small fg-red">
-									</div>
 									<button id="submitQuiz" class="warning place-right large" hidden><i class="icon-checkmark"></i> Submit Quiz</button>
+									
+									<div class="row" id="questionRatings">
+									</div>
+									
+									
 								</div>
 							</div>
 							<div class="row">
@@ -144,35 +145,70 @@
 	
 		/************************* QUIZ RATINGS HERE *********************************/
 	
-		$(function() {
-			$("#quest-rating").rating({
-				static: true,
-				<#if userRating &gt; 0>
-					score: ${userRating},
-				<#else>
-					score: ${quiz.rating},
-				</#if>
-				stars: 5,
-				showHint: true,
-				hints: ['wrong', 'poor', 'average', 'good', 'excellent'],
-			});
-		});
-		
-		//Star rating for difficulty (entry page)
-		$(function() {
+		function setQuestionRatings(questionId, rating, difficulty, userRating, userDifficulty) {
+
+			var rateColor = "fg-red";
+			var diffColor = "fg-blue";
+
+			if(userRating) {
+				rateColor = "fg-yellow";
+				rating = userRating;
+			}
+
+			if(userDifficulty) {
+				diffColor = "fg-yellow";
+				difficulty = userDifficulty;
+			}
+			
+			var html = '<h5>Rating:</h5><div id="quest-rating" class="rating small ' + rateColor + '"></div><h5>Difficulty:</h5><div id="quest-difficulty" class="rating small ' + diffColor + '"></div>'
+
+			$('#questionRatings').html(html);
+
 			$("#quest-difficulty").rating({
-				static: true,
-				<#if userDifficulty &gt; 0>
-					score: ${userDifficulty},
+				<#if loggedIn>
+					static: false,
 				<#else>
-					score: ${quiz.difficulty},
+					static: true,
 				</#if>
+				score: difficulty,
 				stars: 5,
 				showHint: true,
 				hints: ['cake', 'easy', 'average', 'hard', 'impossible'],
-			});		
-		});
-		
+				click: function(value, rating) {
+					<#if loggedIn>
+						rateQuestionDifficulty(value, questionId);
+						$("#quest-difficulty").attr('class', 'rating small fg-yellow');
+						rating.rate(value);
+						q.getQuestion().userDifficulty = value;
+					<#else>
+						loginDialog();
+					</#if>
+				}
+			});
+			
+			$("#quest-rating").rating({
+				<#if loggedIn>
+					static: false,
+				<#else>
+					static: true,
+				</#if>
+				score: rating,
+				stars: 5,
+				showHint: true,
+				hints: ['useless', 'poor', 'average', 'good', 'excellent'],
+				click: function(value, rating) {
+					<#if loggedIn>
+						rateQuestionQuality(value, questionId);
+						$("#quest-rating").attr('class', 'rating small fg-yellow');
+						rating.rate(value);
+						q.getQuestion().userRating = value;
+					<#else>
+						loginDialog();
+					</#if>
+				}
+			});
+		}
+	
 		//Star rating for quiz quality (entry page)
 		$(function() {
 			$("#rating").rating({
@@ -284,7 +320,7 @@
 			var quest = [];
 			<#list quiz.questions as quest>
 				var answers = [];
-			
+
 				<#list quest.answers as answer>
 					answers.push("${answer}");
 				</#list>
@@ -292,9 +328,9 @@
 				var question;
 				
 				<#if quest.explanation??>
-					question = new Question("${quest.type}", "${quest.questionText}", "${quest.correctAnswer}", answers, "${quest.explanation}");
+					question = new Question(${quest.questionId}, "${quest.type}", "${quest.questionText}", "${quest.correctAnswer}", answers, "${quest.explanation}", ${quest.rating}, ${quest.difficulty}, ${quest.userRating}, ${quest.userDifficulty});
 				<#else>
-					question = new Question("${quest.type}", "${quest.questionText}", "${quest.correctAnswer}", answers, "No explanation has been given");
+					question = new Question(${quest.questionId}, "${quest.type}", "${quest.questionText}", "${quest.correctAnswer}", answers, "No explanation has been given", ${quest.rating}, ${quest.difficulty}, ${quest.userRating}, ${quest.userDifficulty});
 				</#if>
 				quest.push(question);
 			</#list>
@@ -371,6 +407,7 @@
 				}
 
 				setAnswers();
+				setQuestionRatings(question.id, question.rating, question.difficulty, question.userRating, question.userDifficulty);
 				
 				SetProgressBar();
 				$("#answerDiv").fadeIn(150);	
@@ -392,6 +429,7 @@
 					quizPosition--;
 				
 				setAnswers();
+				setQuestionRatings(question.id, question.rating, question.difficulty, question.userRating, question.userDifficulty);
 				
 				SetProgressBar();
 				$("#answerDiv").fadeIn(150);
@@ -693,7 +731,6 @@
 
 			setAnswers();
 		}
-		
-		
+
 	</script>
 </html>

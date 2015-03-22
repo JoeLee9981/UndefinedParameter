@@ -102,6 +102,26 @@ public class QuizManager {
 		return quiz;
 	}
 	
+	public Quiz getRandomizedQuestions(long quizId, long userId) {
+		//get and randomize questions
+		List<Question> randomizedQuestionList = questionDAO.retrieveExistingQuiz(quizId);
+		
+		for(Question question : randomizedQuestionList) {
+			question.setUserDifficulty(findUserQuestionDifficulty(userId, question.getQuestionId()));
+			question.setUserRating(findUserQuestionRating(userId, question.getQuestionId()));
+		}
+		
+		Collections.shuffle(randomizedQuestionList);
+		//get the quiz from db
+		Quiz quiz = quizDAO.retrieveExistingQuizDetails(quizId);
+		
+		//validate the quiz
+		if(quiz.getQuizId() > 0)
+			quiz.setQuestions(randomizedQuestionList);
+		
+		return quiz;
+	}
+	
 	/*
 	 * Find all quizzes created by a user
 	 */
@@ -204,8 +224,6 @@ public class QuizManager {
 			
 			long id = questionDAO.createQuestion(question.getCreatorId(), 
 												 question.getGroupId(), 
-												 question.getQuestionDifficulty(), 
-												 question.getRating(),
 												 InputUtils.sanitizeInput(question.getQuestionText()), 
 												 InputUtils.sanitizeInput(question.getCorrectAnswer()), 
 												 InputUtils.sanitizeInput(question.getQuestionType().toString()), 
@@ -418,6 +436,96 @@ public class QuizManager {
 			return false;
 		}
 	}
+	
+	/************************** Question Ratings and Difficulties *************************************/
+	/*
+	 * Find a user's entered quality rating for a quiz
+	 */
+	public int findUserQuestionRating(long userId, long questionId) {
+		if(userId == 0 || questionId == 0) {
+			//this is invalid
+			return 0;
+		}
+		return questionDAO.getQuestionRating(questionId, userId);
+	}
+	
+	/*
+	 * Find a user's difficulty rating for a quiz
+	 */
+	public int findUserQuestionDifficulty(long userId, long questionId) {
+		if(userId == 0 || questionId == 0) {
+			//this is invalid
+			return 0;
+		}
+		return questionDAO.getQuestionDifficulty(questionId, userId);
+	}
+	
+	public boolean rateQuestionQuality(long userId, long questionId, int rating) {
+		
+		if(userId < 1 || questionId < 1 || rating < 1 || rating > 5) {
+			//this is invalid
+			return false;
+		}
+		try {
+			int existingRating = questionDAO.getQuestionRating(questionId, userId);
+			
+			if(existingRating > 0) {
+				questionDAO.updateQuestionRating(userId, questionId, rating);
+				questionDAO.updateQuestionQualityRating(rating - existingRating, questionId);
+			}
+			else {
+				long key = questionDAO.insertQuestionRating(questionId, userId, rating);
+				if(key > 0) {
+					questionDAO.rateQuestionQuality(rating, questionId);
+					return true;
+				}
+				else {
+					//insert failed, return false
+					return false;
+				}
+			}
+			
+			return true;
+		}
+		catch(Exception e) {
+			//database insert fails
+			return false;
+		}
+	}
+	
+	public boolean rateQuestionDifficulty(long userId, long questionId, int rating) {
+		
+		if(userId < 1 || questionId < 1 || rating < 1 || rating > 5) {
+			//this is invalid
+			return false;
+		}
+		try {
+			int existingRating = questionDAO.getQuestionDifficulty(questionId, userId);
+			
+			if(existingRating > 0) {
+				questionDAO.updateQuestionDifficulty(userId, questionId, rating);
+				questionDAO.updateQuestionDifficultyRating(rating - existingRating, questionId);
+			}
+			else {
+				long key = questionDAO.insertQuestionDifficulty(questionId, userId, rating);
+				if(key > 0) {
+					questionDAO.rateQuestionDifficulty(rating, questionId);
+					return true;
+				}
+				else {
+					//insert failed, return false
+					return false;
+				}
+			}
+			
+			return true;
+		}
+		catch(Exception e) {
+			//database insert fails
+			return false;
+		}
+	}
+	
 	
 	public boolean insertScore(long quizId, long userId, float score)
 	{

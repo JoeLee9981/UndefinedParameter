@@ -23,8 +23,10 @@ public class Question {
 	private long questionId;
 	private long creatorId;
 	private long groupId; //this is the original group the question was created for
-	private double questionDifficulty;
+	private double difficulty;
 	private double rating;
+	private int userRating;
+	private int userDifficulty;
 	private String questionText;
 	private String correctAnswer;
 	private ArrayList<String> wrongAnswers;
@@ -52,7 +54,7 @@ public class Question {
 		this.questionId = qID;
 		this.creatorId = cID;
 		this.groupId = groupId;
-		this.questionDifficulty = difficulty;
+		this.difficulty = difficulty;
 		this.rating = rate;
 		this.type = QuestionType.valueOf(qt);
 		this.questionText = qText;
@@ -129,13 +131,13 @@ public class Question {
 	}
 	
 	@JsonProperty
-	public double getQuestionDifficulty() {
-		return questionDifficulty;
+	public double getDifficulty() {
+		return difficulty;
 	}
 	
 	@JsonProperty
-	public void setQuestionDifficulty(double f) {
-		this.questionDifficulty = f;
+	public void setDifficulty(double f) {
+		this.difficulty = f;
 	}
 	
 	@JsonProperty
@@ -273,4 +275,26 @@ public class Question {
 	public void setReferenceLink(String referenceLink) {
 		this.referenceLink = referenceLink;
 	}
+
+	@JsonProperty
+	public int getUserRating() {
+		return userRating;
+	}
+
+	@JsonProperty
+	public void setUserRating(int userRating) {
+		this.userRating = userRating;
+	}
+
+	@JsonProperty
+	public int getUserDifficulty() {
+		return userDifficulty;
+	}
+
+	@JsonProperty
+	public void setUserDifficulty(int userDifficulty) {
+		this.userDifficulty = userDifficulty;
+	}
+	
+	
 }

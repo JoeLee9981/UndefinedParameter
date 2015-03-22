@@ -95,6 +95,10 @@ Quiz.prototype.getQuestionText = function() {
 	return this.questions[this.index].questionText;
 }
 
+Quiz.prototype.getQuestion = function() {
+	return this.questions[this.index];
+}
+
 Quiz.prototype.nextQuestion = function() {
 	
 	if(this.hasNext())
@@ -119,12 +123,17 @@ Quiz.prototype.hasPrevious = function() {
 	return this.index > 0;
 }
 
-function Question(type, questionText, correctAnswer, answers, explanation) {
+function Question(id, type, questionText, correctAnswer, answers, explanation, rating, difficulty, userRating, userDifficulty) {
+	this.id = id;
 	this.type = type;
 	this.questionText = questionText;
 	this.correctAnswer = correctAnswer;
 	this.answers = answers;
 	this.explanation = explanation;
+	this.rating = rating;
+	this.difficulty = difficulty;
+	this.userRating = userRating;
+	this.userDifficulty = userDifficulty;
 	
 	if(type == "MATCHING") {
 		

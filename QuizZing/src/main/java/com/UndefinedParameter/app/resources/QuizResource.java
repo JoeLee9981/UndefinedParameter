@@ -53,17 +53,26 @@ public class QuizResource {
 		//invalid id return bad request
 		if(id < 1)
 			return Response.status(Status.BAD_REQUEST).build();
-		
-		Quiz quiz = quizManager.getRandomizedQuestions(id);
+
 		float userBestScore = -1.0f;
+		
+		//if user is not logged in
+		if(user == null) {
+			Quiz quiz = quizManager.getRandomizedQuestions(id);
+			
+			//return bad request if no quiz found
+			if(quiz == null)
+				return Response.status(Status.BAD_REQUEST).build();
+			
+			return Response.ok(new QuizView(user, quiz, groupId, false, false, 0, 0, userBestScore)).build();
+		}
+		
+		//obtain quiz with user ratings intact
+		Quiz quiz = quizManager.getRandomizedQuestions(id, user.getId());
 		
 		//return bad request if no quiz found
 		if(quiz == null)
 			return Response.status(Status.BAD_REQUEST).build();
-		
-		//if user is not logged in
-		if(user == null)
-			return Response.ok(new QuizView(user, quiz, groupId, false, false, 0, 0, userBestScore)).build();
 		
 		//obtain the user rating
 		int userRating = quizManager.findUserRating(user.getId(), quiz.getQuizId());

@@ -61,7 +61,7 @@ public interface QuizDAO {
 	/*
 	 * 	retrieveExistingQuizDetails - Retrieves quiz details from the database.
 	 */
-	@SqlQuery("SELECT * FROM Quiz WHERE QuizID = :quizId")
+	@SqlQuery("SELECT * FROM Quiz q, User u WHERE q.CreatorID = u.UserID AND q.QuizID = :quizId")
 	public Quiz retrieveExistingQuizDetails(@Bind("quizId") long quizId);
 	
 	/*
