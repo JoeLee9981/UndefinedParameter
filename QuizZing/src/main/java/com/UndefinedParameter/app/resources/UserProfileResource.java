@@ -27,6 +27,7 @@ import com.UndefinedParameter.jdbi.QuestionDAO;
 import com.UndefinedParameter.jdbi.QuizDAO;
 import com.UndefinedParameter.jdbi.QuizScoreDAO;
 import com.UndefinedParameter.jdbi.UserDAO;
+import com.UndefinedParameter.views.ScoreView;
 import com.UndefinedParameter.views.UserProfileView;
 
 @Path("/user")
@@ -105,5 +106,16 @@ public class UserProfileResource {
 			return Response.status(500).build();
 		}
 		
+	}
+	
+	@GET
+	@Path("/scores")
+	public Response getUserScoresView(@Auth(required = false) User user, @QueryParam("userid") long userid) {
+	
+		if(userid < 1) {
+			return Response.status(Status.BAD_REQUEST).build();
+		}
+		
+		return Response.ok(new ScoreView("score.ftl", user, 2)).build();
 	}
 }
