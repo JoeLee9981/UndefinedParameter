@@ -7,7 +7,7 @@ body
 .page-content
 {
 	margin: 0 auto;
-	width: 1050px !important;
+	width: 1050px;
 	padding: 0 10px 0 10px;
 }
 
@@ -135,4 +135,9 @@ a > .join
 .noResize
 {
 	resize: none;
+}
+
+.marginTop30
+{
+	margin-top: 30px !important;
 }

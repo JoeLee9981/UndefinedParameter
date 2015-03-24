@@ -130,8 +130,10 @@ public class QuizResource {
 			Group group = groupManager.findGroupById(groupId);
 			return Response.ok(new QuizCreatorView(user, organizationManager.findOrgsByUser(user), organizationManager.findRegisteredGroupsById(group.getOrganizationId(), user.getId()), group)).build();
 		}
-		//not a valid group id return a bad request
-		return Response.status(Status.BAD_REQUEST).build();
+		else
+		{
+			return Response.ok(new QuizCreatorView(user, organizationManager.findOrgsByUser(user), null, null)).build();
+		}
 	}
 	
 	@POST
@@ -156,7 +158,7 @@ public class QuizResource {
 		if(quizId >= 1) {
 			if(quizManager.addQuizToGroup(quizId, groupId)) {
 				response.put("response", "success");
-				response.put("redirect", "/group?groupId=" + groupId);
+				response.put("redirect", "/quiz/edit?groupId=" + groupId + "&quizId=" + quizId);
 			}
 			else {
 				response.put("response", "fail");
