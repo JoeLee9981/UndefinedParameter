@@ -160,7 +160,14 @@
 				difficulty = userDifficulty;
 			}
 			
-			var html = '<h5>Rating:</h5><div id="quest-rating" class="rating small ' + rateColor + '"></div><h5>Difficulty:</h5><div id="quest-difficulty" class="rating small ' + diffColor + '"></div>'
+			var html = '<div class="row noMargin"> \
+							<div class="span1"><p>Rating:</p></div> \
+							<div id="quest-rating" class="span2 rating small ' + rateColor + '"> \
+							</div> \
+							<div class="span1"><p>Difficulty:</p></div> \
+							<div id="quest-difficulty" class="span3 rating small ' + diffColor + '"> \
+							</div> \
+						</div>';
 
 			$('#questionRatings').html(html);
 
@@ -445,10 +452,12 @@
 				document.getElementById('questionHead').innerHTML = q.getQuestionText();
 				html = getMultiChoiceDiv();
 			}
-			else if(q.getQuestionType() == "FILL_IN_THE_BLANK") {
+			else if(q.getQuestionType() == "FILL_IN_THE_BLANK") 
+			{
 				var questText = q.getQuestionText();
 				var answers = q.getAnswers();
-				for(var i = 0; i < answers.length; i++) {
+				for(var i = 0; i < answers.length; i++) 
+				{
 					questText = questText.replace('&lt;blank&gt;', '<strong>' + (i + 1) + ': __________</strong>');
 				}
 				document.getElementById('questionHead').innerHTML = questText;
@@ -484,7 +493,7 @@
 				var qText = "";
 				
 				for(var i = 1; i <= foundMatch; i++) {
-					qText += "<h3><strong>" + String.fromCharCode(64 + i) + ":</strong> " + match[i] + "</h3>";
+					qText += "<p><strong>" + String.fromCharCode(64 + i) + ":</strong> " + match[i] + "</p>";
 				}
 				document.getElementById('questionHead').innerHTML = qText;
 				html = getMatchingDiv();
@@ -606,6 +615,7 @@
 			var correctAnswers = q.getCorrectAnswers();
 			var style = '';
 
+			html += '<div class="row">';
 			for(var i = 0; i < answers.length; i++) {
 				//build the select for the answer
 				var options = '';
@@ -622,6 +632,7 @@
 					
 				}
 				
+				
 				for(var j = 0; j < answers.length; j++) {
 					
 					if(submitAnswers[i] == String.fromCharCode(65 + j)) {
@@ -632,8 +643,10 @@
 						options += '<option value="' + String.fromCharCode(65 + j) + '">' + String.fromCharCode(65 + j) + '</option>';
 				}
 				
-				html += '<h3>' + answers[i] + '</h3><div class="input-control select size1 inline' + style + '"><select id="answerInput' + i + '" value="' + submitAnswers[i] + '" onchange="submitAnswers()">' + options + '</select></div>';
+
+				html += '<div class="span2"><strong><h4>' + answers[i] + '</h4></strong><div class="input-control select size1 inline' + style + '"><select id="answerInput' + i + '" value="' + submitAnswers[i] + '" onchange="submitAnswers()">' + options + '</select></div></div>';
 			}
+			html += '</div>';
 
 			if(!q.inProgress) 
 				html += '<br/><button class="info large" onclick="showExplanation()">Show Explanation</button>';
