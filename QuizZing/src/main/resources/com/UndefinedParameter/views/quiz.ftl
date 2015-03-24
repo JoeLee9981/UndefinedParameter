@@ -209,6 +209,7 @@
 			});
 		}
 	
+		var hint = "Please take the quiz before you rate it.";
 		//Star rating for quiz quality (entry page)
 		$(function() {
 			$("#rating").rating({
@@ -220,7 +221,7 @@
 				</#if>
 				stars: 5,
 				showHint: true,
-				hints: ['wrong', 'poor', 'average', 'good', 'excellent'],
+				hints: [hint, hint, hint, hint, hint],
 			});
 		});
 		
@@ -235,7 +236,7 @@
 				</#if>
 				stars: 5,
 				showHint: true,
-				hints: ['cake', 'easy', 'average', 'hard', 'impossible'],
+				hints: [hint, hint, hint, hint, hint],
 			});		
 		});
 		

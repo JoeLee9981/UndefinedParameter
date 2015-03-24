@@ -13,17 +13,60 @@
 		<link href="/assets/css/home.css" rel="stylesheet">			
 	</head>
 
-	<body>
+	<body class="metro">
 		<#include "../includes/navigation.ftl">
 		<div class="page-content">
-				<div class="metro">
-					<div class="grid fluid">	
-						
-						<#if userQuizzes??>
-							<div class="home-subsection">
-								<h3>Your Quizzes</h3>
-								<table>
-									
+				<div class="grid fluid">	
+					
+					<#if userQuizzes??>
+						<div class="home-subsection">
+							<h3>Your Quizzes</h3>
+							<table class="table hovered">
+								<thead>
+								<tr>
+									<th>Quiz Name</th>
+									<th>Description</th>
+									<th># of Questions</th>
+									<th>Difficulty</th>
+									<th>Rating</th>
+									<th>Time</th>
+									<!-- <th>Edit</th>  -->
+								</tr>
+								</thead>
+								<tbody>
+								<#list userQuizzes as quiz>	
+									<tr>
+										<td>
+											<a href="/quiz?quizId=${quiz.quizId}"><p class="text-info">${quiz.name} </p></a>
+										</td>
+										<td>
+											<p>${quiz.description}</p>
+										</td>
+										<td>
+											<p>${quiz.questionCount}</p>
+										</td>
+										<td>
+											<p>${quiz.difficulty}</p>
+										</td>
+										<td>
+											<p>${quiz.rating}</p>
+										</td>
+										<td>
+											<p>${quiz.time}</p>
+										</td>
+									</tr>
+								</#list>
+								</tbody>
+								<tfoot></tfoot>
+							</table>
+						</div>
+					</#if>
+					
+					<#if topQuizzes??>
+						<div class="home-subsection">
+							<h3>All Quizzes</h3>
+							<table class="table hovered">
+								<thead>
 									<tr>
 										<th>Quiz Name</th>
 										<th>Description</th>
@@ -31,78 +74,41 @@
 										<th>Difficulty</th>
 										<th>Rating</th>
 										<th>Time</th>
-										<th>Edit</th>
 									</tr>
-									<#list userQuizzes as quiz>	
-										<tr>
-											<td>
-												<a href="/quiz?quizId=${quiz.quizId}"><h3 class="text-info">${quiz.name} </h3></a>
-											</td>
-											<td>
-												<h3>${quiz.description}</h3>
-											</td>
-											<td>
-												<h3>${quiz.questionCount}</h3>
-											</td>
-											<td>
-												<h3>${quiz.difficulty}</h3>
-											</td>
-											<td>
-												<h3>${quiz.rating}</h3>
-											</td>
-											<td>
-												<h3>${quiz.time}</h3>
-											</td>
-										</tr>
-									</#list>
-								</table>
-							</div>
-						</#if>
-						
-						<#if topQuizzes??>
-							<div class="home-subsection">
-								<h3>All Quizzes</h3>
-								<table>
-										
-										<tr>
-											<th>Quiz Name</th>
-											<th>Description</th>
-											<th># of Questions</th>
-											<th>Difficulty</th>
-											<th>Rating</th>
-											<th>Time</th>
-										</tr>
-										
-									<#list topQuizzes as quiz>
-									
-										<tr>
-											<td>
-												<h3><a href="/quiz?quizId=${quiz.quizId}"><h3 class="text-info">${quiz.name} </h3></a>
-											</td>
-											<td>
-												<h3>${quiz.description}</h3>
-											</td>
-											<td>
-												<h3>${quiz.questionCount}</h3>
-											</td>
-											<td>
-												<h3>${quiz.difficulty}</h3>
-											</td>
-											<td>
-												<h3>${quiz.rating}</h3>
-											</td>
-											<td>
-												<h3>${quiz.time}</h3>
-											</td>
-										</tr>
-									</#list>
-								</table>
-								<br/>
+								</thead>
+								<tbody>
+								<#list topQuizzes as quiz>
+								
+									<tr>
+										<td>
+											<a href="/quiz?quizId=${quiz.quizId}"><p class="text-info">${quiz.name} </p></a>
+										</td>
+										<td>
+											<p>${quiz.description}</p>
+										</td>
+										<td>
+											<p>${quiz.questionCount}</p>
+										</td>
+										<td>
+											<p>${quiz.difficulty}</p>
+										</td>
+										<td>
+											<p>${quiz.rating}</p>
+										</td>
+										<td>
+											<p>${quiz.time}</p>
+										</td>
+									</tr>
+								</#list>
+								</tbody>
+								<tfoot></tfoot>
+							</table>
+							<br/>
 
-							</div>
-						</#if>
-					</div>
-				<div>			
+						</div>
+					</#if>
+				</div>
+			
 			<#include "../includes/footer.ftl">
 			</div>
 		</div>

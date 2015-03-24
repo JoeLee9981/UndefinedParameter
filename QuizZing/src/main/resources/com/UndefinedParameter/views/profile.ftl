@@ -49,33 +49,33 @@
 										<#list userQuizzes as quiz>	
 											<tr>
 												<td>
-													<a href="/quiz?quizId=${quiz.quizId}"><h3 class="text-info">${quiz.name} </h3></a>
+													<a href="/quiz?quizId=${quiz.quizId}"><p class="text-info">${quiz.name} </p></a>
 												</td>
 												<td>
-													<h3>${quiz.description}</h3>
+													<p>${quiz.description}</p>
 												</td>
 												<td>
-													<h3>${quiz.questionCount}</h3>
+													<p>${quiz.questionCount}</p>
 												</td>
 												<td>
-													<h3>${quiz.difficulty}</h3>
+													<p>${quiz.difficulty}</p>
 												</td>
 												<td>
-													<h3>${quiz.rating}</h3>
+													<p>${quiz.rating}</p>
 												</td>
 												<td>
-													<h3>${quiz.time}</h3>
+													<p>${quiz.time}</p>
 												</td>
 												<#if editable>
 													<td>
-														<a href="/"><h3 class="text-success"><button id="editQuizButton">+</button></h3></a>
+														<a href="/"><p class="text-success"><button id="editQuizButton">+</button></p></a>
 													</td>
 												</#if>
 											</tr>
 										</#list>
 										</tbody>
 									
-										<tfood></tfoot>
+										<tfoot></tfoot>
 									</table>							
 								<#else>
 									This user doesn't have any quizzes yet!

@@ -185,7 +185,7 @@
 <script>
 
 	function register(groupId) {
-
+		<#if user??>
 		$.ajax({
 		    url: '/orgs/org/register?groupId=' + groupId,
 		    type: 'POST',
@@ -197,6 +197,9 @@
 		    	displayError("Unable to register for the group");
 		    }
 		});
+		<#else>
+		location.href='/login';
+		</#if>
 	}
 	
 	function leave(groupId) {

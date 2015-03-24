@@ -70,20 +70,20 @@
 					<div class="row">
 						<button class="shortcut bg-amber fg-white span3" onclick="location.href = '/quiz/quizzes'">
 						    <i class="icon-help"></i>
-						   	Find A Quiz
+						   	Find a Quiz
 						</button>
-						<button class="shortcut bg-amber fg-white span3 todo">
+						<button class="shortcut bg-amber fg-white span3" onclick="location.href = '/login'">
 						    <i class="icon-lightning"></i>
-						   	Random Quiz
+						   	Create a Quiz
 						</button>
 						<button class="shortcut bg-amber fg-white span3" onclick="location.href = '/group/top'">
 						    <i class="icon-comments-2"></i>
-						    Find A Group
+						    Find a Group
 						</button>
 						<button class="shortcut bg-amber fg-white span3" onclick="location.href = '/orgs'">
 							<a href="#">
 						    <i class="icon-user-3"></i>
-						    Find An Organization
+						    Find an Organization
 						    </a>
 						</button>											
 				    </div>
