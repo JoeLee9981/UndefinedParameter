@@ -29,6 +29,8 @@ import com.UndefinedParameter.views.LoginView;
 import com.UndefinedParameter.views.OrganizationCreatorView;
 import com.UndefinedParameter.views.OrganizationView;
 import com.UndefinedParameter.views.OrgsView;
+import com.UndefinedParameter.views.QuizEditQuestionsView;
+import com.UndefinedParameter.views.RegisterView;
 
 @Path("/orgs")
 @Produces(MediaType.TEXT_HTML)
@@ -108,6 +110,28 @@ public class OrganizationResource {
 			return Response.status(Status.BAD_REQUEST).build();
 		}
 	}
+	
+	
+	@POST
+	@Path("/getJoinedGroups")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response getJoinedGroupsInOrganization(@Auth(required = false) User user, @QueryParam("orgId") long orgId) 
+	{	
+		HashMap<String, String> response = new HashMap<String, String>();
+		
+		// Get the list of joined groups in the specified organization
+		List<Group> regGroups = manager.findRegisteredGroupsById(orgId, user.getId());
+		
+		for (Group group:regGroups)
+		{
+			response.put(group.getName(), "" + group.getId());
+		}
+		
+		return Response.ok(response).build();
+	}
+	
+	
 	
 	@DELETE
 	@Path("/leave")

@@ -53,7 +53,7 @@ body
 
 textarea
 {
-	font: normal normal normal 13.3333330154419px/normal Arial;
+	font: normal normal normal 13.5333330154419px/normal Arial;
 	line-height: 1.4em;
 }
 
@@ -130,4 +130,9 @@ a > .join
 .border1
 {
 	border: 1px solid GRAY !important;
+}
+
+.noResize
+{
+	resize: none;
 }

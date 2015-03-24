@@ -109,7 +109,7 @@ public class QuizZingApplication extends Application<QuizZingConfiguration> {
 		/***** REGISTER VIEWS ******/
 		environment.jersey().register(new HomeResource(newsDAO, userDAO, orgDAO, groupDAO, quizDAO, questionDAO, quizScoreDAO, orgMemberDAO));
 		environment.jersey().register(new NewsArticleResource(newsDAO));
-		environment.jersey().register(new QuizResource(quizDAO, questionDAO, orgDAO, groupDAO, quizScoreDAO));
+		environment.jersey().register(new QuizResource(quizDAO, questionDAO, orgDAO, groupDAO, orgMemberDAO, quizScoreDAO));
 		environment.jersey().register(new GroupResource(orgDAO, groupDAO, quizDAO, questionDAO, quizScoreDAO));
 		environment.jersey().register(new OrganizationResource(orgDAO, groupDAO, orgMemberDAO));
 		environment.jersey().register(new QuestionResource(quizDAO, questionDAO, quizScoreDAO));

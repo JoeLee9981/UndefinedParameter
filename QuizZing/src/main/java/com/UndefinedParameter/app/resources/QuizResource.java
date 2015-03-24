@@ -18,6 +18,7 @@ import javax.ws.rs.core.Response.Status;
 
 import com.UndefinedParameter.app.core.Group;
 import com.UndefinedParameter.app.core.GroupManager;
+import com.UndefinedParameter.app.core.OrganizationManager;
 import com.UndefinedParameter.app.core.Quiz;
 import com.UndefinedParameter.app.core.QuizManager;
 import com.UndefinedParameter.app.core.QuizScore;
@@ -27,6 +28,7 @@ import com.UndefinedParameter.jdbi.OrganizationDAO;
 import com.UndefinedParameter.jdbi.QuestionDAO;
 import com.UndefinedParameter.jdbi.QuizDAO;
 import com.UndefinedParameter.jdbi.QuizScoreDAO;
+import com.UndefinedParameter.jdbi.OrgMemberDAO;
 import com.UndefinedParameter.views.LoginView;
 import com.UndefinedParameter.views.QuizCreatorView;
 import com.UndefinedParameter.views.QuizEditQuestionsView;
@@ -40,11 +42,13 @@ import com.UndefinedParameter.views.ScoreView;
 public class QuizResource {
 	
 	private QuizManager quizManager;
+	private OrganizationManager organizationManager;
 	private GroupManager groupManager;
 	
-	public QuizResource(QuizDAO quizDAO, QuestionDAO questionDAO, OrganizationDAO orgDAO, GroupDAO groupDAO, QuizScoreDAO quizScoreDAO) {
+	public QuizResource(QuizDAO quizDAO, QuestionDAO questionDAO, OrganizationDAO orgDAO, GroupDAO groupDAO, OrgMemberDAO orgMemberDAO, QuizScoreDAO quizScoreDAO) {
 		quizManager = new QuizManager(quizDAO, questionDAO, quizScoreDAO);
 		groupManager = new GroupManager(orgDAO, groupDAO);
+		organizationManager = new OrganizationManager(orgDAO, groupDAO, orgMemberDAO);
 	}
 	
 	@GET
@@ -115,13 +119,16 @@ public class QuizResource {
 	
 	@GET
 	@Path("/create")
-	public Response getQuizCreatorView(@Auth(required = false) User user, @QueryParam("groupId") long groupId) {
-		
-		if(user == null) {
+	public Response getQuizCreatorView(@Auth(required = false) User user, @QueryParam("groupId") long groupId)
+	{	
+		if(user == null)
+		{
 			return Response.ok(new LoginView(user)).build();
 		}
-		else if(groupId > 0) {
-			return Response.ok(new QuizCreatorView(user, groupManager.findGroupById(groupId))).build();
+		else if(groupId > 0)
+		{
+			Group group = groupManager.findGroupById(groupId);
+			return Response.ok(new QuizCreatorView(user, organizationManager.findOrgsByUser(user), organizationManager.findRegisteredGroupsById(group.getOrganizationId(), user.getId()), group)).build();
 		}
 		//not a valid group id return a bad request
 		return Response.status(Status.BAD_REQUEST).build();
