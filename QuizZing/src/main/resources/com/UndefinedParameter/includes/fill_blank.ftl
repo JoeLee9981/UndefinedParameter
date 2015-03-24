@@ -149,7 +149,7 @@
 				document.getElementById('responseLabel').className = "text-alert";
 				return;
 			}
-			alert(${groupId} + " " + desc + " " + correct);
+
 			 $.ajax({
 				type: 'POST',
 				url: path,

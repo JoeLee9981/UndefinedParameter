@@ -7,23 +7,21 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class ScoreView extends View{
 
-	private int score;
+	private int scores;
 	private User user;
 	
-	public ScoreView(User user, int score) {
-		super("score.ftl");
-		this.score = score;
+	public ScoreView(String page, User user, int scores) {
+		super(page);
+		this.scores = scores;
 		this.user = user;
 	}
 
-	@JsonProperty
-	public int getScore() {
-		return score;
+	public int getScores() {
+		return scores;
 	}
 
-	@JsonProperty
-	public void setScore(int score) {
-		this.score = score;
+	public void setScores(int scores) {
+		this.scores = scores;
 	}
 	
 	public User getUser() {

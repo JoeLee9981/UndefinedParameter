@@ -489,7 +489,7 @@
 				document.getElementById('questionHead').innerHTML = qText;
 				html = getMatchingDiv();
 			}
-
+			
 			document.getElementById('answerDiv').innerHTML = html;
 		}
 
@@ -513,6 +513,10 @@
 				else {
 					html += '<h3>' + (i+1) + ': <input type="text" id="answerInput' + i + '" value="' + submitAnswers[i] + '" onchange="submitAnswers()"/></h3>';
 				}
+			}
+			if(!q.inProgress) {
+				html += '<button class="info large" onclick="showExplanation()">Show Explanation</button>';
+
 			}
 			return html;
 		}

@@ -155,7 +155,7 @@ public class UserGroupManager {
 	 * Makes a comment, 1 point.
 	 * More later.
 	 * */
-	public int checkModWhenRemovingUser(long userID, long groupID)
+	public int checkModWhileRemovingUser(long userID, long groupID)
 	{
 		if(userID < 0 || groupID < 0)
 		{
@@ -165,9 +165,14 @@ public class UserGroupManager {
 		
 		//0 is false, 1 is true
 		int result = usergroupDAO.getUserGroupModStatus(groupID, userID);
+		int totalmembers = usergroupDAO.getTotalUserGroup(groupID);
 		if(result == 0)
 		{
 			usergroupDAO.delete(userID, groupID);
+			if(totalmembers == 1)
+			{
+				//Find out if delete group when no users left. For now, no.
+			}
 			return 0;
 		}
 		
@@ -177,6 +182,12 @@ public class UserGroupManager {
 		{
 			usergroupDAO.delete(userID, groupID);
 			return 0;
+		}
+		
+		
+		if(totalmembers == 1)
+		{
+			//Find out if delete group when no users left. For now, no.
 		}
 		
 		int maxPoints = usergroupDAO.getMaxPointsUserGroup(groupID);

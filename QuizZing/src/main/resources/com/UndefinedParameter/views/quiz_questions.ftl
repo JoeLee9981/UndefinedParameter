@@ -37,7 +37,7 @@
 							$("#question${question.questionId}").on('click', function() {
 			
 								var content = "<pre><strong>Question: </strong>${question.questionText}<br/>";
-								content += "<strong>Rating:</strong> ${question.rating} <strong>Difficulty: </strong>${question.questionDifficulty}<br/><strong>Answers:</strong><br/>";
+								content += "<strong>Rating:</strong> ${question.rating} <strong>Difficulty: </strong>${question.difficulty}<br/><strong>Answers:</strong><br/>";
 								content += "  ${question.correctAnswer}<br/>";
 								<#list question.wrongAnswers as answer>
 									content += "  ${answer}<br/>";
@@ -58,7 +58,7 @@
 							$(function() {
 								$("#difficulty${question.questionId}").rating({
 									static: false,
-									score: ${question.questionDifficulty},
+									score: ${question.difficulty},
 									stars: 5,
 									showHint: true,
 									hints: ['cake', 'easy', 'average', 'hard', 'impossible'],
