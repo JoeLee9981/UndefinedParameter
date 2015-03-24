@@ -7,6 +7,9 @@ public class UserGroup {
 	private int id;
 	private int userid;
 	private int groupid;
+	private long rating;
+	private long earnedpoints;
+	private int modstatus;
 	
 	
 	public UserGroup(int id) {
@@ -48,5 +51,34 @@ public class UserGroup {
 	public int getGroupId() {
 		return groupid;
 	}
+	
+	@JsonProperty
+	public void setRating(long rating) {
+		this.rating = rating;
+	}
 
+	@JsonProperty
+	public long getRating() {
+		return rating;
+	}
+
+	@JsonProperty
+	public void setEarnedPoints(long points) {
+		this.earnedpoints = points;
+	}
+
+	@JsonProperty
+	public long getEarnedPoints() {
+		return earnedpoints;
+	}
+	
+	@JsonProperty
+	public int getModStatus() {
+		return modstatus;
+	}
+
+	@JsonProperty
+	public void setModStatus(int status) {
+		this.modstatus = status;
+	}
 }

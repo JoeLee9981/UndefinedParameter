@@ -72,6 +72,9 @@ public interface UserGroupDAO {
 	public int getTotalUserGroupModStatus(@Bind("groupID") long groupId,
 											@Bind("modstatus") long modstatus);
 	
+	@SqlQuery("SELECT COUNT(*) FROM SubGroup WHERE GroupID = :groupID")
+	public int getTotalUserGroup(@Bind("groupID") long groupId);
+	
 	@SqlQuery("SELECT Max(EarnedPoints) FROM SubGroup WHERE GroupID = :groupID")
 	public int getMaxPointsUserGroup(@Bind("groupID") long groupId);
 	
