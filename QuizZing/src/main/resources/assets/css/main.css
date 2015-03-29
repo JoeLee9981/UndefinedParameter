@@ -31,6 +31,16 @@ body
 	font-size: 110%;
 }
 
+.indent30
+{
+	padding-left: 30px;
+}
+
+.indent5
+{
+	padding-left: 5px;
+}
+
 .errorFormText1
 {
 	color: #CC0000 !important;

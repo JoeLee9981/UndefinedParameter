@@ -3,16 +3,19 @@ package com.UndefinedParameter.app.core;
 import java.util.List;
 
 import com.UndefinedParameter.jdbi.GroupDAO;
+import com.UndefinedParameter.jdbi.OrgMemberDAO;
 import com.UndefinedParameter.jdbi.OrganizationDAO;
 
 public class GroupManager {
 
 	private OrganizationDAO orgsDAO;
 	private GroupDAO groupDAO;
+	private OrgMemberDAO orgMemberDAO;
 	
-	public GroupManager(OrganizationDAO orgsDAO, GroupDAO groupDAO) {
+	public GroupManager(OrganizationDAO orgsDAO, GroupDAO groupDAO, OrgMemberDAO orgMemberDAO) {
 		this.orgsDAO = orgsDAO;
 		this.groupDAO = groupDAO;
+		this.orgMemberDAO = orgMemberDAO;
 	}
 	
 	public long addGroup(Group group) {
@@ -126,5 +129,9 @@ public class GroupManager {
 		catch(Exception e) {
 			return 0;
 		}
+	}
+	
+	public List<OrgMember> findGroupMembers(long groupId) {
+		return orgMemberDAO.retrieveMembersByGroup(groupId);
 	}
 }

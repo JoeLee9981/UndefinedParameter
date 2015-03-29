@@ -13,6 +13,7 @@ public class OrgMember {
 	private DateTime joinDate;
 	private int quizzes;
 	private int questions;
+	private boolean moderator;
 	
 	@JsonProperty
 	public String getDisplayName() {
@@ -87,6 +88,17 @@ public class OrgMember {
 	public void setOrgId(long orgId) {
 		this.orgId = orgId;
 	}
+
+	@JsonProperty
+	public boolean isModerator() {
+		return moderator;
+	}
+
+	@JsonProperty
+	public void setModerator(boolean moderator) {
+		this.moderator = moderator;
+	}
+	
 	
 	
 	

@@ -24,10 +24,13 @@ import com.UndefinedParameter.app.core.Quiz;
 import com.UndefinedParameter.app.core.QuizManager;
 import com.UndefinedParameter.app.core.User;
 import com.UndefinedParameter.jdbi.GroupDAO;
+import com.UndefinedParameter.jdbi.OrgMemberDAO;
 import com.UndefinedParameter.jdbi.OrganizationDAO;
 import com.UndefinedParameter.jdbi.QuestionDAO;
 import com.UndefinedParameter.jdbi.QuizDAO;
 import com.UndefinedParameter.jdbi.QuizScoreDAO;
+import com.UndefinedParameter.views.GroupMemberView;
+import com.UndefinedParameter.views.GroupQuestionView;
 import com.UndefinedParameter.views.GroupView;
 import com.UndefinedParameter.views.GroupsView;
 import com.UndefinedParameter.views.LoginView;
@@ -35,14 +38,13 @@ import com.UndefinedParameter.views.LoginView;
 
 @Path("/group")
 @Produces(MediaType.TEXT_HTML)
-@Consumes(MediaType.APPLICATION_JSON)
 public class GroupResource {
 
 	public GroupManager manager;
 	public QuizManager quizManager;
 	
-	public GroupResource(OrganizationDAO orgsDAO, GroupDAO groupDAO, QuizDAO quizDAO, QuestionDAO questionDAO, QuizScoreDAO quizScoreDAO) {
-		manager = new GroupManager(orgsDAO, groupDAO);
+	public GroupResource(OrganizationDAO orgsDAO, GroupDAO groupDAO, QuizDAO quizDAO, QuestionDAO questionDAO, QuizScoreDAO quizScoreDAO, OrgMemberDAO orgMemberDOA) {
+		manager = new GroupManager(orgsDAO, groupDAO, orgMemberDOA);
 		this.quizManager = new QuizManager(quizDAO, questionDAO, quizScoreDAO);
 	}
 	
@@ -102,5 +104,25 @@ public class GroupResource {
 		else {
 			return Response.ok(new GroupsView(user, manager.findTopGroups(), null, false)).build();
 		}
+	}
+	
+	@GET
+	@Path("/questions")
+	public Response getGroupQuestions(@Auth(required = false) User user, @QueryParam("groupId") long groupId) {
+		
+		if(groupId < 1) {
+			return Response.status(Status.BAD_REQUEST).build();
+		}
+		return Response.ok(new GroupQuestionView(user, quizManager.findQuestionsByGroup(groupId), groupId)).build();
+	}
+	
+	@GET
+	@Path("/members")
+	public Response getGroupMembers(@QueryParam("groupId") long groupId) {
+		
+		if(groupId < 1) {
+			return Response.status(Status.BAD_REQUEST).build();
+		}
+		return Response.ok(new GroupMemberView(manager.findGroupMembers(groupId))).build();
 	}
 }

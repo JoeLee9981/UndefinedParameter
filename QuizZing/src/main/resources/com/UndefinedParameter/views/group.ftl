@@ -7,6 +7,7 @@
 		<link rel="stylesheet" href="/assets/plugins/metro_ui/min/iconFont.min.css" >
 		<link rel="stylesheet" href="/assets/css/overrides.css">
 		<link rel="stylesheet" href="/assets/css/groups.css">
+		<script src="/assets/plugins/metro_ui/js/metro-accordion.js"></script>
 		<script src="/assets/scripts/jquery-2.1.1.min.js"></script>
 		<script src="/assets/scripts/jquery-ui.min.js"></script>
 		<script src="/assets/plugins/metro_ui/min/metro.min.js"></script>
@@ -30,11 +31,20 @@
 		                    </nav>
 						</div>
 						<div class="row" id="groupImageContainer">
+							<div class="row noMargin">
+							    <div class="indent30 span6">
+							    	<div class="row noMargin">
+										<h2><strong>${group.name}<strong></h2>
+										<p>${group.description}</p>
+									</div>	
+								</div>
+						    </div>
 						</div>
+						
 						<div class="row noMargin">
 							<nav class="navigation-bar white" id="groupNav">
 							    <nav class="navigation-bar-content">
-							    	<a href="#" class="element todo">
+							    	<a href="" class="element" id="memberLink">
 							    		<strong>
 							    			${group.memberCount?html} 
 							        		<#if group.memberCount == 1>
@@ -45,7 +55,7 @@
 							    		</strong>
 							    	</a>
 							    	<span class="element-divider"></span>
-							    	<a href="#" class="element todo">
+							    	<a href="" id="quizLink" class="element">
 								     	<strong>
 							        		${quizCount?html} 
 							        		<#if group.quizCount == 1>
@@ -56,7 +66,7 @@
 							        	</strong>
 							    	</a>
 							    	<span class="element-divider"></span>
-							    	<a href="#" class="element todo">
+							    	<a href="#" class="element" id="questionLink">
 							        	<strong>
 							        		${questionCount?html} 
 							        		<#if group.questionCount == 1>
@@ -78,101 +88,94 @@
 							    </nav>
 							</nav>
 						</div>
-						<div class="row noMargin">
-							<h2><strong>${group.name}<strong></h2>
-							<p>${group.description}</p>
-						</div>	
 						
-						
-						<br/><br/><br/><br/><br/>
-						<#if userQuizzes??>
-								<div class="home-subsection">
-									<h3>Your Group Quizzes</h3>
-									<table>
-											<tr>
-												<th>Quiz Name</th>
-												<th>Description</th>
-												<th># of Questions</th>
-												<th>Difficulty</th>
-												<th>Rating</th>
-												<th>Time</th>
-												<th>Edit</th>
-											</tr>
-											
-										<#list userQuizzes as quiz>		
-										
-											<tr>
-												<td>
-													<a href="/quiz?groupId=${group.id}&quizId=${quiz.quizId}"><h3 class="text-info">${quiz.name} </h3></a>
-												</td>
-												<td>
-													<h3>${quiz.description}</h3>
-												</td>
-												<td>
-													<h3>${quiz.questionCount}</h3>
-												</td>
-												<td>
-													<h3>${quiz.difficulty}</h3>
-												</td>
-												<td>
-													<h3>${quiz.rating}</h3>
-												</td>
-												<td>
-													<h3>${quiz.time}</h3>
-												</td>
-												<td>
-													<a href="/quiz/edit?groupId=${group.id}&quizId=${quiz.quizId}"><h3 class="text-success"><button id="editQuizButton">+</button></h3></a>
-												</td>
-											</tr>
-										</#list>
-									</table>
-								</div>
-							</#if>
-							<div class="home-subsection">
-								<h3>All Group Quizzes</h3>
-								<table>
-										
-										<tr>
-											<th>Quiz Name</th>
-											<th>Description</th>
-											<th># of Questions</th>
-											<th>Difficulty</th>
-											<th>Rating</th>
-											<th>Time</th>
-										</tr>
-										
-									<#list quizzes as quiz>
-										
-										<tr>
-											<td>
-												<h3><a href="/quiz?groupId=${group.id}&quizId=${quiz.quizId}"><h3 class="text-info">${quiz.name} </h3></a>
-											</td>
-											<td>
-												<h3>${quiz.description}</h3>
-											</td>
-											<td>
-												<h3>${quiz.questionCount}</h3>
-											</td>
-											<td>
-												<h3>${quiz.difficulty}</h3>
-											</td>
-											<td>
-												<h3>${quiz.rating}</h3>
-											</td>
-											<td>
-												<h3>${quiz.time}</h3>
-											</td>
-										</tr>
-									</#list>
-								</table>
-								<br/>
-
+						<div id="group-content"></div>
+	
+						<div class="row">					
+							<div class="accordion with-marker" data-role="accordion" data-closeany="false">
+								<div class="accordion-frame <#if userQuizzes?size gt 0>active</#if>">
+									<a href="#" class="heading bg-lightBlue fg-white">My Group Quizzes</a>			
+									<div class="content">									
+										<#if userQuizzes?size gt 0>								
+											<table class="table hovered">
+												<tbody>
+													<#list userQuizzes as quiz>
+														<tr>
+															<td class="padding5">
+																<a href="/quiz?groupId=${group.id}&quizId=${quiz.quizId}">${quiz.name}</a>
+															</td>
+															<td class="padding5">
+																<span>${quiz.description}</span>
+															</td>
+															<td class="padding5">
+																<span class="place-right" title="Number of Questions"><i class="icon-help-2 on-right"></i> ${quiz.questionCount}</span>
+															</td>
+															<td class="padding5">
+																<span class="place-right" title="Quiz Difficulty"><i class="icon-power on-right"></i> ${quiz.difficulty}</span>
+															</td>
+															<td class="padding5">
+																<span class="place-right" title="Quiz Rating"><i class="icon-star-3 on-right"></i> ${quiz.rating}</span>
+															</td>
+															<td class="padding5">
+																<span class="place-right" title="Expected Time"><i class="icon-busy on-right"></i> ${quiz.timeString}</span>
+															</td>
+															<td class="padding5">
+																<span class="place-right" title="Edit Quiz"><a href="/quiz/edit?groupId=${group.id}&quizId=${quiz.quizId}"><i class="icon-pencil join"></i></a></span>
+															</td>
+														</tr>
+															<!-- <td class="right padding5"><a href="#" class="place-right" onClick="joinOrg({org.id})"><i class="icon-plus join"></i></a></td> -->
+													</#list>
+												</tbody>
+											</table>													
+										<#else>
+											<div style="text-align:center;padding:20px;">
+												<h6>There are no quizzes for this group.</h6>
+											</div>
+										</#if>																				
+									</div>
+								</div>		
+							</div>				
+							<div class="accordion with-marker" data-role="accordion" data-closeany="false">
+								<div class="accordion-frame">
+									<a href="#" class="heading bg-lightBlue fg-white">All Group Quizzes</a>			
+									<div class="content">									
+										<#if quizzes?size gt 0>								
+											<table class="table hovered">
+												<tbody>
+													<#list quizzes as quiz>
+														<tr>
+															<td class="padding5">
+																<a href="/quiz?groupId=${group.id}&quizId=${quiz.quizId}">${quiz.name}</a>
+															</td>
+															<td class="padding5">
+																<span>${quiz.description}</span>
+															</td>
+															<td class="padding5">
+																<span class="place-right" title="Number of Questions"><i class="icon-help-2 on-right"></i> ${quiz.questionCount}</span>
+															</td>
+															<td class="padding5">
+																<span class="place-right" title="Quiz Difficulty"><i class="icon-power on-right"></i> ${quiz.difficulty}</span>
+															</td>
+															<td class="padding5">
+																<span class="place-right" title="Quiz Rating"><i class="icon-star-3 on-right"></i> ${quiz.rating}</span>
+															</td>
+															<td class="padding5">
+																<span class="place-right" title="Expected Time"><i class="icon-busy on-right"></i> ${quiz.timeString}</span>
+															</td>
+														</tr>
+															<!-- <td class="right padding5"><a href="#" class="place-right" onClick="joinOrg()"><i class="icon-plus join"></i></a></td> -->
+													</#list>
+												</tbody>
+											</table>													
+										<#else>
+											<div style="text-align:center;padding:20px;">
+												<h6>There are no quizzes for this group.</h6>
+											</div>
+										</#if>																				
+									</div>
+								</div>		
 							</div>
-						
-						
-						
-						
-														
+						</div>										
 					</div>
 				</div>
 			<div>	
@@ -183,6 +186,42 @@
 </html>
 
 <script>
+
+	$('#quizLink').click(function(event) {
+		event.preventDefault();
+		$('#group-content').html("");
+	});
+
+	$('#memberLink').click(function(event) {
+		event.preventDefault();
+		$.ajax({
+			type: 'GET',
+			url: "/group/members?groupId=" + ${group.id},
+			success: function(data) {
+				$('#group-content').html(data);
+			},
+			error: function(error) {
+		    	$('#group-content').html("<h3>No Members Found</h3>");
+		    }
+		});
+
+	});
+
+	$('#questionLink').click(function(event) {
+		event.preventDefault();
+		$.ajax({
+			type: 'GET',
+			url: "/group/questions?groupId=" + ${group.id},
+			success: function(data) {
+				$('#group-content').html(data);
+			},
+			error: function(error) {
+		    	$('#group-content').html("<h3>No Questions Found</h3>");
+		    }
+		});
+
+	});
+	
 
 	function register(groupId) {
 		<#if user??>

@@ -20,6 +20,7 @@ public class Question {
 		MATCHING
 	}
 	
+	private ArrayList<String> categories;
 	private long questionId;
 	private long creatorId;
 	private long groupId; //this is the original group the question was created for
@@ -63,6 +64,24 @@ public class Question {
 		this.flagged = flag;
 		this.reference = ref;
 		this.explanation = explan;
+		this.categories = new ArrayList<String>();
+	}
+	
+	public Question(long qID, long cID, long groupId, double difficulty, double rate, String qt, String qText, String answer, ArrayList<String> wrong, Boolean flag, String ref, String explan, ArrayList<String> categories)
+	{
+		this.questionId = qID;
+		this.creatorId = cID;
+		this.groupId = groupId;
+		this.difficulty = difficulty;
+		this.rating = rate;
+		this.type = QuestionType.valueOf(qt);
+		this.questionText = qText;
+		this.correctAnswer = answer;
+		this.wrongAnswers = wrong;
+		this.flagged = flag;
+		this.reference = ref;
+		this.explanation = explan;
+		this.categories = categories;
 	}
 	
 	public void setAnswers() {
@@ -295,6 +314,15 @@ public class Question {
 	public void setUserDifficulty(int userDifficulty) {
 		this.userDifficulty = userDifficulty;
 	}
-	
-	
+
+	@JsonProperty
+	public ArrayList<String> getCategories() {
+		return categories;
+	}
+
+	@JsonProperty
+	public void setCategories(ArrayList<String> categories) {
+		this.categories = categories;
+	}
+
 }

@@ -16,4 +16,12 @@ public interface OrgMemberDAO {
 			+ "uo.OrgID = o.OrgID AND "
 			+ "o.OrgID = :orgId")
 	public List<OrgMember> retrieveMembersByOrg(@Bind("orgId") long orgId);
+	
+	
+	@SqlQuery("SELECT * FROM User u, SubGroup sg, UserGroups ug WHERE "
+			+ "u.UserID = ug.UserID AND "
+			+ "ug.GroupID = sg.GroupID AND "
+			+ "sg.GroupID = :groupId")
+	@RegisterMapper(GroupMemberMapper.class)
+	public List<OrgMember> retrieveMembersByGroup(@Bind("groupId") long groupId);
 }

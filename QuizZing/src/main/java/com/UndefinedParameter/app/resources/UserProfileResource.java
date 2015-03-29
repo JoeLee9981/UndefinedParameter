@@ -1,8 +1,8 @@
 package com.UndefinedParameter.app.resources;
 
-import java.util.HashMap;
-
 import io.dropwizard.auth.Auth;
+
+import java.util.HashMap;
 
 import javax.validation.Valid;
 import javax.ws.rs.Consumes;
@@ -15,13 +15,12 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
-import org.joda.time.DateTime;
-
 import com.UndefinedParameter.app.core.GroupManager;
 import com.UndefinedParameter.app.core.QuizManager;
 import com.UndefinedParameter.app.core.User;
 import com.UndefinedParameter.app.core.UserManager;
 import com.UndefinedParameter.jdbi.GroupDAO;
+import com.UndefinedParameter.jdbi.OrgMemberDAO;
 import com.UndefinedParameter.jdbi.OrganizationDAO;
 import com.UndefinedParameter.jdbi.QuestionDAO;
 import com.UndefinedParameter.jdbi.QuizDAO;
@@ -38,11 +37,11 @@ public class UserProfileResource {
 	public QuizManager quizManager;
 	public GroupManager groupManager;
 	
-	public UserProfileResource(UserDAO userdao, QuizDAO quizdao, QuestionDAO questiondao, OrganizationDAO orgdao, GroupDAO groupdao, QuizScoreDAO quizScoredao)
+	public UserProfileResource(UserDAO userdao, QuizDAO quizdao, QuestionDAO questiondao, OrganizationDAO orgdao, GroupDAO groupdao, QuizScoreDAO quizScoredao, OrgMemberDAO orgMemberDAO)
 	{
 		this.userManager = new UserManager(userdao);
 		this.quizManager = new QuizManager(quizdao, questiondao, quizScoredao);
-		this.groupManager = new GroupManager(orgdao, groupdao);
+		this.groupManager = new GroupManager(orgdao, groupdao, orgMemberDAO);
 	}
 
 	/*

@@ -47,7 +47,7 @@ public class QuizResource {
 	
 	public QuizResource(QuizDAO quizDAO, QuestionDAO questionDAO, OrganizationDAO orgDAO, GroupDAO groupDAO, OrgMemberDAO orgMemberDAO, QuizScoreDAO quizScoreDAO) {
 		quizManager = new QuizManager(quizDAO, questionDAO, quizScoreDAO);
-		groupManager = new GroupManager(orgDAO, groupDAO);
+		groupManager = new GroupManager(orgDAO, groupDAO, orgMemberDAO);
 		organizationManager = new OrganizationManager(orgDAO, groupDAO, orgMemberDAO);
 	}
 	

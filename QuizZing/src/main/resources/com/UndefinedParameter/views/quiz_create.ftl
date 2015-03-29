@@ -69,7 +69,7 @@
 									</div>
 								</div>
 						    </div>				
-						</div>		
+						</div>
 						<div class="row noMargin">
 						    <div class="offset1 span6">
 						    	<div>
