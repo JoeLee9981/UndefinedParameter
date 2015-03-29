@@ -2,7 +2,7 @@
 	<form id="create-question-form">
 		<h5>Question <a href="#" data-hint="Question|The text of the question" data-hint-position="right" data-hint-mode="2"><i class="icon-help fg-blue"></i></a></h5>
 			<div class="input-control textarea">
-			    <textarea id="descriptionText"></textarea>
+			    <textarea id="descriptionText"><#if question.questionText??>${question.questionText}</#if></textarea>
 			</div>
 		<div class="row noMargin">
 		    <div class="span12">
@@ -18,7 +18,7 @@
 	    </div>
 		<label><h5>Explanation of Answer <a href="#" data-hint="Explanation|A bit of text that explains, or gives background on the answer of the question" data-hint-position="right" data-hint-mode="2"><i class="icon-help fg-blue"></i></a></h5>
 			<div class="input-control textarea">
-			    <textarea id="explanationText"></textarea>
+			    <textarea id="explanationText"><#if question.explanation??>${question.explanation}</#if></textarea>
 			</div>
 		</label>
 		
@@ -26,53 +26,53 @@
 			<div class="span8">
 				<label id="mc-answer-options"><h5>Answer Options <a href="#" data-hint="Answer Options|These are the possible answers to choose from, use the radio to signify the correct answer" data-hint-position="right" data-hint-mode="2"><i class="icon-help fg-blue"></i></a></h5>
 					<div class="input-control text size5">
-					    <input type="text" id="qText1"/>
+					    <input type="text" id="qText1" value="<#if question.answers[0]??>${question.answers[0]}</#if>"/>
 					</div>
 					<div class="input-control radio">
 					    <label>
-					        <input name="question-options" type="radio" id="qCheck1"/>
+					        <input name="question-options" type="radio" id="qCheck1" <#if question.answers[0]?? && question.answers[0] == question.correctAnswer>checked</#if>/>
 					        <span class="check"></span>
 					    </label>
 					</div>	
 					<div class="input-control text size5">
-					    <input type="text" id="qText2"/>
+					    <input type="text" id="qText2" value="${question.answers[1]}"/>
 					</div>
 					<div class="input-control radio">
 					    <label>
-					        <input name="question-options" type="radio" id="qCheck2"/>
+					        <input name="question-options" type="radio" id="qCheck2" <#if question.answers[1]?? && question.answers[1] == question.correctAnswer>checked</#if>/>
 					        <span class="check"></span>
 					    </label>
 					</div>							
 					<div class="input-control text size5">
-					    <input type="text" id="qText3"/>
+					    <input type="text" id="qText3" value="${question.answers[2]}"/>
 					</div>
 					<div class="input-control radio">
 					    <label>
-					        <input name="question-options" type="radio" id="qCheck3"/>
+					        <input name="question-options" type="radio" id="qCheck3" <#if question.answers[2]?? && question.answers[2] == question.correctAnswer>checked</#if>/>
 					        <span class="check"></span>
 					    </label>
 					</div>								
 					<div class="input-control text size5">
-					    <input type="text" id="qText4"/>
+					    <input type="text" id="qText4" value="${question.answers[3]}"/>
 					</div>
 					<div class="input-control radio">
 					    <label>
-					        <input name="question-options" type="radio" id="qCheck4"/>
+					        <input name="question-options" type="radio" id="qCheck4" <#if question.answers[3]?? && question.answers[3] == question.correctAnswer>checked</#if>/>
 					        <span class="check"></span>
 					    </label>
 					</div>	
 					<div class="input-control text size5">
-					    <input type="text" id="qText5"/>
+					    <input type="text" id="qText5" value="<#if question.answers[4]??>${question.answers[4]}</#if>"/>
 					</div>
 					<div class="input-control radio">
 					    <label>
-					        <input name="question-options" type="radio" id="qCheck5"/>
+					        <input name="question-options" type="radio" id="qCheck5" <#if question.answers[4]?? && question.answers[4] == question.correctAnswer>checked</#if>/>
 					        <span class="check"></span>
 					    </label>
 					</div>
 					<div class="input-control checkbox">
 						<label>
-							<input type="checkbox" id="randomize"/>
+							<input type="checkbox" id="randomize" <#if question.ordered>checked</#if>/>
 							<span class="check"></span>
 							Lock Answer Positions
 						</label>
@@ -111,6 +111,19 @@
 	
 	
 	<script>
+
+		function setAnswers() {
+			var answers = [];
+			
+			<#if question.answers??>
+			<#list question.answers as answer>
+			answers.push(${answer});
+			</#list>
+			</#if>
+			
+			alert(answers);
+		}
+	
 		$('#categories').keydown(function(event) {
 			if(event.which == 188) {
 				var replc = "";
@@ -149,14 +162,14 @@
 			
 			//TODO Prevalidate these fields
 			var maxAnswers = 5;
-			var quizId = ${quizId};
+			var quizId = 0;
 			var desc = document.getElementById('descriptionText').value;
 			var correct;
 			var type = "MULTIPLE_CHOICE";
 			var incorrect = [];
-			var creatorId = ${user.id};
+			var creatorId = ${question.creatorId};
 			var explanation = document.getElementById('explanationText').value;
-			var path = "/question/create?quizId=" + quizId;
+			var path = "/question/edit?questionId=" + ${question.questionId};
 			var correctPos = 0;
 			
 			//TODO: once ready uncomment this code
@@ -208,7 +221,7 @@
 			 $.ajax({
 				type: 'POST',
 				url: path,
-				data: JSON.stringify({groupId: ${groupId}, questionText: desc, correctAnswer: correct, type: type, wrongAnswers: incorrect, creatorId: creatorId, explanation: explanation, ordered: ordered, reference: reference, referenceLink: hyperlink, correctPosition: correctPos, categories: categories }),
+				data: JSON.stringify({questionText: desc, correctAnswer: correct, type: type, wrongAnswers: incorrect, creatorId: creatorId, explanation: explanation, ordered: ordered, reference: reference, referenceLink: hyperlink, correctPosition: correctPos, categories: categories }),
 				dataType: "json",
 				headers: {
 					Accept: "application/json",

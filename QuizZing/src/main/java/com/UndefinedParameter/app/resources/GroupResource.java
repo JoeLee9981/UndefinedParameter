@@ -113,6 +113,7 @@ public class GroupResource {
 		if(groupId < 1) {
 			return Response.status(Status.BAD_REQUEST).build();
 		}
+		
 		return Response.ok(new GroupQuestionView(user, quizManager.findQuestionsByGroup(groupId), groupId)).build();
 	}
 	

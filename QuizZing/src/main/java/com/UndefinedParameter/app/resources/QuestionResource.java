@@ -27,6 +27,7 @@ import com.UndefinedParameter.jdbi.QuizScoreDAO;
 import com.UndefinedParameter.views.LoginView;
 import com.UndefinedParameter.views.QuestionAddView;
 import com.UndefinedParameter.views.QuestionCreatorView;
+import com.UndefinedParameter.views.QuestionEditView;
 import com.UndefinedParameter.views.QuizEditQuestionsView;
 
 @Path("/question")
@@ -170,5 +171,21 @@ public class QuestionResource {
 		else {
 			return Response.status(Status.BAD_REQUEST).build();
 		}
+	}
+	
+	@GET
+	@Path("/edit")
+	public Response getQuizEdit(@Auth(required = false) User user, @QueryParam("questionId") long questionId, @QueryParam("groupId") long groupId) {
+		if(user == null || questionId < 1) {
+			//user may not be null for editing
+			return Response.status(Status.BAD_REQUEST).build();
+		}
+		Question question = quizManager.findQuestionById(questionId);
+		//TODO: Moderators also have access here
+		if(question != null && user.getId() != question.getCreatorId()) {
+			return Response.status(Status.BAD_REQUEST).build();
+		}
+		
+		return Response.ok(new QuestionEditView(question, groupId)).build();
 	}
 }

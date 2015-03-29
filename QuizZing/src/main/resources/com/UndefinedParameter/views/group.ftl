@@ -44,36 +44,21 @@
 						<div class="row noMargin">
 							<nav class="navigation-bar white" id="groupNav">
 							    <nav class="navigation-bar-content">
-							    	<a href="" class="element" id="memberLink">
+							    	<a href="" class="element" id="memberLink" title="Members">
 							    		<strong>
-							    			${group.memberCount?html} 
-							        		<#if group.memberCount == 1>
-							        			member
-							        		<#else>
-							        			members
-							        		</#if>
+							    			${group.memberCount?html}  <i class="icon-user-3 on-right"></i>
 							    		</strong>
 							    	</a>
 							    	<span class="element-divider"></span>
-							    	<a href="" id="quizLink" class="element">
+							    	<a href="" id="quizLink" class="element" title="Quizzes">
 								     	<strong>
-							        		${quizCount?html} 
-							        		<#if group.quizCount == 1>
-							        			quiz
-							        		<#else>
-							        			quizzes
-							        		</#if>
+							        		${quizCount?html}  <i class="icon-clipboard-2 on-right"></i> 
 							        	</strong>
 							    	</a>
 							    	<span class="element-divider"></span>
-							    	<a href="#" class="element" id="questionLink">
+							    	<a href="#" class="element" id="questionLink" title="Questions">
 							        	<strong>
-							        		${questionCount?html} 
-							        		<#if group.questionCount == 1>
-							        			question
-							        		<#else>
-							        			questions
-							        		</#if>
+							        		${questionCount?html}  <i class="icon-help-2 on-right"></i>
 							        	</strong>
 						        	</a>
 						        	<span class="element-divider"></span>
@@ -91,7 +76,8 @@
 						
 						<div id="group-content"></div>
 	
-						<div class="row">					
+						<div class="row">
+							<#if userQuizzes??>			
 							<div class="accordion with-marker" data-role="accordion" data-closeany="false">
 								<div class="accordion-frame <#if userQuizzes?size gt 0>active</#if>">
 									<a href="#" class="heading bg-lightBlue fg-white">My Group Quizzes</a>			
@@ -133,7 +119,8 @@
 											</div>
 										</#if>																				
 									</div>
-								</div>		
+								</div>
+								</#if>
 							</div>				
 							<div class="accordion with-marker" data-role="accordion" data-closeany="false">
 								<div class="accordion-frame">

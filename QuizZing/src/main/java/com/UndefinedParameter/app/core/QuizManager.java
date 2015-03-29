@@ -122,6 +122,14 @@ public class QuizManager {
 		return quiz;
 	}
 	
+	public Question findQuestionById(long questionId) {
+		
+		if(questionId < 1)
+			return null;
+		
+		return questionDAO.getQuestion(questionId);
+	}
+	
 	/*
 	 * Find all quizzes created by a user
 	 */
