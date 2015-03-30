@@ -1,9 +1,10 @@
 package com.UndefinedParameter.app.core;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import org.joda.time.DateTime;
+import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -127,7 +128,12 @@ public class QuizManager {
 		if(questionId < 1)
 			return null;
 		
-		return questionDAO.getQuestion(questionId);
+		Question question = questionDAO.getQuestion(questionId);
+		
+		if(question != null && questionId > 0)
+			question.setCategories(questionDAO.getCategoriesByQuestion(question.getQuestionId()));
+		
+		return question;
 	}
 	
 	/*
@@ -154,26 +160,48 @@ public class QuizManager {
 		}
 	}
 	
-	/*
-	 * TODO: Implement this
-	 */
 	private List<Question> getQuestions(long quizId) {
-		//TODO: Validation
-		return questionDAO.retrieveExistingQuiz(quizId);
+		
+		List<Question> questions = questionDAO.retrieveExistingQuiz(quizId);
+		
+		if(questions != null) {
+			for(Question question: questions) {
+				question.setCategories(questionDAO.getCategoriesByQuestion(question.getQuestionId()));
+			}
+		}
+		
+		return questions;
 	}
 	
 	public List<Question> findQuestionsByGroup(long groupId) {
-		if(groupId > 0) {
-			return questionDAO.getQuestionsByGroupId(groupId);
-		}
-		else {
+		
+		if(groupId < 1) {
 			return null;
 		}
+		
+		List<Question> questions = questionDAO.getQuestionsByGroupId(groupId);
+		
+		if(questions != null) {
+			for(Question question: questions) {
+				question.setCategories(questionDAO.getCategoriesByQuestion(question.getQuestionId()));
+			}
+		}
+		
+		return questions;
 	}
 	
 	public List<Question> findUnaddedGroupQuestions(long groupId, long quizId) {
 		if(groupId > 0 && quizId > 0) {
-			return questionDAO.getUnaddedQuizQuestionsByGroup(groupId, quizId);
+			
+			List<Question> questions = questionDAO.getUnaddedQuizQuestionsByGroup(groupId, quizId);
+			
+			if(questions != null) {
+				for(Question question: questions) {
+					question.setCategories(questionDAO.getCategoriesByQuestion(question.getQuestionId()));
+				}
+			}
+			
+			return questions;
 		}
 		else {
 			return null;
@@ -244,6 +272,8 @@ public class QuizManager {
 												 InputUtils.sanitizeInput(reference), 
 												 question.isOrdered(), 
 												 question.getCorrectPosition());
+			
+			setCategoriesForQuestion(question.getQuestionId(), question.getCategories());
 			return id;
 		}
 	}
@@ -442,6 +472,49 @@ public class QuizManager {
 		catch(Exception e) {
 			//database insert fails
 			return false;
+		}
+	}
+	
+	public boolean updateQuestion(Question question) {
+		
+		setCategoriesForQuestion(question.getQuestionId(), question.getCategories());
+		questionDAO.updateQuestion(InputUtils.sanitizeInput(question.getQuestionText()), 
+								   InputUtils.sanitizeInput(question.getCorrectAnswer()), 
+								   InputUtils.sanitizeInput(question.getWrongAnswers().get(0)), 
+								   InputUtils.sanitizeInput(question.getWrongAnswers().get(1)), 
+								   InputUtils.sanitizeInput( question.getWrongAnswers().get(2)), 
+								   InputUtils.sanitizeInput(question.getWrongAnswers().get(3)), 
+								   InputUtils.sanitizeInput(question.getExplanation()), 
+								   InputUtils.sanitizeInput(question.getReference()), 
+								   question.isOrdered(), 
+								   question.getCorrectPosition(),
+								   question.getQuestionId());
+		return true;
+	}
+	
+	private void setCategoriesForQuestion(long questionId, List<String> categories) {
+		
+		if(categories == null || questionId < 1) {
+			return;
+		}
+		
+		List<String> existingCategories = questionDAO.getCategoriesByQuestion(questionId);
+		
+		for(String cat: categories) {
+			
+			//if the category already exists, skip it
+			if(existingCategories.contains(cat) || StringUtils.isBlank(cat)) {
+				continue;
+			}
+			
+			long catid = questionDAO.getCategoryId(cat);
+			
+			if(catid < 1) {
+				catid = questionDAO.createCategory(cat);
+			}
+			
+			if(catid > 0)
+				questionDAO.addCategoryToQuestion(questionId, catid);
 		}
 	}
 	

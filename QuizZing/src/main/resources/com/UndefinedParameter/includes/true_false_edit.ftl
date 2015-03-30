@@ -1,8 +1,8 @@
-<div class="span9" id="multichoice-div">
+<div class="span9" id="truefalse-div">
 	<form id="create-question-form">
 		<h5>Question <a href="#" data-hint="Question|The text of the question" data-hint-position="right" data-hint-mode="2"><i class="icon-help fg-blue"></i></a></h5>
 			<div class="input-control textarea">
-			    <textarea id="descriptionText"><#if question.questionText??>${question.questionText}</#if></textarea>
+			    <textarea id="tf-descriptionText"><#if question.questionText??>${question.questionText}</#if></textarea>
 			</div>
 		<div class="row noMargin">
 		    <div class="span12">
@@ -18,7 +18,7 @@
 	    </div>
 		<label><h5>Explanation of Answer <a href="#" data-hint="Explanation|A bit of text that explains, or gives background on the answer of the question" data-hint-position="right" data-hint-mode="2"><i class="icon-help fg-blue"></i></a></h5>
 			<div class="input-control textarea">
-			    <textarea id="explanationText"><#if question.explanationFormatted??>${question.explanationFormatted}</#if></textarea>
+			    <textarea id="tf-explanationText"><#if question.explanation??>${question.explanation}</#if></textarea>
 			</div>
 		</label>
 		
@@ -26,57 +26,24 @@
 			<div class="span8">
 				<label id="mc-answer-options"><h5>Answer Options <a href="#" data-hint="Answer Options|These are the possible answers to choose from, use the radio to signify the correct answer" data-hint-position="right" data-hint-mode="2"><i class="icon-help fg-blue"></i></a></h5>
 					<div class="input-control text size5">
-					    <input type="text" id="qText1" value="<#if question.answers[0]??>${question.answers[0]}</#if>"/>
+					    <h3>True</h3>
 					</div>
 					<div class="input-control radio">
 					    <label>
-					        <input name="question-options" type="radio" id="qCheck1" <#if question.answers[0]?? && question.answers[0] == question.correctAnswer>checked</#if>/>
+					        <input name="question-options" type="radio" id="trueCheck" <#if question.correctAnswer == "True">checked</#if>/>
 					        <span class="check"></span>
 					    </label>
 					</div>	
 					<div class="input-control text size5">
-					    <input type="text" id="qText2" value="${question.answers[1]}"/>
+					    <h3>False</h3>
 					</div>
 					<div class="input-control radio">
 					    <label>
-					        <input name="question-options" type="radio" id="qCheck2" <#if question.answers[1]?? && question.answers[1] == question.correctAnswer>checked</#if>/>
+					        <input name="question-options" type="radio" id="falseCheck" <#if question.correctAnswer == "False">checked</#if>/>
 					        <span class="check"></span>
 					    </label>
 					</div>							
-					<div class="input-control text size5">
-					    <input type="text" id="qText3" value="${question.answers[2]}"/>
-					</div>
-					<div class="input-control radio">
-					    <label>
-					        <input name="question-options" type="radio" id="qCheck3" <#if question.answers[2]?? && question.answers[2] == question.correctAnswer>checked</#if>/>
-					        <span class="check"></span>
-					    </label>
-					</div>								
-					<div class="input-control text size5">
-					    <input type="text" id="qText4" value="${question.answers[3]}"/>
-					</div>
-					<div class="input-control radio">
-					    <label>
-					        <input name="question-options" type="radio" id="qCheck4" <#if question.answers[3]?? && question.answers[3] == question.correctAnswer>checked</#if>/>
-					        <span class="check"></span>
-					    </label>
-					</div>	
-					<div class="input-control text size5">
-					    <input type="text" id="qText5" value="<#if question.answers[4]??>${question.answers[4]}</#if>"/>
-					</div>
-					<div class="input-control radio">
-					    <label>
-					        <input name="question-options" type="radio" id="qCheck5" <#if question.answers[4]?? && question.answers[4] == question.correctAnswer>checked</#if>/>
-					        <span class="check"></span>
-					    </label>
-					</div>
-					<div class="input-control checkbox">
-						<label>
-							<input type="checkbox" id="randomize" <#if question.ordered>checked</#if>/>
-							<span class="check"></span>
-							Lock Answer Positions
-						</label>
-					</div>
+					
 					
 					<!--<label><p>Reference <a href="#" data-hint="Reference|Add the source of the information used to determine the correct answer" data-hint-position="right" data-hint-mode="2"><i class="icon-help fg-blue"></i></a></p>
 						<div class="input-control text size5">
@@ -89,7 +56,7 @@
 						</div>
 					</label>-->
 					<div class="span8">
-						<input type="button" onclick="addMultipleChoice()" value="Submit"></input>
+						<input type="button" onclick="addTrueFalse()" value="Submit"></input>
 						<p id="responseLabel" />
 					</div>						
 				</label>
@@ -109,9 +76,8 @@
 		</div>
 	</form>
 	
-	
 	<script>
-	
+
 		$('#categories').keydown(function(event) {
 			if(event.which == 188) {
 				var replc = "";
@@ -129,9 +95,9 @@
 			}
 			
 		});
-
+	
 		$('#categories').blur(function() {
-
+	
 			var replc = "";
 			var hTags = $('#categories').val().split(',');
 			for(var i = 0; i < hTags.length; i++) {
@@ -146,16 +112,16 @@
 			event.preventDefault();
 		});
 	
-		function addMultipleChoice() {
-			
+		function addTrueFalse() {
+
 			//TODO Prevalidate these fields
 			var maxAnswers = 5;
-			var desc = document.getElementById('descriptionText').value;
+			var desc = document.getElementById('tf-descriptionText').value;
 			var correct;
 			var incorrect = [];
-			var explanation = document.getElementById('explanationText').value;
-			var path = "/question/edit?groupId=" + ${groupId};
 			var correctPos = 0;
+			var explanation = document.getElementById('tf-explanationText').value;
+			var path = "/question/edit?groupId=" + ${groupId};
 			
 			//TODO: once ready uncomment this code
 			//var reference = document.getElementById('referenceText').value;
@@ -163,31 +129,30 @@
 			var reference = "";
 			var hyperlink = "";
 			
-			var ordered = document.getElementById('randomize').checked;
+			var ordered = true;
 			
 			document.getElementById('responseLabel').innerHTML = "";
 			
-			for(var i = 1; i <= maxAnswers; i++) {
-				if(document.getElementById('qCheck' + i).checked) {
-					correct = document.getElementById('qText' + i).value;
-					correctPos = i - 1;
-				}
-				else {
-					incorrect.push(document.getElementById('qText' + i).value);
-				}
+			if($('#trueCheck').is(':checked')) {
+				correct = "True";
+				incorrect.push("False");
+				correctPos = 0;
 			}
-			
-			if(!desc) {
-				document.getElementById('responseLabel').innerHTML = "The Question must be filled out";
-				document.getElementById('responseLabel').className = "text-alert";
-				return;
+			else if($('#falseCheck').is(':checked')) {
+				correct = "False";
+				incorrect.push("True");
+				correctPos = 1;
 			}
-			
-			if(!correct) {
+			else {
 				document.getElementById('responseLabel').innerHTML = "You must check a correct answer";
 				document.getElementById('responseLabel').className = "text-alert";
 				return;
 			}
+			
+			incorrect.push("");
+			incorrect.push("");
+			incorrect.push("");
+			incorrect.push("");
 			
 			if(hyperlink && !reference) {
 				document.getElementById('responseLabel').innerHTML = "Reference must be filled out in conjunction to the hyperlink";
@@ -199,7 +164,7 @@
 			for(var i = 0; i < categories.length; i++) {
 				categories[i] = categories[i].trim().substring(1);
 			}
-
+				
 			 $.ajax({
 				type: 'PUT',
 				url: path,

@@ -19,7 +19,27 @@
 
 		<div id="home-content" class=" metro">
 			<div class="grid fluid">
-			
+				<div id="homeBanner">
+					<div class="page-content">
+						<div id="bannerContent" class="row">
+							
+							<div class="span9">
+								<div class="row">
+									<div id="bannerHeader" class="span6">
+										<h2><strong>You can learn anything.</strong></h2>
+										<span class="subheader-secondary">
+											QuizZing offers the tools you need to succeed in any subject. Receive help, and help others
+											to increase your knowledge.
+										</span>
+										<div id="headerButtons">
+											<button type="button" class="warning large" onclick="location.href = '/about'">Learn More</button>		
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 				
 				<div class="page-content">
 					<div class="row">

@@ -1,7 +1,7 @@
 <#if user??>
 <div class="grid fluid">
 	<div class="row">
-
+		<#if message??><p class="text-success"> *${message}</p></#if>
 		<h5>My Questions<span class="place-right" title="Close"><a href="" id="closeLink"><i class="icon-cancel" style="color: red"></i></a></span></h5>
 		<p class="text-alert" id="error"  />
 		<#if userQuestions??>
@@ -33,7 +33,7 @@
 							<div id="difficulty${question.questionId}" class="rating small fg-red">
 							</div>
 						</td>
-						<td>Computer Science, Computer Secur...</td>
+						<td><#if question.categories??><#if question.categoriesString?length gt 35>${question.categoriesString?substring(0, 35)}...<#else>${question.categoriesString}</#if></#if></td>
 						<script>
 
 							$('#qLink${question.questionId}').click(function(event) {
@@ -56,13 +56,14 @@
 						
 							$("#question${question.questionId}").on('click', function() {
 			
-								var content = "<pre><strong>Question: </strong>${question.questionText}<br/>";
-								content += "<strong>Rating:</strong> ${question.rating} <strong>Difficulty: </strong>${question.difficulty}<br/><strong>Answers:</strong><br/>";
-								content += "  ${question.correctAnswer}<br/>";
+								var content = "<pre style='white-space: pre-wrap; width: 700px'><strong>Question: </strong>${question.questionText}<br/></pre>";
+								content += "<strong>Rating:</strong> ${question.rating} <strong>Difficulty: </strong>${question.difficulty}<br/>";
+								content += "<strong>Categories: </strong>${question.categoriesString}";
+								content += "<pre style='white-space: pre-wrap; width: 700px'><strong>Answers:</strong><br/>  ${question.correctAnswer}<br/>";
 								<#list question.wrongAnswers as answer>
 									content += "  ${answer}<br/>";
 								</#list>
-								content += "</pre>";
+								content += "</pre><br/><br/>";
 
 								$.Dialog({
 							        shadow: true,
@@ -70,7 +71,7 @@
 							        icon: '<span class="icon-power"></span>',
 							        title: 'Question',
 							        width: 500,
-							        padding: 10,
+							        padding: 20,
 							        content: content
 							    });
 							});
@@ -140,7 +141,7 @@
 							<div id="difficulty${question.questionId}" class="rating small fg-red">
 							</div>
 						</td>
-						<td>Computer Science, Computer Secur...</td>
+						<td><#if question.categories??><#if question.categoriesString?length gt 35>${question.categoriesString?substring(0, 35)}...<#else>${question.categoriesString}</#if></#if></td>
 						
 						<script>
 
@@ -155,13 +156,14 @@
 						
 							$("#question${question.questionId}").on('click', function() {
 			
-								var content = "<pre><strong>Question: </strong>${question.questionText}<br/>";
-								content += "<strong>Rating:</strong> ${question.rating} <strong>Difficulty: </strong>${question.difficulty}<br/><strong>Answers:</strong><br/>";
-								content += "  ${question.correctAnswer}<br/>";
+								var content = "<pre style='white-space: pre-wrap; width: 700px'><strong>Question: </strong>${question.questionText}<br/></pre>";
+								content += "<strong>Rating:</strong> ${question.rating} <strong>Difficulty: </strong>${question.difficulty}<br/>";
+								content += "<strong>Categories: </strong>${question.categoriesString}";
+								content += "<pre style='white-space: pre-wrap; width: 700px'><strong>Answers:</strong><br/>  ${question.correctAnswer}<br/>";
 								<#list question.wrongAnswers as answer>
 									content += "  ${answer}<br/>";
 								</#list>
-								content += "</pre>";
+								content += "</pre><br/><br/>";
 
 								$.Dialog({
 							        shadow: true,
@@ -169,7 +171,7 @@
 							        icon: '<span class="icon-power"></span>',
 							        title: 'Question',
 							        width: 500,
-							        padding: 10,
+							        padding: 20,
 							        content: content
 							    });
 							});

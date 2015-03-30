@@ -10,6 +10,7 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
@@ -24,6 +25,7 @@ import com.UndefinedParameter.app.core.User;
 import com.UndefinedParameter.jdbi.QuestionDAO;
 import com.UndefinedParameter.jdbi.QuizDAO;
 import com.UndefinedParameter.jdbi.QuizScoreDAO;
+import com.UndefinedParameter.views.GroupQuestionView;
 import com.UndefinedParameter.views.LoginView;
 import com.UndefinedParameter.views.QuestionAddView;
 import com.UndefinedParameter.views.QuestionCreatorView;
@@ -187,5 +189,25 @@ public class QuestionResource {
 		}
 		
 		return Response.ok(new QuestionEditView(question, groupId)).build();
+	}
+	
+	@PUT
+	@Path("edit")
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Response editQuiz(@Auth(required = false) User user, @QueryParam("groupId") long groupId, @Valid Question question) {
+		
+		if(user == null || groupId < 1) {
+			return Response.status(Status.BAD_REQUEST).build();
+		}
+		Question existingQuestion = quizManager.findQuestionById(question.getQuestionId());
+		
+		//TODO: Allow moderators to do this too
+		if(user.getId() != existingQuestion.getCreatorId()) {
+			return Response.status(Status.BAD_REQUEST).build();
+		}
+		if(quizManager.updateQuestion(question))
+			return Response.ok(new GroupQuestionView(user, quizManager.findQuestionsByGroup(groupId), groupId, "Question has been updated.")).build();
+		else
+			return Response.status(Status.BAD_REQUEST).build();
 	}
 }

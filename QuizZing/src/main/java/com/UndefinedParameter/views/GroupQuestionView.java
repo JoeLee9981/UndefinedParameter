@@ -14,14 +14,16 @@ public class GroupQuestionView extends View {
 	private List<Question> userQuestions;
 	private User user;
 	private long groupId;
+	private String message;
 	
-	public GroupQuestionView(User user, List<Question> questions, long groupId) {
+	public GroupQuestionView(User user, List<Question> questions, long groupId, String message) {
 		super("group_questions.ftl");
 		this.user = user;
 		this.questions = new ArrayList<Question>();
 		this.userQuestions = null;
 		this.groupId = groupId;
 		setQuestions(questions);
+		this.message = message;
 	}
 	
 	private void setQuestions(List<Question> questions) {
@@ -60,6 +62,10 @@ public class GroupQuestionView extends View {
 	
 	public User getUser() {
 		return this.user;
+	}
+	
+	public String getMessage() {
+		return this.message;
 	}
 
 }

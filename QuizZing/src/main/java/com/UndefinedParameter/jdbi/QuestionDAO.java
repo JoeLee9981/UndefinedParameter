@@ -80,6 +80,41 @@ public interface QuestionDAO {
 			+ "(SELECT * FROM QuizQuestion qq WHERE qq.QuestionID = q.QuestionID AND qq.QuizID = :quizId)")
 	public List<Question> getUnaddedQuizQuestionsByGroup(@Bind("groupId") long groupId, @Bind("quizId") long quizId);
 	
+	/*
+	 * Update a quiz
+	 */
+	@SqlUpdate("UPDATE Question SET QuestionText = :questionText, CorrectAnswer = :correctAnswer, WrongAnswer1 = :wrongAnswer1, "
+			+ "WrongAnswer2 = :wrongAnswer2, WrongAnswer3 = :wrongAnswer3, WrongAnswer4 = :wrongAnswer4, Flagged = 0, Explanation = :explanation, "
+			+ "Reference = :reference, Ordered = :ordered, CorrectPosition = :correctPosition WHERE QuestionId = :questionid")
+	public void updateQuestion(@Bind("questionText") String questionText, 
+							   @Bind("correctAnswer") String correctAnswer, 
+							   @Bind("wrongAnswer1") String wrongAnswer1,
+							   @Bind("wrongAnswer2") String wrongAnswer2,
+							   @Bind("wrongAnswer3") String wrongAnswer3,
+							   @Bind("wrongAnswer4") String wrongAnswer4,
+							   @Bind("explanation") String explanation,
+							   @Bind("reference") String reference,
+							   @Bind("ordered") boolean ordered,
+							   @Bind("correctPosition") int correctPosition,
+							   @Bind("questionid") long questionId);
+	
+	@SqlQuery("SELECT CategoryID FROM Category WHERE CategoryType = :category")
+	public long getCategoryId(@Bind("category") String category);
+	
+	@SqlUpdate("INSERT INTO Category (CategoryType) VALUES (:category)")
+	@GetGeneratedKeys
+	public long createCategory(@Bind("category") String category);
+	
+	@SqlQuery("SELECT CategoryType FROM Category c, Question q, QuestionCategory qc WHERE "
+			+ "c.CategoryID = qc.CategoryID AND "
+			+ "q.QuestionID = qc.QuestionID AND "
+			+ "q.QuestionID = :questionId")
+	public List<String> getCategoriesByQuestion(@Bind("questionId") long questionId);
+	
+	@SqlUpdate("INSERT INTO QuestionCategory (QuestionID, CategoryID) VALUES (:questionId, :categoryId)")
+	@GetGeneratedKeys
+	public long addCategoryToQuestion(@Bind("questionId") long questionId, @Bind("categoryId") long categoryId);
+	
 	/********************************** Quiz Quality Ratings Query *****************************************************/
 	
 	@SqlUpdate("UPDATE Question SET Rating = Rating + :rating, RatingCount = RatingCount + 1 WHERE QuestionID = :questionId")

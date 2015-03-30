@@ -36,13 +36,14 @@
 						
 							$("#question${question.questionId}").on('click', function() {
 			
-								var content = "<pre><strong>Question: </strong>${question.questionText}<br/>";
-								content += "<strong>Rating:</strong> ${question.rating} <strong>Difficulty: </strong>${question.difficulty}<br/><strong>Answers:</strong><br/>";
-								content += "  ${question.correctAnswer}<br/>";
+								var content = "<pre style='white-space: pre-wrap; width: 700px'><strong>Question: </strong>${question.questionText}<br/></pre>";
+								content += "<strong>Rating:</strong> ${question.rating} <strong>Difficulty: </strong>${question.difficulty}<br/>";
+								content += "<strong>Categories: </strong>${question.categoriesString}";
+								content += "<pre style='white-space: pre-wrap; width: 700px'><strong>Answers:</strong><br/>  ${question.correctAnswer}<br/>";
 								<#list question.wrongAnswers as answer>
 									content += "  ${answer}<br/>";
 								</#list>
-								content += "</pre>";
+								content += "</pre><br/><br/>";
 
 								$.Dialog({
 							        shadow: true,
@@ -50,7 +51,7 @@
 							        icon: '<span class="icon-power"></span>',
 							        title: 'Question',
 							        width: 500,
-							        padding: 10,
+							        padding: 20,
 							        content: content
 							    });
 							});

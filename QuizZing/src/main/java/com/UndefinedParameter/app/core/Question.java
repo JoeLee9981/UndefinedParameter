@@ -1,7 +1,10 @@
 package com.UndefinedParameter.app.core;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -20,7 +23,7 @@ public class Question {
 		MATCHING
 	}
 	
-	private ArrayList<String> categories;
+	private List<String> categories;
 	private long questionId;
 	private long creatorId;
 	private long groupId; //this is the original group the question was created for
@@ -269,6 +272,10 @@ public class Question {
 	public String getExplanation() {
 		return explanation;
 	}
+	
+	public String getExplanationFormatted() {
+		return explanation.replace("<br/>", "\n");
+	}
 
 	@JsonProperty
 	public void setExplanation(String explan) {
@@ -316,13 +323,78 @@ public class Question {
 	}
 
 	@JsonProperty
-	public ArrayList<String> getCategories() {
+	public List<String> getCategories() {
 		return categories;
 	}
 
 	@JsonProperty
-	public void setCategories(ArrayList<String> categories) {
+	public void setCategories(List<String> categories) {
 		this.categories = categories;
+	}
+	
+	public String getCategoriesString() {
+		
+		if(categories == null || categories.size() == 0) {
+			return "";
+		}
+		
+		StringBuilder catString = new StringBuilder();
+		
+		for(int i = 0; i < categories.size(); i++) {
+			catString.append("#");
+			catString.append(categories.get(i));
+			if(i != categories.size() - 1) {
+				catString.append(", ");
+			}
+			
+		}
+		return catString.toString();
+	}
+	
+	public List<String> getMatchingQuestions() {
+		
+		ArrayList<String> matchingQuestions = new ArrayList<String>();
+		Matcher matcher;
+		Pattern pattern5 = Pattern.compile("&lt;1&gt;(.*)&lt;2&gt;(.*)&lt;3&gt;(.*)&lt;4&gt;(.*)&lt;5&gt;(.*)");
+		matcher = pattern5.matcher(questionText);
+		
+		if(matcher.find()) {
+			matchingQuestions.add(matcher.group(1).trim());
+			matchingQuestions.add(matcher.group(2).trim());
+			matchingQuestions.add(matcher.group(3).trim());
+			matchingQuestions.add(matcher.group(4).trim());
+			matchingQuestions.add(matcher.group(5).trim());
+			return matchingQuestions;
+		}
+		
+		
+		Pattern pattern4 = Pattern.compile("&lt;1&gt;(.*)&lt;2&gt;(.*)&lt;3&gt;(.*)&lt;4&gt;(.*)");
+		matcher = pattern4.matcher(questionText);
+		if(matcher.find()) {
+			matchingQuestions.add(matcher.group(1).trim());
+			matchingQuestions.add(matcher.group(2).trim());
+			matchingQuestions.add(matcher.group(3).trim());
+			matchingQuestions.add(matcher.group(4).trim());
+			return matchingQuestions;
+		}
+		
+		Pattern pattern3 = Pattern.compile("&lt;1&gt;(.*)&lt;2&gt;(.*)&lt;3&gt;(.*)");
+		matcher = pattern3.matcher(questionText);
+		if(matcher.find()) {
+			matchingQuestions.add(matcher.group(1).trim());
+			matchingQuestions.add(matcher.group(2).trim());
+			matchingQuestions.add(matcher.group(3).trim());
+			return matchingQuestions;
+		}
+		
+		Pattern pattern2 = Pattern.compile("&lt;1&gt;(.*)&lt;2&gt;(.*)");
+		matcher = pattern2.matcher(questionText);
+		if(matcher.find()) {
+			matchingQuestions.add(matcher.group(1));
+			matchingQuestions.add(matcher.group(2));
+			return matchingQuestions;
+		}
+		return matchingQuestions;
 	}
 
 }

@@ -114,7 +114,7 @@ public class GroupResource {
 			return Response.status(Status.BAD_REQUEST).build();
 		}
 		
-		return Response.ok(new GroupQuestionView(user, quizManager.findQuestionsByGroup(groupId), groupId)).build();
+		return Response.ok(new GroupQuestionView(user, quizManager.findQuestionsByGroup(groupId), groupId, null)).build();
 	}
 	
 	@GET

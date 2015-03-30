@@ -2,13 +2,13 @@
 <#if question.type == "MULTIPLE_CHOICE">
 	<#include "../includes/multiple_choice_edit.ftl">
 <#elseif question.type == "FILL_IN_THE_BLANK">
-	<#include "../includes/fill_blank.ftl">
+	<#include "../includes/fill_blank_edit.ftl">
 <#elseif question.type == "MATCHING">
-	<#include "../includes/matching.ftl">
+	<#include "../includes/matching_edit.ftl">
 <#elseif question.type == "SHORT_ANSWER">
-	<#include "../includes/short_answer.ftl">
+	<#include "../includes/short_answer_edit.ftl">
 <#elseif question.type == "TRUE_FALSE">
-	<#include "../includes/true_false.ftl">
+	<#include "../includes/true_false_edit.ftl">
 </#if>
 
 <script>

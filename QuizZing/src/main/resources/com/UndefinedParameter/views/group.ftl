@@ -123,7 +123,7 @@
 								</#if>
 							</div>				
 							<div class="accordion with-marker" data-role="accordion" data-closeany="false">
-								<div class="accordion-frame">
+								<div class="accordion-frame <#if user??><#else>active</#if>">
 									<a href="#" class="heading bg-lightBlue fg-white">All Group Quizzes</a>			
 									<div class="content">									
 										<#if quizzes?size gt 0>								
