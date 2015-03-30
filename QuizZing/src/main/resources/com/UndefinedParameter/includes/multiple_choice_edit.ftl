@@ -9,6 +9,7 @@
 		    	<div>
 					<h4>Categories For This Quiz</h4>
 				</div>
+				<div id="categoryTags"></div>
 				<div>
 					<div class="input-control text">
 					    <input id="categories" type="text" placeholder="Comma separated categories" value="${question.categoriesString}"/>
@@ -112,19 +113,49 @@
 	
 	<script>
 	
+		var categories = [];
+		
+		function setCategoryButtons() {
+			var html = "";
+			for(var i = 0; i < categories.length; i++) {
+				var cat = categories[i];
+				if(cat[0] != '#') {
+					cat = '#' + cat;
+				}
+				html += '<button id="catButton' + i + '" class="default" style="margin: 5px"><i onclick="removeCategory(' + i + ')" class="icon-cancel"></i>  ' + cat + '</button>';
+			}
+			$('#categoryTags').html(html);
+			
+			for(var i = 0; i < categories.length; i++) {
+				$('#catButton' + i).click(function(event) {
+					event.preventDefault();
+				});
+				
+			}
+		}
+		
+		function removeCategory(index) {
+			var temp = [];
+			for(var j = 0; j < categories.length; j++) {
+				if(index != j) {
+					temp.push(categories[j]);
+				}
+			}
+			categories = temp;
+			setCategoryButtons();
+		}
+		
 		$('#categories').keydown(function(event) {
 			if(event.which == 188) {
-				var replc = "";
-				var hTags = $('#categories').val().split(',');
-				for(var i = 0; i < hTags.length; i++) {
-					if(hTags[i].trim() && hTags[i].trim().substring(0, 1) != "#") {
-						replc += "#" + hTags[i].trim() + ", ";
-					}
-					else if(hTags[i].trim() != ""){
-						replc += hTags[i].trim() + ", ";
-					}
+				var cat = $('#categories').val().trim();
+				if(cat == "") {
+					event.preventDefault();
+					return;
 				}
-				$('#categories').val(replc);
+				
+				categories.push(cat.substring(0));
+				setCategoryButtons();
+				$('#categories').val("");
 				event.preventDefault();
 			}
 			
@@ -132,17 +163,14 @@
 
 		$('#categories').blur(function() {
 
-			var replc = "";
-			var hTags = $('#categories').val().split(',');
-			for(var i = 0; i < hTags.length; i++) {
-				if(hTags[i].trim() && hTags[i].trim().substring(0, 1) != "#") {
-					replc += "#" + hTags[i].trim() + ", ";
-				}
-				else if(hTags[i].trim() != ""){
-					replc += hTags[i].trim() + ", ";
-				}
+			var cat = $('#categories').val().trim();
+			
+			if(cat == "") {
+				return;
 			}
-			$('#categories').val(replc.substring(0, replc.length-2));
+			categories.push(cat.substring(0));
+			setCategoryButtons();
+			$('#categories').val("");
 			event.preventDefault();
 		});
 	
@@ -193,11 +221,6 @@
 				document.getElementById('responseLabel').innerHTML = "Reference must be filled out in conjunction to the hyperlink";
 				document.getElementById('responseLabel').className = "text-alert";
 				return;
-			}
-
-			var categories = $('#categories').val().split(',');
-			for(var i = 0; i < categories.length; i++) {
-				categories[i] = categories[i].trim().substring(1);
 			}
 
 			 $.ajax({
