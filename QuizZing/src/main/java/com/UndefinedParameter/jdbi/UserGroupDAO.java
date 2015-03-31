@@ -22,8 +22,8 @@ public interface UserGroupDAO {
 		+ "values "
 		+ "(:userid, :groupid)")
 	@GetGeneratedKeys
-	public void insert(@Bind("userid") int userid,
-						@Bind("groupid") int groupid);
+	public void insert(@Bind("userid") long userid,
+						@Bind("groupid") long groupid);
 
 	@SqlUpdate("DELETE FROM UserGroups WHERE GroupID = :gId AND UserID = :uId")
 	public void delete(@Bind("uId") long userID,

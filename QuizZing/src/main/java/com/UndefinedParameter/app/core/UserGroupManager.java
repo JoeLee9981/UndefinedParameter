@@ -111,16 +111,40 @@ public class UserGroupManager {
 	}
 	
 	/*
-	 * Take a quiz, 2 points.
-	 * Make a quiz, 5 points.
-	 * Makes a comment, 1 point.
+	 * Whatever, 		Option = 0: 1 point
+	 * Took a quiz, 	Option = 1: 2 points.
+	 * Made a comment,	Option = 2: 3 point.
+	 * Made a quiz, 	Option = 3: 5 points.
+	 * Made the group,	Option = 99: 300 points.
 	 * More later.
 	 * */
-	public int addPoints(long userID, long groupID, long points)
+	public int addPoints(long userID, long groupID, int option)
 	{
+		long points;
 		if(userID < 0 || groupID < 0)
 		{
 			return -1;
+		}
+		
+		if(option == 99)
+		{
+			points = 300;
+		}
+		else if(option == 1)
+		{
+			points = 2;
+		}
+		else if(option == 2)
+		{
+			points = 3;
+		}
+		else if(option == 3)
+		{
+			points = 5;
+		}
+		else
+		{
+			points = 1;
 		}
 		
 		usergroupDAO.addInUserGroupEarnedPoints(groupID, userID, points);
@@ -147,14 +171,9 @@ public class UserGroupManager {
 		}
 		
 		return 0;
-	}
+	} 
 	
-	/*
-	 * Take a quiz, 2 points.
-	 * Make a quiz, 5 points.
-	 * Makes a comment, 1 point.
-	 * More later.
-	 * */
+
 	public int checkModWhileRemovingUser(long userID, long groupID)
 	{
 		if(userID < 0 || groupID < 0)
