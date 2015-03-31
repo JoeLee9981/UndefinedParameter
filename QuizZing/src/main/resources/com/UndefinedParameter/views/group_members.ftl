@@ -1,7 +1,7 @@
 <h5>Group Members<span class="place-right" title="Close"><a href="" id="closeLink"><i class="icon-cancel" style="color: red"></i></a></span></h5>
 <div class="row noMargin" id="membersDiv" hidden="true">
 	<#if members??>
-		<table class="table hovered">
+		<table class="table hovered striped">
 			<#list members as member>
 				<tr>
 					<td class="padding5"><a href="/user?userid=${member.userId}">${member.displayName}</a></td>

@@ -101,7 +101,7 @@
 						<#include "../includes/top_groups.ftl">
 						<div class="row">
 							<h2>Top Categories</h2>
-							<table class="table hovered">
+							<table class="table hovered striped">
 		                        <thead>
 			                        <tr>
 			                            <th class="text-left">Subject</th>
@@ -110,7 +110,6 @@
 			                        </tr>
 		                        </thead>
 		                        <tbody>                         
-		                        </tbody>
 									<tr>
 										<td><a href="#" class="todo"> Computer Science </a></td>
 										<td class="text-right right">17</td>
@@ -146,6 +145,7 @@
 										<td class="text-right right">17</td>
 										<td class="text-right right">4.3</td>
 									</tr>
+								</tbody>
 		                        <tfoot></tfoot>
 		                    </table>  
 	                    </div>  					

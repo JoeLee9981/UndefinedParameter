@@ -83,7 +83,7 @@
 									<a href="#" class="heading bg-lightBlue fg-white">My Group Quizzes</a>			
 									<div class="content">									
 										<#if userQuizzes?size gt 0>								
-											<table class="table hovered">
+											<table class="table hovered striped">
 												<tbody>
 													<#list userQuizzes as quiz>
 														<tr>
@@ -127,7 +127,7 @@
 									<a href="#" class="heading bg-lightBlue fg-white">All Group Quizzes</a>			
 									<div class="content">									
 										<#if quizzes?size gt 0>								
-											<table class="table hovered">
+											<table class="table hovered striped">
 												<tbody>
 													<#list quizzes as quiz>
 														<tr>
@@ -149,10 +149,12 @@
 															<td class="padding5">
 																<span class="place-right" title="Expected Time"><i class="icon-busy on-right"></i> ${quiz.timeString}</span>
 															</td>
-															<#if user.admin??>
+															<#if user?? && (user.admin || quiz.open || user.id = quiz.creatorId)>
 															<td class="padding5">
 																<span class="place-right" title="Edit Quiz"><a href="/quiz/edit?groupId=${group.id}&quizId=${quiz.quizId}"><i class="icon-pencil join"></i></a></span>
 															</td>
+															<#else>
+															<td></td>
 															</#if>
 														</tr>
 															<!-- <td class="right padding5"><a href="#" class="place-right" onClick="joinOrg()"><i class="icon-plus join"></i></a></td> -->

@@ -73,7 +73,7 @@
 					<div class="span8">
 						<div class="row noMargin" id="membersDiv" hidden="true">
 							<#if members??>
-								<table class="table hovered">
+								<table class="table hovered striped">
 									<#list members as member>
 										<tr>
 											<td class="padding5"><a href="/user?userid=${member.userId}">${member.displayName}</a></td>
@@ -94,7 +94,7 @@
 										<a href="#" class="heading bg-lightBlue fg-white">My Joined Groups</a>			
 										<div class="content">									
 											<#if registeredGroups?size gt 0>								
-												<table class="table hovered">
+												<table class="table hovered striped">
 													<tbody>
 														<#list registeredGroups as group>
 															<tr>
@@ -134,7 +134,7 @@
 									<a href="#" class="heading bg-lightBlue fg-white">Recommended Groups</a>			
 									<div class="content">									
 										<#if groups?size gt 0>								
-											<table class="table hovered">
+											<table class="table hovered striped">
 												<tbody>
 													<#list groups as group>
 														<tr>

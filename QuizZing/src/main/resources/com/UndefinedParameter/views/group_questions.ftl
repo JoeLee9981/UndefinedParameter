@@ -5,14 +5,17 @@
 		<h5>My Questions<span class="place-right" title="Close"><a href="" id="closeLink"><i class="icon-cancel" style="color: red"></i></a></span></h5>
 		<p class="text-alert" id="error"  />
 		<#if userQuestions??>
-			<table width="100%">
-				<tr>
-					<th></th>
-					<th>Question</th>
-					<th>Rating</th>
-					<th>Difficulty</th>
-					<th>Categories</th>
-				</tr>
+			<table class="table hovered striped" width="100%">
+				<thead>
+					<tr>
+						<th></th>
+						<th>Question</th>
+						<th width="120px">Rating</th>
+						<th width="120px">Difficulty</th>
+						<th>Categories</th>
+					</tr>
+				</thead>
+				<tbody>
 				<#list userQuestions as question>
 					<tr>
 						<td class="padding5">
@@ -25,11 +28,11 @@
 								${question.questionText}
 							</#if>
 						</a></td>
-						<td width="105px">
+						<td width="120px">
 							<div id="rating${question.questionId}" class="rating small">
 							</div>
 						</td>
-						<td width="105px">
+						<td width="120px">
 							<div id="difficulty${question.questionId}" class="rating small fg-red">
 							</div>
 						</td>
@@ -104,6 +107,8 @@
 						</script>
 					</tr>
 				</#list>
+				</tbody>
+				<tfoot></tfoot>
 			</table>
 		<#else>
 			<p style="padding-left:30px">No Questions Found</p>
@@ -117,17 +122,20 @@
 		<h5>Group Questions<#if user??><#else><span class="place-right" title="Close"><a href="" id="closeLink"><i class="icon-cancel" style="color: red"></i></a></span></#if></h5>
 		<p class="text-alert" id="error"  />
 		<#if questions??>
-			<table width="100%">
-				<tr>
-					<th></th>
-					<th>Question</th>
-					<th>Rating</th>
-					<th>Difficulty</th>
-					<th>Categories</th>
-				</tr>
+			<table class="table hovered striped" width="100%">
+				<thead>
+					<tr>
+						<th></th>
+						<th>Question</th>
+						<th>Rating</th>
+						<th width="120px">Difficulty</th>
+						<th width="120px">Categories</th>
+					</tr>
+				</thead>
+				<tbody>
 				<#list questions as question>
 					<tr>
-						<#if user.admin??>
+						<#if user?? && user.admin>
 						<td class="padding5">
 							<span class="place-left" title="Edit Question"><a href="" id="qLink${question.questionId}"><i class="icon-pencil join"></i></a></span>
 						</td>
@@ -141,18 +149,18 @@
 								${question.questionText}
 							</#if>
 						</a></td>
-						<td width="105px">
+						<td width="120px">
 							<div id="rating${question.questionId}" class="rating small">
 							</div>
 						</td>
-						<td width="105px">
+						<td width="120px">
 							<div id="difficulty${question.questionId}" class="rating small fg-red">
 							</div>
 						</td>
 						<td><#if question.categories??><#if question.categoriesString?length gt 35>${question.categoriesString?substring(0, 35)}...<#else>${question.categoriesString}</#if></#if></td>
 						
 						<script>
-							<#if user.admin??>
+							<#if user?? && user.admin??>
 							$('#qLink${question.questionId}').click(function(event) {
 								event.preventDefault();
 								$.ajax({
@@ -227,6 +235,8 @@
 						</script>
 					</tr>
 				</#list>
+				</tbody>
+				<tfoot></tfoot>
 			</table>
 		<#else>
 			<p style="padding-left:30px">No Questions Found</p>

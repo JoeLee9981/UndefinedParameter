@@ -1,6 +1,6 @@
 <div class="row">
 	<h2>Recently Added Quizzes</h2>
-	<table class="table hovered">
+	<table class="table hovered striped">
         <thead>
             <tr>
                 <th class="text-left">Quiz</th>
@@ -9,7 +9,6 @@
             </tr>
         </thead>
         <tbody>                         
-        </tbody>
         	<#if recentQuizzes??>
         		<#list recentQuizzes as quiz>
 					<tr>
@@ -41,6 +40,7 @@
 					</td>
 				</tr>
 			</#if>
+		</tbody>
         <tfoot></tfoot>
     </table>  
 </div>

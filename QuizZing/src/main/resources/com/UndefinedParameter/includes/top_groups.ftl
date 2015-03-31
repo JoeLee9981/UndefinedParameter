@@ -1,7 +1,6 @@
 <div class="row">
 	<h2>Top Groups</h2>
-	<table class="table hovered">
-		
+	<table class="table hovered striped">
         <thead>
             <tr>
                 <th class="text-left">Group</th>

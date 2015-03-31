@@ -85,7 +85,7 @@
 										<a href="#" class="heading bg-lightBlue fg-white">My Joined Organizations</a>			
 										<div class="content">									
 											<#if registeredOrganizations?size gt 0>								
-												<table class="table hovered">
+												<table class="table hovered striped">
 													<tbody>
 														<#list registeredOrganizations as org>
 															<tr>
@@ -129,7 +129,7 @@
 									<a href="#" class="heading bg-lightBlue fg-white">Recommended Organizations</a>			
 									<div class="content">									
 										<#if organizations?size gt 0>								
-											<table class="table hovered">
+											<table class="table hovered striped">
 												<tbody>
 													<#list organizations as org>
 														<tr>
@@ -181,7 +181,7 @@
 								</span>
 							</h5>
 							<div class="container">
-								<table class="table hovered">
+								<table class="table hovered striped">
 									<tbody>
 										<#list largestOrganizations as org>
 											<tr>
@@ -200,7 +200,7 @@
 								</span>
 							</h5>
 							<div class="container">	
-								<table class="table hovered">
+								<table class="table hovered striped">
 									<tbody>
 										<#list newestOrganizations as org>
 											<tr>
