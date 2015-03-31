@@ -176,7 +176,7 @@ public class QuizResource {
 	@Path("/score")
 	public Response getScoreView(@Auth(required=false) User user, @QueryParam("quizId") int id) {
 		
-		return Response.ok(new ScoreView("score.ftl", user, 2)).build();
+		return Response.ok(new ScoreView("score.ftl", user, quizManager.findQuizzesParticipated(user.getId()))).build();
 	}
 	
 	@GET

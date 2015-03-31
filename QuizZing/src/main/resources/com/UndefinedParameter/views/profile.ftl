@@ -24,8 +24,8 @@
 							
 							<#if editable>
 								<button class="place-right success" onclick="location.href='/user/edit?userid=${userProf.id}'">Edit Profile</button>
+								<button class="place-right primary" onclick="location.href='/user/scores?userid=${userProf.id}'">View Scores</button>
 							</#if>
-							<button class="place-right success" onclick="location.href='/user/scores?userid=${userProf.id}'">View Scores</button>
 							
 							<div class="home-subsection">
 								<h3>${userProf.firstName?html}'s Quizzes</h3>

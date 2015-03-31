@@ -1,6 +1,7 @@
 package com.UndefinedParameter.jdbi;
 
 import java.util.List;
+import java.util.Map;
 
 import org.skife.jdbi.v2.sqlobject.Bind;
 import org.skife.jdbi.v2.sqlobject.GetGeneratedKeys;
@@ -9,6 +10,7 @@ import org.skife.jdbi.v2.sqlobject.SqlUpdate;
 import org.skife.jdbi.v2.sqlobject.customizers.RegisterMapper;
 import org.joda.time.DateTime;
 
+import com.UndefinedParameter.app.core.Quiz;
 import com.UndefinedParameter.app.core.QuizScore;
 
 @RegisterMapper(QuizScoreMapper.class)
@@ -22,6 +24,15 @@ public interface QuizScoreDAO {
 	
 	@SqlQuery("SELECT * FROM QuizScore WHERE QuizID = :quizId AND UserID = :userId")
 	public List<QuizScore> findScoresByQuizAndUser(@Bind("quizId") long quizId, @Bind("userId") long userId);
+	
+	/*
+	 * Retrieve participated quizzes by user ID
+	 */
+	@SqlQuery("SELECT DISTINCT Quiz.* FROM Quiz, QuizScore "
+		+ "WHERE QuizScore.UserID = :userId "
+		+ "AND QuizScore.QuizID = Quiz.QuizID")
+	@RegisterMapper(QuizMapper.class)
+	public List<Quiz> retrieveQuizzesParticipated(@Bind("userId") long userId);
 	
 		
 	@SqlUpdate("INSERT INTO QuizScore "

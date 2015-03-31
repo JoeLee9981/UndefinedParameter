@@ -2,26 +2,24 @@ package com.UndefinedParameter.views;
 
 import io.dropwizard.views.View;
 
+import java.util.List;
+
+import com.UndefinedParameter.app.core.Quiz;
 import com.UndefinedParameter.app.core.User;
-import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class ScoreView extends View{
 
-	private int scores;
+	private List<Quiz> quizIds;
 	private User user;
 	
-	public ScoreView(String page, User user, int scores) {
+	public ScoreView(String page, User user, List<Quiz> quizIds) {
 		super(page);
-		this.scores = scores;
+		this.quizIds = quizIds;
 		this.user = user;
 	}
 
-	public int getScores() {
-		return scores;
-	}
-
-	public void setScores(int scores) {
-		this.scores = scores;
+	public List<Quiz> getQuizIds() {
+		return quizIds;
 	}
 	
 	public User getUser() {

@@ -3,6 +3,7 @@ package com.UndefinedParameter.app.resources;
 import io.dropwizard.auth.Auth;
 
 import java.util.HashMap;
+import java.util.List;
 
 import javax.validation.Valid;
 import javax.ws.rs.Consumes;
@@ -17,6 +18,7 @@ import javax.ws.rs.core.Response.Status;
 
 import com.UndefinedParameter.app.core.GroupManager;
 import com.UndefinedParameter.app.core.QuizManager;
+import com.UndefinedParameter.app.core.QuizScore;
 import com.UndefinedParameter.app.core.User;
 import com.UndefinedParameter.app.core.UserManager;
 import com.UndefinedParameter.jdbi.GroupDAO;
@@ -115,6 +117,35 @@ public class UserProfileResource {
 			return Response.status(Status.BAD_REQUEST).build();
 		}
 		
-		return Response.ok(new ScoreView("score.ftl", user, 2)).build();
+		return Response.ok(new ScoreView("score.ftl", user, quizManager.findQuizzesParticipated(user.getId()))).build();
+	}
+	
+	@POST
+	@Path("/scores")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response scores(@Auth(required = false) User user, @QueryParam("quizid") long quizId) {
+		
+		if(user == null) {
+			return Response.status(Status.UNAUTHORIZED).build();
+		}
+		
+		HashMap<String, List<QuizScore>> response = new HashMap<String, List<QuizScore>>();
+		List<QuizScore> userScores = quizManager.findScoresByQuizAndUser(quizId, user.getId());
+
+		try {
+			if(userScores == null || userScores.size() > 0) {
+				response.put("scores", userScores);
+				return Response.ok(response).build();
+			}	
+			else {
+				return Response.ok(response).build();
+			}
+			
+		}
+		catch(Exception e) {
+			//TODO: return error message
+			return Response.status(500).build();
+		}
+		
 	}
 }

@@ -137,6 +137,18 @@ public class QuizManager {
 	}
 	
 	/*
+	 * Find all quizzes participated in by a user
+	 */
+	public List<Quiz> findQuizzesParticipated(long userId) {
+		if(userId < 1) {
+			return null;
+		}
+		else {
+			return quizScoreDAO.retrieveQuizzesParticipated(userId);
+		}
+	}
+	
+	/*
 	 * Find all quizzes created by a user
 	 */
 	public List<Quiz> findQuizzesByCreatorId(long creatorId) {
