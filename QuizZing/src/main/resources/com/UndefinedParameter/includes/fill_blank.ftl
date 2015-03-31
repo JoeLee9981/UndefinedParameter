@@ -1,4 +1,4 @@
-<div class="span9" id="fillblank-div" hidden>
+<div class="span9" id="fillblank-div">
 	<form id="create-question-form">
 		<label></label><h5>Question <a href="#" data-hint="Question|The text of the question" data-hint-position="right" data-hint-mode="2"><i class="icon-help fg-blue"></i></a></h5>
 			<div class="input-control textarea">
@@ -7,6 +7,20 @@
 			</div>
 		</label>
 		<button id="blankButton" class="success">Add a blank</button>
+		<div class="row noMargin">
+		    <div class="span12">
+		    	<div>
+					<h4>Categories For This Quiz</h4>
+				</div>
+				<div id="categoryTags">
+				</div>
+				<div>
+					<div class="input-control text">
+					    <input id="categories" type="text" value="" placeholder="Comma separated categories"/>
+					</div>
+				</div>	
+			</div>
+	    </div>
 		<label><h5>Explanation of Answer <a href="#" data-hint="Explanation|A bit of text that explains, or gives background on the answer of the question" data-hint-position="right" data-hint-mode="2"><i class="icon-help fg-blue"></i></a></h5>
 			<div class="input-control textarea">
 			    <textarea id="fb-explanationText"></textarea>
@@ -69,6 +83,85 @@
 	
 	<script>
 
+		//set up auto complete for categories
+		$(function() {
+	
+			var allCategories = [];
+			<#if allCategories??>
+			<#list allCategories as category>
+			allCategories.push('${category}');
+			</#list>
+			</#if>
+	
+			$('#categories').autocomplete({
+				source: allCategories
+			});
+		});
+	
+		var categories = [];
+		
+		function setCategoryButtons() {
+			var html = "";
+			for(var i = 0; i < categories.length; i++) {
+				var cat = categories[i];
+				if(cat[0] != '#') {
+					cat = '#' + cat;
+				}
+				html += '<button id="catButton' + i + '" class="default" style="margin: 5px"><i onclick="removeCategory(' + i + ')" class="icon-cancel"></i>  ' + cat + '</button>';
+			}
+			$('#categoryTags').html(html);
+			
+			for(var i = 0; i < categories.length; i++) {
+				$('#catButton' + i).click(function(event) {
+					event.preventDefault();
+				});
+				
+			}
+		}
+		
+		function removeCategory(index) {
+			var temp = [];
+			for(var j = 0; j < categories.length; j++) {
+				if(index != j) {
+					temp.push(categories[j]);
+				}
+			}
+			categories = temp;
+			setCategoryButtons();
+		}
+		
+		$('#categories').keydown(function(event) {
+			if(event.which == 188) {
+				var cat = $('#categories').val().trim();
+				if(cat == ""  || cat == "#") {
+					event.preventDefault();
+					$('#categories').val("");
+					return;
+				}
+				if($.inArray(cat, categories) == -1)
+					categories.push(cat);
+				setCategoryButtons();
+				$('#categories').val("");
+				event.preventDefault();
+			}
+			
+		});
+	
+		$('#categories').blur(function() {
+	
+			var cat = $('#categories').val().trim();
+			
+			if(cat == "" || cat == "#") {
+				$('#categories').val("");
+				return;
+			}
+			if($.inArray(cat, categories) == -1)
+				categories.push(cat.substring(0));
+			setCategoryButtons();
+			$('#categories').val("");
+			event.preventDefault();
+		});
+	
 		$('#blankButton').click(function(event) {
 
 			event.preventDefault();
@@ -153,7 +246,7 @@
 			 $.ajax({
 				type: 'POST',
 				url: path,
-				data: JSON.stringify({groupId: ${groupId}, questionText: desc, correctAnswer: correct, type: type, wrongAnswers: answers, creatorId: creatorId, explanation: explanation, ordered: ordered, reference: reference, referenceLink: hyperlink }),
+				data: JSON.stringify({groupId: ${groupId}, questionText: desc, correctAnswer: correct, type: type, wrongAnswers: answers, creatorId: creatorId, explanation: explanation, ordered: ordered, reference: reference, referenceLink: hyperlink, categories: categories }),
 				dataType: "json",
 				headers: {
 					Accept: "application/json",

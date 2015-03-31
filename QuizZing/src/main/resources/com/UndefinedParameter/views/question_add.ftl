@@ -25,7 +25,7 @@
 							<div id="difficulty${question.questionId}" class="rating small fg-red">
 							</div>
 						</td>
-						<td>Computer Science, Computer Secur...</td>
+						<td>${question.categoriesString}</td>
 						<td><button id="add${question.questionId}" class="success">+</button>
 						
 						<script>

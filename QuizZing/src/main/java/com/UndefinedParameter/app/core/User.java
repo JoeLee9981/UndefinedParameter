@@ -22,6 +22,7 @@ public class User {
 	private DateTime lastAccessed;
 	private int active;
 	private int seeagain;
+	private boolean admin;
 	
 	public User(long id) {
 		this.id = id;
@@ -198,5 +199,13 @@ public class User {
 	
 	public String getDisplayName() {
 		return firstName + " " + lastName.subSequence(0, 1);
+	}
+
+	public boolean isAdmin() {
+		return admin;
+	}
+
+	public void setAdmin(boolean admin) {
+		this.admin = admin;
 	}
 }

@@ -198,7 +198,7 @@ public class QuizResource {
 		else
 			group = groupManager.findGroupByQuizId(id);
 		
-		if(quiz != null && user.getId() == quiz.getCreatorId()) {
+		if(quiz != null && (user.getId() == quiz.getCreatorId() || quiz.isOpen() || user.isAdmin())) {
 			return Response.ok(new QuizEditView(user, quiz, group)).build();
 		}
 		return Response.status(Status.BAD_REQUEST).build();
@@ -218,7 +218,7 @@ public class QuizResource {
 		
 		Quiz quiz = quizManager.findQuiz(quizId);
 		
-		if(quiz != null && (user.getId() == quiz.getCreatorId() || quiz.isOpen())) {
+		if(quiz != null && (user.getId() == quiz.getCreatorId() || quiz.isOpen() || user.isAdmin())) {
 			return Response.ok(new QuizEditQuestionsView(quiz)).build();
 		}
 		

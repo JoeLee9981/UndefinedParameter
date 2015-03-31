@@ -119,6 +119,7 @@
 		<#if questions??>
 			<table width="100%">
 				<tr>
+					<th></th>
 					<th>Question</th>
 					<th>Rating</th>
 					<th>Difficulty</th>
@@ -126,6 +127,13 @@
 				</tr>
 				<#list questions as question>
 					<tr>
+						<#if user.admin??>
+						<td class="padding5">
+							<span class="place-left" title="Edit Question"><a href="" id="qLink${question.questionId}"><i class="icon-pencil join"></i></a></span>
+						</td>
+						<#else>
+						<td></td>
+						</#if>
 						<td><a id="question${question.questionId}" href="">
 							<#if question.questionText?length &gt; 75>
 								${question.questionText?substring(0, 75)}...
@@ -144,7 +152,22 @@
 						<td><#if question.categories??><#if question.categoriesString?length gt 35>${question.categoriesString?substring(0, 35)}...<#else>${question.categoriesString}</#if></#if></td>
 						
 						<script>
-
+							<#if user.admin??>
+							$('#qLink${question.questionId}').click(function(event) {
+								event.preventDefault();
+								$.ajax({
+									type: 'GET',
+									url: "/question/edit?groupId=" + ${groupId} + "&questionId=" + ${question.questionId},
+									success: function(data) {
+										$('#group-content').html(data);
+									},
+									error: function(error) {
+								    	$('#group-content').html("<h3>You do not have access to edit this question</h3>");
+								    }
+								});
+							});
+							</#if>
+						
 							$('#closeLink').click(function(event) {
 								event.preventDefault();
 								$('#group-content').html("");

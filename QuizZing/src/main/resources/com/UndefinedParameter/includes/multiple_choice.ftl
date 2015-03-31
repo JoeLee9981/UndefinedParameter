@@ -1,9 +1,9 @@
 <div class="span9" id="multichoice-div">
 	<form id="create-question-form">
 		<h5>Question <a href="#" data-hint="Question|The text of the question" data-hint-position="right" data-hint-mode="2"><i class="icon-help fg-blue"></i></a></h5>
-			<div class="input-control textarea">
-			    <textarea id="descriptionText"></textarea>
-			</div>
+		<div class="input-control textarea">
+		    <textarea id="descriptionText"></textarea>
+		</div>
 		<div class="row noMargin">
 		    <div class="span12">
 		    	<div>

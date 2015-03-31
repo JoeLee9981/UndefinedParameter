@@ -15,12 +15,9 @@
 				</nav>
 			</div>
 			
-			<#include "../includes/multiple_choice.ftl">
-			<#include "../includes/true_false.ftl">
-			<#include "../includes/fill_blank.ftl">
-			<#include "../includes/matching.ftl">
-			<#include "../includes/short_answer.ftl">
-			
+			<div id="question-create">
+				<#include "../includes/multiple_choice.ftl">
+			</div>		
 		</div>
 	</div>
 </div>
@@ -29,47 +26,82 @@
 	
 	$("#truefalse").click(function(event) {
 		event.preventDefault();
-		
-		removeActiveFromAll();
-		hideAll();
-		$("#truefalse-li").addClass("active");
-		$("#truefalse-div").show();
+		$.ajax({
+			type: 'GET',
+			url: "/question/create/type?groupId=" + ${groupId} + "&quizId=" + ${quizId} + "&type=TRUE_FALSE",
+			success: function(data) {
+				removeActiveFromAll();
+				$("#truefalse-li").addClass("active");
+				$('#question-create').html(data);
+			},
+			error: function(error) {
+		    	$('#question-create').html("<h3>There was an unexpected error communicating to server, please refresh and try again.</h3>");
+		    }
+		});
 	});
 	
 	$("#multichoice").click(function(event) {
 		event.preventDefault();
-		
-		removeActiveFromAll();
-		hideAll();
-		$("#multichoice-li").addClass("active");
-		$("#multichoice-div").show();
+		$.ajax({
+			type: 'GET',
+			url: "/question/create/type?groupId=" + ${groupId} + "&quizId=" + ${quizId} + "&type=MULTIPLE_CHOICE",
+			success: function(data) {
+				removeActiveFromAll();
+				$("#multichoice-li").addClass("active");
+				$('#question-create').html(data);
+			},
+			error: function(error) {
+		    	$('#question-create').html("<h3>There was an unexpected error communicating to server, please refresh and try again.</h3>");
+		    }
+		});
 	});
 	
 	$("#fillblank").click(function(event) {
 		event.preventDefault();
-		
-		removeActiveFromAll();
-		hideAll();
-		$("#fillblank-li").addClass("active");
-		$("#fillblank-div").show();
+		$.ajax({
+			type: 'GET',
+			url: "/question/create/type?groupId=" + ${groupId} + "&quizId=" + ${quizId} + "&type=FILL_IN_THE_BLANK",
+			success: function(data) {
+				removeActiveFromAll();
+				$("#fillblank-li").addClass("active");
+				$('#question-create').html(data);
+			},
+			error: function(error) {
+		    	$('#question-create').html("<h3>There was an unexpected error communicating to server, please refresh and try again.</h3>");
+		    }
+		});
 	});
 	
 	$("#matching").click(function(event) {
 		event.preventDefault();
-		
-		removeActiveFromAll();
-		hideAll();
-		$("#matching-li").addClass("active");
-		$("#matching-div").show();
+		$.ajax({
+			type: 'GET',
+			url: "/question/create/type?groupId=" + ${groupId} + "&quizId=" + ${quizId} + "&type=MATCHING",
+			success: function(data) {
+				removeActiveFromAll();
+				$("#matching-li").addClass("active");
+				$('#question-create').html(data);
+			},
+			error: function(error) {
+		    	$('#question-create').html("<h3>There was an unexpected error communicating to server, please refresh and try again.</h3>");
+		    }
+		});
 	});
 	
 	$("#shortanswer").click(function(event) {
 		event.preventDefault();
-		
-		removeActiveFromAll();
-		hideAll();
-		$("#shortanswer-li").addClass("active");
-		$("#shortanswer-div").show();
+		$.ajax({
+			type: 'GET',
+			url: "/question/create/type?groupId=" + ${groupId} + "&quizId=" + ${quizId} + "&type=SHORT_ANSWER",
+			success: function(data) {
+				removeActiveFromAll();
+				$("#shortanswer-li").addClass("active");
+				$('#question-create').html(data);
+			},
+			error: function(error) {
+		    	$('#question-create').html("<h3>There was an unexpected error communicating to server, please refresh and try again.</h3>");
+		    }
+		});
 	});
 	
 	function removeActiveFromAll() {
@@ -78,14 +110,6 @@
 		$("#fillblank-li").removeClass("active");
 		$("#matching-li").removeClass("active");
 		$("#shortanswer-li").removeClass("active");
-	}
-	
-	function hideAll() {
-		$("#truefalse-div").hide();
-		$("#multichoice-div").hide();
-		$("#fillblank-div").hide();
-		$("#matching-div").hide();
-		$("#shortanswer-div").hide();
 	}
 	
 </script>

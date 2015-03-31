@@ -335,7 +335,7 @@ public class Question {
 	public String getCategoriesString() {
 		
 		if(categories == null || categories.size() == 0) {
-			return "";
+			return "None";
 		}
 		
 		StringBuilder catString = new StringBuilder();

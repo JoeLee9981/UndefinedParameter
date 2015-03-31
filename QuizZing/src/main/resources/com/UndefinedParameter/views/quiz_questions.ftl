@@ -17,15 +17,15 @@
 				<#list quiz.questions as question>
 					<tr>
 						<td><a id="question${question.questionId}" href="">${question.questionText}</a></td>
-						<td>
+						<td width="105px">
 							<div id="rating${question.questionId}" class="rating small">
 							</div>
 						</td>
-						<td>
+						<td width="105px">
 							<div id="difficulty${question.questionId}" class="rating small fg-red">
 							</div>
 						</td>
-						<td>Computer Science, Computer Secur...</td>
+						<td>${question.categoriesString}</td>
 						<td><button class="danger" onclick="removeQuestion(${question.questionId})">-</button></td>
 						
 						<script>

@@ -66,20 +66,19 @@ public class QuestionResource {
 			return Response.status(Status.BAD_REQUEST).build();
 		}
 		
-		String file = "multiple_choice.ftl";
+		String file = "../includes/multiple_choice.ftl";
 		if("TRUE_FALSE".equals(type)) {
-			file = "true_false.ftl";
+			file = "../includes/true_false.ftl";
 		}
 		else if("SHORT_ANSWER".equals(type)) {
-			file = "short_answer.ftl";
+			file = "../includes/short_answer.ftl";
 		}
 		else if("FILL_IN_THE_BLANK".equals(type)) {
-			file = "fill_blank.ftl";
+			file = "../includes/fill_blank.ftl";
 		}
 		else if("MATCHING".equals(type)) {
-			file = "matching.ftl";
+			file = "../includes/matching.ftl";
 		}
-		
 		return Response.ok(new QuestionCreatorView(file, user, quizId, groupId)).build();
 	}
 	
@@ -124,9 +123,8 @@ public class QuestionResource {
 		else {
 			Quiz quiz = quizManager.findQuiz(quizId);
 			List<Question> questions = quizManager.findUnaddedGroupQuestions(groupId, quizId);
-			if(quiz.getCreatorId() == user.getId()) {
-				//only the creator can add to this quiz
-				//TODO: Collaborators
+			//TODO: Moderators can access this
+			if(quiz != null && (quiz.getCreatorId() == user.getId() || quiz.isOpen() || user.isAdmin())) {
 				return Response.ok(new QuestionAddView(user, questions, quizId, groupId)).build();
 			}
 			else {
@@ -144,8 +142,11 @@ public class QuestionResource {
 			return Response.ok(new LoginView(url)).build();
 		}
 		if(quizId > 0) {
-			if(quizManager.addQuestionToQuiz(quizId, questionId)) {
-				return Response.ok().build();
+			Quiz quiz = quizManager.findQuiz(quizId);
+			if(quiz != null && (quiz.getCreatorId() == user.getId() || quiz.isOpen() || user.isAdmin())) {
+				if(quizManager.addQuestionToQuiz(quizId, questionId)) {
+					return Response.ok().build();
+				}
 			}
 		}
 		
@@ -164,11 +165,14 @@ public class QuestionResource {
 			return Response.status(Status.BAD_REQUEST).build();
 		}
 		
-		//remove and return ok
-		if(quizManager.removeQuestionFromQuiz(quizId, questionId)) {
-			//reload the quiz now
-			Quiz quiz = quizManager.findQuiz(quizId);
-			return Response.ok(new QuizEditQuestionsView(quiz)).build();
+		Quiz quiz = quizManager.findQuiz(quizId);
+		if(quiz != null && (quiz.getCreatorId() == user.getId() || quiz.isOpen() || user.isAdmin())) {
+			//remove and return ok
+			if(quizManager.removeQuestionFromQuiz(quizId, questionId)) {
+				//reload the quiz now
+				quiz = quizManager.findQuiz(quizId);
+				return Response.ok(new QuizEditQuestionsView(quiz)).build();
+			}
 		}
 		//removal failed
 		return Response.status(Status.BAD_REQUEST).build();
@@ -213,11 +217,10 @@ public class QuestionResource {
 		}
 		Question question = quizManager.findQuestionById(questionId);
 		//TODO: Moderators also have access here
-		if(question != null && user.getId() != question.getCreatorId()) {
-			return Response.status(Status.BAD_REQUEST).build();
+		if(question != null && (user.getId() == question.getCreatorId() || user.isAdmin())) {
+			return Response.ok(new QuestionEditView(question, groupId, quizManager.getAllCategories())).build();
 		}
-		
-		return Response.ok(new QuestionEditView(question, groupId, quizManager.getAllCategories())).build();
+		return Response.status(Status.BAD_REQUEST).build();
 	}
 	
 	@PUT
@@ -231,12 +234,10 @@ public class QuestionResource {
 		Question existingQuestion = quizManager.findQuestionById(question.getQuestionId());
 		
 		//TODO: Allow moderators to do this too
-		if(user.getId() != existingQuestion.getCreatorId()) {
-			return Response.status(Status.BAD_REQUEST).build();
+		if(existingQuestion != null && (user.getId() == question.getCreatorId() || user.isAdmin())) {
+			if(quizManager.updateQuestion(question))
+				return Response.ok(new GroupQuestionView(user, quizManager.findQuestionsByGroup(groupId), groupId, "Question has been updated.")).build();
 		}
-		if(quizManager.updateQuestion(question))
-			return Response.ok(new GroupQuestionView(user, quizManager.findQuestionsByGroup(groupId), groupId, "Question has been updated.")).build();
-		else
-			return Response.status(Status.BAD_REQUEST).build();
+		return Response.status(Status.BAD_REQUEST).build();
 	}
 }

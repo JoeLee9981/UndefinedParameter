@@ -149,6 +149,11 @@
 															<td class="padding5">
 																<span class="place-right" title="Expected Time"><i class="icon-busy on-right"></i> ${quiz.timeString}</span>
 															</td>
+															<#if user.admin??>
+															<td class="padding5">
+																<span class="place-right" title="Edit Quiz"><a href="/quiz/edit?groupId=${group.id}&quizId=${quiz.quizId}"><i class="icon-pencil join"></i></a></span>
+															</td>
+															</#if>
 														</tr>
 															<!-- <td class="right padding5"><a href="#" class="place-right" onClick="joinOrg()"><i class="icon-plus join"></i></a></td> -->
 													</#list>
