@@ -66,9 +66,11 @@ public class QuizManager {
 	
 	/*
 	 *	deleteQuiz - Deletes quiz based on quiz ID.
+	 * TODO: Do we re-implement this?
 	 */
 	public void deleteQuiz(int qID) {
 		//QuizDAO.deleteQuiz(qID);
+		//TODO: do we re-implement this?
 	}
 	
 	/*
@@ -510,17 +512,11 @@ public class QuizManager {
 			return;
 		}
 		
-		List<String> existingCategories = questionDAO.getCategoriesByQuestion(questionId);
-		
+		questionDAO.removeCategories(questionId);
 		for(String cat: categories) {
 			
-			//if the category already exists, skip it
-			if(existingCategories.contains(cat) || StringUtils.isBlank(cat)) {
-				continue;
-			}
-			
 			long catid = questionDAO.getCategoryId(cat);
-			
+
 			if(catid < 1) {
 				catid = questionDAO.createCategory(cat);
 			}
@@ -528,6 +524,11 @@ public class QuizManager {
 			if(catid > 0)
 				questionDAO.addCategoryToQuestion(questionId, catid);
 		}
+		
+	}
+	
+	public List<String> getAllCategories() {
+		return questionDAO.getAllCategories();
 	}
 	
 	/************************** Question Ratings and Difficulties *************************************/
