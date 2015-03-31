@@ -5,7 +5,6 @@ import java.util.List;
 import com.UndefinedParameter.jdbi.GroupDAO;
 import com.UndefinedParameter.jdbi.OrgMemberDAO;
 import com.UndefinedParameter.jdbi.OrganizationDAO;
-//import com.UndefinedParameter.jdbi.UserGroupDAO;
 
 public class GroupManager {
 
@@ -19,8 +18,7 @@ public class GroupManager {
 		this.orgMemberDAO = orgMemberDAO;
 	}
 	
-	public long addGroup(Group group, User userid)
-	{
+	public long addGroup(Group group) {
 		
 		/*
 		 * Important - The id of the group will not be instantiated
@@ -32,15 +30,9 @@ public class GroupManager {
 			//invalid ID
 			return -1;
 		}
-		long rvalue = groupDAO.insertGroup(InputUtils.sanitizeInput(group.getName()), 
+		return groupDAO.insertGroup(InputUtils.sanitizeInput(group.getName()), 
 									InputUtils.sanitizeInput(group.getDescription()), 
 									group.getOrganizationId());
-
-		//groupDAO.insert(userid.getId(), rvalue);
-		
-		//groupDAO.addInUserGroupEarnedPoints(rvalue, userid.getId(), 99);
-		
-		return rvalue;
 	}
 	
 	/*

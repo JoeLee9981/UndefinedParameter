@@ -58,7 +58,7 @@ public class GroupResource {
 		}
 		
 		HashMap<String, String> response = new HashMap<String, String>();
-		long groupId = manager.addGroup(group, user);
+		long groupId = manager.addGroup(group);
 		
 		if(groupId >= 1) {
 			response.put("response", "success");
