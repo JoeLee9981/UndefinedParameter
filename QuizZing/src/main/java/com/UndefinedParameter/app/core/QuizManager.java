@@ -66,9 +66,11 @@ public class QuizManager {
 	
 	/*
 	 *	deleteQuiz - Deletes quiz based on quiz ID.
+	 * TODO: Do we re-implement this?
 	 */
 	public void deleteQuiz(int qID) {
 		//QuizDAO.deleteQuiz(qID);
+		//TODO: do we re-implement this?
 	}
 	
 	/*

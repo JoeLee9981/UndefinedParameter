@@ -109,6 +109,13 @@ public interface QuizDAO {
 	public long addQuestion(@Bind("quizId") long quizId, @Bind("questionId") long questionId);
 	
 	/*
+	 * Delete a question from a quiz
+	 */
+	@SqlUpdate("DELETE FROM QuizQuestion WHERE QuizID = :quizId AND QuestionID = :questionId")
+	@GetGeneratedKeys
+	public long removeQuestionFromQuiz(@Bind("quizId") long quizId, @Bind("questionId") long questionId);
+	
+	/*
 	 * Links a quiz to a group
 	 */
 	@SqlUpdate("INSERT INTO GroupQuiz (QuizID, GroupID) VALUES(:quizId, :groupId)")
