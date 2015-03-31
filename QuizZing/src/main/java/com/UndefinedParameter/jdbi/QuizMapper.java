@@ -25,6 +25,7 @@ public class QuizMapper implements ResultSetMapper<Quiz> {
 		quiz.setDescription(r.getString("Description"));
 		quiz.setTime(r.getInt("Time"));
 		quiz.setQuestionCount(r.getInt("QuestionCount"));
+		quiz.setOpen(r.getBoolean("Open"));
 		
 		//if a creator name is queried, find it.
 		if(findColumn(r, "FirstName") && findColumn(r, "LastName")) {

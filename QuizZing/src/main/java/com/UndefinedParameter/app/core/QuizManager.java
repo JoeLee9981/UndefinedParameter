@@ -329,7 +329,8 @@ public class QuizManager {
 								  quiz.getDifficulty(), 
 								  quiz.getRating(), 
 								  InputUtils.sanitizeInput(quiz.getDescription()),
-								  quiz.getTime());
+								  quiz.getTime(),
+								  quiz.isOpen());
 	}
 	
 	/*

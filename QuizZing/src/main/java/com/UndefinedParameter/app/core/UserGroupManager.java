@@ -12,7 +12,7 @@ public class UserGroupManager {
 		this.usergroupDAO = userDAO;
 	}
 	
-	public boolean registerNewUserGroup(int user, int group) throws Exception {
+	/*public boolean registerNewUserGroup(int user, int group) throws Exception {
 		try {
 			usergroupDAO.insert(user, group);
 		}
@@ -37,14 +37,18 @@ public class UserGroupManager {
 		if(usergroupDAO == null)
 			return null;
 		
-		return usergroupDAO.findUserByUserId(userName);
+		//TODO: Fix this
+		return null;
+		//return usergroupDAO.findUserByUserId(userName);
 	}
 	
 	public UserGroup findUserByGroupId(int groupid) {
 		if(usergroupDAO == null)
 			return null;
 		
-		return usergroupDAO.findUserByGroupId(groupid);
+		//TODO: Fix this
+		return null;
+		//return usergroupDAO.findUserByGroupId(groupid);
 	}
 	
 	
@@ -109,7 +113,7 @@ public class UserGroupManager {
 		}
 		
 		return false;
-	}
+	} */
 	
 	/*
 	 * Whatever, 		Option = 0: 1 point
@@ -119,7 +123,7 @@ public class UserGroupManager {
 	 * Made the group,	Option = 99: 300 points.
 	 * More later.
 	 * */
-	public int addPoints(long userID, long groupID, int option)
+	/*public int addPoints(long userID, long groupID, int option)
 	{
 		long points;
 		if(userID < 0 || groupID < 0)
@@ -172,7 +176,7 @@ public class UserGroupManager {
 		}
 		
 		return 0;
-	}
+	} */
 	
 	/*
 	 * Take a quiz, 2 points.
@@ -180,7 +184,7 @@ public class UserGroupManager {
 	 * Makes a comment, 1 point.
 	 * More later.
 	 * */
-	public int checkModWhileRemovingUser(long userID, long groupID)
+	/*public int checkModWhileRemovingUser(long userID, long groupID)
 	{
 		if(userID < 0 || groupID < 0)
 		{
@@ -223,5 +227,5 @@ public class UserGroupManager {
 		usergroupDAO.delete(userID, groupID);
 		
 		return 0;
-	}
+	} */
 }

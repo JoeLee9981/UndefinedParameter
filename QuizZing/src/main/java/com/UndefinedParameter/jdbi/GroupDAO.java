@@ -9,7 +9,6 @@ import org.skife.jdbi.v2.sqlobject.SqlUpdate;
 import org.skife.jdbi.v2.sqlobject.customizers.RegisterMapper;
 
 import com.UndefinedParameter.app.core.Group;
-import com.UndefinedParameter.app.core.UserGroup;
 
 @RegisterMapper(GroupMapper.class)
 public interface GroupDAO {
@@ -78,11 +77,14 @@ public interface GroupDAO {
 	@SqlQuery("SELECT COUNT(*) FROM Quiz quiz, GroupQuiz gquiz WHERE quiz.QuizID = gquiz.QuizID and gquiz.GroupID = :groupId")
 	public int countQuizzes(@Bind("groupId") long groupId);
 	
+	/* TODO: Fix this before you uncomment and commit
 	@SqlQuery("SELECT * FROM UserGroups WHERE GroupID = :groupid")
+	@RegisterMapper(UserGroupMapper.class)
 	public UserGroup findUserByGroupId(@Bind("groupid") int groupid);
 	
 	@SqlQuery("SELECT * FROM UserGroups WHERE UserID = :userid")
-	public UserGroup findUserByUserId(@Bind("userid") int userid);
+	@RegisterMapper(UserGroupMapper.class)
+	public UserGroup findUserByUserId(@Bind("userid") int userid); 
 	
 	@SqlUpdate("INSERT INTO UserGroup "
 		+ "(UserID, GroupID) "
@@ -101,7 +103,7 @@ public interface GroupDAO {
 									@Bind("userID") long userID,
 									@Bind("rating") int rating);
 	
-	@SqlQuery("UPDATE SubGroup SET Rating = Rating + :rating WHERE GroupID = :groupID")
+	@SqlUpdate("UPDATE SubGroup SET Rating = Rating + :rating WHERE GroupID = :groupID")
 	public int updateSubGroupRating(@Bind("groupID") long groupId, @Bind("rating") int rating);
 	
 	@SqlQuery("SELECT Rating FROM SubGroup WHERE GroupID = :groupID")
@@ -114,10 +116,10 @@ public interface GroupDAO {
 	public int getUserGroupRating(@Bind("groupID") long orgID,
 									@Bind("userID") long userID);
 	
-	@SqlQuery("UPDATE SubGroup SET RatingCount = RatingCount + 1 WHERE GroupID = :groupID")
+	@SqlUpdate("UPDATE SubGroup SET RatingCount = RatingCount + 1 WHERE GroupID = :groupID")
 	public int updateSubGroupRatingCount(@Bind("groupID") long groupId);
 	
-	@SqlQuery("UPDATE SubGroup SET EarnedPoints = EarnedPoints + points WHERE GroupID = :groupID AND UserID = :userID")
+	@SqlUpdate("UPDATE SubGroup SET EarnedPoints = EarnedPoints + points WHERE GroupID = :groupID AND UserID = :userID")
 	public int addInUserGroupEarnedPoints(@Bind("groupID") long groupId,
 											@Bind("userID") long userId,
 											@Bind("points") long points);
@@ -126,7 +128,7 @@ public interface GroupDAO {
 	public int getUserGroupEarnedPoints(@Bind("groupID") long groupId,
 											@Bind("userID") long userId);
 	
-	@SqlQuery("UPDATE SubGroup SET ModStatus = modstatus WHERE GroupID = :groupID AND UserID = :userID")
+	@SqlUpdate("UPDATE SubGroup SET ModStatus = modstatus WHERE GroupID = :groupID AND UserID = :userID")
 	public int updateUserGroupModStatus(@Bind("groupID") long groupId,
 											@Bind("userID") long userId,
 											@Bind("modstatus") int modstat);
@@ -151,7 +153,7 @@ public interface GroupDAO {
 	
 	@SqlQuery("SELECT UserID FROM SubGroup WHERE GroupID = :groupID AND EarnedPoints = :points")
 	public int getUserByPointsAndGroup(@Bind("groupID") long groupId,
-										@Bind("points") long points);
+										@Bind("points") long points); */
 	
 	
 }
