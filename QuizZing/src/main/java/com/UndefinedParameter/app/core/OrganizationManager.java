@@ -137,8 +137,10 @@ public class OrganizationManager {
 	 * find organizations that a user is registered by the user id
 	 */
 	public List<Organization> findOrgsByUser(User user) {
-		//TODO: Get by user id registered
-		return orgDAO.findOrganizations();
+		if(user == null) {
+			return new ArrayList<Organization>();
+		}
+		return orgDAO.findOrganizationsByUserId(user.getId());
 	}
 	
 	/* Find the newest organizations sorted.  Return rows from StartCount to EndCount */
