@@ -93,16 +93,16 @@
 															<td class="padding5">
 																<span>${quiz.description}</span>
 															</td>
-															<td class="padding5">
+															<td width="50px" class="padding5">
 																<span class="place-right" title="Number of Questions"><i class="icon-help-2 on-right"></i> ${quiz.questionCount}</span>
 															</td>
-															<td class="padding5">
+															<td width="50px" class="padding5">
 																<span class="place-right" title="Quiz Difficulty"><i class="icon-power on-right"></i> ${quiz.difficulty}</span>
 															</td>
-															<td class="padding5">
+															<td width="50px" class="padding5">
 																<span class="place-right" title="Quiz Rating"><i class="icon-star-3 on-right"></i> ${quiz.rating}</span>
 															</td>
-															<td class="padding5">
+															<td width="90px" class="padding5">
 																<span class="place-right" title="Expected Time"><i class="icon-busy on-right"></i> ${quiz.timeString}</span>
 															</td>
 															<td class="padding5">
@@ -137,16 +137,16 @@
 															<td class="padding5">
 																<span>${quiz.description}</span>
 															</td>
-															<td class="padding5">
+															<td width="50px" class="padding5">
 																<span class="place-right" title="Number of Questions"><i class="icon-help-2 on-right"></i> ${quiz.questionCount}</span>
 															</td>
-															<td class="padding5">
+															<td width="50px" class="padding5">
 																<span class="place-right" title="Quiz Difficulty"><i class="icon-power on-right"></i> ${quiz.difficulty}</span>
 															</td>
-															<td class="padding5">
+															<td width="50px" class="padding5">
 																<span class="place-right" title="Quiz Rating"><i class="icon-star-3 on-right"></i> ${quiz.rating}</span>
 															</td>
-															<td class="padding5">
+															<td width="90px" class="padding5">
 																<span class="place-right" title="Expected Time"><i class="icon-busy on-right"></i> ${quiz.timeString}</span>
 															</td>
 															<#if user?? && (user.admin || quiz.open || user.id = quiz.creatorId)>

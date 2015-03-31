@@ -7,7 +7,7 @@
 		<div class="row noMargin">
 		    <div class="span12">
 		    	<div>
-					<h4>Categories For This Quiz</h4>
+					<h4>Tags For This Question</h4>
 				</div>
 				<div id="categoryTags">
 					<#if question.categories??>
