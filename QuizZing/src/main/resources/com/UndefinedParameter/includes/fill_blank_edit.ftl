@@ -12,9 +12,16 @@
 		    	<div>
 					<h4>Categories For This Quiz</h4>
 				</div>
+				<div id="categoryTags">
+					<#if question.categories??>
+					<#list question.categories as category>
+					<button id="catButton${category_index}" class="default" style="margin: 5px"><i onclick="removeCategory(${category_index})" class="icon-cancel"></i>  #${category}</button>
+					</#list>
+					</#if>
+				</div>
 				<div>
 					<div class="input-control text">
-					    <input id="categories" type="text" placeholder="Comma separated categories" value="${question.categoriesString}"/>
+					    <input id="categories" type="text" placeholder="Comma separated categories"/>
 					</div>
 				</div>	
 			</div>
@@ -81,19 +88,74 @@
 	
 	<script>
 
+		//set up auto complete for categories
+		$(function() {
+	
+			var allCategories = [];
+			<#if allCategories??>
+			<#list allCategories as category>
+			allCategories.push('${category}');
+			</#list>
+			</#if>
+	
+			$('#categories').autocomplete({
+				source: allCategories
+			});
+		});
+	
+		var categories = [];
+		<#if question.categories??>
+		<#list question.categories as category>
+		categories.push('${category}');
+	
+		$('#catButton${category_index}').click(function(event) {
+			event.preventDefault();
+		});
+		</#list>
+		</#if>
+		
+		function setCategoryButtons() {
+			var html = "";
+			for(var i = 0; i < categories.length; i++) {
+				var cat = categories[i];
+				if(cat[0] != '#') {
+					cat = '#' + cat;
+				}
+				html += '<button id="catButton' + i + '" class="default" style="margin: 5px"><i onclick="removeCategory(' + i + ')" class="icon-cancel"></i>  ' + cat + '</button>';
+			}
+			$('#categoryTags').html(html);
+			
+			for(var i = 0; i < categories.length; i++) {
+				$('#catButton' + i).click(function(event) {
+					event.preventDefault();
+				});
+				
+			}
+		}
+		
+		function removeCategory(index) {
+			var temp = [];
+			for(var j = 0; j < categories.length; j++) {
+				if(index != j) {
+					temp.push(categories[j]);
+				}
+			}
+			categories = temp;
+			setCategoryButtons();
+		}
+		
 		$('#categories').keydown(function(event) {
 			if(event.which == 188) {
-				var replc = "";
-				var hTags = $('#categories').val().split(',');
-				for(var i = 0; i < hTags.length; i++) {
-					if(hTags[i].trim() && hTags[i].trim().substring(0, 1) != "#") {
-						replc += "#" + hTags[i].trim() + ", ";
-					}
-					else if(hTags[i].trim() != ""){
-						replc += hTags[i].trim() + ", ";
-					}
+				var cat = $('#categories').val().trim();
+				if(cat == ""  || cat == "#") {
+					event.preventDefault();
+					$('#categories').val("");
+					return;
 				}
-				$('#categories').val(replc);
+				if($.inArray(cat, categories) == -1)
+					categories.push(cat);
+				setCategoryButtons();
+				$('#categories').val("");
 				event.preventDefault();
 			}
 			
@@ -101,17 +163,16 @@
 	
 		$('#categories').blur(function() {
 	
-			var replc = "";
-			var hTags = $('#categories').val().split(',');
-			for(var i = 0; i < hTags.length; i++) {
-				if(hTags[i].trim() && hTags[i].trim().substring(0, 1) != "#") {
-					replc += "#" + hTags[i].trim() + ", ";
-				}
-				else if(hTags[i].trim() != ""){
-					replc += hTags[i].trim() + ", ";
-				}
+			var cat = $('#categories').val().trim();
+			
+			if(cat == "" || cat == "#") {
+				$('#categories').val("");
+				return;
 			}
-			$('#categories').val(replc.substring(0, replc.length-2));
+			if($.inArray(cat, categories) == -1)
+				categories.push(cat.substring(0));
+			setCategoryButtons();
+			$('#categories').val("");
 			event.preventDefault();
 		});
 	
@@ -191,11 +252,6 @@
 				document.getElementById('fb-responseLabel').innerHTML = "Reference must be filled out in conjunction to the hyperlink";
 				document.getElementById('fb-responseLabel').className = "text-alert";
 				return;
-			}
-
-			var categories = $('#categories').val().split(',');
-			for(var i = 0; i < categories.length; i++) {
-				categories[i] = categories[i].trim().substring(1);
 			}
 
 			 $.ajax({

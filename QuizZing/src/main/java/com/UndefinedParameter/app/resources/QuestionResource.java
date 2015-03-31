@@ -54,6 +54,35 @@ public class QuestionResource {
 		return Response.ok(new QuestionCreatorView(user, quizId, groupId)).build();
 	}
 	
+	@GET
+	@Path("/create/type")
+	public Response getCreateQuestionType(@Auth(required = false) User user, @QueryParam("quizId") long quizId, @QueryParam("groupId") long groupId, @QueryParam("type") String type) {
+		
+		if(user == null) {
+			return Response.ok(new LoginView("/question/create?quizId=" + quizId + "&groupId=" + groupId)).build();
+		}
+		
+		if(quizId < 1 || groupId < 1) {
+			return Response.status(Status.BAD_REQUEST).build();
+		}
+		
+		String file = "multiple_choice.ftl";
+		if("TRUE_FALSE".equals(type)) {
+			file = "true_false.ftl";
+		}
+		else if("SHORT_ANSWER".equals(type)) {
+			file = "short_answer.ftl";
+		}
+		else if("FILL_IN_THE_BLANK".equals(type)) {
+			file = "fill_blank.ftl";
+		}
+		else if("MATCHING".equals(type)) {
+			file = "matching.ftl";
+		}
+		
+		return Response.ok(new QuestionCreatorView(file, user, quizId, groupId)).build();
+	}
+	
 	@POST
 	@Path("/create")
 	@Consumes(MediaType.APPLICATION_JSON)
@@ -188,7 +217,7 @@ public class QuestionResource {
 			return Response.status(Status.BAD_REQUEST).build();
 		}
 		
-		return Response.ok(new QuestionEditView(question, groupId)).build();
+		return Response.ok(new QuestionEditView(question, groupId, quizManager.getAllCategories())).build();
 	}
 	
 	@PUT

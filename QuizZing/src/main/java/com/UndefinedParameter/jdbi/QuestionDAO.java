@@ -115,6 +115,12 @@ public interface QuestionDAO {
 	@GetGeneratedKeys
 	public long addCategoryToQuestion(@Bind("questionId") long questionId, @Bind("categoryId") long categoryId);
 	
+	@SqlUpdate("DELETE FROM QuestionCategory WHERE QuestionID = :questionId")
+	public void removeCategories(@Bind("questionId") long questionId);
+	
+	@SqlQuery("SELECT CategoryType FROM Category")
+	public List<String> getAllCategories();
+	
 	/********************************** Quiz Quality Ratings Query *****************************************************/
 	
 	@SqlUpdate("UPDATE Question SET Rating = Rating + :rating, RatingCount = RatingCount + 1 WHERE QuestionID = :questionId")

@@ -9,10 +9,16 @@
 		    	<div>
 					<h4>Categories For This Quiz</h4>
 				</div>
-				<div id="categoryTags"></div>
+				<div id="categoryTags">
+					<#if question.categories??>
+					<#list question.categories as category>
+					<button id="catButton${category_index}" class="default" style="margin: 5px"><i onclick="removeCategory(${category_index})" class="icon-cancel"></i>  #${category}</button>
+					</#list>
+					</#if>
+				</div>
 				<div>
 					<div class="input-control text">
-					    <input id="categories" type="text" placeholder="Comma separated categories" value="${question.categoriesString}"/>
+					    <input id="categories" type="text" placeholder="Comma separated categories"/>
 					</div>
 				</div>	
 			</div>
@@ -112,8 +118,32 @@
 	
 	
 	<script>
+
+		//set up auto complete for categories
+		$(function() {
+
+			var allCategories = [];
+			<#if allCategories??>
+			<#list allCategories as category>
+			allCategories.push('${category}');
+			</#list>
+			</#if>
+
+			$('#categories').autocomplete({
+				source: allCategories
+			});
+		});
 	
 		var categories = [];
+		<#if question.categories??>
+		<#list question.categories as category>
+		categories.push('${category}');
+
+		$('#catButton${category_index}').click(function(event) {
+			event.preventDefault();
+		});
+		</#list>
+		</#if>
 		
 		function setCategoryButtons() {
 			var html = "";
@@ -148,12 +178,13 @@
 		$('#categories').keydown(function(event) {
 			if(event.which == 188) {
 				var cat = $('#categories').val().trim();
-				if(cat == "") {
+				if(cat == ""  || cat == "#") {
 					event.preventDefault();
+					$('#categories').val("");
 					return;
 				}
-				
-				categories.push(cat.substring(0));
+				if($.inArray(cat, categories) == -1)
+					categories.push(cat);
 				setCategoryButtons();
 				$('#categories').val("");
 				event.preventDefault();
@@ -165,10 +196,12 @@
 
 			var cat = $('#categories').val().trim();
 			
-			if(cat == "") {
+			if(cat == "" || cat == "#") {
+				$('#categories').val("");
 				return;
 			}
-			categories.push(cat.substring(0));
+			if($.inArray(cat, categories) == -1)
+				categories.push(cat.substring(0));
 			setCategoryButtons();
 			$('#categories').val("");
 			event.preventDefault();

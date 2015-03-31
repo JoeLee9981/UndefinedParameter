@@ -18,6 +18,13 @@ public class QuestionCreatorView extends View {
 		this.groupId = groupId;
 		this.user = user;
 	}
+	
+	public QuestionCreatorView(String ftl, User user, long quizId, long groupId) {
+		super(ftl);
+		this.quizId = quizId;
+		this.groupId = groupId;
+		this.user = user;
+	}
 
 	@JsonProperty
 	public long getQuizId() {
