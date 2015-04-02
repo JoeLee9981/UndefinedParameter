@@ -154,7 +154,7 @@ public class QuizResource {
 		//this is for future use
 		quiz.setTime(10000);
 		
-		long quizId = quizManager.createQuiz(quiz);
+		long quizId = quizManager.createQuiz(quiz, groupId);
 		if(quizId >= 1) {
 			if(quizManager.addQuizToGroup(quizId, groupId)) {
 				response.put("response", "success");

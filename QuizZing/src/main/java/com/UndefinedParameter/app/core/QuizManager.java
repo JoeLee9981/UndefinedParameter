@@ -288,11 +288,16 @@ public class QuizManager {
 												 question.getCorrectPosition());
 			
 			setCategoriesForQuestion(question.getQuestionId(), question.getCategories());
+			
+			//Give points for creating the question
+			UserGroupManager usrGrpM = null;
+			usrGrpM.addPoints(question.getCreatorId(), question.getGroupId(), 1);
+			
 			return id;
 		}
 	}
 	
-	public long createQuiz(Quiz quiz) {
+	public long createQuiz(Quiz quiz, long groupID) {
 		
 		
 		//TODO Commenting this out for now since the framework is not in place
@@ -324,13 +329,20 @@ public class QuizManager {
 				throw new Exception("Not all questions exist in the database.");
 		}*/
 		
-		return quizDAO.createQuiz(quiz.getCreatorId(),
+		long rvalue = quizDAO.createQuiz(quiz.getCreatorId(),
 				InputUtils.sanitizeInput(quiz.getName()), 
 								  quiz.getDifficulty(), 
 								  quiz.getRating(), 
 								  InputUtils.sanitizeInput(quiz.getDescription()),
 								  quiz.getTime(),
 								  quiz.isOpen());
+		
+		//Give points for creating the quiz
+		//TODO check if this is the right spot?		
+		UserGroupManager usrGrpM = null;
+		usrGrpM.addPoints(quiz.getCreatorId(), groupID, 5);
+		
+		return rvalue;
 	}
 	
 	/*
@@ -441,6 +453,11 @@ public class QuizManager {
 				long key = quizDAO.insertQuizRating(quizId, userId, rating);
 				if(key > 0) {
 					quizDAO.rateQuizQuality(rating, quizId);
+					
+					//TODO check if this is the right spot?		
+					//long rvalue = quizDAO.		//NEED TO GET GROUP ID
+					//UserGroupManager usrGrpM = null;
+					//usrGrpM.addPoints(userId, 4, 6);
 					return true;
 				}
 				else {
