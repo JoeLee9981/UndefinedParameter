@@ -354,6 +354,24 @@ public class Quiz {
 		return questionPosition > 0;
 	}
 
+	@JsonProperty
+	public String getParentGroupName() {
+		return parentGroupName;
+	}
+
+	@JsonProperty
+	public void setParentGroupName(String parentGroupName) {
+		this.parentGroupName = parentGroupName;
+	}
+
+	public long getParentGroupId() {
+		return parentGroupId;
+	}
+
+	public void setParentGroupId(long parentGroupId) {
+		this.parentGroupId = parentGroupId;
+	}
+
 	public String getTimeString() {
 		int hours = time / 3600;
 		int minutes = time % 3600 / 60;

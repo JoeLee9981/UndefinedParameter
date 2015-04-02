@@ -22,10 +22,11 @@ public interface QuizDAO {
 	 * Retrieve quizzes from the database, order by rating
 	 * 	TODO: Restrict this to a number of quizzes by adding a range (first 100, second 100, etc)
 	 */
-	@SqlQuery("SELECT q.*, sg.Name AS GroupName, sg.GroupID FROM " + 
-				"innodb.Quiz q, innodb.SubGroup sg, innodb.GroupQuiz gq WHERE " + 
+	@SqlQuery("SELECT q.*, sg.Name AS GroupName, sg.GroupID, u.FirstName, u.LastName FROM " + 
+				"Quiz q, SubGroup sg, GroupQuiz gq, User u WHERE " + 
 				"q.QuizID = gq.QuizID AND " + 
-				"sg.GroupID = gq.GroupID " + 
+				"sg.GroupID = gq.GroupID AND " + 
+				"u.UserID = q.CreatorID " +
 				"ORDER BY Rating / RatingCount DESC")
 	public List<Quiz> retrieveTopQuizzes();
 	
@@ -33,23 +34,34 @@ public interface QuizDAO {
 	 * Retrieve quizzes from the database, order by date
 	 * 	TODO: Restrict this to a number of quizzes by adding a range (first 100, second 100, etc)
 	 */
-	@SqlQuery("SELECT * FROM Quiz ORDER BY DateCreated DESC")
+	@SqlQuery("SELECT q.*, sg.Name AS GroupName, sg.GroupID, u.FirstName, u.LastName FROM " +
+				"Quiz q, SubGroup sg, GroupQuiz gq, User u WHERE " +
+				"q.QuizID = gq.QuizID AND " + 
+				"sg.GroupID = gq.GroupID AND " + 
+				"u.UserID = q.CreatorID " +
+				"ORDER BY DateCreated DESC")
 	public List<Quiz> retrieveRecentQuizzes();
 	
 	/*
 	 * 	Retrieve a list of quizzes from the database by group id
 	 */
-	@SqlQuery("SELECT quiz.* "
-				+ "FROM Quiz quiz, SubGroup sub, GroupQuiz gquiz "
+	@SqlQuery("SELECT quiz.*, sub.Name AS GroupName, sub.GroupID, u.FirstName, u.LastName "
+				+ "FROM Quiz quiz, SubGroup sub, GroupQuiz gquiz, User u "
 				+ "WHERE quiz.QuizID = gquiz.QuizID "
 				+ "AND sub.GroupID = gquiz.GroupID "
+				+ "AND u.UserID = quiz.CreatorID "
 				+ "AND sub.GroupID = :groupId")
 	public List<Quiz> retrieveQuizzesByGroup(@Bind("groupId") long groupId);
 	
 	/*
 	 * Retrieve Quizzes by creator ID
 	 */
-	@SqlQuery("SELECT * FROM Quiz WHERE CreatorID = :creatorId")
+	@SqlQuery("SELECT q.*, sg.Name AS GroupName, sg.GroupID, u.FirstName, u.LastName FROM "
+			+ "FROM Quiz q, SubGroup sg, GroupQuiz gq, User u "
+			+ "WHERE q.QuizID = gq.QuizID "
+			+ "AND sg.GroupID = gq.GroupID "
+			+ "AND u.UserID = q.CreatorID "
+			+ "AND q.CreatorID = :creatorId")
 	public List<Quiz> retrieveQuizzesByCreatorId(@Bind("creatorId") long creatorId);
 	
 	/*

@@ -38,6 +38,11 @@ public class QuizMapper implements ResultSetMapper<Quiz> {
 			}
 			quiz.setCreatorName(displayName);
 		}
+		//TODO: All queries should have this all the time
+		if(findColumn(r, "GroupName")) {
+			quiz.setParentGroupId(r.getLong("GroupID"));
+			quiz.setParentGroupName(r.getString("GroupName"));
+		}
 		
 		DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss.S");
 		quiz.setDateCreated(formatter.parseDateTime(r.getString("DateCreated")));
