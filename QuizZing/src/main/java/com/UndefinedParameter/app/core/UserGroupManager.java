@@ -111,11 +111,18 @@ public class UserGroupManager {
 	}
 	
 	/*
-	 * Whatever, 		Option = 0: 1 point
-	 * Took a quiz, 	Option = 1: 2 points.
-	 * Made a comment,	Option = 2: 3 point.
-	 * Made a quiz, 	Option = 3: 5 points.
-	 * Made the group,	Option = 99: 300 points.
+	 * Option, Points
+	 * 
+	 *	1	1	Creating a question.
+	 *	2	1	Rating a question.
+	 *	3	3	When people give Feedback to question.
+	 *	4	1	When people say how difficult the question is.
+	 *
+	 *	5	2	Creating a quiz.
+	 *	6	2	Rating a quiz.
+	 *	7	4	When people give Feedback to quiz.
+	 *	8	2	When people say how difficult the quiz is.
+	 * 	99	300	Made the group.
 	 * More later.
 	 * */
 	public int addPoints(long userID, long groupID, int option)
@@ -132,19 +139,39 @@ public class UserGroupManager {
 		}
 		else if(option == 1)
 		{
-			points = 2;
+			points = 1;
 		}
 		else if(option == 2)
 		{
-			points = 3;
+			points = 1;
 		}
 		else if(option == 3)
 		{
-			points = 5;
+			points = 3;
+		}
+		else if(option == 4)
+		{
+			points = 1;
+		}
+		else if(option == 5)
+		{
+			points = 2;
+		}
+		else if(option == 6)
+		{
+			points = 2;
+		}
+		else if(option == 7)
+		{
+			points = 4;
+		}
+		else if(option == 8)
+		{
+			points = 2;
 		}
 		else
 		{
-			points = 1;
+			points = 0;
 		}
 		
 		usergroupDAO.addInUserGroupEarnedPoints(groupID, userID, points);

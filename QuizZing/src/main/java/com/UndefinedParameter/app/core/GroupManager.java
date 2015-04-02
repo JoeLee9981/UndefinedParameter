@@ -35,9 +35,11 @@ public class GroupManager {
 				InputUtils.sanitizeInput(group.getDescription()), 
 				group.getOrganizationId());
 
+		UserGroupManager usrGrpM = null;
 		UserGroupDAO usg = null;
 		usg.insert(user.getId(), rvalue);
-		usg.addInUserGroupEarnedPoints(rvalue, user.getId(), 99);
+		usrGrpM.addPoints(user.getId(), rvalue, 99);
+		
 		//groupDAO.insert(userid.getId(), rvalue);
 
 		//groupDAO.addInUserGroupEarnedPoints(rvalue, userid.getId(), 99);
