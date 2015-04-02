@@ -110,21 +110,31 @@ public class UserGroupManager {
 		return false;
 	}
 	
-	/*
-	 * Option, Points
+	/**
 	 * 
-	 *	1	1	Creating a question.
-	 *	2	1	Rating a question.
-	 *	3	3	When people give Feedback to question.
-	 *	4	1	When people say how difficult the question is.
-	 *
-	 *	5	2	Creating a quiz.
-	 *	6	2	Rating a quiz.
-	 *	7	4	When people give Feedback to quiz.
-	 *	8	2	When people say how difficult the quiz is.
-	 * 	99	300	Made the group.
+	 * 
+
 	 * More later.
 	 * */
+	
+	/**
+	 * Option-Points:
+	 * 	1-1	Creating a question.
+	 *	2-1	Rating a question.
+	 *	3-3	When people give Feedback to question.
+	 *	4-1	When people say how difficult the question is.
+	 *
+	 *	5-2	Creating a quiz.
+	 *	6-2	Rating a quiz.
+	 *	7-6	When people give Feedback to quiz.
+	 *	8-2	When people say how difficult the quiz is.
+	 * 	99-300	Made the group.
+	 * 
+	 * @param userID
+	 * @param groupID
+	 * @param option
+	 * @return
+	 */
 	public int addPoints(long userID, long groupID, int option)
 	{
 		long points;
@@ -163,7 +173,7 @@ public class UserGroupManager {
 		}
 		else if(option == 7)
 		{
-			points = 4;
+			points = 6;
 		}
 		else if(option == 8)
 		{
