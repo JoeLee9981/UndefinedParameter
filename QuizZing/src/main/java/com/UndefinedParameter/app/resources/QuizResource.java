@@ -89,7 +89,7 @@ public class QuizResource {
 		}
 		
 		//set editable to true if the user is the creator
-		if(user != null && user.getId() == quiz.getCreatorId()) {
+		if(user != null && (user.getId() == quiz.getCreatorId() || user.isAdmin() || quiz.isOpen())) {
 			//user is logged in and owner
 			return Response.ok(new QuizView(user, quiz, groupId, true, true, userRating, userDiff, userBestScore)).build();
 		}

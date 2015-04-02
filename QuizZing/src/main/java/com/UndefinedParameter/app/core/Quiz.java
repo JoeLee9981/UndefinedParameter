@@ -41,6 +41,16 @@ public class Quiz {
 	private String creatorName;
 	
 	/*
+	 * Name of the group the quiz belongs to
+	 */
+	private String parentGroupName;
+	
+	/*
+	 * ID of the parent group the quiz belongs to
+	 */
+	private long parentGroupId;
+	
+	/*
 	 * This is the difficulty of the quiz
 	 */
 	private int difficulty;

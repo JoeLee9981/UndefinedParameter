@@ -22,7 +22,11 @@ public interface QuizDAO {
 	 * Retrieve quizzes from the database, order by rating
 	 * 	TODO: Restrict this to a number of quizzes by adding a range (first 100, second 100, etc)
 	 */
-	@SqlQuery("SELECT * FROM Quiz ORDER BY Rating DESC")
+	@SqlQuery("SELECT q.*, sg.Name AS GroupName, sg.GroupID FROM " + 
+				"innodb.Quiz q, innodb.SubGroup sg, innodb.GroupQuiz gq WHERE " + 
+				"q.QuizID = gq.QuizID AND " + 
+				"sg.GroupID = gq.GroupID " + 
+				"ORDER BY Rating / RatingCount DESC")
 	public List<Quiz> retrieveTopQuizzes();
 	
 	/*

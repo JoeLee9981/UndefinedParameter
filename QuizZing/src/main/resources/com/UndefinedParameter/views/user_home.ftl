@@ -66,76 +66,76 @@
 					<div class="row noMargin">
 						<nav class="navigation-bar white white-custom">
 						    <nav class="navigation-bar-content">
-						        <item class="element active"><a href="" id="groupsLink"><strong>Top Quizzes</strong></a></item>
-						        <item class="element-divider"></item>
-						        <item class="element"><a href="#" class="todo"><strong>Recent Quizzes</strong></a></item>
-						        <item class="element-divider"></item>
-						        <item class="element"><a href="#" class="todo"><strong>Top Groups</strong></a></item>
-						        <item class="element-divider"></item>
-						        <item class="element"><a href="#" class="todo"><strong>Top Categories</strong></a></item>
-			        	        
+						    	<item class="element span2 text-center active"><a href="" id="groupsLink"><strong>My Quizzes</strong></a></item>
+						        <item class="element text-center span2"><a href="" id="groupsLink"><strong>My Groups</strong></a></item>
+						        <item class="element text-center span2"><a href="#" class="todo"><strong>New Quizzes</strong></a></item>
+						        <item class="element text-center span2"><a href="" id="groupsLink"><strong>Top Quizzes</strong></a></item>
+						        <item class="element text-center span2"><a href="#" class="todo"><strong>Top Groups</strong></a></item>
+						        <item class="element text-center span2"><a href="#" class="todo"><strong>Top Categories</strong></a></item>
 						    </nav>
 						</nav>					
 					</div>
-					<div class="span6">
+					<div class="row">
+						<div class="span6">
+						
+							<#include "../includes/top_quizzes.ftl">
+							<#include "../includes/recent_quizzes.ftl">
+							     			
+						</div>
 					
-						<#include "../includes/top_quizzes.ftl">
-						<#include "../includes/recent_quizzes.ftl">
-						     			
-					</div>
-					
-					<div class="offset1 span5">
-						<#include "../includes/top_groups.ftl">
-						<div class="row">
-							<h2>Top Categories</h2>
-							<table class="table hovered striped">
-		                        <thead>
-			                        <tr>
-			                            <th class="text-left">Subject</th>
-			                            <th class="text-right">Quizzes</th>
-			                            <th class="text-right">Groups</th>
-			                        </tr>
-		                        </thead>
-		                        <tbody>                         
-									<tr>
-										<td><a href="#" class="todo"> Computer Science </a></td>
-										<td class="text-right right">17</td>
-										<td class="text-right right">4.3</td>
-									</tr>
-									<tr>
-										<td><a href="#" class="todo"> Board Games </a></td>
-										<td class="text-right right">17</td>
-										<td class="text-right right">4.3</td>
-									</tr>
-									<tr>
-										<td><a href="#" class="todo"> Math </a></td>
-										<td class="text-right right">17</td>
-										<td class="text-right right">4.3</td>
-									</tr>
-									<tr>
-										<td><a href="#" class="todo"> Media </a></td>
-										<td class="text-right right">17</td>
-										<td class="text-right right">4.3</td>
-									</tr>
-									<tr>
-										<td><a href="#" class="todo"> Television </a></td>
-										<td class="text-right right">17</td>
-										<td class="text-right right">4.3</td>
-									</tr>
-									<tr>
-										<td><a href="#" class="todo"> Movies </a></td>
-										<td class="text-right right">17</td>
-										<td class="text-right right">4.3</td>
-									</tr>
-									<tr>
-										<td><a href="#" class="todo"> Electrical Engineering </a></td>
-										<td class="text-right right">17</td>
-										<td class="text-right right">4.3</td>
-									</tr>
-								</tbody>
-		                        <tfoot></tfoot>
-		                    </table>  
-	                    </div>  					
+						<div class="offset1 span5">
+							<#include "../includes/top_groups.ftl">
+							<div class="row">
+								<h2>Top Categories</h2>
+								<table class="table hovered striped">
+			                        <thead>
+				                        <tr>
+				                            <th class="text-left">Subject</th>
+				                            <th class="text-right">Quizzes</th>
+				                            <th class="text-right">Groups</th>
+				                        </tr>
+			                        </thead>
+			                        <tbody>                         
+										<tr>
+											<td><a href="#" class="todo"> Computer Science </a></td>
+											<td class="text-right right">17</td>
+											<td class="text-right right">4.3</td>
+										</tr>
+										<tr>
+											<td><a href="#" class="todo"> Board Games </a></td>
+											<td class="text-right right">17</td>
+											<td class="text-right right">4.3</td>
+										</tr>
+										<tr>
+											<td><a href="#" class="todo"> Math </a></td>
+											<td class="text-right right">17</td>
+											<td class="text-right right">4.3</td>
+										</tr>
+										<tr>
+											<td><a href="#" class="todo"> Media </a></td>
+											<td class="text-right right">17</td>
+											<td class="text-right right">4.3</td>
+										</tr>
+										<tr>
+											<td><a href="#" class="todo"> Television </a></td>
+											<td class="text-right right">17</td>
+											<td class="text-right right">4.3</td>
+										</tr>
+										<tr>
+											<td><a href="#" class="todo"> Movies </a></td>
+											<td class="text-right right">17</td>
+											<td class="text-right right">4.3</td>
+										</tr>
+										<tr>
+											<td><a href="#" class="todo"> Electrical Engineering </a></td>
+											<td class="text-right right">17</td>
+											<td class="text-right right">4.3</td>
+										</tr>
+									</tbody>
+			                        <tfoot></tfoot>
+			                    </table>  
+		                    </div>  					
+						</div>
 					</div>
 				</div>
 			
