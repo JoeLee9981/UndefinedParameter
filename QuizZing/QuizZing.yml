@@ -10,7 +10,7 @@ database:
   driverClass: com.mysql.jdbc.Driver
   user: UndefParam
   password: DiVide6910
-  url: jdbc:mysql://quizzing.cybeswdnopl1.us-west-2.rds.amazonaws.com:3306/innodb
+  url: jdbc:mysql://quizzing-old.cybeswdnopl1.us-west-2.rds.amazonaws.com:3306/innodb
   properties:
     charSet: UTF-8
   maxWaitForConnection: 1s

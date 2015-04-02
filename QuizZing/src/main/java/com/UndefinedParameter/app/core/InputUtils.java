@@ -1,5 +1,13 @@
 package com.UndefinedParameter.app.core;
 
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
+import java.security.spec.KeySpec;
+import java.util.Random;
+
+import javax.crypto.SecretKeyFactory;
+import javax.crypto.spec.PBEKeySpec;
+
 import org.apache.commons.lang.StringEscapeUtils;
 
 public class InputUtils {
@@ -12,5 +20,32 @@ public class InputUtils {
 		input = input.replace("\n", "<br/>");
 		//escape and re-add <br/>
 		return StringEscapeUtils.escapeHtml(input).replace("&lt;br/&gt;", "<br/>");
+	}
+	
+	public static byte[] hashPassword(byte[] salt, String password) {
+		
+		try {
+		
+			KeySpec spec = new PBEKeySpec(password.toCharArray(), salt, 65536, 128);
+			SecretKeyFactory f = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1");
+			byte[] hash = f.generateSecret(spec).getEncoded();
+			
+			return hash;
+		}
+		catch(NoSuchAlgorithmException nse) {
+			return null;
+		}
+		catch(InvalidKeySpecException ike) {
+			return null;
+		}
+	}
+	
+	public static byte[] getSalt() {
+		Random random = new Random();
+		
+		byte[] salt = new byte[16];
+		random.nextBytes(salt);
+		
+		return salt;
 	}
 }

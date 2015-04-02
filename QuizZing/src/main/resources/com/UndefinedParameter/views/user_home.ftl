@@ -43,28 +43,40 @@
 				
 				<div class="page-content">
 					<div class="row">
-						<button class="shortcut bg-amber fg-white span3" onclick="location.href = '/quiz/quizzes'">
+						<button class="shortcut danger span3" onclick="location.href = '/quiz/quizzes'">
 						    <i class="icon-help"></i>
 						   	Find a Quiz
 						</button>
-						<button class="shortcut bg-amber fg-white span3" onclick="location.href = '/quiz/create'">
+						<button class="shortcut success span3" onclick="location.href = '/quiz/create'">
 						    <i class="icon-lightning"></i>
 						   	Create a Quiz
 						</button>
-						<button class="shortcut bg-amber fg-white span3" onclick="location.href = '/group/top'">
+						<button class="shortcut primary span3" onclick="location.href = '/group/top'">
 						    <i class="icon-comments-2"></i>
 						    Find a Group
 						</button>
-						<button class="shortcut bg-amber fg-white span3" onclick="location.href = '/orgs'">
-							<a href="#">
+						<button class="shortcut warning span3" onclick="location.href = '/orgs'">
 						    <i class="icon-user-3"></i>
 						    Find an Organization
-						    </a>
 						</button>											
 				    </div>
 				</div>
 			
 				<div class="page-content row">
+					<div class="row noMargin">
+						<nav class="navigation-bar white white-custom">
+						    <nav class="navigation-bar-content">
+						        <item class="element active"><a href="" id="groupsLink"><strong>Top Quizzes</strong></a></item>
+						        <item class="element-divider"></item>
+						        <item class="element"><a href="#" class="todo"><strong>Recent Quizzes</strong></a></item>
+						        <item class="element-divider"></item>
+						        <item class="element"><a href="#" class="todo"><strong>Top Groups</strong></a></item>
+						        <item class="element-divider"></item>
+						        <item class="element"><a href="#" class="todo"><strong>Top Categories</strong></a></item>
+			        	        
+						    </nav>
+						</nav>					
+					</div>
 					<div class="span6">
 					
 						<#include "../includes/top_quizzes.ftl">

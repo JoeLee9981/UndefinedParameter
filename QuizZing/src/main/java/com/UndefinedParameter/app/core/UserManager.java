@@ -16,6 +16,7 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 import org.joda.time.DateTime;
+import org.mindrot.jbcrypt.BCrypt;
 
 import com.UndefinedParameter.jdbi.UserDAO;
 
@@ -81,6 +82,9 @@ public class UserManager {
 	
 	public boolean registerNewUser(User user) throws Exception {
 		try {
+			
+			String hashed = BCrypt.hashpw(user.getPassword(), BCrypt.gensalt());
+			
 			userDAO.insert(InputUtils.sanitizeInput(user.getUserName()), 
 						   InputUtils.sanitizeInput(user.getFirstName()), 
 						   InputUtils.sanitizeInput(user.getLastName()), 
@@ -89,7 +93,7 @@ public class UserManager {
 						   InputUtils.sanitizeInput(user.getCity()), 
 						   InputUtils.sanitizeInput(user.getState()), 
 						   InputUtils.sanitizeInput(user.getEmail()), 
-						   InputUtils.sanitizeInput(user.getPassword()), 
+						   InputUtils.sanitizeInput(hashed), 
 						   InputUtils.sanitizeInput(user.getSecretQuestion()), 
 						   InputUtils.sanitizeInput(user.getSecretAnswer()));
 		}
@@ -103,6 +107,7 @@ public class UserManager {
 		user = fillNullColumns(user);
 		
 		try {
+			String hashed = BCrypt.hashpw(user.getPassword(), BCrypt.gensalt());
 			userDAO.update(user.getId(),
 							InputUtils.sanitizeInput(user.getUserName()), 
 							InputUtils.sanitizeInput(user.getFirstName()), 
@@ -112,7 +117,7 @@ public class UserManager {
 							InputUtils.sanitizeInput(user.getCity()), 
 							InputUtils.sanitizeInput(user.getState()), 
 							InputUtils.sanitizeInput( user.getEmail()), 
-							InputUtils.sanitizeInput(user.getPassword()), 
+							InputUtils.sanitizeInput(hashed), 
 							InputUtils.sanitizeInput(user.getSecretQuestion()), 
 							InputUtils.sanitizeInput(user.getSecretAnswer()),
 						    user.getActive(),

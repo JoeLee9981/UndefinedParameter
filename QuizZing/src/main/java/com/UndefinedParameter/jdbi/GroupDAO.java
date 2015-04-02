@@ -76,4 +76,5 @@ public interface GroupDAO {
 	
 	@SqlQuery("SELECT COUNT(*) FROM Quiz quiz, GroupQuiz gquiz WHERE quiz.QuizID = gquiz.QuizID and gquiz.GroupID = :groupId")
 	public int countQuizzes(@Bind("groupId") long groupId);
+
 }

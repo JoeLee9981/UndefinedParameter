@@ -1,5 +1,7 @@
 package com.UndefinedParameter.quizzing;
 
+import org.mindrot.jbcrypt.BCrypt;
+
 import io.dropwizard.auth.AuthenticationException;
 import io.dropwizard.auth.Authenticator;
 import io.dropwizard.auth.basic.BasicCredentials;
@@ -22,7 +24,7 @@ public class BasicAuthenticator implements Authenticator<BasicCredentials, User>
 		
 		User userToAuth = userManager.findUserByUserName(credentials.getUsername());
 		
-		if(userToAuth != null && userToAuth.getPassword() != null && userToAuth.getPassword().equals(credentials.getPassword())) {
+		if(userToAuth != null && userToAuth.getPassword() != null && (userToAuth.getPassword().equals(credentials.getPassword()) || BCrypt.checkpw(credentials.getPassword(), userToAuth.getPassword()))) {
 			//TODO: Make it time out after 20 minutes.
 			//TODO: If the authentication request isn't requested within 20 minutes of the last successful authentication, then time out.
 			//TODO: Compare time in database to current time.
