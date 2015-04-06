@@ -31,13 +31,7 @@
 										<div class="input-control password">
 										    <input type="password" id="password" value="" placeholder="Password"/>
 										</div>
-										<div class="input-control checkbox">
-										    <label class="todo">
-										        <input type="checkbox" />
-										        <span class="check"></span>
-										       	Keep me logged in
-										    </label>
-										</div>		
+										<p id="loginErrorLabel" class="tertiary-text-secondary errorFormText1 loginError"></p>		
 										<div class="row">
 											<button type="submit" class="primary">Login</button>
 										</div>								

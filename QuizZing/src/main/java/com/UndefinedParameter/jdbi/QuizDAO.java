@@ -56,7 +56,7 @@ public interface QuizDAO {
 	/*
 	 * Retrieve Quizzes by creator ID
 	 */
-	@SqlQuery("SELECT q.*, sg.Name AS GroupName, sg.GroupID, u.FirstName, u.LastName FROM "
+	@SqlQuery("SELECT q.*, sg.Name AS GroupName, sg.GroupID, u.FirstName, u.LastName "
 			+ "FROM Quiz q, SubGroup sg, GroupQuiz gq, User u "
 			+ "WHERE q.QuizID = gq.QuizID "
 			+ "AND sg.GroupID = gq.GroupID "

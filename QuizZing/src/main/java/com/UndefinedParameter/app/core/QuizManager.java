@@ -291,7 +291,7 @@ public class QuizManager {
 			
 			//Give points for creating the question
 			UserGroupManager usrGrpM = null;
-			usrGrpM.addPoints(question.getCreatorId(), question.getGroupId(), 1);
+			//usrGrpM.addPoints(question.getCreatorId(), question.getGroupId(), 1);
 			
 			return id;
 		}
@@ -340,7 +340,7 @@ public class QuizManager {
 		//Give points for creating the quiz
 		//TODO check if this is the right spot?		
 		UserGroupManager usrGrpM = null;
-		usrGrpM.addPoints(quiz.getCreatorId(), groupID, 5);
+		//usrGrpM.addPoints(quiz.getCreatorId(), groupID, 5);
 		
 		return rvalue;
 	}

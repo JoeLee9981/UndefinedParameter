@@ -153,7 +153,7 @@
 		});
 	
 		function addMatching() {
-			
+
 			//TODO Prevalidate these fields
 			var maxAnswers = 5;
 			var quizId = ${quizId};
@@ -174,9 +174,9 @@
 			
 			
 			var ordered = false;
-			
-			document.getElementById('responseLabel').innerHTML = "";
 
+			document.getElementById('match-responseLabel').innerHTML = "";
+			
 			var count = 1;
 			for(var i = 1; i <= maxAnswers; i++) {
 				if(($('#matchText' + i).val() && !$('#match-descriptionText-' + i).val()) || 
@@ -207,11 +207,11 @@
 			}
 			
 			if(hyperlink && !reference) {
-				document.getElementById('responseLabel').innerHTML = "Reference must be filled out in conjunction to the hyperlink";
-				document.getElementById('responseLabel').className = "text-alert";
+				document.getElementById('match-responseLabel').innerHTML = "Reference must be filled out in conjunction to the hyperlink";
+				document.getElementById('match-responseLabel').className = "text-alert";
 				return;
 			}
-				
+			
 			 $.ajax({
 				type: 'POST',
 				url: path,
@@ -226,8 +226,8 @@
 						window.location = data['redirect'];
 					}
 					else {
-						document.getElementById('responseLabel').className = "text-alert";
-						document.getElementById('responseLabel').innerHTML = data["message"];
+						document.getElementById('match-responseLabel').className = "text-alert";
+						document.getElementById('match-responseLabel').innerHTML = data["message"];
 					}
 				}
 			});

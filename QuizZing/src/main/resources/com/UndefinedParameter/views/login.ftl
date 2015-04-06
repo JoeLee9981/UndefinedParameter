@@ -44,15 +44,6 @@
 										<div class="input-control password span8">
 										    <input type="password" id="password" value="" placeholder="Password"/>
 										</div>	
-									</div>
-									<div class="row">					
-										<div class="input-control checkbox">
-										    <label class="todo">
-										        <input type="checkbox" />
-										        <span class="check"></span>
-										       	Keep me logged in
-										    </label>
-										</div>
 									</div>	
 									<div class="row topMarginMedium">
 										<button type="button" class="large primary" onclick="login()">Login</button>								
