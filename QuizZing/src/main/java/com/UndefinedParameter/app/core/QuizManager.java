@@ -436,7 +436,7 @@ public class QuizManager {
 		return quizDAO.getQuizDifficulty(quizId, userId);
 	}
 	
-	public boolean rateQuizQuality(long userId, long quizId, int rating) {
+	public boolean rateQuizQuality(long userId, long quizId, long groupId, int rating) {
 		
 		if(userId < 1 || quizId < 1 || rating < 1 || rating > 5) {
 			//this is invalid
@@ -474,7 +474,7 @@ public class QuizManager {
 		}
 	}
 	
-	public boolean rateQuizDifficulty(long userId, long quizId, int rating) {
+	public boolean rateQuizDifficulty(long userId, long quizId, long groupId, int rating) {
 		
 		if(userId < 1 || quizId < 1 || rating < 1 || rating > 5) {
 			//this is invalid
@@ -572,7 +572,7 @@ public class QuizManager {
 		return questionDAO.getQuestionDifficulty(questionId, userId);
 	}
 	
-	public boolean rateQuestionQuality(long userId, long questionId, int rating) {
+	public boolean rateQuestionQuality(long userId, long questionId, long groupId, int rating) {
 		
 		if(userId < 1 || questionId < 1 || rating < 1 || rating > 5) {
 			//this is invalid
@@ -605,7 +605,7 @@ public class QuizManager {
 		}
 	}
 	
-	public boolean rateQuestionDifficulty(long userId, long questionId, int rating) {
+	public boolean rateQuestionDifficulty(long userId, long questionId, long groupId, int rating) {
 		
 		if(userId < 1 || questionId < 1 || rating < 1 || rating > 5) {
 			//this is invalid

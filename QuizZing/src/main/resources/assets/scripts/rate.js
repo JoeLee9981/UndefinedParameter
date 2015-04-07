@@ -4,30 +4,30 @@
  */
 
 
-function rateQuizQuality(rating, quizId) {
+function rateQuizQuality(rating, quizId, groupId) {
 	$.ajax({
 		type: 'POST',
-		url: '/quiz/rate/rating?quizId=' + quizId + '&rating=' + rating,
+		url: '/quiz/rate/rating?groupId=' + groupId + '&quizId=' + quizId + '&rating=' + rating,
 	});
 }
 
-function rateQuizDifficulty(rating, quizId) {
+function rateQuizDifficulty(rating, quizId, groupId) {
 	$.ajax({
 		type: 'POST',
-		url: '/quiz/rate/difficulty?quizId=' + quizId + '&rating=' + rating,
+		url: '/quiz/rate/difficulty?groupId=' + groupId + '&quizId=' + quizId + '&rating=' + rating,
 	});
 }
 
-function rateQuestionQuality(rating, questionId) {
+function rateQuestionQuality(rating, questionId, groupId) {
 	$.ajax({
 		type: 'POST',
-		url: '/question/rate/rating?questionId=' + questionId + '&rating=' + rating,
+		url: '/question/rate/rating?groupId=' + groupId + '&questionId=' + questionId + '&rating=' + rating,
 	});
 }
 
-function rateQuestionDifficulty(rating, questionId) {
+function rateQuestionDifficulty(rating, questionId, groupId) {
 	$.ajax({
 		type: 'POST',
-		url: '/question/rate/difficulty?questionId=' + questionId + '&rating=' + rating,
+		url: '/question/rate/difficulty?groupId=' + groupId + '&questionId=' + questionId + '&rating=' + rating,
 	});
 }

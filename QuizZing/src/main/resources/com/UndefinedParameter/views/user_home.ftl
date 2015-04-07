@@ -66,26 +66,26 @@
 					<div class="row noMargin">
 						<nav class="navigation-bar white white-custom">
 						    <nav class="navigation-bar-content">
-						    	<item class="element span2 text-center active"><a href="" id="groupsLink"><strong>My Quizzes</strong></a></item>
-						        <item class="element text-center span2"><a href="" id="groupsLink"><strong>My Groups</strong></a></item>
-						        <item class="element text-center span2"><a href="#" class="todo"><strong>New Quizzes</strong></a></item>
-						        <item class="element text-center span2"><a href="" id="groupsLink"><strong>Top Quizzes</strong></a></item>
-						        <item class="element text-center span2"><a href="#" class="todo"><strong>Top Groups</strong></a></item>
-						        <item class="element text-center span2"><a href="#" class="todo"><strong>Top Categories</strong></a></item>
+						    	<item class="element span2 text-center active"><a href="" id="myQuizzesLink"><strong>My Quizzes</strong></a></item>
+						        <item class="element text-center span2"><a href="" id="myGroupsLink"><strong>My Groups</strong></a></item>
+						        <item class="element text-center span2"><a href="#" id="newQuizzesLink"><strong>New Quizzes</strong></a></item>
+						        <item class="element text-center span2"><a href="" id="topQuizzesLink"><strong>Top Quizzes</strong></a></item>
+						        <item class="element text-center span2"><a href="#" id="topGroupsLink"><strong>Top Groups</strong></a></item>
+						        <item class="element text-center span2"><a href="#" id="topCategoriesLink"><strong>Top Categories</strong></a></item>
 						    </nav>
 						</nav>					
 					</div>
 					<div class="row">
-						<div class="span6">
+						<div class="span12">
 						
 							<#include "../includes/top_quizzes.ftl">
-							<#include "../includes/recent_quizzes.ftl">
+							<!-- <#include "../includes/recent_quizzes.ftl">  -->
 							     			
 						</div>
 					
-						<div class="offset1 span5">
+						<div class="span12">
 							<#include "../includes/top_groups.ftl">
-							<div class="row">
+							<!-- <div class="row">
 								<h2>Top Categories</h2>
 								<table class="table hovered striped">
 			                        <thead>
@@ -133,7 +133,7 @@
 										</tr>
 									</tbody>
 			                        <tfoot></tfoot>
-			                    </table>  
+			                    </table>   -->
 		                    </div>  					
 						</div>
 					</div>
@@ -152,6 +152,37 @@
 
 	</body>
 	<script>
+	
+		$('#myQuizzesLink').click(function(event) {
+			event.preventDefault();
+			alert("my quizzes");
+		});
+		
+		$('#myGroupsLink').click(function(event) {
+			event.preventDefault();
+			alert("my groups");
+		});
+		
+		$('#newQuizzesLink').click(function(event) {
+			event.preventDefault();
+			alert("new quizzes");
+		});
+	
+		$('#topQuizzesLink').click(function(event) {
+			event.preventDefault();
+			alert("top quizzes");
+		});
+		
+		$('#topGroupsLink').click(function(event) {
+			event.preventDefault();
+			alert("top groups");
+		});
+		
+		$('#topCategoriesLink').click(function(event) {
+			event.preventDefault();
+			alert("top categories");
+		});
+	
 		function scrollToLearnMore()
 		{
 			$('html, body').animate({

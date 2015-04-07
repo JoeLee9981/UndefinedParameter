@@ -180,12 +180,12 @@ public class QuestionResource {
 	
 	@POST
 	@Path("/rate/rating")
-	public Response rateQuizQuality(@Auth(required = false) User user, @QueryParam("questionId") long questionId, @QueryParam("rating") int rating) {
+	public Response rateQuizQuality(@Auth(required = false) User user, @QueryParam("questionId") long questionId, @QueryParam("rating") int rating, @QueryParam("groupId") long groupId) {
 		
 		if(user == null) {
 			return Response.status(Status.UNAUTHORIZED).build();
 		}
-		if(quizManager.rateQuestionQuality(user.getId(), questionId, rating)) {
+		if(quizManager.rateQuestionQuality(user.getId(), questionId, groupId, rating)) {
 			return Response.ok().build();
 		}
 		else {
@@ -195,12 +195,12 @@ public class QuestionResource {
 	
 	@POST
 	@Path("/rate/difficulty")
-	public Response rateQuizDifficulty(@Auth(required = false) User user, @QueryParam("questionId") long questionId, @QueryParam("rating") int rating) {
+	public Response rateQuizDifficulty(@Auth(required = false) User user, @QueryParam("questionId") long questionId, @QueryParam("rating") int rating, @QueryParam("groupId") long groupId) {
 		
 		if(user == null) {
 			return Response.status(Status.UNAUTHORIZED).build();
 		}
-		if(quizManager.rateQuestionDifficulty(user.getId(), questionId, rating)) {
+		if(quizManager.rateQuestionDifficulty(user.getId(), questionId, groupId, rating)) {
 			return Response.ok().build();
 		}
 		else {

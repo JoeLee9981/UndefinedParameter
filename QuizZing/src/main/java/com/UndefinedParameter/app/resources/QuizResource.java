@@ -24,15 +24,16 @@ import com.UndefinedParameter.app.core.QuizManager;
 import com.UndefinedParameter.app.core.QuizScore;
 import com.UndefinedParameter.app.core.User;
 import com.UndefinedParameter.jdbi.GroupDAO;
+import com.UndefinedParameter.jdbi.OrgMemberDAO;
 import com.UndefinedParameter.jdbi.OrganizationDAO;
 import com.UndefinedParameter.jdbi.QuestionDAO;
 import com.UndefinedParameter.jdbi.QuizDAO;
 import com.UndefinedParameter.jdbi.QuizScoreDAO;
-import com.UndefinedParameter.jdbi.OrgMemberDAO;
 import com.UndefinedParameter.views.LoginView;
 import com.UndefinedParameter.views.QuizCreatorView;
 import com.UndefinedParameter.views.QuizEditQuestionsView;
 import com.UndefinedParameter.views.QuizEditView;
+import com.UndefinedParameter.views.QuizListView;
 import com.UndefinedParameter.views.QuizView;
 import com.UndefinedParameter.views.QuizzesView;
 import com.UndefinedParameter.views.ScoreView;
@@ -68,6 +69,9 @@ public class QuizResource {
 			if(quiz == null)
 				return Response.status(Status.BAD_REQUEST).build();
 			
+			if(groupId < 1) {
+				groupId = quiz.getParentGroupId();
+			}
 			return Response.ok(new QuizView(user, quiz, groupId, false, false, 0, 0, userBestScore)).build();
 		}
 		
@@ -77,6 +81,9 @@ public class QuizResource {
 		//return bad request if no quiz found
 		if(quiz == null)
 			return Response.status(Status.BAD_REQUEST).build();
+		if(groupId < 1) {
+			groupId = quiz.getParentGroupId();
+		}
 		
 		//obtain the user rating
 		int userRating = quizManager.findUserRating(user.getId(), quiz.getQuizId());
@@ -239,12 +246,12 @@ public class QuizResource {
 	
 	@POST
 	@Path("/rate/rating")
-	public Response rateQuizQuality(@Auth(required = false) User user, @QueryParam("quizId") long quizId, @QueryParam("rating") int rating) {
+	public Response rateQuizQuality(@Auth(required = false) User user, @QueryParam("quizId") long quizId, @QueryParam("rating") int rating, @QueryParam("groupId") long groupId) {
 		
 		if(user == null) {
 			return Response.status(Status.UNAUTHORIZED).build();
 		}
-		if(quizManager.rateQuizQuality(user.getId(), quizId, rating)) {
+		if(quizManager.rateQuizQuality(user.getId(), quizId, groupId, rating)) {
 			return Response.ok().build();
 		}
 		else {
@@ -254,16 +261,22 @@ public class QuizResource {
 	
 	@POST
 	@Path("/rate/difficulty")
-	public Response rateQuizDifficulty(@Auth(required = false) User user, @QueryParam("quizId") long quizId, @QueryParam("rating") int rating) {
+	public Response rateQuizDifficulty(@Auth(required = false) User user, @QueryParam("quizId") long quizId, @QueryParam("rating") int rating, @QueryParam("groupId") long groupId) {
 		
 		if(user == null) {
 			return Response.status(Status.UNAUTHORIZED).build();
 		}
-		if(quizManager.rateQuizDifficulty(user.getId(), quizId, rating)) {
+		if(quizManager.rateQuizDifficulty(user.getId(), quizId, groupId, rating)) {
 			return Response.ok().build();
 		}
 		else {
 			return Response.status(Status.BAD_REQUEST).build();
 		}
+	}
+	
+	@GET
+	@Path("/top")
+	public Response getTopQuizzes() {
+		return Response.ok(new QuizListView("top_quizzes.ftl", quizManager.findTopQuizzes())).build();
 	}
 }

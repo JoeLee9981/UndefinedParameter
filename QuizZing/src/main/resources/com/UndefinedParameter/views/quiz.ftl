@@ -183,7 +183,7 @@
 				hints: ['cake', 'easy', 'average', 'hard', 'impossible'],
 				click: function(value, rating) {
 					<#if loggedIn>
-						rateQuestionDifficulty(value, questionId);
+						rateQuestionDifficulty(value, questionId, ${groupId});
 						$("#quest-difficulty").attr('class', 'rating small fg-yellow');
 						rating.rate(value);
 						q.getQuestion().userDifficulty = value;
@@ -205,7 +205,7 @@
 				hints: ['useless', 'poor', 'average', 'good', 'excellent'],
 				click: function(value, rating) {
 					<#if loggedIn>
-						rateQuestionQuality(value, questionId);
+						rateQuestionQuality(value, questionId, ${groupId});
 						$("#quest-rating").attr('class', 'rating small fg-yellow');
 						rating.rate(value);
 						q.getQuestion().userRating = value;
@@ -265,7 +265,7 @@
 				hints: ['cake', 'easy', 'average', 'hard', 'impossible'],
 				click: function(value, rating) {
 					<#if loggedIn>
-						rateQuizDifficulty(value, ${quiz.quizId});
+						rateQuizDifficulty(value, ${quiz.quizId}, ${groupId});
 						$("#setdifficulty").attr('class', 'rating small fg-yellow');
 						rating.rate(value);
 					<#else>
@@ -293,7 +293,7 @@
 				hints: ['wrong', 'poor', 'average', 'good', 'excellent'],
 				click: function(value, rating) {
 					<#if loggedIn>
-						rateQuizQuality(value, ${quiz.quizId});
+						rateQuizQuality(value, ${quiz.quizId}, ${groupId});
 						$("#setrating").attr('class', 'rating small fg-yellow');
 						rating.rate(value);
 					<#else>
