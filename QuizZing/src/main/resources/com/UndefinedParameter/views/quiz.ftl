@@ -4,6 +4,7 @@
 		<title>QuizZing</title>
 		<link rel="stylesheet" href="/assets/plugins/metro_ui/css/metro-bootstrap.css">
 		<link rel="stylesheet" type="text/css" href="/assets/css/main.css" />
+		<script src="/assets/scripts/d3.min.js"></script>
 		<script src="/assets/scripts/jquery-2.1.1.min.js"></script>
 		<script src="/assets/scripts/rate.js"></script>
 		<script src="/assets/scripts/quiz.js"></script>
@@ -13,6 +14,22 @@
 		<link href="/assets/plugins/metro_ui/min/iconFont.min.css" rel="stylesheet">
 		<link href="/assets/css/quiz.css" rel="stylesheet">	
 		<link href="/assets/css/overrides.css" rel="stylesheet">
+		
+		<style>
+			path { 
+				stroke: #60a917;
+				stroke-width: 2;
+				fill: none;
+			}
+
+			.axis path,
+			.axis line {
+				fill: none;
+				stroke: grey;
+				stroke-width: 1;
+				shape-rendering: crispEdges;
+			}
+		</style>
 	</head>
 
 	<body class="metro">
@@ -110,8 +127,10 @@
 						</div>
 					</div>
 				</div>
+				
 				<div id="quizFinish" hidden="true">
 					<h2>Your Quiz Stats: </h2><br/>
+					<div id="quizGraphs"></div>
 					<h3 id="scoreText"></h3>
 					<h3 id="prevScoreText"></h3>
 					<h5>Rate the Quiz Difficulty:</h5>
@@ -721,14 +740,9 @@
 					},
 					success: function(data) 
 					{
-						if (data["response"] == "success")
-						{
 							document.getElementById('scoreText').innerHTML = "Score: " + scored + "%";
-						}
-						else
-						{
-							document.getElementById('scoreText').innerHTML = "Score: " + scored + "% (Warning: This score was not saved.)";
-						}
+							
+							drawScorePlot(data["scores"]);
 					},
 					error: function(data) {
 						document.getElementById('scoreText').innerHTML = "Score: " + scored + "% (Warning: This score was not saved.)";
@@ -748,6 +762,84 @@
 			</#if>
 
 			setAnswers();
+		}
+		
+		function drawScorePlot(dataset) {
+			$("#quizGraphs").empty();
+		
+			// Set graph canvas
+			var margin = {top: 30, right: 20, bottom: 30, left: 50},
+				width = 300 - margin.left - margin.right,
+				height = 300 - margin.top - margin.bottom;
+
+			// Parse the date / time
+			var parseDate = d3.time.format("%d-%b-%y").parse;
+
+			// Set dataset
+			var data = dataset;
+			var i = 0;
+			
+			// Set the ranges
+			var x = d3.scale.linear().range([0, width]);
+			var y = d3.scale.linear().range([height, 0]);
+
+			// Define the axes
+			var xAxis = d3.svg.axis().scale(x)
+				.orient("bottom").ticks(5);
+
+			var yAxis = d3.svg.axis().scale(y)
+				.orient("left").ticks(5);
+
+			// Define the line
+			var valueline = d3.svg.line()
+				.x(function(d) { return x(d.score); })
+				.y(function(d) { return y(d.score); });
+				
+			// Adds the svg canvas
+			var svg = d3.select("#quizGraphs")
+				.append("svg")
+					.attr("width", width + margin.left + margin.right)
+					.attr("height", height + margin.top + margin.bottom)
+				.append("g")
+					.attr("transform", 
+						  "translate(" + margin.left + "," + margin.top + ")");
+
+				// Scale the range of the data
+				x.domain([0, d3.max(data, function(d) { return d.score; })]);
+				y.domain([0, d3.max(data, function(d) { return d.score; })]);
+				
+				// Add title.
+				svg.append("text")
+			        .attr("x", (width / 2))             
+			        .attr("y", 0 - (margin.top / 2))
+			        .attr("text-anchor", "middle")  
+			        .style("font-size", "16px") 
+			        .style("text-decoration", "underline")  
+			        .text("Total Scores");
+
+				// Add the valueline path.
+				svg.append("path")
+					.attr("class", "line")
+					.attr("d", valueline(data));
+
+				// Add the scatterplot
+				svg.selectAll("dot")
+					.data(data)
+				  .enter().append("circle")
+					.attr("r", 3.5)
+					.attr("cx", function(d) { return x(d.score); })
+					.attr("cy", function(d) { return y(d.score); });
+
+				// Add the X Axis
+				svg.append("g")
+					.attr("class", "x axis")
+					.attr("transform", "translate(0," + height + ")")
+					.call(xAxis);
+
+				// Add the Y Axis
+				svg.append("g")
+					.attr("class", "y axis")
+					.call(yAxis);
 		}
 
 	</script>
