@@ -29,6 +29,7 @@ import com.UndefinedParameter.jdbi.OrganizationDAO;
 import com.UndefinedParameter.jdbi.QuestionDAO;
 import com.UndefinedParameter.jdbi.QuizDAO;
 import com.UndefinedParameter.jdbi.QuizScoreDAO;
+import com.UndefinedParameter.views.GroupListView;
 import com.UndefinedParameter.views.GroupMemberView;
 import com.UndefinedParameter.views.GroupQuestionView;
 import com.UndefinedParameter.views.GroupView;
@@ -125,5 +126,17 @@ public class GroupResource {
 			return Response.status(Status.BAD_REQUEST).build();
 		}
 		return Response.ok(new GroupMemberView(manager.findGroupMembers(groupId))).build();
+	}
+	
+	@GET
+	@Path("/top_groups")
+	public Response getTopGroups() {
+		return Response.ok(new GroupListView("../includes/top_groups.ftl", manager.findTopGroups())).build();
+	}
+	
+	@GET
+	@Path("mygroups")
+	public Response getMyGroups(@QueryParam("userId") long userId) {
+		return Response.ok(new GroupListView("../includes/mygroups.ftl", manager.findRegisteredGroups(userId))).build();
 	}
 }

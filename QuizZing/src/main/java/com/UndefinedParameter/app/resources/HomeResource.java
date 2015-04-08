@@ -60,12 +60,12 @@ public class HomeResource {
 		
 		if(user == null) {
 			ArrayList<NewsArticle> news = (ArrayList<NewsArticle>)newsManager.getRecentNews();
-			return Response.ok(new HomeView("home.ftl", news.toArray(new NewsArticle[news.size()]), quizManager.findTopQuizzes(), quizManager.findRecentQuizzes(), orgManager.findTopGroups(), null)).build();
+			return Response.ok(new HomeView("home.ftl", quizManager.findTopQuizzes())).build();
 		}
 		else {
 			//TODO: Create a customized view for the user and return it, instead of the standard
 			ArrayList<NewsArticle> news = (ArrayList<NewsArticle>)newsManager.getRecentNewsByUser(user.getId());
-			return Response.ok(new HomeView("user_home.ftl", news.toArray(new NewsArticle[news.size()]), user, orgManager.findOrgsByUserId(user.getId()), quizManager.findTopQuizzes(), quizManager.findRecentQuizzes(), orgManager.findTopGroups(), null)).build();
+			return Response.ok(new HomeView("user_home.ftl", user, quizManager.findQuizzesByCreatorId(user.getId()))).build();
 		}
 	}
 	

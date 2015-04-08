@@ -48,4 +48,8 @@ public class InputUtils {
 		
 		return salt;
 	}
+	
+	public static String normalizeInput(String input) {
+		return input.toLowerCase();
+	}
 }

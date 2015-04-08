@@ -229,17 +229,17 @@
 				}
 			}
 			
-			document.getElementById('responseLabel').innerHTML = "";
+			document.getElementById('fb-responseLabel').innerHTML = "";
 			
 			if(!desc) {
-				document.getElementById('responseLabel').innerHTML = "The Question must be filled out";
-				document.getElementById('responseLabel').className = "text-alert";
+				document.getElementById('fb-responseLabel').innerHTML = "The Question must be filled out";
+				document.getElementById('fb-responseLabel').className = "text-alert";
 				return;
 			}	
 			
 			if(hyperlink && !reference) {
-				document.getElementById('responseLabel').innerHTML = "Reference must be filled out in conjunction to the hyperlink";
-				document.getElementById('responseLabel').className = "text-alert";
+				document.getElementById('fb-responseLabel').innerHTML = "Reference must be filled out in conjunction to the hyperlink";
+				document.getElementById('fb-responseLabel').className = "text-alert";
 				return;
 			}
 
@@ -257,8 +257,8 @@
 						window.location = data['redirect'];
 					}
 					else {
-						document.getElementById('responseLabel').className = "text-alert";
-						document.getElementById('responseLabel').innerHTML = data["message"];
+						document.getElementById('fb-responseLabel').className = "text-alert";
+						document.getElementById('fb-responseLabel').innerHTML = data["message"];
 					}
 				}
 			});

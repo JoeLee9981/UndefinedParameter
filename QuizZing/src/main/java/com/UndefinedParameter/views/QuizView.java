@@ -1,11 +1,8 @@
 package com.UndefinedParameter.views;
 
-import java.util.List;
-
 import io.dropwizard.views.View;
 
 import com.UndefinedParameter.app.core.Quiz;
-import com.UndefinedParameter.app.core.QuizScore;
 import com.UndefinedParameter.app.core.User;
 
 public class QuizView extends View {

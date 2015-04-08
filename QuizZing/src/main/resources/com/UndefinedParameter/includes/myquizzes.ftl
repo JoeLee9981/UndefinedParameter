@@ -1,5 +1,5 @@
 <div class="row">
-	<h2>Recently Added Quizzes</h2>
+	<h2>My Quizzes</h2>
 	<#if quizzes??>
 	<table class="table hovered striped">
         <thead>
@@ -9,8 +9,8 @@
                 <th class="text-left">Creator</th>
                 <th class="text-left">Description</th>
                 <th title="Questions"><i class="icon-help-2 on-right"></i></th>
+                <th style="width: 120px">Difficulty</th>
                 <th style="width: 120px">Rating</th>
-                <th style="width: 120px">Date Created</th>
             </tr>
         </thead>
         <tbody>                         
@@ -32,9 +32,11 @@
 						</td>
 						<td class="text-center center">${quiz.questionCount}</td>
 						<td class="text-right right">
+							<div id="diff${quiz.quizId}" class="rating small fg-red"></div>
+						</td>
+						<td class="text-right right">
 							<div id="rating${quiz.quizId}" class="rating small"></div>
 						</td>
-						<td class="text-center right">${quiz.dateCreatedAsString}</td>
 						
 						<script>
 							//Star rating for quiz quality (entry page)
@@ -48,6 +50,16 @@
 								});
 							});
 							
+							//Star rating for quiz quality (entry page)
+							$(function() {
+								$("#diff${quiz.quizId}").rating({
+									static: true,
+									score: ${quiz.difficulty},
+									stars: 5,
+									showHint: true,
+									hints: ['wrong', 'poor', 'average', 'good', 'excellent'],
+								});
+							});
 						</script>
 					</tr>
 				</#list>

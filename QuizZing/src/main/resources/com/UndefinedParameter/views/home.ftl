@@ -82,71 +82,97 @@
 				</div>
 			
 				<div class="page-content row">
-					<div class="span6">
-					
-						<#include "../includes/top_quizzes.ftl">
-						<#include "../includes/recent_quizzes.ftl">
-						     			
+					<div class="row noMargin">
+						<nav class="navigation-bar white white-custom">
+						    <nav class="navigation-bar-content">
+						    	<item id="topQuizzesItem" class="element text-center span3 active"><a href="" id="topQuizzesLink"><strong>Top Quizzes</strong></a></item>
+						        <item id="newQuizzesItem" class="element text-center span3"><a href="" id="newQuizzesLink"><strong>New Quizzes</strong></a></item>
+						        <item id="topGroupsItem" class="element text-center span3"><a href="" id="topGroupsLink"><strong>Top Groups</strong></a></item>
+						        <item id="topCategoriesItem" class="element text-center span3 todo"><a href="" id="topCategoriesLink"><strong>Top Categories</strong></a></item>
+						    </nav>
+						</nav>					
 					</div>
-					
-					<div class="offset1 span5">
-						<#include "../includes/top_groups.ftl">
-						<div class="row">
-							<h2>Top Categories</h2>
-							<table class="table hovered striped">
-		                        <thead>
-			                        <tr>
-			                            <th class="text-left">Subject</th>
-			                            <th class="text-right">Quizzes</th>
-			                            <th class="text-right">Groups</th>
-			                        </tr>
-		                        </thead>
-		                        <tbody>                         
+					<div class="row">
+						<div id="quiz-div" class="span12">
+							<div class="row">
+								<h2>My Quizzes</h2>
+								<#if quizzes??>
+								<table class="table hovered striped">
+							        <thead>
+							            <tr>
+							                <th class="text-left">Quiz</th>
+							                <th class="text-left">Group</th>
+							                <th class="text-left">Creator</th>
+							                <th class="text-left">Description</th>
+							                <th title="Questions"><i class="icon-help-2 on-right"></i></th>
+							                <th style="width: 120px">Difficulty</th>
+							                <th style="width: 120px">Rating</th>
+							            </tr>
+							        </thead>
+							        <tbody>                         
+						        		<#list quizzes as quiz>
+										<tr>
+											<td><a href="quiz?quizId=${quiz.quizId}">${quiz.name}</a></td>
+											<td class="text-left left"><a href="group?groupId=${quiz.parentGroupId}">${quiz.parentGroupName}</a></td>
+											<td class="text-left left"><a href="user?userId=${quiz.creatorId}">${quiz.creatorName}</a></td>
+											<td class="text-left left">
+												<#if quiz.description??>
+													<#if quiz.description?length &gt; 20>
+														${quiz.description?substring(0, 20)}...
+													<#else>
+														${quiz.description}
+													</#if>
+												<#else>
+													No Description
+												</#if>
+											</td>
+											<td class="text-center center">${quiz.questionCount}</td>
+											<td class="text-right right">
+												<div id="diff${quiz.quizId}" class="rating small fg-red"></div>
+											</td>
+											<td class="text-right right">
+												<div id="rating${quiz.quizId}" class="rating small"></div>
+											</td>
+											
+											<script>
+												//Star rating for quiz quality (entry page)
+												$(function() {
+													$("#rating${quiz.quizId}").rating({
+														static: true,
+														score: ${quiz.rating},
+														stars: 5,
+														showHint: true,
+														hints: ['wrong', 'poor', 'average', 'good', 'excellent'],
+													});
+												});
+												
+												//Star rating for quiz quality (entry page)
+												$(function() {
+													$("#diff${quiz.quizId}").rating({
+														static: true,
+														score: ${quiz.difficulty},
+														stars: 5,
+														showHint: true,
+														hints: ['wrong', 'poor', 'average', 'good', 'excellent'],
+													});
+												});
+											</script>
+										</tr>
+										</#list>
+									</tbody>
+							        <tfoot></tfoot>
+							    </table>  
+							    <#else>
 									<tr>
-										<td><a href="#" class="todo"> Computer Science </a></td>
-										<td class="text-right right">17</td>
-										<td class="text-right right">4.3</td>
+										<td colspan="3">
+											<h3>No Quizzes Found</h3>
+										</td>
 									</tr>
-									<tr>
-										<td><a href="#" class="todo"> Board Games </a></td>
-										<td class="text-right right">17</td>
-										<td class="text-right right">4.3</td>
-									</tr>
-									<tr>
-										<td><a href="#" class="todo"> Math </a></td>
-										<td class="text-right right">17</td>
-										<td class="text-right right">4.3</td>
-									</tr>
-									<tr>
-										<td><a href="#" class="todo"> Media </a></td>
-										<td class="text-right right">17</td>
-										<td class="text-right right">4.3</td>
-									</tr>
-									<tr>
-										<td><a href="#" class="todo"> Television </a></td>
-										<td class="text-right right">17</td>
-										<td class="text-right right">4.3</td>
-									</tr>
-									<tr>
-										<td><a href="#" class="todo"> Movies </a></td>
-										<td class="text-right right">17</td>
-										<td class="text-right right">4.3</td>
-									</tr>
-									<tr>
-										<td><a href="#" class="todo"> Electrical Engineering </a></td>
-										<td class="text-right right">17</td>
-										<td class="text-right right">4.3</td>
-									</tr>
-								</tbody>
-		                        <tfoot></tfoot>
-		                    </table>  
-	                    </div>  					
+								</#if>
+							</div>     			
+						</div>
 					</div>
 				</div>
-			
-			
-			
-				
 			</div>	
 		</div>
 		
@@ -157,6 +183,67 @@
 
 	</body>
 	<script>
+		
+		$('#newQuizzesLink').click(function(event) {
+			event.preventDefault();
+			$.ajax({
+			    url: '/quiz/recent',
+			    type: 'GET',
+			    success: function(data) {
+			    	console.log(data);
+					$('#quiz-div').html(data);
+			    },
+			    error: function(error) {
+			    	$('#quiz-div').html("<p>No Quizzes Found</p>");
+			    }
+			});
+			toggleActive('#newQuizzesItem');
+		});
+	
+		$('#topQuizzesLink').click(function(event) {
+			event.preventDefault();
+			$.ajax({
+			    url: '/quiz/top',
+			    type: 'GET',
+			    success: function(data) {
+			    	console.log(data);
+					$('#quiz-div').html(data);
+			    },
+			    error: function(error) {
+			    	$('#quiz-div').html("<p>No Quizzes Found</p>");
+			    }
+			});
+			toggleActive('#topQuizzesItem');
+		});
+		
+		$('#topGroupsLink').click(function(event) {
+			event.preventDefault();
+			$.ajax({
+			    url: '/group/top_groups',
+			    type: 'GET',
+			    success: function(data) {
+			    	console.log(data);
+					$('#quiz-div').html(data);
+			    },
+			    error: function(error) {
+			    	$('#quiz-div').html("<p>No Groups Found</p>");
+			    }
+			});
+			toggleActive('#topGroupsItem');
+		});
+		
+		$('#topCategoriesLink').click(function(event) {
+			event.preventDefault();
+		});
+	
+		function toggleActive(id) {
+			$('#newQuizzesItem').attr("class","element text-center span3");
+			$('#topQuizzesItem').attr("class","element text-center span3");
+			$('#topGroupsItem').attr("class","element text-center span3");
+			$('#topCategoriesItem').attr("class","element text-center span3");
+			$(id).attr("class","element text-center span3 active");
+		}
+	
 		function scrollToLearnMore()
 		{
 			$('html, body').animate({

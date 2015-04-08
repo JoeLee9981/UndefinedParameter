@@ -277,6 +277,19 @@ public class QuizResource {
 	@GET
 	@Path("/top")
 	public Response getTopQuizzes() {
-		return Response.ok(new QuizListView("top_quizzes.ftl", quizManager.findTopQuizzes())).build();
+		return Response.ok(new QuizListView("../includes/top_quizzes.ftl", quizManager.findTopQuizzes())).build();
+	}
+	
+	@GET
+	@Path("/recent")
+	public Response getRecentQuizzes() {
+		return Response.ok(new QuizListView("../includes/recent_quizzes.ftl", quizManager.findRecentQuizzes())).build();
+	}
+	
+	@GET
+	@Path("/myquizzes")
+	public Response getRecentQuizzes(@QueryParam("userId") long userId) {
+		List<Quiz> quizzes = quizManager.findQuizzesByCreatorId(userId);
+		return Response.ok(new QuizListView("../includes/myquizzes.ftl", quizzes)).build();
 	}
 }

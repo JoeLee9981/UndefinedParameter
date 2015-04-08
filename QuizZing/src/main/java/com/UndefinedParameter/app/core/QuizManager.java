@@ -287,7 +287,7 @@ public class QuizManager {
 												 question.isOrdered(), 
 												 question.getCorrectPosition());
 			
-			setCategoriesForQuestion(question.getQuestionId(), question.getCategories());
+			setCategoriesForQuestion(id, question.getCategories());
 			
 			//Give points for creating the question
 			UserGroupManager usrGrpM = null;
@@ -533,10 +533,10 @@ public class QuizManager {
 		questionDAO.removeCategories(questionId);
 		for(String cat: categories) {
 			
-			long catid = questionDAO.getCategoryId(cat);
+			long catid = questionDAO.getCategoryId(InputUtils.normalizeInput(cat));
 
 			if(catid < 1) {
-				catid = questionDAO.createCategory(cat);
+				catid = questionDAO.createCategory(InputUtils.normalizeInput(cat));
 			}
 			
 			if(catid > 0)

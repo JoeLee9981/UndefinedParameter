@@ -67,8 +67,8 @@ public interface QuizDAO {
 	/*
 	 * Retrieve Quizzes by group id and creator Id
 	 */
-	@SqlQuery("SELECT q.*, sg.Name AS GroupName, sg.GroupID, u.FirstName, u.LastName "
-			+ "FROM Quiz q, GroupQuiz gq, SubGroup sg, User u WHERE "
+	@SqlQuery("SELECT q.*, sg.Name AS GroupName, sg.GroupID, u.FirstName, u.LastName FROM "
+			+ "Quiz q, GroupQuiz gq, SubGroup sg, User u WHERE "
 			+ "q.QuizID = gq.QuizID AND "
 			+ "sg.GroupID = gq.GroupID AND "
 			+ "u.UserID = q.CreatorID AND "
@@ -79,12 +79,12 @@ public interface QuizDAO {
 	/*
 	 * 	retrieveExistingQuizDetails - Retrieves quiz details from the database.
 	 */
-	@SqlQuery("SELECT q.*, sg.Name AS GroupName, sg.GroupID, u.FirstName, u.LastName "
-			+ "FROM Quiz q, User u, SubGroup sg, GroupQuiz gq "
-			+ "WHERE q.QuizID = gq.QuizID "
-			+ "AND sg.GroupID = gq.GroupID "
-			+ "AND q.CreatorID = u.UserID "
-			+ "AND q.QuizID = :quizId")
+	@SqlQuery("SELECT q.*, sg.Name AS GroupName, sg.GroupID, u.FirstName, u.LastName FROM "
+			+ "Quiz q, GroupQuiz gq, SubGroup sg, User u WHERE "
+			+ "q.QuizID = gq.QuizID AND "
+			+ "sg.GroupID = gq.GroupID AND "
+			+ "u.UserID = q.CreatorID AND "
+			+ "q.QuizID = :quizId")
 	public Quiz retrieveExistingQuizDetails(@Bind("quizId") long quizId);
 	
 	/*
