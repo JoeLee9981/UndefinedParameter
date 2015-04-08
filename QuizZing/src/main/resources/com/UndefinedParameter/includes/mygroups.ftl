@@ -4,17 +4,23 @@
         <thead>
             <tr>
                 <th class="text-left">Group</th>
-                <th class="text-right">Members</th>
-                <th class="text-right">Quizzes</th>
+			    <th title="Members" class="text-center"><i class="icon-user-3 on-right"></i></th>
+			    <th title="Quizzes" class="text-center"><i class="icon-clipboard-2 on-right"></i></th>
+			    <th title="Questions" class="text-center"><i class="icon-help-2 on-right"></i></th>
+			    <th title="Contribution is how much you've contributed towards the group" class="text-center">Contribution</th>
+			    <th class="text-center">Date Created</th>
             </tr>
         </thead>
         <tbody> 
         <#if groups??>
         	<#list groups as group>
 				<tr>
-					<td><a href="group?groupId=${group.id}">${group.name}</a></td>
-					<td class="text-right right">${group.memberCount}</td>
-					<td class="text-right right">${group.quizCount}</td>
+					<td><a href="/group?groupId=${group.id}">${group.name?html}</a></td>
+					<td class="text-center">${group.memberCount}</td>
+					<td class="text-center">${group.quizCount}</td>
+					<td class="text-center">${group.questionCount}</td>
+					<td class="text-center">35</td>
+					<td class="text-center">${group.dateAsString}</td>
 				</tr>
 			</#list>
 		<#else>
@@ -24,5 +30,6 @@
 		</#if>
 		</tbody>
         <tfoot></tfoot>
-    </table>  
+    </table> 
+    
 </div>

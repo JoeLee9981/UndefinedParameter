@@ -30,71 +30,93 @@
 							<div class="home-subsection">
 								<h3>${userProf.firstName?html}'s Quizzes</h3>
 								<#if userQuizzes??>
-									<table class="table hovered">
-										<thead>
-											<tr>
-												<th>Quiz Name</th>
-												<th>Description</th>
-												<th># of Questions</th>
-												<th>Difficulty</th>
-												<th>Rating</th>
-												<th>Time</th>
-												<#if editable>
-													<th>Edit</th>
+								<table class="table hovered striped">
+							        <thead>
+							            <tr>
+							                <th class="text-left">Quiz</th>
+							                <th class="text-left">Group</th>
+							                <th class="text-left">Creator</th>
+							                <th class="text-left">Description</th>
+							                <th title="Questions"><i class="icon-help-2 on-right"></i></th>
+							                <th style="width: 120px">Difficulty</th>
+							                <th style="width: 120px">Rating</th>
+							            </tr>
+							        </thead>
+							        <tbody>                         
+						        		<#list userQuizzes as quiz>
+										<tr>
+											<td><a href="quiz?quizId=${quiz.quizId}">${quiz.name}</a></td>
+											<td class="text-left left"><a href="group?groupId=${quiz.parentGroupId}">${quiz.parentGroupName}</a></td>
+											<td class="text-left left"><a href="user?userId=${quiz.creatorId}">${quiz.creatorName}</a></td>
+											<td class="text-left left">
+												<#if quiz.description??>
+													<#if quiz.description?length &gt; 20>
+														${quiz.description?substring(0, 20)}...
+													<#else>
+														${quiz.description}
+													</#if>
+												<#else>
+													No Description
 												</#if>
-											</tr>
-										</thead>
-										
-										<tbody>
-										<#list userQuizzes as quiz>	
-											<tr>
-												<td>
-													<a href="/quiz?quizId=${quiz.quizId}"><p class="text-info">${quiz.name} </p></a>
-												</td>
-												<td>
-													<p>${quiz.description}</p>
-												</td>
-												<td>
-													<p>${quiz.questionCount}</p>
-												</td>
-												<td>
-													<p>${quiz.difficulty}</p>
-												</td>
-												<td>
-													<p>${quiz.rating}</p>
-												</td>
-												<td>
-													<p>${quiz.time}</p>
-												</td>
-												<#if editable>
-													<td>
-														<a href="/"><p class="text-success"><button id="editQuizButton">+</button></p></a>
-													</td>
-												</#if>
-											</tr>
+											</td>
+											<td class="text-center center">${quiz.questionCount}</td>
+											<td class="text-right right">
+												<div id="diff${quiz.quizId}" class="rating small fg-red"></div>
+											</td>
+											<td class="text-right right">
+												<div id="rating${quiz.quizId}" class="rating small"></div>
+											</td>
+											
+											<script>
+												//Star rating for quiz quality (entry page)
+												$(function() {
+													$("#rating${quiz.quizId}").rating({
+														static: true,
+														score: ${quiz.rating},
+														stars: 5,
+														showHint: true,
+														hints: ['wrong', 'poor', 'average', 'good', 'excellent'],
+													});
+												});
+												
+												//Star rating for quiz quality (entry page)
+												$(function() {
+													$("#diff${quiz.quizId}").rating({
+														static: true,
+														score: ${quiz.difficulty},
+														stars: 5,
+														showHint: true,
+														hints: ['wrong', 'poor', 'average', 'good', 'excellent'],
+													});
+												});
+											</script>
+										</tr>
 										</#list>
-										</tbody>
-									
-										<tfoot></tfoot>
-									</table>							
-								<#else>
-									This user doesn't have any quizzes yet!
+									</tbody>
+							        <tfoot></tfoot>
+							    </table>  
+							    <#else>
+									<tr>
+										<td colspan="3">
+											<h3>No Quizzes Found</h3>
+										</td>
+									</tr>
 								</#if>
 							</div>
 						
 							<div class="home-subsection">
-								<h3>${userProf.firstName?html}'s Groups</h3>
+								<h3>${userProf.firstName?html}'s Groups</h3>								
 								<#if userGroups??>
-									<table class="table hovered">
+									<table class="table hovered striped">
 				                        <thead>
 				                        <tr>
 				                            <th class="text-left">Group</th>
-				                            <th class="text-left">Members</th>
-				                            <th class="text-left">Quizzes</th>
-				                            <th class="text-left">Questions</th>
-				                            <th class="text-left">Contribution Score <a href="#" data-hint="Contribution Score|A contribution score is something that we must figure out later. It will be super cool" data-hint-position="right" data-hint-mode="2"><i class="icon-help fg-blue"></i></a></th>
-				                            <th class="text-left">Quizzes Participated</th>
-				                            <th class="text-left">Date Created</th>
+				                            <th title="Members" class="text-center"><i class="icon-user-3 on-right"></i></th>
+				                            <th title="Quizzes" class="text-center"><i class="icon-clipboard-2 on-right"></i></th>
+				                            <th title="Questions" class="text-center"><i class="icon-help-2 on-right"></i></th>
+				                            <th title="Contribution is how much you've contributed towards the group" class="text-center">Contribution</th>
+				                            <th class="text-center">Quizzes Created</th>
+				                            <th class="text-center">Date Created</th>
 				                        </tr>
 				                        </thead>
 				
@@ -102,10 +124,12 @@
 					                        <#list userGroups as group>
 												<tr>
 													<td><a href="/group?groupId=${group.id}">${group.name?html}</a></td>
-													<td class="right">${group.memberCount}</td><td class="right">${group.quizCount}</td>
-													<td class="right">${group.questionCount}</td><td class="right">35</td>
-													<td class="right">3</td>
-													<td class="right">${group.dateAsString}</td>
+													<td class="text-center">${group.memberCount}</td>
+													<td class="text-center">${group.quizCount}</td>
+													<td class="text-center">${group.questionCount}</td>
+													<td class="text-center">35</td>
+													<td class="text-center">3</td>
+													<td class="text-center">${group.dateAsString}</td>
 												</tr>
 											</#list>     
 				                        </tbody>
