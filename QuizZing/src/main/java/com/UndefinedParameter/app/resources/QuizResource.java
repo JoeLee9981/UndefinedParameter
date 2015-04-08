@@ -114,14 +114,16 @@ public class QuizResource {
 			return Response.status(Status.UNAUTHORIZED).build();
 		}
 		
-		HashMap<String, String> response = new HashMap<String, String>();
+		HashMap<String, List<QuizScore>> response = new HashMap<String, List<QuizScore>>();
+		List<QuizScore> userScores = quizManager.findScoresByQuiz(newScore.getQuizId());
 		
-		if(quizManager.insertScore(newScore.getQuizId(), newScore.getUserId(), newScore.getScore()))
-			response.put("response", "success");
-		else
-			response.put("fail", "Unable to save score.");
-		
-		return Response.ok(response).build();
+		if(quizManager.insertScore(newScore.getQuizId(), newScore.getUserId(), newScore.getScore())) {
+			response.put("scores", userScores);
+			return Response.ok(response).build();
+		}
+		else {
+			return Response.status(Status.BAD_REQUEST).build();
+		}
 	}
 	
 	@GET

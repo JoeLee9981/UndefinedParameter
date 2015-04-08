@@ -80,7 +80,7 @@
 					drawScorePlot(data["scores"]);						
 				},
 				error: function(data) {
-					alert('An unexpected error occured: Try again later.  Developers: TODO');
+					alert('An unexpected error occurred: Try again later.  Developers: TODO');
 				}
 			});	
 		}
