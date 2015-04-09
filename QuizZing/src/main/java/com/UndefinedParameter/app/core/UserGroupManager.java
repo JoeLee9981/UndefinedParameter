@@ -70,6 +70,8 @@ public class UserGroupManager {
 				usergroupDAO.updateSubGroupRating(groupID, existingRating);
 				usergroupDAO.updateSubGroupRatingCount(groupID);
 				
+				UserGroupManager usrGrpM = null;
+				usrGrpM.addPoints(userId, groupID, 9);
 				//orgDAO.updateQuizRating(userId, orgId, rating);
 				//orgDAO.updateQuizQualityRating(rating - existingRating, orgId);
 			}
@@ -128,6 +130,8 @@ public class UserGroupManager {
 	 *	6-2	Rating a quiz.
 	 *	7-6	When people give Feedback to quiz.
 	 *	8-2	When people say how difficult the quiz is.
+	 *
+	 *	9-10 Rate the group (Should be a one time only thing)
 	 * 	99-300	Made the group.
 	 * 
 	 * @param userID
@@ -178,6 +182,10 @@ public class UserGroupManager {
 		else if(option == 8)
 		{
 			points = 2;
+		}
+		else if(option == 9)
+		{
+			points = 10;
 		}
 		else
 		{
@@ -250,6 +258,12 @@ public class UserGroupManager {
 		int secondMaxPoints = usergroupDAO.getSecondMaxPointsUserGroup(groupID, maxPoints);
 		
 		int newUserID = usergroupDAO.getUserByPointsAndGroup(groupID, secondMaxPoints);
+	
+		if(secondMaxPoints < 300)
+		{
+			int remainderpoints = 300 - secondMaxPoints;
+			usergroupDAO.addInUserGroupEarnedPoints(groupID, newUserID, remainderpoints);
+		}
 		usergroupDAO.updateUserGroupModStatus(groupID, newUserID, 1);
 		usergroupDAO.delete(userID, groupID);
 		

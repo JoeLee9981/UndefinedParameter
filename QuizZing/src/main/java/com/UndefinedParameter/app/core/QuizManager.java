@@ -291,7 +291,7 @@ public class QuizManager {
 			
 			//Give points for creating the question
 			UserGroupManager usrGrpM = null;
-			//usrGrpM.addPoints(question.getCreatorId(), question.getGroupId(), 1);
+			usrGrpM.addPoints(question.getCreatorId(), question.getGroupId(), 1);
 			
 			return id;
 		}
@@ -338,9 +338,9 @@ public class QuizManager {
 								  quiz.isOpen());
 		
 		//Give points for creating the quiz
-		//TODO check if this is the right spot?		
 		UserGroupManager usrGrpM = null;
-		//usrGrpM.addPoints(quiz.getCreatorId(), groupID, 5);
+		usrGrpM.addPoints(quiz.getCreatorId(), groupID, 5);
+
 		
 		return rvalue;
 	}
@@ -453,11 +453,10 @@ public class QuizManager {
 				long key = quizDAO.insertQuizRating(quizId, userId, rating);
 				if(key > 0) {
 					quizDAO.rateQuizQuality(rating, quizId);
-					
-					//TODO check if this is the right spot?		
-					//long rvalue = quizDAO.		//NEED TO GET GROUP ID
-					//UserGroupManager usrGrpM = null;
-					//usrGrpM.addPoints(userId, 4, 6);
+						
+					//Give points for rating the quiz quality
+					UserGroupManager usrGrpM = null;
+					usrGrpM.addPoints(userId, groupId, 6);
 					return true;
 				}
 				else {
@@ -491,6 +490,9 @@ public class QuizManager {
 				long key = quizDAO.insertQuizDifficulty(quizId, userId, rating);
 				if(key > 0) {
 					quizDAO.rateQuizDifficulty(rating, quizId);
+					//Give points for rating the quiz difficulty
+					UserGroupManager usrGrpM = null;
+					usrGrpM.addPoints(userId, groupId, 8);
 					return true;
 				}
 				else {
@@ -589,6 +591,11 @@ public class QuizManager {
 				long key = questionDAO.insertQuestionRating(questionId, userId, rating);
 				if(key > 0) {
 					questionDAO.rateQuestionQuality(rating, questionId);
+					
+					//Give points for rating the question quality
+					UserGroupManager usrGrpM = null;
+					usrGrpM.addPoints(userId, groupId, 2);
+					
 					return true;
 				}
 				else {
@@ -622,6 +629,9 @@ public class QuizManager {
 				long key = questionDAO.insertQuestionDifficulty(questionId, userId, rating);
 				if(key > 0) {
 					questionDAO.rateQuestionDifficulty(rating, questionId);
+					//Give points for rating the question quality
+					UserGroupManager usrGrpM = null;
+					usrGrpM.addPoints(userId, groupId, 4);
 					return true;
 				}
 				else {
