@@ -1,5 +1,7 @@
 package com.UndefinedParameter.app.core;
 
+import java.util.List;
+
 import com.UndefinedParameter.jdbi.UserGroupDAO;
 
 public class UserGroupManager {
@@ -112,12 +114,41 @@ public class UserGroupManager {
 		return false;
 	}
 	
-	/**
-	 * 
-	 * 
-
-	 * More later.
-	 * */
+	public List<Long> findModsInGroup(long groupID)
+	{
+		List<Long> found = null;
+		
+		List<Long> input = usergroupDAO.getUsersBasedOnModStatus(groupID, 1);
+				
+		return input;
+	}
+	
+	public List<Long> findNOTModsInGroup(long groupID)
+	{
+		List<Long> found = null;
+		
+		List<Long> input = usergroupDAO.getUsersBasedOnModStatus(groupID, 0);
+				
+		return input;
+	}
+	
+	public List<Long> findGroupsUserIsMod(long userID)
+	{
+		List<Long> found = null;
+		
+		List<Long> input = usergroupDAO.getGroupsBasedOnModStatus(userID, 1);
+				
+		return input;
+	}
+	
+	public List<Long> findGroupsUserIsNOTMod(long userID)
+	{
+		List<Long> found = null;
+		
+		List<Long> input = usergroupDAO.getGroupsBasedOnModStatus(userID, 0);
+				
+		return input;
+	}
 	
 	/**
 	 * Option-Points:
