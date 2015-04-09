@@ -22,18 +22,20 @@
 				<div id="homeBanner">
 					<div class="page-content">
 						<div id="bannerContent" class="row">
-							
-							<div class="span9">
+							<div>
 								<div class="row">
 									<div id="bannerHeader" class="span6">
-										<h2><strong>You can learn anything.</strong></h2>
+										<h2><strong>Studying is hard right?</strong></h2>
 										<span class="subheader-secondary">
-											QuizZing offers the tools you need to succeed in any subject. Receive help, and help others
-											to increase your knowledge.
+											<strong>Not anymore!</strong> Whether for school, certification courses, job interviews or just fun. QuizZing gives you the tools to make studying simple.
 										</span>
 										<div id="headerButtons">
-											<button type="button" class="warning large" onclick="location.href = '/about'">Learn More</button>		
+											<button type="button" class="warning large" onclick="location.href = '/about'">Learn More</button>
+											<button type="button" class="success large todo" onclick="location.href = '#'">Take the Tutorial</button>	
 										</div>
+									</div>
+									<div class="span6">
+										<h2><strong>Welcome Back ${user.firstName}!</strong></h2>
 									</div>
 								</div>
 							</div>
@@ -97,7 +99,7 @@
 												<tr>
 													<td><a href="quiz?quizId=${quiz.quizId}">${quiz.name}</a></td>
 													<td class="text-left left"><a href="group?groupId=${quiz.parentGroupId}">${quiz.parentGroupName}</a></td>
-													<td class="text-left left"><a href="user?userId=${quiz.creatorId}">${quiz.creatorName}</a></td>
+													<td class="text-left left"><a href="user?userid=${quiz.creatorId}">${quiz.creatorName}</a></td>
 													<td class="text-left left">
 														<#if quiz.description??>
 															<#if quiz.description?length &gt; 20>

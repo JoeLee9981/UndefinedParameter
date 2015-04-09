@@ -11,7 +11,6 @@
 		<link href="/assets/plugins/metro_ui/min/iconFont.min.css" rel="stylesheet">
 		<link href="/assets/css/overrides.css" rel="stylesheet">
 		<link href="/assets/css/home.css" rel="stylesheet">
-		<link rel="shortcut icon" href="/assets/images/qlogo_32.jpg">	
 	</head>
 	<body>
 		
@@ -45,10 +44,9 @@
 							<div class="span9">
 								<div class="row">
 									<div id="bannerHeader" class="span6">
-										<h2><strong>You can learn anything.</strong></h2>
+										<h2><strong>Studying is hard right?</strong></h2>
 										<span class="subheader-secondary">
-											QuizZing offers the tools you need to succeed in any subject. Receive help, and help others
-											to increase your knowledge.
+											<strong>Not anymore!</strong> Whether for school, certification courses, job interviews or just fun. QuizZing gives you the tools to make studying simple.
 										</span>
 										<div id="headerButtons">
 											<button type="button" onclick="location.href = '/register'" class="success large">Register</button>
@@ -115,7 +113,7 @@
 										<tr>
 											<td><a href="quiz?quizId=${quiz.quizId}">${quiz.name}</a></td>
 											<td class="text-left left"><a href="group?groupId=${quiz.parentGroupId}">${quiz.parentGroupName}</a></td>
-											<td class="text-left left"><a href="user?userId=${quiz.creatorId}">${quiz.creatorName}</a></td>
+											<td class="text-left left"><a href="user?userid=${quiz.creatorId}">${quiz.creatorName}</a></td>
 											<td class="text-left left">
 												<#if quiz.description??>
 													<#if quiz.description?length &gt; 20>
