@@ -4,6 +4,8 @@
 	background-color: #1ba1e2;
 	opacity: 0.8;
 	min-width: 1050px;
+	position: fixed;
+	bottom: 0;
 	
 	
 	-webkit-box-shadow: 0 200px 0px 0px #1ba1e2;
@@ -13,9 +15,9 @@
 
 #footer-content
 {
-	min-height: 200px;
-	margin-top: 50px;
-	padding-top: 20px;
+	min-height: 40px;
+	margin-top: 10px;
+	padding-top: 10px;
 }
 
 #bottom-links ul li a

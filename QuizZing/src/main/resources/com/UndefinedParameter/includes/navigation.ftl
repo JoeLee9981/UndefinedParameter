@@ -40,7 +40,7 @@
 	        <div class="element input-element">
 	            <form id="search">
 	                <div class="input-control text searchbox">
-	                    <input type="text" placeholder="Find what your mind desires..." class="size5">
+	                    <input type="text" placeholder="Find what your mind desires..." class="size4">
 	                    <button class="btn-search todo"></button>
 	                </div>
 	            </form>

@@ -108,10 +108,8 @@
 						</div>
 					</#if>
 				</div>
-			
-			<#include "../includes/footer.ftl">
 			</div>
-		</div>
+		<#include "../includes/footer.ftl">
 	</body>
 </html>
 
