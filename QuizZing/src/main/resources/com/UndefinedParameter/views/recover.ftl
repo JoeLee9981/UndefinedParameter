@@ -10,6 +10,7 @@
 		<script src="/assets/scripts/jquery-2.1.1.min.js"></script>
 		<script src="/assets/scripts/jquery-ui.min.js"></script>
 		<script src="/assets/plugins/metro_ui/min/metro.min.js"></script>
+		<link rel="shortcut icon" type="image/x-icon" href="/assets/images/qlogo_32.jpg">
 	</head>
 
 	<body>
@@ -68,7 +69,9 @@
 				</div>
 			<div>	
 								
-		<#include "../includes/footer.ftl">
+		<div style="padding-top: 50px" class="row">
+			<#include "../includes/footer.ftl">
+		</div>
 
 	</body>
 </html>

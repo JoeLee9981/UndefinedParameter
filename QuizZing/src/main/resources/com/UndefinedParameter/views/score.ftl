@@ -13,7 +13,7 @@
 		<link href="/assets/css/overrides.css" rel="stylesheet">
 		<link href="/assets/css/question.css" rel="stylesheet">
 		<link rel="stylesheet" type="text/css" href="/assets/plugins/unicorn/unicorn_buttons.css" />
-		
+		<link rel="shortcut icon" type="image/x-icon" href="/assets/images/qlogo_32.jpg">
 		<style>
 			path { 
 				stroke: #60a917;
@@ -59,6 +59,9 @@
 					</div>					
 				</div>
 			</div>
+		</div>
+		<div style="padding-top: 50px" class="row">
+			<#include "../includes/footer.ftl">
 		</div>
 		
 		<script type="text/javascript">

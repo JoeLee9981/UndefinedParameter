@@ -10,39 +10,44 @@
 		<link href="/assets/plugins/metro_ui/min/iconFont.min.css" rel="stylesheet">
 		<link href="/assets/css/overrides.css" rel="stylesheet">
 		<link href="/assets/css/question.css" rel="stylesheet">		
+		<link rel="shortcut icon" type="image/x-icon" href="/assets/images/qlogo_32.jpg">
 	</head>
 	<body class="metro">
 	
 		<#include "../includes/navigation.ftl">
 		
 		<div class="page-content">
-			<h3>Help us improve your experience.</h3>
-			<p id="resultsText"/>
-			<div class="grid fluid">
-				<div class="row">
-						<form id="create-question-form">
-							<label><h5>1. Please give one feature you would like to see on QuizZing.</h5>
-								<div class="input-control textarea">
-								    <textarea id="featureText"></textarea>
-								</div>
-							</label>
-							<label><h5>2. Please give one improvement we could make to improve your experience.</h5>
-								<div class="input-control textarea">
-								    <textarea id="imrpoveText"></textarea>
-								</div>
-							</label>
-							<label><h5>3. Please provide any other feedback.</h5>
-								<div class="input-control textarea">
-								    <textarea id="miscText"></textarea>
-								</div>
-							</label>
-							<input type="button" onclick="addFeedback()" value="Submit" class="success"></input>
-						</form>
+			<div class="row">
+				<h3>Help us improve your experience.</h3>
+				<p id="resultsText"/>
+				<div class="grid fluid">
+					<div class="row">
+							<form id="create-question-form">
+								<label><h5>1. Please give one feature you would like to see on QuizZing.</h5>
+									<div class="input-control textarea">
+									    <textarea id="featureText"></textarea>
+									</div>
+								</label>
+								<label><h5>2. Please give one improvement we could make to improve your experience.</h5>
+									<div class="input-control textarea">
+									    <textarea id="imrpoveText"></textarea>
+									</div>
+								</label>
+								<label><h5>3. Please provide any other feedback.</h5>
+									<div class="input-control textarea">
+									    <textarea id="miscText"></textarea>
+									</div>
+								</label>
+								<input type="button" onclick="addFeedback()" value="Submit" class="success"></input>
+							</form>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-		
+		<div style="padding-top: 50px" class="row">
+			<#include "../includes/footer.ftl">
+		</div>
 	</body>
 	<script>
 		var maxAnswers = 5;

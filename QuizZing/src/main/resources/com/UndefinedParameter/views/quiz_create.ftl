@@ -2,6 +2,7 @@
 <html lang="en">
 	<head>
 		<title>QuizZing - Quiz Creator</title>
+		<link rel="shortcut icon" type="image/x-icon" href="/assets/images/qlogo_32.jpg">
 	</head>
 
 	<body class="metro">
@@ -92,7 +93,9 @@
 				</div>
 			</div>
 		</div>
-		<#include "../includes/footer.ftl">
+		<div style="padding-top: 50px" class="row">
+			<#include "../includes/footer.ftl">
+		</div>
 	</body>
 	
 	

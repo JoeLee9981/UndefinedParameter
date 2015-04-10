@@ -110,7 +110,9 @@
 				</div>
 			<div>	
 								
-		<#include "../includes/footer.ftl">
+		<div style="padding-top: 50px" class="row">
+			<#include "../includes/footer.ftl">
+		</div>
 
 	</body>
 </html>

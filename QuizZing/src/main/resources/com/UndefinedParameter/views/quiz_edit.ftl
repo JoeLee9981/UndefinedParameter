@@ -11,7 +11,8 @@
 		<link href="/assets/plugins/metro_ui/min/iconFont.min.css" rel="stylesheet">
 		<link href="/assets/css/overrides.css" rel="stylesheet">
 		<link href="/assets/css/question.css" rel="stylesheet">
-		<link rel="stylesheet" type="text/css" href="/assets/plugins/unicorn/unicorn_buttons.css" />		
+		<link rel="stylesheet" type="text/css" href="/assets/plugins/unicorn/unicorn_buttons.css" />	
+		<link rel="shortcut icon" type="image/x-icon" href="/assets/images/qlogo_32.jpg">	
 	</head>
 
 	<body class="metro">
@@ -36,7 +37,9 @@
 				</div>
 			</div>
 		</div>
-		<#include "../includes/footer.ftl">
+		<div style="padding-top: 50px" class="row">
+			<#include "../includes/footer.ftl">
+		</div>
 	</body>
 
 	<script>
