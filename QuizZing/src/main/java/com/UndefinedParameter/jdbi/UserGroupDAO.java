@@ -1,5 +1,7 @@
 package com.UndefinedParameter.jdbi;
 
+import java.util.List;
+
 import org.skife.jdbi.v2.sqlobject.Bind;
 import org.skife.jdbi.v2.sqlobject.GetGeneratedKeys;
 import org.skife.jdbi.v2.sqlobject.SqlQuery;
@@ -67,6 +69,14 @@ public interface UserGroupDAO {
 	@SqlQuery("SELECT ModStatus FROM SubGroup WHERE GroupID = :groupID AND UserID = :userID")
 	public int getUserGroupModStatus(@Bind("groupID") long groupId,
 											@Bind("userID") long userId);
+	
+	@SqlQuery("SELECT UserID FROM SubGroup WHERE GroupID = :groupID AND ModStatus = :modstatus")
+	public List<Long> getUsersBasedOnModStatus(@Bind("groupID") long groupId,
+											@Bind("modstatus") long modstatus);
+	
+	@SqlQuery("SELECT GroupID FROM SubGroup WHERE UserID = :userID AND ModStatus = :modstatus")
+	public List<Long> getGroupsBasedOnModStatus(@Bind("userID") long userId,
+											@Bind("modstatus") long modstatus);
 	
 	@SqlQuery("SELECT COUNT(*) FROM SubGroup WHERE GroupID = :groupID AND ModStatus = :modstatus")
 	public int getTotalUserGroupModStatus(@Bind("groupID") long groupId,

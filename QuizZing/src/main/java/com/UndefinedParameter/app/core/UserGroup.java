@@ -1,5 +1,7 @@
 package com.UndefinedParameter.app.core;
 
+import org.joda.time.DateTime;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class UserGroup {
@@ -10,7 +12,7 @@ public class UserGroup {
 	private long rating;
 	private long earnedpoints;
 	private int modstatus;
-	
+	private DateTime joindate;
 	
 	public UserGroup(int id) {
 		this.id = id;
@@ -80,5 +82,17 @@ public class UserGroup {
 	@JsonProperty
 	public void setModStatus(int status) {
 		this.modstatus = status;
+	}
+
+	@JsonProperty
+	public void setJoinDate(DateTime dateTime)
+	{
+		this.joindate = dateTime;
+	}
+	
+	@JsonProperty
+	public DateTime getJoinDate()
+	{
+		return joindate;
 	}
 }
