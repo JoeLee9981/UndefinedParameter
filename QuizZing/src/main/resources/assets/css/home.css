@@ -105,7 +105,8 @@ body
 #homeBanner
 {
 	margin-top: 0 !important;
-	background: url('../backgrounds/use_your_illusion_@2x.png');
+	background: url('/assets/images/books1b.jpg') no-repeat;
+	background-color: black;
 	background-position: center;
 	border-bottom: 20px solid #f1f1f1;
 }

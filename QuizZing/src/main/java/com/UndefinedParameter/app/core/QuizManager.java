@@ -246,6 +246,50 @@ public class QuizManager {
 			return null;
 	}
 	
+	public boolean flagQuestion(long questionId, String reason) {
+		if(questionId < 1) {
+			return false;
+		}
+		
+		if(reason == null) {
+			reason = "";
+		}
+		
+		questionDAO.flagQuestion(reason, questionId);
+		return true;
+	}
+	
+	public boolean unflagQuestion(long questionId) {
+		if(questionId < 1) {
+			return false;
+		}
+		
+		questionDAO.unflagQuestion(questionId);
+		return true;
+	}
+	
+	public List<Question> findFlaggedQuestionsByGroup(long groupId) {
+		
+		List<Question> questions = questionDAO.findFlaggedQuestionsByGroup(groupId);
+		if(questions != null) {
+			for(Question question: questions) {
+				question.setCategories(questionDAO.getCategoriesByQuestion(question.getQuestionId()));
+			}
+		}
+		return questions;
+	}
+	
+	public List<Question> findFlaggedQuestionsByUser(long groupId, long userId) {
+		
+		List<Question> questions = questionDAO.findFlaggedQuestionsByUser(groupId, userId);
+		if(questions != null) {
+			for(Question question: questions) {
+				question.setCategories(questionDAO.getCategoriesByQuestion(question.getQuestionId()));
+			}
+		}
+		return questions;
+	}
+	
 	
 	/*
 	 * 	--------------- Creation Methods ---------------

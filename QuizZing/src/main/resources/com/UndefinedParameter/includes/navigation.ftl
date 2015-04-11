@@ -8,7 +8,7 @@
 <link rel="stylesheet" type="text/css" href="/assets/css/navigation.css" />
 
 <div class="metro">
-	<nav id="main-nav" class="navigation-bar">
+	<nav id="main-nav" class="navigation-bar dark">
 	    <nav id="main-nav-content" class="navigation-bar-content page-content">
 	    
 	    	<a id="home-link" class="element brand" href="/"><i class="icon-home"></i></a>

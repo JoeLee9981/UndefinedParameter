@@ -12,11 +12,13 @@ public class GroupManager {
 	private OrganizationDAO orgsDAO;
 	private GroupDAO groupDAO;
 	private OrgMemberDAO orgMemberDAO;
+	private UserGroupDAO userGroupDAO;
 	
-	public GroupManager(OrganizationDAO orgsDAO, GroupDAO groupDAO, OrgMemberDAO orgMemberDAO) {
+	public GroupManager(OrganizationDAO orgsDAO, GroupDAO groupDAO, OrgMemberDAO orgMemberDAO, UserGroupDAO userGroupDAO) {
 		this.orgsDAO = orgsDAO;
 		this.groupDAO = groupDAO;
 		this.orgMemberDAO = orgMemberDAO;
+		this.userGroupDAO = userGroupDAO;
 	}
 	
 	public long addGroup(Group group, User user) {
@@ -35,9 +37,8 @@ public class GroupManager {
 				InputUtils.sanitizeInput(group.getDescription()), 
 				group.getOrganizationId());
 
-		UserGroupManager usrGrpM = null;
-		UserGroupDAO usg = null;
-		usg.insert(user.getId(), rvalue);
+		UserGroupManager usrGrpM = new UserGroupManager(userGroupDAO);
+		userGroupDAO.insert(user.getId(), rvalue);
 		usrGrpM.addPoints(user.getId(), rvalue, 99);
 		
 		//groupDAO.insert(userid.getId(), rvalue);
@@ -131,6 +132,20 @@ public class GroupManager {
 		catch(Exception e) {
 			return 0;
 		}
+	}
+	
+	public int countFlagsByGroup(long groupId) {
+		if(groupId < 1) {
+			return 0;
+		}
+		return groupDAO.countFlagsByGroup(groupId);
+	}
+	
+	public int countFlagsByuser(long userId, long groupId) {
+		if(groupId < 1 || userId < 1) {
+			return 0;
+		}
+		return groupDAO.countFlagsByUser(userId, groupId);
 	}
 	
 	public int countQuestionsByQuiz(long groupId) {

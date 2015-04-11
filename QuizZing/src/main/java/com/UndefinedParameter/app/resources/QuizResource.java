@@ -29,6 +29,7 @@ import com.UndefinedParameter.jdbi.OrganizationDAO;
 import com.UndefinedParameter.jdbi.QuestionDAO;
 import com.UndefinedParameter.jdbi.QuizDAO;
 import com.UndefinedParameter.jdbi.QuizScoreDAO;
+import com.UndefinedParameter.jdbi.UserGroupDAO;
 import com.UndefinedParameter.views.LoginView;
 import com.UndefinedParameter.views.QuizCreatorView;
 import com.UndefinedParameter.views.QuizEditQuestionsView;
@@ -46,9 +47,9 @@ public class QuizResource {
 	private OrganizationManager organizationManager;
 	private GroupManager groupManager;
 	
-	public QuizResource(QuizDAO quizDAO, QuestionDAO questionDAO, OrganizationDAO orgDAO, GroupDAO groupDAO, OrgMemberDAO orgMemberDAO, QuizScoreDAO quizScoreDAO) {
+	public QuizResource(QuizDAO quizDAO, QuestionDAO questionDAO, OrganizationDAO orgDAO, GroupDAO groupDAO, OrgMemberDAO orgMemberDAO, QuizScoreDAO quizScoreDAO, UserGroupDAO userGroupDAO) {
 		quizManager = new QuizManager(quizDAO, questionDAO, quizScoreDAO);
-		groupManager = new GroupManager(orgDAO, groupDAO, orgMemberDAO);
+		groupManager = new GroupManager(orgDAO, groupDAO, orgMemberDAO, userGroupDAO);
 		organizationManager = new OrganizationManager(orgDAO, groupDAO, orgMemberDAO);
 	}
 	

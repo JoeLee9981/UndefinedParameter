@@ -10,7 +10,7 @@ import org.skife.jdbi.v2.sqlobject.customizers.RegisterMapper;
 
 import com.UndefinedParameter.app.core.UserGroup;
 
-@RegisterMapper(UserMapper.class)
+@RegisterMapper(UserGroupMapper.class)
 public interface UserGroupDAO {
 
 	@SqlQuery("SELECT * FROM UserGroups WHERE GroupID = :groupid")
@@ -21,10 +21,10 @@ public interface UserGroupDAO {
 	
 	@SqlUpdate("INSERT INTO UserGroup "
 		+ "(UserID, GroupID) "
-		+ "values "
+		+ "VALUES "
 		+ "(:userid, :groupid)")
 	@GetGeneratedKeys
-	public void insert(@Bind("userid") long userid,
+	public long insert(@Bind("userid") long userid,
 						@Bind("groupid") long groupid);
 
 	@SqlUpdate("DELETE FROM UserGroups WHERE GroupID = :gId AND UserID = :uId")
@@ -36,7 +36,7 @@ public interface UserGroupDAO {
 									@Bind("userID") long userID,
 									@Bind("rating") int rating);
 	
-	@SqlQuery("UPDATE SubGroup SET Rating = Rating + :rating WHERE GroupID = :groupID")
+	@SqlUpdate("UPDATE SubGroup SET Rating = Rating + :rating WHERE GroupID = :groupID")
 	public int updateSubGroupRating(@Bind("groupID") long groupId, @Bind("rating") int rating);
 	
 	@SqlQuery("SELECT Rating FROM SubGroup WHERE GroupID = :groupID")
@@ -49,10 +49,10 @@ public interface UserGroupDAO {
 	public int getUserGroupRating(@Bind("groupID") long orgID,
 									@Bind("userID") long userID);
 	
-	@SqlQuery("UPDATE SubGroup SET RatingCount = RatingCount + 1 WHERE GroupID = :groupID")
+	@SqlUpdate("UPDATE SubGroup SET RatingCount = RatingCount + 1 WHERE GroupID = :groupID")
 	public int updateSubGroupRatingCount(@Bind("groupID") long groupId);
 	
-	@SqlQuery("UPDATE SubGroup SET EarnedPoints = EarnedPoints + points WHERE GroupID = :groupID AND UserID = :userID")
+	@SqlUpdate("UPDATE SubGroup SET EarnedPoints = EarnedPoints + points WHERE GroupID = :groupID AND UserID = :userID")
 	public int addInUserGroupEarnedPoints(@Bind("groupID") long groupId,
 											@Bind("userID") long userId,
 											@Bind("points") long points);
@@ -61,14 +61,13 @@ public interface UserGroupDAO {
 	public int getUserGroupEarnedPoints(@Bind("groupID") long groupId,
 											@Bind("userID") long userId);
 	
-	@SqlQuery("UPDATE SubGroup SET ModStatus = modstatus WHERE GroupID = :groupID AND UserID = :userID")
+	@SqlUpdate("UPDATE SubGroup SET ModStatus = modstatus WHERE GroupID = :groupID AND UserID = :userID")
 	public int updateUserGroupModStatus(@Bind("groupID") long groupId,
 											@Bind("userID") long userId,
 											@Bind("modstatus") int modstat);
 	
-	@SqlQuery("SELECT ModStatus FROM SubGroup WHERE GroupID = :groupID AND UserID = :userID")
-	public int getUserGroupModStatus(@Bind("groupID") long groupId,
-											@Bind("userID") long userId);
+	@SqlQuery("SELECT ModStatus FROM UserGroups WHERE GroupID = :groupID AND UserID = :userID")
+	public int getUserGroupModStatus(@Bind("groupID") long groupId, @Bind("userID") long userId);
 	
 	@SqlQuery("SELECT UserID FROM SubGroup WHERE GroupID = :groupID AND ModStatus = :modstatus")
 	public List<Long> getUsersBasedOnModStatus(@Bind("groupID") long groupId,

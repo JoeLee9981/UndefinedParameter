@@ -240,4 +240,27 @@ public class QuestionResource {
 		}
 		return Response.status(Status.BAD_REQUEST).build();
 	}
+	
+	@POST
+	@Path("/flag")
+	public Response flagQuestion(@Auth(required = false) User user, @QueryParam("questionId") long questionId, String reason) {
+		
+		if(user == null || questionId < 1) {
+			return Response.status(Status.BAD_REQUEST).build();
+		}
+		
+		quizManager.flagQuestion(questionId, reason);
+		return Response.ok().build();
+	}
+	
+	@POST
+	@Path("/unflag")
+	public Response unflagQuestion(@Auth(required = false) User user, @QueryParam("questionId") long questionId) {
+		if(user == null || questionId < 1) {
+			return Response.status(Status.BAD_REQUEST).build();
+		}
+		quizManager.unflagQuestion(questionId);
+		return Response.ok().build();
+	}
+	
 }

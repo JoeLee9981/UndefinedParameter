@@ -33,6 +33,7 @@ import com.UndefinedParameter.jdbi.QuestionDAO;
 import com.UndefinedParameter.jdbi.QuizDAO;
 import com.UndefinedParameter.jdbi.QuizScoreDAO;
 import com.UndefinedParameter.jdbi.UserDAO;
+import com.UndefinedParameter.jdbi.UserGroupDAO;
 
 
 
@@ -89,6 +90,7 @@ public class QuizZingApplication extends Application<QuizZingConfiguration> {
 		final BugDAO bugDAO = jdbi.onDemand(BugDAO.class);
 		final QuizScoreDAO quizScoreDAO = jdbi.onDemand(QuizScoreDAO.class);
 		final OrgMemberDAO orgMemberDAO = jdbi.onDemand(OrgMemberDAO.class);
+		final UserGroupDAO userGroupDAO = jdbi.onDemand(UserGroupDAO.class);
 		
 		logger.info("Database objects registered successfully");
 		
@@ -109,12 +111,12 @@ public class QuizZingApplication extends Application<QuizZingConfiguration> {
 		/***** REGISTER VIEWS ******/
 		environment.jersey().register(new HomeResource(newsDAO, userDAO, orgDAO, groupDAO, quizDAO, questionDAO, quizScoreDAO, orgMemberDAO));
 		environment.jersey().register(new NewsArticleResource(newsDAO));
-		environment.jersey().register(new QuizResource(quizDAO, questionDAO, orgDAO, groupDAO, orgMemberDAO, quizScoreDAO));
-		environment.jersey().register(new GroupResource(orgDAO, groupDAO, quizDAO, questionDAO, quizScoreDAO, orgMemberDAO));
+		environment.jersey().register(new QuizResource(quizDAO, questionDAO, orgDAO, groupDAO, orgMemberDAO, quizScoreDAO, userGroupDAO));
+		environment.jersey().register(new GroupResource(orgDAO, groupDAO, quizDAO, questionDAO, quizScoreDAO, orgMemberDAO, userGroupDAO));
 		environment.jersey().register(new OrganizationResource(orgDAO, groupDAO, orgMemberDAO));
 		environment.jersey().register(new QuestionResource(quizDAO, questionDAO, quizScoreDAO));
 		environment.jersey().register(new FeedbackResource(feedbackDAO, bugDAO));
-		environment.jersey().register(new UserProfileResource(userDAO, quizDAO, questionDAO, orgDAO, groupDAO, quizScoreDAO, orgMemberDAO));
+		environment.jersey().register(new UserProfileResource(userDAO, quizDAO, questionDAO, orgDAO, groupDAO, quizScoreDAO, orgMemberDAO, userGroupDAO));
 
 		logger.info("All Views Registered");
 	}

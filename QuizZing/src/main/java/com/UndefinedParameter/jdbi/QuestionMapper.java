@@ -30,6 +30,8 @@ public class QuestionMapper implements ResultSetMapper<Question>{
 		que.setReference(r.getString("Reference"));
 		que.setCorrectPosition(r.getInt("CorrectPosition"));
 		que.setDifficulty((float)r.getInt("QuestionDifficulty") /(float)r.getInt("DifficultyCount"));
+		que.setFlagged(r.getBoolean("Flagged"));
+		que.setFlaggedReason(r.getString("FlaggedReason"));
 		
 		ArrayList<String> wronganswers = new ArrayList<String>();
 		

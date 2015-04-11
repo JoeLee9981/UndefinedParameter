@@ -77,4 +77,17 @@ public interface GroupDAO {
 	@SqlQuery("SELECT COUNT(*) FROM Quiz quiz, GroupQuiz gquiz WHERE quiz.QuizID = gquiz.QuizID and gquiz.GroupID = :groupId")
 	public int countQuizzes(@Bind("groupId") long groupId);
 
+	@SqlQuery("SELECT COUNT(*) FROM Question q, User u, SubGroup sg "
+			+ "WHERE q.CreatorID = u.UserID "
+			+ "AND q.Flagged = 1 "
+			+ "AND sg.GroupID = q.GroupID "
+			+ "AND u.UserID = :userId "
+			+ "AND sg.GroupID = :groupId")
+	public int countFlagsByUser(@Bind("userId") long userId, @Bind("groupId") long groupId);
+	
+	@SqlQuery("SELECT COUNT(*) FROM Question q, SubGroup sg "
+			+ "WHERE q.Flagged = 1 "
+			+ "AND sg.GroupID = q.GroupID "
+			+ "AND sg.GroupID = :groupId")
+	public int countFlagsByGroup(@Bind("groupId") long groupId);
 }

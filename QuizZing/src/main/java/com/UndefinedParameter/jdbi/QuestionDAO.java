@@ -84,7 +84,7 @@ public interface QuestionDAO {
 	 * Update a quiz
 	 */
 	@SqlUpdate("UPDATE Question SET QuestionText = :questionText, CorrectAnswer = :correctAnswer, WrongAnswer1 = :wrongAnswer1, "
-			+ "WrongAnswer2 = :wrongAnswer2, WrongAnswer3 = :wrongAnswer3, WrongAnswer4 = :wrongAnswer4, Flagged = 0, Explanation = :explanation, "
+			+ "WrongAnswer2 = :wrongAnswer2, WrongAnswer3 = :wrongAnswer3, WrongAnswer4 = :wrongAnswer4, Flagged = 0, FlaggedReason = 'None', Explanation = :explanation, "
 			+ "Reference = :reference, Ordered = :ordered, CorrectPosition = :correctPosition WHERE QuestionId = :questionid")
 	public void updateQuestion(@Bind("questionText") String questionText, 
 							   @Bind("correctAnswer") String correctAnswer, 
@@ -120,6 +120,21 @@ public interface QuestionDAO {
 	
 	@SqlQuery("SELECT CategoryType FROM Category")
 	public List<String> getAllCategories();
+	
+	/********************************** Question Flag Section **********************************************************/
+	
+	@SqlUpdate("UPDATE Question SET Flagged = 1, FlaggedReason = :reason WHERE QuestionID = :questionId")
+	public void flagQuestion(@Bind("reason") String reason, @Bind("questionId") long questionId);
+	
+	@SqlUpdate("UPDATE Question SET Flagged = 0, FlaggedReason = 'None' WHERE QuestionID = :questionId")
+	public void unflagQuestion(@Bind("questionId") long questionId);
+	
+	@SqlQuery("SELECT * FROM Question q WHERE Flagged = 1 AND GroupID = :groupId")
+	public List<Question> findFlaggedQuestionsByGroup(@Bind("groupId") long groupId);
+	
+	@SqlQuery("SELECT * FROM Question q WHERE Flagged = 1 AND GroupID = :groupId AND CreatorID = :userId")
+	public List<Question> findFlaggedQuestionsByUser(@Bind("groupId") long groupId, @Bind("userId") long userId);
+	
 	
 	/********************************** Quiz Quality Ratings Query *****************************************************/
 	

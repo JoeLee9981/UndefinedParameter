@@ -46,6 +46,11 @@ public class Group {
 	 */
 	private int questionCount;
 	
+	/*
+	 * Number of flagged questions in a group
+	 */
+	private int flagCount;
+	
 	private DateTime dateCreated;
 	
 	/*
@@ -156,6 +161,16 @@ public class Group {
 		this.dateCreated = dateCreated;
 	}
 	
+	@JsonProperty
+	public int getFlagCount() {
+		return flagCount;
+	}
+
+	@JsonProperty
+	public void setFlagCount(int flagCount) {
+		this.flagCount = flagCount;
+	}
+
 	public String getDateAsString() {
 		return dateCreated.toString("MM/dd/yyyy");
 	}

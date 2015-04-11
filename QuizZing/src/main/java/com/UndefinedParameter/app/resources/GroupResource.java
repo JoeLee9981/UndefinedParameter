@@ -20,15 +20,18 @@ import javax.ws.rs.core.Response.Status;
 import com.UndefinedParameter.app.core.Group;
 import com.UndefinedParameter.app.core.GroupManager;
 import com.UndefinedParameter.app.core.Organization;
+import com.UndefinedParameter.app.core.Question;
 import com.UndefinedParameter.app.core.Quiz;
 import com.UndefinedParameter.app.core.QuizManager;
 import com.UndefinedParameter.app.core.User;
+import com.UndefinedParameter.app.core.UserGroupManager;
 import com.UndefinedParameter.jdbi.GroupDAO;
 import com.UndefinedParameter.jdbi.OrgMemberDAO;
 import com.UndefinedParameter.jdbi.OrganizationDAO;
 import com.UndefinedParameter.jdbi.QuestionDAO;
 import com.UndefinedParameter.jdbi.QuizDAO;
 import com.UndefinedParameter.jdbi.QuizScoreDAO;
+import com.UndefinedParameter.jdbi.UserGroupDAO;
 import com.UndefinedParameter.views.GroupListView;
 import com.UndefinedParameter.views.GroupMemberView;
 import com.UndefinedParameter.views.GroupQuestionView;
@@ -43,9 +46,11 @@ public class GroupResource {
 
 	public GroupManager manager;
 	public QuizManager quizManager;
+	private UserGroupManager userGroupManager;
 	
-	public GroupResource(OrganizationDAO orgsDAO, GroupDAO groupDAO, QuizDAO quizDAO, QuestionDAO questionDAO, QuizScoreDAO quizScoreDAO, OrgMemberDAO orgMemberDOA) {
-		manager = new GroupManager(orgsDAO, groupDAO, orgMemberDOA);
+	public GroupResource(OrganizationDAO orgsDAO, GroupDAO groupDAO, QuizDAO quizDAO, QuestionDAO questionDAO, QuizScoreDAO quizScoreDAO, OrgMemberDAO orgMemberDOA, UserGroupDAO userGroupDAO) {
+		manager = new GroupManager(orgsDAO, groupDAO, orgMemberDOA, userGroupDAO);
+		userGroupManager = new UserGroupManager(userGroupDAO);
 		this.quizManager = new QuizManager(quizDAO, questionDAO, quizScoreDAO);
 	}
 	
@@ -75,6 +80,7 @@ public class GroupResource {
 	
 	@GET
 	public Response getGroupView(@Auth(required = false) User user, @QueryParam("groupId") long groupId) {
+		
 		Group group = manager.findGroupById(groupId);
 		
 		//no group found, return bad request
@@ -84,7 +90,15 @@ public class GroupResource {
 		Organization organization = manager.findParentOrganization(group.getOrganizationId());
 		List<Quiz> quizzes = quizManager.findQuizzesByGroup(groupId);
 		int questionCount = manager.countQuestionsByGroup(groupId);
+		
 		if(user != null) {
+			boolean moderator = userGroupManager.findIfUserMod(user.getId(), groupId) || user.isAdmin();
+			if(moderator) {
+				group.setFlagCount(manager.countFlagsByGroup(groupId));
+			}
+			else {
+				group.setFlagCount(manager.countFlagsByuser(user.getId(), groupId));
+			}
 			//user is logged in, can display all information
 			List<Quiz> userQuizzes = quizManager.findQuizzesByCreatorId(user.getId(), groupId);
 			return Response.ok(new GroupView(group, organization, quizzes, userQuizzes, true, user, manager.findRegisteredGroups(user.getId()), questionCount)).build();
@@ -138,5 +152,23 @@ public class GroupResource {
 	@Path("mygroups")
 	public Response getMyGroups(@QueryParam("userId") long userId) {
 		return Response.ok(new GroupListView("../includes/mygroups.ftl", manager.findRegisteredGroups(userId))).build();
+	}
+	
+	@GET
+	@Path("/flagged")
+	public Response getFlaggedQuestions(@Auth(required = false) User user, @QueryParam("groupId") long groupId) {
+		
+		if(user == null || groupId < 1) {
+			return Response.status(Status.BAD_REQUEST).build();
+		}
+		List<Question> questions;
+		if(userGroupManager.findIfUserMod(user.getId(), groupId) || user.isAdmin()) {
+			questions = quizManager.findFlaggedQuestionsByGroup(groupId);
+		}
+		else {
+			questions = quizManager.findFlaggedQuestionsByUser(groupId, user.getId());
+		}
+		
+		return Response.ok(new GroupQuestionView(user, questions, groupId, null)).build();
 	}
 }

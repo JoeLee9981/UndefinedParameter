@@ -47,19 +47,29 @@
 						    <nav class="navigation-bar-content">
 						    	<a href="" class="element" id="memberLink" title="Members">
 						    		<strong>
-						    			${group.memberCount?html}  <i class="icon-user-3 on-right"></i>
+						    			<i class="icon-user-3 on-right"></i>  Members (${group.memberCount?html})
 						    		</strong>
 						    	</a>
 						    	<span class="element-divider"></span>
 						    	<a href="" id="quizLink" class="element" title="Quizzes">
 							     	<strong>
-						        		${quizCount?html}  <i class="icon-clipboard-2 on-right"></i> 
+						        		<i class="icon-clipboard-2 on-right"></i>  Quizzes (${quizCount?html})
 						        	</strong>
 						    	</a>
 						    	<span class="element-divider"></span>
 						    	<a href="#" class="element" id="questionLink" title="Questions">
 						        	<strong>
-						        		${questionCount?html}  <i class="icon-help-2 on-right"></i>
+						        		<i class="icon-help-2 on-right"></i>  Questions (${questionCount?html})
+						        	</strong>
+					        	</a>
+					        	<span class="element-divider"></span>
+					        	<a href="#" class="element" id="flagLink" title="Flags">
+						        	<strong>
+						        		<#if group.flagCount &gt; 0>
+						        		<i class="icon-flag-2 fg-red on-right"></i>  Flags (${group.flagCount})
+						        		<#else>
+						        		<i class="icon-flag-2 on-right"></i>  No Flags
+						        		</#if>
 						        	</strong>
 					        	</a>
 					        	<span class="element-divider"></span>
@@ -183,6 +193,21 @@
 
 <script>
 
+	$('#flagLink').click(function(event) {
+
+		event.preventDefault();
+		$.ajax({
+			type: 'GET',
+			url: "/group/flagged?groupId=" + ${group.id},
+			success: function(data) {
+				$('#group-content').html(data);
+			},
+			error: function(error) {
+		    	$('#group-content').html("<h3>No Flagged Questions</h3>");
+		    }
+		});
+	});
+	
 	$('#quizLink').click(function(event) {
 		event.preventDefault();
 		$('#group-content').html("");

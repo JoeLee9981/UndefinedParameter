@@ -369,17 +369,19 @@
 		
 		$('#submitQuiz').click(function() {
 		
-			var content = '<div><h3>You are about to submit the quiz, once you do this you can not change your answer.</h3>';
-			content += '<button onclick="submitQuiz()" class="success">Submit</button>';
-			content += '<button onclick="$.Dialog.close()" class="danger">Cancel</button></div>';
+			var content = '<div style="margin: 10px" class="grid span8">' +
+						  	'<h3 class="text-center">You are about to submit the quiz, once you do this you can not change your answers.</h3><br/>' +
+						  	'<div class="span3 offset2">' +
+									'<button style="margin: 5px" onclick="submitQuiz()" class="success large center">Submit</button>' +
+									'<button style="margin: 5px" onclick="$.Dialog.close()" class="danger large center">Cancel</button>' +
+							'</div>' +
+						  '</div>';
 			
 			$.Dialog({
 		        shadow: true,
 		        overlay: true,
-		        flat: true,
 		        icon: '<span class="icon-power"></span>',
 		        title: 'Submit Quiz',
-		        width: 500,
 		        padding: 10,
 		        content: content
 		    });
@@ -426,13 +428,16 @@
 				
 				if(!q.hasPrevious()) {
 					document.getElementById('prevQuestion').disabled = true;
+					$('#prevQuestion').attr("class", "large");
 				}
 				else {
 					document.getElementById('prevQuestion').disabled = false;
+					$('#prevQuestion').attr("class", "primary large");
 				}
 				
 				if(!q.hasNext()) {
 					document.getElementById('nextQuestion').disabled = true;
+					$('#nextQuestion').attr("class", "large");
 				}
 
 				setAnswers();
@@ -451,8 +456,10 @@
 				
 				if(!q.hasPrevious()) {
 					document.getElementById('prevQuestion').disabled = true;
+					$('#prevQuestion').attr("class", "large");
 				}
 				document.getElementById('nextQuestion').disabled = false;
+				$('#nextQuestion').attr("class", "success large");
 				
 				if(quizPosition > 0)
 					quizPosition--;
@@ -717,6 +724,7 @@
 		function submitQuiz() {
 			$.Dialog.close();
 			$('#submitQuiz').prop("disabled", true);
+			$('#submitQuiz').attr("class", "place-right large");
 			
 			$("#quizFinish").show();
 			var scored = q.submitQuiz();

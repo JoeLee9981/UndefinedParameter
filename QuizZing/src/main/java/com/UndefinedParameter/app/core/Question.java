@@ -6,6 +6,8 @@ import java.util.Random;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.apache.commons.lang.StringUtils;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 
@@ -35,6 +37,7 @@ public class Question {
 	private String correctAnswer;
 	private ArrayList<String> wrongAnswers;
 	private boolean flagged = false;
+	private String flaggedReason;
 	private String explanation;
 	private String reference;
 	private String referenceLink;
@@ -203,6 +206,20 @@ public class Question {
 	}
 	
 	@JsonProperty
+	public String getFlaggedReason() {
+		
+		if(flaggedReason == null) {
+			return "Reason not provided.";
+		}
+		return flaggedReason;
+	}
+
+	@JsonProperty
+	public void setFlaggedReason(String flaggedReason) {
+		this.flaggedReason = flaggedReason;
+	}
+
+	@JsonProperty
 	public boolean isOrdered() {
 		return ordered;
 	}
@@ -274,6 +291,9 @@ public class Question {
 	}
 	
 	public String getExplanationFormatted() {
+		if(StringUtils.isBlank(explanation)) {
+			return "";
+		}
 		return explanation.replace("<br/>", "\n");
 	}
 

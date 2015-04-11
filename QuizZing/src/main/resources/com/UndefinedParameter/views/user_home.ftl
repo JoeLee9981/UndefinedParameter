@@ -25,13 +25,13 @@
 						<div id="bannerContent" class="row">
 							<div>
 								<div class="row">
-									<div class="span4">
+									<div class="span3">
 										<img src="/assets/images/person_circ.png"></img>
 									</div>
-									<div id="bannerHeader" class="span6">
+									<div id="bannerHeader" class="span5">
 										<h2><strong>Studying is hard right?</strong></h2>
 										<span class="subheader-secondary">
-											<strong>Not anymore!</strong> Whether for school, certification courses, job interviews or just fun. QuizZing gives you the tools to make studying simple.
+											<strong>Not anymore!</strong> Whether for school, certification courses, job interviews, or just fun, QuizZing gives you the tools to make studying simple.
 										</span>
 										<div id="headerButtons">
 											<button type="button" class="warning large" onclick="location.href = '/about'">Learn More</button>

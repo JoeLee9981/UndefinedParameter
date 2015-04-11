@@ -1,3 +1,5 @@
+<script src="/assets/scripts/rate.js"></script>
+
 <#if user??>
 <div class="grid fluid">
 	<div class="row">
@@ -8,26 +10,33 @@
 			<table class="table hovered striped" width="100%">
 				<thead>
 					<tr>
-						<th></th>
 						<th>Question</th>
+						<th width="25px"></th>
 						<th width="120px">Rating</th>
 						<th width="120px">Difficulty</th>
 						<th>Categories</th>
+						<th width="25px"></th>
 					</tr>
 				</thead>
 				<tbody>
 				<#list userQuestions as question>
 					<tr>
-						<td class="padding5">
-							<span class="place-left" title="Edit Question"><a href="" id="qLink${question.questionId}"><i class="icon-pencil join"></i></a></span>
+						<td>
+							<a id="question${question.questionId}" href="">
+								<#if question.questionText?length &gt; 75>
+									${question.questionText?substring(0, 75)}...
+								<#else>
+									${question.questionText}
+								</#if>
+							</a>
 						</td>
-						<td><a id="question${question.questionId}" href="">
-							<#if question.questionText?length &gt; 75>
-								${question.questionText?substring(0, 75)}...
+						<td>
+							<#if question.flagged>
+								<a href="" id="qFlagLink${question.questionId}" onclick="unflagQuestion(${question.questionId}, '${question.flaggedReason}')"><i id="flag${question.questionId}" title="Flagged" class="icon-flag-2 fg-red on-right"></i></a>
 							<#else>
-								${question.questionText}
+								<a href="" id="qFlagLink${question.questionId}" onclick="flagQuestion(${question.questionId})"><i id="flag${question.questionId}" title="Flag Question" class="icon-flag-2 fg-gray on-right"></i></a>
 							</#if>
-						</a></td>
+						</td>
 						<td width="120px">
 							<div id="rating${question.questionId}" class="rating small">
 							</div>
@@ -36,7 +45,11 @@
 							<div id="difficulty${question.questionId}" class="rating small fg-red">
 							</div>
 						</td>
-						<td><#if question.categories??><#if question.categoriesString?length gt 35>${question.categoriesString?substring(0, 35)}...<#else>${question.categoriesString}</#if></#if></td>
+						<td class="text-center"><#if question.categories??><#if question.categoriesString?length &gt; 14>${question.categoriesString?substring(0, 15)}...<#else>${question.categoriesString}</#if></#if></td>
+						<td class="padding5">	
+							<span class="place-left" title="Edit Question"><a href="" id="qLink${question.questionId}"><i class="icon-pencil join"></i></a></span>
+						</td>
+						
 						<script>
 
 							$('#qLink${question.questionId}').click(function(event) {
@@ -51,6 +64,10 @@
 								    	$('#group-content').html("<h3>You do not have access to edit this question</h3>");
 								    }
 								});
+							});
+
+							$('#qFlagLink${question.questionId}').click(function(event) {
+								event.preventDefault();
 							});
 						
 							$("#question${question.questionId}").click(function(event) {
@@ -125,30 +142,33 @@
 			<table class="table hovered striped" width="100%">
 				<thead>
 					<tr>
-						<th></th>
 						<th>Question</th>
+						<th width="25px"></th>
 						<th>Rating</th>
 						<th width="120px">Difficulty</th>
 						<th width="120px">Categories</th>
+						<th width="25px"></th>
 					</tr>
 				</thead>
 				<tbody>
 				<#list questions as question>
 					<tr>
-						<#if user?? && user.admin>
-						<td class="padding5">
-							<span class="place-left" title="Edit Question"><a href="" id="qLink${question.questionId}"><i class="icon-pencil join"></i></a></span>
+						<td>
+							<a id="question${question.questionId}" href="">
+								<#if question.questionText?length &gt; 75>
+									${question.questionText?substring(0, 75)}...
+								<#else>
+									${question.questionText}
+								</#if>
+							</a>
 						</td>
-						<#else>
-						<td></td>
-						</#if>
-						<td><a id="question${question.questionId}" href="">
-							<#if question.questionText?length &gt; 75>
-								${question.questionText?substring(0, 75)}...
+						<td>
+							<#if question.flagged>
+								<a href="" id="qFlagLink${question.questionId}" onclick="unflagQuestion(${question.questionId}, '${question.flaggedReason}')"><i id="flag${question.questionId}" title="Flagged" class="icon-flag-2 fg-red on-right"></i></a>
 							<#else>
-								${question.questionText}
+								<a href="" id="qFlagLink${question.questionId}" onclick="flagQuestion(${question.questionId})"><i id="flag${question.questionId}" title="Flag Question" class="icon-flag-2 fg-gray on-right"></i></a>
 							</#if>
-						</a></td>
+						</td>
 						<td width="120px">
 							<div id="rating${question.questionId}" class="rating small">
 							</div>
@@ -157,7 +177,14 @@
 							<div id="difficulty${question.questionId}" class="rating small fg-red">
 							</div>
 						</td>
-						<td><#if question.categories??><#if question.categoriesString?length gt 35>${question.categoriesString?substring(0, 35)}...<#else>${question.categoriesString}</#if></#if></td>
+						<td class="text-center"><#if question.categories??><#if question.categoriesString?length gt 35>${question.categoriesString?substring(0, 35)}...<#else>${question.categoriesString}</#if></#if></td>
+						<#if user?? && user.admin>
+						<td class="padding5">
+							<span class="place-left" title="Edit Question"><a href="" id="qLink${question.questionId}"><i class="icon-pencil join"></i></a></span>
+						</td>
+						<#else>
+						<td></td>
+						</#if>
 						
 						<script>
 							<#if user?? && user.admin??>
@@ -179,6 +206,10 @@
 							$('#closeLink').click(function(event) {
 								event.preventDefault();
 								$('#group-content').html("");
+							});
+
+							$('#qFlagLink${question.questionId}').click(function(event) {
+								event.preventDefault();
 							});
 						
 							$("#question${question.questionId}").click(function(event) {
