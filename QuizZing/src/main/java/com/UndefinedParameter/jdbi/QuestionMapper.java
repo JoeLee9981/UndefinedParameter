@@ -40,13 +40,13 @@ public class QuestionMapper implements ResultSetMapper<Question>{
 		String wrong3 = r.getString("WrongAnswer3");
 		String wrong4 = r.getString("WrongAnswer4");
 		//only add the wrong answers if not null
-		//if(!"".equals(wrong1))
+		if(!"".equals(wrong1))
 			wronganswers.add(wrong1);
-		//if(!"".equals(wrong2))
+		if(!"".equals(wrong2))
 			wronganswers.add(wrong2);
-		//if(!"".equals(wrong3))
+		if(!"".equals(wrong3))
 			wronganswers.add(wrong3);
-		//if(!"".equals(wrong4))
+		if(!"".equals(wrong4))
 			wronganswers.add(wrong4);
 		
 		que.setWrongAnswers(wronganswers);
