@@ -170,6 +170,14 @@ public class Question {
 		return questionText;
 	}
 	
+	public String getQuestionTextFormatted() {
+		if(type != QuestionType.MATCHING && type != QuestionType.FILL_IN_THE_BLANK) {
+			return questionText;
+		}
+		return questionText.replace("&amp;lt;blank&amp;gt;", "___________").replace("&amp;", "&");
+							
+	}
+	
 	@JsonProperty
 	public void setQuestionText(String questionText) {
 		this.questionText = questionText;
@@ -180,6 +188,10 @@ public class Question {
 		return correctAnswer;
 	}
 	
+	public String getCorrectAnswerFormatted() {
+		return correctAnswer.replace("&amp;", "&");
+	}
+	
 	@JsonProperty
 	public void setCorrectAnswer(String correctAnswer) {
 		this.correctAnswer = correctAnswer;
@@ -187,7 +199,22 @@ public class Question {
 	
 	@JsonProperty
 	public ArrayList<String> getWrongAnswers() {
+		
 		return wrongAnswers;
+	}
+	
+	public ArrayList<String> getWrongAnswersFormatted() {
+		if(this.type != QuestionType.MATCHING) {
+			return wrongAnswers;
+		}
+		
+		ArrayList<String> answers = new ArrayList<String>();
+		
+		for(int i = 0; i < wrongAnswers.size(); i++) {
+			char c = (char)(66 + i);
+			answers.add(wrongAnswers.get(i).replace("&amp;", "&"));
+		}
+		return answers;
 	}
 	
 	@JsonProperty

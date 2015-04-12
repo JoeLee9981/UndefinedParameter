@@ -336,15 +336,15 @@
 				var answers = [];
 
 				<#list quest.answers as answer>
-					answers.push("${answer}");
+					answers.push("${answer}".replace(/&amp;#39;/g, "&#39;"));
 				</#list>
 
 				var question;
 				
 				<#if quest.explanation??>
-					question = new Question(${quest.questionId}, "${quest.type}", "${quest.questionText}", "${quest.correctAnswer}", answers, "${quest.explanation}", ${quest.rating}, ${quest.difficulty}, ${quest.userRating}, ${quest.userDifficulty});
+					question = new Question(${quest.questionId}, "${quest.type}", "${quest.questionText}".replace(/&amp;#39;/g, "&#39;"), "${quest.correctAnswer}".replace(/&amp;#39;/g, "&#39;"), answers, "${quest.explanation}".replace(/&amp;#39;/g, "&#39;"), ${quest.rating}, ${quest.difficulty}, ${quest.userRating}, ${quest.userDifficulty});
 				<#else>
-					question = new Question(${quest.questionId}, "${quest.type}", "${quest.questionText}", "${quest.correctAnswer}", answers, "No explanation has been given", ${quest.rating}, ${quest.difficulty}, ${quest.userRating}, ${quest.userDifficulty});
+					question = new Question(${quest.questionId}, "${quest.type}", "${quest.questionText}".replace(/&amp;#39;/g, "&#39;"), "${quest.correctAnswer}".replace(/&amp;#39;/g, "&#39;"), answers, "No explanation has been given", ${quest.rating}, ${quest.difficulty}, ${quest.userRating}, ${quest.userDifficulty});
 				</#if>
 				quest.push(question);
 			</#list>

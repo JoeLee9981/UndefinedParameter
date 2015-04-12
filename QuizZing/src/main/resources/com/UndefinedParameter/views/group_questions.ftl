@@ -23,10 +23,10 @@
 					<tr>
 						<td>
 							<a id="question${question.questionId}" href="">
-								<#if question.questionText?length &gt; 75>
-									${question.questionText?substring(0, 75)}...
+								<#if question.questionTextFormatted?length &gt; 75>
+									${question.questionTextFormatted?substring(0, 75)}...
 								<#else>
-									${question.questionText}
+									${question.questionTextFormatted}
 								</#if>
 							</a>
 						</td>
@@ -76,11 +76,11 @@
 						
 							$("#question${question.questionId}").on('click', function() {
 			
-								var content = "<pre style='white-space: pre-wrap; width: 700px'><strong>Question: </strong>${question.questionText}<br/></pre>";
+								var content = "<pre style='white-space: pre-wrap; width: 700px'><strong>Question: </strong>${question.questionTextFormatted}<br/></pre>";
 								content += "<strong>Rating:</strong> ${question.rating} <strong>Difficulty: </strong>${question.difficulty}<br/>";
 								content += "<strong>Categories: </strong>${question.categoriesString}";
-								content += "<pre style='white-space: pre-wrap; width: 700px'><strong>Answers:</strong><br/>  ${question.correctAnswer}<br/>";
-								<#list question.wrongAnswers as answer>
+								content += "<pre style='white-space: pre-wrap; width: 700px'><strong>Answers:</strong><br/>  ${question.correctAnswerFormatted}<br/>";
+								<#list question.wrongAnswersFormatted as answer>
 									content += "  ${answer}<br/>";
 								</#list>
 								content += "</pre><br/><br/>";
@@ -155,10 +155,10 @@
 					<tr>
 						<td>
 							<a id="question${question.questionId}" href="">
-								<#if question.questionText?length &gt; 75>
-									${question.questionText?substring(0, 75)}...
+								<#if question.questionTextFormatted?length &gt; 75>
+									${question.questionTextFormatted?substring(0, 75)}...
 								<#else>
-									${question.questionText}
+									${question.questionTextFormatted}
 								</#if>
 							</a>
 						</td>
@@ -224,11 +224,11 @@
 						
 							$("#question${question.questionId}").on('click', function() {
 			
-								var content = "<pre style='white-space: pre-wrap; width: 700px'><strong>Question: </strong>${question.questionText}<br/></pre>";
+								var content = "<pre style='white-space: pre-wrap; width: 700px'><strong>Question: </strong>${question.questionTextFormatted}<br/></pre>";
 								content += "<strong>Rating:</strong> ${question.rating} <strong>Difficulty: </strong>${question.difficulty}<br/>";
 								content += "<strong>Categories: </strong>${question.categoriesString}";
-								content += "<pre style='white-space: pre-wrap; width: 700px'><strong>Answers:</strong><br/>  ${question.correctAnswer}<br/>";
-								<#list question.wrongAnswers as answer>
+								content += "<pre style='white-space: pre-wrap; width: 700px'><strong>Answers:</strong><br/>  ${question.correctAnswerFormatted}<br/>";
+								<#list question.wrongAnswersFormatted as answer>
 									content += "  ${answer}<br/>";
 								</#list>
 								content += "</pre><br/><br/>";
