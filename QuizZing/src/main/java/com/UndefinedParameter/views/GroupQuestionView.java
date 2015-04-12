@@ -15,8 +15,9 @@ public class GroupQuestionView extends View {
 	private User user;
 	private long groupId;
 	private String message;
+	private boolean moderator;
 	
-	public GroupQuestionView(User user, List<Question> questions, long groupId, String message) {
+	public GroupQuestionView(User user, List<Question> questions, long groupId, String message, boolean moderator) {
 		super("group_questions.ftl");
 		this.user = user;
 		this.questions = new ArrayList<Question>();
@@ -24,6 +25,7 @@ public class GroupQuestionView extends View {
 		this.groupId = groupId;
 		setQuestions(questions);
 		this.message = message;
+		this.moderator = moderator;
 	}
 	
 	private void setQuestions(List<Question> questions) {
@@ -68,4 +70,7 @@ public class GroupQuestionView extends View {
 		return this.message;
 	}
 
+	public boolean isModerator() {
+		return moderator;
+	}
 }

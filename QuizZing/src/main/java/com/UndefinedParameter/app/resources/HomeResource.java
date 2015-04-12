@@ -77,7 +77,7 @@ public class HomeResource {
 	 */
 	@POST
 	@Path("/login")
-	public Response login(@Auth User user) {
+	public Response login(@Auth User user, @QueryParam("path") String path) {
 		return Response.ok().build();
 	}
 	

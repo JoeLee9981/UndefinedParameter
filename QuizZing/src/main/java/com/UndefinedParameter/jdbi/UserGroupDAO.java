@@ -52,16 +52,16 @@ public interface UserGroupDAO {
 	@SqlUpdate("UPDATE SubGroup SET RatingCount = RatingCount + 1 WHERE GroupID = :groupID")
 	public int updateSubGroupRatingCount(@Bind("groupID") long groupId);
 	
-	@SqlUpdate("UPDATE SubGroup SET EarnedPoints = EarnedPoints + points WHERE GroupID = :groupID AND UserID = :userID")
+	@SqlUpdate("UPDATE UserGroups SET EarnedPoints = EarnedPoints + :points WHERE GroupID = :groupID AND UserID = :userID")
 	public int addInUserGroupEarnedPoints(@Bind("groupID") long groupId,
 											@Bind("userID") long userId,
 											@Bind("points") long points);
 	
-	@SqlQuery("SELECT EarnedPoints FROM SubGroup WHERE GroupID = :groupID AND UserID = :userID")
+	@SqlQuery("SELECT EarnedPoints FROM UserGroups WHERE GroupID = :groupID AND UserID = :userID")
 	public int getUserGroupEarnedPoints(@Bind("groupID") long groupId,
 											@Bind("userID") long userId);
 	
-	@SqlUpdate("UPDATE SubGroup SET ModStatus = modstatus WHERE GroupID = :groupID AND UserID = :userID")
+	@SqlUpdate("UPDATE UserGroups SET ModStatus = modstatus WHERE GroupID = :groupID AND UserID = :userID")
 	public int updateUserGroupModStatus(@Bind("groupID") long groupId,
 											@Bind("userID") long userId,
 											@Bind("modstatus") int modstat);
@@ -69,25 +69,25 @@ public interface UserGroupDAO {
 	@SqlQuery("SELECT ModStatus FROM UserGroups WHERE GroupID = :groupID AND UserID = :userID")
 	public int getUserGroupModStatus(@Bind("groupID") long groupId, @Bind("userID") long userId);
 	
-	@SqlQuery("SELECT UserID FROM SubGroup WHERE GroupID = :groupID AND ModStatus = :modstatus")
+	@SqlQuery("SELECT UserID FROM UserGroups WHERE GroupID = :groupID AND ModStatus = :modstatus")
 	public List<Long> getUsersBasedOnModStatus(@Bind("groupID") long groupId,
 											@Bind("modstatus") long modstatus);
 	
-	@SqlQuery("SELECT GroupID FROM SubGroup WHERE UserID = :userID AND ModStatus = :modstatus")
+	@SqlQuery("SELECT GroupID FROM UserGroups WHERE UserID = :userID AND ModStatus = :modstatus")
 	public List<Long> getGroupsBasedOnModStatus(@Bind("userID") long userId,
 											@Bind("modstatus") long modstatus);
 	
-	@SqlQuery("SELECT COUNT(*) FROM SubGroup WHERE GroupID = :groupID AND ModStatus = :modstatus")
+	@SqlQuery("SELECT COUNT(*) FROM UserGroups WHERE GroupID = :groupID AND ModStatus = :modstatus")
 	public int getTotalUserGroupModStatus(@Bind("groupID") long groupId,
 											@Bind("modstatus") long modstatus);
 	
-	@SqlQuery("SELECT COUNT(*) FROM SubGroup WHERE GroupID = :groupID")
+	@SqlQuery("SELECT COUNT(*) FROM UserGroups WHERE GroupID = :groupID")
 	public int getTotalUserGroup(@Bind("groupID") long groupId);
 	
-	@SqlQuery("SELECT Max(EarnedPoints) FROM SubGroup WHERE GroupID = :groupID")
+	@SqlQuery("SELECT Max(EarnedPoints) FROM UserGroups WHERE GroupID = :groupID")
 	public int getMaxPointsUserGroup(@Bind("groupID") long groupId);
 	
-	@SqlQuery("SELECT Max(EarnedPoints) FROM SubGroup WHERE GroupID = :groupID AND EarnedPoints != :points")
+	@SqlQuery("SELECT Max(EarnedPoints) FROM UserGroups WHERE GroupID = :groupID AND EarnedPoints != :points")
 	public int getSecondMaxPointsUserGroup(@Bind("groupID") long groupId,
 											@Bind("points") long points);
 	

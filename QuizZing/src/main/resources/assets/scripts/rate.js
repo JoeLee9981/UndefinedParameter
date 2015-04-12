@@ -37,7 +37,7 @@ function flagQuestion(questionId) {
 	var content = '<div style="margin: 10px" class="grid span8">' +
 				  		'<h3 class="text-center">Please provide a short explanation to why the question is wrong</h3><br/>' +
 				  		'<div class="input-control textarea">' +
-					    	'<textarea maxlength="255" id="reason' + questionId + '"></textarea>' +
+					    	'<textarea style="resize: none" maxlength="255" id="reason' + questionId + '"></textarea>' +
 					    '</div>' +
 				  		'<div class="span3 offset2">' +
 							'<button style="margin: 5px" onclick="doFlag(' + questionId + ')" class="success large center">Submit</button>' +
@@ -70,13 +70,13 @@ function doFlag(questionId) {
 	});
 }
 
-function unflagQuestion(questionId, reason) {
+function unflagQuestion(questionId, groupId, reason) {
 	var content = '<div style="margin: 10px" class="grid span8">' +
-						'<h3>This question has been flagged wrong!</h3><br/>' +
-						'<p><strong>Reason: </strong>' + reason + '</p>' +
-						'<div class="span5 offset1">' +
-						'<button style="margin: 5px" onclick="doUnflag(' + questionId + ')" class="success large center">Mark Correct</button>' +
-						'<button style="margin: 5px" onclick="" class="primary large center">Edit</button>' +
+					'<p class="text-right">Has this been flaged incorrectly? <button class="link" onclick="doUnflag(' + questionId + ')">Mark as correct</button></p>' +
+					'<h3 class="text-center">This question has been flagged for the following reason:</h3><br/>' +
+					'<p>' + reason + '</p>' +
+					'<div class="span4 offset2">' +
+						'<button style="margin: 5px" onclick="editQuestion(' + questionId + ', ' + groupId + ')" class="primary large center">Edit</button>' +
 						'<button style="margin: 5px" onclick="$.Dialog.close()" class="danger large center">Cancel</button>' +
 					'</div>' +
 				'</div>';
@@ -98,9 +98,33 @@ function doUnflag(questionId) {
 		type: 'POST',
 		url: '/question/unflag?questionId=' + questionId,
 	});
-	
 }
 
-function editQuestion(questionId) {
-	
+function editQuestion(questionId, groupId) {
+	$.ajax({
+		type: 'GET',
+		url: "/question/edit?groupId=" + groupId + "&questionId=" + questionId,
+		success: function(data) {
+			$('#group-content').html(data);
+		},
+		error: function(error) {
+	    	$('#group-content').html("<h3>You do not have access to edit this question</h3>");
+	    }
+	});
+	$.Dialog.close();
+}
+
+function loginDialog() {
+	$.Dialog({
+        shadow: true,
+        overlay: true,
+        flat: true,
+        icon: '<span class="icon-rocket"></span>',
+        title: 'Login',
+        width: 500,
+        content: '<h5>You must log in to participate in ratings</h5><button class=\"primary\" onclick=\"location.href=\'/login\'\">Login</button><button class=\"success\" onclick=\"location.href=\'/register\'\">Register</button>',
+        onShow: function(_dialog){
+            console.log(_dialog);
+        }
+    });
 }

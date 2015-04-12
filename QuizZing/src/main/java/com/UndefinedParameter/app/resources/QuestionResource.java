@@ -22,9 +22,11 @@ import com.UndefinedParameter.app.core.Question;
 import com.UndefinedParameter.app.core.Quiz;
 import com.UndefinedParameter.app.core.QuizManager;
 import com.UndefinedParameter.app.core.User;
+import com.UndefinedParameter.app.core.UserGroupManager;
 import com.UndefinedParameter.jdbi.QuestionDAO;
 import com.UndefinedParameter.jdbi.QuizDAO;
 import com.UndefinedParameter.jdbi.QuizScoreDAO;
+import com.UndefinedParameter.jdbi.UserGroupDAO;
 import com.UndefinedParameter.views.GroupQuestionView;
 import com.UndefinedParameter.views.LoginView;
 import com.UndefinedParameter.views.QuestionAddView;
@@ -38,9 +40,11 @@ import com.UndefinedParameter.views.QuizEditQuestionsView;
 public class QuestionResource {
 	
 	private QuizManager quizManager;
+	private UserGroupManager userGroupManager;
 	
-	public QuestionResource(QuizDAO quizDAO, QuestionDAO questionDAO, QuizScoreDAO quizScoreDAO) {
+	public QuestionResource(QuizDAO quizDAO, QuestionDAO questionDAO, QuizScoreDAO quizScoreDAO, UserGroupDAO userGroupDAO) {
 		quizManager = new QuizManager(quizDAO, questionDAO, quizScoreDAO);
+		userGroupManager = new UserGroupManager(userGroupDAO);
 	}
 	
 	@GET
@@ -92,6 +96,10 @@ public class QuestionResource {
 			return Response.status(Status.UNAUTHORIZED).build();
 		}
 		
+		if(question == null || question.getGroupId() < 1) {
+			return Response.status(Status.BAD_REQUEST).build();
+		}
+		
 		HashMap<String, String> response = new HashMap<String, String>();
 		
 		try {
@@ -99,6 +107,8 @@ public class QuestionResource {
 			question.setDifficulty(3.0);
 			long questionId = quizManager.createQuestion(question);
 			if(questionId > 0 && quizManager.addQuestionToQuiz(quizId, questionId)) {
+				
+				userGroupManager.addPoints(user.getId(), question.getGroupId(), 1);
 				response.put("response", "success");
 				response.put("redirect", "/quiz/edit?quizId=" + quizId + "&groupId=" + question.getGroupId());
 			}
@@ -186,6 +196,7 @@ public class QuestionResource {
 			return Response.status(Status.UNAUTHORIZED).build();
 		}
 		if(quizManager.rateQuestionQuality(user.getId(), questionId, groupId, rating)) {
+			userGroupManager.addPoints(user.getId(), groupId, 2);
 			return Response.ok().build();
 		}
 		else {
@@ -201,6 +212,7 @@ public class QuestionResource {
 			return Response.status(Status.UNAUTHORIZED).build();
 		}
 		if(quizManager.rateQuestionDifficulty(user.getId(), questionId, groupId, rating)) {
+			userGroupManager.addPoints(user.getId(), groupId, 4);
 			return Response.ok().build();
 		}
 		else {
@@ -233,10 +245,9 @@ public class QuestionResource {
 		}
 		Question existingQuestion = quizManager.findQuestionById(question.getQuestionId());
 		
-		//TODO: Allow moderators to do this too
-		if(existingQuestion != null && (user.getId() == question.getCreatorId() || user.isAdmin())) {
+		if(existingQuestion != null && (user.getId() == question.getCreatorId() || user.isAdmin() || userGroupManager.findIfUserMod(user.getId(), groupId))) {
 			if(quizManager.updateQuestion(question))
-				return Response.ok(new GroupQuestionView(user, quizManager.findQuestionsByGroup(groupId), groupId, "Question has been updated.")).build();
+				return Response.ok(new GroupQuestionView(user, quizManager.findQuestionsByGroup(groupId), groupId, "Question has been updated.", true)).build();
 		}
 		return Response.status(Status.BAD_REQUEST).build();
 	}
@@ -245,7 +256,7 @@ public class QuestionResource {
 	@Path("/flag")
 	public Response flagQuestion(@Auth(required = false) User user, @QueryParam("questionId") long questionId, String reason) {
 		
-		if(user == null || questionId < 1) {
+		if(questionId < 1) {
 			return Response.status(Status.BAD_REQUEST).build();
 		}
 		

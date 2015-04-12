@@ -139,7 +139,7 @@ function Question(id, type, questionText, correctAnswer, answers, explanation, r
 		
 		this.correctAnswers = [];
 		for(var i = 0; i < answers.length; i++) {
-			var pattern = /&lt;([A-E])&gt;(.*)/g;
+			var pattern = /&amp;lt;([A-E])&amp;gt;(.*)/g;
 			var match = pattern.exec(answers[i]);
 			if(match && match.length > 2) {
 				answers[i] = match[2];

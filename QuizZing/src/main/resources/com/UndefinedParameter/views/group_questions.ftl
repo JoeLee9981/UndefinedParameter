@@ -32,7 +32,7 @@
 						</td>
 						<td>
 							<#if question.flagged>
-								<a href="" id="qFlagLink${question.questionId}" onclick="unflagQuestion(${question.questionId}, '${question.flaggedReason}')"><i id="flag${question.questionId}" title="Flagged" class="icon-flag-2 fg-red on-right"></i></a>
+								<a href="" id="qFlagLink${question.questionId}" onclick="unflagQuestion(${question.questionId}, ${groupId}, '${question.flaggedReason}')"><i id="flag${question.questionId}" title="Flagged" class="icon-flag-2 fg-red on-right"></i></a>
 							<#else>
 								<a href="" id="qFlagLink${question.questionId}" onclick="flagQuestion(${question.questionId})"><i id="flag${question.questionId}" title="Flag Question" class="icon-flag-2 fg-gray on-right"></i></a>
 							</#if>
@@ -164,9 +164,15 @@
 						</td>
 						<td>
 							<#if question.flagged>
-								<a href="" id="qFlagLink${question.questionId}" onclick="unflagQuestion(${question.questionId}, '${question.flaggedReason}')"><i id="flag${question.questionId}" title="Flagged" class="icon-flag-2 fg-red on-right"></i></a>
+								<#if moderator>
+								<a href="" id="qFlagLink${question.questionId}" onclick="unflagQuestion(${question.questionId}, ${groupId}, '${question.flaggedReason}')"><i id="flag${question.questionId}" title="Flagged" class="icon-flag-2 fg-red on-right"></i></a>
+								<#else>
+								<i id="flag${question.questionId}" title="This question is already flagged" class="icon-flag-2 fg-red on-right"></i>
+								</#if>
 							<#else>
+								
 								<a href="" id="qFlagLink${question.questionId}" onclick="flagQuestion(${question.questionId})"><i id="flag${question.questionId}" title="Flag Question" class="icon-flag-2 fg-gray on-right"></i></a>
+								
 							</#if>
 						</td>
 						<td width="120px">
@@ -177,7 +183,7 @@
 							<div id="difficulty${question.questionId}" class="rating small fg-red">
 							</div>
 						</td>
-						<td class="text-center"><#if question.categories??><#if question.categoriesString?length gt 35>${question.categoriesString?substring(0, 35)}...<#else>${question.categoriesString}</#if></#if></td>
+						<td class="text-center"><#if question.categories??><#if question.categoriesString?length &gt; 14>${question.categoriesString?substring(0, 15)}...<#else>${question.categoriesString}</#if></#if></td>
 						<#if user?? && user.admin>
 						<td class="padding5">
 							<span class="place-left" title="Edit Question"><a href="" id="qLink${question.questionId}"><i class="icon-pencil join"></i></a></span>

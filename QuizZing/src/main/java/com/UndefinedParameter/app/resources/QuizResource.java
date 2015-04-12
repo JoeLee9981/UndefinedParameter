@@ -23,6 +23,7 @@ import com.UndefinedParameter.app.core.Quiz;
 import com.UndefinedParameter.app.core.QuizManager;
 import com.UndefinedParameter.app.core.QuizScore;
 import com.UndefinedParameter.app.core.User;
+import com.UndefinedParameter.app.core.UserGroupManager;
 import com.UndefinedParameter.jdbi.GroupDAO;
 import com.UndefinedParameter.jdbi.OrgMemberDAO;
 import com.UndefinedParameter.jdbi.OrganizationDAO;
@@ -46,11 +47,13 @@ public class QuizResource {
 	private QuizManager quizManager;
 	private OrganizationManager organizationManager;
 	private GroupManager groupManager;
+	private UserGroupManager userGroupManager;
 	
 	public QuizResource(QuizDAO quizDAO, QuestionDAO questionDAO, OrganizationDAO orgDAO, GroupDAO groupDAO, OrgMemberDAO orgMemberDAO, QuizScoreDAO quizScoreDAO, UserGroupDAO userGroupDAO) {
 		quizManager = new QuizManager(quizDAO, questionDAO, quizScoreDAO);
 		groupManager = new GroupManager(orgDAO, groupDAO, orgMemberDAO, userGroupDAO);
 		organizationManager = new OrganizationManager(orgDAO, groupDAO, orgMemberDAO);
+		userGroupManager = new UserGroupManager(userGroupDAO);
 	}
 	
 	@GET
@@ -166,6 +169,9 @@ public class QuizResource {
 		
 		long quizId = quizManager.createQuiz(quiz, groupId);
 		if(quizId >= 1) {
+			
+			userGroupManager.addPoints(user.getId(), groupId, 5);
+			
 			if(quizManager.addQuizToGroup(quizId, groupId)) {
 				response.put("response", "success");
 				response.put("redirect", "/quiz/edit?groupId=" + groupId + "&quizId=" + quizId);

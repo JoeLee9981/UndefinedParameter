@@ -254,7 +254,7 @@ public class QuizManager {
 		if(reason == null) {
 			reason = "";
 		}
-		
+		reason = InputUtils.sanitizeInput(reason);
 		questionDAO.flagQuestion(reason, questionId);
 		return true;
 	}
@@ -331,12 +331,7 @@ public class QuizManager {
 												 question.isOrdered(), 
 												 question.getCorrectPosition());
 			
-			setCategoriesForQuestion(id, question.getCategories());
-			
-			//Give points for creating the question
-			UserGroupManager usrGrpM = null;
-			usrGrpM.addPoints(question.getCreatorId(), question.getGroupId(), 1);
-			
+			setCategoriesForQuestion(id, question.getCategories());	
 			return id;
 		}
 	}
@@ -380,11 +375,6 @@ public class QuizManager {
 								  InputUtils.sanitizeInput(quiz.getDescription()),
 								  quiz.getTime(),
 								  quiz.isOpen());
-		
-		//Give points for creating the quiz
-		UserGroupManager usrGrpM = null;
-		usrGrpM.addPoints(quiz.getCreatorId(), groupID, 5);
-
 		
 		return rvalue;
 	}
@@ -636,10 +626,6 @@ public class QuizManager {
 				if(key > 0) {
 					questionDAO.rateQuestionQuality(rating, questionId);
 					
-					//Give points for rating the question quality
-					UserGroupManager usrGrpM = null;
-					usrGrpM.addPoints(userId, groupId, 2);
-					
 					return true;
 				}
 				else {
@@ -673,9 +659,6 @@ public class QuizManager {
 				long key = questionDAO.insertQuestionDifficulty(questionId, userId, rating);
 				if(key > 0) {
 					questionDAO.rateQuestionDifficulty(rating, questionId);
-					//Give points for rating the question quality
-					UserGroupManager usrGrpM = null;
-					usrGrpM.addPoints(userId, groupId, 4);
 					return true;
 				}
 				else {

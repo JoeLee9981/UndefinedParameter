@@ -324,21 +324,6 @@
 			});
 		});
 		
-		function loginDialog() {
-			$.Dialog({
-		        shadow: true,
-		        overlay: true,
-		        flat: true,
-		        icon: '<span class="icon-rocket"></span>',
-		        title: 'Login',
-		        width: 500,
-		        content: '<h5>You must log in to participate in ratings</h5><button class=\"primary\" onclick=\"location.href=\'/login\'\">Login</button><button class=\"success\" onclick=\"location.href=\'/register\'\">Register</button>',
-		        onShow: function(_dialog){
-		            console.log(_dialog);
-		        }
-		    });
-		}
-		
 		/*********************** QUIZ SYSTEM ****************************/
 		var q;
 		
@@ -487,7 +472,7 @@
 				var answers = q.getAnswers();
 				for(var i = 0; i < answers.length; i++) 
 				{
-					questText = questText.replace('&lt;blank&gt;', '<strong>' + (i + 1) + ': __________</strong>');
+					questText = questText.replace('&amp;lt;blank&amp;gt;', '<strong>' + (i + 1) + ': __________</strong>');
 				}
 				document.getElementById('questionHead').innerHTML = questText;
 				html = getFillBlankDiv();
@@ -499,10 +484,10 @@
 			else if(q.getQuestionType() == "MATCHING") {
 	
 				var question = q.getQuestionText();
-				var pattern5 = /&lt;1&gt;(.*)&lt;2&gt;(.*)&lt;3&gt;(.*)&lt;4&gt;(.*)&lt;5&gt;(.*)/g;
-				var pattern4 = /&lt;1&gt;(.*)&lt;2&gt;(.*)&lt;3&gt;(.*)&lt;4&gt;(.*)/g;
-				var pattern3 = /&lt;1&gt;(.*)&lt;2&gt;(.*)&lt;3&gt;(.*)/g;
-				var pattern2 = /&lt;1&gt;(.*)&lt;2&gt;(.*)/g;
+				var pattern5 = /&amp;lt;1&amp;gt;(.*)&amp;lt;2&amp;gt;(.*)&amp;lt;3&amp;gt;(.*)&amp;lt;4&amp;gt;(.*)&amp;lt;5&amp;gt;(.*)/g;
+				var pattern4 = /&amp;lt;1&amp;gt;(.*)&amp;lt;2&amp;gt;(.*)&amp;lt;3&amp;gt;(.*)&amp;lt;4&amp;gt;(.*)/g;
+				var pattern3 = /&amp;lt;1&amp;gt;(.*)&amp;lt;2&amp;gt;(.*)&amp;lt;3&amp;gt;(.*)/g;
+				var pattern2 = /&amp;lt;1&amp;gt;(.*)&amp;lt;2&amp;gt;(.*)/g;
 
 				var foundMatch = 0;
 

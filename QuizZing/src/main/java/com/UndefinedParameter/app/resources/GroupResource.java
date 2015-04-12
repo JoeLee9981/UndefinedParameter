@@ -128,8 +128,9 @@ public class GroupResource {
 		if(groupId < 1) {
 			return Response.status(Status.BAD_REQUEST).build();
 		}
+		boolean moderator = user != null && (userGroupManager.findIfUserMod(user.getId(), groupId) || user.isAdmin());
 		
-		return Response.ok(new GroupQuestionView(user, quizManager.findQuestionsByGroup(groupId), groupId, null)).build();
+		return Response.ok(new GroupQuestionView(user, quizManager.findQuestionsByGroup(groupId), groupId, null, moderator)).build();
 	}
 	
 	@GET
@@ -169,6 +170,8 @@ public class GroupResource {
 			questions = quizManager.findFlaggedQuestionsByUser(groupId, user.getId());
 		}
 		
-		return Response.ok(new GroupQuestionView(user, questions, groupId, null)).build();
+		boolean moderator = user != null && (userGroupManager.findIfUserMod(user.getId(), groupId) || user.isAdmin());
+		
+		return Response.ok(new GroupQuestionView(user, questions, groupId, null, moderator)).build();
 	}
 }

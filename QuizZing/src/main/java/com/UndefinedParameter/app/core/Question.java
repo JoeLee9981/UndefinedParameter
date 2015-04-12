@@ -208,7 +208,7 @@ public class Question {
 	@JsonProperty
 	public String getFlaggedReason() {
 		
-		if(flaggedReason == null) {
+		if(StringUtils.isBlank(flaggedReason)) {
 			return "Reason not provided.";
 		}
 		return flaggedReason;
@@ -375,7 +375,7 @@ public class Question {
 		
 		ArrayList<String> matchingQuestions = new ArrayList<String>();
 		Matcher matcher;
-		Pattern pattern5 = Pattern.compile("&lt;1&gt;(.*)&lt;2&gt;(.*)&lt;3&gt;(.*)&lt;4&gt;(.*)&lt;5&gt;(.*)");
+		Pattern pattern5 = Pattern.compile("&amp;lt;1&amp;gt;(.*)&amp;lt;2&amp;gt;(.*)&amp;lt;3&amp;gt;(.*)&amp;lt;4&amp;gt;(.*)&amp;lt;5&amp;gt;(.*)");
 		matcher = pattern5.matcher(questionText);
 		
 		if(matcher.find()) {
@@ -388,7 +388,7 @@ public class Question {
 		}
 		
 		
-		Pattern pattern4 = Pattern.compile("&lt;1&gt;(.*)&lt;2&gt;(.*)&lt;3&gt;(.*)&lt;4&gt;(.*)");
+		Pattern pattern4 = Pattern.compile("&amp;lt;1&amp;gt;(.*)&amp;lt;2&amp;gt;(.*)&amp;lt;3&amp;gt;(.*)&amp;lt;4&amp;gt;(.*)");
 		matcher = pattern4.matcher(questionText);
 		if(matcher.find()) {
 			matchingQuestions.add(matcher.group(1).trim());
@@ -398,7 +398,7 @@ public class Question {
 			return matchingQuestions;
 		}
 		
-		Pattern pattern3 = Pattern.compile("&lt;1&gt;(.*)&lt;2&gt;(.*)&lt;3&gt;(.*)");
+		Pattern pattern3 = Pattern.compile("&amp;lt;1&amp;gt;(.*)&amp;lt;2&amp;gt;(.*)&amp;lt;3&amp;gt;(.*)");
 		matcher = pattern3.matcher(questionText);
 		if(matcher.find()) {
 			matchingQuestions.add(matcher.group(1).trim());
@@ -407,7 +407,7 @@ public class Question {
 			return matchingQuestions;
 		}
 		
-		Pattern pattern2 = Pattern.compile("&lt;1&gt;(.*)&lt;2&gt;(.*)");
+		Pattern pattern2 = Pattern.compile("&amp;lt;1&amp;gt;(.*)&amp;lt;2&amp;gt;(.*)");
 		matcher = pattern2.matcher(questionText);
 		if(matcher.find()) {
 			matchingQuestions.add(matcher.group(1));

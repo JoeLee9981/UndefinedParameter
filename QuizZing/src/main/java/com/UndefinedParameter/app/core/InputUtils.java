@@ -9,15 +9,21 @@ import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
 
 import org.apache.commons.lang.StringEscapeUtils;
+import org.apache.commons.lang.StringUtils;
 
 public class InputUtils {
 	
 	public static String sanitizeInput(String input) {
-		if(input == null) {
+		if(StringUtils.isBlank(input)) {
 			return input;
 		}
+		input = StringEscapeUtils.unescapeHtml(input);
 		//replace all newlines
 		input = input.replace("\n", "<br/>");
+		input = input.replace("'", "&#39;");
+		input = input.replace("<", "&lt;");
+		input = input.replace(">", "&gt;");
+
 		//escape and re-add <br/>
 		return StringEscapeUtils.escapeHtml(input).replace("&lt;br/&gt;", "<br/>");
 	}
