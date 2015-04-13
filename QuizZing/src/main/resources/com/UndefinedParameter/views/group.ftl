@@ -33,10 +33,15 @@
 					</div>
 					<div class="row" id="groupImageContainer">
 						<div class="row noMargin">
-						    <div class="indent30 span6">
+						    <div class="indent30 span12">
 						    	<div class="row noMargin">
-									<h2><strong>${group.name}<strong></h2>
-									<p>${group.description}</p>
+									<h2 style="text-shadow: 0 0 3px #000000, 0 0 5px #000000;" class="fg-white">
+										<strong>${group.name}</strong> 
+										<#if moderator>
+										<a href="/group/edit?groupId=${group.id}" id="editGroup"><i class="icon-pencil place-right bg-green" style="color: white; padding: 10px; border-radius: 50%; margin-right: 15px" onclick="editGroup()"></i></a>
+										</#if>
+									</h2>
+									<p style="text-shadow: 0 0 3px #000000, 0 0 5px #000000;" class="fg-white"><strong>${group.description}</strong></p>
 								</div>	
 							</div>
 					    </div>

@@ -32,6 +32,7 @@ import com.UndefinedParameter.jdbi.QuestionDAO;
 import com.UndefinedParameter.jdbi.QuizDAO;
 import com.UndefinedParameter.jdbi.QuizScoreDAO;
 import com.UndefinedParameter.jdbi.UserGroupDAO;
+import com.UndefinedParameter.views.GroupEditView;
 import com.UndefinedParameter.views.GroupListView;
 import com.UndefinedParameter.views.GroupMemberView;
 import com.UndefinedParameter.views.GroupQuestionView;
@@ -101,13 +102,55 @@ public class GroupResource {
 			}
 			//user is logged in, can display all information
 			List<Quiz> userQuizzes = quizManager.findQuizzesByCreatorId(user.getId(), groupId);
-			return Response.ok(new GroupView(group, organization, quizzes, userQuizzes, true, user, manager.findRegisteredGroups(user.getId()), questionCount)).build();
+			return Response.ok(new GroupView(group, organization, quizzes, userQuizzes, true, user, manager.findRegisteredGroups(user.getId()), questionCount, moderator)).build();
 		}
 		else {
 			//user is not logged in, can't display edit or user quizzes
-			return Response.ok(new GroupView(group, organization, quizzes, null, false, user, null, questionCount)).build();
+			return Response.ok(new GroupView(group, organization, quizzes, null, false, user, null, questionCount, false)).build();
 		}
 		
+	}
+	
+	@GET
+	@Path("/edit")
+	public Response getGroupEditView(@Auth(required = false) User user, @QueryParam("groupId") long groupId) {
+		
+		if(user == null || groupId < 1) {
+			return Response.status(Status.BAD_REQUEST).build();
+		}
+		Group group = manager.findGroupById(groupId);
+		if(group == null) {
+			return Response.status(Status.BAD_REQUEST).build();
+		}
+		
+		Organization org = manager.findParentOrganization(group.getOrganizationId());
+		if(user.isAdmin() || userGroupManager.findIfUserMod(user.getId(), groupId)) {
+			return Response.ok(new GroupEditView(user, org, group)).build();
+		}
+		return Response.status(Status.BAD_REQUEST).build();
+		
+	}
+	
+	@POST
+	@Path("/edit")
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Response editGroup(@Auth(required = false) User user, @QueryParam("groupId") long groupId, @Valid Group group) {
+		
+		if(user == null || group == null) {
+			return Response.status(Status.BAD_REQUEST).build();
+		}
+		if(!user.isAdmin() && !userGroupManager.findIfUserMod(user.getId(), groupId)) {
+			return Response.status(Status.BAD_REQUEST).build();
+		}
+		
+		Group existingGroup = manager.findGroupById(groupId);
+		if(existingGroup == null) {
+			return Response.status(Status.BAD_REQUEST).build();
+		}
+		if(manager.editGroup(group))
+			return Response.ok().build();
+		else
+			return Response.status(Status.BAD_REQUEST).build();
 	}
 	
 	@GET

@@ -123,7 +123,7 @@ Quiz.prototype.hasPrevious = function() {
 	return this.index > 0;
 }
 
-function Question(id, type, questionText, correctAnswer, answers, explanation, rating, difficulty, userRating, userDifficulty) {
+function Question(id, type, questionText, correctAnswer, answers, explanation, rating, difficulty, userRating, userDifficulty, flagged) {
 	this.id = id;
 	this.type = type;
 	this.questionText = questionText;
@@ -134,6 +134,7 @@ function Question(id, type, questionText, correctAnswer, answers, explanation, r
 	this.difficulty = difficulty;
 	this.userRating = userRating;
 	this.userDifficulty = userDifficulty;
+	this.flagged = flagged;
 	
 	if(type == "MATCHING") {
 		

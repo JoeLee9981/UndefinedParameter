@@ -30,31 +30,27 @@
 
 				<div class="row">
 					<div id="orgImage" style="position:relative;">
-						<div style="position:absolute;top:20px;left:20px;padding:20px;background:red;">
-							<h2 class="fg-white"><strong>${organization.name?html}</strong></h2>
-							<p class="fg-white">${organization.city?html}, ${organization.state?html}, ${organization.country?html}</p>
+						<div style="position:absolute;left:20px;padding:20px;">
+							<h2 style="text-shadow: 0 0 3px #000000, 0 0 5px #000000;" class="fg-white"><strong>${organization.name?html}</strong></h2>
+							<p style="text-shadow: 0 0 3px #000000, 0 0 5px #000000;" class="fg-white">${organization.location}</p>
 						</div>
 						<div style="position:absolute;right:20px;bottom:20px;">
 							<#if user??>
 								<#if userIsInOrganization>
-									<button onclick="leaveOrg('${organization.id}')" style="margin-right:10px;" class="bg-white border1">Leave Organization</button>				
+									<button onclick="leaveOrg('${organization.id}')" style="margin-right:10px;" class="danger large">Leave Organization</button>				
 								<#else>
-									<button onclick="joinOrg('${organization.id}')" style="margin-right:10px;" class="bg-white border1">Join Organization</button>
+									<button onclick="joinOrg('${organization.id}')" style="margin-right:10px;" class="success large">Join Organization</button>
 								</#if>
 							</#if>	
-							<button class="bg-white border1" onclick="location.href='/orgs/org/create?orgId=${organization.id}'"><i class="icon-tools on-left"></i>Create Group</button>
+							<button class="warning large" onclick="location.href='/orgs/org/create?orgId=${organization.id}'"><i class="icon-tools on-left"></i>Create Group</button>
 						</div>
 					</div>
 				</div>
 				<div class="row noMargin">
 					<nav class="navigation-bar white white-custom">
 					    <nav class="navigation-bar-content">
-					        <item class="element active"><a href="" id="groupsLink"><strong>${organization.name?html}</strong></a></item>
+					        <item class="element active"><a href="" id="groupsLink"><i class="icon-link on-right"></i> <strong>Groups (0)</strong></a></item>
 					        <item class="element-divider"></item>
-					        <item class="element"><a href="#" class="todo"><strong>About</strong></a></item>
-					        <item class="element-divider"></item>
-					        <item class="element"><a href="#" class="todo"><strong>Statistics</strong></a></item>
-					        
 		        	        <div class="element input-element noHover">
 					            <form id="searchOrg">
 					                <div class="input-control text searchbox">
@@ -62,10 +58,13 @@
 					                    <button class="btn-search todo"></button>
 					                </div>
 					            </form>
-					        </div>				        		        
-					        <item class="element place-right"><a href="#" class="todo"><strong>${organization.quizCount?html} <i class="icon-clipboard-2 on-right"></i></strong></a></item>
-					        <item class="element place-right"><a href="#" class="todo"><strong>${organization.questionCount?html} <i class="icon-help-2 on-right"></i></strong></a></item>
-					        <item class="element place-right"><a href="" id="memberLink"><strong>${memberCount} <i class="icon-user-3 on-right"></i></strong></a></item>
+					        </div>        		        
+					        <item class="element place-right"><a href="#" class="todo"><i class="icon-clipboard-2 on-right"></i> <strong>Quizzes (${organization.quizCount?html})</strong></a></item>
+					        <item class="element-divider place-right"></item>
+					        <item class="element place-right"><a href="#" class="todo"><i class="icon-help-2 on-right"></i> <strong>Questions (${organization.questionCount?html})</strong></a></item>
+					        <item class="element-divider place-right"></item>
+					        <item class="element place-right"><a href="" id="memberLink"><i class="icon-user-3 on-right"></i> <strong>Members (${memberCount})</strong></a></item>
+					    	<item class="element-divider place-right"></item>	
 					    </nav>
 					</nav>					
 				</div>
@@ -92,7 +91,7 @@
 								
 								<#if user??>
 									<div class="accordion-frame <#if registeredGroups?size gt 0>active</#if>">
-										<a href="#" class="heading bg-lightBlue fg-white">My Joined Groups</a>			
+										<a href="#" class="heading bg-lightBlue fg-white">My Groups</a>			
 										<div class="content">									
 											<#if registeredGroups?size gt 0>								
 												<table class="table hovered striped">
@@ -119,17 +118,6 @@
 									</div>
 								</#if>
 								
-								<#if user??>
-									<div class="accordion-frame">
-										<a href="#" class="heading bg-lightBlue fg-white">My Created Groups</a>
-										<div class="content">			
-											<div style="text-align:center;padding:20px;">								
-												<h6>You have not created any groups.</h6>						
-											</div>														
-										
-										</div>
-									</div>
-								</#if>
 								
 								<div class="accordion-frame <#if groups?size gt 0>active</#if>">
 									<a href="#" class="heading bg-lightBlue fg-white">Recommended Groups</a>			
@@ -211,6 +199,25 @@
 	}
 	
 	function leaveOrg(orgId) {
+		var content = '<div style="margin: 10px" class="grid span7">' +
+					  		'<h3 class="text-center">Are you sure you wish to leave this organization?</h3><br/>' +
+					  		'<div class="span3 offset2">' +
+								'<button style="margin: 5px" onclick="doLeave(' + orgId + ')" class="success large center">Leave</button>' +
+								'<button style="margin: 5px" onclick="$.Dialog.close()" class="danger large center">Cancel</button>' +
+							'</div>' +
+					  '</div>';
+		
+		$.Dialog({
+		shadow: true,
+		overlay: true,
+		icon: '<span class="icon-minus fg-red"></span>',
+		title: 'Leave Organization',
+		padding: 10,
+		content: content
+		});
+	}
+
+	function doLeave(orgId) {
 		$.ajax({
 		    url: '/orgs/leave?orgId=' + orgId,
 		    type: 'DELETE',

@@ -105,6 +105,7 @@ body
 #homeBanner
 {
 	margin-top: 0 !important;
+	padding-top: 20px;
 	background: url('/assets/images/books1b.jpg') no-repeat;
 	background-color: black;
 	background-position: center;
@@ -128,7 +129,7 @@ body
 
 #headerButtons
 {
-	padding: 55px 0;
+	padding: 35px 0;
 }
 
 #headerButtons button

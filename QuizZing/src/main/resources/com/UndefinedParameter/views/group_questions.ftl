@@ -287,4 +287,8 @@
 		event.preventDefault();
 		$('#group-content').html("");
 	});
+
+	function onFlag() {
+		//do nothing here
+	}
 </script>

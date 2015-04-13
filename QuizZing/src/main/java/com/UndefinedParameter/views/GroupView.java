@@ -27,8 +27,10 @@ public class GroupView extends View {
 	
 	//count of questions
 	private int questionCount;
+	//is this user a moderator (or admin)
+	private boolean moderator;
 	
-	public GroupView(Group group, Organization org, List<Quiz> quizzes, List<Quiz> userQuizzes, boolean loggedIn, User user, List<Group> registeredGroups, int questionCount) {
+	public GroupView(Group group, Organization org, List<Quiz> quizzes, List<Quiz> userQuizzes, boolean loggedIn, User user, List<Group> registeredGroups, int questionCount, boolean moderator) {
 		super("group.ftl");
 		this.group = group;
 		this.organization = org;
@@ -38,6 +40,7 @@ public class GroupView extends View {
 		this.user = user;
 		this.registeredGroups = registeredGroups;
 		this.questionCount = questionCount;
+		this.moderator = moderator;
 	}
 	
 	public Group getGroup() {
@@ -80,7 +83,11 @@ public class GroupView extends View {
 	
 	public User getUser() {
 		return this.user;
-	}	
+	}
+	
+	public boolean isModerator() {
+		return moderator;
+	}
 	
 	public boolean getUserIsGroupMember()
 	{

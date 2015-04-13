@@ -48,6 +48,11 @@ public class GroupManager {
 		return rvalue;
 	}
 	
+	public boolean editGroup(Group group) {
+		groupDAO.updateGroup(group.getId(), InputUtils.sanitizeInput(group.getName()), InputUtils.sanitizeInput(group.getDescription()));
+		return true;
+	}
+	
 	/*
 	 * Find the groups within an organization by the organizations id
 	 * 	return as an array of Group classes.

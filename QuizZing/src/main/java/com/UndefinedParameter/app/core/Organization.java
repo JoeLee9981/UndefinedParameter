@@ -2,6 +2,7 @@ package com.UndefinedParameter.app.core;
 
 import java.text.SimpleDateFormat;
 
+import org.apache.commons.lang.StringUtils;
 import org.joda.time.DateTime;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -196,6 +197,31 @@ public class Organization {
 	@JsonProperty
 	public void setType(String type) {
 		this.type = type;
+	}
+	
+	public String getLocation() {
+		StringBuilder loc = new StringBuilder();
+		
+		boolean hasCity = StringUtils.isNotBlank(this.city);
+		boolean hasState = StringUtils.isNotBlank(this.state);
+		boolean hasCountry = StringUtils.isNotBlank(this.country);
+		
+		if(hasCity) {
+			loc.append(this.city);
+		}
+		if(hasState) {
+			if(hasCity)
+				loc.append(", ");
+			loc.append(this.state);
+		}
+		if(hasCountry) {
+			if(hasCity || hasState) {
+				loc.append(", ");
+			}
+			loc.append(this.country);
+		}
+		
+		return loc.toString();
 	}
 
 	

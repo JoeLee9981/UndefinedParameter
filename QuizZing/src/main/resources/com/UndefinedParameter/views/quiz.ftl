@@ -106,13 +106,14 @@
 									<button id="prevQuestion" onclick="previousQuestion()" class="primary large" hidden><i class="icon-previous"></i></button>
 									<button id="nextQuestion" onclick="nextQuestion()" class="success large"><i class="icon-next"></i></button>
 									<button id="submitQuiz" class="warning place-right large" hidden><i class="icon-checkmark"></i> Submit Quiz</button>
-									
+									<button id="flagQuestionButton" style="margin-right: 5px" class="danger large place-right" onclick="flagButtonClick()"><i title="Flag Question as Wrong" class="icon-flag-2 fg-white"></i> Flag Question</button>
 									<div class="row" id="questionRatings">
 									</div>
 									
 									
 								</div>
 							</div>
+							<div id="flagDiv"></div>
 							<div class="row">
 								<pre style="white-space: pre-wrap"><p id="questionHead"> </p></pre>
 							</div>
@@ -166,6 +167,17 @@
 	
 		/************************* QUIZ RATINGS HERE *********************************/
 	
+		function flagButtonClick() {
+			flagQuestion(q.getQuestion().id);
+		}
+
+		function onFlag() {
+			q.getQuestion().flagged = true;
+			$('#flagQuestionButton').attr("class", "large place-right");
+			$('#flagQuestionButton').prop("disabled", true);
+			$('#flagDiv').html("<h3 class='text-alert'><i title='Flag Question as Wrong' class='icon-flag-2 fg-red'></i> This question has been flagged as wrong</h3>");
+		}
+	
 		function setQuestionRatings(questionId, rating, difficulty, userRating, userDifficulty) {
 
 			var rateColor = "fg-red";
@@ -186,7 +198,7 @@
 							<div id="quest-rating" class="span2 rating small ' + rateColor + '"> \
 							</div> \
 							<div class="span1"><p>Difficulty:</p></div> \
-							<div id="quest-difficulty" class="span3 rating small ' + diffColor + '"> \
+							<div id="quest-difficulty" class="span2 rating small ' + diffColor + '"> \
 							</div> \
 						</div>';
 
@@ -205,7 +217,7 @@
 				click: function(value, rating) {
 					<#if loggedIn>
 						rateQuestionDifficulty(value, questionId, ${groupId});
-						$("#quest-difficulty").attr('class', 'rating small fg-yellow');
+						$("#quest-difficulty").attr('class', 'span2 rating small fg-yellow');
 						rating.rate(value);
 						q.getQuestion().userDifficulty = value;
 					<#else>
@@ -227,7 +239,7 @@
 				click: function(value, rating) {
 					<#if loggedIn>
 						rateQuestionQuality(value, questionId, ${groupId});
-						$("#quest-rating").attr('class', 'rating small fg-yellow');
+						$("#quest-rating").attr('class', 'span2 rating small fg-yellow');
 						rating.rate(value);
 						q.getQuestion().userRating = value;
 					<#else>
@@ -342,9 +354,9 @@
 				var question;
 				
 				<#if quest.explanation??>
-					question = new Question(${quest.questionId}, "${quest.type}", "${quest.questionText}".replace(/&amp;#39;/g, "&#39;"), "${quest.correctAnswer}".replace(/&amp;#39;/g, "&#39;"), answers, "${quest.explanation}".replace(/&amp;#39;/g, "&#39;"), ${quest.rating}, ${quest.difficulty}, ${quest.userRating}, ${quest.userDifficulty});
+					question = new Question(${quest.questionId}, "${quest.type}", "${quest.questionText}".replace(/&amp;#39;/g, "&#39;"), "${quest.correctAnswer}".replace(/&amp;#39;/g, "&#39;"), answers, "${quest.explanation}".replace(/&amp;#39;/g, "&#39;"), ${quest.rating}, ${quest.difficulty}, ${quest.userRating}, ${quest.userDifficulty}, ${quest.flagged?c});
 				<#else>
-					question = new Question(${quest.questionId}, "${quest.type}", "${quest.questionText}".replace(/&amp;#39;/g, "&#39;"), "${quest.correctAnswer}".replace(/&amp;#39;/g, "&#39;"), answers, "No explanation has been given", ${quest.rating}, ${quest.difficulty}, ${quest.userRating}, ${quest.userDifficulty});
+					question = new Question(${quest.questionId}, "${quest.type}", "${quest.questionText}".replace(/&amp;#39;/g, "&#39;"), "${quest.correctAnswer}".replace(/&amp;#39;/g, "&#39;"), answers, "No explanation has been given", ${quest.rating}, ${quest.difficulty}, ${quest.userRating}, ${quest.userDifficulty}, ${quest.flagged?c});
 				</#if>
 				quest.push(question);
 			</#list>
@@ -425,6 +437,17 @@
 					$('#nextQuestion').attr("class", "large");
 				}
 
+				if(question.flagged) {
+					$('#flagQuestionButton').attr("class", "large place-right");
+					$('#flagQuestionButton').prop("disabled", true);
+					$('#flagDiv').html("<h3 class='text-alert'><i title='Flag Question as Wrong' class='icon-flag-2 fg-red'></i> This question has been flagged as wrong</h3>");
+				}
+				else {
+					$('#flagQuestionButton').attr("class", "danger large place-right");
+					$('#flagQuestionButton').prop("disabled", false);
+					$('#flagDiv').html("");
+				}
+
 				setAnswers();
 				setQuestionRatings(question.id, question.rating, question.difficulty, question.userRating, question.userDifficulty);
 				
@@ -448,6 +471,17 @@
 				
 				if(quizPosition > 0)
 					quizPosition--;
+
+				if(question.flagged) {
+					$('#flagQuestionButton').attr("class", "large place-right");
+					$('#flagQuestionButton').prop("disabled", true);
+					$('#flagDiv').html("<h3 class='text-alert'><i title='Flag Question as Wrong' class='icon-flag-2 fg-red'></i> This question has been flagged as wrong</h3>");
+				}
+				else {
+					$('#flagQuestionButton').attr("class", "danger large place-right");
+					$('#flagQuestionButton').prop("disabled", false);
+					$('#flagDiv').html("");
+				}
 				
 				setAnswers();
 				setQuestionRatings(question.id, question.rating, question.difficulty, question.userRating, question.userDifficulty);

@@ -59,6 +59,9 @@ public interface GroupDAO {
 							@Bind("desc") String description, 
 							@Bind("orgId") long orgId);
 	
+	@SqlUpdate("UPDATE SubGroup SET Name = :name, Description = :description WHERE GroupID = :groupId")
+	public void updateGroup(@Bind("groupId") long groupId, @Bind("name") String name, @Bind("description") String description);
+	
 	@SqlUpdate("INSERT INTO UserGroups (UserID, GroupID) VALUES (:userId, :groupId)")
 	public void registerGroup(@Bind("userId") long userId, @Bind("groupId") long groupId);
 	

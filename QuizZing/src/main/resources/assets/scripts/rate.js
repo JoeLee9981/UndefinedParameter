@@ -33,7 +33,6 @@ function rateQuestionDifficulty(rating, questionId, groupId) {
 }
 
 function flagQuestion(questionId) {
-	
 	var content = '<div style="margin: 10px" class="grid span8">' +
 				  		'<h3 class="text-center">Please provide a short explanation to why the question is wrong</h3><br/>' +
 				  		'<div class="input-control textarea">' +
@@ -68,6 +67,7 @@ function doFlag(questionId) {
 			"Content-Type": "application/json"
 		},
 	});
+	onFlag();
 }
 
 function unflagQuestion(questionId, groupId, reason) {
