@@ -685,5 +685,10 @@ public class QuizManager {
 		else
 			return false;
 	}
+
+	public void editQuizName(long quizId, String name)
+	{
+		quizDAO.updateQuizName(quizId, name);
+	}
 }
 

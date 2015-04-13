@@ -150,6 +150,13 @@ public interface QuizDAO {
 	@SqlUpdate("UPDATE Quiz SET QuestionCount = QuestionCount - 1 WHERE QuizID = :quizId")
 	public void decrementQuestionCount(@Bind("quizId") long quizId);
 	
+
+	/*
+	 * Update quiz details and setting queries
+	 */
+	@SqlUpdate("UPDATE Quiz SET Name = :name WHERE QuizID = :quizId")
+	public void updateQuizName(@Bind("quizId") long quizId, @Bind("name") String name);
+	
 	/********************************** Quiz Quality Ratings Query *****************************************************/
 	
 	@SqlUpdate("UPDATE Quiz SET Rating = Rating + :rating, RatingCount = RatingCount + 1 WHERE QuizID = :quizId")

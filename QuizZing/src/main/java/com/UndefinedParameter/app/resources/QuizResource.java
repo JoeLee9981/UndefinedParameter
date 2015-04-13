@@ -220,6 +220,27 @@ public class QuizResource {
 		return Response.status(Status.BAD_REQUEST).build();
 	}
 	
+	
+	
+	@POST
+	@Path("/edit/name")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response editQuizName(@Auth(required = false) User user, @Valid Quiz quiz)
+	{
+		if(user == null)
+		{
+			return Response.status(Status.UNAUTHORIZED).build();
+		}
+		
+		quizManager.editQuizName(quiz.getQuizId(), quiz.getName());
+		HashMap<String, String> response = new HashMap<String, String>();
+
+		return Response.ok(response).build();
+	}
+	
+	
+	
 	@GET
 	@Path("/edit/questions")
 	public Response getQuizQuestions(@Auth(required = false) User user, @QueryParam("quizId") long quizId) {
