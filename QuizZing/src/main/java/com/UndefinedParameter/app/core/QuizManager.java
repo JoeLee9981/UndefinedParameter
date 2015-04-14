@@ -2,7 +2,9 @@ package com.UndefinedParameter.app.core;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
@@ -699,6 +701,28 @@ public class QuizManager {
 	public void saveQuiz(long quizId, String name, String description, boolean open, int time) 
 	{
 		quizDAO.saveQuiz(quizId, name, description, open, time);
+	}
+	
+	public List<String> getQuestionCategoriesViaQuizID(long quizID)
+	{
+		List<String> rvalue = null;
+		List<Question> question = null;
+		question = questionDAO.retrieveExistingQuiz(quizID);
+		
+		for(Question input : question)
+		{
+			//NEED TO ONLY RETURN EACH TYPE ONCE
+			List<String> holder = input.getCategories();
+			rvalue.addAll(holder);
+		}
+		
+		//Dropping the duplicates via a hashSet, then converting back;
+		Set<String> foo = new HashSet<String>(rvalue);
+		//rvalue = (List<String>) foo;
+		rvalue = new ArrayList<String>(foo);
+		
+		
+		return rvalue;
 	}
 }
 
