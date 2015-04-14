@@ -72,6 +72,11 @@ textarea
 	margin: 0 !important;
 }
 
+.noMarginTop
+{
+	margin-top: 0 !important;
+}
+
 .noPadding
 {
 	padding: 0 !important;

@@ -157,6 +157,12 @@ public interface QuizDAO {
 	@SqlUpdate("UPDATE Quiz SET Name = :name WHERE QuizID = :quizId")
 	public void updateQuizName(@Bind("quizId") long quizId, @Bind("name") String name);
 	
+	@SqlUpdate("UPDATE Quiz SET Description = :desc WHERE QuizID = :quizId")
+	public void updateQuizDescription(@Bind("quizId") long quizId, @Bind("desc") String description);
+	
+	@SqlUpdate("UPDATE Quiz SET Name = :name, Description = :desc, Time = :time, Open = :open WHERE QuizID = :quizId")
+	public void saveQuiz(@Bind("quizId") long quizId, @Bind("name") String name, @Bind("desc") String description, @Bind("open") boolean open, @Bind("time") int time);
+	
 	/********************************** Quiz Quality Ratings Query *****************************************************/
 	
 	@SqlUpdate("UPDATE Quiz SET Rating = Rating + :rating, RatingCount = RatingCount + 1 WHERE QuizID = :quizId")
@@ -192,6 +198,7 @@ public interface QuizDAO {
 	
 	@SqlUpdate("UPDATE QuizDifficulty SET UserRating = :rating WHERE UserID = :userId AND QuizID = :quizId")
 	public void updateQuizDifficulty(@Bind("userId") long userId, @Bind("quizId") long quizId, @Bind("rating") int rating);
+
 }
 	
 	/*

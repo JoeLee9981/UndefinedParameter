@@ -33,13 +33,15 @@
 						<div class="span1">
 							<a href="#" id="editName">Edit Title</a>
 						</div>			
-						<!--<div class="span1">
+						<div class="span1">
 							<h4 class="noMargin noPadding"><i class="icon-help-2 on-left"></i>${quiz.questionCount}</h4>
-						</div>			
+						</div>	
 						<div class="span4">
-							<button class="success">Save All Changes</button>
-							<button id="openChangeQuizContent">Change Quiz</button>
-						</div>-->		
+							<div class="place-right">
+								<button class="success" onclick="saveAllChanges();">Save All Changes</button>
+								<button id="openChangeQuizContent" class="primary todo">Change Quiz</button>
+							</div>
+						</div>		
 					</div>
 					<div id="changeQuizContent" class="row noMargin" style="display:none;">
 						<br/>
@@ -50,7 +52,77 @@
 			</div>
 		</div>
 		
-		
+		<div id="quizEditSubPanel">
+			<div class="page-content">
+				<div class="grid fluid noMargin">
+					<div class="row noMargin">
+						<div class="span6">
+							<div class="input-control textarea noMargin" data-role="input-control">
+		                        <textarea id="quizDescription" class="noResize" disabled>${quiz.description}</textarea>
+		                    </div>
+		              	</div>
+		              	<div class="span2">
+							<a href="#" id="editDescription">Edit Description</a>
+						</div>
+						<div class="span4">
+							<div class="row noMargin">
+								<#if quiz.time??>
+									<div class="input-control checkbox">
+									    <label>
+									        <input id="timeLimitCheck" type="checkbox" checked/>
+									        <span class="check"></span>
+									        Time limit
+									    </label>
+									</div>
+									<div class="place-right">
+									    <div class="input-control text size1">
+										    <input id="mm" type="text" value="${quiz.timeMinutes}" placeholder="MM" />
+										</div><strong> min </strong>
+										<div class="input-control text size1">
+										    <input id="ss" type="text" value="${quiz.timeSeconds}" placeholder="SS" />
+										</div><strong> sec </strong>
+									</div>
+								<#else>
+									<div class="input-control checkbox">
+									    <label>
+									        <input id="timeLimitCheck" type="checkbox" />
+									        <span class="check"></span>
+									        Time limit
+									    </label>
+									</div>
+									<div class="place-right">
+									    <div class="input-control text size1">
+										    <input id="mm" type="text" placeholder="MM" disabled/>
+										</div><strong> min </strong>
+										<div class="input-control text size1">
+										    <input id="ss" type="text" placeholder="SS" disabled/>
+										</div><strong> sec </strong>
+									</div>
+								</#if>
+							</div>
+							<div class="row noMargin">
+								<div class="input-control checkbox">
+								    <label class="noMargin">
+								        <input id="allowOthersEditCheck" type="checkbox" <#if quiz.open>checked</#if> />
+								        <span class="check"></span>
+								        Allow others to edit this quiz
+								    </label>
+								</div>
+							</div>
+							<div class="row noMargin">
+								<div class="input-control checkbox">
+								    <label class="noMargin todo">
+								        <input id="randomizeCheck" type="checkbox"/>
+								        <span class="check"></span>
+								        Randomize questions
+								    </label>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 		<div class="page-content">
 			<div class="grid fluid">
 				<div class="row">
@@ -176,7 +248,7 @@
 			</div>
 		</div>
 		<div style="padding-top: 50px" class="row">
-			<!--<#include "../includes/footer.ftl">-->
+			<#include "../includes/footer.ftl">
 		</div>
 	</body>
 
@@ -186,9 +258,108 @@
 		{
 			e.preventDefault();
 			$("#changeQuizContent").toggle();
-		})
+		});
+		
+		$("#timeLimitCheck").click(function(e){
+			
+			if ($("#timeLimitCheck").is(':checked'))
+			{
+				$("#mm").prop('disabled', false);
+				$("#ss").prop('disabled', false);
+			}
+			else
+			{
+				$("#mm").prop('disabled', true);
+				$("#ss").prop('disabled', true);
+			}
+		});
+		
+		function saveAllChanges()
+		{
+			
+			saveName();
+			saveDescription();
+			
+			// Save miscellaneous data
+			var id = ${quiz.quizId};
+			
+			var timeLimit = parseInt($("#mm").val() * 60) + parseInt($("#ss").val());
+			var openToPublic = $("#allowOthersEditCheck").is(':checked');
+
+			$.ajax({
+				type: 'POST',
+				url: "/quiz/edit/save/",
+				data: JSON.stringify({time: timeLimit, 
+									open: openToPublic, 
+									quizId: id, 
+									name: currentQuizName, 
+									description: currentDescription }),
+				dataType: "json",
+				headers: {
+					Accept: "application/json",
+					"Content-Type": "application/json"
+				},
+				success: function(data) {
+				
+					alert('Your quiz has been saved');
+				
+					if("success" == data["response"])
+					{
+
+					}
+					else
+					{
+
+					}
+				},
+				error: function(error) {
+
+			    }
+			});
+		}
 		
 		var currentQuizName;
+		
+		function saveName()
+		{
+			$("#quizName").prop('disabled', true);
+			$("#editName").html("Edit Title");
+			
+			var quizName = $("#quizName").val();
+			// Only continue if the quiz name is different
+			if (quizName == currentQuizName)
+			{
+				return;
+			}
+			else
+			{
+				currentQuizName = $("#quizName").val();
+			}
+			var id = ${quiz.quizId};
+			$.ajax({
+				type: 'POST',
+				url: "/quiz/edit/name/",
+				data: JSON.stringify({name: quizName, quizId: id }),
+				dataType: "json",
+				headers: {
+					Accept: "application/json",
+					"Content-Type": "application/json"
+				},
+				success: function(data) {
+					if("success" == data["response"])
+					{
+
+					}
+					else
+					{
+
+					}
+				},
+				error: function(error) {
+
+			    }
+			});
+		}
 		
 		function manageNameSave()
 		{
@@ -200,44 +371,7 @@
 			}
 			else
 			{
-				$("#quizName").prop('disabled', true);
-				$("#editName").html("Edit Title");
-				
-				var quizName = $("#quizName").val();
-				// Only continue if the quiz name is different
-				if (quizName == currentQuizName)
-				{
-					return;
-				}
-				else
-				{
-					currentQuizName = $("#quizName").val();
-				}
-				var id = ${quiz.quizId};
-
-				$.ajax({
-					type: 'POST',
-					url: "/quiz/edit/name/",
-					data: JSON.stringify({name: quizName, quizId: id }),
-					dataType: "json",
-					headers: {
-						Accept: "application/json",
-						"Content-Type": "application/json"
-					},
-					success: function(data) {
-						if("success" == data["response"])
-						{
-
-						}
-						else
-						{
-
-						}
-					},
-					error: function(error) {
-
-				    }
-				});
+				saveName();
 			}	
 		}
 		
@@ -245,7 +379,7 @@
 		{
 			e.preventDefault();
 			manageNameSave();
-		})
+		});
 		
 		
 		$("#nameForm").submit(function(e){
@@ -253,7 +387,70 @@
 			manageNameSave();
 		});
 		
-	
+		var currentDescription;
+		
+		function saveDescription()
+		{
+			$("#quizDescription").prop('disabled', true);
+			$("#editDescription").html("Edit Description");
+				
+			var quizDescription = $("#quizDescription").val();
+			// Only continue if the quiz name is different
+			if (quizDescription == currentDescription)
+			{
+				return;
+			}
+			else
+			{
+				currentDescription = $("#quizDescription").val();
+			}
+						
+			var id = ${quiz.quizId};
+
+			$.ajax({
+				type: 'POST',
+				url: "/quiz/edit/description/",
+				data: JSON.stringify({description: quizDescription, quizId: id }),
+				dataType: "json",
+				headers: {
+					Accept: "application/json",
+					"Content-Type": "application/json"
+				},
+				success: function(data) {
+					if("success" == data["response"])
+					{
+
+					}
+					else
+					{
+
+					}
+				},
+				error: function(error) {
+
+			    }
+			});
+		}
+		
+		function manageDescriptionSave()
+		{
+			if ($("#quizDescription").is(':disabled'))
+			{
+				currentDescription = $("#quizDescription").val();
+				$("#quizDescription").prop('disabled', false);
+				$("#editDescription").html("Save Description");
+			}
+			else
+			{
+				saveDescription();
+			}
+		}
+		
+		$("#editDescription").click(function(e)
+		{
+			e.preventDefault();
+			manageDescriptionSave();
+		});
 	
 	
 	

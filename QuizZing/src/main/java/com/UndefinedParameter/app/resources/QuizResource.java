@@ -239,6 +239,39 @@ public class QuizResource {
 		return Response.ok(response).build();
 	}
 	
+	@POST
+	@Path("/edit/description")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response editQuizDescription(@Auth(required = false) User user, @Valid Quiz quiz)
+	{
+		if(user == null)
+		{
+			return Response.status(Status.UNAUTHORIZED).build();
+		}
+		
+		quizManager.editQuizDescription(quiz.getQuizId(), quiz.getDescription());
+		HashMap<String, String> response = new HashMap<String, String>();
+
+		return Response.ok(response).build();
+	}
+	
+	@POST
+	@Path("/edit/save")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response saveQuiz(@Auth(required = false) User user, @Valid Quiz quiz)
+	{
+		if(user == null)
+		{
+			return Response.status(Status.UNAUTHORIZED).build();
+		}
+		
+		quizManager.saveQuiz(quiz.getQuizId(), quiz.getName(), quiz.getDescription(), quiz.getOpen(), quiz.getTime());
+		HashMap<String, String> response = new HashMap<String, String>();
+
+		return Response.ok(response).build();
+	}
 	
 	
 	@GET

@@ -690,5 +690,15 @@ public class QuizManager {
 	{
 		quizDAO.updateQuizName(quizId, name);
 	}
+
+	public void editQuizDescription(long quizId, String description)
+	{
+		quizDAO.updateQuizDescription(quizId, description);
+	}
+
+	public void saveQuiz(long quizId, String name, String description, boolean open, int time) 
+	{
+		quizDAO.saveQuiz(quizId, name, description, open, time);
+	}
 }
 

@@ -16,6 +16,14 @@
 	padding-bottom: 5px;
 }
 
+#quizEditSubPanel
+{
+	min-width: 1050px;
+	background: #F0F9FF;
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
+
 
 
 #quizQuestionList

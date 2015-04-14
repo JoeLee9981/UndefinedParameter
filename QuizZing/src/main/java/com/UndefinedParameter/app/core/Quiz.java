@@ -282,6 +282,10 @@ public class Quiz {
 	public boolean isOpen() {
 		return open;
 	}
+	
+	public boolean getOpen() {
+		return open;
+	}
 
 	public void setOpen(boolean open) {
 		this.open = open;
@@ -378,5 +382,15 @@ public class Quiz {
 		int seconds = time % 60;
 		
 		return String.format("%02d:%02d:%02d", hours, minutes, seconds);
+	}
+	
+	public String getTimeMinutes()
+	{
+		return "" + (time / 60);
+	}
+	
+	public String getTimeSeconds()
+	{
+		return "" + (time % 60);
 	}
 }
