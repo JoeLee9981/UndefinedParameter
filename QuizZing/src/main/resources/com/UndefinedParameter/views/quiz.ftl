@@ -15,11 +15,16 @@
 		<link href="/assets/css/quiz.css" rel="stylesheet">	
 		<link href="/assets/css/overrides.css" rel="stylesheet">
 		<link rel="shortcut icon" type="image/x-icon" href="/assets/images/qlogo_32.jpg">
-		<style>
+		
+		<style>		
 			path { 
 				stroke: #60a917;
 				stroke-width: 2;
 				fill: none;
+			}
+			
+			circle {
+				fill: #4390df;
 			}
 
 			.axis path,
@@ -771,7 +776,7 @@
 					{
 							document.getElementById('scoreText').innerHTML = "Score: " + scored + "%";
 							
-							drawScorePlot(data["scores"]);
+							drawScoreLinePlot(data["scores"]);
 					},
 					error: function(data) {
 						document.getElementById('scoreText').innerHTML = "Score: " + scored + "% (Warning: This score was not saved.)";
@@ -793,9 +798,80 @@
 			setAnswers();
 		}
 		
-		function drawScorePlot(dataset) {
-			$("#quizGraphs").empty();
+		/*********************** GRAPHING UTILITIES ****************************/
 		
+		function drawScoreBarGraph(dataset) {
+			$("#quizGraphs").empty();
+			
+			// Set graph canvas
+			var margin = {top: 30, right: 20, bottom: 30, left: 50},
+				width = 300 - margin.left - margin.right,
+				height = 300 - margin.top - margin.bottom;
+			
+			var x = d3.scale.ordinal()
+			    .rangeRoundBands([0, width], .1);
+			
+			var y = d3.scale.linear()
+			    .range([height, 0]);
+			
+			var xAxis = d3.svg.axis()
+			    .scale(x)
+			    .orient("bottom");
+			
+			var yAxis = d3.svg.axis()
+			    .scale(y)
+			    .orient("left")
+			    .ticks(10, "%");
+			
+			// Adds the svg canvas
+			var svg = d3.select("#quizGraphs")
+				.append("svg")
+					.attr("width", width + margin.left + margin.right)
+					.attr("height", height + margin.top + margin.bottom)
+				.append("g")
+					.attr("transform", 
+						  "translate(" + margin.left + "," + margin.top + ")");
+			
+			/*d3.tsv("data.tsv", type, function(error, data) {
+			  x.domain(dataset.map(function(d) { return d.letter; }));
+			  y.domain([0, d3.max(data, function(d) { return d.frequency; })]);*/
+			// Scale the range of the data
+			x.domain([0, d3.max(dataset, function(d) { return d.score; })]);
+			y.domain([0, d3.max(dataset, function(d) { return d.score; })]);
+			
+			  svg.append("g")
+			      .attr("class", "x axis")
+			      .attr("transform", "translate(0," + height + ")")
+			      .call(xAxis);
+			
+			  svg.append("g")
+			      .attr("class", "y axis")
+			      .call(yAxis)
+			    .append("text")
+			      .attr("transform", "rotate(-90)")
+			      .attr("y", 6)
+			      .attr("dy", ".71em")
+			      .style("text-anchor", "end")
+			      .text("Frequency");
+			
+			  svg.selectAll(".bar")
+			      .data(dataset)
+			    .enter().append("rect")
+			      .attr("class", "bar")
+			      .attr("x", function(d) { return x(d.score); })
+			      .attr("width", x.rangeBand())
+			      .attr("y", function(d) { return y(d.score); })
+			      .attr("height", function(d) { return height - y(d.score); });
+		}
+
+		function type(d) {
+			d.score = +d.score;
+			return d;
+		}
+		
+		function drawScoreLinePlot(dataset) {
+			$("#quizGraphs").empty();
+			
 			// Set graph canvas
 			var margin = {top: 30, right: 20, bottom: 30, left: 50},
 				width = 300 - margin.left - margin.right,
@@ -805,11 +881,12 @@
 			var parseDate = d3.time.format("%d-%b-%y").parse;
 
 			// Set dataset
+			var scores = aggregateScores(dataset);
 			var data = dataset;
 			var i = 0;
 			
 			// Set the ranges
-			var x = d3.scale.linear().range([0, width]);
+			var x = d3.scale.linear().range([0, width]).domain([0, 100]);
 			var y = d3.scale.linear().range([height, 0]);
 
 			// Define the axes
@@ -822,7 +899,7 @@
 			// Define the line
 			var valueline = d3.svg.line()
 				.x(function(d) { return x(d.score); })
-				.y(function(d) { return y(d.score); });
+				.y(function(d) { return y(scores[d.score]); });
 				
 			// Adds the svg canvas
 			var svg = d3.select("#quizGraphs")
@@ -834,8 +911,8 @@
 						  "translate(" + margin.left + "," + margin.top + ")");
 
 				// Scale the range of the data
-				x.domain([0, d3.max(data, function(d) { return d.score; })]);
-				y.domain([0, d3.max(data, function(d) { return d.score; })]);
+				x.domain([0, 100]);
+				y.domain([0, d3.max(data, function(d) { return scores[d.score]; })]);
 				
 				// Add title.
 				svg.append("text")
@@ -844,7 +921,7 @@
 			        .attr("text-anchor", "middle")  
 			        .style("font-size", "16px") 
 			        .style("text-decoration", "underline")  
-			        .text("Total Scores");
+			        .text("Total Previous Scores");
 
 				// Add the valueline path.
 				svg.append("path")
@@ -857,7 +934,7 @@
 				  .enter().append("circle")
 					.attr("r", 3.5)
 					.attr("cx", function(d) { return x(d.score); })
-					.attr("cy", function(d) { return y(d.score); });
+					.attr("cy", function(d) { return y(scores[d.score]); });
 
 				// Add the X Axis
 				svg.append("g")
@@ -869,6 +946,20 @@
 				svg.append("g")
 					.attr("class", "y axis")
 					.call(yAxis);
+		}
+		
+		function aggregateScores(dataset) {
+			var aggregatedScores = {};
+			
+			for(var i in dataset) {
+				if(dataset[i].score in aggregatedScores) {
+					aggregatedScores[dataset[i].score] += 1;
+				} else {
+					aggregatedScores[dataset[i].score] = 1;
+				}
+			}
+			
+			return aggregatedScores;
 		}
 
 	</script>

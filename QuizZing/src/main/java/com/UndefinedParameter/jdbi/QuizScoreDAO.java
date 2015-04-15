@@ -19,7 +19,7 @@ public interface QuizScoreDAO {
 	@SqlQuery("SELECT * FROM QuizScore WHERE UserID = :userId")
 	public List<QuizScore> findScoresByUserId(@Bind("userId") long userId);
 	
-	@SqlQuery("SELECT * FROM QuizScore WHERE QuizID = :quizId")
+	@SqlQuery("SELECT * FROM QuizScore WHERE QuizID = :quizId ORDER BY score")
 	public List<QuizScore> findScoresByQuizID(@Bind("quizId") long quizId);
 	
 	@SqlQuery("SELECT * FROM QuizScore WHERE QuizID = :quizId AND UserID = :userId")
