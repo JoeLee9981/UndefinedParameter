@@ -11,9 +11,13 @@ import org.skife.jdbi.v2.sqlobject.SqlBatch;
 import org.skife.jdbi.v2.sqlobject.SqlQuery;
 import org.skife.jdbi.v2.sqlobject.SqlUpdate;
 import org.skife.jdbi.v2.sqlobject.customizers.RegisterMapper;
+import org.skife.jdbi.v2.sqlobject.stringtemplate.UseStringTemplate3StatementLocator;
+import org.skife.jdbi.v2.unstable.BindIn;
 
+import com.UndefinedParameter.app.core.Question;
 import com.UndefinedParameter.app.core.Quiz;
 
+@UseStringTemplate3StatementLocator
 @RegisterMapper(QuizMapper.class)
 public interface QuizDAO {
 
@@ -86,6 +90,25 @@ public interface QuizDAO {
 			+ "u.UserID = q.CreatorID AND "
 			+ "q.QuizID = :quizId")
 	public Quiz retrieveExistingQuizDetails(@Bind("quizId") long quizId);
+	
+	/*
+	 *  Select question based on the categories asked in the string.
+	 */
+	@SqlQuery("SELECT q.* FROM Question q, QuestionCategory qc, Category c WHERE q.QuestionID = qc.QuestionID AND "
+			+ "qc.CategoryID = c.CategoryID AND "
+			+ "(c.CategoryType in (\\<ctypes\\>))")
+	List<Question> retrieveQuestionByCategory(@BindIn("ctypes") List<String> ctypes);
+	
+	/*
+	 *  Select quizzes based on the categories asked in the string.
+	 */
+	@SqlQuery("SELECT quiz.* FROM Quiz quiz, Question quest, QuizQuestion qq, QuestionCategory qc, Category c WHERE "
+			+ "qq.QuizID = quiz.QuizID AND "
+			+ "quest.QuestionID = qq.QuestionID AND "
+			+ "quest.QuestionID = qc.QuestionID AND "
+			+ "qc.CategoryID = c.CategoryID AND "
+			+ "(c.CategoryType in (\\<ctypes\\>))")
+	List<Quiz> retrieveQuizByCategory(@BindIn("ctypes") List<String> ctypes);
 	
 	/*
 	 * 	deleteQuiz - Deletes quiz from quiz id.

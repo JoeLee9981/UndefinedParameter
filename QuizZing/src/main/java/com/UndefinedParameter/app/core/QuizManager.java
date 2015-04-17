@@ -705,7 +705,7 @@ public class QuizManager {
 	
 	public List<String> getQuestionCategoriesViaQuizID(long quizID)
 	{
-		List<String> rvalue = null;
+		List<String> categories = null;
 		List<Question> question = null;
 		question = questionDAO.retrieveExistingQuiz(quizID);
 		
@@ -713,16 +713,92 @@ public class QuizManager {
 		{
 			//NEED TO ONLY RETURN EACH TYPE ONCE
 			List<String> holder = input.getCategories();
-			rvalue.addAll(holder);
+			categories.addAll(holder);
 		}
 		
 		//Dropping the duplicates via a hashSet, then converting back;
-		Set<String> foo = new HashSet<String>(rvalue);
+		Set<String> temp = new HashSet<String>(categories);
 		//rvalue = (List<String>) foo;
-		rvalue = new ArrayList<String>(foo);
+		categories = new ArrayList<String>(temp);
 		
 		
-		return rvalue;
+		return categories;
+	}
+	
+	public List<Quiz> getQuizzesFromCategories(List<String> listInput)
+	{
+		List<Quiz> quizzes = null;
+		
+		quizzes = quizDAO.retrieveQuizByCategory(listInput);
+		/*
+		int inputlength = listInput.size();
+		
+		if(inputlength > 4)
+		{
+			inputlength = 4;
+		}
+		
+		if(inputlength == 0)
+		{
+			return quizzes;
+		}
+		
+		if(inputlength == 1)
+		{
+			
+		}
+		else if(inputlength == 2)
+		{
+			
+		}
+		else if(inputlength == 3)
+		{
+			
+		}
+		else
+		{
+			
+		}
+		*/
+		return quizzes;
+	}
+	
+	public List<Question> getQuestionFromCategories(List<String> listInput)
+	{
+		List<Question> questions = null;
+		
+		questions = quizDAO.retrieveQuestionByCategory(listInput);
+		/*
+		int inputlength = listInput.size();
+		
+		if(inputlength > 4)
+		{
+			inputlength = 4;
+		}
+		
+		if(inputlength == 0)
+		{
+			return quizzes;
+		}
+		
+		if(inputlength == 1)
+		{
+			
+		}
+		else if(inputlength == 2)
+		{
+			
+		}
+		else if(inputlength == 3)
+		{
+			
+		}
+		else
+		{
+			
+		}
+		*/
+		return questions;
 	}
 }
 
