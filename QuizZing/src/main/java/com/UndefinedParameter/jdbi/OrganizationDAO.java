@@ -56,6 +56,10 @@ public interface OrganizationDAO {
 	public List<Organization> findLargestOrganizations(@Bind("startCount") int startCount,
 													   @Bind("endCount") int endCount);
 	
+	@SqlQuery("SELECT COUNT(*) FROM UserOrganization WHERE UserID = :userID AND OrgID = :orgID")
+	public long findUserOrganizationCount(@Bind("userID") long userid,
+										@Bind("orgID") long orgid);
+	
 	@SqlQuery("SELECT * FROM Organization org WHERE NOT EXISTS "
 			+ "(SELECT * FROM User user, UserOrganization userOrg WHERE "
 			+ "userOrg.UserID = user.UserID AND "
