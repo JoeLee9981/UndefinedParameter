@@ -15,22 +15,48 @@ public class UserGroupManager {
 	
 	public boolean registerNewUserGroup(int user, int group) throws Exception {
 		try {
-			usergroupDAO.insert(user, group);
+			long amount = usergroupDAO.findUserGroupCount(user, group);
+			
+			if(amount == 0)
+			{
+				usergroupDAO.insert(user, group);
+				return true;
+			}
+			else if(amount == 1)
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
 		}
 		catch(Exception e) {
 			return false;
 		}
-		return true;
 	}
 	
 	public boolean deleteNewUserGroup(int user, int group) throws Exception {
 		try {
-			usergroupDAO.delete(user, group);
+			long amount = usergroupDAO.findUserGroupCount(user, group);
+			
+			if(amount == 0)
+			{
+				return true;
+			}
+			else if(amount == 1)
+			{
+				usergroupDAO.delete(user, group);
+				return true;
+			}
+			else
+			{
+				return false;
+			}
 		}
 		catch(Exception e) {
 			return false;
 		}
-		return true;
 	}
 	
 	

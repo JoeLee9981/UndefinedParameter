@@ -169,9 +169,22 @@ public class OrganizationManager {
 	
 	public boolean registerOrganization(long orgId, long userId) {
 		try {
-			orgDAO.registerOrganization(orgId, userId);
-			orgDAO.incrementOrgMembers(orgId);
-			return true;
+			long amount = orgDAO.findUserOrganizationCount(userId, orgId);
+			
+			if(amount == 0)
+			{
+				orgDAO.registerOrganization(orgId, userId);
+				orgDAO.incrementOrgMembers(orgId);
+				return true;
+			}
+			else if(amount == 1)
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
 		}
 		catch(Exception e) {
 			return false;
@@ -180,9 +193,22 @@ public class OrganizationManager {
 	
 	public boolean leaveOrganization(long orgId, long userId) {
 		try {
-			orgDAO.removeUserOrganization(orgId, userId);
-			orgDAO.decrementOrgMembers(orgId);
-			return true;
+			long amount = orgDAO.findUserOrganizationCount(userId, orgId);
+			
+			if(amount == 0)
+			{
+				return true;
+			}
+			else if(amount == 1)
+			{
+				orgDAO.removeUserOrganization(orgId, userId);
+				orgDAO.decrementOrgMembers(orgId);
+				return true;
+			}
+			else
+			{
+				return false;
+			}
 		}
 		catch(Exception e) {
 			return false;

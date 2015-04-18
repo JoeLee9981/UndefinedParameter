@@ -170,6 +170,19 @@ public class Question {
 		return questionText;
 	}
 	
+	public String getQuestionTextFirstLine()
+	{
+		int indexOfLinebreak = questionText.indexOf("<br/>");
+		if (indexOfLinebreak >= 0)
+		{
+			return questionText.substring(0, indexOfLinebreak);
+		}
+		else
+		{
+			return questionText;
+		}
+	}
+	
 	public String getQuestionTextFormatted() {
 		if(type != QuestionType.MATCHING && type != QuestionType.FILL_IN_THE_BLANK) {
 			return questionText;

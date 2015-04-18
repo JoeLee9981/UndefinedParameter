@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>QuizZing</title>
+		<title>QuizZing - Edit Quiz</title>
 		<link rel="stylesheet" href="/assets/plugins/metro_ui/css/metro-bootstrap.css">
 		<link rel="stylesheet" type="text/css" href="/assets/css/main.css" />
 		<link rel="stylesheet" type="text/css" href="/assets/css/quiz.css" />
@@ -34,11 +34,13 @@
 							<a href="#" id="editName">Edit Title</a>
 						</div>			
 						<div class="span1">
-							<h4 class="noMargin noPadding"><i class="icon-help-2 on-left"></i>${quiz.questionCount}</h4>
+							<h4 class="noMargin noPadding"><i class="icon-help-2 on-left"></i>
+								<span id="questionCount">${quiz.questionCount}</span>
+							</h4>
 						</div>	
 						<div class="span4">
 							<div class="place-right">
-								<button class="success" onclick="saveAllChanges();">Save All Changes</button>
+								<button id="saveAllChangesButton" class="success" onclick="saveAllChanges();">Save All Changes</button>
 								<button id="openChangeQuizContent" class="primary todo">Change Quiz</button>
 							</div>
 						</div>		
@@ -66,7 +68,7 @@
 						</div>
 						<div class="span4">
 							<div class="row noMargin">
-								<#if quiz.time??>
+								<#if quiz.time != 0>
 									<div class="input-control checkbox">
 									    <label>
 									        <input id="timeLimitCheck" type="checkbox" checked/>
@@ -109,7 +111,7 @@
 								    </label>
 								</div>
 							</div>
-							<div class="row noMargin">
+							<!--<div class="row noMargin">
 								<div class="input-control checkbox">
 								    <label class="noMargin todo">
 								        <input id="randomizeCheck" type="checkbox"/>
@@ -117,7 +119,7 @@
 								        Randomize questions
 								    </label>
 								</div>
-							</div>
+							</div>-->
 						</div>
 					</div>
 				</div>
@@ -129,83 +131,36 @@
 					<div class="span5">
 						<div class="row noMargin">
 							<div class="input-control text">
-							    <input id="questionFilter" type="text" placeholder="Search questions in quiz..."/>
+							    <input id="currentQuestionFilter" type="text" placeholder="Search questions in quiz..."/>
 							</div>
 						</div>
 						<div id="quizQuestionList" class="row noMargin">
 							<div id="quizQuestionListContent">
-
-
-								<div class="listview-outlook" data-role="listview">
-                                    <a class="list marked" href="#">
-                                        <div class="list-content">
-                                            <span class="list-title">subscribe@metroui.net</span>
-                                            <span class="list-subtitle">MetroUI: News on 26/10/2013</span>
-                                            <span class="list-remark">Hello friend! Newest for Metro UI CSS</span>
-                                        </div>
-                                    </a>
-                                    <a class="list" href="#">
-                                        <div class="list-content">
-                                            <span class="list-title">subscribe@metroui.net</span>
-                                            <span class="list-subtitle">MetroUI: News on 26/10/2013</span>
-                                            <span class="list-remark">Hello friend! Newest for Metro UI CSS</span>
-                                        </div>
-                                    </a>
-                                    <a class="list" href="#">
-                                        <div class="list-content">
-                                            <span class="list-title">subscribe@metroui.net</span>
-                                            <span class="list-subtitle">MetroUI: News on 26/10/2013</span>
-                                            <span class="list-remark">Hello friend! Newest for Metro UI CSS</span>
-                                        </div>
-                                    </a>
-                                    <a class="list" href="#">
-                                        <div class="list-content">
-                                            <span class="list-title">subscribe@metroui.net</span>
-                                            <span class="list-subtitle">MetroUI: News on 26/10/2013</span>
-                                            <span class="list-remark">Hello friend! Newest for Metro UI CSS</span>
-                                        </div>
-                                    </a>
-                                    <a class="list" href="#">
-                                        <div class="list-content">
-                                            <span class="list-title">subscribe@metroui.net</span>
-                                            <span class="list-subtitle">MetroUI: News on 26/10/2013</span>
-                                            <span class="list-remark">Hello friend! Newest for Metro UI CSS</span>
-                                        </div>
-                                    </a>
-                                    <a class="list" href="#">
-                                        <div class="list-content">
-                                            <span class="list-title">subscribe@metroui.net</span>
-                                            <span class="list-subtitle">MetroUI: News on 26/10/2013</span>
-                                            <span class="list-remark">Hello friend! Newest for Metro UI CSS</span>
-                                        </div>
-                                    </a>
-                                    <a class="list" href="#">
-                                        <div class="list-content">
-                                            <span class="list-title">subscribe@metroui.net</span>
-                                            <span class="list-subtitle">MetroUI: News on 26/10/2013</span>
-                                            <span class="list-remark">Hello friend! Newest for Metro UI CSS</span>
-                                        </div>
-                                    </a>
-                                    <a class="list" href="#">
-                                        <div class="list-content">
-                                            <span class="list-title">subscribe@metroui.net</span>
-                                            <span class="list-subtitle">MetroUI: News on 26/10/2013</span>
-                                            <span class="list-remark">Hello friend! Newest for Metro UI CSS</span>
-                                        </div>
-                                    </a>
-                                    <a class="list" href="#">
-                                        <div class="list-content">
-                                            <span class="list-title">subscribe@metroui.net</span>
-                                            <span class="list-subtitle">MetroUI: News on 26/10/2013</span>
-                                            <span class="list-remark">Hello friend! Newest for Metro UI CSS</span>
-                                        </div>
-                                    </a>
+								<div id="currentQuestionList" class="listview-outlook" data-role="listview">
+									<#list quiz.questions as question>
+	                                    <a class="list" href="#" id="quizQuestion${question.questionId}">
+	                                        <div class="list-content">
+	                                            <span class="list-title">${question.questionTextFirstLine}</span>
+	                                            <span class="list-title questionText" style="display: none">
+	                                            	${question.questionText}
+	                                            </span>
+	                                          	<span class="list-subtitle questionCategories">${question.categoriesString}</span>
+	                                          	<span class="list-remark">
+	                                          		<span>
+	                                          			<strong>Rating: </strong> ${question.rating}/5
+	                                          			<strong>Difficulty: </strong> ${question.difficulty}/5
+	                                          		</span>
+	                   								<span class="place-right">
+	                   									<#if question.creatorId == user.id>
+	                   										<button class="small success">Edit</button>
+	                   									</#if>
+	                   									<button id="removeButton${question.questionId}" onclick="removeQuestion(${question.questionId});" class="small danger">Remove</button>
+	                   								</span>
+	                   							</span>
+	                                        </div>
+	                                    </a>
+	                            	</#list>
                                 </div>
-
-
-
-
-
 							</div>
 						</div>
 					</div>
@@ -276,6 +231,8 @@
 		
 		function saveAllChanges()
 		{
+			$("#saveAllChangesButton").attr("disabled", true);
+			$("#saveAllChangesButton").removeClass("success");
 			
 			saveName();
 			saveDescription();
@@ -284,6 +241,10 @@
 			var id = ${quiz.quizId};
 			
 			var timeLimit = parseInt($("#mm").val() * 60) + parseInt($("#ss").val());
+			if (!$("#timeLimitCheck").is(':checked'))
+			{
+				timeLimit = 0;
+			}
 			var openToPublic = $("#allowOthersEditCheck").is(':checked');
 
 			$.ajax({
@@ -301,7 +262,8 @@
 				},
 				success: function(data) {
 				
-					alert('Your quiz has been saved');
+					$("#saveAllChangesButton").addClass("success");
+					$("#saveAllChangesButton").attr("disabled", false);
 				
 					if("success" == data["response"])
 					{
@@ -498,6 +460,50 @@
 				}
 			});
 		});
+		
+		
+		function removeQuestion(questionId) {
+			$("#removeButton" + questionId).attr("disabled", true);
+			$("#removeButton" + questionId).removeClass("danger");
+			$.ajax({
+				type: 'DELETE',
+				url: '/question/remove?quizId=${quiz.quizId}&questionId=' + questionId,
+				success: function(data)
+				{
+					$("#quizQuestion" + questionId).fadeOut(300, function(){
+						$("#quizQuestion" + questionId).remove();
+					});
+					
+					// Decrement the question count
+					$("#questionCount").html(parseInt($("#questionCount").html()) - 1);
+				},
+				error: function()
+				{
+					
+				}
+			});
+		}
+		
+		
+		$("#currentQuestionFilter").on('input', function (){
+			var searchText = $("#currentQuestionFilter").val().toLowerCase().trim();
+			$("#currentQuestionList").children(".list").each(function(){
+				// Get the current search text
+				var questionText = $(this).find(".questionText").html().toLowerCase();
+				var questionCategories = $(this).find(".questionCategories").html().toLowerCase();
+				
+				if (questionText.indexOf(searchText) >= 0 || questionCategories.indexOf(searchText) >= 0)
+				{
+					$(this).show();
+				}
+				else
+				{
+					$(this).hide();
+				}
+				
+			});
+		});
+		
 	</script>	
 
 

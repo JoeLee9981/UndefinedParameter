@@ -19,6 +19,9 @@ public interface UserGroupDAO {
 	@SqlQuery("SELECT * FROM UserGroups WHERE UserID = :userid")
 	public UserGroup findUserByUserId(@Bind("userid") int userid);
 	
+	@SqlQuery("SELECT COUNT(*) FROM UserGroups WHERE UserID = :userID AND GroupID = :groupID")
+	public long findUserGroupCount(@Bind("userID") long userId, @Bind("groupID") long groupId);
+	
 	@SqlUpdate("INSERT INTO UserGroup "
 		+ "(UserID, GroupID) "
 		+ "VALUES "
