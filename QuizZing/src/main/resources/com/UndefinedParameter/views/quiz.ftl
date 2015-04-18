@@ -18,13 +18,13 @@
 		
 		<style>		
 			path { 
-				stroke: #60a917;
+				stroke: #4390df;
 				stroke-width: 2;
 				fill: none;
 			}
 			
 			circle {
-				fill: #4390df;
+				fill: #142B43;
 			}
 
 			.axis path,
@@ -33,6 +33,16 @@
 				stroke: grey;
 				stroke-width: 1;
 				shape-rendering: crispEdges;
+			}
+			
+			.area {
+				fill: #C7DEF5;
+				stroke-width: 0px;
+			}
+			
+			.label {
+				text-transform: uppercase;
+				fill: grey;
 			}
 		</style>
 	</head>
@@ -135,6 +145,7 @@
 				
 				<div id="quizFinish" hidden="true">
 					<h2>Your Quiz Stats: </h2><br/>
+					<button id="changeGraphs" onclick="changeGraphs()">View Personal Statistics</button><br><br>
 					<div id="quizGraphs"></div>
 					<h3 id="scoreText"></h3>
 					<h3 id="prevScoreText"></h3>
@@ -775,7 +786,7 @@
 					{
 							document.getElementById('scoreText').innerHTML = "Score: " + scored + "%";
 							
-							drawScoreLinePlot(data["scores"]);
+							drawGraphs(data["quizScores"], data["userScores"]);
 					},
 					error: function(data) {
 						document.getElementById('scoreText').innerHTML = "Score: " + scored + "% (Warning: This score was not saved.)";
@@ -799,108 +810,61 @@
 		
 		/*********************** GRAPHING UTILITIES ****************************/
 		
-		function drawScoreBarGraph(dataset) {
-			$("#quizGraphs").empty();
+		var isQuizScoreGraph = true;
+		var quizScores;
+		var userScores;
+		
+		function drawGraphs(quizScores, userScores) {
+			this.quizScores = quizScores;
+			this.userScores = userScores;
 			
-			// Set graph canvas
-			var margin = {top: 30, right: 20, bottom: 30, left: 50},
-				width = 300 - margin.left - margin.right,
-				height = 300 - margin.top - margin.bottom;
-			
-			var x = d3.scale.ordinal()
-			    .rangeRoundBands([0, width], .1);
-			
-			var y = d3.scale.linear()
-			    .range([height, 0]);
-			
-			var xAxis = d3.svg.axis()
-			    .scale(x)
-			    .orient("bottom");
-			
-			var yAxis = d3.svg.axis()
-			    .scale(y)
-			    .orient("left")
-			    .ticks(10, "%");
-			
-			// Adds the svg canvas
-			var svg = d3.select("#quizGraphs")
-				.append("svg")
-					.attr("width", width + margin.left + margin.right)
-					.attr("height", height + margin.top + margin.bottom)
-				.append("g")
-					.attr("transform", 
-						  "translate(" + margin.left + "," + margin.top + ")");
-			
-			/*d3.tsv("data.tsv", type, function(error, data) {
-			  x.domain(dataset.map(function(d) { return d.letter; }));
-			  y.domain([0, d3.max(data, function(d) { return d.frequency; })]);*/
-			// Scale the range of the data
-			x.domain([0, d3.max(dataset, function(d) { return d.score; })]);
-			y.domain([0, d3.max(dataset, function(d) { return d.score; })]);
-			
-			  svg.append("g")
-			      .attr("class", "x axis")
-			      .attr("transform", "translate(0," + height + ")")
-			      .call(xAxis);
-			
-			  svg.append("g")
-			      .attr("class", "y axis")
-			      .call(yAxis)
-			    .append("text")
-			      .attr("transform", "rotate(-90)")
-			      .attr("y", 6)
-			      .attr("dy", ".71em")
-			      .style("text-anchor", "end")
-			      .text("Frequency");
-			
-			  svg.selectAll(".bar")
-			      .data(dataset)
-			    .enter().append("rect")
-			      .attr("class", "bar")
-			      .attr("x", function(d) { return x(d.score); })
-			      .attr("width", x.rangeBand())
-			      .attr("y", function(d) { return y(d.score); })
-			      .attr("height", function(d) { return height - y(d.score); });
-		}
-
-		function type(d) {
-			d.score = +d.score;
-			return d;
+			changeGraphs();
 		}
 		
-		function drawScoreLinePlot(dataset) {
+		function changeGraphs() {
+			if(!isQuizScoreGraph) {
+				drawQuizScoreLinePlot(quizScores);
+				document.getElementById("changeGraphs").innerHTML="View Personal Scores";
+				isQuizScoreGraph = true;
+			} else {
+				drawUserScorePlot(userScores);
+				document.getElementById("changeGraphs").innerHTML="View All Scores";
+				isQuizScoreGraph = false;
+			}
+		}
+		
+		function drawUserScorePlot(dataset) {
 			$("#quizGraphs").empty();
-			
-			// Set graph canvas
-			var margin = {top: 30, right: 20, bottom: 30, left: 50},
-				width = 300 - margin.left - margin.right,
+		
+			// Set graph canvas.
+			var margin = {top: 30, right: 20, bottom: 40, left: 50},
+				width = 600 - margin.left - margin.right,
 				height = 300 - margin.top - margin.bottom;
 
-			// Parse the date / time
+			// Parse the date / time.
 			var parseDate = d3.time.format("%d-%b-%y").parse;
 
-			// Set dataset
-			var scores = aggregateScores(dataset);
+			// Set dataset.
 			var data = dataset;
 			var i = 0;
 			
-			// Set the ranges
-			var x = d3.scale.linear().range([0, width]).domain([0, 100]);
+			// Set the ranges.
+			var x = d3.time.scale().range([0, width]);
 			var y = d3.scale.linear().range([height, 0]);
 
-			// Define the axes
+			// Define the axes.
 			var xAxis = d3.svg.axis().scale(x)
 				.orient("bottom").ticks(5);
 
 			var yAxis = d3.svg.axis().scale(y)
 				.orient("left").ticks(5);
 
-			// Define the line
+			// Define the line.
 			var valueline = d3.svg.line()
-				.x(function(d) { return x(d.score); })
-				.y(function(d) { return y(scores[d.score]); });
+				.x(function(d) { return x(d.dateTime); })
+				.y(function(d) { return y(d.score); });
 				
-			// Adds the svg canvas
+			// Add the svg canvas.
 			var svg = d3.select("#quizGraphs")
 				.append("svg")
 					.attr("width", width + margin.left + margin.right)
@@ -909,8 +873,109 @@
 					.attr("transform", 
 						  "translate(" + margin.left + "," + margin.top + ")");
 
-				// Scale the range of the data
-				x.domain([0, 100]);
+				// Scale the range of the data.
+				x.domain(d3.extent(data, function(d) { return d.dateTime; }));
+				y.domain([0, d3.max(data, function(d) { return d.score; })]);
+				
+				// Add title.
+				svg.append("text")
+			        .attr("x", (width / 2))             
+			        .attr("y", 0 - (margin.top / 2))
+			        .attr("text-anchor", "middle")  
+			        .style("font-size", "16px") 
+			        .style("text-decoration", "underline")  
+			        .text("Your Previous Scores");
+
+				// Add the valueline path.
+				svg.append("path")
+					.attr("class", "line")
+					.attr("d", valueline(data));
+
+				// Add the scatterplot.
+				svg.selectAll("dot")
+					.data(data)
+				  .enter().append("circle")
+					.attr("r", 3.5)
+					.attr("cx", function(d) { return x(d.dateTime); })
+					.attr("cy", function(d) { return y(d.score); });
+
+				// Add the X axis.
+				svg.append("g")
+					.attr("class", "x axis")
+					.attr("transform", "translate(0," + height + ")")
+					.call(xAxis);
+
+				// Add the Y axis.
+				svg.append("g")
+					.attr("class", "y axis")
+					.call(yAxis);
+					
+				// Add X axis label.
+				svg.append("text")
+				    .attr("class", "x label")
+				    .attr("text-anchor", "end")
+				    .attr("x", width)
+				    .attr("y", height + 35)
+				    .text("Date & Time");
+									
+				// Add Y axis label.
+				svg.append("text")
+				    .attr("class", "y label")
+				    .attr("text-anchor", "end")
+				    .attr("y", 4)
+				    .attr("dy", "-3.25em")
+				    .attr("transform", "rotate(-90)")
+				    .text("Percentage Correct");
+		}
+		
+		function drawQuizScoreLinePlot(dataset) {
+			$("#quizGraphs").empty();
+			
+			// Set graph canvas.
+			var margin = {top: 30, right: 20, bottom: 40, left: 50},
+				width = 600 - margin.left - margin.right,
+				height = 300 - margin.top - margin.bottom;
+
+			// Parse the date / time
+			var parseDate = d3.time.format("%d-%b-%y").parse;
+
+			// Set dataset.
+			var scores = aggregateScores(dataset);
+			var data = dataset;
+			var i = 0;
+			
+			// Set the ranges.
+			var x = d3.scale.linear().range([0, width]);
+			var y = d3.scale.linear().range([height, 0]);
+
+			// Define the axes.
+			var xAxis = d3.svg.axis().scale(x)
+				.orient("bottom").ticks(5);
+
+			var yAxis = d3.svg.axis().scale(y)
+				.orient("left").ticks(5);
+				
+			var area = d3.svg.area()
+			    .x(function(d) { return x(d.score); })
+			    .y0(height)
+			    .y1(function(d) { return y(scores[d.score]); });
+
+			// Define the line.
+			var valueline = d3.svg.line()
+				.x(function(d) { return x(d.score); })
+				.y(function(d) { return y(scores[d.score]); });
+				
+			// Add the svg canvas.
+			var svg = d3.select("#quizGraphs")
+				.append("svg")
+					.attr("width", width + margin.left + margin.right)
+					.attr("height", height + margin.top + margin.bottom)
+				.append("g")
+					.attr("transform", 
+						  "translate(" + margin.left + "," + margin.top + ")");
+
+				// Scale the range of the data.
+				x.domain([0, d3.max(data, function(d) { return d.score; })]);
 				y.domain([0, d3.max(data, function(d) { return scores[d.score]; })]);
 				
 				// Add title.
@@ -926,25 +991,48 @@
 				svg.append("path")
 					.attr("class", "line")
 					.attr("d", valueline(data));
+					
+				// Add area fill.
+				svg.append("path")
+					.datum(data)
+					.attr("class", "area")
+					.attr("d", area);
 
-				// Add the scatterplot
-				svg.selectAll("dot")
+				// Add the scatterplot.
+				/*svg.selectAll("dot")
 					.data(data)
 				  .enter().append("circle")
 					.attr("r", 3.5)
 					.attr("cx", function(d) { return x(d.score); })
-					.attr("cy", function(d) { return y(scores[d.score]); });
+					.attr("cy", function(d) { return y(scores[d.score]); });*/
 
-				// Add the X Axis
+				// Add the X axis.
 				svg.append("g")
 					.attr("class", "x axis")
 					.attr("transform", "translate(0," + height + ")")
 					.call(xAxis);
 
-				// Add the Y Axis
+				// Add the Y axis.
 				svg.append("g")
 					.attr("class", "y axis")
 					.call(yAxis);
+					
+				// Add X axis label.
+				svg.append("text")
+				    .attr("class", "x label")
+				    .attr("text-anchor", "end")
+				    .attr("x", width)
+				    .attr("y", height + 35)
+				    .text("Percentage Correct");
+									
+				// Add Y axis label.
+				svg.append("text")
+				    .attr("class", "y label")
+				    .attr("text-anchor", "end")
+				    .attr("y", 4)
+				    .attr("dy", "-2.25em")
+				    .attr("transform", "rotate(-90)")
+				    .text("# of Students");
 		}
 		
 		function aggregateScores(dataset) {

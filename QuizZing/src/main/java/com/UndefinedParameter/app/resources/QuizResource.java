@@ -118,11 +118,13 @@ public class QuizResource {
 			return Response.status(Status.UNAUTHORIZED).build();
 		}
 		
-		HashMap<String, List<QuizScore>> response = new HashMap<String, List<QuizScore>>();
-		List<QuizScore> userScores = quizManager.findScoresByQuiz(newScore.getQuizId());
-		
 		if(quizManager.insertScore(newScore.getQuizId(), newScore.getUserId(), newScore.getScore())) {
-			response.put("scores", userScores);
+			HashMap<String, List<QuizScore>> response = new HashMap<String, List<QuizScore>>();
+			List<QuizScore> quizScores = quizManager.findScoresByQuiz(newScore.getQuizId());
+			List<QuizScore>	userScores = quizManager.findScoresByQuizAndUser(newScore.getQuizId(), user.getId());
+			
+			response.put("quizScores", quizScores);
+			response.put("userScores", userScores);
 			return Response.ok(response).build();
 		}
 		else {
