@@ -93,4 +93,14 @@ public interface GroupDAO {
 			+ "AND sg.GroupID = q.GroupID "
 			+ "AND sg.GroupID = :groupId")
 	public int countFlagsByGroup(@Bind("groupId") long groupId);
+	
+	@SqlQuery("SELECT DISTINCT(CategoryType) FROM SubGroup sg, GroupQuiz gq, Quiz q, Question que, QuizQuestion qq, QuestionCategory qc, Category c "
+			+ "WHERE sg.GroupID = gq.GroupID "
+			+ "AND gq.QuizID = q.QuizID "
+			+ "AND q.QuizID = qq.QuizID "
+			+ "AND qq.QuestionID = que.QuestionID "
+			+ "AND que.QuestionID = qc.QuestionID "
+			+ "AND qc.CategoryID = c.CategoryID "
+			+ "AND sg.GroupID = :groupId")
+	public List<String> findCategoriesByGroup(@Bind("groupId") long groupId);
 }
