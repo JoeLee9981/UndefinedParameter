@@ -1,0 +1,25 @@
+#questionListSideBar
+{
+	width: 250px;
+	height: 100%;
+	float: right;
+	position: fixed;
+	top: 0;
+	margin-top: 45px;
+	z-index: 1000;
+}
+
+.create-page-content
+{
+	margin: 0 0 0 250px;
+}
+
+#questionFilter
+{
+	border-bottom: 1px solid #d3d3d3;
+}
+
+#quizSettings
+{
+	border-bottom: 1px solid #d3d3d3;
+}
