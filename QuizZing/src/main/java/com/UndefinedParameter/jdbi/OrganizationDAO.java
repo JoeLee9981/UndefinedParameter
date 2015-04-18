@@ -11,6 +11,7 @@ import org.skife.jdbi.v2.sqlobject.customizers.RegisterMapper;
 
 import com.UndefinedParameter.app.core.Organization;
 //import com.UndefinedParameter.app.core.OrganizationType;
+import com.UndefinedParameter.app.core.Quiz;
 
 
 @RegisterMapper(OrganizationMapper.class)
@@ -102,4 +103,19 @@ public interface OrganizationDAO {
 	
 	@SqlQuery("SELECT COUNT(*) FROM Quiz quiz, GroupQuiz gquiz, SubGroup g WHERE quiz.QuizID = gquiz.QuizID and gquiz.GroupID = g.GroupID and g.OrgID = :orgId")
 	public int countQuizzes(@Bind("orgId") long orgId);
+	
+	@SqlQuery("SELECT COUNT(*) FROM UserOrganization WHERE OrgID = :orgId")
+	public int countMembers(@Bind("orgId") long orgId);
+	
+	@SqlUpdate("Update Organization SET MemberCount = :count WHERE OrgID = :orgId")
+	public void updateMemberCount(@Bind("orgId") long orgId, @Bind("count") int count);
+	
+	@SqlQuery("SELECT quiz.*, sub.Name AS GroupName, sub.GroupID, u.FirstName, u.LastName "
+			+ "FROM Quiz quiz, SubGroup sub, GroupQuiz gquiz, User u "
+			+ "WHERE quiz.QuizID = gquiz.QuizID "
+			+ "AND sub.GroupID = gquiz.GroupID "
+			+ "AND u.UserID = quiz.CreatorID "
+			+ "AND sub.OrgID = :orgId")
+	@RegisterMapper(QuizMapper.class)
+	public List<Quiz> retrieveQuizzesByOrg(@Bind("orgId") long orgId);
 }

@@ -7,6 +7,7 @@ import java.util.List;
 import com.UndefinedParameter.app.core.Group;
 import com.UndefinedParameter.app.core.OrgMember;
 import com.UndefinedParameter.app.core.Organization;
+import com.UndefinedParameter.app.core.Quiz;
 import com.UndefinedParameter.app.core.User;
 
 public class OrganizationView extends View {
@@ -17,10 +18,11 @@ public class OrganizationView extends View {
 	private List<Group> groups;
 	private List<Organization> registeredOrganizations;
 	private List<OrgMember> members;
+	private List<Quiz> quizzes;
 	private User user;
 	private int userRating;
 	
-	public OrganizationView(Organization org, List<Organization> registeredOrganizations, List<Group> groups, List<Group> registeredGroups, List<OrgMember> members, boolean loggedIn, User user, int userRating) {
+	public OrganizationView(Organization org, List<Organization> registeredOrganizations, List<Group> groups, List<Group> registeredGroups, List<OrgMember> members, List<Quiz> quizzes, boolean loggedIn, User user, int userRating) {
 		super("org.ftl");
 		this.loggedIn = loggedIn;
 		this.registeredOrganizations = registeredOrganizations;
@@ -30,6 +32,7 @@ public class OrganizationView extends View {
 		this.user = user;
 		this.userRating = userRating;
 		this.members = members;
+		this.quizzes = quizzes;
 	}
 	
 	public Organization getOrganization() {
@@ -71,11 +74,33 @@ public class OrganizationView extends View {
 	{
 		for (Organization org: this.registeredOrganizations)
 		{
-			if (org.getId() == this.organization.getId());
+			if (org.getId() == this.organization.getId())
 			{
 				return true;
 			}
 		}
 		return false;
+	}
+	
+	public int getGroupCount() {
+		int count = 0;
+		if(registeredGroups != null) {
+			count += registeredGroups.size();
+		}
+		if(groups != null) {
+			count += registeredGroups.size();
+		}
+		return count;
+	}
+	
+	public List<Quiz> getQuizzes() {
+		return quizzes;
+	}
+	
+	public int getQuizCount() {
+		if(quizzes == null) {
+			return 0;
+		}
+		return quizzes.size();
 	}
 }

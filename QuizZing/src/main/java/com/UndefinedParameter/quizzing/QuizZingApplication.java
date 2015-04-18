@@ -15,10 +15,8 @@ import org.skife.jdbi.v2.DBI;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.UndefinedParameter.app.core.InputUtils;
-import com.UndefinedParameter.app.core.Question;
+import com.UndefinedParameter.app.core.Organization;
 import com.UndefinedParameter.app.core.User;
-import com.UndefinedParameter.app.core.Question.QuestionType;
 import com.UndefinedParameter.app.health.TemplateHealthCheck;
 import com.UndefinedParameter.app.resources.FeedbackResource;
 import com.UndefinedParameter.app.resources.GroupResource;
@@ -96,6 +94,13 @@ public class QuizZingApplication extends Application<QuizZingConfiguration> {
 		final QuizScoreDAO quizScoreDAO = jdbi.onDemand(QuizScoreDAO.class);
 		final OrgMemberDAO orgMemberDAO = jdbi.onDemand(OrgMemberDAO.class);
 		final UserGroupDAO userGroupDAO = jdbi.onDemand(UserGroupDAO.class);
+		
+		//Quick query used to fix member counts of organizations
+		List<Organization> allOrgs = orgDAO.findOrganizations();
+		for(Organization o : allOrgs) {
+			orgDAO.updateMemberCount(o.getId(), orgDAO.countMembers(o.getId()));
+		}
+		
 		
 		logger.info("Database objects registered successfully");
 		

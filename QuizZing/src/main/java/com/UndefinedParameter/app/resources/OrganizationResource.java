@@ -64,11 +64,11 @@ public class OrganizationResource {
 			List<Group> regGroups = manager.findRegisteredGroupsById(id, user.getId());
 			
 			int userRating = 0;
-			return Response.ok(new OrganizationView(manager.findOrgById(id), manager.findOrgsByUserId(user.getId()), unregGroups, regGroups, members, true, user, userRating)).build();
+			return Response.ok(new OrganizationView(manager.findOrgById(id), manager.findOrgsByUserId(user.getId()), unregGroups, regGroups, members, manager.findQuizzesByOrg(id), true, user, userRating)).build();
 		}
 		else {
 			List<Group> groups = manager.findGroupsById(id);
-			return Response.ok(new OrganizationView(manager.findOrgById(id), null, groups, null, members, false, user, 0)).build();
+			return Response.ok(new OrganizationView(manager.findOrgById(id), null, groups, null, members, manager.findQuizzesByOrg(id), false, user, 0)).build();
 		}
 	}
 	

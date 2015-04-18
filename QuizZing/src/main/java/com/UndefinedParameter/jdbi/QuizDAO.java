@@ -57,6 +57,14 @@ public interface QuizDAO {
 				+ "AND sub.GroupID = :groupId")
 	public List<Quiz> retrieveQuizzesByGroup(@Bind("groupId") long groupId);
 	
+	@SqlQuery("SELECT quiz.*, sub.Name AS GroupName, sub.GroupID, u.FirstName, u.LastName "
+			+ "FROM Quiz quiz, SubGroup sub, GroupQuiz gquiz, User u "
+			+ "WHERE quiz.QuizID = gquiz.QuizID "
+			+ "AND sub.GroupID = gquiz.GroupID "
+			+ "AND u.UserID = quiz.CreatorID "
+			+ "AND sub.OrgID = :orgId")
+	public List<Quiz> retrieveQuizzesByOrg(@Bind("orgId") long orgId);
+	
 	/*
 	 * Retrieve Quizzes by creator ID
 	 */
@@ -122,8 +130,8 @@ public interface QuizDAO {
 	@SqlUpdate("DELETE FROM QuizQuestion WHERE QuizID = :quizId AND QuestionID = :questionId")
 	public void deleteQuizQuestion(@Bind("quizId") long quizId, @Bind("questionId") long questionId);
 	
-	@SqlUpdate("SELECT COUNT(*) FROM QuizQuestion WHERE QuizID = :quizId")
-	public void countQuestions(@Bind("quizId") long quizId);
+	@SqlQuery("SELECT COUNT(*) FROM QuizQuestion WHERE QuizID = :quizId")
+	public int countQuestions(@Bind("quizId") long quizId);
 	
 	/*
 	 * delete Quiz to Tag association

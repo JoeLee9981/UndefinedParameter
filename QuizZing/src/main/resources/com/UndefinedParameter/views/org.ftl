@@ -42,14 +42,13 @@
 									<button onclick="joinOrg('${organization.id}')" style="margin-right:10px;" class="success large">Join Organization</button>
 								</#if>
 							</#if>	
-							<button class="warning large" onclick="location.href='/orgs/org/create?orgId=${organization.id}'"><i class="icon-tools on-left"></i>Create Group</button>
 						</div>
 					</div>
 				</div>
 				<div class="row noMargin">
 					<nav class="navigation-bar white white-custom">
 					    <nav class="navigation-bar-content">
-					        <item class="element active"><a href="" id="groupsLink"><i class="icon-link on-right"></i> <strong>Groups (0)</strong></a></item>
+					        <item class="element active"><a href="" id="groupsLink"><i class="icon-link on-right"></i> <strong>Groups (${groupCount})</strong></a></item>
 					        <item class="element-divider"></item>
 		        	        <div class="element input-element noHover">
 					            <form id="searchOrg">
@@ -58,20 +57,66 @@
 					                    <button class="btn-search todo"></button>
 					                </div>
 					            </form>
-					        </div>        		        
-					        <item class="element place-right"><a href="#" class="todo"><i class="icon-clipboard-2 on-right"></i> <strong>Quizzes (${organization.quizCount?html})</strong></a></item>
-					        <item class="element-divider place-right"></item>
-					        <item class="element place-right"><a href="#" class="todo"><i class="icon-help-2 on-right"></i> <strong>Questions (${organization.questionCount?html})</strong></a></item>
+					        </div> 
+					        <item class="element place-right"><a href="/orgs/org/create?orgId=${organization.id}"><strong><i class="icon-tools on-left"></i>Create Group</strong></a></item>
+					        <item class="element-divider place-right"></item>      		        
+					        <item class="element place-right"><a href="" id="quizzesLink"><i class="icon-clipboard-2 on-right"></i> <strong>Quizzes (${quizCount})</strong></a></item>
 					        <item class="element-divider place-right"></item>
 					        <item class="element place-right"><a href="" id="memberLink"><i class="icon-user-3 on-right"></i> <strong>Members (${memberCount})</strong></a></item>
-					    	<item class="element-divider place-right"></item>	
+					    	<item class="element-divider place-right"></item>
+						    
 					    </nav>
 					</nav>					
 				</div>
 
 				<div class="row">
 					<div class="span8">
-						<div class="row noMargin" id="membersDiv" hidden="true">
+						<div class="row noMargin" id="quizzesDiv">
+						<#if quizzes?size gt 0>								
+							<table class="table hovered striped">
+								<thead>
+									<tr>
+										<th>Quiz</th>
+										<th>Group</th>
+										<th>Description</th>
+										<th><i title="Questions" class="icon-help-2 on-right"></i></th>
+										<th><i title="Difficulty" class="icon-power on-right"></i></th>
+										<th><i title="Rating" class="icon-star-3 on-right"></i></th>
+									</tr>
+								</thead>
+								<tbody>
+										
+									<#list quizzes as quiz>
+										<tr>
+											<td class="padding5">
+												<a href="/quiz?groupId=${quiz.parentGroupId}&quizId=${quiz.quizId}">${quiz.name}</a>
+											</td>
+											<td class="padding5">
+												<a href="/group?groupId=${quiz.parentGroupId}">${quiz.parentGroupName}</a>
+											</td>
+											<td class="padding5">
+												<span>${quiz.description}</span>
+											</td>
+											<td width="50px" class="padding5">
+												<span class="place-right" title="Number of Questions">${quiz.questionCount}</span>
+											</td>
+											<td width="50px" class="padding5">
+												<span class="place-right" title="Quiz Difficulty">${quiz.difficulty}</span>
+											</td>
+											<td width="50px" class="padding5">
+												<span class="place-right" title="Quiz Rating">${quiz.rating}</span>
+											</td>
+										</tr>
+											<!-- <td class="right padding5"><a href="#" class="place-right" onClick="joinOrg()"><i class="icon-plus join"></i></a></td> -->
+									</#list>
+								</tbody>
+							</table>													
+						<#else>
+							<h3>There are no quizzes for this group.</h3>
+						</#if>
+						</div>			
+					
+						<div class="row noMargin" id="membersDiv">
 							<#if members??>
 								<table class="table hovered striped">
 									<#list members as member>
@@ -169,6 +214,7 @@
 	$(document).ready(function() {
 
 		$('#membersDiv').hide();
+		$('#quizzesDiv').hide();
 	})
 
 	$('#memberLink').click(function(event) {
@@ -176,12 +222,21 @@
 		event.preventDefault();
 		$('#membersDiv').show();
 		$('#groupsDiv').hide();
+		$('#quizzesDiv').hide();
 	});
 
 	$('#groupsLink').click(function(event) {
 		event.preventDefault();
 		$('#membersDiv').hide();
 		$('#groupsDiv').show();
+		$('#quizzesDiv').hide();
+	});
+	
+	$('#quizzesLink').click(function(event) {
+		event.preventDefault();
+		$('#membersDiv').hide();
+		$('#groupsDiv').hide();
+		$('#quizzesDiv').show();
 	});
 			
 	function joinOrg(orgId) {

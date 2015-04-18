@@ -99,9 +99,8 @@
 							<div class="span4">
 								<h2 class="text-alert"><strong>There are no questions in this quiz.</strong></h2>
 							</div>
-						</#if>
-						
-`					</div>
+						</#if>						
+					</div>
 				</div>
 				<div id="quizDiv" hidden="true">
 					<div class="row">

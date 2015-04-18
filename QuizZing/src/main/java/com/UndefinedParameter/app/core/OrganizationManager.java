@@ -334,4 +334,16 @@ public class OrganizationManager {
 			return null;
 		}
 	}
+	
+	/**
+	 * Find a list of quizzes inside of an organization, from all groups
+	 * @param orgId
+	 * @return
+	 */
+	public List<Quiz> findQuizzesByOrg(long orgId) {
+		if(orgId < 1) {
+			return null;
+		}
+		return orgDAO.retrieveQuizzesByOrg(orgId);
+	}
 }

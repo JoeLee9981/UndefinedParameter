@@ -438,6 +438,13 @@ public class QuizManager {
 			return quizDAO.retrieveQuizzesByGroup(groupId);
 		return null;
 	}
+	
+	public List<Quiz> findQuizzesByOrg(long orgId) {
+		if(orgId < 1) {
+			return null;
+		}
+		return quizDAO.retrieveQuizzesByOrg(orgId);
+	}
 
 	
 	public List<Quiz> findTopQuizzes() {
