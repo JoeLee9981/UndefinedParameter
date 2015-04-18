@@ -737,36 +737,7 @@ public class QuizManager {
 		List<Quiz> quizzes = null;
 		
 		quizzes = quizDAO.retrieveQuizByCategory(listInput);
-		/*
-		int inputlength = listInput.size();
 		
-		if(inputlength > 4)
-		{
-			inputlength = 4;
-		}
-		
-		if(inputlength == 0)
-		{
-			return quizzes;
-		}
-		
-		if(inputlength == 1)
-		{
-			
-		}
-		else if(inputlength == 2)
-		{
-			
-		}
-		else if(inputlength == 3)
-		{
-			
-		}
-		else
-		{
-			
-		}
-		*/
 		return quizzes;
 	}
 	
@@ -775,37 +746,35 @@ public class QuizManager {
 		List<Question> questions = null;
 		
 		questions = quizDAO.retrieveQuestionByCategory(listInput);
-		/*
-		int inputlength = listInput.size();
 		
-		if(inputlength > 4)
-		{
-			inputlength = 4;
+		for(Question q: questions) {
+			q.setCategories(questionDAO.getCategoriesByQuestion(q.getQuestionId()));
 		}
 		
-		if(inputlength == 0)
-		{
-			return quizzes;
-		}
-		
-		if(inputlength == 1)
-		{
-			
-		}
-		else if(inputlength == 2)
-		{
-			
-		}
-		else if(inputlength == 3)
-		{
-			
-		}
-		else
-		{
-			
-		}
-		*/
 		return questions;
+	}
+	
+	public long autoCreateQuiz(long groupId, Quiz quiz, List<String> categories, int rating, int difficulty, int questionCount) {
+		
+		if(groupId < 1 || categories == null || categories.size() < 1 || questionCount < 1)	{
+			//invalid parameters
+			return -1;
+		}
+		
+		long quizId = createQuiz(quiz, groupId);
+		if(quizId < 1) {
+			//failed to create quiz
+			return -1;
+		}
+		List<Question> questions = quizDAO.retrieveQuestionByCategoryAndRatings(categories, rating, difficulty);
+		if(questions.size() < questionCount) {
+			//not done yet, not enough questions matching specs
+		}
+		for(Question q: questions) {
+			addQuestionToQuiz(quizId, q.getQuestionId());
+		}
+		
+		return quizId;
 	}
 }
 

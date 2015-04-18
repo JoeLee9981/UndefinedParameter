@@ -9,6 +9,7 @@ import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
 import io.dropwizard.views.ViewBundle;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.skife.jdbi.v2.DBI;
@@ -16,6 +17,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.UndefinedParameter.app.core.Organization;
+import com.UndefinedParameter.app.core.Question;
 import com.UndefinedParameter.app.core.User;
 import com.UndefinedParameter.app.health.TemplateHealthCheck;
 import com.UndefinedParameter.app.resources.FeedbackResource;
@@ -100,7 +102,6 @@ public class QuizZingApplication extends Application<QuizZingConfiguration> {
 		for(Organization o : allOrgs) {
 			orgDAO.updateMemberCount(o.getId(), orgDAO.countMembers(o.getId()));
 		}
-		
 		
 		logger.info("Database objects registered successfully");
 		

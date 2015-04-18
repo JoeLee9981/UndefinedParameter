@@ -102,21 +102,33 @@ public interface QuizDAO {
 	/*
 	 *  Select question based on the categories asked in the string.
 	 */
-	@SqlQuery("SELECT q.* FROM Question q, QuestionCategory qc, Category c WHERE q.QuestionID = qc.QuestionID AND "
+	@SqlQuery("SELECT DISTINCT q.* FROM Question q, QuestionCategory qc, Category c WHERE q.QuestionID = qc.QuestionID AND "
 			+ "qc.CategoryID = c.CategoryID AND "
-			+ "(c.CategoryType in (\\<ctypes\\>))")
-	List<Question> retrieveQuestionByCategory(@BindIn("ctypes") List<String> ctypes);
+			+ "(c.CategoryType in (<ctypes>))")
+	@RegisterMapper(QuestionMapper.class) 
+	public List<Question> retrieveQuestionByCategory(@BindIn("ctypes") List<String> ctypes);
+	
+	/*
+	 *  Select question based on the categories rating.
+	 */
+	@SqlQuery("SELECT DISTINCT q.* FROM Question q, QuestionCategory qc, Category c WHERE q.QuestionID = qc.QuestionID AND "
+			+ "qc.CategoryID = c.CategoryID AND "
+			+ "q.Rating / q.RatingCount >= :rating AND "
+			+ "q.QuestionDifficulty / q.DifficultyCount >= :difficulty AND "
+			+ "(c.CategoryType in (<ctypes>))")
+	@RegisterMapper(QuestionMapper.class) 
+	public List<Question> retrieveQuestionByCategoryAndRatings(@BindIn("ctypes") List<String> ctypes, @Bind("rating") int rating, @Bind("difficulty") int difficulty);
 	
 	/*
 	 *  Select quizzes based on the categories asked in the string.
 	 */
-	@SqlQuery("SELECT quiz.* FROM Quiz quiz, Question quest, QuizQuestion qq, QuestionCategory qc, Category c WHERE "
+	@SqlQuery("SELECT DISTINCT quiz.* FROM Quiz quiz, Question quest, QuizQuestion qq, QuestionCategory qc, Category c WHERE "
 			+ "qq.QuizID = quiz.QuizID AND "
 			+ "quest.QuestionID = qq.QuestionID AND "
 			+ "quest.QuestionID = qc.QuestionID AND "
 			+ "qc.CategoryID = c.CategoryID AND "
-			+ "(c.CategoryType in (\\<ctypes\\>))")
-	List<Quiz> retrieveQuizByCategory(@BindIn("ctypes") List<String> ctypes);
+			+ "(c.CategoryType in (<ctypes>))")
+	public List<Quiz> retrieveQuizByCategory(@BindIn("ctypes") List<String> ctypes);
 	
 	/*
 	 * 	deleteQuiz - Deletes quiz from quiz id.

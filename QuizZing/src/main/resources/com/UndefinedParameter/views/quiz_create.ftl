@@ -11,84 +11,111 @@
 			<div class="grid fluid">
 				<div class="page-content">
 					<div class="row">
-						<div class="offset1 span6">
+						<div class="span6">
 							<h2><i class="icon-tools on-left"></i>Quiz Creator</h2>
 							<p id="mainCreateQuizError" class="tertiary-text-secondary errorFormText1 createQuizError marginTop30" hidden>* There were errors with the information you entered.  Fix the errors in red and then click 'Continue To Editor'.</p>
 						</div>
 					</div>
-					<form class="noMargin" id="quizCreateForm">	
-						<div class="row">		
-							<div class="offset1 span6">
+					<form class="noMargin" id="quizCreateForm">
+						<div class="row noMargin">
+							<div class="span6">
+								<div class="noMargin row">		
+									<div>
+										<div>
+											<h4>Choose a joined organization for this quiz</h4>
+										</div>
+										<div class="row noMargin">
+											<div class="input-control text">
+											    <input type="text" id="orgFilterSearch" value="" placeholder="Filter joined organizations..."/>
+											</div>
+										</div>
+										<div class="row noMargin">
+											<div class="input-control select">
+											    <select multiple id="orgFilteredList">
+											    </select>
+											</div>
+										</div>
+								    </div>
+								 </div>
+								 <div class="row noMargin">
+								    <div>
+								    	<div>
+											<h4>Choose a joined group in this organization for this quiz</h4>
+										</div>
+							    		<div class="row noMargin">
+											<div class="input-control text">
+											    <input type="text" id="groupFilterSearch" value="<#if group??>${group.name}</#if>" placeholder="Filter joined groups..."/>
+											</div>
+										</div>
+										<div class="row noMargin">
+											<div class="input-control select">
+											    <select multiple id="groupFilteredList">
+													<#if group??>
+											    		<#list joinedGroupsInOrganization as currentGroup>
+											    			<option value="${group.id}" <#if currentGroup.id == group.id>selected</#if>>${currentGroup.name}</option>
+											    		</#list>	
+											    	</#if>
+											    </select>
+											</div>
+									    </div>
+								    </div>				
+								</div>
+								<div class="row noMargin">
+								    <div>
+								    	<div>
+											<h4>Add a title for this quiz</h4>
+										</div>
+										<p id="titleError" class="tertiary-text-secondary errorFormText1 createQuizError" hidden>Enter a title for this quiz</p>
+							    		<div class="row noMargin">
+											<div class="input-control text">
+											    <input type="text" id="quizTitle"  class="focusOutTrim focusOutValidateNotEmpty" value="" placeholder="Quiz Title"/>
+											</div>
+										</div>
+								    </div>				
+								</div>
+								<div class="row noMargin">
+								    <div>
+								    	<div>
+											<h4>Describe this quiz</h4>
+										</div>
+										<p id="descriptionError" class="tertiary-text-secondary errorFormText1 createQuizError" hidden>Enter a description for this quiz</p>
+							    		<div class="row noMargin">
+											<div class="input-control textarea" data-role="input-control">
+			                                    <textarea id="quizDescription" class="noResize focusOutTrim focusOutValidateNotEmpty" placeholder="Description about your quiz"></textarea>
+			                                </div>
+										</div>
+								    </div>				
+								</div>			
+								<div class="row">
+									<div>
+										<button type="button" class="large success" onclick="createQuiz()">Continue To Editor</button>	
+									</div>							
+								</div>
+							</div>
+							<div class="span6">
 								<div>
-									<h4>Choose a joined organization for this quiz</h4>
+									<h4>Select tags for this quiz</h4>
 								</div>
-								<div class="row noMargin">
-									<div class="input-control text">
-									    <input type="text" id="orgFilterSearch" value="" placeholder="Filter joined organizations..."/>
-									</div>
-								</div>
-								<div class="row noMargin">
-									<div class="input-control select">
-									    <select multiple id="orgFilteredList">
-									    </select>
-									</div>
-								</div>
-						    </div>
-						 </div>
-						 <div class="row noMargin">
-						    <div class="offset1 span6">
-						    	<div>
-									<h4>Choose a joined group in this organization for this quiz</h4>
-								</div>
-					    		<div class="row noMargin">
-									<div class="input-control text">
-									    <input type="text" id="groupFilterSearch" value="<#if group??>${group.name}</#if>" placeholder="Filter joined groups..."/>
-									</div>
-								</div>
-								<div class="row noMargin">
-									<div class="input-control select">
-									    <select multiple id="groupFilteredList">
-											<#if group??>
-									    		<#list joinedGroupsInOrganization as currentGroup>
-									    			<option value="${group.id}" <#if currentGroup.id == group.id>selected</#if>>${currentGroup.name}</option>
-									    		</#list>	
-									    	</#if>
-									    </select>
-									</div>
-							    </div>
-						    </div>				
-						</div>
-						<div class="row noMargin">
-						    <div class="offset1 span6">
-						    	<div>
-									<h4>Add a title for this quiz</h4>
-								</div>
-								<p id="titleError" class="tertiary-text-secondary errorFormText1 createQuizError" hidden>Enter a title for this quiz</p>
-					    		<div class="row noMargin">
-									<div class="input-control text">
-									    <input type="text" id="quizTitle"  class="focusOutTrim focusOutValidateNotEmpty" value="" placeholder="Quiz Title"/>
-									</div>
-								</div>
-						    </div>				
-						</div>
-						<div class="row noMargin">
-						    <div class="offset1 span6">
-						    	<div>
-									<h4>Describe this quiz</h4>
-								</div>
-								<p id="descriptionError" class="tertiary-text-secondary errorFormText1 createQuizError" hidden>Enter a description for this quiz</p>
-					    		<div class="row noMargin">
-									<div class="input-control textarea" data-role="input-control">
-	                                    <textarea id="quizDescription" class="noResize focusOutTrim focusOutValidateNotEmpty" placeholder="Description about your quiz"></textarea>
-	                                </div>
-								</div>
-						    </div>				
-						</div>			
-						<div class="row">
-							<div class="offset1 span6">
-								<button type="button" class="large success" onclick="createQuiz()">Continue To Editor</button>	
-							</div>							
-						</div>		
+								<div class="listview-outlook" data-role="listview">
+									<#if categories??>
+                                    <a class="list marked" href="#">
+                                        <div class="list-content">
+                                            <span class="list-title">subscribe@metroui.net</span>
+                                            <span class="list-subtitle">MetroUI: News on 26/10/2013</span>
+                                            <span class="list-remark">Hello friend! Newest for Metro UI CSS</span>
+                                        </div>
+                                    </a>
+                                    <#else>
+                                    <a class="list marked" href="#">
+                                    	<div class="list-content">   
+                                            <span class="list-title">No tags for this group</span>
+                                        </div>
+                                    </a>
+                                    </#if>
+                                    
+                            	</div>
+							</div>
+						</div>	
 					</form>			
 				</div>
 			</div>
@@ -217,7 +244,9 @@
 		if (selectedCount == 1)
 		{
 			var selectedOption = $('#groupFilteredList option:selected').text();
+			var groupId = $('#groupFilteredList option:selected').val();
 			$('#groupFilterSearch').val(selectedOption);
+			setCategoriesForGroup(groupId);
 		}
 	});
 	

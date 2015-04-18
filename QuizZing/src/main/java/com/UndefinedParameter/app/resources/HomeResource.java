@@ -4,6 +4,7 @@ import io.dropwizard.auth.Auth;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import javax.validation.Valid;
 import javax.ws.rs.Consumes;
@@ -18,6 +19,8 @@ import javax.ws.rs.core.Response;
 import com.UndefinedParameter.app.core.NewsArticle;
 import com.UndefinedParameter.app.core.NewsManager;
 import com.UndefinedParameter.app.core.OrganizationManager;
+import com.UndefinedParameter.app.core.Question;
+import com.UndefinedParameter.app.core.Quiz;
 import com.UndefinedParameter.app.core.QuizManager;
 import com.UndefinedParameter.app.core.User;
 import com.UndefinedParameter.app.core.UserManager;
