@@ -13,15 +13,17 @@ public class QuizCreatorView extends View
 {
 	public List<Organization> joinedOrganizations;	
 	public List<Group> joinedGroupsInOrganization;
+	public List<String> categories;
 	public Group group;
 	private User user;
 	
-	public QuizCreatorView(User user, List<Organization> joinedOrganizations, List<Group> joinedGroupsInOrganization, Group group)
+	public QuizCreatorView(User user, List<Organization> joinedOrganizations, List<Group> joinedGroupsInOrganization, Group group, List<String> categories)
 	{
 		super("quiz_create.ftl");
 		this.user = user;
 		this.joinedOrganizations = joinedOrganizations;
 		this.joinedGroupsInOrganization = joinedGroupsInOrganization;
+		this.categories = categories;
 		this.group = group;
 		
 	}
@@ -44,5 +46,9 @@ public class QuizCreatorView extends View
 	public List<Group> getJoinedGroupsInOrganization()
 	{
 		return this.joinedGroupsInOrganization;
+	}
+	
+	public List<String> getCategories() {
+		return this.categories;
 	}
 }

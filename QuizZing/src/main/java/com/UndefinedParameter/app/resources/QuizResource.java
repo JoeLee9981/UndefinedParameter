@@ -141,11 +141,14 @@ public class QuizResource {
 		else if(groupId > 0)
 		{
 			Group group = groupManager.findGroupById(groupId);
-			return Response.ok(new QuizCreatorView(user, organizationManager.findOrgsByUser(user), organizationManager.findRegisteredGroupsById(group.getOrganizationId(), user.getId()), group)).build();
+			List<String> categories = null;
+			if(group != null)
+				categories = groupManager.findCategoriesByGroup(group.getId());
+			return Response.ok(new QuizCreatorView(user, organizationManager.findOrgsByUser(user), organizationManager.findRegisteredGroupsById(group.getOrganizationId(), user.getId()), group, categories)).build();
 		}
 		else
 		{
-			return Response.ok(new QuizCreatorView(user, organizationManager.findOrgsByUser(user), null, null)).build();
+			return Response.ok(new QuizCreatorView(user, organizationManager.findOrgsByUser(user), null, null, null)).build();
 		}
 	}
 	

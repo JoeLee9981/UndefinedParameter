@@ -166,4 +166,8 @@ public class GroupManager {
 	public List<OrgMember> findGroupMembers(long groupId) {
 		return orgMemberDAO.retrieveMembersByGroup(groupId);
 	}
+	
+	public List<String> findCategoriesByGroup(long groupId) {
+		return groupDAO.findCategoriesByGroup(groupId);
+	}
 }
