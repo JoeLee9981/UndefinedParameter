@@ -163,7 +163,7 @@ public class GroupManager {
 		}
 	}
 	
-	public List<OrgMember> findGroupMembers(long groupId) {
+	public List<GroupMember> findGroupMembers(long groupId) {
 		return orgMemberDAO.retrieveMembersByGroup(groupId);
 	}
 	

@@ -7,15 +7,16 @@ import org.joda.time.DateTime;
 import org.skife.jdbi.v2.StatementContext;
 import org.skife.jdbi.v2.tweak.ResultSetMapper;
 
+import com.UndefinedParameter.app.core.GroupMember;
 import com.UndefinedParameter.app.core.OrgMember;
 
 
-public class GroupMemberMapper implements ResultSetMapper<OrgMember> {
+public class GroupMemberMapper implements ResultSetMapper<GroupMember> {
 	
-	public OrgMember map(int index, ResultSet r, StatementContext ctx)
+	public GroupMember map(int index, ResultSet r, StatementContext ctx)
 			throws SQLException {
 		
-		OrgMember member = new OrgMember();
+		GroupMember member = new GroupMember();
 		
 		member.setUserId(r.getLong("UserID"));
 		member.setOrgId(r.getLong("GroupID"));

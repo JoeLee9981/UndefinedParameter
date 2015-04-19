@@ -5,6 +5,7 @@
 		<link rel="stylesheet" href="/assets/plugins/metro_ui/css/metro-bootstrap.css">
 		<link rel="stylesheet" type="text/css" href="/assets/css/main.css" />
 		<link rel="stylesheet" type="text/css" href="/assets/css/home.css" />
+		<link rel="stylesheet" type="text/css" href="/assets/css/quiz.css" />
 		<script src="/assets/scripts/jquery-2.1.1.min.js"></script>
 		<script src="/assets/scripts/jquery-ui.min.js"></script>
 		<script src="/assets/plugins/metro_ui/min/metro.min.js"></script>
@@ -254,7 +255,7 @@
 		$('#topCategoriesLink').click(function(event) {
 			event.preventDefault();
 			$.ajax({
-			    url: '/quiz/categories',
+			    url: '/quiz/top_categories',
 			    type: 'GET',
 			    success: function(data) {
 			    	console.log(data);

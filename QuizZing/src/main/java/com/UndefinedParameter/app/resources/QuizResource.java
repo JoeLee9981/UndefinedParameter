@@ -371,15 +371,29 @@ public class QuizResource {
 	
 	@GET
 	@Path("/categories")
-	public Response getCategoryView() {
+	public Response getCategoryView(@Auth(required = false) User user) {
 		List<String> categories = quizManager.getAllCategories();
-		return Response.ok(new CategoriesView(categories)).build();
+		return Response.ok(new CategoriesView(user, categories)).build();
 	}
 	
 	@POST
 	@Path("/categories")
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Response getTopQuizzes(List<String> categories) {
+	public Response getCategoryQuizzes(List<String> categories) {
 		return Response.ok(new QuizListView("../includes/top_quizzes.ftl", quizManager.getQuizzesFromCategories(categories))).build();
+	}
+	
+	@GET
+	@Path("/top_categories")
+	public Response getTopCategoryView() {
+		List<String> categories = quizManager.getAllCategories();
+		return Response.ok(new CategoriesView("../includes/top_categories.ftl", categories)).build();
+	}
+	
+	@POST
+	@Path("/top_categories")
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Response getTopCategoryQuizzes(List<String> categories) {
+		return Response.ok(new QuizListView("../includes/quiz_list.ftl", quizManager.getQuizzesFromCategories(categories))).build();
 	}
  }

@@ -7,6 +7,7 @@ import org.skife.jdbi.v2.sqlobject.SqlQuery;
 import org.skife.jdbi.v2.sqlobject.SqlUpdate;
 import org.skife.jdbi.v2.sqlobject.customizers.RegisterMapper;
 
+import com.UndefinedParameter.app.core.GroupMember;
 import com.UndefinedParameter.app.core.OrgMember;
 
 @RegisterMapper(OrgMemberMapper.class)
@@ -24,7 +25,7 @@ public interface OrgMemberDAO {
 			+ "ug.GroupID = sg.GroupID AND "
 			+ "sg.GroupID = :groupId")
 	@RegisterMapper(GroupMemberMapper.class)
-	public List<OrgMember> retrieveMembersByGroup(@Bind("groupId") long groupId);
+	public List<GroupMember> retrieveMembersByGroup(@Bind("groupId") long groupId);
 	
 	@SqlQuery("SELECT * FROM UserOrganization WHERE "
 			+ "UserID = :userID AND "

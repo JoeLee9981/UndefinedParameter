@@ -5,6 +5,7 @@
 		<link rel="stylesheet" href="/assets/plugins/metro_ui/css/metro-bootstrap.css">
 		<link rel="stylesheet" type="text/css" href="/assets/css/main.css" />
 		<link rel="stylesheet" type="text/css" href="/assets/css/home.css" />
+		<link rel="stylesheet" type="text/css" href="/assets/css/quiz.css" />
 		<script src="/assets/scripts/jquery-2.1.1.min.js"></script>
 		<script src="/assets/scripts/jquery-ui.min.js"></script>
 		<script src="/assets/plugins/metro_ui/min/metro.min.js"></script>
@@ -88,7 +89,7 @@
 						    	<item id="topQuizzesItem" class="element text-center span3 active"><a href="" id="topQuizzesLink"><strong>Top Quizzes</strong></a></item>
 						        <item id="newQuizzesItem" class="element text-center span3"><a href="" id="newQuizzesLink"><strong>New Quizzes</strong></a></item>
 						        <item id="topGroupsItem" class="element text-center span3"><a href="" id="topGroupsLink"><strong>Top Groups</strong></a></item>
-						        <item id="topCategoriesItem" class="element text-center span3 todo"><a href="" id="topCategoriesLink"><strong>Top Categories</strong></a></item>
+						        <item id="topCategoriesItem" class="element text-center span3"><a href="" id="topCategoriesLink"><strong>Top Categories</strong></a></item>
 						    </nav>
 						</nav>					
 					</div>
@@ -233,6 +234,18 @@
 		
 		$('#topCategoriesLink').click(function(event) {
 			event.preventDefault();
+			$.ajax({
+			    url: '/quiz/top_categories',
+			    type: 'GET',
+			    success: function(data) {
+			    	console.log(data);
+					$('#quiz-div').html(data);
+			    },
+			    error: function(error) {
+			    	$('#quiz-div').html("<p>No Categories Found</p>");
+			    }
+			});
+			toggleActive('#topCategoriesItem');
 		});
 	
 		function toggleActive(id) {
