@@ -239,20 +239,33 @@ public class OrganizationManager {
 	
 	public boolean registerUserForGroup(long groupId, long userId) {
 		try {
-			long amount = groupDAO.findUserGroupCount(userId, groupId);
+			Group group = groupDAO.findGroupById(groupId);
+			//if group doesn't exist return null
+			if(group == null) {
+				return false;
+			}
 			
-			if(amount == 0)
-			{
-				groupDAO.registerGroup(userId, groupId);
-				groupDAO.incrementGroupMembers(groupId);
-				return true;
+			if(registerOrganization(group.getOrganizationId(), userId)) {
+			
+				long amount = groupDAO.findUserGroupCount(userId, groupId);
+				
+				if(amount == 0)
+				{
+					groupDAO.registerGroup(userId, groupId);
+					groupDAO.incrementGroupMembers(groupId);
+					return true;
+				}
+				else if(amount == 1)
+				{
+					return true;
+				}
+				else
+				{
+					return false;
+				}
 			}
-			else if(amount == 1)
-			{
-				return true;
-			}
-			else
-			{
+			else {
+				//unable to join org, then can't join group
 				return false;
 			}
 		}

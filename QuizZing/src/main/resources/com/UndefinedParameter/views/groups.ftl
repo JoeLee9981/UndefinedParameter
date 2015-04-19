@@ -28,28 +28,27 @@
 					</div>
 				
 				    <div class="row">
-						<table class="table hovered">
+						<table class="table hovered striped">
 	                        <thead>
-	                        <tr>
-	                            <th class="text-left">Group</th>
-	                            <th class="text-left">Members</th>
-	                            <th class="text-left">Quizzes</th>
-	                            <th class="text-left">Questions</th>
-	                            <th class="text-left">Contribution Score <a href="#" data-hint="Contribution Score|A contribution score is something that we must figure out later. It will be super cool" data-hint-position="right" data-hint-mode="2"><i class="icon-help fg-blue"></i></a></th>
-	                            <th class="text-left">Quizzes Participated</th>
-	                            <th class="text-left">Date Created</th>
-                            	<th class="text-left">Leave</th>
-	                        </tr>
+		                       <tr>
+					                <th class="text-left">Group</th>
+								    <th title="Members" class="text-center"><i class="icon-user-3 on-right"></i></th>
+								    <th title="Quizzes" class="text-center"><i class="icon-clipboard-2 on-right"></i></th>
+								    <th title="Questions" class="text-center"><i class="icon-help-2 on-right"></i></th>
+								    <th title="Contribution is how much you've contributed towards the group" class="text-center">Contribution</th>
+								    <th class="text-center">Date Created</th>
+		                        </tr>
 	                        </thead>
 	
 	                        <tbody>
 		                        <#list userGroups as group>
 									<tr>
 										<td><a href="/group?groupId=${group.id}">${group.name?html}</a></td>
-										<td class="right">${group.memberCount}</td><td class="right">${group.quizCount}</td>
-										<td class="right">${group.questionCount}</td><td class="right">35</td><td class="right">3</td>
-										<td class="right">${group.dateAsString}</td>
-										<td class="right"><button class="danger" onClick="leave(${group.id})">-</button></td>
+										<td class="text-center">${group.memberCount}</td>
+										<td class="text-center">${group.quizCount}</td>
+										<td class="text-center">${group.questionCount}</td>
+										<td class="text-center">35</td>
+										<td class="text-center">${group.dateAsString}</td>
 									</tr>
 								</#list>     
 	                        </tbody>
@@ -66,32 +65,27 @@
 					</div>
 				</div>
 			    <div class="row">
-					<table class="table hovered">
+					<table class="table hovered striped">
                         <thead>
-                        <tr>
-                            <th class="text-left">Group</th>
-                            <th class="text-left">Members</th>
-                            <th class="text-left">Quizzes</th>
-                            <th class="text-left">Questions</th>
-                            <th class="text-left">Contribution Score <a href="#" data-hint="Contribution Score|A contribution score is something that we must figure out later. It will be super cool" data-hint-position="right" data-hint-mode="2"><i class="icon-help fg-blue"></i></a></th>
-                            <th class="text-left">Quizzes Participated</th>
-                            <th class="text-left">Date Created</th>
-                            <#if loggedIn>
-                            	<th class="text-left">Join</th>
-                            </#if>
-                        </tr>
+				            <tr>
+				                <th class="text-left">Group</th>
+							    <th title="Members" class="text-center"><i class="icon-user-3 on-right"></i></th>
+							    <th title="Quizzes" class="text-center"><i class="icon-clipboard-2 on-right"></i></th>
+							    <th title="Questions" class="text-center"><i class="icon-help-2 on-right"></i></th>
+							    <th title="Contribution is how much you've contributed towards the group" class="text-center">Contribution</th>
+							    <th class="text-center">Date Created</th>
+	                        </tr>
                         </thead>
 
                         <tbody>
 	                        <#list topGroups as group>
 								<tr>
 									<td><a href="/group?groupId=${group.id}">${group.name?html}</a></td>
-									<td class="right">${group.memberCount}</td><td class="right">${group.quizCount}</td>
-									<td class="right">${group.questionCount}</td><td class="right">35</td><td class="right">3</td>
-									<td class="right">${group.dateAsString}</td>
-									<#if loggedIn>
-										<td class="right"><button class="success" onClick="register(${group.id})">+</button></td>
-									</#if>
+									<td class="text-center">${group.memberCount}</td>
+									<td class="text-center">${group.quizCount}</td>
+									<td class="text-center">${group.questionCount}</td>
+									<td class="text-center">35</td>
+									<td class="text-center">${group.dateAsString}</td>
 								</tr>
 							</#list>     
                         </tbody>

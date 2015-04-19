@@ -102,21 +102,6 @@
 									</div>
 								</#if>
 								
-								<#if user??>
-									<div class="accordion-frame">
-										<a href="#" class="heading bg-lightBlue fg-white">My Created Organizations</a>
-										<div class="content">
-										
-											<div style="text-align:center;padding:20px;">
-												
-												<h6>You have not created any organizations.</h6>
-											
-											</div>														
-										
-										</div>
-									</div>
-								</#if>
-								
 								<div class="accordion-frame <#if organizations?size gt 0>active</#if>">
 									<a href="#" class="heading bg-lightBlue fg-white">Recommended Organizations</a>			
 									<div class="content">									
@@ -231,6 +216,25 @@
 			}
 			
 			function leave(orgId) {
+				var content = '<div style="margin: 10px" class="grid span7">' +
+							  		'<h3 class="text-center">Are you sure you wish to leave this organization?</h3><br/>' +
+							  		'<div class="span3 offset2">' +
+										'<button style="margin: 5px" onclick="doLeave(' + orgId + ')" class="success large center">Leave</button>' +
+										'<button style="margin: 5px" onclick="$.Dialog.close()" class="danger large center">Cancel</button>' +
+									'</div>' +
+							  '</div>';
+				
+				$.Dialog({
+				shadow: true,
+				overlay: true,
+				icon: '<span class="icon-warning fg-amber"></span>',
+				title: 'Leave Organization',
+				padding: 10,
+				content: content
+				});
+			}
+
+			function doLeave(orgId) {
 				$.ajax({
 				    url: '/orgs/leave?orgId=' + orgId,
 				    type: 'DELETE',

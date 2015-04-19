@@ -35,6 +35,8 @@ public class QuizCreatorView extends View
 	
 	public List<Organization> getJoinedOrganizations()
 	{
+		if(joinedOrganizations != null && joinedOrganizations.size() == 0)
+			return null;
 		return this.joinedOrganizations;
 	}
 	
@@ -45,7 +47,7 @@ public class QuizCreatorView extends View
 	
 	public List<Group> getJoinedGroupsInOrganization()
 	{
-		if(joinedGroupsInOrganization.size() == 0)
+		if(joinedGroupsInOrganization != null && joinedGroupsInOrganization.size() == 0)
 			return null;
 		return this.joinedGroupsInOrganization;
 	}

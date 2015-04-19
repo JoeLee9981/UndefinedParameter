@@ -32,6 +32,7 @@ import com.UndefinedParameter.jdbi.QuestionDAO;
 import com.UndefinedParameter.jdbi.QuizDAO;
 import com.UndefinedParameter.jdbi.QuizScoreDAO;
 import com.UndefinedParameter.jdbi.UserGroupDAO;
+import com.UndefinedParameter.views.CategoriesView;
 import com.UndefinedParameter.views.LoginView;
 import com.UndefinedParameter.views.QuizCreatorView;
 import com.UndefinedParameter.views.QuizEditQuestionsView;
@@ -367,4 +368,11 @@ public class QuizResource {
 		List<Quiz> quizzes = quizManager.findQuizzesByCreatorId(userId);
 		return Response.ok(new QuizListView("../includes/myquizzes.ftl", quizzes)).build();
 	}
-}
+	
+	@GET
+	@Path("/categories")
+	public Response getCategoryView() {
+		List<String> categories = quizManager.getAllCategories();
+		return Response.ok(new CategoriesView(categories)).build();
+	}
+ }

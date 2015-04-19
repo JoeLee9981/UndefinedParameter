@@ -118,7 +118,7 @@ public interface QuestionDAO {
 	@SqlUpdate("DELETE FROM QuestionCategory WHERE QuestionID = :questionId")
 	public void removeCategories(@Bind("questionId") long questionId);
 	
-	@SqlQuery("SELECT CategoryType FROM Category")
+	@SqlQuery("SELECT CategoryType FROM Category ORDER BY CategoryType")
 	public List<String> getAllCategories();
 	
 	/********************************** Question Flag Section **********************************************************/

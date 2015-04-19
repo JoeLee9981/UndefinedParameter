@@ -11,56 +11,7 @@ public class UserGroupManager {
 	
 	public UserGroupManager(UserGroupDAO userDAO) {
 		this.usergroupDAO = userDAO;
-	}
-	
-	public boolean registerNewUserGroup(int user, int group) throws Exception {
-		try {
-			long amount = usergroupDAO.findUserGroupCount(user, group);
-			
-			if(amount == 0)
-			{
-				usergroupDAO.insert(user, group);
-				usergroupDAO.incrementGroupMembers(group);
-				return true;
-			}
-			else if(amount == 1)
-			{
-				return true;
-			}
-			else
-			{
-				return false;
-			}
-		}
-		catch(Exception e) {
-			return false;
-		}
-	}
-	
-	public boolean deleteNewUserGroup(int user, int group) throws Exception {
-		try {
-			long amount = usergroupDAO.findUserGroupCount(user, group);
-			
-			if(amount == 0)
-			{
-				return true;
-			}
-			else if(amount == 1)
-			{
-				usergroupDAO.delete(user, group);
-				usergroupDAO.decrementGroupMembers(group);
-				return true;
-			}
-			else
-			{
-				return false;
-			}
-		}
-		catch(Exception e) {
-			return false;
-		}
-	}
-	
+	}	
 	
 	public UserGroup findUserByUserId(int userName) {
 		if(usergroupDAO == null)

@@ -268,13 +268,33 @@
 	}
 	
 	function leave(groupId) {
-	
+
+		var content = '<div style="margin: 10px" class="grid span7">' +
+					  		'<h3 class="text-center">Are you sure you wish to leave this group?</h3><br/>' +
+					  		'<div class="span3 offset2">' +
+								'<button style="margin: 5px" onclick="doLeaveGroup(' + groupId + ')" class="success large center">Leave</button>' +
+								'<button style="margin: 5px" onclick="$.Dialog.close()" class="danger large center">Cancel</button>' +
+							'</div>' +
+					  '</div>';
+		
+		$.Dialog({
+		shadow: true,
+		overlay: true,
+		icon: '<span class="icon-warning fg-amber"></span>',
+		title: 'Leave Group',
+		padding: 10,
+		content: content
+		});
+
+	}
+
+	function doLeaveGroup(groupId) {
 		$.ajax({
 		    url: '/orgs/org/leave?groupId=' + groupId,
 		    type: 'DELETE',
 		    success: function(data) {
 		    	console.log(data);
-		    	window.location='/group?groupId=${group.id}';
+		    	window.location='/orgs/org?id=' + ${organization.id};
 		    },
 		    error: function(error) {
 		    	displayError("There was an error when attempting to leave the group");

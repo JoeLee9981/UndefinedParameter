@@ -74,7 +74,7 @@
 						        <item id="newQuizzesItem" class="element text-center span2"><a href="" id="newQuizzesLink"><strong>New Quizzes</strong></a></item>
 						        <item id="topQuizzesItem" class="element text-center span2"><a href="" id="topQuizzesLink"><strong>Top Quizzes</strong></a></item>
 						        <item id="topGroupsItem" class="element text-center span2"><a href="" id="topGroupsLink"><strong>Top Groups</strong></a></item>
-						        <item id="topCategoriesItem" class="element text-center span2 todo"><a href="" id="topCategoriesLink"><strong>Top Categories</strong></a></item>
+						        <item id="topCategoriesItem" class="element text-center span2"><a href="" id="topCategoriesLink"><strong>Top Categories</strong></a></item>
 						    </nav>
 						</nav>					
 					</div>
@@ -253,6 +253,18 @@
 		
 		$('#topCategoriesLink').click(function(event) {
 			event.preventDefault();
+			$.ajax({
+			    url: '/quiz/categories',
+			    type: 'GET',
+			    success: function(data) {
+			    	console.log(data);
+					$('#quiz-div').html(data);
+			    },
+			    error: function(error) {
+			    	$('#quiz-div').html("<p>No Categories Found</p>");
+			    }
+			});
+			toggleActive('#topCategoriesItem');
 		});
 
 		function toggleActive(id) {

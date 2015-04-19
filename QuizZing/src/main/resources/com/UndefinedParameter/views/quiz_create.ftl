@@ -17,7 +17,12 @@
 							<p id="mainCreateQuizError" class="tertiary-text-secondary errorFormText1 createQuizError marginTop30" hidden>* There were errors with the information you entered.  Fix the errors in red and then click 'Continue To Editor'.</p>
 						</div>
 					</div>
-					
+					<#if !joinedOrganizations??>
+					 <div class="row noMargin">
+					 	<h4 class="text-alert">To create a quiz you must join an organization.</h4>
+					 	<p><a href="/orgs"><strong>Click Here</strong></a> to find your organization.</p>
+					 </div>
+					 </#if>
 					<form class="noMargin" id="quizCreateForm">
 						<div class="row noMargin">
 							<div class="span6">
