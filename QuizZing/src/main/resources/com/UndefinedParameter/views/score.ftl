@@ -14,11 +14,19 @@
 		<link href="/assets/css/question.css" rel="stylesheet">
 		<link rel="stylesheet" type="text/css" href="/assets/plugins/unicorn/unicorn_buttons.css" />
 		<link rel="shortcut icon" type="image/x-icon" href="/assets/images/qlogo_32.jpg">
-		<style>
+		<style>		
 			path { 
-				stroke: #60a917;
+				stroke: #4390df;
 				stroke-width: 2;
 				fill: none;
+			}
+			
+			circle {
+				fill: #2F659C;
+			}
+			
+			circle:hover {
+				fill: #1B3A59;
 			}
 
 			.axis path,
@@ -27,6 +35,16 @@
 				stroke: grey;
 				stroke-width: 1;
 				shape-rendering: crispEdges;
+			}
+			
+			.area {
+				fill: #C7DEF5;
+				stroke-width: 0px;
+			}
+			
+			.label {
+				text-transform: uppercase;
+				fill: grey;
 			}
 		</style>
 	</head>
@@ -42,19 +60,30 @@
 						<h1>${user.firstName}'s Statistics</h1>
 						
 						<div class="home-subsection">
-							
-							<select id="quizSelector" onchange="getScores(this.value)">
-								<#if quizIds??>
-									<#list quizIds as quiz>
-										<option value=${quiz.quizId}>${quiz.name}</option>	
-									</#list>
-								</#if>
-							</select>
-							
-							<div id="graph-container">
+							<div class="grid">
+							    <div class="row">
+							        <div class="span4">
+										<div class="input-control select">
+										
+											<select multiple id="quizSelector" onchange="getScores(this.value)">
+												<#if quizIds??>
+													<#list quizIds as quiz>
+														<option value=${quiz.quizId}>${quiz.name}</option>	
+													</#list>
+												</#if>
+											</select>
+											
+										</div>
+									</div>
+									
+									<div class="span6">				
+										<div id="quizScoreGraph"></div>
+									</div>
+								</div>
 							</div>
 							
-							<br><br><br><br><br><br>
+							<br><br>
+							
 						</div>
 					</div>					
 				</div>
@@ -66,8 +95,15 @@
 		
 		<script type="text/javascript">
 		
+		$(document).ready(function(){
+			loadStartingGraph();
+		});
+		
 		function loadStartingGraph() {
-			
+			<#if quizIds??>
+				var firstQuizScore = "${quizIds[0].quizId}";
+				getScores(firstQuizScore);
+			</#if>
 		}	
 												
 		function getScores(quizId) {			
@@ -81,47 +117,44 @@
 				success: function(data) 
 				{
 					drawScorePlot(data["scores"]);						
-				},
-				error: function(data) {
-					alert('An unexpected error occurred: Try again later.  Developers: TODO');
 				}
 			});	
 		}
 		
 		function drawScorePlot(dataset) {
-			$("#graph-container").empty();
+			$("#quizScoreGraph").empty();
 		
-			// Set graph canvas
-			var margin = {top: 30, right: 20, bottom: 30, left: 50},
+			// Set graph canvas.
+			var margin = {top: 10, right: 20, bottom: 40, left: 50},
 				width = 600 - margin.left - margin.right,
-				height = 300 - margin.top - margin.bottom;
+				height = 250 - margin.top - margin.bottom;
 
-			// Parse the date / time
+			// Parse the date / time.
 			var parseDate = d3.time.format("%d-%b-%y").parse;
+			var bisectDate = d3.bisector(function(d) { return d.dateTime; }).left;
 
-			// Set dataset
-			// FIX THIS.
+			// Set dataset.
 			var data = dataset;
 			var i = 0;
 			
-			// Set the ranges
+			// Set the ranges.
 			var x = d3.time.scale().range([0, width]);
 			var y = d3.scale.linear().range([height, 0]);
 
-			// Define the axes
+			// Define the axes.
 			var xAxis = d3.svg.axis().scale(x)
 				.orient("bottom").ticks(5);
 
 			var yAxis = d3.svg.axis().scale(y)
 				.orient("left").ticks(5);
 
-			// Define the line
+			// Define the line.
 			var valueline = d3.svg.line()
 				.x(function(d) { return x(d.dateTime); })
 				.y(function(d) { return y(d.score); });
 				
-			// Adds the svg canvas
-			var svg = d3.select("#graph-container")
+			// Add the svg canvas.
+			var svg = d3.select("#quizScoreGraph")
 				.append("svg")
 					.attr("width", width + margin.left + margin.right)
 					.attr("height", height + margin.top + margin.bottom)
@@ -129,16 +162,16 @@
 					.attr("transform", 
 						  "translate(" + margin.left + "," + margin.top + ")");
 
-				// Scale the range of the data
+				// Scale the range of the data.
 				x.domain(d3.extent(data, function(d) { return d.dateTime; }));
-				y.domain([0, d3.max(data, function(d) { return d.score; })]);
+				y.domain([0, 100]);
 
 				// Add the valueline path.
 				svg.append("path")
 					.attr("class", "line")
 					.attr("d", valueline(data));
 
-				// Add the scatterplot
+				// Add the scatterplot.
 				svg.selectAll("dot")
 					.data(data)
 				  .enter().append("circle")
@@ -146,16 +179,33 @@
 					.attr("cx", function(d) { return x(d.dateTime); })
 					.attr("cy", function(d) { return y(d.score); });
 
-				// Add the X Axis
+				// Add the X axis.
 				svg.append("g")
 					.attr("class", "x axis")
 					.attr("transform", "translate(0," + height + ")")
 					.call(xAxis);
 
-				// Add the Y Axis
+				// Add the Y axis.
 				svg.append("g")
 					.attr("class", "y axis")
 					.call(yAxis);
+					
+				// Add X axis label.
+				svg.append("text")
+				    .attr("class", "x label")
+				    .attr("text-anchor", "end")
+				    .attr("x", width)
+				    .attr("y", height + 35)
+				    .text("Date & Time");
+									
+				// Add Y axis label.
+				svg.append("text")
+				    .attr("class", "y label")
+				    .attr("text-anchor", "end")
+				    .attr("y", 4)
+				    .attr("dy", "-3.5em")
+				    .attr("transform", "rotate(-90)")
+				    .text("Percentage Correct");				    				
 		}
 	</script>
 		
