@@ -1,13 +1,14 @@
 <style>
-	ul
+	.ui-autocomplete
 	{
 		border-style: solid;
 		border-width: 1px;
 		width: 300px;
 		font-size: 15px;
+		background-color: white;
 	}
 
-	li
+	.ui-menu-item
 	{
 		list-style-type: none;
 		
@@ -19,19 +20,42 @@
 <div class="row noMargin">
     <div class="span12">
     	<div>
-			<h4>Tags For This Question</h4>
+			<h4>Find By Category</h4>
 		</div>
 		<div id="categoryTags">
 		</div>
-		<div>
-			<div class="input-control text">
+		<div class="row noMargin">
+			<div class="input-control text span6">
 			    <input id="categories" type="text" value="" placeholder="Comma separated categories"/>
 			</div>
-		</div>	
+			<div class="span6 noMargin">
+				<button id="findButton" class="large" style="height: 34px; margin-left: 10px; padding-top: 7px; width: 80px" disabled>Find</button>
+			</div>
+		</div>
+		<div id="filterDiv" class="row noMargin">
+		</div>
 	</div>
 </div>
 
 <script>
+	$('#findButton').click(function() {
+		$.ajax({
+		    url: '/quiz/categories',
+		    type: 'POST',
+		    data: JSON.stringify(categories),
+			headers: {
+				"Content-Type": "application/json"
+			},
+		    success: function(data) {
+		    	console.log(data);
+				$('#filterDiv').html(data);
+		    },
+		    error: function(error) {
+		    	$('#filterDiv').html("<h3>No Quizzes Found</h3>");
+		    }
+		});
+	});
+
 	//set up auto complete for categories
 	$(function() {
 	
@@ -54,6 +78,16 @@
 	var categories = [];
 	
 	function setCategoryButtons() {
+
+		if(categories.length == 0) {
+			$('#findButton').attr('disabled', true);
+			$('#findButton').attr('class', 'large')
+		}
+		else {
+			$('#findButton').attr('disabled', false);
+			$('#findButton').attr('class', 'success large')
+		}
+		
 		var html = "";
 		for(var i = 0; i < categories.length; i++) {
 			var cat = categories[i];

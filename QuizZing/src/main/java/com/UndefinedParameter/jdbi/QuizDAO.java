@@ -123,7 +123,11 @@ public interface QuizDAO {
 	/*
 	 *  Select quizzes based on the categories asked in the string.
 	 */
-	@SqlQuery("SELECT DISTINCT quiz.* FROM Quiz quiz, Question quest, QuizQuestion qq, QuestionCategory qc, Category c WHERE "
+	@SqlQuery("SELECT DISTINCT quiz.*, sg.Name AS GroupName, sg.GroupID, u.FirstName, u.LastName FROM "
+			+ "Quiz quiz, Question quest, QuizQuestion qq, QuestionCategory qc, Category c, SubGroup sg, User u, GroupQuiz gq WHERE "
+			+ "sg.GroupID = gq.GroupID AND "
+			+ "gq.QuizID = quiz.QuizID AND "
+			+ "quiz.CreatorID = u.UserID AND "
 			+ "qq.QuizID = quiz.QuizID AND "
 			+ "quest.QuestionID = qq.QuestionID AND "
 			+ "quest.QuestionID = qc.QuestionID AND "

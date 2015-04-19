@@ -375,4 +375,11 @@ public class QuizResource {
 		List<String> categories = quizManager.getAllCategories();
 		return Response.ok(new CategoriesView(categories)).build();
 	}
+	
+	@POST
+	@Path("/categories")
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Response getTopQuizzes(List<String> categories) {
+		return Response.ok(new QuizListView("../includes/top_quizzes.ftl", quizManager.getQuizzesFromCategories(categories))).build();
+	}
  }

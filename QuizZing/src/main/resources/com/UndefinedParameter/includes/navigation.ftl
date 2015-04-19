@@ -15,16 +15,7 @@
 	    	<span class="element-divider"></span>
 	    	<a class="element brand" href="/orgs">Organizations</a>	
 			<span class="element-divider"></span>
-            <div class="element"  id="category-dropdown">
-	            <a class="dropdown-toggle" href="#">
-	                Categories &nbsp;
-	            </a>
-	            <ul class="dropdown-menu page-content" id="category-dropdown-container" data-role="dropdown">
-					<div style="height:300px;width:100%;padding:100px;">
-						<p> Categories are coming soon! </p>
-					</div>			    
-	            </ul>          
-            </div>
+            <a class="element brand" href="/quiz/categories">Categories</a>	
 			<span class="element-divider"></span>
 			<div class="element"  id="">
 	            <a class="dropdown-toggle" href="#">

@@ -65,7 +65,7 @@
 							        <div class="span4">
 										<div class="input-control select">
 										
-											<select multiple id="quizSelector" onchange="getScores(this.value)">
+											<select multiple id="quizSelector" onchange="getScores(this.value)" style="height: 215px">
 												<#if quizIds??>
 													<#list quizIds as quiz>
 														<option value=${quiz.quizId}>${quiz.name}</option>	
