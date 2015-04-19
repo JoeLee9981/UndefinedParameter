@@ -217,4 +217,15 @@ public class GroupResource {
 		
 		return Response.ok(new GroupQuestionView(user, questions, groupId, null, moderator)).build();
 	}
+	
+	@GET
+	@Path("/categories")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response getGroupCategories(@QueryParam("groupId") long groupId) {
+		if(groupId < 1) {
+			return Response.status(Status.BAD_REQUEST).build();
+		}
+		List<String> categories = manager.findCategoriesByGroup(groupId);
+		return Response.ok(categories).build();
+	}
 }

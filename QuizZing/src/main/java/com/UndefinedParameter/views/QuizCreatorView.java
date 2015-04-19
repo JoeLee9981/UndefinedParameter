@@ -45,10 +45,13 @@ public class QuizCreatorView extends View
 	
 	public List<Group> getJoinedGroupsInOrganization()
 	{
+		if(joinedGroupsInOrganization.size() == 0)
+			return null;
 		return this.joinedGroupsInOrganization;
 	}
 	
 	public List<String> getCategories() {
 		return this.categories;
 	}
+
 }

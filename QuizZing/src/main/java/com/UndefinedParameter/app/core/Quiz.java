@@ -107,6 +107,11 @@ public class Quiz {
 	 */
 	public int questionPosition = -1;
 	
+	/*
+	 * This is categories for the quiz
+	 */
+	List<String> categories;
+	
 	//Constructor
 	public Quiz() {
 		questions = new ArrayList<Question>();
@@ -356,6 +361,16 @@ public class Quiz {
 	 */
 	public boolean hasPrevious() {
 		return questionPosition > 0;
+	}
+
+	@JsonProperty
+	public List<String> getCategories() {
+		return categories;
+	}
+
+	@JsonProperty
+	public void setCategories(List<String> categories) {
+		this.categories = categories;
 	}
 
 	@JsonProperty
