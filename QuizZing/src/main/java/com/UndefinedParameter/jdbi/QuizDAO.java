@@ -115,9 +115,10 @@ public interface QuizDAO {
 			+ "qc.CategoryID = c.CategoryID AND "
 			+ "q.Rating / q.RatingCount >= :rating AND "
 			+ "q.QuestionDifficulty / q.DifficultyCount >= :difficulty AND "
+			+ "q.GroupID = :groupId AND "
 			+ "(c.CategoryType in (<ctypes>))")
 	@RegisterMapper(QuestionMapper.class) 
-	public List<Question> retrieveQuestionByCategoryAndRatings(@BindIn("ctypes") List<String> ctypes, @Bind("rating") int rating, @Bind("difficulty") int difficulty);
+	public List<Question> retrieveQuestionByCategoryAndRatings(@BindIn("ctypes") List<String> ctypes, @Bind("rating") int rating, @Bind("difficulty") int difficulty, @Bind("groupId") long groupId);
 	
 	/*
 	 *  Select quizzes based on the categories asked in the string.

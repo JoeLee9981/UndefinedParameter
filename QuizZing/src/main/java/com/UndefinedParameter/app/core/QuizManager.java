@@ -754,27 +754,30 @@ public class QuizManager {
 		return questions;
 	}
 	
-	public long autoCreateQuiz(long groupId, Quiz quiz, List<String> categories, int rating, int difficulty, int questionCount) {
+	public boolean autoCreateQuiz(long groupId, long quizId, List<String> categories, int rating, int difficulty, int questionCount) {
 		
 		if(groupId < 1 || categories == null || categories.size() < 1 || questionCount < 1)	{
 			//invalid parameters
-			return -1;
+			return false;
 		}
 		
-		long quizId = createQuiz(quiz, groupId);
 		if(quizId < 1) {
 			//failed to create quiz
-			return -1;
+			return false;
 		}
-		List<Question> questions = quizDAO.retrieveQuestionByCategoryAndRatings(categories, rating, difficulty);
+		List<Question> questions = quizDAO.retrieveQuestionByCategoryAndRatings(categories, rating, difficulty, groupId);
 		if(questions.size() < questionCount) {
 			//not done yet, not enough questions matching specs
 		}
-		for(Question q: questions) {
-			addQuestionToQuiz(quizId, q.getQuestionId());
+		Collections.shuffle(questions);
+		for(int i = 0; i < questionCount; i++) {
+			addQuestionToQuiz(quizId, questions.get(i).getQuestionId());
+			//we have to check if we will go out of bounds of the array
+			if(i + 1 >= questions.size())
+				break;
 		}
 		
-		return quizId;
+		return true;
 	}
 }
 

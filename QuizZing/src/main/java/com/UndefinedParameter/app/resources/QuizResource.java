@@ -159,7 +159,9 @@ public class QuizResource {
 	@Path("/create")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response createQuiz(@Auth(required = false) User user, @Valid Quiz quiz, @QueryParam("groupId") long groupId) {
+	public Response createQuiz(@Auth(required = false) User user, @Valid Quiz quiz, @QueryParam("groupId") long groupId, 
+			@QueryParam("auto") boolean auto, @QueryParam("questionCount") int questionCount, 
+			@QueryParam("rating") int rating, @QueryParam("difficulty") int difficulty) {
 		
 		if(user == null) {
 			return Response.status(Status.UNAUTHORIZED).build();
@@ -171,7 +173,7 @@ public class QuizResource {
 		quiz.setDifficulty(3);
 		quiz.setRating(3);
 		//this is for future use
-		quiz.setTime(10000);
+		quiz.setTime(0);
 		
 		long quizId = quizManager.createQuiz(quiz, groupId);
 		if(quizId >= 1) {
@@ -179,6 +181,9 @@ public class QuizResource {
 			userGroupManager.addPoints(user.getId(), groupId, 5);
 			
 			if(quizManager.addQuizToGroup(quizId, groupId)) {
+				if(auto) {
+					quizManager.autoCreateQuiz(groupId, quizId, quiz.getCategories(), rating, difficulty, questionCount);
+				}
 				response.put("response", "success");
 				response.put("redirect", "/quiz/edit?groupId=" + groupId + "&quizId=" + quizId);
 			}

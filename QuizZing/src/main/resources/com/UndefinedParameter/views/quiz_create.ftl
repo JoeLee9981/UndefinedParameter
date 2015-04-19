@@ -3,6 +3,7 @@
 	<head>
 		<title>QuizZing - Quiz Creator</title>
 		<link rel="shortcut icon" type="image/x-icon" href="/assets/images/qlogo_32.jpg">
+		<link rel="stylesheet" type="text/css" href="/assets/css/quiz.css" />
 	</head>
 
 	<body class="metro">
@@ -16,6 +17,7 @@
 							<p id="mainCreateQuizError" class="tertiary-text-secondary errorFormText1 createQuizError marginTop30" hidden>* There were errors with the information you entered.  Fix the errors in red and then click 'Continue To Editor'.</p>
 						</div>
 					</div>
+					
 					<form class="noMargin" id="quizCreateForm">
 						<div class="row noMargin">
 							<div class="span6">
@@ -25,13 +27,14 @@
 											<h4>Choose a joined organization for this quiz</h4>
 										</div>
 										<div class="row noMargin">
+											<p id="orgError" class="tertiary-text-secondary errorFormText1 createQuizError" hidden>Please select an organization</p>
 											<div class="input-control text">
 											    <input type="text" id="orgFilterSearch" value="" placeholder="Filter joined organizations..."/>
 											</div>
 										</div>
 										<div class="row noMargin">
 											<div class="input-control select">
-											    <select multiple id="orgFilteredList">
+											    <select multiple style="height: 200px"id="orgFilteredList">
 											    </select>
 											</div>
 										</div>
@@ -43,6 +46,7 @@
 											<h4>Choose a joined group in this organization for this quiz</h4>
 										</div>
 							    		<div class="row noMargin">
+							    			<p id="groupError" class="tertiary-text-secondary errorFormText1 createQuizError" hidden>Please select a group</p>
 											<div class="input-control text">
 											    <input type="text" id="groupFilterSearch" value="<#if group??>${group.name}</#if>" placeholder="Filter joined groups..."/>
 											</div>
@@ -85,6 +89,15 @@
 			                                </div>
 										</div>
 								    </div>				
+								</div>
+								<div class="row noMargin">
+									<div class="input-control checkbox noMargin">
+									    <label>
+									        <input id="autoCheck" class="createOrgError" id="iAccept" type="checkbox" checked/>
+									        <span class="check"></span>
+									        <strong>Auto-generate quiz</strong>
+									    </label>
+									</div>
 								</div>			
 								<div class="row">
 									<div>
@@ -92,28 +105,51 @@
 									</div>							
 								</div>
 							</div>
-							<div class="span6">
+							<div class="span5">
+								<div>
+									<h4>Max number of questions</h4>
+								</div>
+								<p id="numberError" class="tertiary-text-secondary errorFormText1 createQuizError" hidden>Please select a number over 0</p>
+					    		<div class="row noMargin">
+									<div class="input-control text">
+									    <input type="text" id="questionCount" class="focusOutTrim focusOutValidateNotEmpty" value="10" />
+									</div>
+								</div>
+								<div>
+									<h4>Select target rating</h4>
+								</div>
+								<div id="rating" class="fg-yellow rating">
+								</div>
+								<div>
+									<h4>Select target difficulty</h4>
+								</div>
+								<div id="difficulty" class="rating fg-yellow">
+								</div>
 								<div>
 									<h4>Select tags for this quiz</h4>
 								</div>
-								<div class="listview-outlook" data-role="listview">
-									<#if categories??>
-                                    <a class="list marked" href="#">
-                                        <div class="list-content">
-                                            <span class="list-title">subscribe@metroui.net</span>
-                                            <span class="list-subtitle">MetroUI: News on 26/10/2013</span>
-                                            <span class="list-remark">Hello friend! Newest for Metro UI CSS</span>
-                                        </div>
-                                    </a>
-                                    <#else>
-                                    <a class="list marked" href="#">
-                                    	<div class="list-content">   
-                                            <span class="list-title">No tags for this group</span>
-                                        </div>
-                                    </a>
-                                    </#if>
-                                    
-                            	</div>
+								<div class="row noMargin quizQuestionList" style="height: 430px; width:323px">
+									<div class="quizQuestionListContent">
+										<div id="catList" class="listview">
+											<#if categories??>
+											<#list categories as category>
+		                                    <a id="${category_index}Button" class="list" href="#" onclick="toggleCategory(${category_index}, '${category}')">
+		                                        <div class="list-content">
+		                                            <span class="list-title">${category}</span>
+		                                        </div>
+		                                    </a>
+		                                    </#list>
+		                                    <#else>
+		                                    <a class="list marked" href="#">
+		                                    	<div class="list-content">   
+		                                            <span class="list-title">No tags for this group</span>
+		                                        </div>
+		                                    </a>
+		                                    </#if>
+		                                    
+		                            	</div>
+		                            </div>
+		                    	</div>
 							</div>
 						</div>	
 					</form>			
@@ -130,12 +166,75 @@
 	
 	<script>
 	
+	var categories = [];
+	var quality = 3;
+	var difficulty = 3;
+	
+	function toggleCategory(index, cat) {
+		if($.inArray(cat, categories) == -1) {
+			categories.push(cat);
+			$('#' + index + 'Button').addClass("selected");
+		}
+		else {
+			removeCategory(cat)
+			$('#' + index + 'Button').removeClass("selected");
+		}
+	}
+	
+	function removeCategory(cat) {
+		var temp = [];
+		for(var j = 0; j < categories.length; j++) {
+			if(cat != categories[j]) {
+				temp.push(categories[j]);
+			}
+		}
+		categories = temp;
+	}
+	
+	$("#difficulty").rating({
+		static: false,
+		score: 3,
+		stars: 5,
+		showHint: true,
+		hints: ['cake', 'easy', 'average', 'hard', 'impossible'],
+		click: function(value, rating) {
+			difficulty = value;
+			rating.rate(value);
+		}
+	});
+	
+	$("#rating").rating({
+		static: false,
+		score: 3,
+		stars: 5,
+		showHint: true,
+		hints: ['useless', 'poor', 'average', 'good', 'excellent'],
+		click: function(value, rating) {
+			quality = value;
+			rating.rate(value);
+		}
+	});
+	
+	$('#autoCheck').click(function() {
+		if($('#autoCheck').is(":checked")) {
+			$('#questionCount').attr('disabled', false);
+			$('#rating').attr('disabled', false);
+			
+		}
+		else {
+			$('#questionCount').attr('disabled', true);
+			$('#rating').attr('disabled', false);
+		}
+	});
+	
 	var joinedOrganizationList =
 		{		
-			<#list joinedOrganizations as org>
-				'${org.name}':${org.id}
-				<#if org_has_next>,</#if>
-			</#list>
+			<#if joinedOrganizations??>
+				<#list joinedOrganizations as org>
+					'${org.name}':${org.id}
+					<#if org_has_next>,</#if>
+				</#list>
+			</#if>
 		};
 		
 	var joinedGroupListInOrganzation = {};
@@ -275,6 +374,14 @@
 		// Do not create the quiz if there is no quiz title or quiz description
 		var hasNoErrors = true;
 		
+		if(!$('#orgFilteredList').val()) {
+			$("#orgError").show();
+			hasNoErrors = false;
+		}
+		if(!selectedGroupId) {
+			$('#groupError').show();
+			hasNoErrors = false;
+		}
 		if (quizTitle.length <= 0)
 		{
 			$("#titleError").show();
@@ -297,12 +404,27 @@
 			$("#quizDescription").removeClass('invalid').addClass('valid');
 		}
 		
+		var auto = $('#autoCheck').is(":checked");
+		var count = 0;
+		if(auto)	{
+			count = $("#questionCount").val();
+
+			if(count < 1 || isNaN(count)) {
+				$("#numberError").show();
+				$("#questionCount").removeClass('valid').addClass('invalid');
+				hasNoErrors = false;
+			}
+			else {
+				$("#questionCount").removeClass('invalid').addClass('valid');
+			}
+		}
+		
 		if (hasNoErrors)
 		{
 			$.ajax({
 				type: 'POST',
-				url: "/quiz/create?groupId=" + selectedGroupId,
-				data: JSON.stringify({name: quizTitle, description: quizDescription }),
+				url: "/quiz/create?groupId=" + selectedGroupId + "&auto=" + auto + "&questionCount=" + count + "&rating=" + quality + "&difficulty=" + difficulty,
+				data: JSON.stringify({name: quizTitle, description: quizDescription, categories: categories }),
 				dataType: "json",
 				headers: {
 					Accept: "application/json",
@@ -328,6 +450,32 @@
 			$("#mainCreateQuizError").show();
 			$("html, body").animate({ scrollTop: 0 }, 300);
 		}		
+	}
+	
+	function setCategoriesForGroup(groupId) {
+
+		$.ajax({
+			type: 'GET',
+			url: '/group/categories?groupId=' + groupId,
+			headers: {
+				Accept: "application/json",
+			},
+			success: function(data)
+			{
+				var html = "";
+				for(var i = 0; i < data.length; i++) {
+					html += '<a id="' + i + 'Button" class="list" href="#" onclick="toggleCategory(' + i + ', \''+ data[i] +'\')">'
+		                +	 '<div class="list-content">'
+		                +		'<span class="list-title">' + data[i] + '</span>'
+		                +	 '</div>'
+	            		+ '</a>';
+	            		
+	            		
+				}
+				
+            	$('#catList').html(html);
+			}
+		});
 	}
 	
 	</script>
