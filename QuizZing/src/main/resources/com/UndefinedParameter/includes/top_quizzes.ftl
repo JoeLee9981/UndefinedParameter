@@ -16,7 +16,7 @@
         <tbody>                         
         		<#list quizzes as quiz>
 					<tr>
-						<td><a href="quiz?quizId=${quiz.quizId}">${quiz.name}</a></td>
+						<td><a href="/quiz?quizId=${quiz.quizId}">${quiz.name}</a></td>
 						<td class="text-left left"><a href="group?groupId=${quiz.parentGroupId}">${quiz.parentGroupName}</a></td>
 						<td class="text-left left"><a href="user?userid=${quiz.creatorId}">${quiz.creatorName}</a></td>
 						<td class="text-left left">

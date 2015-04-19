@@ -380,7 +380,7 @@ public class QuizResource {
 	@Path("/categories")
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response getCategoryQuizzes(List<String> categories) {
-		return Response.ok(new QuizListView("../includes/top_quizzes.ftl", quizManager.getQuizzesFromCategories(categories))).build();
+		return Response.ok(new QuizListView("../includes/quiz_list.ftl", quizManager.getQuizzesFromCategories(categories))).build();
 	}
 	
 	@GET

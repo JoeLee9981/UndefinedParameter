@@ -110,7 +110,7 @@
 									</div>							
 								</div>
 							</div>
-							<div class="span5">
+							<div class="span4">
 								<div>
 									<h4>Max number of questions</h4>
 								</div>
