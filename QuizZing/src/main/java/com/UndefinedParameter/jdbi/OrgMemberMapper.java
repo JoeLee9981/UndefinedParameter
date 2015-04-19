@@ -25,6 +25,7 @@ public class OrgMemberMapper implements ResultSetMapper<OrgMember> {
 		member.setJoinDate(new DateTime(r.getDate("JoinDate")));
 		member.setQuizzes(10);
 		member.setQuestions(100);
+		member.setModerator(r.getBoolean("Moderator"));
 
 		return member;
 	}

@@ -20,6 +20,7 @@ public class UserGroupManager {
 			if(amount == 0)
 			{
 				usergroupDAO.insert(user, group);
+				usergroupDAO.incrementGroupMembers(group);
 				return true;
 			}
 			else if(amount == 1)
@@ -47,6 +48,7 @@ public class UserGroupManager {
 			else if(amount == 1)
 			{
 				usergroupDAO.delete(user, group);
+				usergroupDAO.decrementGroupMembers(group);
 				return true;
 			}
 			else

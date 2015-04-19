@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.skife.jdbi.v2.sqlobject.Bind;
 import org.skife.jdbi.v2.sqlobject.SqlQuery;
+import org.skife.jdbi.v2.sqlobject.SqlUpdate;
 import org.skife.jdbi.v2.sqlobject.customizers.RegisterMapper;
 
 import com.UndefinedParameter.app.core.OrgMember;
@@ -24,4 +25,32 @@ public interface OrgMemberDAO {
 			+ "sg.GroupID = :groupId")
 	@RegisterMapper(GroupMemberMapper.class)
 	public List<OrgMember> retrieveMembersByGroup(@Bind("groupId") long groupId);
+	
+	@SqlQuery("SELECT * FROM UserOrganization WHERE "
+			+ "UserID = :userID AND "
+			+ "OrgID = :orgID")
+	@RegisterMapper(GroupMemberMapper.class)
+	public List<OrgMember> retrieveMemberByOrgIdUserId(@Bind("orgID") long orgid,
+														@Bind("userID") long userid);
+	
+	@SqlQuery("SELECT SUM(ug.EarnedPoints) FROM UserGroups ug, SubGroup sg, Organization og"
+			+ " WHERE og.OrgID = :orgID AND"
+			+ "og.OrgID = sg.OrgID AND"
+			+ "sg.GroupID = ug.GroupID AND "
+			+ "ug.UserID = :userID")
+	public long getAmountEarnedPointsOrg(@Bind("orgID") long orgid,
+										@Bind("userID") long userid);
+	
+	@SqlQuery("SELECT Moderator FROM UserOrganization "
+			+ "WHERE OrgID = :orgID AND"
+			+ "UserID = :userID")
+	public int getModStatus(@Bind("orgID") long orgid,
+								@Bind("userID") long userid);
+	
+	@SqlUpdate("UPDATE UserOrganization SET Moderator = :status "
+			+ "WHERE OrgID = :orgID AND"
+			+ "UserID = :userID")
+	public void setModStatus(@Bind("status") long status,
+								@Bind("orgID") long orgid,
+								@Bind("userID") long userid);
 }

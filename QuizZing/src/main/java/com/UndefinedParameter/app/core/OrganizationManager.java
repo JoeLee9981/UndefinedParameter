@@ -239,9 +239,22 @@ public class OrganizationManager {
 	
 	public boolean registerUserForGroup(long groupId, long userId) {
 		try {
-			groupDAO.registerGroup(userId, groupId);
-			groupDAO.incrementGroupMembers(groupId);
-			return true;
+			long amount = groupDAO.findUserGroupCount(userId, groupId);
+			
+			if(amount == 0)
+			{
+				groupDAO.registerGroup(userId, groupId);
+				groupDAO.incrementGroupMembers(groupId);
+				return true;
+			}
+			else if(amount == 1)
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
 		}
 		catch(Exception e) {
 			return false;
@@ -250,9 +263,23 @@ public class OrganizationManager {
 	
 	public boolean  removeuserFromGroupById(long groupId, long userId) {
 		try {
-			groupDAO.removeUserGroup(groupId, userId);
-			groupDAO.decrementGroupMembers(groupId);
-			return true;
+			
+			long amount = groupDAO.findUserGroupCount(userId, groupId);
+			
+			if(amount == 0)
+			{
+				return true;
+			}
+			else if(amount == 1)
+			{
+				groupDAO.removeUserGroup(groupId, userId);
+				groupDAO.decrementGroupMembers(groupId);
+				return true;
+			}
+			else
+			{
+				return false;
+			}
 		}
 		catch(Exception e) {
 			return false;
@@ -371,5 +398,101 @@ public class OrganizationManager {
 			return null;
 		}
 		return orgDAO.retrieveQuizzesByOrg(orgId);
+	}
+	
+	/**
+	 * 
+	 * Updates the Moderator status for the User in the Organization.
+	 * 
+	 * @param orgID
+	 * @param userID
+	 * @return 1 if total points is greater than 0 and ModStatus was set, 0 if points were not greater than 0 and ModStatus was not set, -1 for an error
+	 */
+	public int updateModStatus(long orgID, long userID)
+	{
+		try
+		{
+			long sum = orgMemberDAO.getAmountEarnedPointsOrg(orgID, userID);
+			if(sum >= 1000)
+			{
+				orgMemberDAO.setModStatus(1, orgID, userID);
+				return 1;
+			}
+			else if(sum > 1000 && sum > 0)
+			{
+				orgMemberDAO.setModStatus(0, orgID, userID);
+				return 1;
+			}
+			else
+			{
+				return 0;
+			}
+		}
+		catch(Exception e)
+		{
+			return -1;
+		}
+	}
+	
+	/**
+	 * Finds out the Moderator Status of the User in the Organization. DOES NOT CHECK IF THEY SHOULD BE, run updateModStatus to find out.
+	 * 
+	 * @param orgID
+	 * @param userID
+	 * @return True if a Moderator, False if not. 
+	 */
+	public boolean getModStatus(long orgID, long userID)
+	{
+		int isMod = orgMemberDAO.getModStatus(orgID, userID);
+		if(isMod == 1)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	
+	/**
+	 * 
+	 * Overrides the Moderator status and set it for True for the User in the Organization.
+	 * 
+	 * @param orgID
+	 * @param userID
+	 * @return True if it worked. False for an error
+	 */
+	public boolean setToBeModerator(long orgID, long userID)
+	{
+		try
+		{
+			orgMemberDAO.setModStatus(1, orgID, userID);
+			return true;
+		}
+		catch(Exception e)
+		{
+			return false;
+		}
+	}
+	
+	/**
+	 * 
+	 * Overrides the Moderator status and set it for False for the User in the Organization.
+	 * 
+	 * @param orgID
+	 * @param userID
+	 * @return True if it worked. False for an error
+	 */
+	public boolean setToNoTBeModerator(long orgID, long userID)
+	{
+		try
+		{
+			orgMemberDAO.setModStatus(0, orgID, userID);
+			return true;
+		}
+		catch(Exception e)
+		{
+			return false;
+		}
 	}
 }
