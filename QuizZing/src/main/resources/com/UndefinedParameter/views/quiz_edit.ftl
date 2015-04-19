@@ -131,11 +131,11 @@
 					<div class="span5">
 						<div class="row noMargin">
 							<div class="input-control text">
-							    <input id="currentQuestionFilter" type="text" placeholder="Search questions in quiz..."/>
+							    <input id="currentQuestionFilter" type="text" placeholder="Filter questions in quiz..."/>
 							</div>
 						</div>
-						<div id="quizQuestionList" class="row noMargin">
-							<div id="quizQuestionListContent">
+						<div class="row noMargin quizQuestionList">
+							<div class="quizQuestionListContent">
 								<div id="currentQuestionList" class="listview-outlook" data-role="listview">
 									<#list quiz.questions as question>
 	                                    <a class="list" href="#" id="quizQuestion${question.questionId}">
@@ -152,9 +152,9 @@
 	                                          		</span>
 	                   								<span class="place-right">
 	                   									<#if question.creatorId == user.id>
-	                   										<button class="small success">Edit</button>
+	                   										<button id="editQuestion${question.questionId}" class="small primary">Edit</button>
 	                   									</#if>
-	                   									<button id="removeButton${question.questionId}" onclick="removeQuestion(${question.questionId});" class="small danger">Remove</button>
+	                   									<button id="removeButton${question.questionId}" onclick="removeQuestion(${question.questionId});return false;" class="small danger">Remove</button>
 	                   								</span>
 	                   							</span>
 	                                        </div>
@@ -165,6 +165,41 @@
 						</div>
 					</div>
 					<div class="span7">
+						<div class="row noMargin">
+							<div class="input-control text">
+							    <input id="findQuestionSearch" type="text" placeholder="Find existing questions..."/>
+							    <button class="btn-search todo"></button>
+							</div>
+						</div>						
+						<div class="row noMargin quizQuestionList">
+							<div class="quizQuestionListContent">
+								<div id="findQuestionList" class="listview-outlook" data-role="listview">
+									<#list unaddedGroupQuestions as question>
+	                                    <a class="list" href="#" id="quizQuestion${question.questionId}" onclick="return false;">
+	                                        <div class="list-content">
+	                                            <span class="list-title">${question.questionTextFirstLine}</span>
+	                                            <span class="list-title questionText" style="display: none">
+	                                            	${question.questionText}
+	                                            </span>
+	                                          	<span class="list-subtitle questionCategories">${question.categoriesString}</span>
+	                                          	<span class="list-remark">
+	                                          		<span>
+	                                          			<strong>Rating: </strong> ${question.rating}/5
+	                                          			<strong>Difficulty: </strong> ${question.difficulty}/5
+	                                          		</span>
+	                   								<span class="place-right">
+	                   									<#if question.creatorId == user.id>
+	                   										<button id="editQuestion${question.questionId}" class="small primary">Edit</button>
+	                   									</#if>
+	                   									<button id="addButton${question.questionId}" onclick="addQuestion(${question.questionId});" class="small success">Add</button>
+	                   								</span>
+	                   							</span>
+	                                        </div>
+	                                    </a>
+	                            	</#list>
+                                </div>
+							</div>
+						</div>			
 					</div>
 				</div>
 			</div>
@@ -465,6 +500,8 @@
 		function removeQuestion(questionId) {
 			$("#removeButton" + questionId).attr("disabled", true);
 			$("#removeButton" + questionId).removeClass("danger");
+			$("#editQuestion" + questionId).attr("disabled", true);
+			$("#editQuestion" + questionId).removeClass("primary");
 			$.ajax({
 				type: 'DELETE',
 				url: '/question/remove?quizId=${quiz.quizId}&questionId=' + questionId,
@@ -482,6 +519,8 @@
 					
 				}
 			});
+			
+			return false;
 		}
 		
 		
@@ -503,6 +542,56 @@
 				
 			});
 		});
+		
+		
+		function addQuestion(questionId)
+		{
+			$("#addButton" + questionId).attr("disabled", true);
+			$("#addButton" + questionId).removeClass("success");
+			$("#editQuestion" + questionId).attr("disabled", true);
+			$("#editQuestion" + questionId).removeClass("primary");
+			$.ajax({
+				type: 'POST',
+				url: '/question/add?questionId=' + questionId + '&groupId=${group.id}&quizId=${quiz.quizId}',
+				success: function(data)
+				{
+					var questionToAdd = $("#quizQuestion" + questionId).clone();
+					questionToAdd.removeClass("active");
+					
+					// Remove it from the add question list
+					$("#quizQuestion" + questionId).fadeOut(300, function(){
+						$("#quizQuestion" + questionId).remove();
+						
+						// Add the element to the current quiz question list
+						questionToAdd.hide();
+						
+						// Change the values to be a remove option now
+						var buttonToChange = questionToAdd.find("#addButton" + questionId);
+						buttonToChange.addClass("danger");
+						buttonToChange.html("Remove");
+						buttonToChange.attr("disabled", false);
+						buttonToChange.attr("onclick", "removeQuestion(" + questionId + "); return false;");
+						buttonToChange.attr("id", "removeButton" + questionId);
+						
+						var editButton = questionToAdd.find("#editQuestion" + questionId)
+						editButton.attr("disabled", false);
+						editButton.addClass("primary");
+						
+						$("#currentQuestionList").append(questionToAdd);
+						
+						// Increment the question count
+						$("#questionCount").html(parseInt($("#questionCount").html()) + 1);
+						
+						questionToAdd.fadeIn(300);
+					});
+					
+				},
+				error: function()
+				{
+					
+				}
+			});
+		}
 		
 	</script>	
 

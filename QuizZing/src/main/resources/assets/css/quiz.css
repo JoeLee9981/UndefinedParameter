@@ -26,14 +26,14 @@
 
 
 
-#quizQuestionList
+.quizQuestionList
 { 
 	overflow-y: scroll;
 	overflow-x: hidden;
 	border: 1px solid #d3d3d3;
 	height: 500px;
 }
-#quizQuestionListContent
+.quizQuestionListContent
 {
     padding: 0px;
 }

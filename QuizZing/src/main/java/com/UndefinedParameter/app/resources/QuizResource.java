@@ -19,6 +19,7 @@ import javax.ws.rs.core.Response.Status;
 import com.UndefinedParameter.app.core.Group;
 import com.UndefinedParameter.app.core.GroupManager;
 import com.UndefinedParameter.app.core.OrganizationManager;
+import com.UndefinedParameter.app.core.Question;
 import com.UndefinedParameter.app.core.Quiz;
 import com.UndefinedParameter.app.core.QuizManager;
 import com.UndefinedParameter.app.core.QuizScore;
@@ -219,8 +220,9 @@ public class QuizResource {
 		else
 			group = groupManager.findGroupByQuizId(id);
 		
+		List<Question> unaddedGroupQuestions = quizManager.findUnaddedGroupQuestions(groupId, id);
 		if(quiz != null && (user.getId() == quiz.getCreatorId() || quiz.isOpen() || user.isAdmin())) {
-			return Response.ok(new QuizEditView(user, quiz, group)).build();
+			return Response.ok(new QuizEditView(user, quiz, group, unaddedGroupQuestions)).build();
 		}
 		return Response.status(Status.BAD_REQUEST).build();
 	}
