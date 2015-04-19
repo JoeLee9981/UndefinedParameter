@@ -53,6 +53,9 @@ public interface GroupDAO {
 			+ "user.UserID = :userId")
 	public List<Group> findGroupsByUser(@Bind("userId") long userId);
 	
+	@SqlQuery("SELECT COUNT(*) FROM UserGroups WHERE UserID = :userID AND GroupID = :groupID")
+	public long findUserGroupCount(@Bind("userID") long userId, @Bind("groupID") long groupId);
+	
 	@SqlUpdate("INSERT INTO SubGroup (Name, Description, OrgID) VALUES (:name, :desc, :orgId)")
 	@GetGeneratedKeys
 	public long insertGroup(@Bind("name") String name, 

@@ -22,6 +22,12 @@ public interface UserGroupDAO {
 	@SqlQuery("SELECT COUNT(*) FROM UserGroups WHERE UserID = :userID AND GroupID = :groupID")
 	public long findUserGroupCount(@Bind("userID") long userId, @Bind("groupID") long groupId);
 	
+	@SqlUpdate("UPDATE SubGroup SET MemberCount = MemberCount - 1 WHERE GroupID = :groupId")
+	public void decrementGroupMembers(@Bind("groupId") long groupId);
+	
+	@SqlUpdate("UPDATE SubGroup SET MemberCount = MemberCount + 1 WHERE GroupID = :groupId")
+	public void incrementGroupMembers(@Bind("groupId") long groupId);
+	
 	@SqlUpdate("INSERT INTO UserGroup "
 		+ "(UserID, GroupID) "
 		+ "VALUES "
@@ -64,7 +70,7 @@ public interface UserGroupDAO {
 	public int getUserGroupEarnedPoints(@Bind("groupID") long groupId,
 											@Bind("userID") long userId);
 	
-	@SqlUpdate("UPDATE UserGroups SET ModStatus = modstatus WHERE GroupID = :groupID AND UserID = :userID")
+	@SqlUpdate("UPDATE UserGroups SET ModStatus = :modstatus WHERE GroupID = :groupID AND UserID = :userID")
 	public int updateUserGroupModStatus(@Bind("groupID") long groupId,
 											@Bind("userID") long userId,
 											@Bind("modstatus") int modstat);
