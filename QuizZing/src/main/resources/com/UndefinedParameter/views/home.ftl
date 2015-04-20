@@ -95,8 +95,8 @@
 					</div>
 					<div class="row">
 						<div id="quiz-div" class="span12">
-							<div class="row">
-								<h2>My Quizzes</h2>
+							<div class="row noMargin">
+								<h2><strong>Top Quizzes</strong></h2>
 								<#if quizzes??>
 								<table class="table hovered striped">
 							        <thead>

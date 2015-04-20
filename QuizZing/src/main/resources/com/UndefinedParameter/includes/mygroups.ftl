@@ -1,5 +1,5 @@
-<div class="row">
-	<h2>My Groups</h2>
+<div class="row noMargin">
+	<h2><strong>My Groups</strong></h2>
 	<table class="table hovered striped">
         <thead>
             <tr>

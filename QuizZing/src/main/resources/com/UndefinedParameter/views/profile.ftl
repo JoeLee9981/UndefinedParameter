@@ -11,6 +11,7 @@
 		<link href="/assets/plugins/metro_ui/min/iconFont.min.css" rel="stylesheet">
 		<link href="/assets/css/overrides.css" rel="stylesheet">
 		<link href="/assets/css/home.css" rel="stylesheet">	
+		<link rel="stylesheet" href="/assets/css/profile.css">
 		<link rel="shortcut icon" type="image/x-icon" href="/assets/images/qlogo_32.jpg">
 	</head>
 	<body>
@@ -20,15 +21,29 @@
 				<div class="metro" id="home-page-subsection">
 					<div class="grid fluid">
 						<#if userProf??>
-							<h1>${displayName?html}</h1>
-							<h2>${userProf.country?html}</h2>
-							
+						
+							<div class="row" id="groupImageContainer">
+								<div class="row noMargin">
+								    <div class="indent30 span12">
+								    	<div class="row noMargin">
+											<h1 style="text-shadow: 0 0 3px #000000, 0 0 5px #000000;" class="fg-white">
+												<strong><i class="icon-user on-left fg-white bg-amber" style="padding-left: 15px; padding-top: 13px; border-radius: 50%; height: 80px; width: 80px"></i> ${displayName?html}</strong> 
+
+											</h1>
+											<h2 style="margin-left: 100px; margin-top: -20px; text-shadow: 0 0 3px #000000, 0 0 5px #000000;" class="fg-white"><strong>${userProf.country?html}</strong></h2>
+										</div>	
+									</div>
+							    </div>
+							</div>
+						
+							<div class="row">
 							<#if editable>
-								<button class="place-right success" onclick="location.href='/user/edit?userid=${userProf.id}'">Edit Profile</button>
-								<button class="place-right primary" onclick="location.href='/user/scores?userid=${userProf.id}'">View Scores</button>
-							</#if>
 							
-							<div class="home-subsection">
+								<button class="place-right success large" style="margin-left: 10px" onclick="location.href='/user/edit?userid=${userProf.id}'"><i class="icon-pencil on-left fg-white"></i> Edit Profile</button>
+								<button class="place-right primary large" onclick="location.href='/user/scores?userid=${userProf.id}'"><i class="icon-chart-alt on-left fg-white"></i> View Scores</button>
+							</#if>
+							</div>
+							<div class="row noMargin">
 								<h3>${userProf.firstName?html}'s Quizzes</h3>
 								<#if userQuizzes??>
 								<table class="table hovered striped">
@@ -105,7 +120,7 @@
 								</#if>
 							</div>
 						
-							<div class="home-subsection">
+							<div class="row noMargin">
 								<h3>${userProf.firstName?html}'s Groups</h3>								
 								<#if userGroups??>
 									<table class="table hovered striped">

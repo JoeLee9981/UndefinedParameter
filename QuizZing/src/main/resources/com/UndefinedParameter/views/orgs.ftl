@@ -227,6 +227,7 @@
 				$.Dialog({
 				shadow: true,
 				overlay: true,
+				flat: true,
 				icon: '<span class="icon-warning fg-amber"></span>',
 				title: 'Leave Organization',
 				padding: 10,

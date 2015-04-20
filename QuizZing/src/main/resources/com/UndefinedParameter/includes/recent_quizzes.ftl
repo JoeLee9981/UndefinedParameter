@@ -1,5 +1,5 @@
-<div class="row">
-	<h2>Recently Added Quizzes</h2>
+<div class="row noMargin">
+	<h2><strong>Recently Added Quizzes</strong></h2>
 	<#if quizzes??>
 	<table class="table hovered striped">
         <thead>
