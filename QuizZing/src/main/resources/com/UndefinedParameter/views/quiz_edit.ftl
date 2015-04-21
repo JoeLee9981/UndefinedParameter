@@ -289,9 +289,11 @@
 					$("#saveAllChangesButton").addClass("success");
 					$("#saveAllChangesButton").attr("disabled", false);
 				
+					$.Notify({style: {background: 'green', color: 'white'}, content: "Your changes have been saved."});
+					
 					if("success" == data["response"])
 					{
-
+						
 					}
 					else
 					{
@@ -332,6 +334,7 @@
 					"Content-Type": "application/json"
 				},
 				success: function(data) {
+					$.Notify({style: {background: 'green', color: 'white'}, content: "Quiz title has been saved."});
 					if("success" == data["response"])
 					{
 
@@ -403,6 +406,8 @@
 					"Content-Type": "application/json"
 				},
 				success: function(data) {
+				
+					$.Notify({style: {background: 'green', color: 'white'}, content: "Quiz description has been saved."});
 					if("success" == data["response"])
 					{
 
@@ -502,6 +507,8 @@
 					
 					// Decrement the question count
 					$("#questionCount").html(parseInt($("#questionCount").html()) - 1);
+					
+					$.Notify({style: {background: 'orange', color: 'white'}, content: "Question has been removed from quiz."});
 				},
 				error: function()
 				{
@@ -572,6 +579,7 @@
 						$("#questionCount").html(parseInt($("#questionCount").html()) + 1);
 						
 						questionToAdd.fadeIn(300);
+						$.Notify({style: {background: 'green', color: 'white'}, content: "Question has been added to your quiz."});
 					});
 					
 				},
@@ -612,6 +620,7 @@
 			manageQuestionCount();
 			categories = [];
 			setCategoryButtons();
+			$.Notify({style: {background: 'green', color: 'white'}, content: "Your new question has been created and added to your quiz."});
 		}
 		
 		var categories = [];
@@ -988,6 +997,10 @@
 			$('#categories' + currentCreateQuestionType).val("");
 			event.preventDefault();
 		});
+		
+		
+
+
 		
 	</script>	
 
