@@ -185,10 +185,13 @@ public class Question {
 	
 	public String getQuestionTextFormatted() {
 		if(type != QuestionType.MATCHING && type != QuestionType.FILL_IN_THE_BLANK) {
-			return questionText;
+			return questionText.replace("&amp;", "&");
 		}
-		return questionText.replace("&amp;lt;blank&amp;gt;", "___________").replace("&amp;", "&");
-							
+		return questionText.replace("&amp;lt;blank&amp;gt;", "___________").replace("&amp;", "&");					
+	}
+	
+	public String getQuestionTextBlankFormatted() {
+		return questionText.replace("&amp;", "&");
 	}
 	
 	@JsonProperty
@@ -334,7 +337,7 @@ public class Question {
 		if(StringUtils.isBlank(explanation)) {
 			return "";
 		}
-		return explanation.replace("<br/>", "\n");
+		return explanation.replace("<br/>", "\n").replace("&amp;", "&");
 	}
 
 	@JsonProperty
@@ -409,6 +412,52 @@ public class Question {
 			
 		}
 		return catString.toString();
+	}
+	
+	public List<String> getMatchingQuestionsFormatted() {
+		
+		ArrayList<String> matchingQuestions = new ArrayList<String>();
+		Matcher matcher;
+		Pattern pattern5 = Pattern.compile("&amp;lt;1&amp;gt;(.*)&amp;lt;2&amp;gt;(.*)&amp;lt;3&amp;gt;(.*)&amp;lt;4&amp;gt;(.*)&amp;lt;5&amp;gt;(.*)");
+		matcher = pattern5.matcher(questionText);
+		
+		if(matcher.find()) {
+			matchingQuestions.add(matcher.group(1).trim().replace("&amp;", "&").replace("<br/>", "\n"));
+			matchingQuestions.add(matcher.group(2).trim().replace("&amp;", "&").replace("<br/>", "\n"));
+			matchingQuestions.add(matcher.group(3).trim().replace("&amp;", "&").replace("<br/>", "\n"));
+			matchingQuestions.add(matcher.group(4).trim().replace("&amp;", "&").replace("<br/>", "\n"));
+			matchingQuestions.add(matcher.group(5).trim().replace("&amp;", "&").replace("<br/>", "\n"));
+			return matchingQuestions;
+		}
+		
+		
+		Pattern pattern4 = Pattern.compile("&amp;lt;1&amp;gt;(.*)&amp;lt;2&amp;gt;(.*)&amp;lt;3&amp;gt;(.*)&amp;lt;4&amp;gt;(.*)");
+		matcher = pattern4.matcher(questionText);
+		if(matcher.find()) {
+			matchingQuestions.add(matcher.group(1).trim().replace("&amp;", "&").replace("<br/>", "\n"));
+			matchingQuestions.add(matcher.group(2).trim().replace("&amp;", "&").replace("<br/>", "\n"));
+			matchingQuestions.add(matcher.group(3).trim().replace("&amp;", "&").replace("<br/>", "\n"));
+			matchingQuestions.add(matcher.group(4).trim().replace("&amp;", "&").replace("<br/>", "\n"));
+			return matchingQuestions;
+		}
+		
+		Pattern pattern3 = Pattern.compile("&amp;lt;1&amp;gt;(.*)&amp;lt;2&amp;gt;(.*)&amp;lt;3&amp;gt;(.*)");
+		matcher = pattern3.matcher(questionText);
+		if(matcher.find()) {
+			matchingQuestions.add(matcher.group(1).trim().replace("&amp;", "&").replace("<br/>", "\n"));
+			matchingQuestions.add(matcher.group(2).trim().replace("&amp;", "&").replace("<br/>", "\n"));
+			matchingQuestions.add(matcher.group(3).trim().replace("&amp;", "&").replace("<br/>", "\n"));
+			return matchingQuestions;
+		}
+		
+		Pattern pattern2 = Pattern.compile("&amp;lt;1&amp;gt;(.*)&amp;lt;2&amp;gt;(.*)");
+		matcher = pattern2.matcher(questionText);
+		if(matcher.find()) {
+			matchingQuestions.add(matcher.group(1).trim().replace("&amp;", "&").replace("<br/>", "\n"));
+			matchingQuestions.add(matcher.group(2).trim().replace("&amp;", "&").replace("<br/>", "\n"));
+			return matchingQuestions;
+		}
+		return matchingQuestions;
 	}
 	
 	public List<String> getMatchingQuestions() {

@@ -24,7 +24,7 @@
 
 		<div class="row">
 			<div class="input-control textarea">
-			    <textarea id="match-descriptionText-1" maxlength="395" placeholder="Question A"><#if question.matchingQuestions[0]??>${question.matchingQuestions[0]}</#if></textarea>
+			    <textarea id="match-descriptionText-1" maxlength="395" placeholder="Question A"><#if question.matchingQuestionsFormatted[0]??>${question.matchingQuestionsFormatted[0]}</#if></textarea>
 			</div>
 			<div class="input-control text size9">
 			    <input type="text" id="matchText1" maxlength="95" placeholder="Match A" value="${question.correctAnswer?substring(17)}"/>
@@ -32,7 +32,7 @@
 		</div>
 		<div class="row">
 			<div class="input-control textarea">
-			    <textarea id="match-descriptionText-2" maxlength="395" placeholder="Question B"><#if question.matchingQuestions[1]??>${question.matchingQuestions[1]}</#if></textarea>
+			    <textarea id="match-descriptionText-2" maxlength="395" placeholder="Question B"><#if question.matchingQuestionsFormatted[1]??>${question.matchingQuestionsFormatted[1]}</#if></textarea>
 			</div>
 			<div class="input-control text size9">
 			    <input type="text" id="matchText2" maxlength="95" placeholder="Match B" <#if question.wrongAnswers[0]??>value="${question.wrongAnswers[0]?substring(17)}"</#if>/>
@@ -40,7 +40,7 @@
 		</div>
 		<div class="row">
 			<div class="input-control textarea">
-			    <textarea id="match-descriptionText-3" maxlength="395" placeholder="Question C"><#if question.matchingQuestions[2]??>${question.matchingQuestions[2]}</#if></textarea>
+			    <textarea id="match-descriptionText-3" maxlength="395" placeholder="Question C"><#if question.matchingQuestionsFormatted[2]??>${question.matchingQuestionsFormatted[2]}</#if></textarea>
 			</div>
 			<div class="input-control text size9">
 			    <input type="text" id="matchText3" maxlength="95" placeholder="Match C" <#if question.wrongAnswers[1]??>value="${question.wrongAnswers[1]?substring(17)}"</#if>/>
@@ -48,7 +48,7 @@
 		</div>
 		<div class="row">
 			<div class="input-control textarea">
-			    <textarea id="match-descriptionText-4" maxlength="395" placeholder="Question D"><#if question.matchingQuestions[3]??>${question.matchingQuestions[3]}</#if></textarea>
+			    <textarea id="match-descriptionText-4" maxlength="395" placeholder="Question D"><#if question.matchingQuestionsFormatted[3]??>${question.matchingQuestionsFormatted[3]}</#if></textarea>
 			</div>
 			<div class="input-control text size9">
 			    <input type="text" id="matchText4" maxlength="95" placeholder="Match D" <#if question.wrongAnswers[2]??>value="${question.wrongAnswers[2]?substring(17)}"</#if>/>
@@ -56,7 +56,7 @@
 		</div>
 		<div class="row">
 			<div class="input-control textarea">
-			    <textarea id="match-descriptionText-5" maxlength="395" placeholder="Question E"><#if question.matchingQuestions[4]??>${question.matchingQuestions[4]}</#if></textarea>
+			    <textarea id="match-descriptionText-5" maxlength="395" placeholder="Question E"><#if question.matchingQuestionsFormatted[4]??>${question.matchingQuestionsFormatted[4]}</#if></textarea>
 			</div>
 			<div class="input-control text size9">
 			    <input type="text" id="matchText5" maxlength="95"  placeholder="Match E" <#if question.wrongAnswers[3]??>value="${question.wrongAnswers[3]?substring(17)}"</#if>/>

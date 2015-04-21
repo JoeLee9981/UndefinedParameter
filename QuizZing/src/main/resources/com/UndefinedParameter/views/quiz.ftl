@@ -391,7 +391,7 @@
 		
 			var content = '<div style="margin: 10px" class="grid span8">' +
 						  	'<h3 class="text-center">You are about to submit the quiz, once you do this you can not change your answers.</h3><br/>' +
-						  	'<div class="span3 offset2">' +
+						  	'<div class="row noMargin" style="text-align: center">' +
 									'<button style="margin: 5px" onclick="submitQuiz()" class="success large center">Submit</button>' +
 									'<button style="margin: 5px" onclick="$.Dialog.close()" class="danger large center">Cancel</button>' +
 							'</div>' +

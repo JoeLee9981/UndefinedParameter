@@ -2,7 +2,7 @@
 	<form id="create-question-form">
 		<label></label><h5>Question <a href="#" data-hint="Question|The text of the question" data-hint-position="right" data-hint-mode="2"><i class="icon-help fg-blue"></i></a></h5>
 			<div class="input-control textarea">
-			    <textarea id="fb-descriptionText"><#if question.questionText??>${question.questionText}</#if></textarea>
+			    <textarea id="fb-descriptionText"><#if question.questionText??>${question.questionTextBlankFormatted}</#if></textarea>
 
 			</div>
 		</label>
@@ -28,7 +28,7 @@
 	    </div>
 		<label><h5>Explanation of Answer <a href="#" data-hint="Explanation|A bit of text that explains, or gives background on the answer of the question" data-hint-position="right" data-hint-mode="2"><i class="icon-help fg-blue"></i></a></h5>
 			<div class="input-control textarea">
-			    <textarea id="fb-explanationText"><#if question.explanation??>${question.explanation}</#if></textarea>
+			    <textarea id="fb-explanationText"><#if question.explanationFormatted??>${question.explanationFormatted}</#if></textarea>
 			</div>
 		</label>
 		<div class="row">	

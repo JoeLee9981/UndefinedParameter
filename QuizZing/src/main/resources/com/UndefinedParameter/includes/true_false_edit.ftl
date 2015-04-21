@@ -2,7 +2,7 @@
 	<form id="create-question-form">
 		<h5>Question <a href="#" data-hint="Question|The text of the question" data-hint-position="right" data-hint-mode="2"><i class="icon-help fg-blue"></i></a></h5>
 			<div class="input-control textarea">
-			    <textarea id="tf-descriptionText"><#if question.questionText??>${question.questionText}</#if></textarea>
+			    <textarea id="tf-descriptionText"><#if question.questionTextFormatted??>${question.questionTextFormatted}</#if></textarea>
 			</div>
 		<div class="row noMargin">
 		    <div class="span12">
@@ -25,7 +25,7 @@
 	    </div>
 		<label><h5>Explanation of Answer <a href="#" data-hint="Explanation|A bit of text that explains, or gives background on the answer of the question" data-hint-position="right" data-hint-mode="2"><i class="icon-help fg-blue"></i></a></h5>
 			<div class="input-control textarea">
-			    <textarea id="tf-explanationText"><#if question.explanation??>${question.explanation}</#if></textarea>
+			    <textarea id="tf-explanationText"><#if question.explanationFormatted??>${question.explanationFormatted}</#if></textarea>
 			</div>
 		</label>
 		

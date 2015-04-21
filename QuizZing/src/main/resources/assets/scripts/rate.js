@@ -38,7 +38,7 @@ function flagQuestion(questionId) {
 				  		'<div class="input-control textarea">' +
 					    	'<textarea style="resize: none" maxlength="255" id="reason' + questionId + '"></textarea>' +
 					    '</div>' +
-				  		'<div class="span3 offset2">' +
+				  		'<div class="row" style="text-align: center">' +
 							'<button style="margin: 5px" onclick="doFlag(' + questionId + ')" class="success large center">Submit</button>' +
 							'<button style="margin: 5px" onclick="$.Dialog.close()" class="danger large center">Cancel</button>' +
 						'</div>' +
@@ -47,6 +47,7 @@ function flagQuestion(questionId) {
 	$.Dialog({
 	shadow: true,
 	overlay: true,
+	flat: true,
 	icon: '<span class="icon-flag-2"></span>',
 	title: 'Flag Question',
 	padding: 10,
@@ -72,18 +73,19 @@ function doFlag(questionId) {
 
 function unflagQuestion(questionId, groupId, reason) {
 	var content = '<div style="margin: 10px" class="grid span8">' +
-					'<p class="text-right">Has this been flaged incorrectly? <button class="link" onclick="doUnflag(' + questionId + ')">Mark as correct</button></p>' +
+					'<p class="text-right text-alert">Has this been flaged incorrectly? <button class="link" onclick="doUnflag(' + questionId + ')">Mark as correct</button></p>' +
 					'<h3 class="text-center">This question has been flagged for the following reason:</h3><br/>' +
-					'<p>' + reason + '</p>' +
-					'<div class="span4 offset2">' +
-						'<button style="margin: 5px" onclick="editQuestion(' + questionId + ', ' + groupId + ')" class="primary large center">Edit</button>' +
-						'<button style="margin: 5px" onclick="$.Dialog.close()" class="danger large center">Cancel</button>' +
+					'<p class="text-center" style="font-size: 20px">' + reason + '</p>' +
+					'<div class="row" style="text-align: center">' +
+						'<button style="margin: 5px; width: 100px" onclick="editQuestion(' + questionId + ', ' + groupId + ')" class="primary large">Edit</button>' +
+						'<button style="margin: 5px; width: 100px" onclick="$.Dialog.close()" class="danger large">Cancel</button>' +
 					'</div>' +
 				'</div>';
 				
 	$.Dialog({
 	shadow: true,
 	overlay: true,
+	flat: true,
 	icon: '<span class="icon-flag-2"></span>',
 	title: 'Flagged Question',
 	padding: 10,

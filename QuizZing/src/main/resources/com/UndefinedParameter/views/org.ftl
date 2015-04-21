@@ -132,7 +132,7 @@
 												</a>
 											</td>
 											<td class="padding5"><span class="place-right">${member.contribution}<i title="Contribution Score" class="icon-medal on-right"></i></span></td>
-											<td class="padding5"><span class="place-right">${member.questions}<i title="Quizzes" class="icon-help-2 on-right"></i></span></td>
+											<td class="padding5"><span class="place-right">${member.questions}<i title="Questions" class="icon-help-2 on-right"></i></span></td>
 											<td class="padding5"><span class="place-right">${member.quizzes}<i title="Quizzes" class="icon-clipboard-2 on-right"></i></span></td>
 											<td class="padding5"><span class="place-right">${member.joinDateString}</span></td>
 										</tr>
