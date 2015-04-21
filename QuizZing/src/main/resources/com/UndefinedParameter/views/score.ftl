@@ -61,29 +61,49 @@
 						
 						<div class="home-subsection">
 							<div class="grid">
+							
 							    <div class="row">
+							    	<h2>Statistics by Quiz</h2>							    	
 							        <div class="span4">
-										<div class="input-control select">
-										
+										<div class="input-control select">									
 											<select multiple id="quizSelector" onchange="getScores(this.value)" style="height: 215px">
 												<#if quizIds??>
 													<#list quizIds as quiz>
 														<option value=${quiz.quizId}>${quiz.name}</option>	
 													</#list>
 												</#if>
-											</select>
-											
+											</select>										
 										</div>
-									</div>
-									
+									</div>								
 									<div class="span6">				
 										<div id="quizScoreGraph"></div>
+									</div>							
+								</div>
+								
+								<div class="row">
+									<div class="span2 text-right">
+										<h2>Overall<br>Average<br>Score</h2>
+									</div>
+									<div class="span2 notice bg-amber fg-white">
+										    <h1>${averageScore}%</h1>
+									</div>
+									<div class="span2 text-right">
+										<h2>Best<br>Categories</h2>
+									</div>
+									<div class="span2 notice bg-amber fg-white">
+										    <#if bestCategories??>
+										    	<#list bestCategories as category>
+										    		${category}<br>
+										    	</#list>
+										    </#if>
 									</div>
 								</div>
-							</div>
-							
-							<br><br>
-							
+								
+								<div class="row">
+								
+								</div>
+								
+							</div>							
 						</div>
 					</div>					
 				</div>
@@ -131,7 +151,6 @@
 
 			// Parse the date / time.
 			var parseDate = d3.time.format("%d-%b-%y").parse;
-			var bisectDate = d3.bisector(function(d) { return d.dateTime; }).left;
 
 			// Set dataset.
 			var data = dataset;
@@ -143,14 +162,14 @@
 
 			// Define the axes.
 			var xAxis = d3.svg.axis().scale(x)
-				.orient("bottom").ticks(5);
+				.orient("bottom").ticks(0);
 
 			var yAxis = d3.svg.axis().scale(y)
 				.orient("left").ticks(5);
 
 			// Define the line.
 			var valueline = d3.svg.line()
-				.x(function(d) { return x(d.dateTime); })
+				.x(function(d, i) { return x(i); })
 				.y(function(d) { return y(d.score); });
 				
 			// Add the svg canvas.
@@ -163,22 +182,9 @@
 						  "translate(" + margin.left + "," + margin.top + ")");
 
 				// Scale the range of the data.
-				x.domain(d3.extent(data, function(d) { return d.dateTime; }));
+				x.domain(d3.extent(data, function(d, i) { return i; }));
 				y.domain([0, 100]);
-
-				// Add the valueline path.
-				svg.append("path")
-					.attr("class", "line")
-					.attr("d", valueline(data));
-
-				// Add the scatterplot.
-				svg.selectAll("dot")
-					.data(data)
-				  .enter().append("circle")
-					.attr("r", 3.5)
-					.attr("cx", function(d) { return x(d.dateTime); })
-					.attr("cy", function(d) { return y(d.score); });
-
+				
 				// Add the X axis.
 				svg.append("g")
 					.attr("class", "x axis")
@@ -189,6 +195,19 @@
 				svg.append("g")
 					.attr("class", "y axis")
 					.call(yAxis);
+
+				// Add the valueline path.
+				svg.append("path")
+					.attr("class", "line")
+					.attr("d", valueline(data));
+
+				// Add the scatterplot.
+				svg.selectAll("dot")
+					.data(data)
+				  .enter().append("circle")
+					.attr("r", 2.5)
+					.attr("cx", function(d, i) { return x(i); })
+					.attr("cy", function(d) { return y(d.score); });
 					
 				// Add X axis label.
 				svg.append("text")
@@ -196,7 +215,7 @@
 				    .attr("text-anchor", "end")
 				    .attr("x", width)
 				    .attr("y", height + 35)
-				    .text("Date & Time");
+				    .text("Time");
 									
 				// Add Y axis label.
 				svg.append("text")

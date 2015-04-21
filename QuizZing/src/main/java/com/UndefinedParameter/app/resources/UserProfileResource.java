@@ -2,6 +2,7 @@ package com.UndefinedParameter.app.resources;
 
 import io.dropwizard.auth.Auth;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -113,12 +114,42 @@ public class UserProfileResource {
 	@GET
 	@Path("/scores")
 	public Response getUserScoresView(@Auth(required = false) User user, @QueryParam("userid") long userid) {
-	
+		List<String> bestCategory = new ArrayList<String>();
+		long bestCategoryQuizId = 0;
+		String favoriteCategory = "N/A";
+		float averageScore = 0.0f;
+		
 		if(userid < 1) {
 			return Response.status(Status.BAD_REQUEST).build();
 		}
 		
-		return Response.ok(new ScoreView("score.ftl", user, quizManager.findQuizzesParticipated(user.getId()))).build();
+		List<QuizScore> userScores = quizManager.findScoresByUser(user.getId());
+		if(userScores != null) {
+			int count = 0;
+			float scoresSum = 0.0f;
+			float bestScore = 0.0f;
+			
+			for(QuizScore score : userScores) {
+				// Average scores
+				scoresSum += score.getScore();
+				count ++;
+				
+				// Find highest score
+				if(score.getScore() > bestScore) {
+					bestScore = score.getScore();
+					bestCategoryQuizId = score.getQuizId();
+				}
+			}
+			
+			averageScore = scoresSum / (float)count;
+			
+			// Find categories for best quiz
+			bestCategory = quizManager.getQuestionCategoriesViaQuizID(bestCategoryQuizId);
+			if(bestCategory.isEmpty())
+				bestCategory.add("Just for fun");
+		}
+		
+		return Response.ok(new ScoreView("score.ftl", user, quizManager.findQuizzesParticipated(user.getId()), averageScore, bestCategory, favoriteCategory)).build();
 	}
 	
 	@POST

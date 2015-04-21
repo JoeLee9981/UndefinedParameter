@@ -712,15 +712,16 @@ public class QuizManager {
 	
 	public List<String> getQuestionCategoriesViaQuizID(long quizID)
 	{
-		List<String> categories = null;
-		List<Question> question = null;
+		List<String> categories = new ArrayList<String>();
+		List<Question> question = new ArrayList<Question>();
 		question = questionDAO.retrieveExistingQuiz(quizID);
 		
 		for(Question input : question)
 		{
 			//NEED TO ONLY RETURN EACH TYPE ONCE
 			List<String> holder = input.getCategories();
-			categories.addAll(holder);
+			if(holder != null)
+				categories.addAll(holder);
 		}
 		
 		//Dropping the duplicates via a hashSet, then converting back;

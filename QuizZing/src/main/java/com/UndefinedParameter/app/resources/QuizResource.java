@@ -201,13 +201,6 @@ public class QuizResource {
 	}
 	
 	@GET
-	@Path("/score")
-	public Response getScoreView(@Auth(required=false) User user, @QueryParam("quizId") int id) {
-		
-		return Response.ok(new ScoreView("score.ftl", user, quizManager.findQuizzesParticipated(user.getId()))).build();
-	}
-	
-	@GET
 	@Path("/edit")
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response editQuiz(@Auth(required = false) User user, @QueryParam("quizId") long id, @QueryParam("groupId") long groupId) {
