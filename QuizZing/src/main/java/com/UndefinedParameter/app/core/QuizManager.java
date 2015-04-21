@@ -719,7 +719,7 @@ public class QuizManager {
 		for(Question input : question)
 		{
 			//NEED TO ONLY RETURN EACH TYPE ONCE
-			List<String> holder = input.getCategories();
+			List<String> holder = questionDAO.getCategoriesByQuestion(input.getQuestionId());
 			if(holder != null)
 				categories.addAll(holder);
 		}

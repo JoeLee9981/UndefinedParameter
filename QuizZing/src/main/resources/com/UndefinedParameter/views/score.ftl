@@ -84,16 +84,16 @@
 									<div class="span2 text-right">
 										<h2>Overall<br>Average<br>Score</h2>
 									</div>
-									<div class="span2 notice bg-amber fg-white">
+									<div class="span2 notice bg-amber fg-white" style="height: 110px">
 										    <h1>${averageScore}%</h1>
 									</div>
 									<div class="span2 text-right">
 										<h2>Best<br>Categories</h2>
 									</div>
-									<div class="span2 notice bg-amber fg-white">
+									<div class="span2 notice bg-green fg-white" style="height: 110px">
 										    <#if bestCategories??>
 										    	<#list bestCategories as category>
-										    		${category}<br>
+										    		<h4>${category}</h4>
 										    	</#list>
 										    </#if>
 									</div>
