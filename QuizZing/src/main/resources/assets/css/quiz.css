@@ -9,11 +9,26 @@
 	line-height: 45px;
 }
 
+.questionCreateContainer
+{
+	border-top: 1px solid GRAY;
+}
+
 #quizEditTopPanel
 {
+	position: fixed;
 	border-bottom: 1px solid #d3d3d3;
+	background: white;
+	z-index: 1234;
+	width: 100%;
 	min-width: 1050px;
 	padding-bottom: 5px;
+	top: 45px;
+}
+
+#quizEditTopPannelBuffer
+{
+	height: 52px;
 }
 
 #quizEditSubPanel

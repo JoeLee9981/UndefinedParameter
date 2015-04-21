@@ -53,7 +53,8 @@
 				</div>
 			</div>
 		</div>
-		
+		<div id="quizEditTopPannelBuffer">
+		</div> 
 		<div id="quizEditSubPanel">
 			<div class="page-content">
 				<div class="grid fluid noMargin">
@@ -127,44 +128,22 @@
 		</div>
 		<div class="page-content">
 			<div class="grid fluid">
+				<div class="row containerFill">
+					<div class="row noMargin">
+						<p class="span2"><strong>Create Question</strong></p>
+						<button class="primary span2" onclick="showCreateQuestion('MULTIPLE_CHOICE');">Multiple Choice</button>
+						<button class="primary span2" onclick="showCreateQuestion('TRUE_FALSE');">True or False</button>
+						<button class="primary span2">Short Answer</button>
+						<button class="primary span2">Fill in the Blank</button>
+						<button class="primary span2">Matching</button>
+					</div>
+					<div class="row hidden" id="questionCreateContent" style="display:none;">
+						<#include "../includes/multiple_choice_quiz_edit.ftl">
+						<#include "../includes/true_false_quiz_edit.ftl">
+					</div>
+				</div>
 				<div class="row">
 					<div class="span5">
-						<div class="row noMargin">
-							<div class="input-control text">
-							    <input id="currentQuestionFilter" type="text" placeholder="Filter questions in quiz..."/>
-							</div>
-						</div>
-						<div class="row noMargin quizQuestionList">
-							<div class="quizQuestionListContent">
-								<div id="currentQuestionList" class="listview-outlook" data-role="listview">
-									<#list quiz.questions as question>
-	                                    <a class="list" href="#" id="quizQuestion${question.questionId}">
-	                                        <div class="list-content">
-	                                            <span class="list-title">${question.questionTextFirstLine}</span>
-	                                            <span class="list-title questionText" style="display: none">
-	                                            	${question.questionText}
-	                                            </span>
-	                                          	<span class="list-subtitle questionCategories">${question.categoriesString}</span>
-	                                          	<span class="list-remark">
-	                                          		<span>
-	                                          			<strong>Rating: </strong> ${question.rating}/5
-	                                          			<strong>Difficulty: </strong> ${question.difficulty}/5
-	                                          		</span>
-	                   								<span class="place-right">
-	                   									<#if question.creatorId == user.id>
-	                   										<button id="editQuestion${question.questionId}" class="small primary">Edit</button>
-	                   									</#if>
-	                   									<button id="removeButton${question.questionId}" onclick="removeQuestion(${question.questionId});return false;" class="small danger">Remove</button>
-	                   								</span>
-	                   							</span>
-	                                        </div>
-	                                    </a>
-	                            	</#list>
-                                </div>
-							</div>
-						</div>
-					</div>
-					<div class="span7">
 						<div class="row noMargin">
 							<div class="input-control text">
 							    <input id="findQuestionSearch" type="text" placeholder="Find existing questions..."/>
@@ -199,7 +178,43 @@
 	                            	</#list>
                                 </div>
 							</div>
-						</div>			
+						</div>						
+					</div>
+					<div class="span7">			
+						<div class="row noMargin">
+							<div class="input-control text">
+							    <input id="currentQuestionFilter" type="text" placeholder="Filter questions in quiz..."/>
+							</div>
+						</div>
+						<div class="row noMargin quizQuestionList">
+							<div class="quizQuestionListContent">
+								<div id="currentQuestionList" class="listview-outlook" data-role="listview">
+									<#list quiz.questions as question>
+	                                    <a class="list" href="#" id="quizQuestion${question.questionId}">
+	                                        <div class="list-content">
+	                                            <span class="list-title">${question.questionTextFirstLine}</span>
+	                                            <span class="list-title questionText" style="display: none">
+	                                            	${question.questionText}
+	                                            </span>
+	                                          	<span class="list-subtitle questionCategories">${question.categoriesString}</span>
+	                                          	<span class="list-remark">
+	                                          		<span>
+	                                          			<strong>Rating: </strong> ${question.rating}/5
+	                                          			<strong>Difficulty: </strong> ${question.difficulty}/5
+	                                          		</span>
+	                   								<span class="place-right">
+	                   									<#if question.creatorId == user.id>
+	                   										<button id="editQuestion${question.questionId}" class="small primary">Edit</button>
+	                   									</#if>
+	                   									<button id="removeButton${question.questionId}" onclick="removeQuestion(${question.questionId});return false;" class="small danger">Remove</button>
+	                   								</span>
+	                   							</span>
+	                                        </div>
+	                                    </a>
+	                            	</#list>
+                                </div>
+							</div>
+						</div>											
 					</div>
 				</div>
 			</div>
@@ -244,6 +259,8 @@
 
 	<script>
 	
+		var currentCreateQuestionType;
+		
 		$("#openChangeQuizContent").click(function(e)
 		{
 			e.preventDefault();
@@ -592,6 +609,318 @@
 				}
 			});
 		}
+		
+		
+		
+		
+		
+		function addNewlyCreatedQuestionToList(questionData)
+		{
+			var questionInListFormat =	'<a class="list" href="#" id="quizQuestion' + questionData['questionId'] + '"> \
+							                <div class="list-content"> \
+							                    <span class="list-title">' + questionData['textFirstLine'] + '</span> \
+							                    <span class="list-title questionText" style="display: none"> \
+							                    	' + questionData['text'] + ' \
+							                    </span> \
+							                  	<span class="list-subtitle questionCategories">' + questionData['categoryString'] + '</span> \
+							                  	<span class="list-remark"> \
+							                  		<span> \
+							                  			<strong>Rating: </strong> ' + questionData['rating'] + ' \
+							                  			<strong>Difficulty: </strong> ' + questionData['difficulty'] + ' \
+							                  		</span> \
+													<span class="place-right"> \
+														<button id="removeButton' + questionData['questionId'] + '" onclick="removeQuestion(' + questionData['questionId'] + ');return false;" class="small danger">Remove</button> \
+													</span> \
+												</span> \
+							                </div> \
+							            </a>';
+							            
+			$(questionInListFormat).hide();
+			$("#currentQuestionList").append(questionInListFormat).fadeIn(300);
+			manageQuestionCount();
+			categories = [];
+			setCategoryButtons();
+		}
+		
+		var categories = [];
+		
+		function clearCommonFields(type)
+		{
+			$('#descriptionText' + type).val('');
+			$('#descriptionText' + type).removeClass('valid');
+			$('#descriptionText' + type).removeClass('invalid');
+			$('#explanationText' + type).val('');
+			$('#create' + type).prop('disabled', false);
+			$('#create' + type).addClass('success');
+		}
+		
+		function createQuestion(type)
+		{
+			$('#create' + type).removeClass('success');
+			$('#create' + type).prop('disabled', true);
+			
+			// Common variables between all types of questions
+			var quizId = ${quiz.quizId};
+			var creatorId = ${user.id};
+			var desc = document.getElementById('descriptionText' + type).value;
+			var explanation = document.getElementById('explanationText' + type).value;
+			
+			if (type == 'MULTIPLE_CHOICE')
+			{
+				//TODO Prevalidate these fields
+				var maxAnswers = 5;		
+				var correct;
+				var incorrect = [];		
+				var path = "/question/create?quizId=" + quizId;
+				var correctPos = 0;
+				
+				var reference = "";
+				var hyperlink = "";
+				
+				var ordered = document.getElementById('randomize').checked;
+		
+				for(var i = 1; i <= maxAnswers; i++) {
+					if(document.getElementById('qCheck' + i).checked) {
+						correct = document.getElementById('qText' + i).value;
+						correctPos = i - 1;
+					}
+					else {
+						incorrect.push(document.getElementById('qText' + i).value);
+					}
+				}
+				
+				if(!desc) {
+					return;
+				}
+				
+				if(!correct) {
+
+					return;
+				}			
+								
+				if(hyperlink && !reference) {
+					return;
+				}		
+				
+				
+				 $.ajax({
+					type: 'POST',
+					url: path,
+					data: JSON.stringify({groupId: ${group.id}, questionText: desc, correctAnswer: correct, type: type, wrongAnswers: incorrect, creatorId: creatorId, explanation: explanation, ordered: ordered, reference: reference, referenceLink: hyperlink, correctPosition: correctPos, categories: categories }),
+					dataType: "json",
+					headers: {
+						Accept: "application/json",
+						"Content-Type": "application/json"
+					},
+					success: function(data) {
+						if("success" == data["response"])
+						{
+							addNewlyCreatedQuestionToList(data);
+							clearCommonFields(type);
+							
+							// Clear the MULTIPLE_CHOICE form
+							for (var i = 1; i <= 5; i++)
+							{
+								$('#qCheck' + i).attr('checked', false);
+								$('#qText' + i).val('');
+								$('#qText' + i).removeClass('valid');
+								$('#qText' + i).removeClass('invalid');
+								
+							}
+						}
+						else
+						{
+
+						}
+					}
+				});
+			}
+			else if (type == 'TRUE_FALSE')
+			{
+				//TODO Prevalidate these fields
+				var maxAnswers = 5;
+				var correct;
+				var incorrect = [];
+				var correctPos = 0;
+				var path = "/question/create?quizId=" + quizId;
+				
+				var reference = "";
+				var hyperlink = "";
+				
+				var ordered = true;
+				
+				
+				if($('#trueCheck').is(':checked')) {
+					correct = "True";
+					incorrect.push("False");
+					correctPos = 0;
+				}
+				else if($('#falseCheck').is(':checked')) {
+					correct = "False";
+					incorrect.push("True");
+					correctPos = 1;
+				}
+				else {
+					return;
+				}
+				
+				incorrect.push("");
+				incorrect.push("");
+				incorrect.push("");
+				incorrect.push("");
+				
+				if(hyperlink && !reference) {
+					return;
+				}
+					
+				
+				 $.ajax({
+					type: 'POST',
+					url: path,
+					data: JSON.stringify({groupId: ${group.id}, questionText: desc, correctAnswer: correct, type: type, wrongAnswers: incorrect, creatorId: creatorId, explanation: explanation, ordered: ordered, reference: reference, referenceLink: hyperlink, correctPosition: correctPos, categories: categories }),
+					dataType: "json",
+					headers: {
+						Accept: "application/json",
+						"Content-Type": "application/json"
+					},
+					success: function(data) {
+						if("success" == data["response"]) {
+							
+							addNewlyCreatedQuestionToList(data);
+							clearCommonFields(type);
+							
+							// Clear the TRUE_FALSE form
+
+						}
+						else {
+						}
+					}
+				});
+			}
+		}
+		
+		function closeCreateQuestionContainer()
+		{
+			$('#questionCreateContent').fadeOut(300);
+			categories = [];
+			setCategoryButtons();
+		}
+		
+		function showCreateQuestion(type)
+		{
+			currentCreateQuestionType = type;
+			categories = [];
+			setCategoryButtons();
+			
+			$('#questionCreateContent > div').each(function() {
+			
+				if ($(this).attr('id') == ('div' + type))
+				{
+					$(this).fadeIn(300);
+				}
+				else
+				{
+					$(this).hide();
+				}
+				
+				$('#questionCreateContent').fadeIn(300);
+			});
+		}
+		
+		function manageQuestionCount()
+		{
+			var count = $("#currentQuestionList > .list").length;
+			
+			$("#questionCount").html(count);
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		// functions for managing tags and categories
+		//set up auto complete for categories
+		$(function() {
+	
+			/*
+			var allCategories = [];
+			<#if allCategories??>
+			<#list allCategories as category>
+			allCategories.push('${category}');
+			</#list>
+			</#if>
+	
+			$('#categories').autocomplete({
+				source: allCategories
+			});
+			*/
+		});
+	
+		
+		function setCategoryButtons() {
+			var html = "";
+			for(var i = 0; i < categories.length; i++) {
+				var cat = categories[i];
+				if(cat[0] != '#') {
+					cat = '#' + cat;
+				}
+				html += '<button id="catButton' + i + '" class="default" style="margin: 5px"><i onclick="removeCategory(' + i + ')" class="icon-cancel on-left"></i>  ' + cat + '</button>';
+			}
+			$('#categoryTags' + currentCreateQuestionType).html(html);
+			
+			for(var i = 0; i < categories.length; i++) {
+				$('#catButton' + i).click(function(event) {
+					event.preventDefault();
+				});
+				
+			}
+		}
+		
+		function removeCategory(index) {
+			var temp = [];
+			for(var j = 0; j < categories.length; j++) {
+				if(index != j) {
+					temp.push(categories[j]);
+				}
+			}
+			categories = temp;
+			setCategoryButtons();
+		}
+
+		$('.categoriesInput').keydown(function(event) {
+			if(event.which == 188 || event.which == 13) {
+				var cat = $('#categories' + currentCreateQuestionType).val().trim();
+				if(cat == ""  || cat == "#") {
+					event.preventDefault();
+					$('#categories' + currentCreateQuestionType).val("");
+					return;
+				}
+				if($.inArray(cat, categories) == -1)
+					categories.push(cat);
+				setCategoryButtons();
+				$('#categories' + currentCreateQuestionType).val("");
+				event.preventDefault();
+			}
+			
+		});
+	
+		$('.categoriesInput').blur(function() {
+	
+			var cat = $('#categories' + currentCreateQuestionType).val().trim();
+			
+			if(cat == "" || cat == "#") {
+				$('#categories' + currentCreateQuestionType).val("");
+				return;
+			}
+			if($.inArray(cat, categories) == -1)
+				categories.push(cat.substring(0));
+			setCategoryButtons();
+			$('#categories' + currentCreateQuestionType).val("");
+			event.preventDefault();
+		});
 		
 	</script>	
 
