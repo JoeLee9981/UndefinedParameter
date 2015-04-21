@@ -37,9 +37,9 @@
 								<tbody>
 								<#list userQuizzes as quiz>	
 									<tr>
-										<td><a href="quiz?quizId=${quiz.quizId}">${quiz.name}</a></td>
-										<td class="text-left left"><a href="group?groupId=${quiz.parentGroupId}">${quiz.parentGroupName}</a></td>
-										<td class="text-left left"><a href="user?userid=${quiz.creatorId}">${quiz.creatorName}</a></td>
+										<td><a href="/quiz?quizId=${quiz.quizId}">${quiz.name}</a></td>
+										<td class="text-left left"><a href="/group?groupId=${quiz.parentGroupId}">${quiz.parentGroupName}</a></td>
+										<td class="text-left left"><a href="/user?userid=${quiz.creatorId}">${quiz.creatorName}</a></td>
 										<td class="text-left left">
 											<#if quiz.description??>
 												<#if quiz.description?length &gt; 20>
@@ -92,7 +92,7 @@
 					
 					<#if topQuizzes??>
 						<div class="home-subsection">
-							<h3>All Quizzes</h3>
+							<h3>Top Quizzes</h3>
 							<table class="table hovered striped">
 								<thead>
 									<tr>
@@ -109,9 +109,9 @@
 								<#list topQuizzes as quiz>
 								
 									<tr>
-										<td><a href="quiz?quizId=${quiz.quizId}">${quiz.name}</a></td>
-										<td class="text-left left"><a href="group?groupId=${quiz.parentGroupId}">${quiz.parentGroupName}</a></td>
-										<td class="text-left left"><a href="user?userid=${quiz.creatorId}">${quiz.creatorName}</a></td>
+										<td><a href="/quiz?quizId=${quiz.quizId}">${quiz.name}</a></td>
+										<td class="text-left left"><a href="/group?groupId=${quiz.parentGroupId}">${quiz.parentGroupName}</a></td>
+										<td class="text-left left"><a href="/user?userid=${quiz.creatorId}">${quiz.creatorName}</a></td>
 										<td class="text-left left">
 											<#if quiz.description??>
 												<#if quiz.description?length &gt; 20>
@@ -125,16 +125,16 @@
 										</td>
 										<td class="text-center center">${quiz.questionCount}</td>
 										<td class="text-right right">
-											<div id="diff${quiz.quizId}" class="rating small fg-red"></div>
+											<div id="top-diff${quiz.quizId}" class="rating small fg-red"></div>
 										</td>
 										<td class="text-right right">
-											<div id="rating${quiz.quizId}" class="rating small"></div>
+											<div id="top-rating${quiz.quizId}" class="rating small"></div>
 										</td>
 										
 										<script>
 											//Star rating for quiz quality (entry page)
 											$(function() {
-												$("#rating${quiz.quizId}").rating({
+												$("#top-rating${quiz.quizId}").rating({
 													static: true,
 													score: ${quiz.rating},
 													stars: 5,
@@ -145,7 +145,7 @@
 											
 											//Star rating for quiz quality (entry page)
 											$(function() {
-												$("#diff${quiz.quizId}").rating({
+												$("#top-diff${quiz.quizId}").rating({
 													static: true,
 													score: ${quiz.difficulty},
 													stars: 5,

@@ -128,6 +128,14 @@
 								</div>
 							</div>
 							<div id="flagDiv"></div>
+							<div class="row noMargin span12">
+								<div id="correctDiv" hidden>
+									<h1 class="text-success"><i class="icon-checkmark bg-green fg-white" style="padding: 10px; border-radius: 50%"></i> You have answered correctly, Good Job!</h1>
+								</div>
+								<div id="incorrectDiv" hidden>
+									<h1 class="text-alert"><i class="icon-cancel-2 bg-red fg-white" style="padding: 10px; border-radius: 50%"></i> Sorry you answered incorrectly!</h1>
+								</div>
+							</div>
 							<div class="row">
 								<pre style="white-space: pre-wrap"><p id="questionHead"> </p></pre>
 							</div>
@@ -568,6 +576,7 @@
 		function getFillBlankDiv() {
 			var answers = q.getAnswers();
 			var submitAnswers = q.getSubmittedAnswer();
+			var correct = true;
 			
 			var html = '';
 			
@@ -577,6 +586,7 @@
 					var style = "success";
 					if(submitAnswers[i] != answers[i]) {
 						style = "alert";
+						correct = false;
 					}
 					
 					html += '<p><strong>Correct Answer: </strong></p><h3 class="text-' + style + '">' + answers[i] + '</h3>';
@@ -587,6 +597,14 @@
 				}
 			}
 			if(!q.inProgress) {
+				if(correct) {
+					$('#correctDiv').show();
+					$('#incorrectDiv').hide();
+				}
+				else {
+					$('#correctDiv').hide();
+					$('#incorrectDiv').show();
+				}
 				html += '<button class="info large" onclick="showExplanation()">Show Explanation</button>';
 
 			}
@@ -617,10 +635,14 @@
 				}
 				html += "<button id='answerButton" + i + "' class='command-button block " + style +" size8' onclick='setAnswer(\"" + answers[i] + "\")'><small>";
 				if(!q.inProgress) {
-					if(answers[i] == correct && isChecked)
-						html += '<i class="icon-checkmark"></i> ';
-					else if(answers[i] == correct)
-						html += '<i class="icon-cancel-2 fg-red"></i> ';
+					if(answers[i] == correct && isChecked) {
+						$('#correctDiv').show();
+						$('#incorrectDiv').hide();
+					}
+					else if(answers[i] == correct) {
+						$('#incorrectDiv').show();
+						$('#correctDiv').hide();
+					}
 				}
 				html += answers[i];
 				html += "</small></button>";
@@ -644,9 +666,13 @@
 			if (!q.inProgress) {
 				if(q.getCorrectAnswer() == q.getSubmittedAnswer()) {
 					style = "success";
+					$('#correctDiv').show();
+					$('#incorrectDiv').hide();
 				}
 				else {
 					style = "alert";
+					$('#correctDiv').hide();
+					$('#incorrectDiv').show();
 				}
 			}
 
@@ -677,20 +703,23 @@
 			var submitAnswers = q.getSubmittedAnswer();
 			var correctAnswers = q.getCorrectAnswers();
 			var style = '';
+			var correct = true;
 
 			html += '<div class="row">';
 			for(var i = 0; i < answers.length; i++) {
 				//build the select for the answer
 				var options = '';
+				var corrAnswer = '';
 
 				if(!q.inProgress) {
 					if(submitAnswers[i] != correctAnswers[i]) {
 						style = "error-state";
-						html += '<p><strong>Correct Answer: </strong></p><h3 class="text-alert">' + correctAnswers[i] + '</h3>';
+						corrAnswer += '<p><strong>Correct Answer: </strong></p><h3 class="text-alert">' + correctAnswers[i] + '</h3>';
+						correct = false;
 					}
 					else {
 						style = "success-state";
-						html += '<p><strong>Correct Answer: </strong></p><h3 class="text-success">' + correctAnswers[i] + '</h3>';
+						corrAnswer += '<p><strong>Correct Answer: </strong></p><h3 class="text-success">' + correctAnswers[i] + '</h3>';
 					}
 					
 				}
@@ -707,12 +736,21 @@
 				}
 				
 
-				html += '<div class="span2"><strong><h4>' + answers[i] + '</h4></strong><div class="input-control select size1 inline' + style + '"><select id="answerInput' + i + '" value="' + submitAnswers[i] + '" onchange="submitAnswers()">' + options + '</select></div></div>';
+				html += '<div class="span2">' + corrAnswer + '<strong><h4>' + answers[i] + '</h4></strong><div class="input-control select size1 inline' + style + '"><select id="answerInput' + i + '" value="' + submitAnswers[i] + '" onchange="submitAnswers()">' + options + '</select></div></div>';
 			}
 			html += '</div>';
 
-			if(!q.inProgress) 
+			if(!q.inProgress) {
 				html += '<br/><button class="info large" onclick="showExplanation()">Show Explanation</button>';
+				if(correct) {
+					$('#correctDiv').show();
+					$('#incorrectDiv').hide();
+				}
+				else {
+					$('#correctDiv').hide();
+					$('#incorrectDiv').show();
+				}
+			}
 			
 			return html;
 		}
