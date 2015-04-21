@@ -133,13 +133,15 @@
 						<p class="span2"><strong>Create Question</strong></p>
 						<button class="primary span2" onclick="showCreateQuestion('MULTIPLE_CHOICE');">Multiple Choice</button>
 						<button class="primary span2" onclick="showCreateQuestion('TRUE_FALSE');">True or False</button>
-						<button class="primary span2">Short Answer</button>
-						<button class="primary span2">Fill in the Blank</button>
-						<button class="primary span2">Matching</button>
+						<button class="primary span2" onclick="showCreateQuestion('SHORT_ANSWER');">Short Answer</button>
+						<button class="primary span2" onclick="showCreateQuestion('FILL_IN_THE_BLANK');">Fill in the Blank</button>
+						<button class="primary span2" onclick="showCreateQuestion('MATCHING');">Matching</button>
 					</div>
 					<div class="row hidden" id="questionCreateContent" style="display:none;">
 						<#include "../includes/multiple_choice_quiz_edit.ftl">
 						<#include "../includes/true_false_quiz_edit.ftl">
+						<#include "../includes/short_answer_quiz_edit.ftl">
+						<#include "../includes/fill_blank_quiz_edit.ftl">
 					</div>
 				</div>
 				<div class="row">
@@ -654,6 +656,11 @@
 			$('#create' + type).addClass('success');
 		}
 		
+		function countBlanks(description) {
+			return (description.match(/<blank>/g) || []).length;
+			return 0;
+		}
+		
 		function createQuestion(type)
 		{
 			$('#create' + type).removeClass('success');
@@ -664,6 +671,8 @@
 			var creatorId = ${user.id};
 			var desc = document.getElementById('descriptionText' + type).value;
 			var explanation = document.getElementById('explanationText' + type).value;
+			var reference = "";
+			var hyperlink = "";
 			
 			if (type == 'MULTIPLE_CHOICE')
 			{
@@ -673,9 +682,6 @@
 				var incorrect = [];		
 				var path = "/question/create?quizId=" + quizId;
 				var correctPos = 0;
-				
-				var reference = "";
-				var hyperlink = "";
 				
 				var ordered = document.getElementById('randomize').checked;
 		
@@ -743,10 +749,7 @@
 				var incorrect = [];
 				var correctPos = 0;
 				var path = "/question/create?quizId=" + quizId;
-				
-				var reference = "";
-				var hyperlink = "";
-				
+		
 				var ordered = true;
 				
 				
@@ -793,6 +796,100 @@
 
 						}
 						else {
+						}
+					}
+				});
+			}
+			else if (type == 'SHORT_ANSWER')
+			{
+				//TODO Prevalidate these fields
+				var maxAnswers = 5;
+				var correct = document.getElementById('answerTextSHORT_ANSWER').value;
+				var incorrect = ["", "", "", ""];
+				var path = "/question/create?quizId=" + quizId;
+				
+				//TODO: once ready uncomment this code
+				var reference = "";
+				var hyperlink = "";
+				
+				var ordered = true;
+				
+				if(!desc) {
+
+					return;
+				}
+				
+				if(!correct) {
+
+					return;
+				}
+				
+				if(hyperlink && !reference) {
+
+					return;
+				}
+					
+				 $.ajax({
+					type: 'POST',
+					url: path,
+					data: JSON.stringify({groupId: ${group.id}, questionText: desc, correctAnswer: correct, type: type, wrongAnswers: incorrect, creatorId: creatorId, explanation: explanation, ordered: ordered, reference: reference, referenceLink: hyperlink, categories: categories}),
+					dataType: "json",
+					headers: {
+						Accept: "application/json",
+						"Content-Type": "application/json"
+					},
+					success: function(data) {
+						if("success" == data["response"]) {
+							addNewlyCreatedQuestionToList(data);
+							clearCommonFields(type);
+							
+							// Clear the SHORT_ANSWER form
+						}
+						else {
+
+						}
+					}
+				});
+			}
+			else if (type == 'FILL_IN_THE_BLANK')
+			{
+				//TODO Prevalidate these fields
+				var maxAnswers = 5;
+				var correct = "";
+				var answers = [];
+				var path = "/question/create?quizId=" + quizId;
+				
+				count = countBlanks(desc);
+	
+				for(var i = 1; i <= maxAnswers; i++) {
+
+						if(i == 1)
+							correct = ($('#fb-qText' + i).val());
+						else if(i <= count)
+							answers.push($('#fb-qText' + i).val());
+						else
+							answers.push("");
+					
+				}
+
+				 $.ajax({
+					type: 'POST',
+					url: path,
+					data: JSON.stringify({groupId: ${group.id}, questionText: desc, correctAnswer: correct, type: type, wrongAnswers: answers, creatorId: creatorId, explanation: explanation, ordered: ordered, reference: reference, referenceLink: hyperlink, categories: categories }),
+					dataType: "json",
+					headers: {
+						Accept: "application/json",
+						"Content-Type": "application/json"
+					},
+					success: function(data) {
+						if("success" == data["response"]) {
+							addNewlyCreatedQuestionToList(data);
+							clearCommonFields(type);
+							
+							// Clear the FILL IN THE BLANK form
+						}
+						else {
+
 						}
 					}
 				});
