@@ -1,0 +1,16 @@
+.ui-autocomplete
+{
+	border-style: solid;
+	border-width: 1px;
+	width: 300px;
+	font-size: 15px;
+	background-color: white;
+}
+
+.ui-menu-item
+{
+	list-style-type: none;
+	
+}
+
+.ui-helper-hidden-accessible { display:none; }

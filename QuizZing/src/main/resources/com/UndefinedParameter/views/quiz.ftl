@@ -130,10 +130,10 @@
 							<div id="flagDiv"></div>
 							<div class="row noMargin span12">
 								<div id="correctDiv" hidden>
-									<h1 class="text-success"><i class="icon-checkmark bg-green fg-white" style="padding: 10px; border-radius: 50%"></i> You have answered correctly, Good Job!</h1>
+									<h1 class="text-success"><i class="icon-checkmark bg-green fg-white" style="padding: 10px; border-radius: 50%"></i> Correct</h1>
 								</div>
 								<div id="incorrectDiv" hidden>
-									<h1 class="text-alert"><i class="icon-cancel-2 bg-red fg-white" style="padding: 10px; border-radius: 50%"></i> Sorry you answered incorrectly!</h1>
+									<h1 class="text-alert"><i class="icon-cancel-2 bg-red fg-white" style="padding: 10px; border-radius: 50%"></i> Incorrect</h1>
 								</div>
 							</div>
 							<div class="row">

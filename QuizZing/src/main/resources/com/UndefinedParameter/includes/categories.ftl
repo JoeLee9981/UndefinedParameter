@@ -12,24 +12,7 @@
 		<link href="/assets/css/overrides.css" rel="stylesheet">
 		<link href="/assets/css/home.css" rel="stylesheet">	
 		<link rel="shortcut icon" type="image/x-icon" href="/assets/images/qlogo_32.jpg">	
-		<style>
-			.ui-autocomplete
-			{
-				border-style: solid;
-				border-width: 1px;
-				width: 300px;
-				font-size: 15px;
-				background-color: white;
-			}
-		
-			.ui-menu-item
-			{
-				list-style-type: none;
-				
-			}
-		
-			.ui-helper-hidden-accessible { display:none; }
-		</style>	
+		<link rel="stylesheet" type="text/css" href="/assets/css/categories.css" />	
 	</head>
 	<body>
 		
