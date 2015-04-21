@@ -86,6 +86,15 @@ public interface OrganizationDAO {
 								   @Bind("country") String country);
 	
 	
+	@SqlUpdate("UPDATE Organization SET OrganizationType = :type, Name = :name, Description = :description, City = :city, State = :state, Country = :country WHERE OrgID = :orgId")
+	public void updateOrganization(@Bind("orgId") long orgId,
+								   @Bind("type") String type,
+								   @Bind("name") String name,
+								   @Bind("description") String description,
+								   @Bind("city") String city,
+								   @Bind("state") String state,
+								   @Bind("country") String country);
+	
 	/*
 	 * TODO: Below are 2 statements to register a user and increment member count.
 	 * 	If possible do this at same time
@@ -107,6 +116,23 @@ public interface OrganizationDAO {
 	
 	@SqlQuery("SELECT COUNT(*) FROM Quiz quiz, GroupQuiz gquiz, SubGroup g WHERE quiz.QuizID = gquiz.QuizID and gquiz.GroupID = g.GroupID and g.OrgID = :orgId")
 	public int countQuizzes(@Bind("orgId") long orgId);
+	
+	@SqlQuery("SELECT COUNT(quiz.QuizID) FROM Quiz quiz, GroupQuiz gq, SubGroup sg, User u WHERE "
+			+ "quiz.QuizID = gq.QuizID "
+			+ "AND gq.GroupID = sg.GroupID "
+			+ "AND quiz.CreatorID = u.UserID "
+			+ "AND u.UserID = :userId "
+			+ "AND sg.OrgID = :orgId")
+	public int countUserQuizzes(@Bind("orgId") long orgId, @Bind("userId") long userId);
+	
+	@SqlQuery("SELECT COUNT(qq.QuestionID) FROM Quiz quiz, GroupQuiz gq, SubGroup sg, User u, QuizQuestion qq WHERE "
+			+ "quiz.QuizID = gq.QuizID "
+			+ "AND gq.GroupID = sg.GroupID "
+			+ "AND quiz.CreatorID = u.UserID "
+			+ "AND quiz.QuizID = qq.QuizID "
+			+ "AND u.UserID = :userId "
+			+ "AND sg.OrgID = :orgId")
+	public int countUserQuestions(@Bind("orgId") long orgId, @Bind("userId") long userId);
 	
 	@SqlQuery("SELECT COUNT(*) FROM UserOrganization WHERE OrgID = :orgId")
 	public int countMembers(@Bind("orgId") long orgId);

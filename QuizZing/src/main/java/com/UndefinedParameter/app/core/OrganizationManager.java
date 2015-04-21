@@ -126,6 +126,23 @@ public class OrganizationManager {
 		}
 	}
 	
+	public boolean updateOrganization(Organization org) {
+		
+		try {
+			orgDAO.updateOrganization(org.getId(),
+									  InputUtils.sanitizeInput(org.getType()),
+									  InputUtils.sanitizeInput(org.getName()), 
+									  InputUtils.sanitizeInput(org.getDescription()), 
+									  InputUtils.sanitizeInput(org.getCity()), 
+								      InputUtils.sanitizeInput(org.getState()), 
+									  InputUtils.sanitizeInput(org.getCountry()));
+			return true;
+		}
+		catch(Exception e) {
+			return false;
+		}
+	}
+	 
 	
 	/*
 	 * This section is for UserOrganization which controls the association between user and organizations
@@ -394,7 +411,15 @@ public class OrganizationManager {
 	 */
 	public List<OrgMember> getMemberList(long orgId) {
 		try {
-			return orgMemberDAO.retrieveMembersByOrg(orgId);
+			List<OrgMember> members = orgMemberDAO.retrieveMembersByOrg(orgId);
+			
+			for(OrgMember member : members) {
+				member.setContribution(orgMemberDAO.getAmountEarnedPointsOrg(orgId, member.getUserId()));
+				member.setQuizzes(orgDAO.countUserQuizzes(orgId, member.getUserId()));
+				member.setQuestions(orgDAO.countUserQuestions(orgId, member.getUserId()));
+			}
+			
+			return members;
 		}
 		catch(Exception e) {
 			return null;

@@ -21,8 +21,9 @@ public class OrganizationView extends View {
 	private List<Quiz> quizzes;
 	private User user;
 	private int userRating;
+	private boolean moderator;
 	
-	public OrganizationView(Organization org, List<Organization> registeredOrganizations, List<Group> groups, List<Group> registeredGroups, List<OrgMember> members, List<Quiz> quizzes, boolean loggedIn, User user, int userRating) {
+	public OrganizationView(Organization org, List<Organization> registeredOrganizations, List<Group> groups, List<Group> registeredGroups, List<OrgMember> members, List<Quiz> quizzes, boolean loggedIn, User user, int userRating, boolean moderator) {
 		super("org.ftl");
 		this.loggedIn = loggedIn;
 		this.registeredOrganizations = registeredOrganizations;
@@ -33,6 +34,7 @@ public class OrganizationView extends View {
 		this.userRating = userRating;
 		this.members = members;
 		this.quizzes = quizzes;
+		this.moderator = moderator;
 	}
 	
 	public Organization getOrganization() {
@@ -102,5 +104,9 @@ public class OrganizationView extends View {
 			return 0;
 		}
 		return quizzes.size();
+	}
+	
+	public boolean isModerator() {
+		return moderator;
 	}
 }

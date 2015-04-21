@@ -1,7 +1,5 @@
 package com.UndefinedParameter.app.core;
 
-import java.text.SimpleDateFormat;
-
 import org.apache.commons.lang.StringUtils;
 import org.joda.time.DateTime;
 
