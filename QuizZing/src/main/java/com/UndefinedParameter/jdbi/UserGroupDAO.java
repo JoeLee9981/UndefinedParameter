@@ -28,7 +28,7 @@ public interface UserGroupDAO {
 	@SqlUpdate("UPDATE SubGroup SET MemberCount = MemberCount + 1 WHERE GroupID = :groupId")
 	public void incrementGroupMembers(@Bind("groupId") long groupId);
 	
-	@SqlUpdate("INSERT INTO UserGroup "
+	@SqlUpdate("INSERT INTO UserGroups "
 		+ "(UserID, GroupID) "
 		+ "VALUES "
 		+ "(:userid, :groupid)")

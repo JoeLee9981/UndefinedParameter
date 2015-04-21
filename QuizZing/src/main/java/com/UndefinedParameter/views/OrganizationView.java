@@ -88,7 +88,7 @@ public class OrganizationView extends View {
 			count += registeredGroups.size();
 		}
 		if(groups != null) {
-			count += registeredGroups.size();
+			count += groups.size();
 		}
 		return count;
 	}

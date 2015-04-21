@@ -50,11 +50,14 @@
 										<span class="subheader-secondary">
 											<strong>Not anymore!</strong> Whether for school, certification courses, job interviews or just fun. QuizZing gives you the tools to make studying simple.
 										</span>
-										<div id="headerButtons">
-											<button type="button" onclick="location.href = '/register'" class="success large">Register</button>
-											<button type="button" class="warning large" onclick="location.href = '/about'">Learn More</button>		
-										</div>
+										
 									</div>
+									
+								</div>
+								<div id="headerButtons span9">
+									<button type="button" onclick="location.href = '/register'" class="success large" style="margin-right: 10px">Register</button>
+									<button type="button" class="warning large" onclick="location.href = '/about'" style="margin-right: 10px">Learn More</button>
+									<button type="button" class="primary large" onclick="location.href = '/tutorial'">Take the Tutorial</button>
 								</div>
 							</div>
 						</div>

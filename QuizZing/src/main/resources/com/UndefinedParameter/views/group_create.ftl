@@ -58,11 +58,7 @@
 							<div>
 								<h4>Description</h4>
 							</div>
-							<div class="row">
-								<div class="input-control text">
-								    <input id="categories" type="text" value="" placeholder="Categories" disabled/>
-								</div>
-							</div>
+					
 							<p id="descriptionError" class="tertiary-text-secondary errorFormText1 createGroupError" hidden>Enter a description for this group.</p>
 							<div class="input-control textarea">
 							    <textarea class="focusOutTrim focusOutValidateNotEmpty expanding" maxlength="2000" id="description" placeholder="Describe what this group is about."></textarea>

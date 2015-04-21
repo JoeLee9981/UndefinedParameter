@@ -4,7 +4,6 @@ import io.dropwizard.auth.Auth;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 import javax.validation.Valid;
 import javax.ws.rs.Consumes;
@@ -19,8 +18,6 @@ import javax.ws.rs.core.Response;
 import com.UndefinedParameter.app.core.NewsArticle;
 import com.UndefinedParameter.app.core.NewsManager;
 import com.UndefinedParameter.app.core.OrganizationManager;
-import com.UndefinedParameter.app.core.Question;
-import com.UndefinedParameter.app.core.Quiz;
 import com.UndefinedParameter.app.core.QuizManager;
 import com.UndefinedParameter.app.core.User;
 import com.UndefinedParameter.app.core.UserManager;
@@ -37,6 +34,7 @@ import com.UndefinedParameter.views.ForgotView;
 import com.UndefinedParameter.views.HomeView;
 import com.UndefinedParameter.views.LoginView;
 import com.UndefinedParameter.views.RegisterView;
+import com.UndefinedParameter.views.TutorialView;
 
 @Path("/")
 @Produces(MediaType.TEXT_HTML)
@@ -191,5 +189,16 @@ public class HomeResource {
 	@Path("/about")
 	public Response getAboutPage(@Auth(required=false) User user) {
 		return Response.ok(new AboutView(user, newsManager.getRecentNews())).build();
+	}
+	
+	/**
+	 * Tutorial page
+	 * @param user
+	 * @return
+	 */
+	@GET
+	@Path("/tutorial")
+	public Response getTutorialView(@Auth(required = false) User user) {
+		return Response.ok(new TutorialView(user)).build();
 	}
 }
