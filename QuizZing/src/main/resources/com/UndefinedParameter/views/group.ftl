@@ -38,7 +38,7 @@
 									<h2 style="text-shadow: 0 0 3px #000000, 0 0 5px #000000;" class="fg-white">
 										<strong>${group.name}</strong> 
 										<#if moderator>
-										<a href="/group/edit?groupId=${group.id}" id="editGroup"><i class="icon-pencil place-right bg-green" style="color: white; padding: 10px; border-radius: 50%; margin-right: 15px"></i></a>
+										<a href="/group/edit?groupId=${group.id}" id="editGroup"><i title="manage group" class="icon-pencil place-right bg-green" style="color: white; padding: 10px; border-radius: 50%; margin-right: 15px"></i></a>
 										</#if>
 									</h2>
 									<p style="text-shadow: 0 0 3px #000000, 0 0 5px #000000;" class="fg-white"><strong>${group.description}</strong></p>

@@ -34,22 +34,22 @@ public interface OrgMemberDAO {
 	public List<OrgMember> retrieveMemberByOrgIdUserId(@Bind("orgID") long orgid,
 														@Bind("userID") long userid);
 	
-	@SqlQuery("SELECT SUM(ug.EarnedPoints) FROM UserGroups ug, SubGroup sg, Organization og"
-			+ " WHERE og.OrgID = :orgID AND"
-			+ "og.OrgID = sg.OrgID AND"
+	@SqlQuery("SELECT SUM(ug.EarnedPoints) FROM UserGroups ug, SubGroup sg, Organization og "
+			+ "WHERE og.OrgID = :orgID AND "
+			+ "og.OrgID = sg.OrgID AND "
 			+ "sg.GroupID = ug.GroupID AND "
 			+ "ug.UserID = :userID")
-	public long getAmountEarnedPointsOrg(@Bind("orgID") long orgid,
+	public int getAmountEarnedPointsOrg(@Bind("orgID") long orgid,
 										@Bind("userID") long userid);
 	
 	@SqlQuery("SELECT Moderator FROM UserOrganization "
-			+ "WHERE OrgID = :orgID AND"
+			+ "WHERE OrgID = :orgID AND "
 			+ "UserID = :userID")
 	public int getModStatus(@Bind("orgID") long orgid,
 								@Bind("userID") long userid);
 	
 	@SqlUpdate("UPDATE UserOrganization SET Moderator = :status "
-			+ "WHERE OrgID = :orgID AND"
+			+ "WHERE OrgID = :orgID AND "
 			+ "UserID = :userID")
 	public void setModStatus(@Bind("status") long status,
 								@Bind("orgID") long orgid,

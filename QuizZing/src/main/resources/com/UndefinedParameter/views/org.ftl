@@ -30,8 +30,13 @@
 
 				<div class="row">
 					<div id="orgImage" style="position:relative;">
-						<div style="position:absolute;left:20px;padding:20px;">
-							<h2 style="text-shadow: 0 0 3px #000000, 0 0 5px #000000;" class="fg-white"><strong>${organization.name?html}</strong></h2>
+						<div class="span12" style="position:absolute;left:20px;padding:20px;">
+							<h2 style="text-shadow: 0 0 3px #000000, 0 0 5px #000000;" class="fg-white">
+								<strong>${organization.name?html}</strong>
+								<#if moderator>
+								<a href="/orgs/org/edit?orgId=${organization.id}" id="editOrg"><i title="manage organization" class="icon-pencil place-right bg-green" style="color: white; padding: 10px; border-radius: 50%; margin-top: -10px; margin-right: 20px"></i></a>
+								</#if>
+							</h2>
 							<p style="text-shadow: 0 0 3px #000000, 0 0 5px #000000;" class="fg-white">${organization.location}</p>
 						</div>
 						<div style="position:absolute;right:20px;bottom:20px;">
@@ -121,9 +126,15 @@
 								<table class="table hovered striped">
 									<#list members as member>
 										<tr>
-											<td class="padding5"><a href="/user?userid=${member.userId}">${member.displayName}</a></td>
-											<td class="padding5"><span class="place-right">${member.contribution}<i class="icon-clipboard-2 on-right"></i></span></td>
-											<td class="padding5"><span class="place-right">${member.joinDateString}<i class="icon-clipboard-2 on-right"></i></span></td>
+											<td class="padding5">
+												<a href="/user?userid=${member.userId}">${member.displayName}
+												<#if member.contribution &gt; 1000><i title="Moderator" class="icon-heart on-right"></i></#if>
+												</a>
+											</td>
+											<td class="padding5"><span class="place-right">${member.contribution}<i title="Contribution Score" class="icon-medal on-right"></i></span></td>
+											<td class="padding5"><span class="place-right">${member.questions}<i title="Quizzes" class="icon-help-2 on-right"></i></span></td>
+											<td class="padding5"><span class="place-right">${member.quizzes}<i title="Quizzes" class="icon-clipboard-2 on-right"></i></span></td>
+											<td class="padding5"><span class="place-right">${member.joinDateString}</span></td>
 										</tr>
 									</#list>
 								</table>
@@ -131,6 +142,7 @@
 								<h3>There are currently no members of this group</h3>
 							</#if>
 						</div>
+						
 						<div class="row noMargin" id="groupsDiv">					
 							<div class="accordion with-marker" data-role="accordion" data-closeany="false">
 								

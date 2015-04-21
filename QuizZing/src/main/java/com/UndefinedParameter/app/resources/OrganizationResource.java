@@ -26,11 +26,10 @@ import com.UndefinedParameter.jdbi.OrgMemberDAO;
 import com.UndefinedParameter.jdbi.OrganizationDAO;
 import com.UndefinedParameter.views.GroupCreatorView;
 import com.UndefinedParameter.views.LoginView;
+import com.UndefinedParameter.views.OrgEditView;
 import com.UndefinedParameter.views.OrganizationCreatorView;
 import com.UndefinedParameter.views.OrganizationView;
 import com.UndefinedParameter.views.OrgsView;
-import com.UndefinedParameter.views.QuizEditQuestionsView;
-import com.UndefinedParameter.views.RegisterView;
 
 @Path("/orgs")
 @Produces(MediaType.TEXT_HTML)
@@ -60,15 +59,16 @@ public class OrganizationResource {
 		List<OrgMember> members = manager.getMemberList(id);
 		
 		if(user != null) {
+			boolean moderator = manager.getModStatus(id, user.getId()) || user.isAdmin();
 			List<Group> unregGroups = manager.findUnregisteredGroupsByOrg(user.getId(), id);
 			List<Group> regGroups = manager.findRegisteredGroupsById(id, user.getId());
 			
 			int userRating = 0;
-			return Response.ok(new OrganizationView(manager.findOrgById(id), manager.findOrgsByUserId(user.getId()), unregGroups, regGroups, members, manager.findQuizzesByOrg(id), true, user, userRating)).build();
+			return Response.ok(new OrganizationView(manager.findOrgById(id), manager.findOrgsByUserId(user.getId()), unregGroups, regGroups, members, manager.findQuizzesByOrg(id), true, user, userRating, moderator)).build();
 		}
 		else {
 			List<Group> groups = manager.findGroupsById(id);
-			return Response.ok(new OrganizationView(manager.findOrgById(id), null, groups, null, members, manager.findQuizzesByOrg(id), false, user, 0)).build();
+			return Response.ok(new OrganizationView(manager.findOrgById(id), null, groups, null, members, manager.findQuizzesByOrg(id), false, user, 0, false)).build();
 		}
 	}
 	
@@ -81,6 +81,7 @@ public class OrganizationResource {
 			return Response.ok(new LoginView("/orgs/create")).build();
 	}
 	
+	
 	@GET
 	@Path("/org/create")
 	public Response getCreateGroupView(@Auth(required = false) User user, @QueryParam("orgId") long orgId) {
@@ -88,6 +89,38 @@ public class OrganizationResource {
 			return Response.ok(new GroupCreatorView(user, manager.findOrgById(orgId))).build();
 		else
 			return Response.ok(new LoginView("/orgs/org/create?orgId=" + orgId)).build();
+	}
+	
+	@GET
+	@Path("/org/edit")
+	public Response getEditOrgView(@Auth(required = false) User user, @QueryParam("orgId") long orgId) {
+		if(user == null) {
+			return Response.ok(new LoginView("/orgs/org/edit?orgId=" + orgId)).build();
+		}
+		if(orgId < 1) {
+			return Response.status(Status.BAD_REQUEST).build();
+		}
+		Organization org = manager.findOrgById(orgId);
+		if(manager.getModStatus(orgId, user.getId()) || user.isAdmin()) {
+			
+			return Response.ok(new OrgEditView(user, org)).build();
+		}
+		return Response.status(Status.BAD_REQUEST).build();
+	}
+	
+	@POST
+	@Path("/org/edit")
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Response editOrg(@Auth(required = false) User user, @QueryParam("orgId") long orgId, Organization organization) {
+		if(user == null) {
+			return Response.status(Status.BAD_REQUEST).build();
+		}
+		if(!user.isAdmin() && !manager.getModStatus(orgId, user.getId())) {
+			return Response.status(Status.BAD_REQUEST).build();
+		}
+		manager.updateOrganization(organization);
+		
+		return Response.ok().build();
 	}
 	
 	@POST
