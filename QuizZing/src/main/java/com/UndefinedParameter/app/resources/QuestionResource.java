@@ -111,6 +111,12 @@ public class QuestionResource {
 				userGroupManager.addPoints(user.getId(), question.getGroupId(), 1);
 				response.put("response", "success");
 				response.put("redirect", "/quiz/edit?quizId=" + quizId + "&groupId=" + question.getGroupId());
+				response.put("questionId", "" + questionId);
+				response.put("textFirstLine", question.getQuestionTextFirstLine());
+				response.put("text", question.getQuestionText());
+				response.put("categoryString", question.getCategoriesString());
+				response.put("rating", "" + question.getRating());
+				response.put("difficulty", "" + question.getDifficulty());
 			}
 			else {
 				response.put("response", "fail");

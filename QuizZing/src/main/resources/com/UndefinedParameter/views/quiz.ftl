@@ -892,14 +892,14 @@
 
 			// Define the axes.
 			var xAxis = d3.svg.axis().scale(x)
-				.orient("bottom").ticks(5);
+				.orient("bottom").ticks(0);
 
 			var yAxis = d3.svg.axis().scale(y)
 				.orient("left").ticks(5);
 
 			// Define the line.
 			var valueline = d3.svg.line()
-				.x(function(d) { return x(d.dateTime); })
+				.x(function(d, i) { return x(i); })
 				.y(function(d) { return y(d.score); });
 				
 			// Add the svg canvas.
@@ -912,8 +912,8 @@
 						  "translate(" + margin.left + "," + margin.top + ")");
 
 				// Scale the range of the data.
-				x.domain(d3.extent(data, function(d) { return d.dateTime; }));
-				y.domain([0, d3.max(data, function(d) { return d.score; })]);
+				x.domain(d3.extent(data, function(d, i) { return i; }));
+				y.domain([0, 100]);
 				
 				// Add title.
 				svg.append("text")
@@ -924,20 +924,7 @@
 			        .style("text-decoration", "underline")  
 			        .text("Your Previous Scores");
 
-				// Add the valueline path.
-				svg.append("path")
-					.attr("class", "line")
-					.attr("d", valueline(data));
-
-				// Add the scatterplot.
-				svg.selectAll("dot")
-					.data(data)
-				  .enter().append("circle")
-					.attr("r", 3.5)
-					.attr("cx", function(d) { return x(d.dateTime); })
-					.attr("cy", function(d) { return y(d.score); });
-
-				// Add the X axis.
+				// Add the X axis
 				svg.append("g")
 					.attr("class", "x axis")
 					.attr("transform", "translate(0," + height + ")")
@@ -948,13 +935,26 @@
 					.attr("class", "y axis")
 					.call(yAxis);
 					
+				// Add the valueline path.
+				svg.append("path")
+					.attr("class", "line")
+					.attr("d", valueline(data));
+
+				// Add the scatterplot.
+				svg.selectAll("dot")
+					.data(data)
+				  .enter().append("circle")
+					.attr("r", 2.5)
+					.attr("cx", function(d, i) { return x(i); })
+					.attr("cy", function(d) { return y(d.score); });
+					
 				// Add X axis label.
 				svg.append("text")
 				    .attr("class", "x label")
 				    .attr("text-anchor", "end")
 				    .attr("x", width)
 				    .attr("y", height + 35)
-				    .text("Date & Time");
+				    .text("Time");
 									
 				// Add Y axis label.
 				svg.append("text")
@@ -991,18 +991,18 @@
 				.orient("bottom").ticks(5);
 
 			var yAxis = d3.svg.axis().scale(y)
-				.orient("left").ticks(5);
+				.orient("left");
+				
+				// Define the line.
+			var valueline = d3.svg.line()
+				.x(function(d, i) { return x(d.score); })
+				.y(function(d) { return y(scores[d.score]); });
 				
 			var area = d3.svg.area()
 			    .x(function(d) { return x(d.score); })
 			    .y0(height)
 			    .y1(function(d) { return y(scores[d.score]); });
-
-			// Define the line.
-			var valueline = d3.svg.line()
-				.x(function(d) { return x(d.score); })
-				.y(function(d) { return y(scores[d.score]); });
-				
+			
 			// Add the svg canvas.
 			var svg = d3.select("#quizGraphs")
 				.append("svg")
@@ -1013,7 +1013,7 @@
 						  "translate(" + margin.left + "," + margin.top + ")");
 
 				// Scale the range of the data.
-				x.domain([0, d3.max(data, function(d) { return d.score; })]);
+				x.domain([0, 100]);
 				y.domain([0, d3.max(data, function(d) { return scores[d.score]; })]);
 				
 				// Add title.
@@ -1023,7 +1023,7 @@
 			        .attr("text-anchor", "middle")  
 			        .style("font-size", "16px") 
 			        .style("text-decoration", "underline")  
-			        .text("Total Previous Scores");
+			        .text("Other Users' Scores");
 
 				// Add the valueline path.
 				svg.append("path")
@@ -1031,18 +1031,10 @@
 					.attr("d", valueline(data));
 					
 				// Add area fill.
-				svg.append("path")
+				/*svg.append("path")
 					.datum(data)
 					.attr("class", "area")
-					.attr("d", area);
-
-				// Add the scatterplot.
-				/*svg.selectAll("dot")
-					.data(data)
-				  .enter().append("circle")
-					.attr("r", 3.5)
-					.attr("cx", function(d) { return x(d.score); })
-					.attr("cy", function(d) { return y(scores[d.score]); });*/
+					.attr("d", area);*/
 
 				// Add the X axis.
 				svg.append("g")
@@ -1054,6 +1046,19 @@
 				svg.append("g")
 					.attr("class", "y axis")
 					.call(yAxis);
+					
+				// Define the line.
+				var valueline = d3.svg.line()
+					.x(function(d) { return x(d.score); })
+					.y(function(d) { return y(scores[d.score]); });
+					
+				// Add the scatterplot.
+				svg.selectAll("dot")
+					.data(data)
+				  .enter().append("circle")
+					.attr("r", 2.5)
+					.attr("cx", function(d, i) { return x(d.score); })
+					.attr("cy", function(d) { return y(scores[d.score]); });
 					
 				// Add X axis label.
 				svg.append("text")
@@ -1068,7 +1073,7 @@
 				    .attr("class", "y label")
 				    .attr("text-anchor", "end")
 				    .attr("y", 4)
-				    .attr("dy", "-2.25em")
+				    .attr("dy", "-3.25em")
 				    .attr("transform", "rotate(-90)")
 				    .text("# of Students");
 		}

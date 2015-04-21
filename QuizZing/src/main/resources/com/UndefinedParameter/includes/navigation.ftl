@@ -95,8 +95,8 @@
 	
 	function SetCategoryDropdownLocation()
 	{
-		var leftPosition = $("#home-link").position().left;
-		var categoryPosition = $("#category-dropdown").position().left;
-		$("#category-dropdown-container").css("left","-" + (categoryPosition - leftPosition) + "px");
+		//var leftPosition = $("#home-link").position().left;
+		//var categoryPosition = $("#category-dropdown").position().left;
+		//$("#category-dropdown-container").css("left","-" + (categoryPosition - leftPosition) + "px");
 	}
 </script>
