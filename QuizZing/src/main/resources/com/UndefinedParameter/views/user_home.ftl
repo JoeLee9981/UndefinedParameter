@@ -163,12 +163,12 @@
 			</div>	
 		
 					
-									
+		</div>							
 		<div style="padding-top: 50px" class="row">
 			<#include "../includes/footer.ftl">
 		</div>
 	</div>
-
+	
 	</body>
 	<script>
 	

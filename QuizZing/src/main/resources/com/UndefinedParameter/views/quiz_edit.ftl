@@ -222,38 +222,7 @@
 			</div>
 		</div>
 						
-		<div class="page-content">
-			<div class="grid fluid">
-			
-			
-				<br/>
-				<br/>
-				<br/>
-				<br/>
-				<br/>
-				<br/>
-				<br/>
-				<br/>
-				<br/>
-				<br/>
-				
-			
-			
-				<div class="row">
-
-					<h1>
-						<button id="createButton" class="place-right success">Create A Question</button>
-						<button id="addButton" class="place-right warning">Add A Question</button>
-						<button id="editButton" class="place-right primary">Edit Quiz</button>
-					</h1><br/>
-					<h2>${quiz.description}</h2>
-					<label id="errorLabel"></label>
-					
-					<div id="questionDiv"></div>
-					
-				</div>
-			</div>
-		</div>
+		
 		<div style="padding-top: 50px" class="row">
 			<#include "../includes/footer.ftl">
 		</div>
