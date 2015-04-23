@@ -8,8 +8,10 @@ import org.apache.commons.lang.StringUtils;
 
 import com.UndefinedParameter.app.core.Badge;
 import com.UndefinedParameter.app.core.Group;
+import com.UndefinedParameter.app.core.UserMessage;
 import com.UndefinedParameter.app.core.Quiz;
 import com.UndefinedParameter.app.core.User;
+import com.mysql.jdbc.Messages;
 
 public class UserProfileView extends View {
 	
@@ -20,6 +22,8 @@ public class UserProfileView extends View {
 	private List<Badge> groupBadges;
 	private List<Badge> orgBadges;
 	private boolean editable;
+	private List<UserMessage> sentMessages;
+	private List<UserMessage> receivedMessages;
 	
 	public UserProfileView(String page) {
 		super(page);
@@ -27,7 +31,7 @@ public class UserProfileView extends View {
 		this.userProf = null;
 	}
 	
-	public UserProfileView(String page, User userProf, User user, List<Quiz> userQuizzes, List<Group> userGroups, boolean editable, List<Badge> groupBadges, List<Badge> orgBadges) {
+	public UserProfileView(String page, User userProf, User user, List<Quiz> userQuizzes, List<Group> userGroups, boolean editable, List<Badge> groupBadges, List<Badge> orgBadges, List<UserMessage> sentMessages, List<UserMessage> receivedMessages) {
 		super(page);
 		this.userProf = userProf;
 		this.userQuizzes = userQuizzes;
@@ -36,6 +40,8 @@ public class UserProfileView extends View {
 		this.user = user;
 		this.groupBadges = groupBadges;
 		this.orgBadges = orgBadges;
+		this.sentMessages = sentMessages;
+		this.receivedMessages = receivedMessages;
 	}
 	
 	public User getuserProf() {
@@ -103,6 +109,22 @@ public class UserProfileView extends View {
 		if(orgBadges != null)
 			count += orgBadges.size();
 		return count;
+	}
+
+	public List<UserMessage> getSentMessages() {
+		return sentMessages;
+	}
+
+	public void setSentMessages(List<UserMessage> sentMessages) {
+		this.sentMessages = sentMessages;
+	}
+
+	public List<UserMessage> getReceivedMessages() {
+		return receivedMessages;
+	}
+
+	public void setReceivedMessages(List<UserMessage> receivedMessages) {
+		this.receivedMessages = receivedMessages;
 	}
 
 }

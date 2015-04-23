@@ -5,6 +5,8 @@
 		<link rel="stylesheet" href="/assets/plugins/metro_ui/css/metro-bootstrap.css">
 		<link rel="stylesheet" type="text/css" href="/assets/css/main.css" />
 		<link rel="stylesheet" type="text/css" href="/assets/css/home.css" />
+		<link rel="stylesheet" type="text/css" href="/assets/css/quiz.css" />
+		<script src="/assets/scripts/message.js"></script>
 		<script src="/assets/scripts/jquery-2.1.1.min.js"></script>
 		<script src="/assets/scripts/jquery-ui.min.js"></script>
 		<script src="/assets/plugins/metro_ui/min/metro.min.js"></script>
@@ -44,10 +46,15 @@
 								        <item class="element-divider"></item>
 								        <item id="badgesItem" class="element"><a href="" id="badgesLink"><i class="icon-medal on-right"></i> <strong>Badges (${badgeCount})</strong></a></item>
 								    	<item class="element-divider"></item>
-								        <#if editable>	
+								        <#if editable>
 											<item id="editItem" class="element place-right"><a href="/user/edit?userid=${userProf.id}"><i class="icon-pencil on-left"></i> <strong>Edit Profile</strong></a></item>
 											<item class="element-divider place-right"></item>
 											<item id="scoresItem" class="element place-right"><a href="/user/scores?userid=${userProf.id}"><i class="icon-chart-alt on-left"></i> <strong>View Scores</strong></a></item>
+											<item class="element-divider place-right"></item>
+											<item id="messagesItem" class="element place-right"><a id="messagesLink" href=""><i class="icon-mail on-left"></i> <strong>Messages</strong></a></item>
+											<item class="element-divider place-right"></item>
+										<#elseif user??>
+											<item id="messagesItem" class="element place-right"><a id="messagesLink" href=""><i class="icon-mail on-left"></i> <strong>Send Message</strong></a></item>
 											<item class="element-divider place-right"></item>
 										</#if>
 								        
@@ -263,6 +270,61 @@
 								</div>
 							</div>
 						</div>
+						
+						<div class="row noMargin">
+							<div id="messagesDiv" hidden>
+								<#if editable>
+									<h1>Message Center</h1>
+									<div class="row noMargin span3">
+										<nav class="navigation-bar white white-custom">
+								   			<nav class="navigation-bar-content">
+										        <item style="width: 113px" id="sentItem" class="element"><a href="" id="sentLink"><i class="icon-link on-right"></i> <strong>Sent</strong></a></item>
+										        <item class="element-divider"></item> 		        
+										        <item style="width: 112px" id="inboxItem" class="element active"><a href="" id="inboxLink"><i class="icon-clipboard-2 on-right"></i> <strong>Inbox</strong></a></item>
+										    </nav>
+										</nav>
+										<div class="quizQuestionList" style="width:228px; height: 400px">
+											<div class="quizQuestionListContent">
+												<div id="messageList" class="listview">
+													<#if receivedMessages??>
+													<#list receivedMessages as message>
+													<a id="${message_index}Button" class="list" href="#" style="margin-bottom: 1px;">
+														<div class="list-content noMargin">
+															<span class="list-title">${message.userName}</span>
+														</div>
+													</a>
+													<script>$('#${message_index}Button').click(function(event) { event.preventDefault(); });</script>
+													</#list>
+													<#else>
+													<a class="list marked" href="#">
+														<div class="list-content">   
+															<span class="list-title">No Messages</span>
+														</div>
+													</a>
+													</#if>
+								                               
+												</div>
+											</div>
+										</div>
+									</div>
+									<#if receivedMessages[0]??>
+									<div class="row span9" style="border: solid lightgray 1px; margin-left: 10px; margin-top: 0px; margin-bottom: 0px">
+										<span style="margin-left: 30px" class="span4"><h4>From: <a href="/user?userid=${receivedMessages[0].senderId}">${receivedMessages[0].userName}</a></h4></span>
+										<span class="span4"><h4>${receivedMessages[0].timeStampString}</h4></span>
+									</div>
+									<div class="row span9" style="border: solid lightgray 1px; margin-left: 10px">
+										<span><p style="font-size: 20px; margin: 30px">${receivedMessages[0].message}</p></span>
+									</div>
+									<#else>
+									<div class="row noMargin span9">
+										<h1>You have not received any messages</h1>
+									</div>
+									</#if>
+									
+									
+								</#if>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -295,6 +357,17 @@
 		$('#badgesItem').addClass('active');
 	});
 
+	$('#messagesLink').click(function(event){
+		event.preventDefault();
+		<#if editable>
+		hideDivs();
+		$('#messagesDiv').show();
+		$('#messagesItem').addClass('active')
+		<#elseif user??>
+		sendMessage(${user.id}, ${userProf.id});
+		</#if>
+	});
+
 	function hideDivs() {
 		$('#quizzesDiv').hide();
 		$('#quizzesItem').removeClass('active');
@@ -302,6 +375,8 @@
 		$('#groupsItem').removeClass('active')
 		$('#badgesDiv').hide();
 		$('#badgesItem').removeClass('active');
+		$('#messagesDiv').hide();
+		$('#messagesItem').removeClass('active');
 	}
 
 </script>

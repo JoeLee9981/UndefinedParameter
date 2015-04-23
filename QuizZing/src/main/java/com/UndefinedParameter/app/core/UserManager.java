@@ -152,6 +152,25 @@ public class UserManager {
 		return true;
 	}
 	
+	/**
+	 * Send a message to a user
+	 * @param sendeeId the person sent to
+	 * @param senderId the person sending
+	 * @param message the message
+	 * @return generated key used for validation
+	 */
+	public long sendMessage(long sendeeId, long senderId, String message) {
+		return userDAO.sendMessage(senderId, sendeeId, message);
+	}
+	
+	public List<UserMessage> getSentMessages(long userId) {
+		return userDAO.getSentMessages(userId);
+	}
+	
+	public List<UserMessage> getReceivedMessages(long userId) {
+		return userDAO.getUserMessages(userId);
+	}
+	
 	/*
 	 * Fill empty User parameters before updating its row in the database.
 	 */

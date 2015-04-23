@@ -57,11 +57,15 @@ public class UserProfileResource {
 	public Response getUserProfileView(@Auth(required = false) User user, @QueryParam("userid") long userID) {
 		
 		if(user != null && user.getId() == userID) {
-			return Response.ok(new UserProfileView("profile.ftl", user, user, quizManager.findQuizzesByCreatorId(user.getId()), groupManager.findRegisteredGroups(user.getId()), true, userManager.getBadgesByUser(userID), userManager.getBadgesByOrg(user.getId()))).build();
+			return Response.ok(new UserProfileView("profile.ftl", user, user, quizManager.findQuizzesByCreatorId(user.getId()), 
+								groupManager.findRegisteredGroups(user.getId()), true, userManager.getBadgesByUser(userID), userManager.getBadgesByOrg(userID),
+								userManager.getSentMessages(userID), userManager.getReceivedMessages(userID))).build();
 		}
 		else {
 			User currentUser = userManager.findUserById(userID);
-			return Response.ok(new UserProfileView("profile.ftl", currentUser, user, quizManager.findQuizzesByCreatorId(currentUser.getId()), groupManager.findRegisteredGroups(userID), false, userManager.getBadgesByUser(userID), userManager.getBadgesByOrg(user.getId()))).build();
+			return Response.ok(new UserProfileView("profile.ftl", currentUser, user, quizManager.findQuizzesByCreatorId(currentUser.getId()), 
+								groupManager.findRegisteredGroups(userID), false, userManager.getBadgesByUser(userID), userManager.getBadgesByOrg(userID),
+								null, null)).build();
 		}
 	}
 	
@@ -78,7 +82,7 @@ public class UserProfileResource {
 			return Response.status(Status.UNAUTHORIZED).build();
 		}
 		
-		return Response.ok(new UserProfileView("edit_profile.ftl", user, user, quizManager.findQuizzesByCreatorId(user.getId()), groupManager.findRegisteredGroups(user.getId()), false, null, null)).build();
+		return Response.ok(new UserProfileView("edit_profile.ftl", user, user, quizManager.findQuizzesByCreatorId(user.getId()), groupManager.findRegisteredGroups(user.getId()), false, null, null, null, null)).build();
 	}
 	
 	@POST
@@ -185,7 +189,7 @@ public class UserProfileResource {
 	@GET
 	@Path("/scores/category")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response  categoryScores(@Auth(required = false) User user, @QueryParam("quizId") long quizId) {
+	public Response categoryScores(@Auth(required = false) User user, @QueryParam("quizId") long quizId) {
 		
 		HashMap<String, Double> response = new HashMap<String, Double>();
 		if(user == null || quizId < 1) {
@@ -198,5 +202,20 @@ public class UserProfileResource {
 		}
 		
 		return Response.ok(response).build();
+	}
+	
+	@POST
+	@Path("/message")
+	public Response sendMessages(@Auth(required = false) User user, @QueryParam("sendeeId") long sendeeId, @QueryParam("senderId") long senderId, String message) {
+		
+		if(user == null) {
+			return Response.status(Status.BAD_REQUEST).build();
+		}
+		//send message
+		long messageId = userManager.sendMessage(sendeeId, senderId, message);
+		if(messageId < 1) {
+			return Response.status(Status.BAD_REQUEST).build();
+		}
+		return Response.ok().build();
 	}
 }

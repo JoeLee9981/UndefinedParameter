@@ -10,6 +10,7 @@ import org.skife.jdbi.v2.sqlobject.SqlUpdate;
 import org.skife.jdbi.v2.sqlobject.customizers.RegisterMapper;
 
 import com.UndefinedParameter.app.core.Badge;
+import com.UndefinedParameter.app.core.UserMessage;
 import com.UndefinedParameter.app.core.Organization;
 import com.UndefinedParameter.app.core.User;
 
@@ -82,4 +83,59 @@ public interface UserDAO {
 	@SqlQuery("SELECT org.* FROM Organization org, UserOrganization uo WHERE org.OrgID = uo.OrgID AND uo.UserID = :userId")
 	@RegisterMapper(OrganizationMapper.class)
 	public List<Organization> findUserOrgs(@Bind("userId") long userId);
+	
+	/**************************************** Messages Section **********************************************/
+	
+	@SqlQuery("SELECT msg.*, u.FirstName, u.LastName FROM Message msg, User u WHERE msg.SenderID = u.UserID AND msg.MessageID = :messageId")
+	@RegisterMapper(MessageMapper.class)
+	public UserMessage getMessage(@Bind("messageId") long messageId);
+	
+	/**
+	 * Get all of a users messages
+	 * @param userId the user
+	 * @return All of the user's messages
+	 */
+	@SqlQuery("SELECT msg.*, u.FirstName, u.LastName FROM Message msg, User u WHERE msg.SenderID = u.UserID AND msg.SendeeID = :userId")
+	@RegisterMapper(MessageMapper.class)
+	public List<UserMessage> getUserMessages(@Bind("userId") long userId);
+	
+	/**
+	 * Get all of a users unread messages
+	 * @param userId the user
+	 * @return all unread messages
+	 */
+	@SqlQuery("SELECT msg.*, u.FirstName, u.LastName FROM Message msg, User u WHERE msg.SenderID = u.UserID AND msg.Viewed = 0 AND msg.SendeeID = :userId")
+	@RegisterMapper(MessageMapper.class)
+	public List<UserMessage> getUnreadMessages(@Bind("userId") long userId);
+	
+	/**
+	 * Send a message
+	 * @param senderId who sent it
+	 * @param sendeeId who is it for
+	 * @param message the message
+	 * @return the key of the message created
+	 */
+	@SqlUpdate("INSERT INTO Message (SenderID, SendeeID, Message) VALUES(:senderId, :sendeeId, :message)")
+	@GetGeneratedKeys
+	public long sendMessage(@Bind("senderId") long senderId, @Bind("sendeeId") long sendeeId, @Bind("message") String message);
+	
+	/**
+	 * get all sent messages
+	 * @param userId of the user than sent messages
+	 * @return the messages
+	 */
+	@SqlQuery("SELECT msg.*, u.FirstName, u.LastName FROM Message msg, User u WHERE msg.SendeeID = u.UserID AND msg.Viewed = 0 AND msg.SenderID = :userId")
+	@RegisterMapper(MessageMapper.class)
+	public List<UserMessage> getSentMessages(@Bind("userId") long userId);
+	
+	/**
+	 * Mark a message as viewed
+	 * @param userId the sendee
+	 */
+	@SqlUpdate("UPDATE Message SET Viewed = 1 WHERE SendeeID = :userId")
+	public void markMessageAsRead(@Bind("userId") long userId);
+	
+	/****************************************** Friends Section *******************************************/
+	
+	
 }
