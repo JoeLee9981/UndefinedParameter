@@ -59,7 +59,7 @@
 								</div>
 							</div>
 							<div class="span4">
-								Narrow Results
+								
 							</div>
 						</div>
 					</div>
