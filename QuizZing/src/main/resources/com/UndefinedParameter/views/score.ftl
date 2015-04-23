@@ -156,6 +156,14 @@
 			var data = dataset;
 			var i = 0;
 			
+			// Set start map.
+			var startData = data.map( function( d ) {
+                    return {
+                      score : 0,
+                      value : 0
+                    };
+                  } );
+			
 			// Set the ranges.
 			var x = d3.time.scale().range([0, width]);
 			var y = d3.scale.linear().range([height, 0]);
@@ -171,6 +179,13 @@
 			var valueline = d3.svg.line()
 				.x(function(d, i) { return x(i); })
 				.y(function(d) { return y(d.score); });
+				
+			// Define area.
+			var area = d3.svg.area()
+                .interpolate( 'linear' )
+                .x( function( d, i )  { return x( i ); } )
+                .y0( height )
+                .y1( function( d ) { return y( d.score ); } );
 				
 			// Add the svg canvas.
 			var svg = d3.select("#quizScoreGraph")
@@ -197,17 +212,9 @@
 					.call(yAxis);
 
 				// Add the valueline path.
-				svg.append("path")
-					.attr("class", "line")
-					.attr("d", valueline(data));
-
-				// Add the scatterplot.
-				svg.selectAll("dot")
-					.data(data)
-				  .enter().append("circle")
-					.attr("r", 2.5)
-					.attr("cx", function(d, i) { return x(i); })
-					.attr("cy", function(d) { return y(d.score); });
+				var path = svg.append("path")
+							.attr("class", "line")
+							.attr("d", valueline(startData));
 					
 				// Add X axis label.
 				svg.append("text")
@@ -224,7 +231,9 @@
 				    .attr("y", 4)
 				    .attr("dy", "-3.5em")
 				    .attr("transform", "rotate(-90)")
-				    .text("Percentage Correct");				    				
+				    .text("Percentage Correct");		
+				  
+				path.transition().duration(1000).attr("d", valueline(data));	  				
 		}
 	</script>
 		
