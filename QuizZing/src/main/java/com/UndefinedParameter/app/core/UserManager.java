@@ -245,6 +245,7 @@ public class UserManager {
 		
 		private GoogleMail() { }
 		
+		@SuppressWarnings("restriction")
 		public void Send(final String username, final String password, String recipientEmail, String title, String message) throws AddressException, MessagingException {
 	        
 			Security.addProvider(new com.sun.net.ssl.internal.ssl.Provider());
