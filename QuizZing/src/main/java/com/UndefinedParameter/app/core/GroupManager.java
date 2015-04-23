@@ -163,8 +163,20 @@ public class GroupManager {
 		}
 	}
 	
+	/**
+	 * Find group members by a group id
+	 * @param groupId is the id of the group
+	 * @return
+	 */
 	public List<GroupMember> findGroupMembers(long groupId) {
-		return orgMemberDAO.retrieveMembersByGroup(groupId);
+		List<GroupMember> members = orgMemberDAO.retrieveMembersByGroup(groupId);
+		
+		for(GroupMember member: members) {
+			member.setQuestions(groupDAO.countUserQuestions(groupId, member.getUserId()));
+			member.setQuizzes(groupDAO.countUserQuizzes(groupId, member.getUserId()));
+		}
+		
+		return members;
 	}
 	
 	public List<String> findCategoriesByGroup(long groupId) {

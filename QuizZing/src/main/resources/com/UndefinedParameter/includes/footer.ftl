@@ -1,5 +1,7 @@
 <link href="/assets/css/footer.css" rel="stylesheet">	
-<!--<div id="footer">
+<div style="height:200px;">
+</div>
+<div id="footer" class="noMargin noPadding">
 	<div id="footer-content" class="page-content metro">
 		<div id="bottom-links" class="grid fluid">
 			<nav class="horizontal-menu compact">
@@ -18,6 +20,6 @@
 
 		</div>
 	</div>
-</div>-->
+</div>
 
 <script src="/assets/scripts/main.js"></script>

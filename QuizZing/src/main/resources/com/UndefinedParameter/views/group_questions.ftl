@@ -88,6 +88,7 @@
 								$.Dialog({
 							        shadow: true,
 							        overlay: true,
+							        flat: true,
 							        icon: '<span class="icon-power"></span>',
 							        title: 'Question',
 							        width: 500,
@@ -236,6 +237,7 @@
 								$.Dialog({
 							        shadow: true,
 							        overlay: true,
+							        flat: true,
 							        icon: '<span class="icon-power"></span>',
 							        title: 'Question',
 							        width: 500,

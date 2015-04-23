@@ -25,7 +25,7 @@ public class InputUtils {
 		input = input.replace(">", "&gt;");
 
 		//escape and re-add <br/>
-		return StringEscapeUtils.escapeHtml(input).replace("&lt;br/&gt;", "<br/>");
+		return StringEscapeUtils.escapeHtml(input).replace("&amp;lt;br/&amp;gt;", "<br/>");
 	}
 	
 	public static byte[] hashPassword(byte[] salt, String password) {

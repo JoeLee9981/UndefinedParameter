@@ -2,7 +2,7 @@
 	<form id="create-question-form">
 		<h5>Question <a href="#" data-hint="Question|The text of the question" data-hint-position="right" data-hint-mode="2"><i class="icon-help fg-blue"></i></a></h5>
 			<div class="input-control textarea">
-			    <textarea id="sa-descriptionText">${question.questionText}</textarea>
+			    <textarea id="sa-descriptionText">${question.questionTextFormatted}</textarea>
 			</div>
 		<div class="row noMargin">
 		    <div class="span12">
@@ -31,7 +31,7 @@
 		
 		<label id="sa-answer-options"><h5>Answer <a href="#" data-hint="Answer|This is the answer, note the user must provide it exactly, so keep it short" data-hint-position="right" data-hint-mode="2"><i class="icon-help fg-blue"></i></a></h5>
 			<div class="input-control textarea">
-			    <textarea id="sa-answerText">${question.correctAnswer}</textarea>
+			    <textarea id="sa-answerText">${question.correctAnswerFormatted}</textarea>
 			</div>					
 			
 			<!--<label><p>Reference <a href="#" data-hint="Reference|Add the source of the information used to determine the correct answer" data-hint-position="right" data-hint-mode="2"><i class="icon-help fg-blue"></i></a></p>

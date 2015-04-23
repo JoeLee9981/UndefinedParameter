@@ -91,6 +91,23 @@ public interface GroupDAO {
 			+ "AND sg.GroupID = :groupId")
 	public int countFlagsByUser(@Bind("userId") long userId, @Bind("groupId") long groupId);
 	
+	@SqlQuery("SELECT COUNT(quiz.QuizID) FROM Quiz quiz, GroupQuiz gq, SubGroup sg, User u WHERE "
+			+ "quiz.QuizID = gq.QuizID "
+			+ "AND gq.GroupID = sg.GroupID "
+			+ "AND quiz.CreatorID = u.UserID "
+			+ "AND u.UserID = :userId "
+			+ "AND sg.GroupId = :groupId")
+	public int countUserQuizzes(@Bind("groupId") long groupId, @Bind("userId") long userId);
+	
+	@SqlQuery("SELECT COUNT(qq.QuestionID) FROM Quiz quiz, GroupQuiz gq, SubGroup sg, User u, QuizQuestion qq WHERE "
+			+ "quiz.QuizID = gq.QuizID "
+			+ "AND gq.GroupID = sg.GroupID "
+			+ "AND quiz.CreatorID = u.UserID "
+			+ "AND quiz.QuizID = qq.QuizID "
+			+ "AND u.UserID = :userId "
+			+ "AND sg.GroupID = :groupId")
+	public int countUserQuestions(@Bind("groupId") long groupId, @Bind("userId") long userId);
+	
 	@SqlQuery("SELECT COUNT(*) FROM Question q, SubGroup sg "
 			+ "WHERE q.Flagged = 1 "
 			+ "AND sg.GroupID = q.GroupID "

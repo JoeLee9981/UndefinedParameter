@@ -130,10 +130,10 @@
 							<div id="flagDiv"></div>
 							<div class="row noMargin span12">
 								<div id="correctDiv" hidden>
-									<h1 class="text-success"><i class="icon-checkmark bg-green fg-white" style="padding: 10px; border-radius: 50%"></i> You have answered correctly, Good Job!</h1>
+									<h1 class="text-success"><i class="icon-checkmark bg-green fg-white" style="padding: 10px; border-radius: 50%"></i> Correct</h1>
 								</div>
 								<div id="incorrectDiv" hidden>
-									<h1 class="text-alert"><i class="icon-cancel-2 bg-red fg-white" style="padding: 10px; border-radius: 50%"></i> Sorry you answered incorrectly!</h1>
+									<h1 class="text-alert"><i class="icon-cancel-2 bg-red fg-white" style="padding: 10px; border-radius: 50%"></i> Incorrect</h1>
 								</div>
 							</div>
 							<div class="row">
@@ -391,7 +391,7 @@
 		
 			var content = '<div style="margin: 10px" class="grid span8">' +
 						  	'<h3 class="text-center">You are about to submit the quiz, once you do this you can not change your answers.</h3><br/>' +
-						  	'<div class="span3 offset2">' +
+						  	'<div class="row noMargin" style="text-align: center">' +
 									'<button style="margin: 5px" onclick="submitQuiz()" class="success large center">Submit</button>' +
 									'<button style="margin: 5px" onclick="$.Dialog.close()" class="danger large center">Cancel</button>' +
 							'</div>' +

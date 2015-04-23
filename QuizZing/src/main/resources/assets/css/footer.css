@@ -1,8 +1,8 @@
 #footer
 {
 	width: 100%;
-	background-color: #1ba1e2;
-	opacity: 0.8;
+	background-color: #d3d3d3;
+	/*opacity: 0.8;*/
 	min-width: 1050px;
 	position: fixed;
 	bottom: 0;
@@ -15,13 +15,13 @@
 
 #footer-content
 {
-	min-height: 40px;
-	margin-top: 10px;
-	padding-top: 10px;
+	/*min-height: 40px;*/
+	/*margin-top: 10px;
+	padding-top: 10px;*/
 }
 
 #bottom-links ul li a
 {
 	/*font-weight: bold;*/
-	color: white;
+	color: BLACK;
 }

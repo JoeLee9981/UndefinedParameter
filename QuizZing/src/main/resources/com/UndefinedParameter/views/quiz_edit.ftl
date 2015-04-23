@@ -12,7 +12,8 @@
 		<link href="/assets/css/overrides.css" rel="stylesheet">
 		<link href="/assets/css/question.css" rel="stylesheet">
 		<link rel="stylesheet" type="text/css" href="/assets/plugins/unicorn/unicorn_buttons.css" />	
-		<link rel="shortcut icon" type="image/x-icon" href="/assets/images/qlogo_32.jpg">	
+		<link rel="shortcut icon" type="image/x-icon" href="/assets/images/qlogo_32.jpg">
+		<link rel="stylesheet" type="text/css" href="/assets/css/categories.css" />	
 	</head>
 
 	<body class="metro">
@@ -133,13 +134,15 @@
 						<p class="span2"><strong>Create Question</strong></p>
 						<button class="primary span2" onclick="showCreateQuestion('MULTIPLE_CHOICE');">Multiple Choice</button>
 						<button class="primary span2" onclick="showCreateQuestion('TRUE_FALSE');">True or False</button>
-						<button class="primary span2">Short Answer</button>
-						<button class="primary span2">Fill in the Blank</button>
-						<button class="primary span2">Matching</button>
+						<button class="primary span2" onclick="showCreateQuestion('SHORT_ANSWER');">Short Answer</button>
+						<button class="primary span2" onclick="showCreateQuestion('FILL_IN_THE_BLANK');">Fill in the Blank</button>
+						<button class="primary span2" onclick="showCreateQuestion('MATCHING');">Matching</button>
 					</div>
 					<div class="row hidden" id="questionCreateContent" style="display:none;">
 						<#include "../includes/multiple_choice_quiz_edit.ftl">
 						<#include "../includes/true_false_quiz_edit.ftl">
+						<#include "../includes/short_answer_quiz_edit.ftl">
+						<#include "../includes/fill_blank_quiz_edit.ftl">
 					</div>
 				</div>
 				<div class="row">
@@ -220,38 +223,7 @@
 			</div>
 		</div>
 						
-		<div class="page-content">
-			<div class="grid fluid">
-			
-			
-				<br/>
-				<br/>
-				<br/>
-				<br/>
-				<br/>
-				<br/>
-				<br/>
-				<br/>
-				<br/>
-				<br/>
-				
-			
-			
-				<div class="row">
-
-					<h1>
-						<button id="createButton" class="place-right success">Create A Question</button>
-						<button id="addButton" class="place-right warning">Add A Question</button>
-						<button id="editButton" class="place-right primary">Edit Quiz</button>
-					</h1><br/>
-					<h2>${quiz.description}</h2>
-					<label id="errorLabel"></label>
-					
-					<div id="questionDiv"></div>
-					
-				</div>
-			</div>
-		</div>
+		
 		<div style="padding-top: 50px" class="row">
 			<#include "../includes/footer.ftl">
 		</div>
@@ -317,9 +289,11 @@
 					$("#saveAllChangesButton").addClass("success");
 					$("#saveAllChangesButton").attr("disabled", false);
 				
+					$.Notify({style: {background: 'green', color: 'white'}, content: "Your changes have been saved."});
+					
 					if("success" == data["response"])
 					{
-
+						
 					}
 					else
 					{
@@ -360,6 +334,7 @@
 					"Content-Type": "application/json"
 				},
 				success: function(data) {
+					$.Notify({style: {background: 'green', color: 'white'}, content: "Quiz title has been saved."});
 					if("success" == data["response"])
 					{
 
@@ -431,6 +406,8 @@
 					"Content-Type": "application/json"
 				},
 				success: function(data) {
+				
+					$.Notify({style: {background: 'green', color: 'white'}, content: "Quiz description has been saved."});
 					if("success" == data["response"])
 					{
 
@@ -530,6 +507,8 @@
 					
 					// Decrement the question count
 					$("#questionCount").html(parseInt($("#questionCount").html()) - 1);
+					
+					$.Notify({style: {background: 'orange', color: 'white'}, content: "Question has been removed from quiz."});
 				},
 				error: function()
 				{
@@ -600,6 +579,7 @@
 						$("#questionCount").html(parseInt($("#questionCount").html()) + 1);
 						
 						questionToAdd.fadeIn(300);
+						$.Notify({style: {background: 'green', color: 'white'}, content: "Question has been added to your quiz."});
 					});
 					
 				},
@@ -640,6 +620,7 @@
 			manageQuestionCount();
 			categories = [];
 			setCategoryButtons();
+			$.Notify({style: {background: 'green', color: 'white'}, content: "Your new question has been created and added to your quiz."});
 		}
 		
 		var categories = [];
@@ -654,6 +635,11 @@
 			$('#create' + type).addClass('success');
 		}
 		
+		function countBlanks(description) {
+			return (description.match(/<blank>/g) || []).length;
+			return 0;
+		}
+		
 		function createQuestion(type)
 		{
 			$('#create' + type).removeClass('success');
@@ -664,6 +650,8 @@
 			var creatorId = ${user.id};
 			var desc = document.getElementById('descriptionText' + type).value;
 			var explanation = document.getElementById('explanationText' + type).value;
+			var reference = "";
+			var hyperlink = "";
 			
 			if (type == 'MULTIPLE_CHOICE')
 			{
@@ -673,9 +661,6 @@
 				var incorrect = [];		
 				var path = "/question/create?quizId=" + quizId;
 				var correctPos = 0;
-				
-				var reference = "";
-				var hyperlink = "";
 				
 				var ordered = document.getElementById('randomize').checked;
 		
@@ -743,10 +728,7 @@
 				var incorrect = [];
 				var correctPos = 0;
 				var path = "/question/create?quizId=" + quizId;
-				
-				var reference = "";
-				var hyperlink = "";
-				
+		
 				var ordered = true;
 				
 				
@@ -793,6 +775,100 @@
 
 						}
 						else {
+						}
+					}
+				});
+			}
+			else if (type == 'SHORT_ANSWER')
+			{
+				//TODO Prevalidate these fields
+				var maxAnswers = 5;
+				var correct = document.getElementById('answerTextSHORT_ANSWER').value;
+				var incorrect = ["", "", "", ""];
+				var path = "/question/create?quizId=" + quizId;
+				
+				//TODO: once ready uncomment this code
+				var reference = "";
+				var hyperlink = "";
+				
+				var ordered = true;
+				
+				if(!desc) {
+
+					return;
+				}
+				
+				if(!correct) {
+
+					return;
+				}
+				
+				if(hyperlink && !reference) {
+
+					return;
+				}
+					
+				 $.ajax({
+					type: 'POST',
+					url: path,
+					data: JSON.stringify({groupId: ${group.id}, questionText: desc, correctAnswer: correct, type: type, wrongAnswers: incorrect, creatorId: creatorId, explanation: explanation, ordered: ordered, reference: reference, referenceLink: hyperlink, categories: categories}),
+					dataType: "json",
+					headers: {
+						Accept: "application/json",
+						"Content-Type": "application/json"
+					},
+					success: function(data) {
+						if("success" == data["response"]) {
+							addNewlyCreatedQuestionToList(data);
+							clearCommonFields(type);
+							
+							// Clear the SHORT_ANSWER form
+						}
+						else {
+
+						}
+					}
+				});
+			}
+			else if (type == 'FILL_IN_THE_BLANK')
+			{
+				//TODO Prevalidate these fields
+				var maxAnswers = 5;
+				var correct = "";
+				var answers = [];
+				var path = "/question/create?quizId=" + quizId;
+				
+				count = countBlanks(desc);
+	
+				for(var i = 1; i <= maxAnswers; i++) {
+
+						if(i == 1)
+							correct = ($('#fb-qText' + i).val());
+						else if(i <= count)
+							answers.push($('#fb-qText' + i).val());
+						else
+							answers.push("");
+					
+				}
+
+				 $.ajax({
+					type: 'POST',
+					url: path,
+					data: JSON.stringify({groupId: ${group.id}, questionText: desc, correctAnswer: correct, type: type, wrongAnswers: answers, creatorId: creatorId, explanation: explanation, ordered: ordered, reference: reference, referenceLink: hyperlink, categories: categories }),
+					dataType: "json",
+					headers: {
+						Accept: "application/json",
+						"Content-Type": "application/json"
+					},
+					success: function(data) {
+						if("success" == data["response"]) {
+							addNewlyCreatedQuestionToList(data);
+							clearCommonFields(type);
+							
+							// Clear the FILL IN THE BLANK form
+						}
+						else {
+
 						}
 					}
 				});
@@ -921,6 +997,10 @@
 			$('#categories' + currentCreateQuestionType).val("");
 			event.preventDefault();
 		});
+		
+		
+
+
 		
 	</script>	
 

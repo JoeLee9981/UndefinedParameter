@@ -19,7 +19,7 @@
 	position: fixed;
 	border-bottom: 1px solid #d3d3d3;
 	background: white;
-	z-index: 1234;
+	z-index: 1;
 	width: 100%;
 	min-width: 1050px;
 	padding-bottom: 5px;
