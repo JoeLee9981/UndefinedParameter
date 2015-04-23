@@ -2,11 +2,11 @@ package com.UndefinedParameter.app.core;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -779,6 +779,20 @@ public class QuizManager {
 		}
 		
 		return true;
+	}
+	
+	public List<CategoryScore> getCategoryScoresByQuizId(long quizId, long userId) {
+		ArrayList<CategoryScore> catScores = new ArrayList<CategoryScore>();
+		
+		List<String> categories = getQuestionCategoriesViaQuizID(quizId);
+		
+		for(String cat: categories) {
+			CategoryScore catScore = new CategoryScore();
+			catScore.setCategory(cat);
+			catScore.setScore(questionDAO.getScoresByCategoryAndUser(cat, userId));
+		}
+		
+		return catScores;
 	}
 }
 

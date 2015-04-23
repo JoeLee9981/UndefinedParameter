@@ -131,7 +131,23 @@
 												<#if member.contribution &gt; 1000><i title="Moderator" class="icon-heart on-right"></i></#if>
 												</a>
 											</td>
-											<td class="padding5"><span class="place-right">${member.contribution}<i title="Contribution Score" class="icon-medal on-right"></i></span></td>
+											<td class="padding5">
+											<span class="place-right">${member.contribution}
+												<#if member.contribution &gt;= 1000>
+												<i title="Contribution Score" class="icon-medal on-right fg-amber"></i>
+												<#elseif member.contribution &gt;= 800>
+												<i title="Contribution Score" class="icon-medal on-right fg-magenta"></i>
+												<#elseif member.contribution &gt;= 600>
+												<i title="Contribution Score" class="icon-medal on-right fg-emerald"></i>
+												<#elseif member.contribution &gt;= 400>
+												<i title="Contribution Score" class="icon-medal on-right fg-red"></i>
+												<#elseif member.contribution &gt;= 200>
+												<i title="Contribution Score" class="icon-medal on-right fg-olive"></i>
+												<#else>
+												<i title="Contribution Score" class="icon-medal on-right"></i>
+												</#if>
+											</span>
+											</td>
 											<td class="padding5"><span class="place-right">${member.questions}<i title="Questions" class="icon-help-2 on-right"></i></span></td>
 											<td class="padding5"><span class="place-right">${member.quizzes}<i title="Quizzes" class="icon-clipboard-2 on-right"></i></span></td>
 											<td class="padding5"><span class="place-right">${member.joinDateString}</span></td>

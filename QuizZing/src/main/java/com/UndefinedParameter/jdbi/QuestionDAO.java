@@ -172,6 +172,18 @@ public interface QuestionDAO {
 	@SqlUpdate("UPDATE QuestionDifficulty SET UserDifficulty = :rating WHERE UserID = :userId AND QuestionID = :questionId")
 	public void updateQuestionDifficulty(@Bind("userId") long userId, @Bind("questionId") long questionId, @Bind("rating") int rating);
 	
+	/*********************************** CATEGORY SECTION *******************************************************/
+	
+	@SqlQuery("SELECT SUM(scores.Score) / COUNT(scores.Score) FROM (SELECT qs.Score AS Score FROM Category c, QuestionCategory qc, Question que, QuizQuestion qq, Quiz quiz, QuizScore qs "
+			+ "WHERE c.CategoryType = :category "
+			+ "AND c.CategoryID = qc.CategoryID "
+			+ "AND qc.QuestionID = que.QuestionID "
+			+ "AND que.QuestionID = qq.QuestionID "
+			+ "AND qq.QuizID = quiz.QuizID "
+			+ "AND qs.QuizID = quiz.QuizID "
+			+ "AND qs.UserID = :userId "
+			+ "GROUP BY (qs.QuizScoreID))")
+	public double getScoresByCategoryAndUser(@Bind("category") String category, @Bind("userId") long userId);
 }
 
 	/* TODO NEED TO CONVERT THIS QUERY

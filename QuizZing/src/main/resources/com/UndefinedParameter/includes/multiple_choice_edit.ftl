@@ -42,7 +42,7 @@
 					    </label>
 					</div>	
 					<div class="input-control text size5">
-					    <input type="text" id="qText2" value="${question.answers[1]}"/>
+					    <input type="text" id="qText2" value="<#if question.answers[1]??>${question.answers[1]}</#if>"/>
 					</div>
 					<div class="input-control radio">
 					    <label>
@@ -51,7 +51,7 @@
 					    </label>
 					</div>							
 					<div class="input-control text size5">
-					    <input type="text" id="qText3" value="${question.answers[2]}"/>
+					    <input type="text" id="qText3" value="<#if question.answers[2]??>${question.answers[2]}</#if>"/>
 					</div>
 					<div class="input-control radio">
 					    <label>
@@ -60,7 +60,7 @@
 					    </label>
 					</div>								
 					<div class="input-control text size5">
-					    <input type="text" id="qText4" value="${question.answers[3]}"/>
+					    <input type="text" id="qText4" value="<#if question.answers[3]??>${question.answers[3]}</#if>"/>
 					</div>
 					<div class="input-control radio">
 					    <label>
