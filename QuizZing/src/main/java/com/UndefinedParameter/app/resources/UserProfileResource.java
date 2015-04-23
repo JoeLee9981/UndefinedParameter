@@ -166,7 +166,7 @@ public class UserProfileResource {
 		List<QuizScore> userScores = quizManager.findScoresByQuizAndUser(quizId, user.getId());
 
 		try {
-			if(userScores == null || userScores.size() > 0) {
+			if(userScores != null || userScores.size() > 0) {
 				response.put("scores", userScores);
 				return Response.ok(response).build();
 			}	
@@ -187,14 +187,15 @@ public class UserProfileResource {
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response  categoryScores(@Auth(required = false) User user, @QueryParam("quizId") long quizId) {
 		
-		HashMap<String, Double> response = new HashMap<String, Double>();
+		HashMap<String, List<CategoryScore>> response = new HashMap<String, List<CategoryScore>>();
 		if(user == null || quizId < 1) {
 			return Response.status(Status.BAD_REQUEST).build();
 		}
 		
 		List<CategoryScore> scores = quizManager.getCategoryScoresByQuizId(quizId, user.getId());
-		for(CategoryScore score: scores) {
-			response.put(score.getCategory(), score.getScore());
+		
+		if(scores != null) {
+			response.put("categories", scores);
 		}
 		
 		return Response.ok(response).build();
