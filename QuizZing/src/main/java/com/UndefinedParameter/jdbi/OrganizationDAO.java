@@ -8,6 +8,7 @@ import org.skife.jdbi.v2.sqlobject.SqlQuery;
 import org.skife.jdbi.v2.sqlobject.SqlUpdate;
 import org.skife.jdbi.v2.sqlobject.customizers.Mapper;
 import org.skife.jdbi.v2.sqlobject.customizers.RegisterMapper;
+import org.skife.jdbi.v2.unstable.BindIn;
 
 import com.UndefinedParameter.app.core.Organization;
 //import com.UndefinedParameter.app.core.OrganizationType;
@@ -16,6 +17,35 @@ import com.UndefinedParameter.app.core.Quiz;
 
 @RegisterMapper(OrganizationMapper.class)
 public interface OrganizationDAO {
+	
+	@SqlQuery("SELECT *"
++ 			  " FROM"
++				" (SELECT"
++					"   CASE WHEN Name = :keywords										THEN 256 	ELSE 0 END"
++					" + CASE WHEN Name LIKE CONCAT('%', :keywords, '%') 				THEN 128 	ELSE 0 END"
++					" + CASE WHEN Description LIKE CONCAT('%', :keywords, '%') 			THEN 64		ELSE 0 END"
++					" + CASE WHEN City LIKE CONCAT('%', :keywords, '%') 				THEN 32		ELSE 0 END"
++					" + CASE WHEN State LIKE CONCAT('%', :keywords, '%') 				THEN 16		ELSE 0 END"
++					" + CASE WHEN Country LIKE CONCAT('%', :keywords, '%') 				THEN 8		ELSE 0 END"
++					" + CASE WHEN OrganizationType LIKE CONCAT('%', :keywords, '%') 	THEN 4		ELSE 0 END"
++					" AS KeywordRanking,"
++					" OrgID,"
++					" Name,"
++					" Description,"
++					" City,"
++					" State,"
++					" Country,"
++					" OrganizationType,"
++					" MemberCount,"
++					" QuizCount,"
++					" QuestionCount,"
++					" DateCreated,"
++					" Rating,"
++					" RatingCount"
++				" FROM innodb.Organization) orgs"
++			" WHERE orgs.KeywordRanking > 0"
++			" ORDER BY orgs.KeywordRanking DESC")
+	public List<Organization> findOrganizationByKeywords(@Bind("keywords") String keywords, @BindIn("keywordList") List<String> keywordList);
 	
 	@SqlQuery("SELECT Rating FROM Organization WHERE OrgID = :orgID")
 	public int getOrganizationRating(@Bind("orgID") long orgId);

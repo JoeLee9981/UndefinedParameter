@@ -29,12 +29,10 @@
 
 
 	        <div class="element input-element">
-	            <form id="search">
-	                <div class="input-control text searchbox">
-	                    <input type="text" placeholder="Find what your mind desires..." class="size4">
-	                    <button class="btn-search todo"></button>
-	                </div>
-	            </form>
+                <div class="input-control text searchbox">
+                    <input id="searchKeywords" type="text" placeholder="Find what your mind desires..." class="size4">
+                    <button class="btn-search" onclick="search();"></button>
+                </div>
 	        </div>
 	        <#if user??>
 			  <div class="element place-right">
@@ -99,4 +97,19 @@
 		//var categoryPosition = $("#category-dropdown").position().left;
 		//$("#category-dropdown-container").css("left","-" + (categoryPosition - leftPosition) + "px");
 	}
+	
+	function search()
+	{
+		var keywords = $("#searchKeywords").val();
+		window.location='/search?keywords=' + keywords;
+	}
+	
+	$("#searchKeywords").keypress(function(e) {
+		// Enter button
+		if (e.keyCode == 13)
+		{
+			search();
+		}
+	});
+
 </script>

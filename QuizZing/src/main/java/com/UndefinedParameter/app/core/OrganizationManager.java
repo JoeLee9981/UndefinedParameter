@@ -1,6 +1,7 @@
 package com.UndefinedParameter.app.core;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import com.UndefinedParameter.jdbi.GroupDAO;
@@ -532,5 +533,14 @@ public class OrganizationManager {
 		{
 			return false;
 		}
+	}
+
+	public List<Organization> findGroupsByKeywords(String keywords) {
+		
+		// Create a list of each keyword space delimited
+		List<String> keywordList = new ArrayList<String>();
+		keywordList = Arrays.asList(keywords.split(" "));
+		
+		return orgDAO.findOrganizationByKeywords(keywords, keywordList);
 	}
 }
