@@ -42,7 +42,7 @@
 						<div class="span4">
 							<div class="place-right">
 								<button id="saveAllChangesButton" class="success" onclick="saveAllChanges();">Save All Changes</button>
-								<button id="openChangeQuizContent" class="primary todo">Change Quiz</button>
+								<button class="primary" onclick="location.href='/quiz?quizId=${quiz.quizId}'">Take Quiz</button>
 							</div>
 						</div>		
 					</div>
@@ -503,10 +503,12 @@
 				{
 					$("#quizQuestion" + questionId).fadeOut(300, function(){
 						$("#quizQuestion" + questionId).remove();
+						
+						// Decrement the question count
+						manageQuestionCount();
 					});
 					
-					// Decrement the question count
-					$("#questionCount").html(parseInt($("#questionCount").html()) - 1);
+					
 					
 					$.Notify({style: {background: 'orange', color: 'white'}, content: "Question has been removed from quiz."});
 				},
@@ -575,10 +577,13 @@
 						
 						$("#currentQuestionList").append(questionToAdd);
 						
-						// Increment the question count
-						$("#questionCount").html(parseInt($("#questionCount").html()) + 1);
 						
-						questionToAdd.fadeIn(300);
+						
+						
+						questionToAdd.fadeIn(300, function(){
+							// Increment the question count
+							manageQuestionCount();
+						});
 						$.Notify({style: {background: 'green', color: 'white'}, content: "Question has been added to your quiz."});
 					});
 					
