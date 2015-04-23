@@ -1,12 +1,16 @@
 package com.UndefinedParameter.jdbi;
 
+import java.util.List;
+
+import org.joda.time.DateTime;
 import org.skife.jdbi.v2.sqlobject.Bind;
 import org.skife.jdbi.v2.sqlobject.GetGeneratedKeys;
 import org.skife.jdbi.v2.sqlobject.SqlQuery;
 import org.skife.jdbi.v2.sqlobject.SqlUpdate;
 import org.skife.jdbi.v2.sqlobject.customizers.RegisterMapper;
-import org.joda.time.DateTime;
 
+import com.UndefinedParameter.app.core.Badge;
+import com.UndefinedParameter.app.core.Organization;
 import com.UndefinedParameter.app.core.User;
 
 @RegisterMapper(UserMapper.class)
@@ -62,5 +66,20 @@ public interface UserDAO {
 					   @Bind("lastaccessed") DateTime date,
 					   @Bind("seeagain") int again);
 	
+	@SqlQuery("SELECT * FROM User u, SubGroup sg, UserGroups ug WHERE "
+			+ "sg.GroupID = ug.GroupID "
+			+ "AND u.UserID = ug.UserID "
+			+ "AND u.UserID = :userId ORDER BY EarnedPoints DESC")
+	@RegisterMapper(BadgeMapper.class)
+	public List<Badge> getBadgesByUser(@Bind("userId") long userId);
 	
+	@SqlQuery("SELECT SUM(ug.EarnedPoints) FROM UserGroups ug, SubGroup sg WHERE "
+			+ "ug.GroupID = sg.GroupID AND "
+			+ "sg.OrgID = :orgId AND "
+			+ "ug.UserID = :userId")
+	public int getBadgesByOrganizationAndUser(@Bind("orgId") long orgId, @Bind("userId") long userId);
+	
+	@SqlQuery("SELECT org.* FROM Organization org, UserOrganization uo WHERE org.OrgID = uo.OrgID AND uo.UserID = :userId")
+	@RegisterMapper(OrganizationMapper.class)
+	public List<Organization> findUserOrgs(@Bind("userId") long userId);
 }

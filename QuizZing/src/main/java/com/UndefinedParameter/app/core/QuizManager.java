@@ -790,6 +790,7 @@ public class QuizManager {
 			CategoryScore catScore = new CategoryScore();
 			catScore.setCategory(cat);
 			catScore.setScore(questionDAO.getScoresByCategoryAndUser(cat, userId));
+			catScores.add(catScore);
 		}
 		
 		return catScores;

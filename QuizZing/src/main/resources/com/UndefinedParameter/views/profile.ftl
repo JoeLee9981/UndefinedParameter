@@ -35,93 +35,105 @@
 									</div>
 							    </div>
 							</div>
-						
-							<div class="row">
-							<#if editable>
-							
-								<button class="place-right success large" style="margin-left: 10px" onclick="location.href='/user/edit?userid=${userProf.id}'"><i class="icon-pencil on-left fg-white"></i> Edit Profile</button>
-								<button class="place-right primary large" onclick="location.href='/user/scores?userid=${userProf.id}'"><i class="icon-chart-alt on-left fg-white"></i> View Scores</button>
-							</#if>
-							</div>
 							<div class="row noMargin">
-								<h3>${userProf.firstName?html}'s Quizzes</h3>
-								<#if userQuizzes??>
-								<table class="table hovered striped">
-							        <thead>
-							            <tr>
-							                <th class="text-left">Quiz</th>
-							                <th class="text-left">Group</th>
-							                <th class="text-left">Creator</th>
-							                <th class="text-left">Description</th>
-							                <th title="Questions"><i class="icon-help-2 on-right"></i></th>
-							                <th style="width: 120px">Difficulty</th>
-							                <th style="width: 120px">Rating</th>
-							            </tr>
-							        </thead>
-							        <tbody>                         
-						        		<#list userQuizzes as quiz>
-										<tr>
-											<td><a href="quiz?quizId=${quiz.quizId}">${quiz.name}</a></td>
-											<td class="text-left left"><a href="group?groupId=${quiz.parentGroupId}">${quiz.parentGroupName}</a></td>
-											<td class="text-left left"><a href="user?userId=${quiz.creatorId}">${quiz.creatorName}</a></td>
-											<td class="text-left left">
-												<#if quiz.description??>
-													<#if quiz.description?length &gt; 20>
-														${quiz.description?substring(0, 20)}...
+								<nav class="navigation-bar white white-custom">
+								    <nav class="navigation-bar-content">
+								        <item id="groupsItem" class="element active"><a href="" id="groupsLink"><i class="icon-link on-right"></i> <strong>Groups (${groupCount})</strong></a></item>
+								        <item class="element-divider"></item> 		        
+								        <item id="quizzesItem" class="element"><a href="" id="quizzesLink"><i class="icon-clipboard-2 on-right"></i> <strong>Quizzes (${quizCount})</strong></a></item>
+								        <item class="element-divider"></item>
+								        <item id="badgesItem" class="element"><a href="" id="badgesLink"><i class="icon-medal on-right"></i> <strong>Badges (${badgeCount})</strong></a></item>
+								    	<item class="element-divider"></item>
+								        <#if editable>	
+											<item id="editItem" class="element place-right"><a href="/user/edit?userid=${userProf.id}"><i class="icon-pencil on-left"></i> <strong>Edit Profile</strong></a></item>
+											<item class="element-divider place-right"></item>
+											<item id="scoresItem" class="element place-right"><a href="/user/scores?userid=${userProf.id}"><i class="icon-chart-alt on-left"></i> <strong>View Scores</strong></a></item>
+											<item class="element-divider place-right"></item>
+										</#if>
+								        
+								    </nav>
+								</nav>					
+							</div>
+
+							<div class="row noMargin">
+								<div id="quizzesDiv" hidden>
+									<#if userQuizzes??>
+									<table class="table hovered striped">
+								        <thead>
+								            <tr>
+								                <th class="text-left">Quiz</th>
+								                <th class="text-left">Group</th>
+								                <th class="text-left">Creator</th>
+								                <th class="text-left">Description</th>
+								                <th title="Questions"><i class="icon-help-2 on-right"></i></th>
+								                <th style="width: 120px">Difficulty</th>
+								                <th style="width: 120px">Rating</th>
+								            </tr>
+								        </thead>
+								        <tbody>                         
+							        		<#list userQuizzes as quiz>
+											<tr>
+												<td><a href="quiz?quizId=${quiz.quizId}">${quiz.name}</a></td>
+												<td class="text-left left"><a href="group?groupId=${quiz.parentGroupId}">${quiz.parentGroupName}</a></td>
+												<td class="text-left left"><a href="user?userId=${quiz.creatorId}">${quiz.creatorName}</a></td>
+												<td class="text-left left">
+													<#if quiz.description??>
+														<#if quiz.description?length &gt; 20>
+															${quiz.description?substring(0, 20)}...
+														<#else>
+															${quiz.description}
+														</#if>
 													<#else>
-														${quiz.description}
+														No Description
 													</#if>
-												<#else>
-													No Description
-												</#if>
-											</td>
-											<td class="text-center center">${quiz.questionCount}</td>
-											<td class="text-right right">
-												<div id="diff${quiz.quizId}" class="rating small fg-red"></div>
-											</td>
-											<td class="text-right right">
-												<div id="rating${quiz.quizId}" class="rating small"></div>
-											</td>
-											
-											<script>
-												//Star rating for quiz quality (entry page)
-												$(function() {
-													$("#rating${quiz.quizId}").rating({
-														static: true,
-														score: ${quiz.rating},
-														stars: 5,
-														showHint: true,
-														hints: ['wrong', 'poor', 'average', 'good', 'excellent'],
-													});
-												});
+												</td>
+												<td class="text-center center">${quiz.questionCount}</td>
+												<td class="text-right right">
+													<div id="diff${quiz.quizId}" class="rating small fg-red"></div>
+												</td>
+												<td class="text-right right">
+													<div id="rating${quiz.quizId}" class="rating small"></div>
+												</td>
 												
-												//Star rating for quiz quality (entry page)
-												$(function() {
-													$("#diff${quiz.quizId}").rating({
-														static: true,
-														score: ${quiz.difficulty},
-														stars: 5,
-														showHint: true,
-														hints: ['wrong', 'poor', 'average', 'good', 'excellent'],
+												<script>
+													//Star rating for quiz quality (entry page)
+													$(function() {
+														$("#rating${quiz.quizId}").rating({
+															static: true,
+															score: ${quiz.rating},
+															stars: 5,
+															showHint: true,
+															hints: ['wrong', 'poor', 'average', 'good', 'excellent'],
+														});
 													});
-												});
-											</script>
+													
+													//Star rating for quiz quality (entry page)
+													$(function() {
+														$("#diff${quiz.quizId}").rating({
+															static: true,
+															score: ${quiz.difficulty},
+															stars: 5,
+															showHint: true,
+															hints: ['wrong', 'poor', 'average', 'good', 'excellent'],
+														});
+													});
+												</script>
+											</tr>
+											</#list>
+										</tbody>
+								        <tfoot></tfoot>
+								    </table>  
+								    <#else>
+										<tr>
+											<td colspan="3">
+												<h3>No Quizzes Found</h3>
+											</td>
 										</tr>
-										</#list>
-									</tbody>
-							        <tfoot></tfoot>
-							    </table>  
-							    <#else>
-									<tr>
-										<td colspan="3">
-											<h3>No Quizzes Found</h3>
-										</td>
-									</tr>
-								</#if>
+									</#if>
+								</div>
 							</div>
 						
-							<div class="row noMargin">
-								<h3>${userProf.firstName?html}'s Groups</h3>								
+							<div id="groupsDiv" class="row noMargin">								
 								<#if userGroups??>
 									<table class="table hovered striped">
 				                        <thead>
@@ -155,19 +167,141 @@
 								<#else>
 									This user doesn't have any groups yet!
 								</#if>
-							</div>		
+		
 							<#else>
 								<h1>User profile unavailable.</h1>
 							</#if>
 						</div>
-					<div>			
-				
+						
+						<div class="row noMargin">
+							<div id="badgesDiv" hidden>
+								<div class="span6">
+									<h3>Group Badges</h3>
+									<#if groupBadges??>
+										<#list groupBadges as badge>
+											<div class="row noMargin">
+												<div class="span2">
+													<h1 style="font-size: 75px">
+														<#if badge.contribution &gt;= 300>
+														<i title="Contribution Score" class="icon-medal on-right fg-amber"></i>
+														<#elseif badge.contribution &gt;= 200>
+														<i title="Contribution Score" class="icon-medal on-right fg-emerald"></i>
+														<#elseif badge.contribution &gt;= 100>
+														<i title="Contribution Score" class="icon-medal on-right fg-red"></i>
+														<#else>
+														<i title="Contribution Score" class="icon-medal on-right"></i>
+														</#if>
+													</h1>
+												</div>
+												<div class="span10">
+													<h4>Group: <a href="/group?groupId=${badge.groupId}">${badge.groupName}</a></h4>
+													<h4 class="fg-steel">Contribution: ${badge.contribution}</h4>
+													<h4 class="fg-steel">Badge: 
+														<#if badge.contribution &gt;= 300>
+														Super User
+														<#elseif badge.contribution &gt;= 200>
+														Contributor
+														<#elseif badge.contribution &gt;= 100>
+														Member
+														<#else>
+														User
+														</#if>
+													</h4>
+												</div>
+											</div>
+										</#list>
+									<#else>
+										<h3>No Badges Earned Yet!</h3>
+									</#if>
+								</div>
+								<div class="span6" style="margin-left: 20px">
+									<h3>Organization Badges</h3>
+									<#if orgBadges??>
+										<#list orgBadges as badge>
+											<div class="row noMargin">
+												<div class="span2">
+													<h1 style="font-size: 75px">
+														<#if badge.contribution &gt;= 1000>
+														<i title="Contribution Score" class="icon-medal on-right fg-amber"></i>
+														<#elseif badge.contribution &gt;= 800>
+														<i title="Contribution Score" class="icon-medal on-right fg-magenta"></i>
+														<#elseif badge.contribution &gt;= 600>
+														<i title="Contribution Score" class="icon-medal on-right fg-emerald"></i>
+														<#elseif badge.contribution &gt;= 400>
+														<i title="Contribution Score" class="icon-medal on-right fg-red"></i>
+														<#elseif badge.contribution &gt;= 200>
+														<i title="Contribution Score" class="icon-medal on-right fg-olive"></i>
+														<#else>
+														<i title="Contribution Score" class="icon-medal on-right"></i>
+														</#if>
+													</h1>
+												</div>
+												<div class="span10">
+													<h4>Group: <a href="/orgs/org?id=${badge.organizationId}">${badge.organizationName}</a></h4>
+													<h4 class="fg-steel">Contribution: ${badge.contribution}</h4>
+													<h4 class="fg-steel">Badge: 
+														<#if badge.contribution &gt;= 1000>
+														Master User
+														<#elseif badge.contribution &gt;= 800>
+														Super User
+														<#elseif badge.contribution &gt;= 600>
+														Main Contributor
+														<#elseif badge.contribution &gt;= 400>
+														Contributor
+														<#elseif badge.contribution &gt;= 200>
+														Member
+														<#else>
+														User
+														</#if>
+													</h4>
+												</div>
+											</div>
+										</#list>
+									<#else>
+										<h3>No Badges Earned Yet!</h3>
+									</#if>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
-		</div>
 		</div>
 		<div style="padding-top: 50px" class="row">
 			<#include "../includes/footer.ftl">
 		</div>
 	</body>
 </html>
+
+<script>
+	$('#quizzesLink').click(function(event) {
+		event.preventDefault();
+		hideDivs();
+		$('#quizzesDiv').show();
+		$('#quizzesItem').addClass('active');
+	});
+
+	$('#groupsLink').click(function (event) {
+		event.preventDefault();
+		hideDivs();
+		$('#groupsDiv').show();
+		$('#groupsItem').addClass('active');
+	});
+
+	$('#badgesLink').click(function (event) {
+		event.preventDefault();
+		hideDivs();
+		$('#badgesDiv').show();
+		$('#badgesItem').addClass('active');
+	});
+
+	function hideDivs() {
+		$('#quizzesDiv').hide();
+		$('#quizzesItem').removeClass('active');
+		$('#groupsDiv').hide();
+		$('#groupsItem').removeClass('active')
+		$('#badgesDiv').hide();
+		$('#badgesItem').removeClass('active');
+	}
+
+</script>

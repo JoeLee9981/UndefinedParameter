@@ -126,7 +126,7 @@
 			</#if>
 		}	
 												
-		function getScores(quizId) {			
+		function getScores(quizId) {		
 			$.ajax({
 				type: 'POST',
 				url: "/user/scores?quizid=" + quizId,
@@ -136,7 +136,23 @@
 				},
 				success: function(data) 
 				{
-					drawScorePlot(data["scores"]);						
+					drawScorePlot(data["scores"]);
+				}
+			});
+			getCategoryScores(quizId);	
+		}
+
+		function getCategoryScores(quizId) {
+			$.ajax({
+				type: 'GET',
+				url: "/user/scores/category?quizId=" + quizId,
+				headers: {
+					Accept: "application/json",
+					"Content-Type": "application/json"
+				},
+				success: function(data) 
+				{
+					alert(data);						
 				}
 			});	
 		}

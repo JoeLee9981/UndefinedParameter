@@ -1,12 +1,11 @@
 package com.UndefinedParameter.app.core;
 
-import java.util.Random;
-
-import com.sun.mail.smtp.SMTPTransport;
-
 import java.security.Security;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Properties;
+import java.util.Random;
 
 import javax.mail.Message;
 import javax.mail.MessagingException;
@@ -19,6 +18,7 @@ import org.joda.time.DateTime;
 import org.mindrot.jbcrypt.BCrypt;
 
 import com.UndefinedParameter.jdbi.UserDAO;
+import com.sun.mail.smtp.SMTPTransport;
 
 public class UserManager {
 
@@ -101,6 +101,27 @@ public class UserManager {
 			return false;
 		}
 		return true;
+	}
+	
+	public List<Badge> getBadgesByUser(long userId) {
+		
+		return userDAO.getBadgesByUser(userId);
+	}
+	
+	public List<Badge> getBadgesByOrg(long userId) {
+		
+		ArrayList<Badge> badges = new ArrayList<Badge>();
+		List<Organization> orgs = userDAO.findUserOrgs(userId);
+		
+		for(Organization org: orgs) {
+			Badge badge = new Badge();
+			badge.setUserId(userId);
+			badge.setOrganizationId(org.getId());
+			badge.setOrganizationName(org.getName());
+			badge.setContribution(userDAO.getBadgesByOrganizationAndUser(org.getId(), userId));
+			badges.add(badge);
+		}
+		return badges;
 	}
 	
 	public boolean updateUser(User user) throws Exception {

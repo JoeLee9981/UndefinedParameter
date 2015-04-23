@@ -17,6 +17,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
+import com.UndefinedParameter.app.core.CategoryScore;
 import com.UndefinedParameter.app.core.GroupManager;
 import com.UndefinedParameter.app.core.QuizManager;
 import com.UndefinedParameter.app.core.QuizScore;
@@ -56,11 +57,11 @@ public class UserProfileResource {
 	public Response getUserProfileView(@Auth(required = false) User user, @QueryParam("userid") long userID) {
 		
 		if(user != null && user.getId() == userID) {
-			return Response.ok(new UserProfileView("profile.ftl", user, user, quizManager.findQuizzesByCreatorId(user.getId()), groupManager.findRegisteredGroups(user.getId()), true)).build();
+			return Response.ok(new UserProfileView("profile.ftl", user, user, quizManager.findQuizzesByCreatorId(user.getId()), groupManager.findRegisteredGroups(user.getId()), true, userManager.getBadgesByUser(userID), userManager.getBadgesByOrg(user.getId()))).build();
 		}
 		else {
 			User currentUser = userManager.findUserById(userID);
-			return Response.ok(new UserProfileView("profile.ftl", currentUser, user, quizManager.findQuizzesByCreatorId(currentUser.getId()), groupManager.findRegisteredGroups(userID), false)).build();
+			return Response.ok(new UserProfileView("profile.ftl", currentUser, user, quizManager.findQuizzesByCreatorId(currentUser.getId()), groupManager.findRegisteredGroups(userID), false, userManager.getBadgesByUser(userID), userManager.getBadgesByOrg(user.getId()))).build();
 		}
 	}
 	
@@ -77,7 +78,7 @@ public class UserProfileResource {
 			return Response.status(Status.UNAUTHORIZED).build();
 		}
 		
-		return Response.ok(new UserProfileView("edit_profile.ftl", user, user, quizManager.findQuizzesByCreatorId(user.getId()), groupManager.findRegisteredGroups(user.getId()), false)).build();
+		return Response.ok(new UserProfileView("edit_profile.ftl", user, user, quizManager.findQuizzesByCreatorId(user.getId()), groupManager.findRegisteredGroups(user.getId()), false, null, null)).build();
 	}
 	
 	@POST
@@ -158,7 +159,7 @@ public class UserProfileResource {
 	public Response scores(@Auth(required = false) User user, @QueryParam("quizid") long quizId) {
 		
 		if(user == null) {
-			return Response.status(Status.UNAUTHORIZED).build();
+			return Response.status(Status.BAD_REQUEST).build();
 		}
 		
 		HashMap<String, List<QuizScore>> response = new HashMap<String, List<QuizScore>>();
@@ -179,5 +180,23 @@ public class UserProfileResource {
 			return Response.status(500).build();
 		}
 		
+	}
+	
+	@GET
+	@Path("/scores/category")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response  categoryScores(@Auth(required = false) User user, @QueryParam("quizId") long quizId) {
+		
+		HashMap<String, Double> response = new HashMap<String, Double>();
+		if(user == null || quizId < 1) {
+			return Response.status(Status.BAD_REQUEST).build();
+		}
+		
+		List<CategoryScore> scores = quizManager.getCategoryScoresByQuizId(quizId, user.getId());
+		for(CategoryScore score: scores) {
+			response.put(score.getCategory(), score.getScore());
+		}
+		
+		return Response.ok(response).build();
 	}
 }
