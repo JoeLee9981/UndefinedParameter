@@ -21,11 +21,11 @@
 				fill: none;
 			}
 			
-			circle {
+			.bar {
 				fill: #2F659C;
 			}
 			
-			circle:hover {
+			.bar:hover {
 				fill: #1B3A59;
 			}
 
@@ -100,7 +100,9 @@
 								</div>
 								
 								<div class="row">
-								
+									<div class="span10" id="categoryGraph">
+									
+									</div>
 								</div>
 								
 							</div>							
@@ -152,9 +154,101 @@
 				},
 				success: function(data) 
 				{
-					alert(data);						
+					drawCategoryBar(data["categories"]);						
 				}
 			});	
+		}
+		
+		function drawCategoryBar(dataset) {
+			$("#categoryGraph").empty();
+		
+			// Set graph canvas.
+			var margin = {top: 10, right: 20, bottom: 200, left: 50},
+				width = 600 - margin.left - margin.right,
+				height = 450 - margin.top - margin.bottom;
+
+			// Parse the date / time.
+			var parseDate = d3.time.format("%d-%b-%y").parse;
+
+			// Set dataset.
+			var data = dataset;
+			var i = 0;
+			
+			// Set start map.
+			var startData = data.map( function( d ) {
+                    return {
+                      score : 0,
+                      value : 0
+                    };
+                  } );
+			
+			// Set the ranges.
+			var x = d3.scale.ordinal().rangeRoundBands([0, width], .1);
+			var y = d3.scale.linear().range([height, 0]);
+
+			// Define the axes.
+			var xAxis = d3.svg.axis().scale(x)
+				.orient("bottom");
+
+			var yAxis = d3.svg.axis().scale(y)
+				.orient("left").ticks(5);
+				
+			// Add the svg canvas.
+			var svg = d3.select("#categoryGraph")
+				.append("svg")
+					.attr("width", width + margin.left + margin.right)
+					.attr("height", height + margin.top + margin.bottom)
+				.append("g")
+					.attr("transform", 
+						  "translate(" + margin.left + "," + margin.top + ")");
+
+			// Scale the range of the data.
+			x.domain(data.map(function(d) { return d.category; }));
+			y.domain([0, 100]);
+			
+			// Add the X axis.
+			svg.append("g")
+				.attr("class", "x axis")
+				.attr("transform", "translate(0," + height + ")")
+				.call(xAxis)
+				.selectAll("text")
+				    .style("text-anchor", "end")
+		            .attr("dx", "-.8em")
+		            .attr("dy", ".15em")
+		            .attr("transform", function(d) {
+		                return "rotate(-65)" 
+		                });
+
+			// Add the Y axis.
+			svg.append("g")
+				.attr("class", "y axis")
+				.call(yAxis);
+			
+			// Add bars.		
+			var bars = svg.selectAll(".bar")
+		      .data(data)
+		    .enter().append("rect")
+		      .attr("class", "bar")
+		      .attr("x", function(d, i) { return x(d.category); })
+		      .attr("width", x.rangeBand())
+		      .attr("y", function(d) { return y(0); })
+		      .attr("height", function(d) { return height - y(0); });
+								
+			// Add Y axis label.
+			svg.append("text")
+			    .attr("class", "y label")
+			    .attr("text-anchor", "end")
+			    .attr("y", 4)
+			    .attr("dy", "-3.5em")
+			    .attr("transform", "rotate(-90)")
+			    .text("Average Percentage Correct");	
+			    
+			bars.transition()
+		    .duration(500)
+		    .ease("quad")
+		        .attr("width", x.rangeBand())
+		        .attr("height", function(d) { return height - y(d.score); })
+		        .attr("y", function(d) { return y(d.score); })
 		}
 		
 		function drawScorePlot(dataset) {
@@ -212,44 +306,44 @@
 					.attr("transform", 
 						  "translate(" + margin.left + "," + margin.top + ")");
 
-				// Scale the range of the data.
-				x.domain(d3.extent(data, function(d, i) { return i; }));
-				y.domain([0, 100]);
+			// Scale the range of the data.
+			x.domain(d3.extent(data, function(d, i) { return i; }));
+			y.domain([0, 100]);
+			
+			// Add the X axis.
+			svg.append("g")
+				.attr("class", "x axis")
+				.attr("transform", "translate(0," + height + ")")
+				.call(xAxis);
+
+			// Add the Y axis.
+			svg.append("g")
+				.attr("class", "y axis")
+				.call(yAxis);
+
+			// Add the valueline path.
+			var path = svg.append("path")
+						.attr("class", "line")
+						.attr("d", valueline(startData));
 				
-				// Add the X axis.
-				svg.append("g")
-					.attr("class", "x axis")
-					.attr("transform", "translate(0," + height + ")")
-					.call(xAxis);
-
-				// Add the Y axis.
-				svg.append("g")
-					.attr("class", "y axis")
-					.call(yAxis);
-
-				// Add the valueline path.
-				var path = svg.append("path")
-							.attr("class", "line")
-							.attr("d", valueline(startData));
-					
-				// Add X axis label.
-				svg.append("text")
-				    .attr("class", "x label")
-				    .attr("text-anchor", "end")
-				    .attr("x", width)
-				    .attr("y", height + 35)
-				    .text("Time");
-									
-				// Add Y axis label.
-				svg.append("text")
-				    .attr("class", "y label")
-				    .attr("text-anchor", "end")
-				    .attr("y", 4)
-				    .attr("dy", "-3.5em")
-				    .attr("transform", "rotate(-90)")
-				    .text("Percentage Correct");		
-				  
-				path.transition().duration(1000).attr("d", valueline(data));	  				
+			// Add X axis label.
+			svg.append("text")
+			    .attr("class", "x label")
+			    .attr("text-anchor", "end")
+			    .attr("x", width)
+			    .attr("y", height + 35)
+			    .text("Time");
+								
+			// Add Y axis label.
+			svg.append("text")
+			    .attr("class", "y label")
+			    .attr("text-anchor", "end")
+			    .attr("y", 4)
+			    .attr("dy", "-3.5em")
+			    .attr("transform", "rotate(-90)")
+			    .text("Percentage Correct");		
+			  
+			path.transition().duration(500).attr("d", valueline(data));	  				
 		}
 	</script>
 		

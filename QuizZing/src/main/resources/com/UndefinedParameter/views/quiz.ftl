@@ -886,6 +886,14 @@
 			var data = dataset;
 			var i = 0;
 			
+			// Set start map.
+			var startData = data.map( function( d ) {
+                    return {
+                      score : 0,
+                      value : 0
+                    };
+                  } );
+			
 			// Set the ranges.
 			var x = d3.time.scale().range([0, width]);
 			var y = d3.scale.linear().range([height, 0]);
@@ -936,17 +944,9 @@
 					.call(yAxis);
 					
 				// Add the valueline path.
-				svg.append("path")
+				var path = svg.append("path")
 					.attr("class", "line")
-					.attr("d", valueline(data));
-
-				// Add the scatterplot.
-				svg.selectAll("dot")
-					.data(data)
-				  .enter().append("circle")
-					.attr("r", 2.5)
-					.attr("cx", function(d, i) { return x(i); })
-					.attr("cy", function(d) { return y(d.score); });
+					.attr("d", valueline(startData));
 					
 				// Add X axis label.
 				svg.append("text")
@@ -964,6 +964,8 @@
 				    .attr("dy", "-3.25em")
 				    .attr("transform", "rotate(-90)")
 				    .text("Percentage Correct");
+				    
+				path.transition().duration(1000).attr("d", valueline(data));	
 		}
 		
 		function drawQuizScoreLinePlot(dataset) {
@@ -981,6 +983,14 @@
 			var scores = aggregateScores(dataset);
 			var data = dataset;
 			var i = 0;
+			
+			// Set start map.
+			var startData = data.map( function( d ) {
+                    return {
+                      score : 0,
+                      value : 0
+                    };
+                  } );
 			
 			// Set the ranges.
 			var x = d3.scale.linear().range([0, width]);
@@ -1024,11 +1034,6 @@
 			        .style("font-size", "16px") 
 			        .style("text-decoration", "underline")  
 			        .text("Other Users' Scores");
-
-				// Add the valueline path.
-				svg.append("path")
-					.attr("class", "line")
-					.attr("d", valueline(data));
 					
 				// Add area fill.
 				/*svg.append("path")
@@ -1053,12 +1058,17 @@
 					.y(function(d) { return y(scores[d.score]); });
 					
 				// Add the scatterplot.
-				svg.selectAll("dot")
+				/*svg.selectAll("dot")
 					.data(data)
 				  .enter().append("circle")
 					.attr("r", 2.5)
 					.attr("cx", function(d, i) { return x(d.score); })
-					.attr("cy", function(d) { return y(scores[d.score]); });
+					.attr("cy", function(d) { return y(scores[d.score]); });*/
+					
+				// Add the valueline path.
+				var path = svg.append("path")
+					.attr("class", "line")
+					.attr("d", valueline(startData));
 					
 				// Add X axis label.
 				svg.append("text")
@@ -1076,6 +1086,8 @@
 				    .attr("dy", "-3.25em")
 				    .attr("transform", "rotate(-90)")
 				    .text("# of Students");
+				    
+				path.transition().duration(1000).attr("d", valueline(data));
 		}
 		
 		function aggregateScores(dataset) {
