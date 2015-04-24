@@ -13,34 +13,60 @@ public class ScoreView extends View{
 	private float averageScore;
 	private User user;
 	private List<String> bestCategories;
-	private String favoriteCategory;
-	
-	public ScoreView(String page, User user, List<Quiz> quizIds, float averageScore, List<String> bestCategories, String favoriteCategory) {
+
+	/**
+	 * View that contains all the objects that the score-related .ftl pages will access.
+	 * 
+	 * @param page
+	 * @param user
+	 * @param quizIds
+	 * @param averageScore
+	 * @param bestCategories
+	 */
+	public ScoreView(String page, User user, List<Quiz> quizIds, float averageScore, List<String> bestCategories) {
 		super(page);
 		this.quizIds = quizIds;
 		this.user = user;
 		this.averageScore = averageScore;
 		this.bestCategories = bestCategories;
-		this.favoriteCategory = favoriteCategory;
 	}
 
+	/**
+	 * Returns a list of quizzes for all quizzes that a user has taken.
+	 * 
+	 * @return quiz list
+	 */
 	public List<Quiz> getQuizIds() {
 		return quizIds;
 	}
 	
+	/**
+	 * Returns current logged-in user.
+	 * 
+	 * @return current user
+	 */
 	public User getUser() {
 		return user;
 	}
 	
+	/**
+	 * Returns overall average score for this user across all quizzes.
+	 * 
+	 * @return average score float
+	 */
 	public float getAverageScore() {
 		return averageScore;
 	}
 	
+	/**
+	 * Returns a list of category names from the quiz with the best score.
+	 * 
+	 * @return category name list
+	 */
 	public List<String> getBestCategories() {
-		return bestCategories;
-	}
-	
-	public String getFavoriteCategory() {
-		return favoriteCategory;
+		if(bestCategories.size() > 4)
+			return bestCategories.subList(0, 3);
+		else
+			return bestCategories;
 	}
 }

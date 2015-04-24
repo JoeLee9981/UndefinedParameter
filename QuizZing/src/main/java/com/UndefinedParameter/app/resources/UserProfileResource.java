@@ -42,6 +42,18 @@ public class UserProfileResource {
 	public QuizManager quizManager;
 	public GroupManager groupManager;
 	
+	/**
+	 * This class handles all the GET and POST requests to the user profile-related pages.
+	 * 
+	 * @param userdao
+	 * @param quizdao
+	 * @param questiondao
+	 * @param orgdao
+	 * @param groupdao
+	 * @param quizScoredao
+	 * @param orgMemberDAO
+	 * @param userGroupDAO
+	 */
 	public UserProfileResource(UserDAO userdao, QuizDAO quizdao, QuestionDAO questiondao, OrganizationDAO orgdao, GroupDAO groupdao, QuizScoreDAO quizScoredao, OrgMemberDAO orgMemberDAO, UserGroupDAO userGroupDAO)
 	{
 		this.userManager = new UserManager(userdao);
@@ -69,7 +81,13 @@ public class UserProfileResource {
 		}
 	}
 	
-	
+	/**
+	 * Returns the edit profile view for the current user.
+	 * 
+	 * @param user
+	 * @param userid
+	 * @return response
+	 */
 	@GET
 	@Path("/edit")
 	public Response getProfileEditView(@Auth(required = false) User user, @QueryParam("userid") long userid) {
@@ -85,6 +103,13 @@ public class UserProfileResource {
 		return Response.ok(new UserProfileView("edit_profile.ftl", user, user, quizManager.findQuizzesByCreatorId(user.getId()), groupManager.findRegisteredGroups(user.getId()), false, null, null, null, null)).build();
 	}
 	
+	/**
+	 * Takes the new user profile information and commits it to the database.
+	 * 
+	 * @param user
+	 * @param updateduser
+	 * @return response
+	 */
 	@POST
 	@Path("/edit")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -116,12 +141,18 @@ public class UserProfileResource {
 		
 	}
 	
+	/**
+	 * Retrieves the score view for the current logged-in user.
+	 * 
+	 * @param user
+	 * @param userid
+	 * @return response
+	 */
 	@GET
 	@Path("/scores")
 	public Response getUserScoresView(@Auth(required = false) User user, @QueryParam("userid") long userid) {
 		List<String> bestCategory = new ArrayList<String>();
 		long bestCategoryQuizId = 0;
-		String favoriteCategory = "N/A";
 		float averageScore = 0.0f;
 		
 		if(userid < 1) {
@@ -146,7 +177,10 @@ public class UserProfileResource {
 				}
 			}
 			
-			averageScore = scoresSum / (float)count;
+			if(scoresSum <= 0)
+				averageScore = 0.0f;
+			else
+				averageScore = scoresSum / (float)count;
 			
 			// Find categories for best quiz
 			bestCategory = quizManager.getQuestionCategoriesViaQuizID(bestCategoryQuizId);
@@ -154,9 +188,16 @@ public class UserProfileResource {
 				bestCategory.add("Just for fun");
 		}
 		
-		return Response.ok(new ScoreView("score.ftl", user, quizManager.findQuizzesParticipated(user.getId()), averageScore, bestCategory, favoriteCategory)).build();
+		return Response.ok(new ScoreView("score.ftl", user, quizManager.findQuizzesParticipated(user.getId()), averageScore, bestCategory)).build();
 	}
 	
+	/**
+	 * Retrieves the quiz and score information for the selected quiz id and returns the data for display.
+	 * 
+	 * @param user
+	 * @param quizId
+	 * @return response
+	 */
 	@POST
 	@Path("/scores")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -186,6 +227,13 @@ public class UserProfileResource {
 		
 	}
 	
+	/**
+	 * Retrieves category information from a quiz id and returns it for display.
+	 * 
+	 * @param user
+	 * @param quizId
+	 * @return response
+	 */
 	@GET
 	@Path("/scores/category")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -205,6 +253,15 @@ public class UserProfileResource {
 		return Response.ok(response).build();
 	}
 	
+	/**
+	 * Takes the information to form a message and send it to the intended recipient.
+	 * 
+	 * @param user
+	 * @param sendeeId
+	 * @param senderId
+	 * @param message
+	 * @return response
+	 */
 	@POST
 	@Path("/message")
 	public Response sendMessages(@Auth(required = false) User user, @QueryParam("sendeeId") long sendeeId, @QueryParam("senderId") long senderId, String message) {
@@ -220,6 +277,13 @@ public class UserProfileResource {
 		return Response.ok().build();
 	}
 	
+	/**
+	 * Returns view for specific message id.
+	 * 
+	 * @param user
+	 * @param messageId
+	 * @return response
+	 */
 	@POST
 	@Path("/message/view")
 	public Response viewMessage(@Auth(required = false) User user, @QueryParam("messageId") long messageId) {
@@ -231,6 +295,12 @@ public class UserProfileResource {
 		return Response.status(Status.BAD_REQUEST).build();
 	}
 	
+	/**
+	 * Display message count.
+	 * 
+	 * @param user
+	 * @return response
+	 */
 	@GET
 	@Path("message/count")
 	@Produces(MediaType.APPLICATION_JSON)

@@ -19,7 +19,7 @@
 		<#include "../includes/navigation.ftl">
 
 
-		<div id="home-content" class=" metro">
+		<div id="home-content" class="metro">
 			<div class="grid fluid">
 			
 				<#if user??>
@@ -38,7 +38,7 @@
 										</span>
 										<div id="headerButtons">
 											<button type="button" class="warning large" onclick="location.href = '/about'">Learn More</button>
-											<button type="button" class="success large todo" onclick="location.href = '#'">Take the Tutorial</button>	
+											<button type="button" class="primary large" onclick="location.href = '/tutorial'">Take the Tutorial</button>	
 										</div>
 									</div>
 								</div>
@@ -50,7 +50,7 @@
 				<div id="homeBanner">
 					<div class="page-content">
 						<div id="bannerContent" class="row">
-							<div id="loginDiv" class="span3">
+							<div class="span3">
 								<div id="loginFormContainer">
 									<form id="loginForm">
 										<div class="input-control text">
@@ -76,11 +76,14 @@
 										<span class="subheader-secondary">
 											<strong>Not anymore!</strong> Whether for school, certification courses, job interviews or just fun. QuizZing gives you the tools to make studying simple.
 										</span>
-										<div id="headerButtons">
-											<button type="button" onclick="location.href = '/register'" class="success large">Register</button>
-											<button type="button" class="warning large" onclick="location.href = '/about'">Learn More</button>		
-										</div>
+										
 									</div>
+									
+								</div>
+								<div id="headerButtons span9">
+									<button type="button" onclick="location.href = '/register'" class="success large" style="margin-right: 10px">Register</button>
+									<button type="button" class="warning large" onclick="location.href = '/about'" style="margin-right: 10px">Learn More</button>
+									<button type="button" class="primary large" onclick="location.href = '/tutorial'">Take the Tutorial</button>
 								</div>
 							</div>
 						</div>

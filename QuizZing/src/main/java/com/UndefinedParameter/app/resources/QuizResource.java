@@ -51,6 +51,17 @@ public class QuizResource {
 	private GroupManager groupManager;
 	private UserGroupManager userGroupManager;
 	
+	/**
+	 * This class responds to all the GET and POST requests related to quizzes.
+	 * 
+	 * @param quizDAO
+	 * @param questionDAO
+	 * @param orgDAO
+	 * @param groupDAO
+	 * @param orgMemberDAO
+	 * @param quizScoreDAO
+	 * @param userGroupDAO
+	 */
 	public QuizResource(QuizDAO quizDAO, QuestionDAO questionDAO, OrganizationDAO orgDAO, GroupDAO groupDAO, OrgMemberDAO orgMemberDAO, QuizScoreDAO quizScoreDAO, UserGroupDAO userGroupDAO) {
 		quizManager = new QuizManager(quizDAO, questionDAO, quizScoreDAO);
 		groupManager = new GroupManager(orgDAO, groupDAO, orgMemberDAO, userGroupDAO);
@@ -58,6 +69,14 @@ public class QuizResource {
 		userGroupManager = new UserGroupManager(userGroupDAO);
 	}
 	
+	/**
+	 * Returns response and view to display quiz.
+	 * 
+	 * @param user
+	 * @param id
+	 * @param groupId
+	 * @return response
+	 */
 	@GET
 	public Response getQuizView(@Auth(required = false) User user, @QueryParam("quizId") long id, @QueryParam("groupId") long groupId) {
 		
@@ -112,6 +131,13 @@ public class QuizResource {
 		}
 	}
 	
+	/**
+	 * Commits new scores to database and returns all scores for this quiz.
+	 * 
+	 * @param user
+	 * @param newScore
+	 * @return response
+	 */
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
@@ -134,6 +160,13 @@ public class QuizResource {
 		}
 	}
 	
+	/**
+	 * Returns response and view for creating a quiz.
+	 * 
+	 * @param user
+	 * @param groupId
+	 * @return response
+	 */
 	@GET
 	@Path("/create")
 	public Response getQuizCreatorView(@Auth(required = false) User user, @QueryParam("groupId") long groupId)
@@ -156,6 +189,18 @@ public class QuizResource {
 		}
 	}
 	
+	/**
+	 * Takes quiz information from creating a quiz, creates the quiz, and returns an appropriate response on success or fail.
+	 * 
+	 * @param user
+	 * @param quiz
+	 * @param groupId
+	 * @param auto
+	 * @param questionCount
+	 * @param rating
+	 * @param difficulty
+	 * @return response
+	 */
 	@POST
 	@Path("/create")
 	@Consumes(MediaType.APPLICATION_JSON)
@@ -200,6 +245,14 @@ public class QuizResource {
 		return Response.ok(response).build();
 	}
 	
+	/**
+	 * Returns response and view for the quiz edit pages.
+	 * 
+	 * @param user
+	 * @param id
+	 * @param groupId
+	 * @return response
+	 */
 	@GET
 	@Path("/edit")
 	@Consumes(MediaType.APPLICATION_JSON)
@@ -224,10 +277,15 @@ public class QuizResource {
 			return Response.ok(new QuizEditView(user, quiz, group, unaddedGroupQuestions)).build();
 		}
 		return Response.status(Status.BAD_REQUEST).build();
-	}
+	}	
 	
-	
-	
+	/**
+	 * Takes the new quiz name, commits the change, and returns an appropriate response on success or fail.
+	 * 
+	 * @param user
+	 * @param quiz
+	 * @return response
+	 */
 	@POST
 	@Path("/edit/name")
 	@Consumes(MediaType.APPLICATION_JSON)
@@ -245,6 +303,13 @@ public class QuizResource {
 		return Response.ok(response).build();
 	}
 	
+	/**
+	 * Takes the new quiz description, commits the change, and returns an appropriate response on success or fail.
+	 * 
+	 * @param user
+	 * @param quiz
+	 * @return response
+	 */
 	@POST
 	@Path("/edit/description")
 	@Consumes(MediaType.APPLICATION_JSON)
@@ -262,6 +327,13 @@ public class QuizResource {
 		return Response.ok(response).build();
 	}
 	
+	/**
+	 * Commits all quiz changes to the database and returns an appropriate response.
+	 * 
+	 * @param user
+	 * @param quiz
+	 * @return response
+	 */
 	@POST
 	@Path("/edit/save")
 	@Consumes(MediaType.APPLICATION_JSON)
@@ -279,7 +351,13 @@ public class QuizResource {
 		return Response.ok(response).build();
 	}
 	
-	
+	/**
+	 * Returns response and view to edit quiz questions.
+	 * 
+	 * @param user
+	 * @param quizId
+	 * @return response
+	 */
 	@GET
 	@Path("/edit/questions")
 	public Response getQuizQuestions(@Auth(required = false) User user, @QueryParam("quizId") long quizId) {
@@ -301,7 +379,12 @@ public class QuizResource {
 		return Response.status(Status.BAD_REQUEST).build();
 	}
 	
-	
+	/**
+	 * Retrieves top quizzes to display on home page.
+	 * 
+	 * @param user
+	 * @return response
+	 */
 	@GET
 	@Path("/quizzes")
 	public Response getQuizzesPage(@Auth(required = false) User user) {
@@ -313,6 +396,15 @@ public class QuizResource {
 		}
 	}
 	
+	/**
+	 * Commits quiz quality rating to the database.
+	 * 
+	 * @param user
+	 * @param quizId
+	 * @param rating
+	 * @param groupId
+	 * @return response
+	 */
 	@POST
 	@Path("/rate/rating")
 	public Response rateQuizQuality(@Auth(required = false) User user, @QueryParam("quizId") long quizId, @QueryParam("rating") int rating, @QueryParam("groupId") long groupId) {
@@ -328,6 +420,15 @@ public class QuizResource {
 		}
 	}
 	
+	/**
+	 * Commits quiz difficulty rating to the database.
+	 * 
+	 * @param user
+	 * @param quizId
+	 * @param rating
+	 * @param groupId
+	 * @return response
+	 */
 	@POST
 	@Path("/rate/difficulty")
 	public Response rateQuizDifficulty(@Auth(required = false) User user, @QueryParam("quizId") long quizId, @QueryParam("rating") int rating, @QueryParam("groupId") long groupId) {
@@ -343,18 +444,33 @@ public class QuizResource {
 		}
 	}
 	
+	/**
+	 * Retrieves top quizzes for display on home page.
+	 * 
+	 * @return response
+	 */
 	@GET
 	@Path("/top")
 	public Response getTopQuizzes() {
 		return Response.ok(new QuizListView("../includes/top_quizzes.ftl", quizManager.findTopQuizzes())).build();
 	}
 	
+	/**
+	 * Retrieves recent quizzes for display on home pages.
+	 * 
+	 * @return response
+	 */
 	@GET
 	@Path("/recent")
 	public Response getRecentQuizzes() {
 		return Response.ok(new QuizListView("../includes/recent_quizzes.ftl", quizManager.findRecentQuizzes())).build();
 	}
 	
+	/**
+	 * Retrieves user-owned quizzes for display on home pages.
+	 * 
+	 * @return response
+	 */
 	@GET
 	@Path("/myquizzes")
 	public Response getRecentQuizzes(@QueryParam("userId") long userId) {
@@ -362,6 +478,11 @@ public class QuizResource {
 		return Response.ok(new QuizListView("../includes/myquizzes.ftl", quizzes)).build();
 	}
 	
+	/**
+	 * Retrieves category search view for display on home pages.
+	 * 
+	 * @return response
+	 */
 	@GET
 	@Path("/categories")
 	public Response getCategoryView(@Auth(required = false) User user) {
@@ -369,6 +490,11 @@ public class QuizResource {
 		return Response.ok(new CategoriesView(user, categories)).build();
 	}
 	
+	/**
+	 * Retrieves quizzes by user-selected categories for display on category page.
+	 * 
+	 * @return response
+	 */
 	@POST
 	@Path("/categories")
 	@Consumes(MediaType.APPLICATION_JSON)
@@ -376,6 +502,11 @@ public class QuizResource {
 		return Response.ok(new QuizListView("../includes/quiz_list.ftl", quizManager.getQuizzesFromCategories(categories))).build();
 	}
 	
+	/**
+	 * Retrieves top categories for display on category page.
+	 * 
+	 * @return response
+	 */
 	@GET
 	@Path("/top_categories")
 	public Response getTopCategoryView() {
@@ -383,6 +514,11 @@ public class QuizResource {
 		return Response.ok(new CategoriesView("../includes/top_categories.ftl", categories)).build();
 	}
 	
+	/**
+	 * Retrieves quizzes by user-selected categories for display on home pages.
+	 * 
+	 * @return response
+	 */
 	@POST
 	@Path("/top_categories")
 	@Consumes(MediaType.APPLICATION_JSON)
