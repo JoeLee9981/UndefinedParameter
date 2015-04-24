@@ -143,6 +143,7 @@
 						<#include "../includes/true_false_quiz_edit.ftl">
 						<#include "../includes/short_answer_quiz_edit.ftl">
 						<#include "../includes/fill_blank_quiz_edit.ftl">
+						<#include "../includes/matching_quiz_edit.ftl">
 					</div>
 				</div>
 				<div class="row">
@@ -659,7 +660,10 @@
 			// Common variables between all types of questions
 			var quizId = ${quiz.quizId};
 			var creatorId = ${user.id};
-			var desc = document.getElementById('descriptionText' + type).value;
+			if (type != 'MATCHING')
+			{
+				var desc = document.getElementById('descriptionText' + type).value;
+			}
 			var explanation = document.getElementById('explanationText' + type).value;
 			var reference = "";
 			var hyperlink = "";
@@ -934,6 +938,110 @@
 						}
 					}
 				});
+			}
+			else if (type == 'MATCHING')
+			{
+			
+				//TODO Prevalidate these fields
+				var maxAnswers = 5;
+				
+				var desc = "";
+				var correct;
+				var incorrect = [];
+				var path = "/question/create?quizId=" + quizId;
+				var correctPos = 0;
+				
+				//TODO: once ready uncomment this code
+				//var reference = document.getElementById('referenceText').value;
+				//var hyperlink = document.getElementById('referenceLink').value;
+				var reference = "";
+				var hyperlink = "";
+				
+				
+				var ordered = false;
+	
+				document.getElementById('match-responseLabel').innerHTML = "";
+				
+				var count = 1;
+				for(var i = 1; i <= maxAnswers; i++) {
+					if(($('#matchText' + i).val() && !$('#match-descriptionText-' + i).val()) || 
+					   (!$('#matchText' + i).val() && $('#match-descriptionText-' + i).val())) {
+						document.getElementById('match-responseLabel').innerHTML = "Both Question and its Match must be entered";
+						document.getElementById('match-responseLabel').className = "text-alert";
+						return;
+					}
+					else if($('#matchText' + i).val() && $('#match-descriptionText-' + i).val()) {
+						desc += "<" + count + ">" + $('#match-descriptionText-' + i).val() + " ";
+						if(i == 1) {
+							correct = '<A>' + $('#matchText' + i).val();
+						}
+						else {
+							incorrect.push('<' + String.fromCharCode(64 + count) + '>' + $('#matchText' + i).val());
+						}
+						count++;
+					}
+					else {
+						incorrect.push("");
+					}
+				}
+
+				if(count < 3) {
+					document.getElementById('match-responseLabel').innerHTML = "Matching must at least have two questions to match";
+					document.getElementById('match-responseLabel').className = "text-alert";
+					resetCreateButton(type);
+					return;
+				}
+				
+				if(hyperlink && !reference) {
+					document.getElementById('match-responseLabel').innerHTML = "Reference must be filled out in conjunction to the hyperlink";
+					document.getElementById('match-responseLabel').className = "text-alert";
+					resetCreateButton(type);
+					return;
+				}
+				
+				 $.ajax({
+					type: 'POST',
+					url: path,
+					data: JSON.stringify({groupId: ${group.id}, questionText: desc, correctAnswer: correct, type: type, wrongAnswers: incorrect, creatorId: creatorId, explanation: explanation, ordered: ordered, reference: reference, referenceLink: hyperlink, correctPosition: correctPos, categories: categories }),
+					dataType: "json",
+					headers: {
+						Accept: "application/json",
+						"Content-Type": "application/json"
+					},
+					success: function(data) {
+						if("success" == data["response"]) {
+							addNewlyCreatedQuestionToList(data);
+							resetCreateButton(type);
+							//window.location = data['redirect'];
+						}
+						else {
+							document.getElementById('match-responseLabel').className = "text-alert";
+							document.getElementById('match-responseLabel').innerHTML = data["message"];
+						}
+					}
+				});		
+			
+			
+			
+			
+			
+			
+			
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 			}
 		}
 		
