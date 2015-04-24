@@ -44,6 +44,18 @@
 				text-transform: uppercase;
 				fill: grey;
 			}
+			
+			<style>
+			.unratable ul
+			{
+				cursor: default;
+			}
+			
+			.unratable li
+			{
+				cursor: default;
+			}
+		</style>
 		</style>
 	</head>
 
@@ -81,19 +93,19 @@
 									<h5>Difficulty:</h5>
 									
 									<#if userDifficulty &gt; 0>
-										<div id="difficulty" class="rating small fg-yellow">
+										<div id="difficulty" class="rating small fg-yellow unratable">
 										</div>
 									<#else>
-										<div id="difficulty" class="rating small fg-red">
+										<div id="difficulty" class="rating small fg-red unratable">
 										</div>
 									</#if>
 									
 									<h5>Rating:</h5>
 									<#if userRating &gt; 0>
-										<div id="rating" class="fg-yellow rating small">
+										<div id="rating" class="fg-yellow rating small unratable">
 										</div>
 									<#else>
-										<div id="rating" class="rating small">
+										<div id="rating" class="rating small unratble">
 										</div>
 									</#if>
 									

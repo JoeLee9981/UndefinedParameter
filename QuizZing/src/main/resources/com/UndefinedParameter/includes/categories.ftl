@@ -13,6 +13,17 @@
 		<link href="/assets/css/home.css" rel="stylesheet">	
 		<link rel="shortcut icon" type="image/x-icon" href="/assets/images/qlogo_32.jpg">	
 		<link rel="stylesheet" type="text/css" href="/assets/css/categories.css" />	
+		<style>
+			ul
+			{
+				cursor: default;
+			}
+			
+			li
+			{
+				cursor: default;
+			}
+		</style>
 	</head>
 	<body>
 		

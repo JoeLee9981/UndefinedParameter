@@ -2,7 +2,7 @@
 
 <#if user??>
 <div class="grid fluid">
-	<div class="row">
+	<div class="row noMargin">
 		<#if message??><p class="text-success"> *${message}</p></#if>
 		<h5>My Questions<span class="place-right" title="Close"><a href="" id="closeLink"><i class="icon-cancel" style="color: red"></i></a></span></h5>
 		<p class="text-alert" id="error"  />
@@ -99,27 +99,21 @@
 						
 							$(function() {
 								$("#difficulty${question.questionId}").rating({
-									static: false,
+									static: true,
 									score: ${question.difficulty},
 									stars: 5,
 									showHint: true,
-									hints: ['cake', 'easy', 'average', 'hard', 'impossible'],
-									click: function(value, rating) {
-										alert("Not yet implemented");
-									}
+									hints: ['cake', 'easy', 'average', 'hard', 'impossible']
 								});		
 							});
 							
 							$(function() {
 								$("#rating${question.questionId}").rating({
-									static: false,
+									static: true,
 									score: ${question.rating},
 									stars: 5,
 									showHint: true,
-									hints: ['wrong', 'poor', 'average', 'good', 'excellent'],
-									click: function(value, rating) {
-										alert("Not yet implemented");
-									}
+									hints: ['wrong', 'poor', 'average', 'good', 'excellent']
 								});
 							});
 						</script>
@@ -248,27 +242,21 @@
 						
 							$(function() {
 								$("#difficulty${question.questionId}").rating({
-									static: false,
+									static: true,
 									score: ${question.difficulty},
 									stars: 5,
 									showHint: true,
-									hints: ['cake', 'easy', 'average', 'hard', 'impossible'],
-									click: function(value, rating) {
-										alert("Not yet implemented");
-									}
+									hints: ['cake', 'easy', 'average', 'hard', 'impossible']
 								});		
 							});
 							
 							$(function() {
 								$("#rating${question.questionId}").rating({
-									static: false,
+									static: true,
 									score: ${question.rating},
 									stars: 5,
 									showHint: true,
-									hints: ['wrong', 'poor', 'average', 'good', 'excellent'],
-									click: function(value, rating) {
-										alert("Not yet implemented");
-									}
+									hints: ['wrong', 'poor', 'average', 'good', 'excellent']
 								});
 							});
 						</script>

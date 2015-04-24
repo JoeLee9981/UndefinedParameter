@@ -13,7 +13,18 @@
 		<script src="/assets/scripts/jquery-ui.min.js"></script>
 		<script src="/assets/plugins/metro_ui/min/metro.min.js"></script>
 		<link rel="shortcut icon" type="image/x-icon" href="/assets/images/qlogo_32.jpg">
-		<link rel="stylesheet" type="text/css" href="/assets/css/categories.css" />	
+		<link rel="stylesheet" type="text/css" href="/assets/css/categories.css" />
+		<style>
+			ul
+			{
+				cursor: default;
+			}
+			
+			li
+			{
+				cursor: default;
+			}
+		</style>
 	</head>
 
 	<body>
