@@ -70,8 +70,8 @@ public class UserProfileView extends View {
 			
 			if(StringUtils.isNotBlank(userProf.getMiddleName())) {
 				builder.append(" " + userProf.getMiddleName());
-				builder.append(" ");
 			}
+			builder.append(" ");
 			builder.append(userProf.getLastName());
 			
 			return builder.toString();

@@ -2,12 +2,20 @@ package com.UndefinedParameter.app.core;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+/***
+ * POJO Object used to hold a quiz rating between a user and a quiz
+ *
+ */
 public class QuizRating {
 	
+	/*** member variables ***/
 	private long quizRatingId;
 	private long quizId;
 	private long userId;
 	private int rating;
+	
+	
+	/*** CONSTRUCTORS ***/
 	
 	public QuizRating() {}
 
@@ -19,6 +27,8 @@ public class QuizRating {
 		this.rating = rating;
 	}
 
+	/*** GETTERS AND SETTERS ****/
+	
 	@JsonProperty
 	public long getQuizRatingId() {
 		return quizRatingId;

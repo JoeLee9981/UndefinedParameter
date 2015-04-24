@@ -6,8 +6,14 @@ import org.joda.time.DateTime;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+/**
+ * POJO Object used for User History
+ * 	This object never got used
+ *
+ */
 public class History {
 	
+	/*** member variables ***/
 	private long id;
 	private long userid;
 	private long quizid;

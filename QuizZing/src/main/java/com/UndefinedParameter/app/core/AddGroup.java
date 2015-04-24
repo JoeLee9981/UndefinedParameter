@@ -3,6 +3,10 @@ package com.UndefinedParameter.app.core;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+/**
+ * This is a pojo class used for adding a group
+ *		Only serves for functionality for adding a class to the database
+ */
 @JsonIgnoreProperties
 public class AddGroup {
 	
@@ -29,7 +33,5 @@ public class AddGroup {
 	public void setOrganizationId(int organizationId) {
 		this.organizationId = organizationId;
 	}
-	
-	
 	
 }

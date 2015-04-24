@@ -53,15 +53,6 @@ public class Group {
 	
 	private DateTime dateCreated;
 	
-	/*
-	 * TODO: Add long name and description fields
-	 * 	May also want to consider a category field
-	 * 		For exampe. name would be CS-4962, long Name
-	 * 		would be Mobile Apps - Android/iOS, category would
-	 * 		be Computer Science, description would be a description
-	 * 		of the class.
-	 */
-	
 	
 	/*
 	 * constructor - For now organizationId is not required to create
@@ -171,6 +162,10 @@ public class Group {
 		this.flagCount = flagCount;
 	}
 
+	/**
+	 * Returns a formatted date string in the format "MM/dd/yyyy"
+	 * @return the date formatted
+	 */
 	public String getDateAsString() {
 		return dateCreated.toString("MM/dd/yyyy");
 	}

@@ -4,6 +4,11 @@ import org.joda.time.DateTime;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+/**
+ * POJO class used to hold the users score data
+ * @author god_laptop
+ *
+ */
 public class QuizScore {
 	private long id;
 	private long userId;

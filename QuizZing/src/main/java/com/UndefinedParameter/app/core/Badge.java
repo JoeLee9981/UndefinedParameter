@@ -1,7 +1,15 @@
 package com.UndefinedParameter.app.core;
 
+/**
+ * 
+ * Pojo class used to represent a badge for either an
+ * 	Organization or a group
+ *
+ */
 public class Badge {
 
+	/**** member variables ***/
+	
 	private long userId;
 	private long groupId;
 	private String groupName;
@@ -9,8 +17,11 @@ public class Badge {
 	private String organizationName;
 	private int contribution;
 	
+	//default constructor
 	public Badge() {}
 
+	/***** getters and setters *****/
+	
 	public long getUserId() {
 		return userId;
 	}

@@ -34,19 +34,32 @@ import com.UndefinedParameter.views.QuestionCreatorView;
 import com.UndefinedParameter.views.QuestionEditView;
 import com.UndefinedParameter.views.QuizEditQuestionsView;
 
+/**
+ * This is the resource used to handle all paths and subpaths related to questions
+ *
+ */
 @Path("/question")
 @Produces(MediaType.TEXT_HTML)
 @Consumes(MediaType.APPLICATION_JSON)
 public class QuestionResource {
 	
+	//managers related to objects
 	private QuizManager quizManager;
 	private UserGroupManager userGroupManager;
 	
+	//constructors
 	public QuestionResource(QuizDAO quizDAO, QuestionDAO questionDAO, QuizScoreDAO quizScoreDAO, UserGroupDAO userGroupDAO) {
 		quizManager = new QuizManager(quizDAO, questionDAO, quizScoreDAO);
 		userGroupManager = new UserGroupManager(userGroupDAO);
 	}
 	
+	/**
+	 * gets a view to create a question
+	 * @param user
+	 * @param quizId
+	 * @param groupId
+	 * @return
+	 */
 	@GET
 	@Path("/create")
 	public Response getAddQuestionView(@Auth(required = false) User user, @QueryParam("quizId") long quizId, @QueryParam("groupId") long groupId) {
@@ -58,6 +71,14 @@ public class QuestionResource {
 		return Response.ok(new QuestionCreatorView(user, quizId, groupId)).build();
 	}
 	
+	/**
+	 * Gets a view to create a question based on the type of the question
+	 * @param user
+	 * @param quizId
+	 * @param groupId
+	 * @param type
+	 * @return
+	 */
 	@GET
 	@Path("/create/type")
 	public Response getCreateQuestionType(@Auth(required = false) User user, @QueryParam("quizId") long quizId, @QueryParam("groupId") long groupId, @QueryParam("type") String type) {
@@ -86,6 +107,13 @@ public class QuestionResource {
 		return Response.ok(new QuestionCreatorView(file, user, quizId, groupId)).build();
 	}
 	
+	/**
+	 * post to create a question and add to a database
+	 * @param user
+	 * @param quizId
+	 * @param question
+	 * @return
+	 */
 	@POST
 	@Path("/create")
 	@Consumes(MediaType.APPLICATION_JSON)
@@ -129,6 +157,13 @@ public class QuestionResource {
 		}
 	}
 	
+	/**
+	 * gets a view used to add a question
+	 * @param user
+	 * @param quizId
+	 * @param groupId
+	 * @return
+	 */
 	@GET
 	@Path("/add")
 	public Response getQuestionAddView(@Auth(required = false) User user, @QueryParam("quizId") long quizId, @QueryParam("groupId") long groupId) {
@@ -149,6 +184,14 @@ public class QuestionResource {
 		}
 	}
 	
+	/**
+	 * Post to add a question and stash into the database
+	 * @param user
+	 * @param questionId
+	 * @param quizId
+	 * @param groupId
+	 * @return
+	 */
 	@POST
 	@Path("/add")
 	public Response addQuestion(@Auth(required = false) User user, @QueryParam("questionId") long questionId, @QueryParam("quizId") long quizId, @QueryParam("groupId") long groupId) {
@@ -169,6 +212,13 @@ public class QuestionResource {
 		return Response.status(Status.BAD_REQUEST).build();
 	}
 	
+	/**
+	 * Removes an association question to a quiz
+	 * @param user
+	 * @param questionId
+	 * @param quizId
+	 * @return
+	 */
 	@DELETE
 	@Path("/remove")
 	public Response removeQuestion(@Auth(required = false) User user, @QueryParam("questionId") long questionId, @QueryParam("quizId") long quizId) {
@@ -194,6 +244,14 @@ public class QuestionResource {
 		return Response.status(Status.BAD_REQUEST).build();
 	}
 	
+	/**
+	 * post a rating onto a question
+	 * @param user
+	 * @param questionId
+	 * @param rating
+	 * @param groupId
+	 * @return
+	 */
 	@POST
 	@Path("/rate/rating")
 	public Response rateQuizQuality(@Auth(required = false) User user, @QueryParam("questionId") long questionId, @QueryParam("rating") int rating, @QueryParam("groupId") long groupId) {
@@ -210,6 +268,14 @@ public class QuestionResource {
 		}
 	}
 	
+	/**
+	 * add a difficulty onto a question in the database
+	 * @param user
+	 * @param questionId
+	 * @param rating
+	 * @param groupId
+	 * @return
+	 */
 	@POST
 	@Path("/rate/difficulty")
 	public Response rateQuizDifficulty(@Auth(required = false) User user, @QueryParam("questionId") long questionId, @QueryParam("rating") int rating, @QueryParam("groupId") long groupId) {
@@ -226,6 +292,13 @@ public class QuestionResource {
 		}
 	}
 	
+	/**
+	 * get an edit view to edit a quiz
+	 * @param user
+	 * @param questionId
+	 * @param groupId
+	 * @return
+	 */
 	@GET
 	@Path("/edit")
 	public Response getQuizEdit(@Auth(required = false) User user, @QueryParam("questionId") long questionId, @QueryParam("groupId") long groupId) {
@@ -241,6 +314,13 @@ public class QuestionResource {
 		return Response.status(Status.BAD_REQUEST).build();
 	}
 	
+	/**
+	 * PUT to update a quiz and save changes into the db
+	 * @param user
+	 * @param groupId
+	 * @param question
+	 * @return
+	 */
 	@PUT
 	@Path("edit")
 	@Consumes(MediaType.APPLICATION_JSON)
@@ -258,6 +338,13 @@ public class QuestionResource {
 		return Response.status(Status.BAD_REQUEST).build();
 	}
 	
+	/**
+	 * Post to add a flag on a question to flag as wrong
+	 * @param user
+	 * @param questionId
+	 * @param reason
+	 * @return
+	 */
 	@POST
 	@Path("/flag")
 	public Response flagQuestion(@Auth(required = false) User user, @QueryParam("questionId") long questionId, String reason) {
@@ -270,6 +357,12 @@ public class QuestionResource {
 		return Response.ok().build();
 	}
 	
+	/**
+	 * Post to remove a flag from a question and update in the database
+	 * @param user
+	 * @param questionId
+	 * @return
+	 */
 	@POST
 	@Path("/unflag")
 	public Response unflagQuestion(@Auth(required = false) User user, @QueryParam("questionId") long questionId) {

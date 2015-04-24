@@ -4,7 +4,13 @@ import org.joda.time.DateTime;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+/**
+ * POJO object used to hold the data for a member when searching by group
+ *
+ */
 public class GroupMember {
+	
+	/*** Member Variables ***/
 	
 	private long userId;
 	private long orgId;
@@ -14,6 +20,8 @@ public class GroupMember {
 	private int quizzes;
 	private int questions;
 	private boolean moderator;
+	
+	/**** GETTERS AND SETTERS ****/
 	
 	@JsonProperty
 	public String getDisplayName() {

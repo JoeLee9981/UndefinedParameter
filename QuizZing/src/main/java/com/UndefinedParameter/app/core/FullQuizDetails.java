@@ -2,8 +2,16 @@ package com.UndefinedParameter.app.core;
 
 import org.joda.time.DateTime;
 
+/**
+ * POJO Class used to hold full quiz details
+ * 		This should not be used to hold an actual
+ * 		Quiz object used for taking a quiz.
+ * 		This is only used for displaying quiz information
+ *
+ */
 public class FullQuizDetails {
 
+	/************* member variables **************/
 	private long quizId;
 	private long groupId;
 	private long creatorId;
@@ -18,6 +26,8 @@ public class FullQuizDetails {
 	private boolean flagged;
 	private int questionCount;
 	private boolean isOpen;
+	
+	/************ getters and setters **************/
 	
 	public long getQuizId() {
 		return quizId;

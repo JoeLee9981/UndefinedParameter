@@ -8,18 +8,30 @@ import com.UndefinedParameter.jdbi.GroupDAO;
 import com.UndefinedParameter.jdbi.OrgMemberDAO;
 import com.UndefinedParameter.jdbi.OrganizationDAO;
 
+/**
+ * Manager object to use for communcating between the resource and the database
+ * 	This contains all management for Organizations
+ * @author god_laptop
+ *
+ */
 public class OrganizationManager {
 	
+	/*** Database Objects ****/
 	private OrganizationDAO orgDAO;
 	private GroupDAO groupDAO;
 	private OrgMemberDAO orgMemberDAO;
 	
+	//Constructor
 	public OrganizationManager(OrganizationDAO orgDAO, GroupDAO groupDAO, OrgMemberDAO orgMemberDAO) {
 		this.orgDAO = orgDAO;
 		this.groupDAO = groupDAO;
 		this.orgMemberDAO = orgMemberDAO;
 	}
 	
+	/**
+	 * Find all types for organizations
+	 * @return
+	 */
 	public List<String> findAllOrganizationTypes()
 	{
 		try {
@@ -31,25 +43,12 @@ public class OrganizationManager {
 		}
 	}
 	
-	/*
-	 * Find groups within an organization by id
-	 * 		Category is the category the groups belong to
-	 * 		for example CS or Computer Science. This would return
-	 * 		all classes related to the CS category for the organization
+	/**
+	 * Find the top groups
+	 * @return
 	 */
-	public Group[] findGroupsByCategory(long orgId, long categoryId) {
-		//TODO: Implement - note may want to use helper methods to group id's
-				// then retrieve the groups
-		return null;
-	}
-	
-	public Group[] findGroupsByCategory(long orgId, String category) {
-		int catId = 0;//TODO: Find the category id from database
-		return findGroupsByCategory(orgId, catId);
-	}
-	
 	public List<Group> findTopGroups() {
-		//TODO: Restrict the amount pulled from DB
+	
 		return groupDAO.findTopGroups();
 	}
 	
@@ -67,6 +66,11 @@ public class OrganizationManager {
 		return groups;
 	}
 	
+	/**
+	 * Finds organizations by a location
+	 * @param city
+	 * @return
+	 */
 	public List<Organization> findOrgsByLocation(String city) {
 		
 		List<Organization> orgs = orgDAO.findOrganizations();
@@ -107,11 +111,21 @@ public class OrganizationManager {
 		return groups;
 	}
 	
+	/**
+	 * Find an organization by its id
+	 * @param id
+	 * @return
+	 */
  	public Organization findOrgById(long id) {
 		
 		return orgDAO.findOrganization(id);
 	}
 	
+ 	/**
+ 	 * Creates an organization
+ 	 * @param org
+ 	 * @return
+ 	 */
 	public long createOrganization(Organization org) {
 		try {
 			long id = orgDAO.insertOrganization(InputUtils.sanitizeInput(org.getType()),
@@ -127,6 +141,11 @@ public class OrganizationManager {
 		}
 	}
 	
+	/**
+	 * Updates an organization
+	 * @param org
+	 * @return
+	 */
 	public boolean updateOrganization(Organization org) {
 		
 		try {
@@ -173,6 +192,11 @@ public class OrganizationManager {
 		return orgDAO.findLargestOrganizations(startCount, endCount);
 	}
 	
+	/**
+	 * Finds organziations by a user id
+	 * @param userId
+	 * @return
+	 */
 	public List<Organization> findOrgsByUserId(long userId) {
 		List<Organization> orgs = orgDAO.findOrganizationsByUserId(userId);
 		
@@ -185,6 +209,12 @@ public class OrganizationManager {
 		return orgs; 
 	}
 	
+	/**
+	 * Registers an organization
+	 * @param orgId
+	 * @param userId
+	 * @return
+	 */
 	public boolean registerOrganization(long orgId, long userId) {
 		try {
 			long amount = orgDAO.findUserOrganizationCount(userId, orgId);
@@ -209,6 +239,12 @@ public class OrganizationManager {
 		}
 	}
 	
+	/**
+	 * Removes a user from an organization
+	 * @param orgId
+	 * @param userId
+	 * @return
+	 */
 	public boolean leaveOrganization(long orgId, long userId) {
 		try {
 			long amount = orgDAO.findUserOrganizationCount(userId, orgId);
@@ -255,6 +291,12 @@ public class OrganizationManager {
 		return groups;
 	}
 	
+	/**
+	 * Registers a user for a group
+	 * @param groupId
+	 * @param userId
+	 * @return
+	 */
 	public boolean registerUserForGroup(long groupId, long userId) {
 		try {
 			Group group = groupDAO.findGroupById(groupId);
@@ -292,7 +334,13 @@ public class OrganizationManager {
 		}
 	}
 	
-	public boolean  removeuserFromGroupById(long groupId, long userId) {
+	/**
+	 * Removes a user from a group
+	 * @param groupId
+	 * @param userId
+	 * @return
+	 */
+	public boolean removeuserFromGroupById(long groupId, long userId) {
 		try {
 			
 			long amount = groupDAO.findUserGroupCount(userId, groupId);
@@ -367,6 +415,13 @@ public class OrganizationManager {
 		}
 	}
 	
+	/**
+	 * Rates an organization
+	 * @param userId
+	 * @param orgId
+	 * @param rating
+	 * @return
+	 */
 	public boolean rateOrganization(long userId, long orgId, int rating) {
 		//Goes to mananger
 		if(userId < 1 || orgId < 1 || rating < 1 || rating > 5) {
@@ -535,6 +590,11 @@ public class OrganizationManager {
 		}
 	}
 
+	/**
+	 * finds an organization by string keywords
+	 * @param keywords
+	 * @return
+	 */
 	public List<Organization> findOrgssByKeywords(String keywords) {
 		
 		// Create a list of each keyword space delimited

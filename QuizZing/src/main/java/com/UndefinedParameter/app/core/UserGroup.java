@@ -4,7 +4,14 @@ import org.joda.time.DateTime;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+/**
+ * POJO class for association between a user and a group
+ * @author god_laptop
+ *
+ */
 public class UserGroup {
+	
+	/*** Member Variables ***/
 	
 	private int id;
 	private int userid;

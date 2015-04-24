@@ -31,16 +31,28 @@ import com.UndefinedParameter.views.OrganizationCreatorView;
 import com.UndefinedParameter.views.OrganizationView;
 import com.UndefinedParameter.views.OrgsView;
 
+/**
+ * This is the resorce responsible for any path and sub
+ * 	path related to organizatoins
+ *
+ */
 @Path("/orgs")
 @Produces(MediaType.TEXT_HTML)
 public class OrganizationResource {
 
+	//manager
 	private OrganizationManager manager;
 	
+	//constructor
 	public OrganizationResource(OrganizationDAO orgDAO, GroupDAO groupDAO, OrgMemberDAO orgMemberDAO) {
 		manager = new OrganizationManager(orgDAO, groupDAO, orgMemberDAO);
 	}
 	
+	/**
+	 * Returns the main organizations view (notice the plural)
+	 * @param user
+	 * @return
+	 */
 	@GET
 	public Response getOrgsView(@Auth(required=false) User user) {
 		if(user != null)
@@ -49,6 +61,12 @@ public class OrganizationResource {
 			return Response.ok(new OrgsView(manager.findAllOrganizationTypes(), manager.findOrgsByLocation("city"), null, manager.findNewestOrganizations(0, 10), manager.findLargestOrganizations(0, 10), null)).build();
 	}
 	
+	/**
+	 * Creates the view for a specific organization view (single)
+	 * @param user
+	 * @param id
+	 * @return
+	 */
 	@GET
 	@Path("/org")
 	public Response getOrganizationView(@Auth(required = false) User user, @QueryParam("id") int id) {
@@ -72,6 +90,11 @@ public class OrganizationResource {
 		}
 	}
 	
+	/**
+	 * Gets a view for the creation of an organization
+	 * @param user
+	 * @return
+	 */
 	@GET
 	@Path("/create") 
 	public Response getCreateOrgView(@Auth(required = false) User user) {
@@ -81,7 +104,12 @@ public class OrganizationResource {
 			return Response.ok(new LoginView("/orgs/create")).build();
 	}
 	
-	
+	/**
+	 * Gets a view for the creation of a group in an organization
+	 * @param user
+	 * @param orgId
+	 * @return
+	 */
 	@GET
 	@Path("/org/create")
 	public Response getCreateGroupView(@Auth(required = false) User user, @QueryParam("orgId") long orgId) {
@@ -91,6 +119,12 @@ public class OrganizationResource {
 			return Response.ok(new LoginView("/orgs/org/create?orgId=" + orgId)).build();
 	}
 	
+	/**
+	 * Creates a view for the editing of an org
+	 * @param user
+	 * @param orgId
+	 * @return
+	 */
 	@GET
 	@Path("/org/edit")
 	public Response getEditOrgView(@Auth(required = false) User user, @QueryParam("orgId") long orgId) {
@@ -108,6 +142,13 @@ public class OrganizationResource {
 		return Response.status(Status.BAD_REQUEST).build();
 	}
 	
+	/**
+	 * Posts edited changes of an organization and saves them in the database
+	 * @param user
+	 * @param orgId
+	 * @param organization
+	 * @return
+	 */
 	@POST
 	@Path("/org/edit")
 	@Consumes(MediaType.APPLICATION_JSON)
@@ -123,6 +164,12 @@ public class OrganizationResource {
 		return Response.ok().build();
 	}
 	
+	/**
+	 * Posts the registration of a user to an organization
+	 * @param user
+	 * @param orgId
+	 * @return
+	 */
 	@POST
 	@Path("/register")
 	public Response registerOrg(@Auth(required = false) User user, @QueryParam("orgId") long orgId) {
@@ -144,7 +191,12 @@ public class OrganizationResource {
 		}
 	}
 	
-	
+	/**
+	 * Returns a JSON list of groups that a user has joined
+	 * @param user
+	 * @param orgId
+	 * @return
+	 */
 	@POST
 	@Path("/getJoinedGroups")
 	@Consumes(MediaType.APPLICATION_JSON)
@@ -164,8 +216,12 @@ public class OrganizationResource {
 		return Response.ok(response).build();
 	}
 	
-	
-	
+	/**
+	 * Performs a delete removing the user registration from an organization
+	 * @param user
+	 * @param orgId
+	 * @return
+	 */
 	@DELETE
 	@Path("/leave")
 	public Response leaveOrg(@Auth(required = false) User user, @QueryParam("orgId") long orgId) {
@@ -187,6 +243,12 @@ public class OrganizationResource {
 		}
 	}
 	
+	/**
+	 * Creates a new organization and stashes in the database
+	 * @param user
+	 * @param org
+	 * @return
+	 */
 	@POST
 	@Path("/add")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -211,6 +273,12 @@ public class OrganizationResource {
 		return Response.ok(response).build();
 	}
 	
+	/**
+	 * Registers a user for the org and saves in the database
+	 * @param user
+	 * @param groupId
+	 * @return
+	 */
 	@POST
 	@Path("/org/register")
 	public Response registerGroup(@Auth(required = false) User user, @QueryParam("groupId") long groupId) {
@@ -232,6 +300,12 @@ public class OrganizationResource {
 		}
 	}
 	
+	/**
+	 * Removes the registration of a user to an organization from the database
+	 * @param user
+	 * @param groupId
+	 * @return
+	 */
 	@DELETE
 	@Path("/org/leave")
 	public Response leaveGroup(@Auth(required = false) User user, @QueryParam("groupId") long groupId) {

@@ -2,14 +2,25 @@ package com.UndefinedParameter.app.core;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+/**
+ * 
+ * Pojo object to represent news
+ * 		This is mostly deprecated, but is being used
+ * 		on the about page.
+ *
+ */
 public class NewsArticle {
 
+	/**** member variables ***/
+	
 	long id;
 	String headline;
 	String body;
 	
+	//default constructor
 	public NewsArticle() {}
 	
+	// paramaterized constructor
 	public NewsArticle(long id, String headline, String body) {
 		this.id = id;
 		this.headline = headline;

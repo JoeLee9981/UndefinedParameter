@@ -36,15 +36,33 @@ import com.UndefinedParameter.views.LoginView;
 import com.UndefinedParameter.views.RegisterView;
 import com.UndefinedParameter.views.TutorialView;
 
+/**
+ * This is responsible for any paths used against the root
+ * 	Mostly used for home and user home views
+ * @author god_laptop
+ *
+ */
 @Path("/")
 @Produces(MediaType.TEXT_HTML)
 public class HomeResource {
 	
+	//Managers
 	private NewsManager newsManager;
 	private UserManager userManager;
 	private OrganizationManager orgManager;
 	private QuizManager quizManager;
 	
+	/**
+	 * Constructor
+	 * @param newsDAO
+	 * @param userDAO
+	 * @param orgDAO
+	 * @param groupDAO
+	 * @param quizDAO
+	 * @param questionDAO
+	 * @param quizScoreDAO
+	 * @param orgMemberDAO
+	 */
 	public HomeResource(NewsArticleDAO newsDAO, UserDAO userDAO, OrganizationDAO orgDAO, GroupDAO groupDAO, QuizDAO quizDAO, QuestionDAO questionDAO, QuizScoreDAO quizScoreDAO, OrgMemberDAO orgMemberDAO) {
 		this.newsManager = new NewsManager(newsDAO);
 		this.userManager = new UserManager(userDAO);
@@ -82,18 +100,33 @@ public class HomeResource {
 		return Response.ok().build();
 	}
 	
+	/**
+	 * gets the login view that a user can use to login with
+	 * @param user
+	 * @return
+	 */
 	@GET
 	@Path("/login")
 	public Response getLoginView(@Auth(required=false) User user) {
 		return Response.ok(new LoginView(user)).build();
 	}
 	
+	/**
+	 * Performs a logout by return a 401 against an auth request causing
+	 * 	the browser to remove the cached username and password
+	 * @return
+	 */
 	@POST
 	@Path("/logout")
 	public Response logout() {
 		return Response.status(401).build();
 	}
 	
+	/**
+	 * Returns a view that the user can use to register
+	 * @param user
+	 * @return
+	 */
 	@GET
 	@Path("/register")
 	public Response getRegisterView(@Auth(required = false) User user) 
@@ -110,6 +143,11 @@ public class HomeResource {
 		}
 	}
 	
+	/**
+	 * Posts a new user and registers it into the database
+	 * @param user
+	 * @return
+	 */
 	@POST
 	@Path("/register")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -135,12 +173,21 @@ public class HomeResource {
 		
 	}
 	
+	/**
+	 * Creates a view for forgot password link to allow a user to reset their password
+	 * @return
+	 */
 	@GET
 	@Path("/forgot")
 	public Response getForgotView() {
 		return Response.ok(new ForgotView("forgot.ftl")).build();
 	}
 	
+	/**
+	 * Creates the password recovery screen where the user enters the validation code
+	 * @param email
+	 * @return
+	 */
 	@GET
 	@Path("/recover")
 	public Response getRecoverView(@QueryParam("email") String email) {
@@ -160,6 +207,11 @@ public class HomeResource {
 		}
 	}
 	
+	/**
+	 * Posts the validation code for recovering the password
+	 * @param user
+	 * @return
+	 */
 	@POST
 	@Path("/recover")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -184,7 +236,11 @@ public class HomeResource {
 		}
 		
 	}
-	
+	/**
+	 * Creats the view for the about page
+	 * @param user
+	 * @return
+	 */
 	@GET
 	@Path("/about")
 	public Response getAboutPage(@Auth(required=false) User user) {

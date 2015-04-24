@@ -7,13 +7,23 @@ import com.UndefinedParameter.jdbi.OrgMemberDAO;
 import com.UndefinedParameter.jdbi.OrganizationDAO;
 import com.UndefinedParameter.jdbi.UserGroupDAO;
 
+/**
+ * Group Manager object used for communication between resources
+ * 		and the database
+ *	This is responsible for handling any management needed on Groups
+ */
 public class GroupManager {
 
+	/***** Database objects needed by this manager ****/
+	
 	private OrganizationDAO orgsDAO;
 	private GroupDAO groupDAO;
 	private OrgMemberDAO orgMemberDAO;
 	private UserGroupDAO userGroupDAO;
 	
+	/*
+	 * Paramterized constructor.
+	 */
 	public GroupManager(OrganizationDAO orgsDAO, GroupDAO groupDAO, OrgMemberDAO orgMemberDAO, UserGroupDAO userGroupDAO) {
 		this.orgsDAO = orgsDAO;
 		this.groupDAO = groupDAO;
@@ -21,6 +31,12 @@ public class GroupManager {
 		this.userGroupDAO = userGroupDAO;
 	}
 	
+	/**
+	 * Create a new group
+	 * @param group the group to create
+	 * @param user the user who is creating the group
+	 * @return the creatd group id, -1 if creation failed
+	 */
 	public long addGroup(Group group, User user) {
 		
 		/*
@@ -48,6 +64,11 @@ public class GroupManager {
 		return rvalue;
 	}
 	
+	/**
+	 * Edit the group details
+	 * @param group the new group details
+	 * @return true if edit succeeds
+	 */
 	public boolean editGroup(Group group) {
 		groupDAO.updateGroup(group.getId(), InputUtils.sanitizeInput(group.getName()), InputUtils.sanitizeInput(group.getDescription()));
 		return true;
@@ -59,9 +80,6 @@ public class GroupManager {
 	 */
 	public List<Group> findGroupsByOrg(long orgId) {
 		
-		//TODO: get groups from database - this should be ok to retreive a complete listing
-		//		as not there should be a manageable number of groups inside an org, however,
-		//		we may want to consider limiting the number we can grab from DAO at once.
 		
 		return groupDAO.findGroupsByOrgId(orgId);
 	}
@@ -83,8 +101,12 @@ public class GroupManager {
 		return groupDAO.findGroupByQuizId(quizId);
 	}
 	
+	/**
+	 * Find the top groups
+	 * @return a list of the top groups
+	 */
 	public List<Group> findTopGroups() {
-		//TODO: Restrict this to prevent pulling 1000 entries from the DB
+
 		List<Group> groups = groupDAO.findTopGroups(); 
 		
 		for(int i = 0; i < groups.size(); i++) {
@@ -112,6 +134,11 @@ public class GroupManager {
 		return groups;
 	}
 	
+	/**
+	 * Find all the groups a user is the member of
+	 * @param userId the id of the user
+	 * @return a list of all registred groups
+	 */
 	public List<Group> findRegisteredGroups(long userId) {
 		
 		List<Group> groups = groupDAO.findGroupsByUser(userId);
@@ -125,10 +152,20 @@ public class GroupManager {
 		return groups;
 	}
 	
+	/**
+	 * find the parent organization using its id
+	 * @param orgId the id of the parent organization
+	 * @return full organization details
+	 */
 	public Organization findParentOrganization(long orgId) {
 		return orgsDAO.findOrganization(orgId);
 	}
 	
+	/**
+	 * Count the questions in a group
+	 * @param groupId the group to find
+	 * @return the count of questions found
+	 */
 	public int countQuestionsByGroup(long groupId) {
 		try {
 			int count = groupDAO.countQuestions(groupId);
@@ -139,6 +176,11 @@ public class GroupManager {
 		}
 	}
 	
+	/**
+	 * Count the flagged questions in a group
+	 * @param groupId the group to find
+	 * @return the count of flags found
+	 */
 	public int countFlagsByGroup(long groupId) {
 		if(groupId < 1) {
 			return 0;
@@ -146,6 +188,12 @@ public class GroupManager {
 		return groupDAO.countFlagsByGroup(groupId);
 	}
 	
+	/**
+	 * count the flags for a user in a group
+	 * @param userId the id of the user
+	 * @param groupId the id of the group
+	 * @return a count of the flags found
+	 */
 	public int countFlagsByuser(long userId, long groupId) {
 		if(groupId < 1 || userId < 1) {
 			return 0;
@@ -153,6 +201,11 @@ public class GroupManager {
 		return groupDAO.countFlagsByUser(userId, groupId);
 	}
 	
+	/**
+	 * count the questions in a quiz
+	 * @param groupId the group the quiz belongs to
+	 * @return the count found
+	 */
 	public int countQuestionsByQuiz(long groupId) {
 		try {
 			int count = groupDAO.countQuizzes(groupId);
@@ -179,10 +232,20 @@ public class GroupManager {
 		return members;
 	}
 	
+	/**
+	 * Find all the categories in a group
+	 * @param groupId the group id
+	 * @return a list of all categories as strings
+	 */
 	public List<String> findCategoriesByGroup(long groupId) {
 		return groupDAO.findCategoriesByGroup(groupId);
 	}
 
+	/**
+	 * Finds groups associated with the provided keywords
+	 * @param keywords the words to search the groups for
+	 * @return the list of matching groups
+	 */
 	public List<Group> findGroupsByKeywords(String keywords) {
 		
 		return groupDAO.findGroupsByKeywords(keywords);

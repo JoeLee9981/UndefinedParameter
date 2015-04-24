@@ -23,16 +23,19 @@ import com.UndefinedParameter.quizzing.QuizZingApplication;
  */
 public class QuizManager {
 	
+	//database objects
 	private QuizDAO quizDAO;
 	private QuestionDAO questionDAO;
 	private QuizScoreDAO quizScoreDAO;
 	
+	//constructor
 	public QuizManager(QuizDAO quizDAO, QuestionDAO questionDAO, QuizScoreDAO quizScoreDAO) {
 		this.quizDAO = quizDAO;
 		this.questionDAO = questionDAO;
 		this.quizScoreDAO = quizScoreDAO;
 	}
 	
+	//logger
 	final static Logger logger = LoggerFactory.getLogger(QuizZingApplication.class);
 	final static int defaultNumOfQuestions = 10;
 	final static int maxNumOfQuestions = 100;
@@ -92,6 +95,11 @@ public class QuizManager {
 		return quiz;
 	}
 	
+	/**
+	 * gets the questions for a quiz and returns them in a randomized order
+	 * @param quizId
+	 * @return
+	 */
 	public Quiz getRandomizedQuestions(long quizId)
 	{
 		//get and randomize questions
@@ -107,6 +115,12 @@ public class QuizManager {
 		return quiz;
 	}
 	
+	/**
+	 * creates a quiz and randomizes the questions in it
+	 * @param quizId
+	 * @param userId
+	 * @return
+	 */
 	public Quiz getRandomizedQuestions(long quizId, long userId) {
 		//get and randomize questions
 		List<Question> randomizedQuestionList = questionDAO.retrieveExistingQuiz(quizId);
@@ -127,6 +141,11 @@ public class QuizManager {
 		return quiz;
 	}
 	
+	/**
+	 * finds a question by its id
+	 * @param questionId
+	 * @return
+	 */
 	public Question findQuestionById(long questionId) {
 		
 		if(questionId < 1)
@@ -176,6 +195,12 @@ public class QuizManager {
 		}
 	}
 	
+	/**
+	 * gets Questions associated with a quiz
+	 * 	THIS DOES NOT RANDOMIZE
+	 * @param quizId
+	 * @return
+	 */
 	private List<Question> getQuestions(long quizId) {
 		
 		List<Question> questions = questionDAO.retrieveExistingQuiz(quizId);
@@ -189,6 +214,11 @@ public class QuizManager {
 		return questions;
 	}
 	
+	/**
+	 * Finds all the questions associated with a group
+	 * @param groupId
+	 * @return
+	 */
 	public List<Question> findQuestionsByGroup(long groupId) {
 		
 		if(groupId < 1) {
@@ -206,6 +236,12 @@ public class QuizManager {
 		return questions;
 	}
 	
+	/**
+	 * Finds unadded questions associated with a group
+	 * @param groupId
+	 * @param quizId
+	 * @return
+	 */
 	public List<Question> findUnaddedGroupQuestions(long groupId, long quizId) {
 		if(groupId > 0 && quizId > 0) {
 			
@@ -224,6 +260,11 @@ public class QuizManager {
 		}
 	}
 	
+	/**
+	 * Finds quiz scores based on a user id
+	 * @param userId
+	 * @return
+	 */
 	public List<QuizScore> findScoresByUser(long userId)
 	{
 		if(userId > 0)
@@ -232,6 +273,11 @@ public class QuizManager {
 			return null;
 	}
 	
+	/**
+	 * Finds all scores for a quiz based on the quiz id
+	 * @param quizId
+	 * @return
+	 */
 	public List<QuizScore> findScoresByQuiz(long quizId)
 	{
 		if(quizId > 0)
@@ -240,6 +286,12 @@ public class QuizManager {
 			return null;
 	}
 	
+	/**
+	 * Find scores for a quiz by a user and the quiz id
+	 * @param quizId
+	 * @param userId
+	 * @return
+	 */
 	public List<QuizScore> findScoresByQuizAndUser(long quizId, long userId)
 	{
 		if(quizId > 0 || userId > 0)
@@ -248,6 +300,12 @@ public class QuizManager {
 			return null;
 	}
 	
+	/**
+	 * Flag a question as wrong
+	 * @param questionId
+	 * @param reason
+	 * @return
+	 */
 	public boolean flagQuestion(long questionId, String reason) {
 		if(questionId < 1) {
 			return false;
@@ -261,6 +319,11 @@ public class QuizManager {
 		return true;
 	}
 	
+	/**
+	 * Removes the flag from a question
+	 * @param questionId
+	 * @return
+	 */
 	public boolean unflagQuestion(long questionId) {
 		if(questionId < 1) {
 			return false;
@@ -270,6 +333,11 @@ public class QuizManager {
 		return true;
 	}
 	
+	/**
+	 * Returns a list of all questions in a group flagged wrong
+	 * @param groupId
+	 * @return
+	 */
 	public List<Question> findFlaggedQuestionsByGroup(long groupId) {
 		
 		List<Question> questions = questionDAO.findFlaggedQuestionsByGroup(groupId);
@@ -281,6 +349,12 @@ public class QuizManager {
 		return questions;
 	}
 	
+	/**
+	 * Finds a list all questions in a group flagged as wrong owned by a specified user
+	 * @param groupId
+	 * @param userId
+	 * @return
+	 */
 	public List<Question> findFlaggedQuestionsByUser(long groupId, long userId) {
 		
 		List<Question> questions = questionDAO.findFlaggedQuestionsByUser(groupId, userId);
@@ -297,6 +371,12 @@ public class QuizManager {
 	 * 	--------------- Creation Methods ---------------
 	 */
 	
+	/**
+	 * Creates a question
+	 * @param question
+	 * @return
+	 * @throws Exception
+	 */
 	public long createQuestion(Question question) throws Exception
 	{
 		// TODO: Implement a return check. True for success, false for failure.
@@ -338,37 +418,13 @@ public class QuizManager {
 		}
 	}
 	
+	/**
+	 * Creates a quiz
+	 * @param quiz
+	 * @param groupID
+	 * @return
+	 */
 	public long createQuiz(Quiz quiz, long groupID) {
-		
-		
-		//TODO Commenting this out for now since the framework is not in place
-		//			to allow these validations, once it is in place will need to edit this
-		
-		
-		// Check for invalid parameters.
-		/*if(quiz.getCreatorId() < 0)
-			throw new Exception("Invalid creator ID. Must be greater than 0.");
-		else if(quiz.getQuestionCount() <= 0) {
-			throw new Exception("There aren't any questions in this quiz.");
-		}
-		else
-		{ 
-			// Check that all quiz questions exist within the database.
-			Boolean allQuestionsExist = true;
-			Question[] existingQuestions = quiz.getQuestions();
-			
-			for(int i = 0; i < existingQuestions.length; i++)
-			{
-				// Default ID value is -1, meaning not added to the database.
-				if(existingQuestions[i].getQuestionId() < 0)
-					allQuestionsExist = false;
-			}
-			
-			if(allQuestionsExist)
-				QuizDAO.createQuiz(quiz);
-			else
-				throw new Exception("Not all questions exist in the database.");
-		}*/
 		
 		long rvalue = quizDAO.createQuiz(quiz.getCreatorId(),
 				InputUtils.sanitizeInput(quiz.getName()), 
@@ -439,6 +495,12 @@ public class QuizManager {
 		return null;
 	}
 	
+	/**
+	 * Finds all quizzes in an organization. This searches all groups
+	 * 	in the organization and returns the sum of all their quizzes
+	 * @param orgId
+	 * @return
+	 */
 	public List<Quiz> findQuizzesByOrg(long orgId) {
 		if(orgId < 1) {
 			return null;
@@ -446,14 +508,21 @@ public class QuizManager {
 		return quizDAO.retrieveQuizzesByOrg(orgId);
 	}
 
-	
+	/**
+	 * Find top quizzes
+	 * @return
+	 */
 	public List<Quiz> findTopQuizzes() {
-		//TODO Restrict this to avoid returning the entire database
+		
 		return quizDAO.retrieveTopQuizzes();
 	}
 	
+	/**
+	 * Finds the newest quizzes added
+	 * @return
+	 */
 	public List<Quiz> findRecentQuizzes() {
-		//TODO Restrict this to avoid returning the entire database
+		
 		return quizDAO.retrieveRecentQuizzes();
 	}
 	
@@ -479,6 +548,14 @@ public class QuizManager {
 		return quizDAO.getQuizDifficulty(quizId, userId);
 	}
 	
+	/**
+	 * Rates the quality of a quiz
+	 * @param userId
+	 * @param quizId
+	 * @param groupId
+	 * @param rating
+	 * @return
+	 */
 	public boolean rateQuizQuality(long userId, long quizId, long groupId, int rating) {
 		
 		if(userId < 1 || quizId < 1 || rating < 1 || rating > 5) {
@@ -516,6 +593,14 @@ public class QuizManager {
 		}
 	}
 	
+	/**
+	 * Rates the difficulty of a quiz
+	 * @param userId
+	 * @param quizId
+	 * @param groupId
+	 * @param rating
+	 * @return
+	 */
 	public boolean rateQuizDifficulty(long userId, long quizId, long groupId, int rating) {
 		
 		if(userId < 1 || quizId < 1 || rating < 1 || rating > 5) {
@@ -552,6 +637,11 @@ public class QuizManager {
 		}
 	}
 	
+	/**
+	 * Updates a question on new provided input
+	 * @param question
+	 * @return
+	 */
 	public boolean updateQuestion(Question question) {
 		
 		setCategoriesForQuestion(question.getQuestionId(), question.getCategories());
@@ -569,6 +659,11 @@ public class QuizManager {
 		return true;
 	}
 	
+	/**
+	 * Sets all the categories for a question
+	 * @param questionId
+	 * @param categories
+	 */
 	private void setCategoriesForQuestion(long questionId, List<String> categories) {
 		
 		if(categories == null || questionId < 1) {
@@ -590,6 +685,10 @@ public class QuizManager {
 		
 	}
 	
+	/**
+	 * Gets all the categories for a question
+	 * @return
+	 */
 	public List<String> getAllCategories() {
 		return questionDAO.getAllCategories();
 	}
@@ -617,6 +716,14 @@ public class QuizManager {
 		return questionDAO.getQuestionDifficulty(questionId, userId);
 	}
 	
+	/**
+	 * Rate the question quality
+	 * @param userId
+	 * @param questionId
+	 * @param groupId
+	 * @param rating
+	 * @return
+	 */
 	public boolean rateQuestionQuality(long userId, long questionId, long groupId, int rating) {
 		
 		if(userId < 1 || questionId < 1 || rating < 1 || rating > 5) {
@@ -651,6 +758,14 @@ public class QuizManager {
 		}
 	}
 	
+	/**
+	 * Rates the question difficulty
+	 * @param userId
+	 * @param questionId
+	 * @param groupId
+	 * @param rating
+	 * @return
+	 */
 	public boolean rateQuestionDifficulty(long userId, long questionId, long groupId, int rating) {
 		
 		if(userId < 1 || questionId < 1 || rating < 1 || rating > 5) {
@@ -684,7 +799,13 @@ public class QuizManager {
 		}
 	}
 	
-	
+	/**
+	 * Inserts a users score into the db
+	 * @param quizId
+	 * @param userId
+	 * @param score
+	 * @return
+	 */
 	public boolean insertScore(long quizId, long userId, float score)
 	{
 		if(quizId > 0 || userId > 0) {
@@ -695,21 +816,45 @@ public class QuizManager {
 			return false;
 	}
 
+	/**
+	 * Edit a quiz name
+	 * @param quizId
+	 * @param name
+	 */
 	public void editQuizName(long quizId, String name)
 	{
 		quizDAO.updateQuizName(quizId, name);
 	}
 
+	/**
+	 * Edit a quiz description
+	 * @param quizId
+	 * @param description
+	 */
 	public void editQuizDescription(long quizId, String description)
 	{
 		quizDAO.updateQuizDescription(quizId, description);
 	}
 
+	/**
+	 * Save a quiz
+	 * @param quizId
+	 * @param name
+	 * @param description
+	 * @param open
+	 * @param time
+	 */
 	public void saveQuiz(long quizId, String name, String description, boolean open, int time) 
 	{
 		quizDAO.saveQuiz(quizId, name, description, open, time);
 	}
 	
+	/**
+	 * Returns the categories in a quiz based on the quiz id.
+	 * 		This will query all the questions to find their categories
+	 * @param quizID
+	 * @return
+	 */
 	public List<String> getQuestionCategoriesViaQuizID(long quizID)
 	{
 		List<String> categories = new ArrayList<String>();
@@ -733,6 +878,11 @@ public class QuizManager {
 		return categories;
 	}
 	
+	/**
+	 * gets all the quizzes based on a list of categories
+	 * @param listInput
+	 * @return
+	 */
 	public List<Quiz> getQuizzesFromCategories(List<String> listInput)
 	{
 		List<Quiz> quizzes = null;
@@ -742,6 +892,11 @@ public class QuizManager {
 		return quizzes;
 	}
 	
+	/**
+	 * Gets all questions based on a list of categories
+	 * @param listInput
+	 * @return
+	 */
 	public List<Question> getQuestionFromCategories(List<String> listInput)
 	{
 		List<Question> questions = null;
@@ -755,6 +910,17 @@ public class QuizManager {
 		return questions;
 	}
 	
+	/**
+	 * This takes a list of a parameters and uses it to auto create a quiz
+	 * 		by populating it with matching questions
+	 * @param groupId
+	 * @param quizId
+	 * @param categories
+	 * @param rating
+	 * @param difficulty
+	 * @param questionCount
+	 * @return
+	 */
 	public boolean autoCreateQuiz(long groupId, long quizId, List<String> categories, int rating, int difficulty, int questionCount) {
 		
 		if(groupId < 1 || categories == null || categories.size() < 1 || questionCount < 1)	{
@@ -781,6 +947,12 @@ public class QuizManager {
 		return true;
 	}
 	
+	/**
+	 * Get all scores by category in a quiz
+	 * @param quizId
+	 * @param userId
+	 * @return
+	 */
 	public List<CategoryScore> getCategoryScoresByQuizId(long quizId, long userId) {
 		ArrayList<CategoryScore> catScores = new ArrayList<CategoryScore>();
 		
@@ -796,6 +968,11 @@ public class QuizManager {
 		return catScores;
 	}
 
+	/**
+	 * Finds quizzes based on a set of keywords
+	 * @param keywords
+	 * @return
+	 */
 	public List<Quiz> findQuizByKeywords(String keywords)
 	{
 		return quizDAO.findQuizByKeywords(keywords);

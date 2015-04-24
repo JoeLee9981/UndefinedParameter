@@ -2,10 +2,20 @@ package com.UndefinedParameter.app.core;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+/**
+ * 
+ * Pojo class to hold a users score by category
+ *
+ */
 public class CategoryScore {
+	
+	/*** Member variables ****/
+	
 	private long categoryId;
 	private String category;
 	private double score;
+	
+	/*** getters and setters ***/
 	
 	@JsonProperty
 	public long getCategoryId() {

@@ -15,6 +15,10 @@ import com.UndefinedParameter.jdbi.NewsArticleDAO;
 import com.UndefinedParameter.views.NewsArticleView;
 
 
+/**
+ * THIS FILE IS DEPRECATED
+ *
+ */
 @Path("/news")
 @Produces(MediaType.TEXT_HTML)
 public class NewsArticleResource {

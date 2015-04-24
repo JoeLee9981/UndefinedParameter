@@ -2,6 +2,11 @@ package com.UndefinedParameter.app.health;
 
 import com.codahale.metrics.health.HealthCheck;
 
+/**
+ * This does a quick health test of the server
+ * 		This is template code used by dropwizard
+ *
+ */
 public class TemplateHealthCheck extends HealthCheck {
 	private final String template;
 	

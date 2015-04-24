@@ -4,7 +4,14 @@ import org.joda.time.DateTime;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+/**
+ * 
+ * POJO Object used for holding data for a user
+ *
+ */
 public class User {
+	
+	/*** Member Variables ***/
 	
 	private long id;
 	private String userName;

@@ -10,6 +10,11 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+/**
+ * Template code set up for the dropwizard framework
+ * 	most of this is not being used
+ *
+ */
 public class QuizZingConfiguration extends Configuration {
 	
 	@Valid

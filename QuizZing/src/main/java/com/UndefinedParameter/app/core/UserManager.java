@@ -19,16 +19,27 @@ import org.mindrot.jbcrypt.BCrypt;
 
 import com.UndefinedParameter.jdbi.UserDAO;
 import com.sun.mail.smtp.SMTPTransport;
-
+/**
+ * Manager object used to manage Users of the system
+ * 	This is responsible for all communication between the resource
+ * 	and the database.
+ *
+ */
 public class UserManager {
 
-	
+	//database objects
 	private UserDAO userDAO;
 	
+	//constructor
 	public UserManager(UserDAO userDAO) {
 		this.userDAO = userDAO;
 	}
 	
+	/**
+	 * Find a user by their ID
+	 * @param userId
+	 * @return
+	 */
 	public User findUserById(long userId) {
 		if(userDAO == null)
 			return null;
@@ -36,6 +47,11 @@ public class UserManager {
 		return userDAO.findUserByUserId(userId);
 	}
 	
+	/**
+	 * Find a user by their name
+	 * @param userName
+	 * @return
+	 */
 	public User findUserByUserName(String userName) {
 		if(userDAO == null)
 			return null;
@@ -43,6 +59,13 @@ public class UserManager {
 		return userDAO.findUserByUserName(userName);
 	}
 	
+	/**
+	 * Recover a user via email. This creates and emails them an
+	 * 	Authnication code, that must be entered to allow a password reset
+	 * @param email
+	 * @return
+	 * @throws Exception
+	 */
 	public User recoverUser(String email) throws Exception {
 		if(userDAO == null)
 			return null;
@@ -80,6 +103,12 @@ public class UserManager {
 		return recoverUser;
 	}
 	
+	/**
+	 * Registers a new user in the system
+	 * @param user
+	 * @return
+	 * @throws Exception
+	 */
 	public boolean registerNewUser(User user) throws Exception {
 		try {
 			
@@ -103,11 +132,21 @@ public class UserManager {
 		return true;
 	}
 	
+	/**
+	 * Get a list of the users badges and achievements
+	 * @param userId
+	 * @return
+	 */
 	public List<Badge> getBadgesByUser(long userId) {
 		
 		return userDAO.getBadgesByUser(userId);
 	}
 	
+	/**
+	 * Get a users badges in an organization
+	 * @param userId
+	 * @return
+	 */
 	public List<Badge> getBadgesByOrg(long userId) {
 		
 		ArrayList<Badge> badges = new ArrayList<Badge>();
@@ -124,6 +163,12 @@ public class UserManager {
 		return badges;
 	}
 	
+	/**
+	 * Update the user with new details
+	 * @param user
+	 * @return
+	 * @throws Exception
+	 */
 	public boolean updateUser(User user) throws Exception {
 		user = fillNullColumns(user);
 		
@@ -163,14 +208,29 @@ public class UserManager {
 		return userDAO.sendMessage(senderId, sendeeId, InputUtils.sanitizeInput(message));
 	}
 	
+	/**
+	 * gets all messages that a user has sent (outbox)
+	 * @param userId
+	 * @return
+	 */
 	public List<UserMessage> getSentMessages(long userId) {
 		return userDAO.getSentMessages(userId);
 	}
 	
+	/**
+	 * Gets all messages that a user has received (inbox)
+	 * @param userId
+	 * @return
+	 */
 	public List<UserMessage> getReceivedMessages(long userId) {
 		return userDAO.getUserMessages(userId);
 	}
 	
+	/**
+	 * Counts the unread messages a user has
+	 * @param userId
+	 * @return
+	 */
 	public int getUnreadMessageCount(long userId) {
 		List<UserMessage> messages = userDAO.getUnreadMessages(userId);
 		if(messages == null)
@@ -179,6 +239,11 @@ public class UserManager {
 			return messages.size();
 	}
 	
+	/**
+	 * Marks a message as viewed
+	 * @param messageId
+	 * @return
+	 */
 	public boolean setMessageViewed(long messageId) {
 		userDAO.markMessageAsRead(messageId);
 		return true;

@@ -2,13 +2,21 @@ package com.UndefinedParameter.app.core;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+/**
+ * Pojo class for user reported bugs
+ *
+ */
 public class Bug {
+	
+	/*** Member variables ***/
 	
 	private long bugReportId;
 	private long reporterId;
 	private String description;
 	private String stepsToReproduce;
 	private int urgency;
+	
+	/*** Getters and Setters ***/
 	
 	@JsonProperty
 	public long getBugReportId() {

@@ -40,21 +40,42 @@ import com.UndefinedParameter.views.GroupView;
 import com.UndefinedParameter.views.GroupsView;
 import com.UndefinedParameter.views.LoginView;
 
-
+/**
+ * 
+ * This is the resource for all paths and subpaths of /group
+ *
+ */
 @Path("/group")
 @Produces(MediaType.TEXT_HTML)
 public class GroupResource {
 
+	/*** Manager objects ***/
 	public GroupManager manager;
 	public QuizManager quizManager;
 	private UserGroupManager userGroupManager;
 	
+	/**
+	 * Constructor
+	 * @param orgsDAO
+	 * @param groupDAO
+	 * @param quizDAO
+	 * @param questionDAO
+	 * @param quizScoreDAO
+	 * @param orgMemberDOA
+	 * @param userGroupDAO
+	 */
 	public GroupResource(OrganizationDAO orgsDAO, GroupDAO groupDAO, QuizDAO quizDAO, QuestionDAO questionDAO, QuizScoreDAO quizScoreDAO, OrgMemberDAO orgMemberDOA, UserGroupDAO userGroupDAO) {
 		manager = new GroupManager(orgsDAO, groupDAO, orgMemberDOA, userGroupDAO);
 		userGroupManager = new UserGroupManager(userGroupDAO);
 		this.quizManager = new QuizManager(quizDAO, questionDAO, quizScoreDAO);
 	}
 	
+	/**
+	 * Adds a group into the database
+	 * @param user
+	 * @param group
+	 * @return
+	 */
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
@@ -79,6 +100,12 @@ public class GroupResource {
 		return Response.ok(response).build();
 	}
 	
+	/**
+	 * Returns the group view
+	 * @param user
+	 * @param groupId
+	 * @return
+	 */
 	@GET
 	public Response getGroupView(@Auth(required = false) User user, @QueryParam("groupId") long groupId) {
 		
@@ -111,6 +138,12 @@ public class GroupResource {
 		
 	}
 	
+	/**
+	 * Creates a view used to edit a group
+	 * @param user
+	 * @param groupId
+	 * @return
+	 */
 	@GET
 	@Path("/edit")
 	public Response getGroupEditView(@Auth(required = false) User user, @QueryParam("groupId") long groupId) {
@@ -131,6 +164,13 @@ public class GroupResource {
 		
 	}
 	
+	/**
+	 * Posts edits made to a group and updates the database
+	 * @param user
+	 * @param groupId
+	 * @param group
+	 * @return
+	 */
 	@POST
 	@Path("/edit")
 	@Consumes(MediaType.APPLICATION_JSON)
@@ -153,6 +193,11 @@ public class GroupResource {
 			return Response.status(Status.BAD_REQUEST).build();
 	}
 	
+	/**
+	 * Creates a view to display top groups
+	 * @param user
+	 * @return
+	 */
 	@GET
 	@Path("/top")
 	public Response getTopGroups(@Auth(required = false) User user) {
@@ -164,6 +209,12 @@ public class GroupResource {
 		}
 	}
 	
+	/**
+	 * gets a view showing all the questions in a group
+	 * @param user
+	 * @param groupId
+	 * @return
+	 */
 	@GET
 	@Path("/questions")
 	public Response getGroupQuestions(@Auth(required = false) User user, @QueryParam("groupId") long groupId) {
@@ -176,6 +227,12 @@ public class GroupResource {
 		return Response.ok(new GroupQuestionView(user, quizManager.findQuestionsByGroup(groupId), groupId, null, moderator)).build();
 	}
 	
+	/**
+	 * Gets a view showing all members in a group
+	 * @param user
+	 * @param groupId
+	 * @return
+	 */
 	@GET
 	@Path("/members")
 	public Response getGroupMembers(@Auth(required = false) User user, @QueryParam("groupId") long groupId) {
@@ -186,18 +243,33 @@ public class GroupResource {
 		return Response.ok(new GroupMemberView(user, manager.findGroupMembers(groupId))).build();
 	}
 	
+	/**
+	 * Gets a view showing the top groups
+	 * @return
+	 */
 	@GET
 	@Path("/top_groups")
 	public Response getTopGroups() {
 		return Response.ok(new GroupListView("../includes/top_groups.ftl", manager.findTopGroups())).build();
 	}
 	
+	/**
+	 * Gets a view showing all groups a user is registered for
+	 * @param userId
+	 * @return
+	 */
 	@GET
 	@Path("mygroups")
 	public Response getMyGroups(@QueryParam("userId") long userId) {
 		return Response.ok(new GroupListView("../includes/mygroups.ftl", manager.findRegisteredGroups(userId))).build();
 	}
 	
+	/**
+	 * Gets a veiw showing all questions flagged in a group
+	 * @param user
+	 * @param groupId
+	 * @return
+	 */
 	@GET
 	@Path("/flagged")
 	public Response getFlaggedQuestions(@Auth(required = false) User user, @QueryParam("groupId") long groupId) {
@@ -218,6 +290,11 @@ public class GroupResource {
 		return Response.ok(new GroupQuestionView(user, questions, groupId, null, moderator)).build();
 	}
 	
+	/**
+	 * Gets a view showing all categories in a group
+	 * @param groupId
+	 * @return
+	 */
 	@GET
 	@Path("/categories")
 	@Produces(MediaType.APPLICATION_JSON)

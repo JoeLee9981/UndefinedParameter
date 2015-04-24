@@ -4,7 +4,13 @@ import org.joda.time.DateTime;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+/**
+ * POJO class for Organization Members
+ *
+ */
 public class OrgMember {
+	
+	/*** member variables ***/
 	
 	private long userId;
 	private long orgId;
@@ -14,6 +20,8 @@ public class OrgMember {
 	private int quizzes;
 	private int questions;
 	private boolean moderator;
+	
+	/*** Getters and Setters ***/
 	
 	@JsonProperty
 	public String getDisplayName() {

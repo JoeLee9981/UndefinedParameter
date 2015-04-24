@@ -14,8 +14,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class Question {
 	
 	/*
-	 *  TODO: May be necessary to use inheritance here instead
-	 *  	of tracking the enum type
+	 *  ENUMS used to represent the types of the questions
 	 */
 	public enum QuestionType {
 		MULTIPLE_CHOICE,
@@ -25,6 +24,7 @@ public class Question {
 		MATCHING
 	}
 	
+	/**** member variables ****/
 	private List<String> categories;
 	private long questionId;
 	private long creatorId;
@@ -42,8 +42,6 @@ public class Question {
 	private String reference;
 	private String referenceLink;
 	
-	//TODO: These variables need to be added to table
-	//		default them for now for prototype only
 	private int correctPosition = 0; //this only applies to unordered answers
 	private boolean ordered = false;
 	private QuestionType type = QuestionType.MULTIPLE_CHOICE;
@@ -56,6 +54,7 @@ public class Question {
 	{
 	}
 	
+	/**** CONSTRUCTORS ****/
 	public Question(long qID, long cID, long groupId, double difficulty, double rate, String qt, String qText, String answer, ArrayList<String> wrong, Boolean flag, String ref, String explan)
 	{
 		this.questionId = qID;
@@ -90,6 +89,10 @@ public class Question {
 		this.categories = categories;
 	}
 	
+	/**
+	 * Set all the answers in the quiz
+	 * 	This will provide randomization of the answers when necessary
+	 */
 	public void setAnswers() {
 		String[] answers = new String[wrongAnswers.size() + 1];
 		
@@ -117,10 +120,20 @@ public class Question {
 		}
 	}
 	
+	/**
+	 * Used to validate a correct answer
+	 * @param answer
+	 * @return
+	 */
 	public boolean isCorrectAnswer(String answer) {
 		return answer.equals(correctAnswer);
 	}
 	
+	/**
+	 * Gets thanswer at an index
+	 * @param index
+	 * @return
+	 */
 	public String getAnswerAt(int index) {
 		if(allAnswers == null || allAnswers.length == 0)
 			setAnswers();
@@ -130,12 +143,18 @@ public class Question {
 			return "";
 	}
 	
+	/**
+	 * Returns all answers
+	 * @return
+	 */
 	public String[] getAnswers() {
 		if(allAnswers == null || allAnswers.length == 0) {
 			setAnswers();
 		}
 		return allAnswers;
 	}
+	
+	/**** GETTERS AND SETTERS ****/
 	
 	public long getQuestionId() {
 		return questionId;
@@ -170,6 +189,11 @@ public class Question {
 		return questionText;
 	}
 	
+	/**
+	 * 
+	 * Gets the first line of text in a question only
+	 * @return the first line of text
+	 */
 	public String getQuestionTextFirstLine()
 	{
 		int indexOfLinebreak = questionText.indexOf("<br/>");
@@ -183,6 +207,10 @@ public class Question {
 		}
 	}
 	
+	/**
+	 * Formats the question text for display inside of html and javascript elements
+	 * @return
+	 */
 	public String getQuestionTextFormatted() {
 		if(type != QuestionType.MATCHING && type != QuestionType.FILL_IN_THE_BLANK) {
 			return questionText.replace("&amp;", "&");
@@ -190,9 +218,17 @@ public class Question {
 		return questionText.replace("&amp;lt;blank&amp;gt;", "___________").replace("&amp;", "&");					
 	}
 	
+	/**
+	 * Provides an alternate display for the question text for
+	 * 		Fill in the blank questions where it shows the <blank>
+	 * 		instead of ___________
+	 * @return
+	 */
 	public String getQuestionTextBlankFormatted() {
 		return questionText.replace("&amp;", "&");
 	}
+	
+	/*** MORE GETTERS AND SETTERS ****/
 	
 	@JsonProperty
 	public void setQuestionText(String questionText) {
@@ -219,6 +255,10 @@ public class Question {
 		return wrongAnswers;
 	}
 	
+	/**
+	 * Provides formatted answers in text used for html and javascript
+	 * @return
+	 */
 	public ArrayList<String> getWrongAnswersFormatted() {
 		if(this.type != QuestionType.MATCHING) {
 			return wrongAnswers;
@@ -333,6 +373,10 @@ public class Question {
 		return explanation;
 	}
 	
+	/**
+	 * Provides formatted explanation text used for html and javascript display
+	 * @return
+	 */
 	public String getExplanationFormatted() {
 		if(StringUtils.isBlank(explanation)) {
 			return "";
@@ -395,6 +439,11 @@ public class Question {
 		this.categories = categories;
 	}
 	
+	/**
+	 * Creates a comma separated string of all categories.
+	 * 	Used for display in miscellaneous tables
+	 * @return
+	 */
 	public String getCategoriesString() {
 		
 		if(categories == null || categories.size() == 0) {
@@ -414,6 +463,12 @@ public class Question {
 		return catString.toString();
 	}
 	
+	/**
+	 * A method used to parse out the questions in a matching type question text
+	 * 		This should only be used for matching questions
+	 * 		This also formats them for html and javascript
+	 * @return
+	 */
 	public List<String> getMatchingQuestionsFormatted() {
 		
 		ArrayList<String> matchingQuestions = new ArrayList<String>();
@@ -460,6 +515,11 @@ public class Question {
 		return matchingQuestions;
 	}
 	
+	/**
+	 * Like the above it parses out the matching questions, however it does not format
+	 * 	This is used for the question building in the quiz page itself.
+	 * @return
+	 */
 	public List<String> getMatchingQuestions() {
 		
 		ArrayList<String> matchingQuestions = new ArrayList<String>();

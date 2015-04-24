@@ -2,7 +2,19 @@ package com.UndefinedParameter.app.core;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+/**
+ * 
+ * This is used to record changes that a user has made
+ * 		This is not the logging done by the server
+ * 
+ * 	This object never actually got used as we didn't implement
+ * 		a history viewable by users. However, leaving this here
+ * 		for future use.
+ *
+ */
 public class Log {
+	
+	/*** Member Variables ***/
 	
 	private long id;
 	private long orgid;

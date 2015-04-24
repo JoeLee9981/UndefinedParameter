@@ -4,8 +4,14 @@ import org.joda.time.DateTime;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+/**
+ * This is a message from one user to another
+ *
+ */
 public class UserMessage {
 
+	/*** Member Variables ***/
+	
 	private long messageId;
 	
 	//this is the sender when getting received messages
@@ -22,6 +28,7 @@ public class UserMessage {
 	//when the message was sent
 	private DateTime timestamp;
 	
+	/*** Getters and Setters ****/
 	
 	@JsonProperty
 	public long getMessageId() {

@@ -11,6 +11,11 @@ import com.UndefinedParameter.app.core.UserManager;
 import com.UndefinedParameter.jdbi.UserDAO;
 import com.google.common.base.Optional;
 
+/**
+ * 
+ * Handles the authentication of a user
+ *
+ */
 public class BasicAuthenticator implements Authenticator<BasicCredentials, User> {
 	
 	private UserManager userManager;
@@ -24,14 +29,12 @@ public class BasicAuthenticator implements Authenticator<BasicCredentials, User>
 		
 		User userToAuth = userManager.findUserByUserName(credentials.getUsername());
 		
-		if(userToAuth != null && userToAuth.getPassword() != null && (userToAuth.getPassword().equals(credentials.getPassword()) || BCrypt.checkpw(credentials.getPassword(), userToAuth.getPassword()))) {
-			//TODO: Make it time out after 20 minutes.
-			//TODO: If the authentication request isn't requested within 20 minutes of the last successful authentication, then time out.
-			//TODO: Compare time in database to current time.
-			//TODO: Then update the last accessed time.
+		if(userToAuth != null && userToAuth.getPassword() != null && (userToAuth.getPassword().equals(credentials.getPassword()) 
+				|| BCrypt.checkpw(credentials.getPassword(), userToAuth.getPassword()))) {
 			
 			return Optional.of(userToAuth);
 		}
+		//auth failed, we return a null user
 		return Optional.absent();
 	}
 }

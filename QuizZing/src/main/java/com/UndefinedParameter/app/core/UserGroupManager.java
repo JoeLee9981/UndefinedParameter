@@ -4,15 +4,25 @@ import java.util.List;
 
 import com.UndefinedParameter.jdbi.UserGroupDAO;
 
+/**
+ * This is responsible for managing associations between users and groups
+ *
+ */
 public class UserGroupManager {
 
-	
+	//database objects
 	private UserGroupDAO usergroupDAO;
 	
+	//constructor
 	public UserGroupManager(UserGroupDAO userDAO) {
 		this.usergroupDAO = userDAO;
 	}	
 	
+	/**
+	 * Find users by an id
+	 * @param userName
+	 * @return
+	 */
 	public UserGroup findUserByUserId(int userName) {
 		if(usergroupDAO == null)
 			return null;
@@ -20,6 +30,11 @@ public class UserGroupManager {
 		return usergroupDAO.findUserByUserId(userName);
 	}
 	
+	/**
+	 * find users by group id
+	 * @param groupid
+	 * @return
+	 */
 	public UserGroup findUserByGroupId(int groupid) {
 		if(usergroupDAO == null)
 			return null;
@@ -27,9 +42,13 @@ public class UserGroupManager {
 		return usergroupDAO.findUserByGroupId(groupid);
 	}
 	
-	
-	
-	
+	/**
+	 * Rate a group
+	 * @param userId
+	 * @param groupID
+	 * @param rating
+	 * @return
+	 */
 	public boolean rateGroup(long userId, long groupID, int rating) {
 		//Goes to mananger
 		if(userId < 1 || groupID < 1 || rating < 1 || rating > 5) {
@@ -75,7 +94,12 @@ public class UserGroupManager {
 		}
 	}
 	
-	
+	/**
+	 * Checks if a user is a moderator for a group
+	 * @param userID
+	 * @param groupID
+	 * @return
+	 */
 	public boolean findIfUserMod(long userID, long groupID)
 	{
 		if(userID < 0 || groupID < 0)
@@ -93,6 +117,11 @@ public class UserGroupManager {
 		return false;
 	}
 	
+	/**
+	 * returns a list of moderators in a groiup
+	 * @param groupID
+	 * @return
+	 */
 	public List<Long> findModsInGroup(long groupID)
 	{
 		List<Long> found = null;
@@ -102,6 +131,11 @@ public class UserGroupManager {
 		return input;
 	}
 	
+	/**
+	 * Returns a list of non moderator members in a group
+	 * @param groupID
+	 * @return
+	 */
 	public List<Long> findNOTModsInGroup(long groupID)
 	{
 		List<Long> found = null;
@@ -111,6 +145,11 @@ public class UserGroupManager {
 		return input;
 	}
 	
+	/**
+	 * Finds groups that a user is a moderator for
+	 * @param userID
+	 * @return
+	 */
 	public List<Long> findGroupsUserIsMod(long userID)
 	{
 		List<Long> found = null;
@@ -120,6 +159,11 @@ public class UserGroupManager {
 		return input;
 	}
 	
+	/**
+	 * Finds groups that a user is not a moderator of
+	 * @param userID
+	 * @return
+	 */
 	public List<Long> findGroupsUserIsNOTMod(long userID)
 	{
 		List<Long> found = null;
@@ -228,7 +272,12 @@ public class UserGroupManager {
 		return 0;
 	} 
 	
-
+	/**
+	 * Check if a user is mod while removing them
+	 * @param userID
+	 * @param groupID
+	 * @return
+	 */
 	public int checkModWhileRemovingUser(long userID, long groupID)
 	{
 		if(userID < 0 || groupID < 0)

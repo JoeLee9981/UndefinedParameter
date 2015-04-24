@@ -24,29 +24,54 @@ import com.UndefinedParameter.views.FeedbackResultView;
 import com.UndefinedParameter.views.FeedbackView;
 import com.UndefinedParameter.views.LoginView;
 
+
+/**
+ * This is the resource used to handle the path and sub
+ * 	paths for all /feedback requests
+ *
+ */
 @Path("/feedback")
 @Produces(MediaType.TEXT_HTML)
 public class FeedbackResource {
+	//dao objects
 	private FeedbackDAO feedbackDAO;
 	private BugDAO bugDAO;
 	
+	/**
+	 * Construtor
+	 * @param feedbackDAO
+	 * @param bugDAO
+	 */
 	public FeedbackResource(FeedbackDAO feedbackDAO, BugDAO bugDAO) {
 		this.feedbackDAO = feedbackDAO;
 		this.bugDAO = bugDAO;
 	}
 
-	
+	/**
+	 * Creates a view for feedback
+	 * @param user
+	 * @return
+	 */
 	@GET
 	public FeedbackView getFeedbackView(@Auth(required=false) User user) {
 		return new FeedbackView(user);
 	}
 	
+	/**
+	 * Creates a view to allow viewing the feedback
+	 * @param user
+	 * @return
+	 */
 	@GET
 	@Path("/view")
 	public FeedbackResultView getFeedbackResultsView(@Auth(required=false) User user) {
 		return new FeedbackResultView(user, feedbackDAO.retrieveFeedback());
 	}
 	
+	/**
+	 * Posts feedback from the user into the database
+	 * @param feedback
+	 */
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
@@ -55,6 +80,11 @@ public class FeedbackResource {
 		feedbackDAO.addFeedback(feedback.getSuggestedFeature(), feedback.getImprovement(), feedback.getMiscellaneous());
 	}
 	
+	/**
+	 * Creates a view for a bug report
+	 * @param user
+	 * @return
+	 */
 	@GET
 	@Path("/bug")
 	public Response getBugView(@Auth(required=false) User user) {
@@ -62,6 +92,12 @@ public class FeedbackResource {
 		return Response.ok(new BugView(user)).build();
 	}
 	
+	/**
+	 * Posts a bug report into the database
+	 * @param user
+	 * @param bug
+	 * @return
+	 */
 	@POST
 	@Path("/bug")
 	@Consumes(MediaType.APPLICATION_JSON)
@@ -87,6 +123,11 @@ public class FeedbackResource {
 		return Response.ok(response).build();
 	}
 	
+	/**
+	 * Returns a view to view all the reported bugs
+	 * @param user
+	 * @return
+	 */
 	@GET
 	@Path("/bug/view")
 	public Response viewBugs(@Auth(required = false) User user) {

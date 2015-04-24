@@ -2,12 +2,22 @@ package com.UndefinedParameter.app.core;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+/**
+ * 
+ * Pojo class used to wrap user feedback for transmission from
+ * 	User input into the database.
+ *
+ */
 public class Feedback {
+	
+	/**** member variables ****/
 	
 	private long FeedbackID;
 	private String suggestedFeature;
 	private String improvement;
 	private String miscellaneous;
+	
+	/**** Getters and Setters ****/
 	
 	@JsonProperty
 	public String getSuggestedFeature() {
@@ -42,7 +52,6 @@ public class Feedback {
 	@JsonProperty
 	public void setId(long long1) {
 		this.FeedbackID = long1;
-		// TODO Auto-generated method stub
 		
 	}
 	

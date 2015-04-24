@@ -95,7 +95,7 @@ public interface UserDAO {
 	 * @param userId the user
 	 * @return All of the user's messages
 	 */
-	@SqlQuery("SELECT msg.*, u.FirstName, u.LastName FROM Message msg, User u WHERE msg.SenderID = u.UserID AND msg.SendeeID = :userId")
+	@SqlQuery("SELECT msg.*, u.FirstName, u.LastName FROM Message msg, User u WHERE msg.SenderID = u.UserID AND msg.SendeeID = :userId ORDER BY TimeStamp DESC")
 	@RegisterMapper(MessageMapper.class)
 	public List<UserMessage> getUserMessages(@Bind("userId") long userId);
 	
@@ -104,7 +104,7 @@ public interface UserDAO {
 	 * @param userId the user
 	 * @return all unread messages
 	 */
-	@SqlQuery("SELECT msg.*, u.FirstName, u.LastName FROM Message msg, User u WHERE msg.SenderID = u.UserID AND msg.Viewed = 0 AND msg.SendeeID = :userId")
+	@SqlQuery("SELECT msg.*, u.FirstName, u.LastName FROM Message msg, User u WHERE msg.SenderID = u.UserID AND msg.Viewed = 0 AND msg.SendeeID = :userId ORDER BY TimeStamp DESC")
 	@RegisterMapper(MessageMapper.class)
 	public List<UserMessage> getUnreadMessages(@Bind("userId") long userId);
 	
@@ -124,7 +124,7 @@ public interface UserDAO {
 	 * @param userId of the user than sent messages
 	 * @return the messages
 	 */
-	@SqlQuery("SELECT msg.*, u.FirstName, u.LastName FROM Message msg, User u WHERE msg.SendeeID = u.UserID AND msg.Viewed = 0 AND msg.SenderID = :userId")
+	@SqlQuery("SELECT msg.*, u.FirstName, u.LastName FROM Message msg, User u WHERE msg.SendeeID = u.UserID AND msg.Viewed = 0 AND msg.SenderID = :userId ORDER BY TimeStamp DESC")
 	@RegisterMapper(MessageMapper.class)
 	public List<UserMessage> getSentMessages(@Bind("userId") long userId);
 	
