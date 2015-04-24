@@ -795,5 +795,10 @@ public class QuizManager {
 		
 		return catScores;
 	}
+
+	public List<Quiz> findQuizByKeywords(String keywords)
+	{
+		return quizDAO.findQuizByKeywords(keywords);
+	}
 }
 

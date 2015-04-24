@@ -121,7 +121,6 @@ public class UserProfileResource {
 	public Response getUserScoresView(@Auth(required = false) User user, @QueryParam("userid") long userid) {
 		List<String> bestCategory = new ArrayList<String>();
 		long bestCategoryQuizId = 0;
-		String favoriteCategory = "N/A";
 		float averageScore = 0.0f;
 		
 		if(userid < 1) {
@@ -146,7 +145,10 @@ public class UserProfileResource {
 				}
 			}
 			
-			averageScore = scoresSum / (float)count;
+			if(scoresSum <= 0)
+				averageScore = 0.0f;
+			else
+				averageScore = scoresSum / (float)count;
 			
 			// Find categories for best quiz
 			bestCategory = quizManager.getQuestionCategoriesViaQuizID(bestCategoryQuizId);
@@ -154,7 +156,7 @@ public class UserProfileResource {
 				bestCategory.add("Just for fun");
 		}
 		
-		return Response.ok(new ScoreView("score.ftl", user, quizManager.findQuizzesParticipated(user.getId()), averageScore, bestCategory, favoriteCategory)).build();
+		return Response.ok(new ScoreView("score.ftl", user, quizManager.findQuizzesParticipated(user.getId()), averageScore, bestCategory)).build();
 	}
 	
 	@POST

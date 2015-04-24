@@ -44,30 +44,15 @@
 							</nav>								
 					    </div>
 					
-						<form>
-							<div class="row containerFill">
-								<h4>Find an Organization</h4>
-								<div class="">
-									<div class="input-control text">
-									    <input type="text" placeholder="Search for an Organization..."/>
-									    <button class="btn-search todo"></button>
-									</div>
-								</div>
-								<div class="row noMargin">
-									<#list organizationTypes as orgType>
-										<div class="span3 noMargin">								
-											<div class="input-control checkbox noPadding noMargin">
-											    <label>
-											        <input type="checkbox" checked/>
-											        <span class="check"></span>
-											        ${orgType}
-											    </label>
-											</div>							
-										</div>
-									</#list>
+						<div class="row containerFill">
+							<h4>Find an Organization</h4>
+							<div class="">
+								<div class="input-control text">
+								    <input id="orgSearch" type="text" placeholder="Search for an Organization..."/>
+								    <button class="btn-search" onclick="searchOrgs();"></button>
 								</div>
 							</div>
-						</form>
+						</div>
 				
 						<div class="row">					
 							<div class="accordion with-marker" data-role="accordion" data-closeany="false">
@@ -252,6 +237,20 @@
 			function displayError(message) {
 				alert(message);
 			}
+			
+			function searchOrgs()
+			{	
+				var keywords = $("#orgSearch").val();
+				window.location='/search?keywords=' + keywords + '&dest=org';
+			}
+			
+			$("#orgSearch").keypress(function(e) {
+				// Enter button
+				if (e.keyCode == 13)
+				{
+					searchOrgs();
+				}
+			});
 			
 		</script>
 	</body>

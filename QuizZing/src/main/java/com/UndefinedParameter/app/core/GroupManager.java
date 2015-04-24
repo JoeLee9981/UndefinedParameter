@@ -182,4 +182,9 @@ public class GroupManager {
 	public List<String> findCategoriesByGroup(long groupId) {
 		return groupDAO.findCategoriesByGroup(groupId);
 	}
+
+	public List<Group> findGroupsByKeywords(String keywords) {
+		
+		return groupDAO.findGroupsByKeywords(keywords);
+	}
 }

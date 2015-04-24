@@ -21,6 +21,32 @@ public interface GroupDAO {
 	public List<Group> findTopGroups();
 	
 	/**
+	 * Find groups based on provided keywords
+	 * @param keywords
+	 * @return
+	 */
+	@SqlQuery("	SELECT * FROM "
++ " 					(SELECT "
++ "						  CASE WHEN Name = :keywords									THEN 256 	ELSE 0 END "
++ "						+ CASE WHEN Name LIKE CONCAT('%', :keywords, '%') 				THEN 128 	ELSE 0 END "
++ "						+ CASE WHEN Description LIKE CONCAT('%', :keywords, '%') 		THEN 64		ELSE 0 END "
++ "						AS KeywordRanking, "
++ "						GroupID, "
++ "						Name, "
++ "						Description, "
++ "						MemberCount, "
++ "						QuizCount, "
++ "						QuestionCount, "
++ "						DateCreated, "
++ "						GroupRating, "
++ "						GroupRatingCount, "
++ "						OrgId "
++ "					FROM SubGroup) g WHERE g.KeywordRanking > 0 ORDER BY g.KeywordRanking "
+			
+			)
+	public List<Group> findGroupsByKeywords(@Bind("keywords") String keywords);
+	
+	/**
 	 * Selects everything from subgroup except the groups the userID is registered with, organized by member count.
 	 * @param userId
 	 * @return List<Group>
@@ -243,4 +269,6 @@ public interface GroupDAO {
 			+ "AND qc.CategoryID = c.CategoryID "
 			+ "AND sg.GroupID = :groupId")
 	public List<String> findCategoriesByGroup(@Bind("groupId") long groupId);
+
+
 }

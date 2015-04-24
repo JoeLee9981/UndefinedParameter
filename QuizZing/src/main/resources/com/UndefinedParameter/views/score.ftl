@@ -16,17 +16,17 @@
 		<link rel="shortcut icon" type="image/x-icon" href="/assets/images/qlogo_32.jpg">
 		<style>		
 			path { 
-				stroke: #4390df;
+				stroke: #e51400;
 				stroke-width: 2;
 				fill: none;
 			}
 			
 			.bar {
-				fill: #2F659C;
+				fill: #1ba1e2;
 			}
 			
 			.bar:hover {
-				fill: #1B3A59;
+				fill: #fa6800;
 			}
 
 			.axis path,
@@ -35,11 +35,6 @@
 				stroke: grey;
 				stroke-width: 1;
 				shape-rendering: crispEdges;
-			}
-			
-			.area {
-				fill: #C7DEF5;
-				stroke-width: 0px;
 			}
 			
 			.label {
@@ -55,56 +50,61 @@
 		<div class="page-content">
 			<div class="divider1">
 				<div class="metro" id="home-page-subsection">
-					<div class="grid fluid">
-		
-						<h1>${user.firstName}'s Statistics</h1>
-						
+					<div class="grid fluid">						
 						<div class="home-subsection">
 							<div class="grid">
-							
-							    <div class="row">
-							    	<h2>Statistics by Quiz</h2>							    	
-							        <div class="span4">
-										<div class="input-control select">									
-											<select multiple id="quizSelector" onchange="getScores(this.value)" style="height: 215px">
-												<#if quizIds??>
+								<#if quizIds?? && quizIds?has_content>
+									<div class="row">
+										<div class="span2">
+											<h1>${user.firstName}'s Statistics</h1>
+										</div>
+										<div class="span2 text-right" style="padding-top: 20px">
+											<h2>Overall<br>Average<br>Score</h2>
+										</div>
+										<div class="span2 notice bg-amber fg-white text-center" style="height: 110px">
+											<h1>${averageScore}%</h1>
+										</div>
+										<div class="span2 text-right" style="padding-top: 20px">
+											<h2>Overall<br>Best<br>Categories</h2>
+										</div>
+										<div class="span2 notice bg-green fg-white text-center item-title" style="height: 110px">
+											    <#if bestCategories??>
+											    	<#list bestCategories as category>
+											    		${category}<br>
+											    	</#list>
+											    </#if>
+										</div>
+									</div>
+								
+								    <div class="row">						    	
+								        <div class="span4" style="padding-top: 25px">
+								        	<h2>Select a quiz:</h2>	
+											<div class="input-control select">																													
+												<select multiple id="quizSelector" onchange="getScores(this.value)" style="height: 215px">
 													<#list quizIds as quiz>
 														<option value=${quiz.quizId}>${quiz.name}</option>	
 													</#list>
-												</#if>
-											</select>										
-										</div>
-									</div>								
-									<div class="span6">				
-										<div id="quizScoreGraph"></div>
-									</div>							
-								</div>
-								
-								<div class="row">
-									<div class="span2 text-right">
-										<h2>Overall<br>Average<br>Score</h2>
+												</select>																				
+											</div>
+										</div>								
+										<div class="span6"  style="padding-top: 25px">		
+											<h2>Scores Over Time</h2>			
+											<div id="quizScoreGraph"></div>
+										</div>							
 									</div>
-									<div class="span2 notice bg-amber fg-white" style="height: 110px">
-										    <h1>${averageScore}%</h1>
-									</div>
-									<div class="span2 text-right">
-										<h2>Best<br>Categories</h2>
-									</div>
-									<div class="span2 notice bg-green fg-white" style="height: 110px">
-										    <#if bestCategories??>
-										    	<#list bestCategories as category>
-										    		<h4>${category}</h4>
-										    	</#list>
-										    </#if>
-									</div>
-								</div>
-								
-								<div class="row">
-									<div class="span10" id="categoryGraph">
 									
+									<div class="row span10" style="padding-left: 100px">
+										<h2>Average Scores per Category</h2>	
+										<div class="span10 text-center" id="categoryGraph"></div>
 									</div>
-								</div>
-								
+									
+								<#else>
+									<h1>${user.firstName}'s Statistics</h1>
+									<h4>
+										It looks like you have no saved scores!<br><br>
+										<a href="/quiz/quizzes">Go take a quiz!</a>
+									</h4>	
+								</#if>
 							</div>							
 						</div>
 					</div>					
@@ -122,7 +122,7 @@
 		});
 		
 		function loadStartingGraph() {
-			<#if quizIds??>
+			<#if quizIds?? && quizIds?has_content>
 				var firstQuizScore = "${quizIds[0].quizId}";
 				getScores(firstQuizScore);
 			</#if>
@@ -163,8 +163,8 @@
 			$("#categoryGraph").empty();
 		
 			// Set graph canvas.
-			var margin = {top: 10, right: 20, bottom: 200, left: 50},
-				width = 600 - margin.left - margin.right,
+			var margin = {top: 10, right: 40, bottom: 200, left: 50},
+				width = 700 - margin.left - margin.right,
 				height = 450 - margin.top - margin.bottom;
 
 			// Parse the date / time.

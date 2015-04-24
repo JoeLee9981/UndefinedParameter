@@ -13,15 +13,13 @@ public class ScoreView extends View{
 	private float averageScore;
 	private User user;
 	private List<String> bestCategories;
-	private String favoriteCategory;
-	
-	public ScoreView(String page, User user, List<Quiz> quizIds, float averageScore, List<String> bestCategories, String favoriteCategory) {
+
+	public ScoreView(String page, User user, List<Quiz> quizIds, float averageScore, List<String> bestCategories) {
 		super(page);
 		this.quizIds = quizIds;
 		this.user = user;
 		this.averageScore = averageScore;
 		this.bestCategories = bestCategories;
-		this.favoriteCategory = favoriteCategory;
 	}
 
 	public List<Quiz> getQuizIds() {
@@ -37,10 +35,9 @@ public class ScoreView extends View{
 	}
 	
 	public List<String> getBestCategories() {
-		return bestCategories;
-	}
-	
-	public String getFavoriteCategory() {
-		return favoriteCategory;
+		if(bestCategories.size() > 4)
+			return bestCategories.subList(0, 3);
+		else
+			return bestCategories;
 	}
 }
