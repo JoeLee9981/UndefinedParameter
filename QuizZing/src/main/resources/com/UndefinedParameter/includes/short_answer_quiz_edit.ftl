@@ -50,7 +50,9 @@
 	
 	
 	
-	
+	<div class="row">
+		<p id="errorSHORT_ANSWER" class="errorFormText1" hidden></p>
+	</div>
 	<div class="row">
 		<div class="span8">
 			<button class="success" id="createSHORT_ANSWER" onclick="createQuestion('SHORT_ANSWER');";>Create Question</button>

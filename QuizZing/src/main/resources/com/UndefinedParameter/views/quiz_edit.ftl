@@ -143,6 +143,7 @@
 						<#include "../includes/true_false_quiz_edit.ftl">
 						<#include "../includes/short_answer_quiz_edit.ftl">
 						<#include "../includes/fill_blank_quiz_edit.ftl">
+						
 					</div>
 				</div>
 				<div class="row">
@@ -636,6 +637,12 @@
 			$('#descriptionText' + type).removeClass('valid');
 			$('#descriptionText' + type).removeClass('invalid');
 			$('#explanationText' + type).val('');
+			$('#error' + type).hide();
+			resetCreateButton(type);
+		}
+		
+		function resetCreateButton(type)
+		{
 			$('#create' + type).prop('disabled', false);
 			$('#create' + type).addClass('success');
 		}
@@ -679,18 +686,26 @@
 					}
 				}
 				
-				if(!desc) {
-					return;
+				// Validate that all the needed information is filled out
+				var hasErrors = false;
+				if(!desc)
+				{
+					hasErrors = true;
 				}
 				
-				if(!correct) {
-
-					return;
-				}			
-								
-				if(hyperlink && !reference) {
-					return;
+				if(!correct)
+				{
+					hasErrors = true;
 				}		
+				
+				if (hasErrors)
+				{
+					$('#error' + type).html("A description and a correct answer are required");
+					$('#error' + type).show();
+					resetCreateButton(type);
+					return;
+				}
+									
 				
 				
 				 $.ajax({
@@ -736,6 +751,7 @@
 		
 				var ordered = true;
 				
+				var hasErrors = false;
 				
 				if($('#trueCheck').is(':checked')) {
 					correct = "True";
@@ -748,6 +764,19 @@
 					correctPos = 1;
 				}
 				else {
+					hasErrors = true;
+				}
+				
+				if (!desc)
+				{
+					hasErrors = true;
+				}
+				
+				if (hasErrors)
+				{
+					$('#error' + type).html("Enter a question and select true or false.");
+					$('#error' + type).show();
+					resetCreateButton(type);
 					return;
 				}
 				
@@ -756,10 +785,6 @@
 				incorrect.push("");
 				incorrect.push("");
 				
-				if(hyperlink && !reference) {
-					return;
-				}
-					
 				
 				 $.ajax({
 					type: 'POST',
@@ -777,7 +802,8 @@
 							clearCommonFields(type);
 							
 							// Clear the TRUE_FALSE form
-
+							$('#falseCheck').prop('checked', false);
+							$('#trueCheck').prop('checked', false);
 						}
 						else {
 						}
@@ -798,20 +824,15 @@
 				
 				var ordered = true;
 				
-				if(!desc) {
-
+				if(!desc || !correct)
+				{
+					$('#error' + type).html("Enter a question and an answer.");
+					$('#error' + type).show();
+					resetCreateButton(type);
 					return;
 				}
 				
-				if(!correct) {
-
-					return;
-				}
 				
-				if(hyperlink && !reference) {
-
-					return;
-				}
 					
 				 $.ajax({
 					type: 'POST',
@@ -828,6 +849,7 @@
 							clearCommonFields(type);
 							
 							// Clear the SHORT_ANSWER form
+							$('#answerTextSHORT_ANSWER').val('');
 						}
 						else {
 
@@ -837,25 +859,61 @@
 			}
 			else if (type == 'FILL_IN_THE_BLANK')
 			{
+				
 				//TODO Prevalidate these fields
 				var maxAnswers = 5;
 				var correct = "";
 				var answers = [];
 				var path = "/question/create?quizId=" + quizId;
+
+				//TODO: once ready uncomment this code
+
 				
-				count = countBlanks(desc);
+				var ordered = true;
+				var count = countBlanks(desc);
+
+				if(count == 0) {
+					document.getElementById('fb-responseLabel').className = "text-alert";
+					document.getElementById('fb-responseLabel').innerHTML = "You must at least have one blank and answer";
+					resetCreateButton(type);
+					return;
+
+				}
+				else if(count > 5) {
+					document.getElementById('fb-responseLabel').className = "text-alert";
+					document.getElementById('fb-responseLabel').innerHTML = "You may only have 5 blanks";
+					resetCreateButton(type);
+					return;
+
+				}
 	
 				for(var i = 1; i <= maxAnswers; i++) {
-
+					if(!$('#fb-qText' + i).val() && i <= count) {
+						document.getElementById('fb-responseLabel').className = "text-alert";
+						document.getElementById('fb-responseLabel').innerHTML = "You must fill in the answer for blank " + i;
+					}
+					else {
 						if(i == 1)
 							correct = ($('#fb-qText' + i).val());
 						else if(i <= count)
 							answers.push($('#fb-qText' + i).val());
 						else
 							answers.push("");
-					
+					}
 				}
+				
+				document.getElementById('fb-responseLabel').innerHTML = "";
+				
+				if(!desc) {
+					document.getElementById('fb-responseLabel').innerHTML = "The Question must be filled out";
+					document.getElementById('fb-responseLabel').className = "text-alert";
+					resetCreateButton(type);
+					return;
+				}	
+			
 
+
+					
 				 $.ajax({
 					type: 'POST',
 					url: path,
@@ -892,6 +950,7 @@
 			currentCreateQuestionType = type;
 			categories = [];
 			setCategoryButtons();
+			$('#error' + type).hide();
 			
 			$('#questionCreateContent > div').each(function() {
 			

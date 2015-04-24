@@ -106,6 +106,9 @@
 		</div>
 	</div>
 	<div class="row">
+		<p id="errorMULTIPLE_CHOICE" class="errorFormText1" hidden></p>
+	</div>
+	<div class="row">
 		<div class="span8">
 			<button class="success" id="createMULTIPLE_CHOICE" onclick="createQuestion('MULTIPLE_CHOICE');";>Create Question</button>
 		</div>

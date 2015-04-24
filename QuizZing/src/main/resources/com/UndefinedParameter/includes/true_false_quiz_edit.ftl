@@ -63,7 +63,9 @@
 	
 	
 	
-	
+	<div class="row">
+		<p id="errorTRUE_FALSE" class="errorFormText1" hidden></p>
+	</div>
 	<div class="row">
 		<div class="span8">
 			<button class="success" id="createTRUE_FALSE" onclick="createQuestion('TRUE_FALSE');";>Create Question</button>

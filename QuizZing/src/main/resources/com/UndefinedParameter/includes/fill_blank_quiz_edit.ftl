@@ -15,6 +15,10 @@
 				    <textarea id="descriptionTextFILL_IN_THE_BLANK" class="noResize focusOutTrim focusOutValidateNotEmpty"></textarea>
 				</div>
 			</div>
+			<div class="row noMargin">
+				<button id="blankButton" class="success">Add a blank</button>
+				<p id="fb-responseLabel" />
+			</div>
 			<div class="row noMargin">		
 				<h5>Answer Options <a href="#" data-hint="Answer Options|These are the possible answers to choose from, use the radio to signify the correct answer" data-hint-position="right" data-hint-mode="2"><i class="icon-help fg-blue"></i></a></h5>
 				
@@ -65,7 +69,9 @@
 	
 	
 	
-	
+	<div class="row">
+		<p id="errorFILL_IN_THE_BLANK" class="errorFormText1" hidden></p>
+	</div>
 	<div class="row">
 		<div class="span8">
 			<button class="success" id="createFILL_IN_THE_BLANK" onclick="createQuestion('FILL_IN_THE_BLANK');";>Create Question</button>
@@ -75,3 +81,25 @@
 		</div>
 	</div>
 </div>
+
+<script>
+	$('#blankButton').click(function(event) {
+
+		event.preventDefault();
+		var explanation = $('#descriptionTextFILL_IN_THE_BLANK').val();
+
+		if(countBlanks(explanation) >= 5) {
+			document.getElementById('fb-responseLabel').className = "text-alert";
+			document.getElementById('fb-responseLabel').innerHTML = "You may only add 5 blanks to the question.";
+			return;
+		}
+		$('#descriptionTextFILL_IN_THE_BLANK').val(explanation + " <blank> ");
+		$('#descriptionTextFILL_IN_THE_BLANK').focus();
+	});
+	
+	
+	function countBlanks(description) {
+		return (description.match(/<blank>/g) || []).length;
+		return 0;
+	}
+</script>
