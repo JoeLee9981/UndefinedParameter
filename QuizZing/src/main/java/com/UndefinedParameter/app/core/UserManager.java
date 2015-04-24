@@ -173,7 +173,7 @@ public class UserManager {
 		user = fillNullColumns(user);
 		
 		try {
-			String hashed = BCrypt.hashpw(user.getPassword(), BCrypt.gensalt());
+			//String hashed = BCrypt.hashpw(user.getPassword(), BCrypt.gensalt());
 			userDAO.update(user.getId(),
 							InputUtils.sanitizeInput(user.getUserName()), 
 							InputUtils.sanitizeInput(user.getFirstName()), 
@@ -183,7 +183,7 @@ public class UserManager {
 							InputUtils.sanitizeInput(user.getCity()), 
 							InputUtils.sanitizeInput(user.getState()), 
 							InputUtils.sanitizeInput( user.getEmail()), 
-							InputUtils.sanitizeInput(hashed), 
+							InputUtils.sanitizeInput(user.getPassword()), 
 							InputUtils.sanitizeInput(user.getSecretQuestion()), 
 							InputUtils.sanitizeInput(user.getSecretAnswer()),
 						    user.getActive(),

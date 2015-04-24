@@ -17,6 +17,8 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
+import org.apache.commons.lang.StringUtils;
+
 import com.UndefinedParameter.app.core.CategoryScore;
 import com.UndefinedParameter.app.core.GroupManager;
 import com.UndefinedParameter.app.core.QuizManager;
@@ -118,6 +120,10 @@ public class UserProfileResource {
 		
 		if(user == null) {
 			return Response.status(Status.UNAUTHORIZED).build();
+		}
+		
+		if(StringUtils.isBlank(updateduser.getPassword())) {
+			updateduser.setPassword(user.getPassword());
 		}
 		
 		HashMap<String, String> response = new HashMap<String, String>();
