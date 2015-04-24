@@ -7,8 +7,7 @@
 				<nav class="sidebar light">
 					<ul>
 				        <li id="truefalse-li"><a id="truefalse" href="">True or False</a></li>
-				        <li  id="multichoice-li" class="active"><a id="multichoice" href="#">Multiple Choice</a></li>
-				        <li id="fillblank-li"><a id="fillblank" href="#" class="todo">Fill In The Blank</a></li>
+				        <li id="createButton-li"><a id="fillblank" href="#" class="todo">Fill In The Blank</a></li>
 				        <li id="matching-li"><a id="matching" href="#" class="todo">Matching</a></li>
 				        <li id="shortanswer-li"><a id="shortanswer" href="#" class="todo">Short Answer</a></li>
 					</ul>

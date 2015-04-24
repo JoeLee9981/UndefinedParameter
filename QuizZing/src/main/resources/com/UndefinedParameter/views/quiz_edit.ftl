@@ -143,7 +143,6 @@
 						<#include "../includes/true_false_quiz_edit.ftl">
 						<#include "../includes/short_answer_quiz_edit.ftl">
 						<#include "../includes/fill_blank_quiz_edit.ftl">
-						
 					</div>
 				</div>
 				<div class="row">
