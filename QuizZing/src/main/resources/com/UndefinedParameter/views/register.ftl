@@ -7,6 +7,7 @@
 		<link rel="stylesheet" href="/assets/plugins/metro_ui/min/iconFont.min.css" >
 		<link rel="stylesheet" href="/assets/css/overrides.css">
 		<link rel="stylesheet" href="/assets/css/register.css">
+		<script src="/assets/scripts/message.js"></script>
 		<script src="/assets/scripts/jquery-2.1.1.min.js"></script>
 		<script src="/assets/scripts/jquery-ui.min.js"></script>
 		<script src="/assets/plugins/metro_ui/min/metro.min.js"></script>
@@ -95,7 +96,7 @@
 										    <label>
 										        <input class="registerError" id="iAccept" type="checkbox" />
 										        <span class="check"></span>
-										        I Accept the <a href="#" class="todo">Terms and Conditions</a>.
+										        I Accept the <a href="#" onclick="displayTermsAndConditions()" id="readTAndC">Terms and Conditions</a>.
 										    </label>
 										</div>
 									</div>							
@@ -233,7 +234,7 @@
 					else
 					{
 						$("#mainRegisterError").show();
-						$("#alreadyExistsError").html("The email " + email + " already exists in our system.  If this is your email you can <a href='/login'>Login</a>, otherwise register using a different email.");
+						$("#alreadyExistsError").html("The email " + email + " may already exist in our system. If this is your email you can <a href='/login'>Login</a>, otherwise register using a different email. Alternatively, your email may be too long!");
 						$("#alreadyExistsError").show();
 						$('#email').removeClass('valid').addClass('invalid');
 						$("html, body").animate({ scrollTop: 0 }, 300);
@@ -383,6 +384,9 @@
 		}
 	});	
 	
+	$('#readTAndC').click(function(event){
+		event.preventDefault();
+	});	
 	
 	function doLogin(username, password) {
 		$.ajax({

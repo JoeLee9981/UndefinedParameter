@@ -8,7 +8,8 @@
 		<script src="/assets/scripts/jquery-ui.min.js"></script>
 		<script src="/assets/plugins/metro_ui/min/metro.min.js"></script>
 		<link href="/assets/plugins/metro_ui/min/iconFont.min.css" rel="stylesheet">
-		<link href="/assets/css/groups.css" rel="stylesheet">	
+		<link href="/assets/css/groups.css" rel="stylesheet">
+		<script src="/assets/scripts/message.js"></script>	
 		<script src="/assets/scripts/expanding.js"></script>
 		<link href="/assets/css/overrides.css" rel="stylesheet">
 		<link rel="shortcut icon" type="image/x-icon" href="/assets/images/qlogo_32.jpg">
@@ -72,7 +73,7 @@
 								    <label>
 								        <input class="createOrgError" id="iAccept" type="checkbox" />
 								        <span class="check"></span>
-								        I Accept the <a href="#" class="todo">Terms and Conditions</a>.
+								        I Accept the <a href="#" onclick="displayTermsAndConditions()" id="readTAndC">Terms and Conditions</a>.
 								    </label>
 								</div>
 							</div>							
@@ -102,6 +103,10 @@
 					createGroup();
 				}
 			});
+			
+			$('#readTAndC').click(function(event){
+				event.preventDefault();
+			});	
 			
 			function createGroup()
 			{
