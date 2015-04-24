@@ -535,7 +535,7 @@ public class OrganizationManager {
 		}
 	}
 
-	public List<Organization> findGroupsByKeywords(String keywords) {
+	public List<Organization> findOrgssByKeywords(String keywords) {
 		
 		// Create a list of each keyword space delimited
 		List<String> keywordList = new ArrayList<String>();

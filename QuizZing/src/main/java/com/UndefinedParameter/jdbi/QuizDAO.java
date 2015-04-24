@@ -88,6 +88,94 @@ public interface QuizDAO {
 			+ "gq.GroupID = :groupId")
 	public List<Quiz> retrieveQuizzesByCreatorAndGroup(@Bind("creatorId") long creatorId, @Bind("groupId") long groupId);
 	
+
+	/*
+	 * Retrieve quiz by search keywords
+	 */
+	@SqlQuery(""
++ "			SELECT "
++ "				fr.QuizID, "
++ "				fr.CreatorID, "
++ "				fr.Difficulty, "
++ "				fr.Rating, "
++ "				fr.Description, "
++ "				fr.Time, "
++ "				fr.DateCreated, "
++ "				fr.DateModified, "
++ "				fr.LastAccessed, "
++ "				fr.Name,"
++ "				fr.Flagged, "
++ "				fr.QuestionCount, "
++ "				fr.RatingCount, "
++ "				fr.DifficultyCount, "
++ "				fr.Open, sg.GroupID AS GroupID, sg.Name AS GroupName"
++ "			FROM "
++ "			( "
++ "				SELECT  qr.Description, "
++ "						qr.QuizID, "
++ "						qr.CreatorID, "
++ "						qr.Difficulty, "
++ "						qr.Rating, "
++ "						qr.Ranking, "
++ "						qr.Time, "
++ "						qr.DateCreated, "
++ "						qr.DateModified, "
++ "						qr.LastAccessed, "
++ "						qr.Name, "
++ "						qr.Flagged, "
++ "						qr.RatingCount, "
++ "						qr.QuestionCount, "
++ "						qr.DifficultyCount, "
++ "						qr.Open, "
++ "						(qr.Ranking + SUM(CategoryInKeyword)) AS FinalRanking "
++ "				FROM "
++ "				(SELECT "
++ "					  CASE WHEN q.Name = :keywords									THEN 256 	ELSE 0 END "
++ "					+ CASE WHEN q.Name LIKE CONCAT('%', :keywords, '%') 			THEN 128 	ELSE 0 END "
++ "					+ CASE WHEN q.Description LIKE CONCAT('%', :keywords, '%') 		THEN 64 	ELSE 0 END "
++ "					AS Ranking, "
++ "					  CASE WHEN :keywords LIKE CONCAT('%', c.CategoryType ,'%')		THEN 10		ELSE 0 END "
++ "					AS CategoryInKeyword, "
++ "					q.QuizID, "
++ "					q.CreatorID, "
++ "					q.Difficulty, "
++ "					q.Rating, "
++ "					q.Description, "
++ "					q.Time, "
++ "					q.DateCreated, "
++ "					q.DateModified, "
++ "					q.LastAccessed, "
++ "					q.Name, "
++ "					q.Flagged, "
++ "					q.QuestionCount, "
++ "					q.Open, "
++ "					q.RatingCount, "
++ "					q.DifficultyCount, "
++ "					c.CategoryType "
++ "					FROM Quiz q "
++ "					JOIN QuizQuestion  qq ON "
++ "						qq.QuizID = q.QuizID "
++ "					JOIN Question qe ON "
++ "						qe.QuestionID = qq.QuestionID "
++ "					JOIN QuestionCategory qc ON "
++ "						qc.QuestionID = qe.QuestionID "
++ "					JOIN Category c ON "
++ "						c.CategoryID = qc.CategoryID "
++ "					GROUP BY q.QuizID, c.CategoryType "
++ "					ORDER BY Ranking DESC) qr "
++ "				GROUP BY (qr.QuizID)"
++ "			) fr "
++ "			JOIN GroupQuiz gq ON "
++ "			gq.QuizID = fr.QuizID "
++ "			JOIN SubGroup sg ON "
++ "			sg.GroupID = gq.GroupID " 
++ "			WHERE fr.FinalRanking > 0 "		
++ "			ORDER BY fr.FinalRanking DESC "
+			
+			
+			)
+	public List<Quiz> findQuizByKeywords(@Bind("keywords") String keywords);
+	
 	/*
 	 * 	retrieveExistingQuizDetails - Retrieves quiz details from the database.
 	 */
@@ -246,6 +334,7 @@ public interface QuizDAO {
 	
 	@SqlUpdate("UPDATE QuizDifficulty SET UserRating = :rating WHERE UserID = :userId AND QuizID = :quizId")
 	public void updateQuizDifficulty(@Bind("userId") long userId, @Bind("quizId") long quizId, @Bind("rating") int rating);
+
 
 }
 	
