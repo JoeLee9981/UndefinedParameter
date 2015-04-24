@@ -113,7 +113,7 @@
 											<div class="row">
 												<div class="listview-outlook" data-role="listview">
 													<#list groupResults as group>
-					                                    <a class="list" href="#" onclick="window.location=''">
+					                                    <a class="list" href="#" onclick="window.location='/group?groupId=${group.id}'">
 					                                        <div class="list-content">
 					                                            <span class="list-title">${group.name}</span>
 					                                            <span class="list-title questionText" style="display: none">
@@ -195,6 +195,10 @@
 				    }
 				});
 			}
+			
+			<#if destination??>
+				showResults('orgResults');
+			</#if>
 		</script>
 	</body>
 </html>

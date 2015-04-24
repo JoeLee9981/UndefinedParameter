@@ -29,7 +29,7 @@ public interface GroupDAO {
 + " 					(SELECT "
 + "						  CASE WHEN Name = :keywords									THEN 256 	ELSE 0 END "
 + "						+ CASE WHEN Name LIKE CONCAT('%', :keywords, '%') 				THEN 128 	ELSE 0 END "
-+ "						+ CASE WHEN Description LIKE CONCAT('%', ':keywords', '%') 		THEN 64		ELSE 0 END "
++ "						+ CASE WHEN Description LIKE CONCAT('%', :keywords, '%') 		THEN 64		ELSE 0 END "
 + "						AS KeywordRanking, "
 + "						GroupID, "
 + "						Name, "

@@ -25,6 +25,7 @@ import com.UndefinedParameter.app.resources.NewsArticleResource;
 import com.UndefinedParameter.app.resources.OrganizationResource;
 import com.UndefinedParameter.app.resources.QuestionResource;
 import com.UndefinedParameter.app.resources.QuizResource;
+import com.UndefinedParameter.app.resources.SearchResource;
 import com.UndefinedParameter.app.resources.UserProfileResource;
 import com.UndefinedParameter.jdbi.BugDAO;
 import com.UndefinedParameter.jdbi.FeedbackDAO;

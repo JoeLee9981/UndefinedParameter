@@ -62,14 +62,14 @@ public class SearchResource {
 	 * Retrieves the search page
 	 */
 	@GET
-	public Response getSearchView(@Auth(required = false) User user, @QueryParam("keywords") String keywords) {
+	public Response getSearchView(@Auth(required = false) User user, @QueryParam("keywords") String keywords, @QueryParam("dest") String destination) {
 		
 		// Find the organization which match the keyword
 		List<Organization> orgResults = orgManager.findOrgssByKeywords(keywords);
 		List<Quiz> quizResults = quizManager.findQuizByKeywords(keywords);
 		List<Group> groupResults = groupManager.findGroupsByKeywords(keywords);
 		 
-		return Response.ok(new SearchView(user, keywords, orgResults, quizResults, groupResults)).build();
+		return Response.ok(new SearchView(user, keywords, orgResults, quizResults, groupResults, destination)).build();
 		
 	}
 

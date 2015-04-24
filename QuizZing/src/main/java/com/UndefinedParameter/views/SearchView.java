@@ -17,14 +17,21 @@ public class SearchView extends View
 	private List<Organization> orgResults;
 	private List<Quiz> quizResults;
 	private List<Group> groupResults;
+	private String destination;
 	
-	public SearchView(User user, String searchString, List<Organization> orgResults, List<Quiz> quizResults, List<Group> groupResults) {
+	public SearchView(User user, String searchString, List<Organization> orgResults, List<Quiz> quizResults, List<Group> groupResults, String destination) {
 		super("search_results.ftl");
 		this.user = user;
 		this.searchString = searchString;
 		this.orgResults = orgResults;
 		this.quizResults = quizResults;
 		this.groupResults = groupResults;
+		this.destination = destination;
+	}
+	
+	public String getDestination()
+	{
+		return destination;
 	}
 	
 	public User getUser()
