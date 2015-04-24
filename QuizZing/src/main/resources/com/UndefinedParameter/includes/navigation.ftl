@@ -40,9 +40,7 @@
 		                <span class="icon-cog"></span> &nbsp;
 		            </a>
 		            <ul class="dropdown-menu place-right" data-role="dropdown">
-		            	<li><a href="#" class="todo">My Groups</a></li>
-		                <li><a href="#" class="todo">My Quizzes</a></li>
-		                <li><a href="/user?userid=${user.id}">Account Settings</a></li>
+		                <li><a href="/user?userid=${user.id}">Account Profile</a></li>
 		                <li><a href="#" onclick="logoutUser()">Logout</a></li>
 		            </ul>
 		        </div>

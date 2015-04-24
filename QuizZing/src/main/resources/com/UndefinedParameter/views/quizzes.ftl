@@ -14,11 +14,84 @@
 		<link rel="shortcut icon" type="image/x-icon" href="/assets/images/qlogo_32.jpg">	
 	</head>
 
-	<body class="metro">
+	<body>
 		<#include "../includes/navigation.ftl">
-		<div class="page-content">
+		
+		<div id="home-content" class="metro">
 				<div class="grid fluid">	
 					
+					
+					<#if user??>
+					<div id="homeBanner">
+						<div class="page-content">
+							<div id="bannerContent" class="row">
+								<div>
+									<div class="row">
+										<div class="span3">
+											<img src="/assets/images/person_circ.png"></img>
+										</div>
+										<div id="bannerHeader" class="span5">
+											<h2><strong>Studying is hard right?</strong></h2>
+											<span class="subheader-secondary">
+												<strong>Not anymore!</strong> Whether for school, certification courses, job interviews, or just fun, QuizZing gives you the tools to make studying simple.
+											</span>
+											<div id="headerButtons">
+												<button type="button" class="warning large" onclick="location.href = '/about'">Learn More</button>
+												<button type="button" class="primary large" onclick="location.href = '/tutorial'">Take the Tutorial</button>	
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<#else>
+					<div id="homeBanner">
+						<div class="page-content">
+							<div id="bannerContent" class="row">
+								<div class="span3">
+									<div id="loginFormContainer">
+										<form id="loginForm">
+											<div class="input-control text">
+											 	<input type="text" id="email" value="" placeholder="Email Address"/>
+											</div>	
+											<div class="input-control password">
+											    <input type="password" id="password" value="" placeholder="Password"/>
+											</div>
+											<p id="loginErrorLabel" class="tertiary-text-secondary errorFormText1 loginError"></p>		
+											<div class="row">
+												<button type="submit" class="primary">Login</button>
+											</div>								
+										</form>	
+										<div class="row topMarginMedium">
+											<p class="tertiary-text-secondary span12">Unable to login?  Use the <a href="forgot">Account Retrieval</a> process to regain access to your account.</p>
+										</div>		
+									</div>	
+								</div>
+								<div class="span9">
+									<div class="row">
+										<div id="bannerHeader" class="span6">
+											<h2><strong>Studying is hard right?</strong></h2>
+											<span class="subheader-secondary">
+												<strong>Not anymore!</strong> Whether for school, certification courses, job interviews or just fun. QuizZing gives you the tools to make studying simple.
+											</span>
+											
+										</div>
+										
+									</div>
+									<div id="headerButtons span9">
+										<button type="button" onclick="location.href = '/register'" class="success large" style="margin-right: 10px">Register</button>
+										<button type="button" class="warning large" onclick="location.href = '/about'" style="margin-right: 10px">Learn More</button>
+										<button type="button" class="primary large" onclick="location.href = '/tutorial'">Take the Tutorial</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					</#if>
+					
+					
+					<div class="page-content">
 					<#if userQuizzes??>
 						<div class="home-subsection">
 							<h3>Your Quizzes</h3>
@@ -163,6 +236,7 @@
 
 						</div>
 					</#if>
+					</div>
 				</div>
 			</div>
 		<div style="padding-top: 50px" class="row">
@@ -170,4 +244,48 @@
 		</div>
 	</body>
 </html>
+
+<script>
+	$('#loginForm').submit(function(event) {
+		event.preventDefault();
+		
+		var username = $('#email').val();
+		var password = $('#password').val();
+		
+		if(!username) {
+			//doLoginError("Please enter your email");
+			//return;
+		}
+		
+		if(!password) {
+			//doLoginError("Please enter your password");
+			//return;
+		}
+		
+		$.ajax({
+		    url: '/login',
+		    username: username,
+		    password: password,
+		    type: 'POST',
+		    success: function(data) {
+		    	console.log(data);
+		    	window.location='/quiz/quizzes';
+		    },
+		    error: function(error) {
+		    	doLoginError("Invalid email and/or password");
+		    }
+		});
+	});
+	
+	$('#register-form').submit(function(event) {
+		event.preventDefault();
+		
+		window.location='/register';
+	});
+	
+	function doLoginError(message) {
+		document.getElementById('loginErrorLabel').innerHTML = message;
+	}
+
+</script>
 

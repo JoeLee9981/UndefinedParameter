@@ -3,7 +3,6 @@
  * 		all objects (quiz, question, group, organization)
  */
 
-
 function rateQuizQuality(rating, quizId, groupId) {
 	$.ajax({
 		type: 'POST',

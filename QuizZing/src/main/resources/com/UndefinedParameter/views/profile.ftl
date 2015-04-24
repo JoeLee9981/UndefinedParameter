@@ -331,8 +331,8 @@
 											<span class="span4"><h4>From: <a href="/user?userid=${receivedMessages[0].senderId}">${receivedMessages[0].userName}</a></h4></span>
 											<span class="span4"><h4>${receivedMessages[0].timeStampString}</h4></span>
 										</div>
-										<div class="row span9" style="border: solid lightgray 1px; margin-left: 10px">
-											<span><p style="font-size: 20px; margin: 30px">${receivedMessages[0].message}</p></span>
+										<div class="row span9" style="border: solid lightgray 1px; margin-left: 10px;">
+											<span><p style="font-size: 20px; margin: 30px; word-wrap: break-word">${receivedMessages[0].message}</p></span>
 										</div>
 										<#else>
 										<div style="margin-left: 10px"class="row span9">
@@ -388,7 +388,7 @@
 					+	'<span class="span4"><h4>' + date + '</h4></span>'
 					+'</div>'
 					+'<div class="row span9" style="border: solid lightgray 1px; margin-left: 10px">'
-					+	'<span><p style="font-size: 20px; margin: 30px">' + message + '</p></span>'
+					+	'<span><p style="font-size: 20px; margin: 30px; word-wrap: break-word">' + message + '</p></span>'
 					+'</div>';
 		$('#messageShowDiv').html(html);
 	}
@@ -400,7 +400,7 @@
 			+	'<span class="span4"><h4>' + date + '</h4></span>'
 			+'</div>'
 			+'<div class="row span9" style="border: solid lightgray 1px; margin-left: 10px">'
-			+	'<span><p style="font-size: 20px; margin: 30px">' + message + '</p></span>'
+			+	'<span><p style="font-size: 20px; margin: 30px; word-wrap: break-word">' + message + '</p></span>'
 			+'</div>';
 		$('#messageShowDiv').html(html);
 		$('#replyLink').click(function(event) {

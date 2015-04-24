@@ -34,7 +34,7 @@
 										</span>
 										<div id="headerButtons">
 											<button type="button" class="warning large" onclick="location.href = '/about'">Learn More</button>
-											<button type="button" class="success large todo" onclick="location.href = '#'">Take the Tutorial</button>	
+											<button type="button" class="primary large" onclick="location.href = '/tutorial'">Take the Tutorial</button>	
 										</div>
 									</div>
 								</div>
@@ -46,7 +46,7 @@
 				<div id="homeBanner">
 					<div class="page-content">
 						<div id="bannerContent" class="row">
-							<div id="loginDiv" class="span3">
+							<div class="span3">
 								<div id="loginFormContainer">
 									<form id="loginForm">
 										<div class="input-control text">
@@ -72,11 +72,14 @@
 										<span class="subheader-secondary">
 											<strong>Not anymore!</strong> Whether for school, certification courses, job interviews or just fun. QuizZing gives you the tools to make studying simple.
 										</span>
-										<div id="headerButtons">
-											<button type="button" onclick="location.href = '/register'" class="success large">Register</button>
-											<button type="button" class="warning large" onclick="location.href = '/about'">Learn More</button>		
-										</div>
+										
 									</div>
+									
+								</div>
+								<div id="headerButtons span9">
+									<button type="button" onclick="location.href = '/register'" class="success large" style="margin-right: 10px">Register</button>
+									<button type="button" class="warning large" onclick="location.href = '/about'" style="margin-right: 10px">Learn More</button>
+									<button type="button" class="primary large" onclick="location.href = '/tutorial'">Take the Tutorial</button>
 								</div>
 							</div>
 						</div>
@@ -102,7 +105,6 @@
 										    <th title="Members" class="text-center"><i class="icon-user-3 on-right"></i></th>
 										    <th title="Quizzes" class="text-center"><i class="icon-clipboard-2 on-right"></i></th>
 										    <th title="Questions" class="text-center"><i class="icon-help-2 on-right"></i></th>
-										    <th title="Contribution is how much you've contributed towards the group" class="text-center">Contribution</th>
 										    <th class="text-center">Date Created</th>
 				                        </tr>
 			                        </thead>
@@ -114,7 +116,6 @@
 												<td class="text-center">${group.memberCount}</td>
 												<td class="text-center">${group.quizCount}</td>
 												<td class="text-center">${group.questionCount}</td>
-												<td class="text-center">35</td>
 												<td class="text-center">${group.dateAsString}</td>
 											</tr>
 										</#list>     
@@ -139,7 +140,6 @@
 									    <th title="Members" class="text-center"><i class="icon-user-3 on-right"></i></th>
 									    <th title="Quizzes" class="text-center"><i class="icon-clipboard-2 on-right"></i></th>
 									    <th title="Questions" class="text-center"><i class="icon-help-2 on-right"></i></th>
-									    <th title="Contribution is how much you've contributed towards the group" class="text-center">Contribution</th>
 									    <th class="text-center">Date Created</th>
 			                        </tr>
 		                        </thead>
@@ -151,7 +151,6 @@
 											<td class="text-center">${group.memberCount}</td>
 											<td class="text-center">${group.quizCount}</td>
 											<td class="text-center">${group.questionCount}</td>
-											<td class="text-center">35</td>
 											<td class="text-center">${group.dateAsString}</td>
 										</tr>
 									</#list>     
