@@ -9,7 +9,6 @@ import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
 import io.dropwizard.views.ViewBundle;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.skife.jdbi.v2.DBI;
@@ -17,7 +16,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.UndefinedParameter.app.core.Organization;
-import com.UndefinedParameter.app.core.Question;
 import com.UndefinedParameter.app.core.User;
 import com.UndefinedParameter.app.health.TemplateHealthCheck;
 import com.UndefinedParameter.app.resources.FeedbackResource;
@@ -27,7 +25,6 @@ import com.UndefinedParameter.app.resources.NewsArticleResource;
 import com.UndefinedParameter.app.resources.OrganizationResource;
 import com.UndefinedParameter.app.resources.QuestionResource;
 import com.UndefinedParameter.app.resources.QuizResource;
-import com.UndefinedParameter.app.resources.SearchResource;
 import com.UndefinedParameter.app.resources.UserProfileResource;
 import com.UndefinedParameter.jdbi.BugDAO;
 import com.UndefinedParameter.jdbi.FeedbackDAO;
@@ -129,7 +126,7 @@ public class QuizZingApplication extends Application<QuizZingConfiguration> {
 		environment.jersey().register(new QuestionResource(quizDAO, questionDAO, quizScoreDAO, userGroupDAO));
 		environment.jersey().register(new FeedbackResource(feedbackDAO, bugDAO));
 		environment.jersey().register(new UserProfileResource(userDAO, quizDAO, questionDAO, orgDAO, groupDAO, quizScoreDAO, orgMemberDAO, userGroupDAO));
-		environment.jersey().register(new SearchResource(userDAO, quizDAO, questionDAO, orgDAO, groupDAO, quizScoreDAO, orgMemberDAO, userGroupDAO));
+		//environment.jersey().register(new SearchResource(userDAO, quizDAO, questionDAO, orgDAO, groupDAO, quizScoreDAO, orgMemberDAO, userGroupDAO));
 		
 		logger.info("All Views Registered");
 	}

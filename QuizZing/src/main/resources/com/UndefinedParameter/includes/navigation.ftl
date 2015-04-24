@@ -46,6 +46,11 @@
 		                <li><a href="#" onclick="logoutUser()">Logout</a></li>
 		            </ul>
 		        </div>
+		        <div class="element place-right">
+			        <a href="/user?userid=${user.id}&tab=MESSAGES">
+			        	<span id="mailIcon" class="icon-mail fg-white"></span>
+		            </a>
+	            </div>
 		        <button id="userAndImageBox" class="element image-button image-left place-right">
 			        <a href="/user?userid=${user.id}">
 			        	<#if user.userName?length &gt; 14>

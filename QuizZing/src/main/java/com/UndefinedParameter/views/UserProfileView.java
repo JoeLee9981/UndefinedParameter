@@ -24,6 +24,7 @@ public class UserProfileView extends View {
 	private boolean editable;
 	private List<UserMessage> sentMessages;
 	private List<UserMessage> receivedMessages;
+	private String tab;
 	
 	public UserProfileView(String page) {
 		super(page);
@@ -42,6 +43,20 @@ public class UserProfileView extends View {
 		this.orgBadges = orgBadges;
 		this.sentMessages = sentMessages;
 		this.receivedMessages = receivedMessages;
+	}
+	
+	public UserProfileView(String page, User userProf, User user, List<Quiz> userQuizzes, List<Group> userGroups, boolean editable, List<Badge> groupBadges, List<Badge> orgBadges, List<UserMessage> sentMessages, List<UserMessage> receivedMessages, String tab) {
+		super(page);
+		this.userProf = userProf;
+		this.userQuizzes = userQuizzes;
+		this.userGroups = userGroups;
+		this.editable = editable;
+		this.user = user;
+		this.groupBadges = groupBadges;
+		this.orgBadges = orgBadges;
+		this.sentMessages = sentMessages;
+		this.receivedMessages = receivedMessages;
+		this.tab = tab;
 	}
 	
 	public User getuserProf() {
@@ -125,6 +140,18 @@ public class UserProfileView extends View {
 
 	public void setReceivedMessages(List<UserMessage> receivedMessages) {
 		this.receivedMessages = receivedMessages;
+	}
+	
+	public int getUnreadCount() {
+		int count = 0;
+		for(UserMessage message : receivedMessages)
+			if(!message.isViewed())
+				count++;
+		return count;
+	}
+	
+	public String getTab() {
+		return this.tab;
 	}
 
 }

@@ -54,12 +54,12 @@ public class UserProfileResource {
 	 * it's the user's profile or not.
 	 */
 	@GET
-	public Response getUserProfileView(@Auth(required = false) User user, @QueryParam("userid") long userID) {
+	public Response getUserProfileView(@Auth(required = false) User user, @QueryParam("userid") long userID, @QueryParam("tab") String tab) {
 		
 		if(user != null && user.getId() == userID) {
 			return Response.ok(new UserProfileView("profile.ftl", user, user, quizManager.findQuizzesByCreatorId(user.getId()), 
 								groupManager.findRegisteredGroups(user.getId()), true, userManager.getBadgesByUser(userID), userManager.getBadgesByOrg(userID),
-								userManager.getSentMessages(userID), userManager.getReceivedMessages(userID))).build();
+								userManager.getSentMessages(userID), userManager.getReceivedMessages(userID), tab)).build();
 		}
 		else {
 			User currentUser = userManager.findUserById(userID);
@@ -218,5 +218,29 @@ public class UserProfileResource {
 			return Response.status(Status.BAD_REQUEST).build();
 		}
 		return Response.ok().build();
+	}
+	
+	@POST
+	@Path("/message/view")
+	public Response viewMessage(@Auth(required = false) User user, @QueryParam("messageId") long messageId) {
+		if(user == null || messageId < 1) {
+			return Response.status(Status.BAD_REQUEST).build();
+		}
+		if(userManager.setMessageViewed(messageId))
+			return Response.ok().build();
+		return Response.status(Status.BAD_REQUEST).build();
+	}
+	
+	@GET
+	@Path("message/count")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response getUnreadCount(@Auth(required = false) User user) {
+		HashMap<String, Integer> response = new HashMap<String, Integer>();
+		if(user == null) {
+			response.put("results", 0);
+			return Response.ok(response).build();
+		}
+		response.put("results", userManager.getUnreadMessageCount(user.getId()));
+		return Response.ok(response).build();
 	}
 }

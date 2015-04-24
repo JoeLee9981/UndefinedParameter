@@ -1,4 +1,21 @@
 
+$.ajax({
+    url: '/user/message/count',
+    type: 'GET',
+    headers: {
+		Accept: "application/json",
+	},
+    success: function(data) {
+    	var count = parseInt(data['results']);
+    	if(count > 0) {
+    		$('#mailIcon').addClass('bg-red');
+    		$('#mailIcon').css('padding', '10px');
+    		$('#mailIcon').css('border-radius', '50%');
+    		$('#mailIcon').css('margin-top', '-20px');
+    	}
+	}
+});
+
 $(".todo").click(function(e){
 	e.preventDefault();
 	alert('This feature is not yet implemented.');

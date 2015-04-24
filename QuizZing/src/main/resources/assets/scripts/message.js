@@ -56,3 +56,13 @@ function doSend(senderId, sendeeId) {
 	    }
 	});
 }
+
+function setViewed(messageId) {
+	$.ajax({
+		type: 'POST',
+		url: '/user/message/view?messageId=' + messageId,
+		success: function(data) {
+			$('#' + messageId + 'Icon').hide();
+		}
+	});
+}

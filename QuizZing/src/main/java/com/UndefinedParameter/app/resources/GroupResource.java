@@ -178,12 +178,12 @@ public class GroupResource {
 	
 	@GET
 	@Path("/members")
-	public Response getGroupMembers(@QueryParam("groupId") long groupId) {
+	public Response getGroupMembers(@Auth(required = false) User user, @QueryParam("groupId") long groupId) {
 		
 		if(groupId < 1) {
 			return Response.status(Status.BAD_REQUEST).build();
 		}
-		return Response.ok(new GroupMemberView(manager.findGroupMembers(groupId))).build();
+		return Response.ok(new GroupMemberView(user, manager.findGroupMembers(groupId))).build();
 	}
 	
 	@GET

@@ -7,6 +7,7 @@
 		<link rel="stylesheet" href="/assets/plugins/metro_ui/min/iconFont.min.css" >
 		<link rel="stylesheet" href="/assets/css/overrides.css">
 		<link rel="stylesheet" href="/assets/css/groups.css">
+		<script src="/assets/scripts/message.js"></script>
 		<script src="/assets/plugins/metro_ui/js/metro-accordion.js"></script>
 		<script src="/assets/scripts/jquery-2.1.1.min.js"></script>
 		<script src="/assets/scripts/jquery-ui.min.js"></script>

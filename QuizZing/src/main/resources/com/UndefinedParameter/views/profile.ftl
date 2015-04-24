@@ -40,7 +40,7 @@
 							<div class="row noMargin">
 								<nav class="navigation-bar white white-custom">
 								    <nav class="navigation-bar-content">
-								        <item id="groupsItem" class="element active"><a href="" id="groupsLink"><i class="icon-link on-right"></i> <strong>Groups (${groupCount})</strong></a></item>
+								        <item id="groupsItem" class="element<#if tab?? && tab == 'MESSAGES'><#else> active</#if>"><a href="" id="groupsLink"><i class="icon-link on-right"></i> <strong>Groups (${groupCount})</strong></a></item>
 								        <item class="element-divider"></item> 		        
 								        <item id="quizzesItem" class="element"><a href="" id="quizzesLink"><i class="icon-clipboard-2 on-right"></i> <strong>Quizzes (${quizCount})</strong></a></item>
 								        <item class="element-divider"></item>
@@ -51,7 +51,7 @@
 											<item class="element-divider place-right"></item>
 											<item id="scoresItem" class="element place-right"><a href="/user/scores?userid=${userProf.id}"><i class="icon-chart-alt on-left"></i> <strong>View Scores</strong></a></item>
 											<item class="element-divider place-right"></item>
-											<item id="messagesItem" class="element place-right"><a id="messagesLink" href=""><i class="icon-mail on-left"></i> <strong>Messages</strong></a></item>
+											<item id="messagesItem" class="element place-right<#if tab?? && tab == 'MESSAGES'> active</#if>"><a id="messagesLink" href=""><i class="icon-mail on-left"></i> <strong>Messages<#if unreadCount &gt; 0>(${unreadCount})</#if></strong></a></item>
 											<item class="element-divider place-right"></item>
 										<#elseif user??>
 											<item id="messagesItem" class="element place-right"><a id="messagesLink" href=""><i class="icon-mail on-left"></i> <strong>Send Message</strong></a></item>
@@ -140,7 +140,7 @@
 								</div>
 							</div>
 						
-							<div id="groupsDiv" class="row noMargin">								
+							<div id="groupsDiv"<#if tab?? && tab == 'MESSAGES'> hidden</#if>>								
 								<#if userGroups??>
 									<table class="table hovered striped">
 				                        <thead>
@@ -271,29 +271,28 @@
 							</div>
 						</div>
 						
-						<div class="row noMargin">
-							<div id="messagesDiv" hidden>
+						<div class="row">
+							<div id="messagesDiv" <#if tab?? && tab == 'MESSAGES'><#else>hidden</#if>>
 								<#if editable>
-									<h1>Message Center</h1>
 									<div class="row noMargin span3">
 										<nav class="navigation-bar white white-custom">
 								   			<nav class="navigation-bar-content">
-										        <item style="width: 113px" id="sentItem" class="element"><a href="" id="sentLink"><i class="icon-link on-right"></i> <strong>Sent</strong></a></item>
+										        <item style="width: 113px" id="sentItem" class="element"><a href="" id="sentLink"><i class="icon-exit on-right"></i> <strong>Sent</strong></a></item>
 										        <item class="element-divider"></item> 		        
-										        <item style="width: 112px" id="inboxItem" class="element active"><a href="" id="inboxLink"><i class="icon-clipboard-2 on-right"></i> <strong>Inbox</strong></a></item>
+										        <item style="width: 112px" id="inboxItem" class="element active"><a href="" id="inboxLink"><i class="icon-enter on-right"></i> <strong>Inbox</strong></a></item>
 										    </nav>
 										</nav>
 										<div class="quizQuestionList" style="width:228px; height: 400px">
 											<div class="quizQuestionListContent">
-												<div id="messageList" class="listview">
+												<div id="messageList" class="listview text-center">
 													<#if receivedMessages??>
 													<#list receivedMessages as message>
-													<a id="${message_index}Button" class="list" href="#" style="margin-bottom: 1px;">
+													<a id="${message.messageId}Button" class="list<#if message_index == 0> selected</#if>" href="" onclick="toggleIndicator(${message.messageId}, '${message.userName}', '${message.timeStampString}', '${message.message}', ${message.senderId}, 'RECEIVED')" style="margin-bottom: 1px; width: 206px">
 														<div class="list-content noMargin">
-															<span class="list-title">${message.userName}</span>
+															<span class="list-title"><#if !message.viewed><i id="${message.messageId}Icon" class="icon-mail on-left fg-lightBlue"></i> </#if>${message.userName}</span>
 														</div>
 													</a>
-													<script>$('#${message_index}Button').click(function(event) { event.preventDefault(); });</script>
+													<script>$('#${message.messageId}Button').click(function(event) { event.preventDefault(); });</script>
 													</#list>
 													<#else>
 													<a class="list marked" href="#">
@@ -304,24 +303,43 @@
 													</#if>
 								                               
 												</div>
+												<div id="sentList" class="listview text-center" hidden>
+													<#if sentMessages??>
+													<#list sentMessages as message>
+													<a id="${message.messageId}Button" class="list" href="" onclick="toggleIndicator(${message.messageId}, '${message.userName}', '${message.timeStampString}', '${message.message}', ${message.sendeeId}, 'SENT')" style="margin-bottom: 1px; width: 206px">
+														<div class="list-content noMargin">
+															<span class="list-title">${message.userName}</span>
+														</div>
+													</a>
+													<script>$('#${message.messageId}Button').click(function(event) { event.preventDefault(); });</script>
+													</#list>
+													<#else>
+													<a class="list marked" href="#">
+														<div class="list-content">   
+															<span class="list-title">No Messages</span>
+														</div>
+													</a>
+													</#if>          
+												</div>
 											</div>
 										</div>
 									</div>
-									<#if receivedMessages[0]??>
-									<div class="row span9" style="border: solid lightgray 1px; margin-left: 10px; margin-top: 0px; margin-bottom: 0px">
-										<span style="margin-left: 30px" class="span4"><h4>From: <a href="/user?userid=${receivedMessages[0].senderId}">${receivedMessages[0].userName}</a></h4></span>
-										<span class="span4"><h4>${receivedMessages[0].timeStampString}</h4></span>
+									<div id="messageShowDiv">
+										<#if receivedMessages[0]??>
+										<div class="row span9" style="border: solid lightgray 1px; margin-left: 10px; margin-top: 0px; margin-bottom: 0px">
+											<span style="margin-left: 30px" class="span1"><h4><a href="" id="replyLink" onclick="sendMessage(${user.id}, ${receivedMessages[0].senderId})"><i class="icon-reply on-left fg-lightBlue"></i></a></h4></span>
+											<span class="span4"><h4>From: <a href="/user?userid=${receivedMessages[0].senderId}">${receivedMessages[0].userName}</a></h4></span>
+											<span class="span4"><h4>${receivedMessages[0].timeStampString}</h4></span>
+										</div>
+										<div class="row span9" style="border: solid lightgray 1px; margin-left: 10px">
+											<span><p style="font-size: 20px; margin: 30px">${receivedMessages[0].message}</p></span>
+										</div>
+										<#else>
+										<div style="margin-left: 10px"class="row span9">
+											<h4>You have not received any messages</h4>
+										</div>
+										</#if>
 									</div>
-									<div class="row span9" style="border: solid lightgray 1px; margin-left: 10px">
-										<span><p style="font-size: 20px; margin: 30px">${receivedMessages[0].message}</p></span>
-									</div>
-									<#else>
-									<div class="row noMargin span9">
-										<h1>You have not received any messages</h1>
-									</div>
-									</#if>
-									
-									
 								</#if>
 							</div>
 						</div>
@@ -329,6 +347,8 @@
 				</div>
 			</div>
 		</div>
+		</div>
+
 		<div style="padding-top: 50px" class="row">
 			<#include "../includes/footer.ftl">
 		</div>
@@ -336,6 +356,75 @@
 </html>
 
 <script>
+
+	var activeButton = <#if receivedMessages?? && receivedMessages[0]??>'${receivedMessages[0].messageId}Button'<#else>''</#if>;
+	
+	<#if receivedMessages?? && receivedMessages[0]??>setViewed(${receivedMessages[0].messageId});</#if>
+	
+	$('#replyLink').click(function(event) {
+		event.preventDefault();
+	});
+	
+	function toggleIndicator(buttonId, name, date, message, id, method) {
+		
+		if(activeButton) {
+			$('#' + activeButton).removeClass("selected");
+		}
+		$('#' + buttonId + 'Button').addClass("selected");
+		activeButton = buttonId + 'Button';
+		
+		if(method == 'RECEIVED') {
+			rebuildReceivedMessage(name, date, message, id);
+			setViewed(buttonId);
+		}
+		else {
+			rebuildSentMessage(name, date, message, id);
+		}
+	}
+	
+	function rebuildSentMessage(name, date, message, id) {
+		var html = '<div class="row span9" style="border: solid lightgray 1px; margin-left: 10px; margin-top: 0px; margin-bottom: 0px">'
+					+	'<span style="margin-left: 30px" class="span4"><h4>To: <a href="/user?userid=' + id + '">' + name + '</a></h4></span>'
+					+	'<span class="span4"><h4>' + date + '</h4></span>'
+					+'</div>'
+					+'<div class="row span9" style="border: solid lightgray 1px; margin-left: 10px">'
+					+	'<span><p style="font-size: 20px; margin: 30px">' + message + '</p></span>'
+					+'</div>';
+		$('#messageShowDiv').html(html);
+	}
+	
+	function rebuildReceivedMessage(name, date, message, id) {
+		var html = '<div class="row span9" style="border: solid lightgray 1px; margin-left: 10px; margin-top: 0px; margin-bottom: 0px">'
+			+	'<span style="margin-left: 30px" class="span1"><h4><a href="" id="replyLink" onclick="sendMessage(${user.id}, ' + id + ')"><i class="icon-reply on-left fg-lightBlue"></i></a></h4></span>'
+			+	'<span style="margin-left: 30px" class="span4"><h4>From: <a href="/user?userid=' + id + '">' + name + '</a></h4></span>'
+			+	'<span class="span4"><h4>' + date + '</h4></span>'
+			+'</div>'
+			+'<div class="row span9" style="border: solid lightgray 1px; margin-left: 10px">'
+			+	'<span><p style="font-size: 20px; margin: 30px">' + message + '</p></span>'
+			+'</div>';
+		$('#messageShowDiv').html(html);
+		$('#replyLink').click(function(event) {
+			event.preventDefault();
+		});
+	}
+
+	$('#sentLink').click(function(event) {
+		event.preventDefault();
+		$('#sentList').show();
+		$('#messageList').hide();
+		$('#sentItem').addClass('active');
+		$('#inboxItem').removeClass('active');
+	});
+	
+	$('#inboxLink').click(function(event) {
+
+		event.preventDefault();
+		$('#sentList').hide();
+		$('#messageList').show();
+		$('#sentItem').removeClass('active');
+		$('#inboxItem').addClass('active');
+	});
+
 	$('#quizzesLink').click(function(event) {
 		event.preventDefault();
 		hideDivs();

@@ -22,6 +22,17 @@
 					<td class="padding5"><span class="place-right">${member.quizzes}<i class="icon-clipboard-2 on-right"></i></span></td>
 					<td class="padding5"><span class="place-right">${member.questions}<i title="Questions" class="icon-help-2 on-right"></i></span></td>
 					<td class="padding5"><span class="place-right" title="Join Date">${member.joinDateString}</span></td>
+					<#if user?? && user.id != member.userId>
+					<td class="padding5">
+						<span class="place-right">
+							<a href="" id="messageLink${member_index}" onclick="sendMessage(${user.id}, ${member.userId})">
+								<i class="icon-mail on-left fg-lightBlue"></i>
+							</a>
+						</span>
+					</td>
+					
+					<script>$('#messageLink${member_index}').click(function(event) { event.preventDefault(); })</script>
+					</#if>
 				</tr>
 			</#list>
 		</table>

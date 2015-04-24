@@ -132,10 +132,8 @@ public interface UserDAO {
 	 * Mark a message as viewed
 	 * @param userId the sendee
 	 */
-	@SqlUpdate("UPDATE Message SET Viewed = 1 WHERE SendeeID = :userId")
-	public void markMessageAsRead(@Bind("userId") long userId);
-	
-	/****************************************** Friends Section *******************************************/
+	@SqlUpdate("UPDATE Message SET Viewed = 1 WHERE MessageID = :messageId")
+	public void markMessageAsRead(@Bind("messageId") long messageId);
 	
 	
 }

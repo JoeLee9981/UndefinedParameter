@@ -160,7 +160,7 @@ public class UserManager {
 	 * @return generated key used for validation
 	 */
 	public long sendMessage(long sendeeId, long senderId, String message) {
-		return userDAO.sendMessage(senderId, sendeeId, message);
+		return userDAO.sendMessage(senderId, sendeeId, InputUtils.sanitizeInput(message));
 	}
 	
 	public List<UserMessage> getSentMessages(long userId) {
@@ -169,6 +169,19 @@ public class UserManager {
 	
 	public List<UserMessage> getReceivedMessages(long userId) {
 		return userDAO.getUserMessages(userId);
+	}
+	
+	public int getUnreadMessageCount(long userId) {
+		List<UserMessage> messages = userDAO.getUnreadMessages(userId);
+		if(messages == null)
+			return 0;
+		else
+			return messages.size();
+	}
+	
+	public boolean setMessageViewed(long messageId) {
+		userDAO.markMessageAsRead(messageId);
+		return true;
 	}
 	
 	/*

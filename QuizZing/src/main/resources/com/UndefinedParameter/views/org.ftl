@@ -4,6 +4,7 @@
 		<title>QuizZing</title>
 		<link rel="stylesheet" href="/assets/plugins/metro_ui/css/metro-bootstrap.css">
 		<link rel="stylesheet" type="text/css" href="/assets/css/main.css" />
+		<script src="/assets/scripts/message.js"></script>
 		<script src="/assets/scripts/jquery-2.1.1.min.js"></script>
 		<script src="/assets/scripts/jquery-ui.min.js"></script>
 		<script src="/assets/plugins/metro_ui/min/metro.min.js"></script>
@@ -151,6 +152,17 @@
 											<td class="padding5"><span class="place-right">${member.questions}<i title="Questions" class="icon-help-2 on-right"></i></span></td>
 											<td class="padding5"><span class="place-right">${member.quizzes}<i title="Quizzes" class="icon-clipboard-2 on-right"></i></span></td>
 											<td class="padding5"><span class="place-right">${member.joinDateString}</span></td>
+											<#if user?? && user.id != member.userId>
+											<td class="padding5">
+												<span class="place-right">
+													<a href="" id="messageLink${member_index}" onclick="sendMessage(${user.id}, ${member.userId})">
+														<i class="icon-mail on-left fg-lightBlue"></i>
+													</a>
+												</span>
+											</td>
+											
+											<script>$('#messageLink${member_index}').click(function(event) { event.preventDefault(); })</script>
+											</#if>
 										</tr>
 									</#list>
 								</table>
