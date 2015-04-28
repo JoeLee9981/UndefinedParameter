@@ -18,7 +18,7 @@
 	</head>
 	<body>
 		<#include "../includes/navigation.ftl">
-		<div class="page-content">
+		<div class="page-content" style="margin-bottom: 500px;">
 			<div class="divider1">
 				<div class="metro" id="home-page-subsection">
 					<div class="grid fluid">
@@ -348,7 +348,7 @@
 				</div>
 			</div>
 		</div>
-		<div style="height: 100px"><p><br/><br/><br/><br/><br/><br/><br/><br/><br/></p></div>
+
 	
 
 		<div style="padding-top: 50px" class="row">
