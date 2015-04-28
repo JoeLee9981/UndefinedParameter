@@ -28,7 +28,7 @@
 						<div class="row">
 							<form id="registerForm">
 								<div id="register" class="offset1 span6">
-									<p>Please enter your 6-digit recovery code below:</p>
+									<p>We have sent a 6-digit recovery to your email. Please check your email and enter the code provided below:</p>
 									<p id="recoveryCodeError" class="tertiary-text-secondary errorFormText1 registerError" hidden>Your recovery code does not match our records. Please try again.</p>
 									<div class="row">
 										<div class="input-control text span6">

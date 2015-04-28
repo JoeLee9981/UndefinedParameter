@@ -329,7 +329,8 @@
 										<div class="row span9" style="border: solid lightgray 1px; margin-left: 10px; margin-top: 0px; margin-bottom: 0px">
 											<span style="margin-left: 30px" class="span1"><h4><a href="" id="replyLink" onclick="sendMessage(${user.id}, ${receivedMessages[0].senderId})"><i class="icon-reply on-left fg-lightBlue"></i></a></h4></span>
 											<span class="span4"><h4>From: <a href="/user?userid=${receivedMessages[0].senderId}">${receivedMessages[0].userName}</a></h4></span>
-											<span class="span4"><h4>${receivedMessages[0].timeStampString}</h4></span>
+											<span class="span5"><h4 class="text-right">${receivedMessages[0].timeStampString}</h4></span>
+											<span class="span1"><h4 class="text-right"><a href="" id="deleteLink" onclick="deleteMessage(${receivedMessages[0].messageId}, 'SENDEE')"><i class="icon-remove on-left fg-lightBlue"></i></a></h4></span>
 										</div>
 										<div class="row span9" style="border: solid lightgray 1px; margin-left: 10px;">
 											<span><p style="font-size: 20px; margin: 30px; word-wrap: break-word">${receivedMessages[0].message}</p></span>
@@ -365,6 +366,10 @@
 	$('#replyLink').click(function(event) {
 		event.preventDefault();
 	});
+
+	$('#deleteLink').click(function(event) {
+		event.preventDefault();
+	});
 	
 	function toggleIndicator(buttonId, name, date, message, id, method) {
 		
@@ -375,36 +380,44 @@
 		activeButton = buttonId + 'Button';
 		
 		if(method == 'RECEIVED') {
-			rebuildReceivedMessage(name, date, message, id);
+			rebuildReceivedMessage(buttonId, name, date, message, id);
 			setViewed(buttonId);
 		}
 		else {
-			rebuildSentMessage(name, date, message, id);
+			rebuildSentMessage(buttonId, name, date, message, id);
 		}
 	}
 	
-	function rebuildSentMessage(name, date, message, id) {
+	function rebuildSentMessage(msgId, name, date, message, id) {
 		var html = '<div class="row span9" style="border: solid lightgray 1px; margin-left: 10px; margin-top: 0px; margin-bottom: 0px">'
-					+	'<span style="margin-left: 30px" class="span4"><h4>To: <a href="/user?userid=' + id + '">' + name + '</a></h4></span>'
-					+	'<span class="span4"><h4>' + date + '</h4></span>'
+					+	'<span style="margin-left: 30px" class="span5"><h4>To: <a href="/user?userid=' + id + '">' + name + '</a></h4></span>'
+					+	'<span class="span5"><h4 class="text-right">' + date + '</h4></span>'
+					+	'<span class="span1"><h4 class="text-right"><a href="" id="deleteLink" onclick="deleteMessage(' + msgId + ', \'SENDER\')"><i class="icon-remove on-left fg-lightBlue"></i></a></h4></span>'
 					+'</div>'
 					+'<div class="row span9" style="border: solid lightgray 1px; margin-left: 10px">'
 					+	'<span><p style="font-size: 20px; margin: 30px; word-wrap: break-word">' + message + '</p></span>'
 					+'</div>';
 		$('#messageShowDiv').html(html);
+		$('#deleteLink').click(function(event) {
+			event.preventDefault();
+		});
 	}
 	
-	function rebuildReceivedMessage(name, date, message, id) {
+	function rebuildReceivedMessage(msgId, name, date, message, id) {
 		var html = '<div class="row span9" style="border: solid lightgray 1px; margin-left: 10px; margin-top: 0px; margin-bottom: 0px">'
 			+	'<span style="margin-left: 30px" class="span1"><h4><a href="" id="replyLink" onclick="sendMessage(${user.id}, ' + id + ')"><i class="icon-reply on-left fg-lightBlue"></i></a></h4></span>'
-			+	'<span style="margin-left: 30px" class="span4"><h4>From: <a href="/user?userid=' + id + '">' + name + '</a></h4></span>'
-			+	'<span class="span4"><h4>' + date + '</h4></span>'
+			+	'<span class="span4"><h4>From: <a href="/user?userid=' + id + '">' + name + '</a></h4></span>'
+			+	'<span class="span5"><h4 class="text-right">' + date + '</h4></span>'
+			+	'<span class="span1"><h4 class="text-right"><a href="" id="deleteLink" onclick="deleteMessage(' + msgId + ', \'SENDEE\')"><i class="icon-remove on-left fg-lightBlue"></i></a></h4></span>'
 			+'</div>'
 			+'<div class="row span9" style="border: solid lightgray 1px; margin-left: 10px">'
 			+	'<span><p style="font-size: 20px; margin: 30px; word-wrap: break-word">' + message + '</p></span>'
 			+'</div>';
 		$('#messageShowDiv').html(html);
 		$('#replyLink').click(function(event) {
+			event.preventDefault();
+		});
+		$('#deleteLink').click(function(event) {
 			event.preventDefault();
 		});
 	}

@@ -67,6 +67,22 @@ function setViewed(messageId) {
 	});
 }
 
+function deleteMessage(messageId, type) {
+	
+	$.ajax({
+		type: 'POST',
+		url: '/user/message/delete?messageId=' + messageId + '&type=' + type,
+		success: function(data) {
+			var notify = $.Notify({
+				content: "Message deleted",
+				style: {background: 'red', color: 'white'},
+				timeout: 3000
+			});
+			$('#' + messageId + 'Button').hide();
+		}
+	});
+}
+
 function displayTermsAndConditions() {
 	var content = "<pre style='white-space: pre-wrap; width: 700px'>";
 	content += "<h2>Web Site Tems and Conditions of Use</h2>";

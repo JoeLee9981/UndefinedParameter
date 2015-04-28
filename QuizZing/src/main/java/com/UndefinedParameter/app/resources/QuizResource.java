@@ -345,7 +345,7 @@ public class QuizResource {
 			return Response.status(Status.UNAUTHORIZED).build();
 		}
 		
-		quizManager.saveQuiz(quiz.getQuizId(), quiz.getName(), quiz.getDescription(), quiz.getOpen(), quiz.getTime());
+		quizManager.saveQuiz(quiz.getQuizId(), quiz.getName(), quiz.getDescription(), quiz.isOpen(), quiz.getTime());
 		HashMap<String, String> response = new HashMap<String, String>();
 
 		return Response.ok(response).build();

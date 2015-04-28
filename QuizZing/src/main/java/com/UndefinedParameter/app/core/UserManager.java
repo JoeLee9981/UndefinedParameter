@@ -14,6 +14,7 @@ import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
+import org.apache.commons.lang.StringUtils;
 import org.joda.time.DateTime;
 import org.mindrot.jbcrypt.BCrypt;
 
@@ -92,6 +93,7 @@ public class UserManager {
 			
 			// Update user with recovery code.
 			recoverUser.setActiveCode(recoveryCode);
+			recoverUser.setPassword(null); //this is necessary to not overwrite a hash of the password
 			if(!updateUser(recoverUser))
 				return null;
 		}
@@ -172,24 +174,47 @@ public class UserManager {
 	public boolean updateUser(User user) throws Exception {
 		user = fillNullColumns(user);
 		
-		try {
-			//String hashed = BCrypt.hashpw(user.getPassword(), BCrypt.gensalt());
-			userDAO.update(user.getId(),
-							InputUtils.sanitizeInput(user.getUserName()), 
-							InputUtils.sanitizeInput(user.getFirstName()), 
-							InputUtils.sanitizeInput(user.getLastName()), 
-							InputUtils.sanitizeInput(user.getMiddleName()),
-							InputUtils.sanitizeInput( user.getCountry()), 
-							InputUtils.sanitizeInput(user.getCity()), 
-							InputUtils.sanitizeInput(user.getState()), 
-							InputUtils.sanitizeInput( user.getEmail()), 
-							InputUtils.sanitizeInput(user.getPassword()), 
-							InputUtils.sanitizeInput(user.getSecretQuestion()), 
-							InputUtils.sanitizeInput(user.getSecretAnswer()),
-						    user.getActive(),
-						    InputUtils.sanitizeInput(user.getActiveCode()),
-						    user.getLastAccessed(),
-						    user.getSeeAgain());
+		try { 
+			//we do not update a blank password because it will rehash a hash and break
+			//the user login
+			if(StringUtils.isBlank(user.getPassword())) {
+				userDAO.updateNoPassword(user.getId(),
+						InputUtils.sanitizeInput(user.getUserName()), 
+						InputUtils.sanitizeInput(user.getFirstName()), 
+						InputUtils.sanitizeInput(user.getLastName()), 
+						InputUtils.sanitizeInput(user.getMiddleName()),
+						InputUtils.sanitizeInput(user.getCountry()), 
+						InputUtils.sanitizeInput(user.getCity()), 
+						InputUtils.sanitizeInput(user.getState()), 
+						InputUtils.sanitizeInput(user.getEmail()),
+						InputUtils.sanitizeInput(user.getSecretQuestion()), 
+						InputUtils.sanitizeInput(user.getSecretAnswer()),
+					    user.getActive(),
+					    InputUtils.sanitizeInput(user.getActiveCode()),
+					    user.getLastAccessed(),
+					    user.getSeeAgain());
+			}
+			else {
+				//new password provided, we now update the password
+				String hashed = BCrypt.hashpw(user.getPassword(), BCrypt.gensalt());
+				userDAO.update(user.getId(),
+								InputUtils.sanitizeInput(user.getUserName()), 
+								InputUtils.sanitizeInput(user.getFirstName()), 
+								InputUtils.sanitizeInput(user.getLastName()), 
+								InputUtils.sanitizeInput(user.getMiddleName()),
+								InputUtils.sanitizeInput(user.getCountry()), 
+								InputUtils.sanitizeInput(user.getCity()), 
+								InputUtils.sanitizeInput(user.getState()), 
+								InputUtils.sanitizeInput(user.getEmail()), 
+								InputUtils.sanitizeInput(hashed), 
+								InputUtils.sanitizeInput(user.getSecretQuestion()), 
+								InputUtils.sanitizeInput(user.getSecretAnswer()),
+							    user.getActive(),
+							    InputUtils.sanitizeInput(user.getActiveCode()),
+							    user.getLastAccessed(),
+							    user.getSeeAgain());
+			}
+			
 		}
 		catch(Exception e) {
 			return false;
@@ -249,6 +274,16 @@ public class UserManager {
 		return true;
 	}
 	
+	public boolean senderDeleteMessage(long messageId) {
+		userDAO.senderDeleteMessage(messageId);
+		return true;
+	}
+	
+	public boolean sendeeDeleteMessage(long messageId) {
+		userDAO.sendeeDeleteMessage(messageId);
+		return true;
+	}
+	
 	/*
 	 * Fill empty User parameters before updating its row in the database.
 	 */
@@ -293,10 +328,6 @@ public class UserManager {
 		if(user.getEmail() == null || user.getEmail() == "")
 		{
 			userQuery.setEmail(currentUser.getEmail());
-		}
-		if(user.getPassword() == null || user.getPassword() == "")
-		{
-			userQuery.setPassword(currentUser.getPassword());
 		}
 		if(user.getActiveCode() == null || user.getActiveCode() == "")
 		{

@@ -287,10 +287,6 @@ public class Quiz {
 	public boolean isOpen() {
 		return open;
 	}
-	
-	public boolean getOpen() {
-		return open;
-	}
 
 	public void setOpen(boolean open) {
 		this.open = open;

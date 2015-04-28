@@ -67,6 +67,49 @@ public interface UserDAO {
 					   @Bind("lastaccessed") DateTime date,
 					   @Bind("seeagain") int again);
 	
+	/**
+	 * Updates a user without changing the password
+	 * @param userid
+	 * @param username
+	 * @param firstName
+	 * @param lastName
+	 * @param middleName
+	 * @param country
+	 * @param city
+	 * @param state
+	 * @param email
+	 * @param password
+	 * @param squestion
+	 * @param sanswer
+	 * @param active
+	 * @param code
+	 * @param date
+	 * @param again
+	 * @return
+	 */
+	@SqlUpdate("UPDATE User SET "
+			+ "UserName=:username, FirstName=:firstName, LastName=:lastName, "
+			+ "MiddleName=:middleName, Country=:country, City=:city, State=:state, "
+			+ "Email=:email, SQuestion=:squestion, SAnswer=:sanswer, "
+			+ "Active=:active, ActivationCode=:activecode, LastAccessed=:lastaccessed, SeeAgain=:seeagain "
+			+ "WHERE UserID = :userid")
+	@GetGeneratedKeys
+	public long updateNoPassword(@Bind("userid") long userid,
+					   @Bind("username") String username, 
+					   @Bind("firstName") String firstName,
+					   @Bind("lastName") String lastName,
+					   @Bind("middleName") String middleName,
+					   @Bind("country") String country,
+					   @Bind("city") String city,
+					   @Bind("state") String state,
+					   @Bind("email") String email,
+					   @Bind("squestion") String squestion,
+					   @Bind("sanswer") String sanswer,
+					   @Bind("active") int active,
+					   @Bind("activecode") String code,
+					   @Bind("lastaccessed") DateTime date,
+					   @Bind("seeagain") int again);
+	
 	@SqlQuery("SELECT * FROM User u, SubGroup sg, UserGroups ug WHERE "
 			+ "sg.GroupID = ug.GroupID "
 			+ "AND u.UserID = ug.UserID "
@@ -95,7 +138,7 @@ public interface UserDAO {
 	 * @param userId the user
 	 * @return All of the user's messages
 	 */
-	@SqlQuery("SELECT msg.*, u.FirstName, u.LastName FROM Message msg, User u WHERE msg.SenderID = u.UserID AND msg.SendeeID = :userId ORDER BY TimeStamp DESC")
+	@SqlQuery("SELECT msg.*, u.FirstName, u.LastName FROM Message msg, User u WHERE msg.SenderID = u.UserID AND SendeeDeleted = 0 AND msg.SendeeID = :userId ORDER BY TimeStamp DESC")
 	@RegisterMapper(MessageMapper.class)
 	public List<UserMessage> getUserMessages(@Bind("userId") long userId);
 	
@@ -104,7 +147,7 @@ public interface UserDAO {
 	 * @param userId the user
 	 * @return all unread messages
 	 */
-	@SqlQuery("SELECT msg.*, u.FirstName, u.LastName FROM Message msg, User u WHERE msg.SenderID = u.UserID AND msg.Viewed = 0 AND msg.SendeeID = :userId ORDER BY TimeStamp DESC")
+	@SqlQuery("SELECT msg.*, u.FirstName, u.LastName FROM Message msg, User u WHERE msg.SenderID = u.UserID AND msg.Viewed = 0 AND SendeeDeleted = 0 AND msg.SendeeID = :userId ORDER BY TimeStamp DESC")
 	@RegisterMapper(MessageMapper.class)
 	public List<UserMessage> getUnreadMessages(@Bind("userId") long userId);
 	
@@ -124,7 +167,7 @@ public interface UserDAO {
 	 * @param userId of the user than sent messages
 	 * @return the messages
 	 */
-	@SqlQuery("SELECT msg.*, u.FirstName, u.LastName FROM Message msg, User u WHERE msg.SendeeID = u.UserID AND msg.Viewed = 0 AND msg.SenderID = :userId ORDER BY TimeStamp DESC")
+	@SqlQuery("SELECT msg.*, u.FirstName, u.LastName FROM Message msg, User u WHERE msg.SendeeID = u.UserID AND SenderDeleted = 0 AND msg.SenderID = :userId ORDER BY TimeStamp DESC")
 	@RegisterMapper(MessageMapper.class)
 	public List<UserMessage> getSentMessages(@Bind("userId") long userId);
 	
@@ -135,5 +178,17 @@ public interface UserDAO {
 	@SqlUpdate("UPDATE Message SET Viewed = 1 WHERE MessageID = :messageId")
 	public void markMessageAsRead(@Bind("messageId") long messageId);
 	
+	/**
+	 * Mark the message as sender deleted (from outbox)
+	 * @param messageId
+	 */
+	@SqlUpdate("Update Message SET SenderDeleted = 1 WHERE MessageID = :messageId")
+	public void senderDeleteMessage(@Bind("messageId") long messageId);
 	
+	/**
+	 * Mark the message as sendee deleted (from inbox)
+	 * @param messageId
+	 */
+	@SqlUpdate("Update Message SET SendeeDeleted = 1 WHERE MessageID = :messageId")
+	public void sendeeDeleteMessage(@Bind("messageId") long messageId);
 }

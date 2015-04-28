@@ -122,10 +122,6 @@ public class UserProfileResource {
 			return Response.status(Status.UNAUTHORIZED).build();
 		}
 		
-		if(StringUtils.isBlank(updateduser.getPassword())) {
-			updateduser.setPassword(user.getPassword());
-		}
-		
 		HashMap<String, String> response = new HashMap<String, String>();
 
 		try {
@@ -318,5 +314,22 @@ public class UserProfileResource {
 		}
 		response.put("results", userManager.getUnreadMessageCount(user.getId()));
 		return Response.ok(response).build();
+	}
+	
+	@POST
+	@Path("/message/delete")
+	public Response deleteMessage(@Auth(required = false) User user, @QueryParam("messageId") long messageId, @QueryParam("type") String type) {
+		if(user == null) {
+			return Response.status(Status.BAD_REQUEST).build();
+		}
+		if("SENDER".equals(type)) {
+			userManager.senderDeleteMessage(messageId);
+			return Response.ok().build();
+		}
+		else if("SENDEE".equals(type)) {
+			userManager.sendeeDeleteMessage(messageId);
+			return Response.ok().build();
+		}
+		return Response.status(Status.BAD_REQUEST).build();
 	}
 }
