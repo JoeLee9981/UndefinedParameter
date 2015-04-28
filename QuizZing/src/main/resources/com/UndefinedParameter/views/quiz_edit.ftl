@@ -172,7 +172,7 @@
 	                                          		</span>
 	                   								<span class="place-right">
 	                   									<#if question.creatorId == user.id>
-	                   										<button id="editQuestion${question.questionId}" class="small primary">Edit</button>
+	                   										<button id="editQuestion${question.questionId}" onclick="window.location='/question/edit?groupId=${group.id}&questionId=${question.questionId}'" class="small primary">Edit</button>
 	                   									</#if>
 	                   									<button id="addButton${question.questionId}" onclick="addQuestion(${question.questionId});" class="small success">Add</button>
 	                   								</span>

@@ -125,16 +125,23 @@
 							<a href="#" class="heading bg-lightBlue fg-white">Step 6: Edit Your Quiz</a>
 							<div class="content">
 								<h2>Step 6: Edit Your Quiz</h2>
-								
+								<p>On the Quiz Edit Page, you can easily add and remove questions from your quiz.</p>
+								<p>You are also able to create new questions as well as edit your quiz settings.</p>
+								<div class="row">
+									<img src="/assets/images/quiz_edit.png" title="quiz editor">
+								</div>
 							</div>
 						</div>
 						
 						<!-- Quiz Taking Accordion -->
 						<div id="quizTakingAccordion" class="accordion-frame">
-							<a href="#" class="heading bg-lightBlue fg-white">Step 7: Edit Your Quiz</a>
+							<a href="#" class="heading bg-lightBlue fg-white">Step 7: Take Your Quiz</a>
 							<div class="content">
 								<h2>Step 7: Take Your Quiz</h2>
-								
+								<p>Now that you have created your quiz, you can take it and test your knowledge.</p>
+								<div class="row">
+									<img src="/assets/images/take_quiz.png" title="take quiz">
+								</div>
 							</div>
 						</div>
 				</div>
