@@ -314,6 +314,29 @@ public class QuestionResource {
 		return Response.status(Status.BAD_REQUEST).build();
 	}
 	
+	
+	/**
+	 * Go to the question edit page
+	 * @param user
+	 * @param questionId
+	 * @param groupId
+	 * @return
+	 */
+	@GET
+	@Path("/editdesignated")
+	public Response getQuestionEdit(@Auth(required = false) User user, @QueryParam("questionId") long questionId, @QueryParam("groupId") long groupId, @QueryParam("quizId") long quizId) {
+		if(user == null || questionId < 1) {
+			//user may not be null for editing
+			return Response.status(Status.BAD_REQUEST).build();
+		}
+		Question question = quizManager.findQuestionById(questionId);
+		//TODO: Moderators also have access here
+		if(question != null && (user.getId() == question.getCreatorId() || user.isAdmin())) {
+			return Response.ok(new QuestionEditView(question, groupId, quizManager.getAllCategories(), quizId)).build();
+		}
+		return Response.status(Status.BAD_REQUEST).build();
+	}
+	
 	/**
 	 * PUT to update a quiz and save changes into the db
 	 * @param user

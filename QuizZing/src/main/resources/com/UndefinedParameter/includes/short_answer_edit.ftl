@@ -186,6 +186,9 @@
 					"Content-Type": "application/json"
 				},
 				success: function(data) {
+					<#if goBackToQuizEdit>
+						window.location = "/quiz/edit?groupId=${groupId}&quizId=${quizId}";
+					</#if>
 					$('#group-content').html(data);
 				},
 				error: function(error) {
