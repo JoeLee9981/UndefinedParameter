@@ -24,7 +24,8 @@
 			}
 			
 			circle {
-				fill: #142B43;
+				fill: #1ba1e2;
+				shape-rendering: crispEdges;
 			}
 
 			.axis path,
@@ -45,7 +46,36 @@
 				fill: grey;
 			}
 			
-			<style>
+			
+			.d3-tip {
+			  line-height: 1;
+			  font-weight: bold;
+			  padding: 12px;
+			  background: rgba(0, 0, 0, 0.8);
+			  color: #fff;
+			  border-radius: 2px;
+			}
+			
+			/* Creates a small triangle extender for the tooltip */
+			.d3-tip:after {
+			  box-sizing: border-box;
+			  display: inline;
+			  font-size: 10px;
+			  width: 100%;
+			  line-height: 1;
+			  color: rgba(0, 0, 0, 0.8);
+			  content: "\25BC";
+			  position: absolute;
+			  text-align: center;
+			}
+			
+			/* Style northward tooltips differently */
+			.d3-tip.n:after {
+			  margin: -1px 0 0 0;
+			  top: 100%;
+			  left: 0;
+			}
+			
 			.unratable ul
 			{
 				cursor: default;
@@ -835,7 +865,7 @@
 					{
 							document.getElementById('scoreText').innerHTML = "Score: " + scored + "%";
 							
-							drawGraphs(data["quizScores"], data["userScores"]);
+							drawGraphs(data["quizScores"], data["userScores"], scored);
 					},
 					error: function(data) {
 						document.getElementById('scoreText').innerHTML = "Score: " + scored + "% (Warning: This score was not saved.)";
@@ -852,6 +882,7 @@
 				}
 			<#else>
 				document.getElementById('scoreText').innerHTML = "Score: " + scored + "%";
+				document.getElementById('changeGraphs').style.visibility = 'hidden';
 			</#if>
 
 			setAnswers();
@@ -862,27 +893,29 @@
 		var isQuizScoreGraph = true;
 		var quizScores;
 		var userScores;
+		var currentScore;
 		
-		function drawGraphs(quizScores, userScores) {
+		function drawGraphs(quizScores, userScores, currentScore) {
 			this.quizScores = quizScores;
 			this.userScores = userScores;
+			this.currentScore = currentScore;
 			
 			changeGraphs();
 		}
 		
 		function changeGraphs() {
 			if(!isQuizScoreGraph) {
-				drawQuizScoreLinePlot(quizScores);
+				drawQuizScoreLinePlot(quizScores, currentScore);
 				document.getElementById("changeGraphs").innerHTML="View Personal Scores";
 				isQuizScoreGraph = true;
 			} else {
-				drawUserScorePlot(userScores);
+				drawUserScorePlot(userScores, currentScore);
 				document.getElementById("changeGraphs").innerHTML="View All Scores";
 				isQuizScoreGraph = false;
 			}
 		}
 		
-		function drawUserScorePlot(dataset) {
+		function drawUserScorePlot(dataset, currentScore) {
 			$("#quizGraphs").empty();
 		
 			// Set graph canvas.
@@ -908,6 +941,7 @@
 			// Set the ranges.
 			var x = d3.time.scale().range([0, width]);
 			var y = d3.scale.linear().range([height, 0]);
+			var maxX = d3.max(data, function(d, i) { return i; });
 
 			// Define the axes.
 			var xAxis = d3.svg.axis().scale(x)
@@ -959,6 +993,14 @@
 					.attr("class", "line")
 					.attr("d", valueline(startData));
 					
+				svg.selectAll("dot")
+					.data(currentScore)
+					.enter().append("circle")
+						.style("fill", "#f0a30a")   
+						.attr("r", function(d) { return 3; })
+						.attr("cx", function(d) { return x(maxX); })
+						.attr("cy", function(d) { return y(currentScore); });
+					
 				// Add X axis label.
 				svg.append("text")
 				    .attr("class", "x label")
@@ -979,7 +1021,7 @@
 				path.transition().duration(1000).attr("d", valueline(data));	
 		}
 		
-		function drawQuizScoreLinePlot(dataset) {
+		function drawQuizScoreLinePlot(dataset, currentScore) {
 			$("#quizGraphs").empty();
 			
 			// Set graph canvas.
@@ -987,21 +1029,10 @@
 				width = 600 - margin.left - margin.right,
 				height = 300 - margin.top - margin.bottom;
 
-			// Parse the date / time
-			var parseDate = d3.time.format("%d-%b-%y").parse;
-
 			// Set dataset.
 			var scores = aggregateScores(dataset);
 			var data = dataset;
 			var i = 0;
-			
-			// Set start map.
-			var startData = data.map( function( d ) {
-                    return {
-                      score : 0,
-                      value : 0
-                    };
-                  } );
 			
 			// Set the ranges.
 			var x = d3.scale.linear().range([0, width]);
@@ -1014,15 +1045,10 @@
 			var yAxis = d3.svg.axis().scale(y)
 				.orient("left");
 				
-				// Define the line.
+			// Define the line.
 			var valueline = d3.svg.line()
 				.x(function(d, i) { return x(d.score); })
 				.y(function(d) { return y(scores[d.score]); });
-				
-			var area = d3.svg.area()
-			    .x(function(d) { return x(d.score); })
-			    .y0(height)
-			    .y1(function(d) { return y(scores[d.score]); });
 			
 			// Add the svg canvas.
 			var svg = d3.select("#quizGraphs")
@@ -1034,7 +1060,7 @@
 						  "translate(" + margin.left + "," + margin.top + ")");
 
 				// Scale the range of the data.
-				x.domain([0, 100]);
+				x.domain([-10, 100]);
 				y.domain([0, d3.max(data, function(d) { return scores[d.score]; })]);
 				
 				// Add title.
@@ -1045,12 +1071,6 @@
 			        .style("font-size", "16px") 
 			        .style("text-decoration", "underline")  
 			        .text("Other Users' Scores");
-					
-				// Add area fill.
-				/*svg.append("path")
-					.datum(data)
-					.attr("class", "area")
-					.attr("d", area);*/
 
 				// Add the X axis.
 				svg.append("g")
@@ -1069,17 +1089,25 @@
 					.y(function(d) { return y(scores[d.score]); });
 					
 				// Add the scatterplot.
-				/*svg.selectAll("dot")
+				svg.selectAll("dot")
 					.data(data)
 				  .enter().append("circle")
-					.attr("r", 2.5)
+					.attr("r", function(d) { return scores[d.score]*3; })
 					.attr("cx", function(d, i) { return x(d.score); })
-					.attr("cy", function(d) { return y(scores[d.score]); });*/
+					.attr("cy", function(d) { return y(scores[d.score]); });
 					
-				// Add the valueline path.
-				var path = svg.append("path")
-					.attr("class", "line")
-					.attr("d", valueline(startData));
+				svg.selectAll("dot")
+					.data(currentScore)
+					.enter().append("circle")
+						.style("fill", "#f0a30a")   
+						.attr("r", function(d) { return 3; })
+						.attr("cx", function(d) { return x(currentScore); })
+						.attr("cy", function(d) { 
+							if(scores[parseFloat(currentScore)] > -1)
+								return y(scores[parseFloat(currentScore)]);
+							else
+								return y(1);
+						});
 					
 				// Add X axis label.
 				svg.append("text")
@@ -1097,8 +1125,6 @@
 				    .attr("dy", "-3.25em")
 				    .attr("transform", "rotate(-90)")
 				    .text("# of Students");
-				    
-				path.transition().duration(1000).attr("d", valueline(data));
 		}
 		
 		function aggregateScores(dataset) {

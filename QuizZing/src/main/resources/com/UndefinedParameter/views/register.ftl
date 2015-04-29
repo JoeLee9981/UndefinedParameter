@@ -241,7 +241,7 @@
 					}
 				},
 				error: function(data) {
-					alert('An unexpected error occured: Try again later.  Developers: TODO');
+					console.Log("Error in registration AJAX call.");
 				}
 			});	
 		}
