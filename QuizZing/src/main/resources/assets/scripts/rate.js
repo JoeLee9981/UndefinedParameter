@@ -120,10 +120,10 @@ function loginDialog() {
         shadow: true,
         overlay: true,
         flat: true,
-        icon: '<span class="icon-rocket"></span>',
+        icon: '<span class="icon-cog"></span>',
         title: 'Login',
         width: 500,
-        content: '<h5>You must log in to participate in ratings</h5><button class=\"primary\" onclick=\"location.href=\'/login\'\">Login</button><button class=\"success\" onclick=\"location.href=\'/register\'\">Register</button>',
+        content: '<div class="row text-center"><h3><strong>You must log in to participate in ratings</strong></h3></div><br/><div class="row" style="text-align: center"><button class="primary large" style="width: 100px; margin: 5px" onclick=\"location.href=\'/login\'\">Login</button><button class="success large" style="width: 100px; margin: 5px" onclick=\"location.href=\'/register\'\">Register</button></div>',
         onShow: function(_dialog){
             console.log(_dialog);
         }

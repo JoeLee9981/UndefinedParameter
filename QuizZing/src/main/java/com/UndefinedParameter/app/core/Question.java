@@ -154,6 +154,20 @@ public class Question {
 		return allAnswers;
 	}
 	
+	/**
+	 * Returns all answers formatted for display
+	 * @return
+	 */
+	public List<String> getAnswersFormatted() {
+		if(allAnswers == null || allAnswers.length == 0) {
+			setAnswers();
+		}
+		ArrayList<String> formattedQuestions = new ArrayList<String>();
+		for(String s: allAnswers)
+			formattedQuestions.add(s.replace("&gt;", "&"));
+		return formattedQuestions;
+	}
+	
 	/**** GETTERS AND SETTERS ****/
 	
 	public long getQuestionId() {
@@ -199,11 +213,11 @@ public class Question {
 		int indexOfLinebreak = questionText.indexOf("<br/>");
 		if (indexOfLinebreak >= 0)
 		{
-			return questionText.substring(0, indexOfLinebreak);
+			return questionText.substring(0, indexOfLinebreak).replace("&amp;", "&");
 		}
 		else
 		{
-			return questionText;
+			return questionText.replace("&amp;", "&");
 		}
 	}
 	

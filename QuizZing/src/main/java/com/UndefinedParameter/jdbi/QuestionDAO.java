@@ -121,6 +121,15 @@ public interface QuestionDAO {
 	@SqlQuery("SELECT CategoryType FROM Category ORDER BY CategoryType")
 	public List<String> getAllCategories();
 	
+	@SqlQuery("SELECT cat.CategoryType FROM (SELECT CategoryType, COUNT(*) AS count "
+			+  "FROM innodb.Category c, innodb.Question que, innodb.QuestionCategory qc, Quiz q, QuizQuestion qq "
+			+  "WHERE c.CategoryID = qc.CategoryID "
+			+  "AND que.QuestionID = qc.QuestionID "
+			+  "AND que.QuestionID = qq.QuestionID "
+			+  "AND qq.QuizID = q.QuizID "
+			+  "GROUP BY CategoryType ORDER BY count DESC) AS cat")
+	public List<String> getTopCategories();
+	
 	/********************************** Question Flag Section **********************************************************/
 	
 	@SqlUpdate("UPDATE Question SET Flagged = 1, FlaggedReason = :reason WHERE QuestionID = :questionId")

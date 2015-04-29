@@ -56,7 +56,6 @@
 				cursor: default;
 			}
 		</style>
-		</style>
 	</head>
 
 	<body class="metro">
@@ -78,7 +77,7 @@
 								<button id="editButton" onclick="location.href='/quiz/edit?groupId=${groupId}&quizId=${quiz.quizId}'" class="place-right success large">Edit Quiz</button>
 							</#if>
 						</h2>
-						<h2>${quiz.description?html}</h2>
+						<h2>${quiz.description}</h2>
 					</div>
 				</div>
 				<div id="start-quiz-div">
@@ -797,11 +796,11 @@
 		        shadow: true,
 		        overlay: true,
 		        flat: true,
-		        icon: '<span class="icon-power"></span>',
+		        icon: '<span class="icon-comments"></span>',
 		        title: 'Answer Explanation',
 		        width: 500,
 		        padding: 10,
-		        content: "<div class='span8'>" + content + "</div>"
+		        content: '<div class="span8" style="margin: 10px"><p style="font-size: 17px">' + content + '</p></div>'
 		    });
 		}
 		

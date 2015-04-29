@@ -35,23 +35,23 @@
 			<div class="span8">
 				<label id="fb-answer-options"><h5>Answer Options <a href="#" data-hint="Answer Options|These are the possible answers to choose from, use the radio to signify the correct answer" data-hint-position="right" data-hint-mode="2"><i class="icon-help fg-blue"></i></a></h5>
 					<div class="input-control text size5">
-					    <input type="text" id="fb-qText1" <#if question.answers[0]??>value="${question.answers[0]}"</#if>/>
+					    <input type="text" id="fb-qText1" <#if question.answersFormatted[0]??>value="${question.answersFormatted[0]}"</#if>/>
 					</div>
 	
 					<div class="input-control text size5">
-					    <input type="text" id="fb-qText2" <#if question.answers[1]??>value="${question.answers[1]}"</#if>/>
+					    <input type="text" id="fb-qText2" <#if question.answersFormatted[1]??>value="${question.answersFormatted[1]}"</#if>/>
 					</div>
 									
 					<div class="input-control text size5">
-					    <input type="text" id="fb-qText3" <#if question.answers[2]??>value="${question.answers[2]}"</#if>/>
+					    <input type="text" id="fb-qText3" <#if question.answersFormatted[2]??>value="${question.answersFormatted[2]}"</#if>/>
 					</div>
 										
 					<div class="input-control text size5">
-					    <input type="text" id="fb-qText4" <#if question.answers[3]??>value="${question.answers[3]}"</#if>/>
+					    <input type="text" id="fb-qText4" <#if question.answersFormatted[3]??>value="${question.answersFormatted[3]}"</#if>/>
 					</div>
 					
 					<div class="input-control text size5">
-					    <input type="text" id="fb-qText5" <#if question.answers[4]??>value="${question.answers[4]}"</#if>/>
+					    <input type="text" id="fb-qText5" <#if question.answersFormatted[4]??>value="${question.answersFormatted[4]}"</#if>/>
 					</div>
 					
 					<!--<label><p>Reference <a href="#" data-hint="Reference|Add the source of the information used to determine the correct answer" data-hint-position="right" data-hint-mode="2"><i class="icon-help fg-blue"></i></a></p>

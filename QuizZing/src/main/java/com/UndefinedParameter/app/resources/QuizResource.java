@@ -510,7 +510,7 @@ public class QuizResource {
 	@GET
 	@Path("/top_categories")
 	public Response getTopCategoryView() {
-		List<String> categories = quizManager.getAllCategories();
+		List<String> categories = quizManager.getTopCategories();
 		return Response.ok(new CategoriesView("../includes/top_categories.ftl", categories)).build();
 	}
 	

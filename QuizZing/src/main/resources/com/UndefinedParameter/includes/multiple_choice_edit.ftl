@@ -33,47 +33,47 @@
 			<div class="span8">
 				<label id="mc-answer-options"><h5>Answer Options <a href="#" data-hint="Answer Options|These are the possible answers to choose from, use the radio to signify the correct answer" data-hint-position="right" data-hint-mode="2"><i class="icon-help fg-blue"></i></a></h5>
 					<div class="input-control text size5">
-					    <input type="text" id="qText1" value="<#if question.answers[0]??>${question.answers[0]}</#if>"/>
+					    <input type="text" id="qText1" value="<#if question.answersFormatted[0]??>${question.answersFormatted[0]}</#if>"/>
 					</div>
 					<div class="input-control radio">
 					    <label>
-					        <input name="question-options" type="radio" id="qCheck1" <#if question.answers[0]?? && question.answers[0] == question.correctAnswer>checked</#if>/>
+					        <input name="question-options" type="radio" id="qCheck1" <#if question.answersFormatted[0]?? && question.answersFormatted[0] == question.correctAnswer>checked</#if>/>
 					        <span class="check"></span>
 					    </label>
 					</div>	
 					<div class="input-control text size5">
-					    <input type="text" id="qText2" value="<#if question.answers[1]??>${question.answers[1]}</#if>"/>
+					    <input type="text" id="qText2" value="<#if question.answersFormatted[1]??>${question.answersFormatted[1]}</#if>"/>
 					</div>
 					<div class="input-control radio">
 					    <label>
-					        <input name="question-options" type="radio" id="qCheck2" <#if question.answers[1]?? && question.answers[1] == question.correctAnswer>checked</#if>/>
+					        <input name="question-options" type="radio" id="qCheck2" <#if question.answersFormatted[1]?? && question.answersFormatted[1] == question.correctAnswer>checked</#if>/>
 					        <span class="check"></span>
 					    </label>
 					</div>							
 					<div class="input-control text size5">
-					    <input type="text" id="qText3" value="<#if question.answers[2]??>${question.answers[2]}</#if>"/>
+					    <input type="text" id="qText3" value="<#if question.answersFormatted[2]??>${question.answersFormatted[2]}</#if>"/>
 					</div>
 					<div class="input-control radio">
 					    <label>
-					        <input name="question-options" type="radio" id="qCheck3" <#if question.answers[2]?? && question.answers[2] == question.correctAnswer>checked</#if>/>
+					        <input name="question-options" type="radio" id="qCheck3" <#if question.answersFormatted[2]?? && question.answersFormatted[2] == question.correctAnswer>checked</#if>/>
 					        <span class="check"></span>
 					    </label>
 					</div>								
 					<div class="input-control text size5">
-					    <input type="text" id="qText4" value="<#if question.answers[3]??>${question.answers[3]}</#if>"/>
+					    <input type="text" id="qText4" value="<#if question.answersFormatted[3]??>${question.answersFormatted[3]}</#if>"/>
 					</div>
 					<div class="input-control radio">
 					    <label>
-					        <input name="question-options" type="radio" id="qCheck4" <#if question.answers[3]?? && question.answers[3] == question.correctAnswer>checked</#if>/>
+					        <input name="question-options" type="radio" id="qCheck4" <#if question.answersFormatted[3]?? && question.answersFormatted[3] == question.correctAnswer>checked</#if>/>
 					        <span class="check"></span>
 					    </label>
 					</div>	
 					<div class="input-control text size5">
-					    <input type="text" id="qText5" value="<#if question.answers[4]??>${question.answers[4]}</#if>"/>
+					    <input type="text" id="qText5" value="<#if question.answersFormatted[4]??>${question.answersFormatted[4]}</#if>"/>
 					</div>
 					<div class="input-control radio">
 					    <label>
-					        <input name="question-options" type="radio" id="qCheck5" <#if question.answers[4]?? && question.answers[4] == question.correctAnswer>checked</#if>/>
+					        <input name="question-options" type="radio" id="qCheck5" <#if question.answersFormatted[4]?? && question.answersFormatted[4] == question.correctAnswer>checked</#if>/>
 					        <span class="check"></span>
 					    </label>
 					</div>

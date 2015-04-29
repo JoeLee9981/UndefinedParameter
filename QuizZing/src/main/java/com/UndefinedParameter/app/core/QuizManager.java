@@ -693,6 +693,14 @@ public class QuizManager {
 		return questionDAO.getAllCategories();
 	}
 	
+	/**
+	 * Gets all the top categories for a question
+	 * @return
+	 */
+	public List<String> getTopCategories() {
+		return questionDAO.getTopCategories();
+	}
+	
 	/************************** Question Ratings and Difficulties *************************************/
 	/*
 	 * Find a user's entered quality rating for a quiz
