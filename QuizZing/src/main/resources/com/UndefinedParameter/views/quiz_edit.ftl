@@ -593,7 +593,8 @@
 				},
 				error: function()
 				{
-					
+					editButton.attr("disabled", false);
+					editButton.addClass("primary");
 				}
 			});
 		}
