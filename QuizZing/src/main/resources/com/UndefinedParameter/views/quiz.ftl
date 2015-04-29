@@ -900,8 +900,7 @@
 				document.getElementById('changeGraphs').style.visibility = 'hidden';
 			</#if>
 
-			q.index = -1
-			nextQuestion();
+			setAnswers();
 		}
 		
 		/*********************** GRAPHING UTILITIES ****************************/
