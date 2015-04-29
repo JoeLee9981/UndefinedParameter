@@ -332,7 +332,7 @@ public class QuestionResource {
 		Question question = quizManager.findQuestionById(questionId);
 		//TODO: Moderators also have access here
 		if(question != null && (user.getId() == question.getCreatorId() || user.isAdmin())) {
-			return Response.ok(new QuestionEditView(question, groupId, quizManager.getAllCategories(), quizId)).build();
+			return Response.ok(new QuestionEditView(user, question, groupId, quizManager.getAllCategories(), quizId)).build();
 		}
 		return Response.status(Status.BAD_REQUEST).build();
 	}
@@ -354,7 +354,7 @@ public class QuestionResource {
 		}
 		Question existingQuestion = quizManager.findQuestionById(question.getQuestionId());
 		
-		if(existingQuestion != null && (user.getId() == question.getCreatorId() || user.isAdmin() || userGroupManager.findIfUserMod(user.getId(), groupId))) {
+		if(existingQuestion != null && (user.getId() == existingQuestion.getCreatorId() || user.isAdmin() || userGroupManager.findIfUserMod(user.getId(), groupId))) {
 			if(quizManager.updateQuestion(question))
 				return Response.ok(new GroupQuestionView(user, quizManager.findQuestionsByGroup(groupId), groupId, "Question has been updated.", true)).build();
 		}

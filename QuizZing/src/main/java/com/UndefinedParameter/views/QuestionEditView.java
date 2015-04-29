@@ -5,6 +5,7 @@ import io.dropwizard.views.View;
 import java.util.List;
 
 import com.UndefinedParameter.app.core.Question;
+import com.UndefinedParameter.app.core.User;
 
 public class QuestionEditView extends View {
 
@@ -13,6 +14,7 @@ public class QuestionEditView extends View {
 	private long groupId;
 	private long quizId;
 	private Boolean goBackToQuizEdit = false;
+	private User user;
 	
 	public QuestionEditView(Question question, long groupId, List<String> allCategories) {
 		super("question_edit.ftl");
@@ -21,13 +23,14 @@ public class QuestionEditView extends View {
 		this.allCategories = allCategories;
 	}
 	
-	public QuestionEditView(Question question, long groupId, List<String> allCategories, long quizId) {
+	public QuestionEditView(User user, Question question, long groupId, List<String> allCategories, long quizId) {
 		super("question_edit_full.ftl");
 		this.groupId = groupId;
 		this.question = question;
 		this.allCategories = allCategories;
 		this.quizId = quizId;
 		this.goBackToQuizEdit = true;
+		this.user = user;
 	}
 	
 	public long getQuizId()
@@ -50,5 +53,10 @@ public class QuestionEditView extends View {
 
 	public List<String> getAllCategories() {
 		return this.allCategories;
+	}
+	
+	public User getUser()
+	{
+		return this.user;
 	}
 }
