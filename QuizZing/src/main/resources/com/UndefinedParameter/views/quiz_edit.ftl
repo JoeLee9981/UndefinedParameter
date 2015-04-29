@@ -46,7 +46,7 @@
 							</div>
 						</div>		
 					</div>
-					<div id="changeQuizContent" class="row noMargin" style="display:none;">
+					<div id="changeQuizContent"f class="row noMargin" style="display:none;">
 						<br/>
 						<br/>
 						<br/>
@@ -148,14 +148,16 @@
 				</div>
 				<div class="row">
 					<div class="span5">
-						<div class="row noMargin">
-							<div class="input-control text">
-							    <input id="findQuestionSearch" type="text" placeholder="Find existing questions..."/>
-							    <button class="btn-search todo"></button>
-							</div>
-						</div>						
-						<div class="row noMargin quizQuestionList">
-							<div class="quizQuestionListContent">
+						<div hidden>
+							<div class="row noMargin">
+								<div class="input-control text">
+								    <input id="findQuestionSearch" type="text" placeholder="Find existing questions..."/>
+								    <button class="btn-search todo"></button>
+								</div>
+							</div>	
+						</div>					
+						<div class="row noMargin quizQuestionList" style="height:543px !important;">
+							<div class="quizQuestionListContent" >
 								<div id="findQuestionList" class="listview-outlook" data-role="listview">
 									<#list unaddedGroupQuestions as question>
 	                                    <a class="list" href="#" id="quizQuestion${question.questionId}" onclick="return false;">
