@@ -741,7 +741,7 @@
 						}
 						else
 						{
-
+							resetCreateButton(type);
 						}
 					}
 				});
@@ -812,6 +812,7 @@
 							$('#trueCheck').prop('checked', false);
 						}
 						else {
+							resetCreateButton(type);
 						}
 					}
 				});
@@ -858,7 +859,7 @@
 							$('#answerTextSHORT_ANSWER').val('');
 						}
 						else {
-
+							resetCreateButton(type);
 						}
 					}
 				});
@@ -937,7 +938,7 @@
 							// Clear the FILL IN THE BLANK form
 						}
 						else {
-
+							resetCreateButton(type);
 						}
 					}
 				});
@@ -984,6 +985,7 @@
 						count++;
 					}
 					else {
+						resetCreateButton(type);
 						incorrect.push("");
 					}
 				}
