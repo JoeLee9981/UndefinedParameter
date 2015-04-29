@@ -34,6 +34,7 @@ public interface QuestionDAO {
 			+ "FROM Question Qt, Quiz Qz, QuizQuestion Qq "
 			+ "WHERE Qt.QuestionID = Qq.QuestionID "
 			+ "AND Qq.QuizID = Qz.QuizID "
+			+ "AND Qq.QuestionID = Qt.QuestionID "
 			+ "AND Qz.QuizID = :quizId")
 	public List<Question> retrieveExistingQuiz(@Bind("quizId") long quizId);
 	

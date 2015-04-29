@@ -137,7 +137,7 @@ public class QuizManager {
 		//validate the quiz
 		if(quiz.getQuizId() > 0)
 			quiz.setQuestions(randomizedQuestionList);
-		
+			quiz.setQuestionCount(randomizedQuestionList.size());
 		return quiz;
 	}
 	
