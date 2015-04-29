@@ -153,6 +153,45 @@
 						</#if>						
 					</div>
 				</div>
+				<div id="quizFinish" hidden="true">
+					
+					<div class="row span12">
+						
+						<div class="panel span4 noMargin" style="margin-right: 15px">
+						    <div class="panel-header bg-blue fg-white">
+						        <strong>Your Quiz Stats</strong>
+						    </div>
+						    <div class="panel-content">
+								<h3 id="scoreText"></h3>
+								<h3 id="prevScoreText"></h3>
+								<h5>Rate this Quiz Difficulty:</h5>
+								<#if userDifficulty &gt; 0>
+									<div id="setdifficulty" class="rating small fg-yellow">
+									</div>
+								<#else>
+									<div id="setdifficulty" class="rating small fg-red">
+									</div>
+								</#if>
+								<h5>Rate this Quiz Quality:</h5>
+								<#if userRating &gt; 0>
+									<div id="setrating" class="fg-yellow rating small">
+									</div>
+								<#else>
+									<div id="setrating" class="rating small">
+									</div>
+								</#if>
+								<br/>
+								<h3><a href="/feedback">Give Us Your Feedback</a></h3>
+								<p class="text-alert">Review your questions below</p>
+							</div>
+						</div>
+						<div class="span8" style="margin-left: 15px">
+							<button id="changeGraphs" onclick="changeGraphs()">View Personal Statistics</button><br><br>
+							<div id="quizGraphs"></div>
+						</div>
+						
+					</div>
+				</div>
 				<div id="quizDiv" hidden="true">
 					<div class="row">
 						<div class="span12">
@@ -192,30 +231,6 @@
 					</div>
 				</div>
 				
-				<div id="quizFinish" hidden="true">
-					<h2>Your Quiz Stats: </h2><br/>
-					<button id="changeGraphs" onclick="changeGraphs()">View Personal Statistics</button><br><br>
-					<div id="quizGraphs"></div>
-					<h3 id="scoreText"></h3>
-					<h3 id="prevScoreText"></h3>
-					<h5>Rate the Quiz Difficulty:</h5>
-					<#if userDifficulty &gt; 0>
-						<div id="setdifficulty" class="rating small fg-yellow">
-						</div>
-					<#else>
-						<div id="setdifficulty" class="rating small fg-red">
-						</div>
-					</#if>
-					<h5>Rate the Quiz Quality:</h5>
-					<#if userRating &gt; 0>
-						<div id="setrating" class="fg-yellow rating small">
-						</div>
-					<#else>
-						<div id="setrating" class="rating small">
-						</div>
-					</#if>
-					<h3><a href="/feedback">Give Us Your Feedback</a></h3>
-				</div>
 				<div class="row">
 					
 				</div>
@@ -885,7 +900,8 @@
 				document.getElementById('changeGraphs').style.visibility = 'hidden';
 			</#if>
 
-			setAnswers();
+			q.index = -1
+			nextQuestion();
 		}
 		
 		/*********************** GRAPHING UTILITIES ****************************/

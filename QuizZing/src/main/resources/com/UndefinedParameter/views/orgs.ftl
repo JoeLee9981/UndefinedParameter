@@ -31,20 +31,7 @@
 				<div class="row">
 					<div class="span8">
 					
-						<div class="row noMargin">
-							<nav class="navigation-bar white white-custom">
-							    <nav class="navigation-bar-content">
-							        <item class="element"><a href="#" class="todo">About Organizations</a></item>
-							        <item class="element-divider"></item>
-							        <item class="element"><a href="#" class="todo">Organization FAQ</a></item>
-							        <item class="element-divider"></item>
-							        <item class="element"><a href="#" class="todo">Organization Stats</a></item>
-							        <item class="element place-right"><a href="#" class="todo">Manage Organization</a></item>
-							    </nav>
-							</nav>								
-					    </div>
-					
-						<div class="row containerFill">
+						<div class="row containerFill noMargin">
 							<h4>Find an Organization</h4>
 							<div class="">
 								<div class="input-control text">
@@ -137,11 +124,7 @@
 							</div>
 						</div>
 						<div class="row">
-							<h5>Largest Organizations
-								<span class="place-right">
-									<a href="#" class="todo">More<i class="icon-arrow-right-3 on-right"></i></a>
-								</span>
-							</h5>
+							<h5>Largest Organizations</h5>
 							<div class="container">
 								<table class="table hovered striped">
 									<tbody>
@@ -156,11 +139,7 @@
 							</div>
 						</div>
 						<div class="row noMargin">
-							<h5>Newest Organizations
-								<span class="place-right">
-									<a href="#" class="todo">More<i class="icon-arrow-right-3 on-right"></i></a>
-								</span>
-							</h5>
+							<h5>Newest Organizations</h5>
 							<div class="container">	
 								<table class="table hovered striped">
 									<tbody>

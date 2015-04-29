@@ -673,10 +673,10 @@ public class QuizManager {
 		questionDAO.removeCategories(questionId);
 		for(String cat: categories) {
 			
-			long catid = questionDAO.getCategoryId(InputUtils.normalizeInput(cat));
+			long catid = questionDAO.getCategoryId(InputUtils.normalizeInput(InputUtils.sanitizeInput(cat)));
 
 			if(catid < 1) {
-				catid = questionDAO.createCategory(InputUtils.normalizeInput(cat));
+				catid = questionDAO.createCategory(InputUtils.normalizeInput(InputUtils.sanitizeInput(cat)));
 			}
 			
 			if(catid > 0)
