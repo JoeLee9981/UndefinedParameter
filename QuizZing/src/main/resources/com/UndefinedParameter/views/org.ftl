@@ -56,14 +56,6 @@
 					    <nav class="navigation-bar-content">
 					        <item class="element active"><a href="" id="groupsLink"><i class="icon-link on-right"></i> <strong>Groups (${groupCount})</strong></a></item>
 					        <item class="element-divider"></item>
-		        	        <div class="element input-element noHover">
-					            <form id="searchOrg">
-					                <div class="input-control text searchbox">
-					                    <input type="text" placeholder="Search ${organization.name?html}..." class="size5">
-					                    <button class="btn-search todo"></button>
-					                </div>
-					            </form>
-					        </div> 
 					        <item class="element place-right"><a href="/orgs/org/create?orgId=${organization.id}"><strong><i class="icon-tools on-left"></i>Create Group</strong></a></item>
 					        <item class="element-divider place-right"></item>      		        
 					        <item class="element place-right"><a href="" id="quizzesLink"><i class="icon-clipboard-2 on-right"></i> <strong>Quizzes (${quizCount})</strong></a></item>
