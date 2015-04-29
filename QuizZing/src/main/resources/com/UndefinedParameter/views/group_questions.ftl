@@ -76,10 +76,10 @@
 						
 							$("#question${question.questionId}").on('click', function() {
 			
-								var content = "<pre style='white-space: pre-wrap; width: 700px'><strong>Question: </strong>${question.questionTextFormatted}<br/></pre>";
-								content += "<strong>Rating:</strong> ${question.rating} <strong>Difficulty: </strong>${question.difficulty}<br/>";
-								content += "<strong>Categories: </strong>${question.categoriesString}";
-								content += "<pre style='white-space: pre-wrap; width: 700px'><strong>Answers:</strong><br/>  ${question.correctAnswerFormatted}<br/>";
+								var content = "<pre style='white-space: pre-wrap; width: 700px'><strong class='fg-orange'>Question: </strong>${question.questionTextFormatted}<br/></pre>";
+								content += "<strong class='fg-orange'>Rating:</strong> ${question.rating} <strong class='fg-orange'>Difficulty: </strong>${question.difficulty}<br/>";
+								content += "<strong class='fg-orange'>Categories: </strong>${question.categoriesString}";
+								content += "<pre style='white-space: pre-wrap; width: 700px'><strong class='fg-orange'>Answers:</strong><br/>  ${question.correctAnswerFormatted}<br/>";
 								<#list question.wrongAnswersFormatted as answer>
 									content += "  ${answer}<br/>";
 								</#list>
@@ -219,10 +219,10 @@
 						
 							$("#question${question.questionId}").on('click', function() {
 			
-								var content = "<pre style='white-space: pre-wrap; width: 700px'><strong>Question: </strong>${question.questionTextFormatted}<br/></pre>";
-								content += "<strong>Rating:</strong> ${question.rating} <strong>Difficulty: </strong>${question.difficulty}<br/>";
-								content += "<strong>Categories: </strong>${question.categoriesString}";
-								content += "<pre style='white-space: pre-wrap; width: 700px'><strong>Answers:</strong><br/>  ${question.correctAnswerFormatted}<br/>";
+								var content = "<pre style='white-space: pre-wrap; width: 700px'><strong class='fg-orange'>Question: </strong>${question.questionTextFormatted}<br/></pre>";
+								content += "<strong class='fg-orange'>Rating:</strong> ${question.rating} <strong class='fg-orange'>Difficulty: </strong>${question.difficulty}<br/>";
+								content += "<strong class='fg-orange'>Categories: </strong>${question.categoriesString}";
+								content += "<pre style='white-space: pre-wrap; width: 700px'><strong class='fg-orange'>Answers:</strong><br/>  ${question.correctAnswerFormatted}<br/>";
 								<#list question.wrongAnswersFormatted as answer>
 									content += "  ${answer}<br/>";
 								</#list>
