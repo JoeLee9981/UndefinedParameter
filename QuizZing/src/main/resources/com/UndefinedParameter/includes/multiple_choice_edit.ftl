@@ -272,7 +272,7 @@
 				},
 				error: function(error) {
 					document.getElementById('responseLabel').className = "text-alert";
-					document.getElementById('responseLabel').innerHTML = "An unknown error ocurred while trying to update the question, please try again."
+					document.getElementById('responseLabel').innerHTML = "An unknown error ocurred while trying to update the question, please try again.";
 			    }
 			});
 		}

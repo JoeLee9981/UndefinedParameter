@@ -269,7 +269,7 @@
 				},
 				error: function(error) {
 					document.getElementById('fb-responseLabel').className = "text-alert";
-					document.getElementById('fb-responseLabel').innerHTML = "An unknown error ocurred while trying to update the question, please try again."
+					document.getElementById('fb-responseLabel').innerHTML = "An unknown error ocurred while trying to update the question, please try again.";
 			    }
 			});
 		}
